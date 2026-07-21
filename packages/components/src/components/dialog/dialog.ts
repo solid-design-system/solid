@@ -62,10 +62,12 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-dialog')
 export default class SdDialog extends SolidElement {
+  private readonly themeClassObserver = new MutationObserver(() => this.updateMotionTheme());
   private readonly hasSlotController = new HasSlotController(this, 'footer');
   public localize = new LocalizeController(this);
   private modal: Modal;
   private originalTrigger: HTMLElement | null;
+  private hasUiMotion = false;
 
   @query('[part="base"]') dialog: HTMLElement;
   @query('[part="panel"]') panel: HTMLElement;
@@ -89,6 +91,12 @@ export default class SdDialog extends SolidElement {
 
   connectedCallback() {
     super.connectedCallback();
+    this.updateMotionTheme();
+    this.themeClassObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+      subtree: true
+    });
     this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
     this.modal = new Modal(this);
   }
@@ -105,7 +113,12 @@ export default class SdDialog extends SolidElement {
 
   disconnectedCallback() {
     super.disconnectedCallback();
+    this.themeClassObserver.disconnect();
     unlockBodyScrolling(this);
+  }
+
+  private updateMotionTheme(): void {
+    this.hasUiMotion = Boolean(this.closest('.sd-theme-ui-light, .sd-theme-ui-dark'));
   }
 
   private get prefersReducedMotion() {
@@ -119,7 +132,9 @@ export default class SdDialog extends SolidElement {
     });
 
     if (sdRequestClose.defaultPrevented) {
-      const animation = getAnimation(this, 'dialog.denyClose', { dir: this.localize.dir() });
+      const animation = getAnimation(this, this.hasUiMotion ? 'dialog.denyClose' : 'dialog.denyCloseSimple', {
+        dir: this.localize.dir()
+      });
       animateTo(this.panel, animation.keyframes, animation.options);
       return;
     }
@@ -186,10 +201,12 @@ export default class SdDialog extends SolidElement {
         }
       });
 
+      const showAnimation = this.hasUiMotion ? 'dialog.show' : 'dialog.showSimple';
       const panelAnimation = this.prefersReducedMotion
         ? getAnimation(this, 'dialog.showReducedMotion', { dir: this.localize.dir() })
-        : getAnimation(this, 'dialog.show', { dir: this.localize.dir() });
-      const overlayAnimation = getAnimation(this, 'dialog.overlay.show', { dir: this.localize.dir() });
+        : getAnimation(this, showAnimation, { dir: this.localize.dir() });
+      const overlayShowAnimation = this.hasUiMotion ? 'dialog.overlay.show' : 'dialog.overlay.showSimple';
+      const overlayAnimation = getAnimation(this, overlayShowAnimation, { dir: this.localize.dir() });
       await Promise.all([
         animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options),
         animateTo(this.overlay, overlayAnimation.keyframes, overlayAnimation.options)
@@ -203,10 +220,12 @@ export default class SdDialog extends SolidElement {
       this.modal.deactivate();
 
       await Promise.all([stopAnimations(this.dialog), stopAnimations(this.overlay)]);
+      const hideAnimation = this.hasUiMotion ? 'dialog.hide' : 'dialog.hideSimple';
       const panelAnimation = this.prefersReducedMotion
         ? getAnimation(this, 'dialog.hideReducedMotion', { dir: this.localize.dir() })
-        : getAnimation(this, 'dialog.hide', { dir: this.localize.dir() });
-      const overlayAnimation = getAnimation(this, 'dialog.overlay.hide', { dir: this.localize.dir() });
+        : getAnimation(this, hideAnimation, { dir: this.localize.dir() });
+      const overlayHideAnimation = this.hasUiMotion ? 'dialog.overlay.hide' : 'dialog.overlay.hideSimple';
+      const overlayAnimation = getAnimation(this, overlayHideAnimation, { dir: this.localize.dir() });
 
       // Animate the overlay and the panel at the same time. Because animation durations might be different, we need to
       // hide each one individually when the animation finishes, otherwise the first one that finishes will reappear
@@ -382,6 +401,14 @@ setDefaultAnimation('dialog.showReducedMotion', {
   options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
+setDefaultAnimation('dialog.showSimple', {
+  keyframes: [
+    { opacity: 0, scale: 0.8 },
+    { opacity: 1, scale: 1 }
+  ],
+  options: { duration: 250, easing: 'ease' }
+});
+
 setDefaultAnimation('dialog.hide', {
   keyframes: [
     { opacity: 1, transform: 'translate(0, 0)' },
@@ -395,7 +422,20 @@ setDefaultAnimation('dialog.hideReducedMotion', {
   options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
+setDefaultAnimation('dialog.hideSimple', {
+  keyframes: [
+    { opacity: 1, scale: 1 },
+    { opacity: 0, scale: 0.8 }
+  ],
+  options: { duration: 250, easing: 'ease' }
+});
+
 setDefaultAnimation('dialog.denyClose', {
+  keyframes: [{ scale: 1 }, { scale: 1.02 }, { scale: 1 }],
+  options: { duration: 250 }
+});
+
+setDefaultAnimation('dialog.denyCloseSimple', {
   keyframes: [{ scale: 1 }, { scale: 1.02 }, { scale: 1 }],
   options: { duration: 250 }
 });
@@ -405,9 +445,19 @@ setDefaultAnimation('dialog.overlay.show', {
   options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
+setDefaultAnimation('dialog.overlay.showSimple', {
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  options: { duration: 250, reducedMotion: 'allow' }
+});
+
 setDefaultAnimation('dialog.overlay.hide', {
   keyframes: [{ opacity: 1 }, { opacity: 0 }],
   options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out', reducedMotion: 'allow' }
+});
+
+setDefaultAnimation('dialog.overlay.hideSimple', {
+  keyframes: [{ opacity: 1 }, { opacity: 0 }],
+  options: { duration: 250, reducedMotion: 'allow' }
 });
 
 declare global {

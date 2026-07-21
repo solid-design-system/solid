@@ -100,6 +100,32 @@ describe('<sd-button>', () => {
     });
   });
 
+  describe('when themes change', () => {
+    it('should use the simple motion for non-UI themes', async () => {
+      const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
+      const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+      const motionWrapper = el.shadowRoot!.querySelector<HTMLElement>('[part~="motion-wrapper"]')!;
+
+      expect(getComputedStyle(base).transitionProperty).to.contain('box-shadow');
+      expect(getComputedStyle(motionWrapper).display).to.equal('none');
+    });
+
+    it('should use the motion wrapper for UI themes', async () => {
+      const wrapper = await fixture<HTMLElement>(html`
+        <div class="sd-theme-ui-light">
+          <sd-button>Default Slot</sd-button>
+        </div>
+      `);
+      const el = wrapper.querySelector<SdButton>('sd-button')!;
+
+      const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+      const motionWrapper = el.shadowRoot!.querySelector<HTMLElement>('[part~="motion-wrapper"]')!;
+
+      expect(getComputedStyle(base).transitionProperty).not.to.contain('box-shadow');
+      expect(getComputedStyle(motionWrapper).display).to.equal('block');
+    });
+  });
+
   describe('when href is present', () => {
     it('should render as an <a>', async () => {
       const el = await fixture<SdButton>(html` <sd-button href="some/path">Default Slot</sd-button> `);

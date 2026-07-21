@@ -6,6 +6,40 @@ import sinon from 'sinon';
 import type SdDialog from './dialog';
 
 describe('<sd-dialog>', () => {
+  const createFinishedAnimation = () => {
+    const animation: Partial<Animation> = {
+      addEventListener: (type: string, listener: EventListenerOrEventListenerObject) => {
+        if (type === 'finish') {
+          requestAnimationFrame(() => {
+            if (typeof listener === 'function') {
+              listener(new Event('finish'));
+            } else {
+              listener.handleEvent(new Event('finish'));
+            }
+          });
+        }
+      }
+    };
+
+    return animation as Animation;
+  };
+
+  const getPanelShowKeyframes = async (el: SdDialog) => {
+    const panel = el.shadowRoot!.querySelector<HTMLElement>('[part~="panel"]')!;
+    const overlay = el.shadowRoot!.querySelector<HTMLElement>('[part~="overlay"]')!;
+    const panelAnimate = sinon.stub(panel, 'animate').callsFake(() => createFinishedAnimation());
+    const overlayAnimate = sinon.stub(overlay, 'animate').callsFake(() => createFinishedAnimation());
+
+    try {
+      await el.show();
+
+      return panelAnimate.firstCall.args[0] as Keyframe[];
+    } finally {
+      panelAnimate.restore();
+      overlayAnimate.restore();
+    }
+  };
+
   it('should be visible with the open attribute', async () => {
     const el = await fixture<SdDialog>(html`
       <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
@@ -61,6 +95,31 @@ describe('<sd-dialog>', () => {
     expect(showHandler).to.have.been.calledOnce;
     expect(afterShowHandler).to.have.been.calledOnce;
     expect(base.hidden).to.be.false;
+  });
+
+  describe('when themes change', () => {
+    it('should use the simple motion for non-UI themes', async () => {
+      const el = await fixture<SdDialog>(html`
+        <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+      `);
+      const keyframes = await getPanelShowKeyframes(el);
+
+      expect(keyframes[0]).to.deep.equal({ opacity: 0, scale: 0.8 });
+      expect(keyframes[1]).to.deep.equal({ opacity: 1, scale: 1 });
+    });
+
+    it('should use the UI motion for UI themes', async () => {
+      const wrapper = await fixture<HTMLElement>(html`
+        <div class="sd-theme-ui-light">
+          <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+        </div>
+      `);
+      const el = wrapper.querySelector<SdDialog>('sd-dialog')!;
+      const keyframes = await getPanelShowKeyframes(el);
+
+      expect(keyframes[0]).to.deep.equal({ opacity: 0, transform: 'translate(-50%, 100%)' });
+      expect(keyframes[1]).to.deep.equal({ opacity: 1, transform: 'translate(0, 0)' });
+    });
   });
 
   it('should emit sd-hide and sd-after-hide when calling hide()', async () => {
