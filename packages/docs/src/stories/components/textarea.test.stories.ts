@@ -40,7 +40,7 @@ export const Default = {
     { type: 'attribute', name: 'help-text', value: 'Help-text' }
   ]),
   render: (args: any) => {
-    return html`<div class="w-full max-w-[250px]">${generateTemplate({ args })}</div> `;
+    return html`<div class="max-w-[250px]">${generateTemplate({ args })}</div> `;
   }
 };
 
@@ -50,7 +50,7 @@ export const Labels = {
     label: 'Label'
   },
   render: (args: any) => {
-    return html`<div class="w-full max-w-[250px]">${generateTemplate({ args })}</div> `;
+    return html`<div class="max-w-[250px]">${generateTemplate({ args })}</div> `;
   }
 };
 
@@ -61,14 +61,14 @@ export const FloatingLabel = {
   },
   render: (args: any) => {
     return html`
-      <div class="w-full max-w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
         })}
       </div>
       <br />
-      <div class="w-full max-w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           constants: [
             { type: 'attribute', name: 'value', value: 'Floating Label with value' },
@@ -92,7 +92,7 @@ export const Placeholders = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-full max-w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           args
         })}
@@ -101,7 +101,7 @@ export const Placeholders = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-full max-w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
@@ -122,7 +122,7 @@ export const Disabled = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-full max-w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'disabled', value: true }],
           args
@@ -132,7 +132,7 @@ export const Disabled = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-full max-w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           constants: [
             { type: 'attribute', name: 'disabled', value: true },
@@ -157,7 +157,7 @@ export const Readonly = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-full max-w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'readonly', value: true }],
           args
@@ -167,7 +167,7 @@ export const Readonly = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-full max-w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           constants: [
             { type: 'attribute', name: 'readonly', value: true },
@@ -273,7 +273,7 @@ export const Validation = {
   name: 'Validation',
   render: (args: any) => {
     return html`
-      <form action="" method="get" id="testForm" name="testForm" class="w-full max-w-[370px]">
+      <form action="" method="get" id="testForm" name="testForm" class="max-w-[370px]">
         <div>Default</div>
         <br />
         <div class="mb-2">
@@ -549,7 +549,7 @@ export const ResponsiveHeight = {
     { type: 'attribute', name: 'help-text', value: 'Help-text' }
   ]),
   render: (args: any) => {
-    return html`<div class="w-full max-w-[250px] h-[300px]">${generateTemplate({ args })}</div> `;
+    return html`<div class="max-w-[250px] h-[300px]">${generateTemplate({ args })}</div> `;
   }
 };
 
@@ -631,12 +631,12 @@ export const Mouseless = {
   render: (args: any) => {
     return html` <div>Default</div>
       <br />
-      <div class="mouseless w-full max-w-[250px]">${generateTemplate({ args })}</div>
+      <div class="mouseless max-w-[250px]">${generateTemplate({ args })}</div>
       <br />
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="mouseless w-full max-w-[250px]">
+      <div class="mouseless max-w-[250px]">
         ${generateTemplate({
           args,
           constants: [{ type: 'attribute', name: 'floating-label', value: true }]

@@ -61,7 +61,7 @@ export const Default = {
 export const SelectWithOptionAndCheckbox = {
   name: 'Select with Option and Checkbox',
   render: () => html`
-    <div class="w-full max-w-[400px] h-[500px]">
+    <div class="max-w-[400px] h-[500px]">
       <sd-select
         id="select-with-checkbox"
         size="lg"

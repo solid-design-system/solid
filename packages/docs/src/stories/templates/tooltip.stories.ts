@@ -16,7 +16,7 @@ export default {
 export const InputWithTooltip = {
   name: 'Input with Tooltip',
   render: () => html`
-    <sd-input class="w-full max-w-[400px] py-6">
+    <sd-input class="max-w-[400px] py-6">
       <span slot="right" class="text-sm inline-flex items-center">
         <span class="text-neutral-700">EUR</span>
       </span>
@@ -30,13 +30,7 @@ export const InputWithTooltip = {
 export const SelectWithTooltip = {
   name: 'Select with Tooltip',
   render: () => html`
-    <sd-select
-      class="w-full max-w-[400px] h-[300px] py-6"
-      size="lg"
-      placement="top"
-      placeholder="Please select"
-      value=""
-    >
+    <sd-select class="max-w-[400px] h-[300px] py-6" size="lg" placement="top" placeholder="Please select" value="">
       <div slot="label">Access role</div>
       <sd-tooltip
         slot="tooltip"
@@ -57,7 +51,7 @@ export const TextAreaWithTooltip = {
   name: 'Textarea with Tooltip',
   render: () => html`
     <sd-textarea
-      class="w-full max-w-[540px] py-4"
+      class="max-w-[540px] py-4"
       value="A solid design system is more than a collection of components; it’s a living document that aligns teams, maintains consistency, and supports scalability. Here, you can capture the reasoning behind design choices, specific use cases, and any nuances that will aid other team members in understanding how to implement this component effectively."
     >
       <div slot="label">Project description</div>
@@ -69,7 +63,7 @@ export const TextAreaWithTooltip = {
 export const RadioGroupWithTooltip = {
   name: 'Radio Group with Tooltip',
   render: () => html`
-    <sd-radio-group class="w-full max-w-[400px] py-6">
+    <sd-radio-group class="max-w-[400px] py-6">
       <div slot="label">Choose your subscription plan</div>
       <sd-tooltip slot="tooltip" content="Select the plan that best meets your needs" size="sm"></sd-tooltip>
 
@@ -83,7 +77,7 @@ export const RadioGroupWithTooltip = {
 export const CheckboxGroupWithTooltip = {
   name: 'Checkbox Group with Tooltip',
   render: () => html`
-    <sd-checkbox-group class="w-full max-w-[400px] py-6">
+    <sd-checkbox-group class="max-w-[400px] py-6">
       <div slot="label">Select your interests</div>
       <sd-tooltip slot="tooltip" content="Choose all that apply to you" size="sm"></sd-tooltip>
 

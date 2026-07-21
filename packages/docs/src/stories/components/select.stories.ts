@@ -50,7 +50,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`<div class="h-[260px] w-full max-w-[400px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="h-[260px] max-w-[400px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -187,7 +187,7 @@ export const Label = {
  */
 export const FloatingLabel = {
   render: () => html`
-    <div class="w-full max-w-[400px] h-[500px]">
+    <div class="max-w-[400px] h-[500px]">
       <sd-select size="lg" label="Floating Label" floating-label placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -204,7 +204,7 @@ export const FloatingLabel = {
  */
 export const Placeholder = {
   render: () => html`
-    <div class="w-full max-w-[400px] h-[500px]">
+    <div class="max-w-[400px] h-[500px]">
       <sd-select size="lg" label="Label" placeholder="Placeholder example" placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -233,7 +233,7 @@ export const Disabled = {
     }
   },
   render: () => html`
-    <div class="w-full max-w-[400px]">
+    <div class="max-w-[400px]">
       <sd-select size="lg" label="Label" placeholder="Disabled" placement="bottom" value="" disabled>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -266,7 +266,7 @@ export const VisuallyDisabled = {
     }
   },
   render: () => html`
-    <div class="w-full max-w-[400px] h-[200px] mt-12">
+    <div class="max-w-[400px] h-[200px] mt-12">
       <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm">
         <sd-select
           size="lg"
@@ -334,7 +334,7 @@ export const HelpText = {
 
 export const Clearable = {
   render: () => html`
-    <div class="w-full max-w-[400px] h-[500px]">
+    <div class="max-w-[400px] h-[500px]">
       <sd-select size="lg" label="Label" placement="bottom" clearable="" value="option-1">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -353,7 +353,7 @@ export const Clearable = {
 
 export const Multiple = {
   render: () => html`
-    <div class="w-full max-w-[400px] h-[500px]">
+    <div class="max-w-[400px] h-[500px]">
       <sd-select size="lg" label="Label" placement="bottom" multiple="" value="option-1 option-2">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -372,7 +372,7 @@ export const Multiple = {
  */
 export const useTags = {
   render: () => html`
-    <div class="w-full max-w-[400px] h-[500px]">
+    <div class="max-w-[400px] h-[500px]">
       <sd-select size="lg" label="Label" placement="bottom" multiple="" value="option-1 option-2" useTags>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -393,7 +393,7 @@ export const useTags = {
  */
 export const MaxOptionsVisible = {
   render: () => html`
-    <div class="w-full max-w-[400px] h-[500px]">
+    <div class="max-w-[400px] h-[500px]">
       <sd-select
         size="lg"
         label="Label"
@@ -419,7 +419,7 @@ export const MaxOptionsVisible = {
 
 export const Required = {
   render: () => html`
-    <div class="w-full max-w-[400px] h-[400px]">
+    <div class="max-w-[400px] h-[400px]">
       <sd-select size="lg" label="Required" placeholder="Please select" placement="bottom" value="" required="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -439,7 +439,7 @@ export const Required = {
 
 export const Valid = {
   render: () => html`
-    <div class="w-full max-w-[400px] h-[400px]">
+    <div class="max-w-[400px] h-[400px]">
       <sd-select
         size="lg"
         placement="bottom"
@@ -472,7 +472,7 @@ export const Valid = {
 
 export const Invalid = {
   render: () => html`
-    <div class="w-full max-w-[400px] h-[300px]">
+    <div class="max-w-[400px] h-[300px]">
       <sd-select
         size="lg"
         placement="bottom"

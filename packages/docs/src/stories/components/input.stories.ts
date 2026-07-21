@@ -27,7 +27,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`<div class="w-full max-w-[400px]">${generateTemplate({ args })}</div> `;
+    return html`<div class="max-w-[400px]">${generateTemplate({ args })}</div> `;
   }
 };
 
@@ -43,24 +43,9 @@ export const Default = {
 export const Size = {
   render: () => html`
     <div class="flex flex-wrap md:flex-nowrap gap-12">
-      <sd-input
-        size="lg"
-        label="Label"
-        placeholder="Large"
-        class="w-full min-w-[200px] md:min-w-0 max-w-[400px]"
-      ></sd-input>
-      <sd-input
-        size="md"
-        label="Label"
-        placeholder="Medium"
-        class="w-full min-w-[200px] md:min-w-0 max-w-[400px]"
-      ></sd-input>
-      <sd-input
-        size="sm"
-        label="Label"
-        placeholder="Small"
-        class="w-full min-w-[200px] md:min-w-0 max-w-[400px]"
-      ></sd-input>
+      <sd-input size="lg" label="Label" placeholder="Large" class="min-w-[200px] md:min-w-0 max-w-[400px]"></sd-input>
+      <sd-input size="md" label="Label" placeholder="Medium" class="min-w-[200px] md:min-w-0 max-w-[400px]"></sd-input>
+      <sd-input size="sm" label="Label" placeholder="Small" class="min-w-[200px] md:min-w-0 max-w-[400px]"></sd-input>
     </div>
   `
 };
@@ -73,8 +58,8 @@ export const Size = {
 export const Label = {
   render: () => html`
     <div class="flex flex-wrap md:flex-nowrap gap-12 items-baseline">
-      <sd-input label="Label attribute" spellcheck class="w-full min-w-[200px] md:min-w-0 max-w-[400px]"></sd-input>
-      <sd-input spellcheck class="w-full min-w-[200px] md:min-w-0 max-w-[400px]">
+      <sd-input label="Label attribute" spellcheck class="min-w-[200px] md:min-w-0 max-w-[400px]"></sd-input>
+      <sd-input spellcheck class="min-w-[200px] md:min-w-0 max-w-[400px]">
         <div slot="label" class="text-lg">Label slot</div>
       </sd-input>
     </div>
@@ -88,7 +73,7 @@ export const Label = {
  */
 export const FloatingLabel = {
   render: () => html`
-    <div class="w-full max-w-[400px]">
+    <div class="max-w-[400px]">
       <sd-input label="Floating Label" floating-label></sd-input>
     </div>
   `
@@ -99,7 +84,7 @@ export const FloatingLabel = {
  */
 export const Placeholder = {
   render: () => html`
-    <div class="w-full max-w-[400px]">
+    <div class="max-w-[400px]">
       <sd-input placeholder="Placeholder example" label="Label" spellcheck></sd-input>
     </div>
   `
@@ -110,7 +95,7 @@ export const Placeholder = {
  */
 export const Value = {
   render: () =>
-    html` <div class="w-full max-w-[400px]">
+    html` <div class="max-w-[400px]">
       <sd-input label="Label" value="Value example"> </sd-input>
     </div>`
 };
@@ -121,7 +106,7 @@ export const Value = {
 
 export const Disabled = {
   render: () =>
-    html`<div class="w-full max-w-[400px]">
+    html`<div class="max-w-[400px]">
       <sd-input label="Label" value="Disabled" disabled></sd-input>
     </div>`
 };
@@ -135,7 +120,7 @@ export const Disabled = {
  */
 export const VisuallyDisabled = {
   render: () =>
-    html`<div class="w-full max-w-[400px] h-[200px] pt-12">
+    html`<div class="max-w-[400px] h-[200px] pt-12">
       <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm" placement="top">
         <sd-input label="Label" value="Visually disabled" visually-disabled></sd-input>
       </sd-tooltip>
@@ -149,7 +134,7 @@ export const VisuallyDisabled = {
  */
 export const ReadOnly = {
   render: () =>
-    html`<div class="w-full max-w-[400px]">
+    html`<div class="max-w-[400px]">
       <sd-input label="Label" value="Read only example" readonly></sd-input>
     </div>`
 };
@@ -167,9 +152,9 @@ export const HelpText = {
         <sd-input
           label="Label"
           help-text="Help text attribute"
-          class="w-full min-w-[200px] md:min-w-0 max-w-[400px]"
+          class="min-w-[200px] md:min-w-0 max-w-[400px]"
         ></sd-input>
-        <sd-input label="Label" class="w-full min-w-[200px] md:min-w-0 max-w-[400px]">
+        <sd-input label="Label" class="min-w-[200px] md:min-w-0 max-w-[400px]">
           <div slot="help-text" class="text-lg">Help text slot</div>
         </sd-input>
       </div>
@@ -183,7 +168,7 @@ export const HelpText = {
 
 export const Clearable = {
   render: () =>
-    html`<div class="w-full max-w-[400px]">
+    html`<div class="max-w-[400px]">
       <sd-input label="Clearable" clearable spellcheck value="Input text"></sd-input>
     </div>`
 };
@@ -195,11 +180,11 @@ export const Clearable = {
 export const Icon = {
   render: () =>
     html`<div class="flex flex-wrap md:flex-nowrap gap-12">
-      <sd-input label="Label" spellcheck class="w-full min-w-[200px] md:min-w-0 max-w-[400px]">
+      <sd-input label="Label" spellcheck class="min-w-[200px] md:min-w-0 max-w-[400px]">
         <sd-icon label="landscape" name="system/image" slot="left"></sd-icon>
       </sd-input>
 
-      <sd-input label="Label" spellcheck class="w-full min-w-[200px] md:min-w-0 max-w-[400px]">
+      <sd-input label="Label" spellcheck class="min-w-[200px] md:min-w-0 max-w-[400px]">
         <sd-icon label="landscape" name="system/image" slot="right"></sd-icon>
       </sd-input>
     </div>`
@@ -213,7 +198,7 @@ export const Icon = {
 
 export const TogglePassword = {
   render: () =>
-    html`<div class="w-full max-w-[400px]">
+    html`<div class="max-w-[400px]">
       <sd-input type="password" label="Toggle password" password-toggle spellcheck></sd-input>
     </div>`
 };
@@ -231,7 +216,7 @@ export const Type = {
         label="Text (default)"
         help-text="Default type"
         spellcheck
-        class="w-full max-w-[400px]"
+        class="max-w-[400px]"
       ></sd-input>
 
       <sd-input
@@ -240,7 +225,7 @@ export const Type = {
         label="Search"
         help-text="Use search format"
         spellcheck
-        class="w-full max-w-[400px]"
+        class="max-w-[400px]"
       ></sd-input>
 
       <sd-input
@@ -249,7 +234,7 @@ export const Type = {
         value="2025-03-01"
         help-text="Value is restricted to date format"
         spellcheck
-        class="w-full max-w-[400px]"
+        class="max-w-[400px]"
       ></sd-input>
 
       <sd-input
@@ -258,7 +243,7 @@ export const Type = {
         value="2025-03-01T10:30"
         help-text="Value is restricted to datetime format"
         spellcheck
-        class="w-full max-w-[400px]"
+        class="max-w-[400px]"
       ></sd-input>
 
       <sd-input
@@ -267,7 +252,7 @@ export const Type = {
         value="10:30"
         help-text="Value is restricted to time format"
         spellcheck
-        class="w-full max-w-[400px]"
+        class="max-w-[400px]"
       ></sd-input>
 
       <sd-input
@@ -277,7 +262,7 @@ export const Type = {
         help-text="Value is restricted to numbers"
         spin-buttons
         spellcheck
-        class="w-full max-w-[400px]"
+        class="max-w-[400px]"
       ></sd-input>
 
       <sd-input
@@ -286,7 +271,7 @@ export const Type = {
         label="Email"
         help-text="Validate with email address format"
         spellcheck
-        class="w-full max-w-[400px]"
+        class="max-w-[400px]"
       ></sd-input>
 
       <sd-input
@@ -295,7 +280,7 @@ export const Type = {
         label="Tel"
         help-text="Shows optimized keyboard on touch devices or similar"
         spellcheck
-        class="w-full max-w-[400px]"
+        class="max-w-[400px]"
       ></sd-input>
 
       <sd-input
@@ -305,7 +290,7 @@ export const Type = {
         help-text="Use password display format"
         password-toggle
         spellcheck
-        class="w-full max-w-[400px]"
+        class="max-w-[400px]"
       ></sd-input>
 
       <sd-input
@@ -316,7 +301,7 @@ export const Type = {
         password-toggle
         password-visible
         spellcheck
-        class="w-full max-w-[400px]"
+        class="max-w-[400px]"
       ></sd-input>
 
       <sd-input
@@ -326,7 +311,7 @@ export const Type = {
         help-text="Validate with url format"
         name="url field"
         spellcheck
-        class="w-full max-w-[400px]"
+        class="max-w-[400px]"
       ></sd-input>
     </div>`
 };
@@ -337,7 +322,7 @@ export const Type = {
 
 export const Required = {
   render: () =>
-    html`<div class="w-full max-w-[400px]">
+    html`<div class="max-w-[400px]">
       <sd-input label="Label" required></sd-input>
     </div>`
 };
@@ -352,7 +337,7 @@ export const Valid = {
     html`<form id="valid-form">
         <sd-input
           id="valid-input"
-          class="w-full max-w-[400px]"
+          class="max-w-[400px]"
           label="Label"
           style-on-valid
           value="Input text here"
@@ -376,7 +361,7 @@ export const Invalid = {
     html`<form id="invalid-form">
         <sd-input
           id="invalid-input"
-          class="w-full max-w-[400px]"
+          class="max-w-[400px]"
           label="Label"
           style-on-valid
           placeholder="Placeholder text"
@@ -396,7 +381,7 @@ export const Invalid = {
  */
 export const Pattern = {
   render: () => html`
-    <div class="w-full max-w-[400px]">
+    <div class="max-w-[400px]">
       <sd-input label="Pattern" pattern="[A-Za-z]{3,}" help-text="Required pattern is [A-Za-z]{3,}" required></sd-input>
     </div>
   `
@@ -407,7 +392,7 @@ export const Pattern = {
  */
 export const MinLength = {
   render: () => html`
-    <div class="w-full max-w-[400px]">
+    <div class="max-w-[400px]">
       <sd-input label="Minlength" minlength="5" help-text="5 is the minimum allowed characters" required></sd-input>
     </div>
   `
@@ -418,7 +403,7 @@ export const MinLength = {
  */
 export const MaxLength = {
   render: () => html`
-    <div class="w-full max-w-[400px]">
+    <div class="max-w-[400px]">
       <sd-input label="Maxlength" maxlength="25" help-text="25 is the maximum allowed characters" required></sd-input>
     </div>
   `
@@ -429,7 +414,7 @@ export const MaxLength = {
  */
 export const Min = {
   render: () => html`
-    <div class="w-full max-w-[400px]">
+    <div class="max-w-[400px]">
       <sd-input label="Min" type="number" min="1000" help-text="Minimum value is 1000" required></sd-input>
     </div>
   `
@@ -440,7 +425,7 @@ export const Min = {
  */
 export const Max = {
   render: () => html`
-    <div class="w-full max-w-[400px]">
+    <div class="max-w-[400px]">
       <sd-input label="Max" type="number" max="5000" help-text="Maximum value is 5000" required></sd-input>
     </div>
   `
@@ -451,7 +436,7 @@ export const Max = {
  */
 export const SpinButtons = {
   render: () => html`
-    <div class="w-full max-w-[400px]">
+    <div class="max-w-[400px]">
       <sd-input
         label="Spin buttons"
         type="number"

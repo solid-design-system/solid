@@ -27,7 +27,7 @@ export const Default = {
   name: 'Default',
   args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
   render: (args: any) => {
-    return html`<div class="w-full max-w-[500px]">${generateTemplate({ args })}</div> `;
+    return html`<div class="max-w-[500px]">${generateTemplate({ args })}</div> `;
   }
 };
 
@@ -160,7 +160,7 @@ export const FloatingLabel = {
 export const Placeholder = {
   name: 'Placeholder',
   render: () => html`
-    <div class="w-full max-w-[500px]">
+    <div class="max-w-[500px]">
       <sd-textarea size="lg" label="Label" placeholder="Placeholder example" rows="4" spellcheck></sd-textarea>
     </div>
   `
@@ -172,7 +172,7 @@ export const Placeholder = {
 export const Disabled = {
   name: 'Disabled',
   render: () => html`
-    <div class="w-full max-w-[500px]">
+    <div class="max-w-[500px]">
       <sd-textarea size="lg" label="Label" placeholder="Input text disabled" rows="4" spellcheck disabled></sd-textarea>
     </div>
   `
@@ -188,7 +188,7 @@ export const Disabled = {
 export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
-    <div class="w-full max-w-[500px] mt-12">
+    <div class="max-w-[500px] mt-12">
       <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm">
         <sd-textarea
           size="lg"
@@ -212,7 +212,7 @@ export const VisuallyDisabled = {
 export const Readonly = {
   name: 'Read only',
   render: () => html`
-    <div class="w-full max-w-[500px]">
+    <div class="max-w-[500px]">
       <sd-textarea
         value="Read only example Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod."
         size="lg"
@@ -255,7 +255,7 @@ export const HelpText = {
 export const Required = {
   name: 'Required',
   render: () => html`
-    <div class="w-full max-w-[500px]">
+    <div class="max-w-[500px]">
       <sd-textarea size="lg" label="Required" rows="4" required spellcheck></sd-textarea>
     </div>
   `
@@ -267,7 +267,7 @@ export const Required = {
 
 export const Valid = {
   render: () => html`
-    <form class="w-full max-w-[500px]">
+    <form class="max-w-[500px]">
       <sd-textarea
         id="valid-textarea"
         value="Input text here"
@@ -295,7 +295,7 @@ export const Valid = {
  */
 export const Invalid = {
   render: () => html`
-    <form class="w-full max-w-[500px]">
+    <form class="max-w-[500px]">
       <sd-textarea
         id="invalid-textarea"
         value=""
@@ -326,7 +326,7 @@ export const Invalid = {
 export const MinLength = {
   name: 'Min Length',
   render: () => html`
-    <div class="w-full max-w-[500px]">
+    <div class="max-w-[500px]">
       <sd-textarea
         value=""
         size="lg"
@@ -346,7 +346,7 @@ export const MinLength = {
 export const MaxLength = {
   name: 'Max Length',
   render: () => html`
-    <div class="w-full max-w-[500px]">
+    <div class="max-w-[500px]">
       <sd-textarea
         value=""
         size="lg"
