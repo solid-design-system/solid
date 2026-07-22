@@ -10,6 +10,7 @@ import { withThemeByClassName } from './addons/with-theme.js';
 import { storybookUtilities } from '../scripts/storybook/helper.js';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
 import { initDeprecatedBadgeEnhancer } from '../scripts/storybook/deprecated-badge-enhancer.js';
+import { observeTemplateUsage, removeTemplateUsage, renderTemplateUsage } from '../scripts/storybook/template-usage.js';
 import { themes, allModes, DEFAULT_THEME } from './modes.js';
 
 const theme = withThemeByClassName({
@@ -25,156 +26,52 @@ const deprecatedBadgeDecorator = Story => {
   return Story();
 };
 
-const TEMPLATE_FOOTER_ID = 'template-global-footer';
-const SD_TAG_REGEX = /<(sd-[a-z][a-z0-9-]*)/g;
-const TITLE_REGEX = /title\s*:\s*['"`]([^'"`]+)['"`]/;
-const LINE_COMMENT_REGEX = /\/\/[^\n]*/g;
-const BLOCK_COMMENT_REGEX = /\/\*[\s\S]*?\*\//g;
-
-const COMPONENT_LABEL_OVERRIDES = {
-  'sd-textarea': 'Text Area'
-};
-
-const getComponentLabel = tagName => {
-  if (COMPONENT_LABEL_OVERRIDES[tagName]) {
-    return COMPONENT_LABEL_OVERRIDES[tagName];
-  }
-
-  return tagName
-    .replace('sd-', '')
-    .split('-')
-    .map(segment => segment.charAt(0).toUpperCase() + segment.slice(1))
-    .join(' ');
-};
-
-const buildTemplateComponentMap = () => {
-  const sources = import.meta.glob('../src/stories/templates/*.stories.ts', {
-    query: '?raw',
-    import: 'default',
-    eager: true
-  });
-
-  const map = {};
-
-  Object.values(sources).forEach(rawSource => {
-    const stripped = rawSource.replace(BLOCK_COMMENT_REGEX, '').replace(LINE_COMMENT_REGEX, '');
-
-    const titleMatch = stripped.match(TITLE_REGEX);
-    if (!titleMatch) return;
-
-    const tags = new Set();
-    let tagMatch;
-    SD_TAG_REGEX.lastIndex = 0;
-    while ((tagMatch = SD_TAG_REGEX.exec(stripped)) !== null) {
-      tags.add(tagMatch[1]);
-    }
-
-    if (tags.size === 0) return;
-    map[titleMatch[1]] = [...tags].sort();
-  });
-
-  return map;
-};
-
-const TEMPLATE_COMPONENT_MAP = buildTemplateComponentMap();
-
-const buildLinksFromTags = tags =>
-  tags.map(tag => ({
-    label: getComponentLabel(tag),
-    href: `./?path=/docs/components-${tag}-overview--docs`
-  }));
-
-const removeTemplateFooter = () => {
-  document.getElementById(TEMPLATE_FOOTER_ID)?.remove();
-};
-
-const createTemplateFooter = ({ title, links }) => {
-  const footer = document.createElement('footer');
-  footer.id = TEMPLATE_FOOTER_ID;
-  footer.className = 'template-global-footer';
-
-  const linksMarkup = links
-    .map(
-      ({ label, href }) =>
-        `<a href="${href}" class="sd-paragraph sd-paragraph--size-sm text-primary underline hover:text-primary-500 active:text-primary-800 text-base">${label}</a>`
-    )
-    .join('');
-
-  footer.innerHTML = `
-    <div class="template-global-footer__inner">
-      <p class="sd-headline sd-headline--size-base m-0 !text-xl">${title}</p>
-      <div class="template-global-footer__links">
-        ${linksMarkup}
-      </div>
-    </div>
-  `;
-  return footer;
-};
-
-const renderTemplateFooter = (storyTitle, templateFooterConfig) => {
-  const tags = TEMPLATE_COMPONENT_MAP[storyTitle];
-  if (!tags || tags.length === 0) return;
-
-  const targetRoot = document.getElementById('storybook-docs');
-  if (!targetRoot) return;
-
-  const signature = `${storyTitle}::${tags.join('|')}`;
-  const existingFooter = document.getElementById(TEMPLATE_FOOTER_ID);
-
-  if (
-    existingFooter &&
-    existingFooter.parentElement === targetRoot &&
-    existingFooter.dataset.componentSignature === signature
-  ) {
-    return;
-  }
-
-  if (existingFooter) {
-    existingFooter.remove();
-  }
-
-  const title = templateFooterConfig?.title || 'Utilized Components and Styles';
-  const links = buildLinksFromTags(tags);
-  const footer = createTemplateFooter({ title, links });
-  footer.dataset.componentSignature = signature;
-
-  targetRoot.appendChild(footer);
-};
-
 let activeTemplateStoryTitle = null;
-let activeTemplateFooterConfig = null;
+let activeTemplateUsageConfig = null;
+let templateUsageObserver = null;
+
+const disconnectTemplateUsageObserver = () => {
+  templateUsageObserver?.disconnect();
+  templateUsageObserver = null;
+};
 
 const channel = addons.getChannel?.();
 if (channel) {
   const handleRender = () => {
     if (!activeTemplateStoryTitle) {
-      removeTemplateFooter();
+      disconnectTemplateUsageObserver();
+      removeTemplateUsage();
       return;
     }
-    renderTemplateFooter(activeTemplateStoryTitle, activeTemplateFooterConfig);
+
+    const options = { storyTitle: activeTemplateStoryTitle, config: activeTemplateUsageConfig };
+    renderTemplateUsage(options);
+    disconnectTemplateUsageObserver();
+    templateUsageObserver = observeTemplateUsage(options);
   };
 
   channel.on(DOCS_RENDERED, handleRender);
   channel.on(STORY_RENDERED, handleRender);
 }
 
-const templateFooterDecorator = (Story, context) => {
+const templateUsageDecorator = (Story, context) => {
   const isTemplatePage = context.title?.startsWith('Templates/');
 
   if (isTemplatePage) {
     activeTemplateStoryTitle = context.title;
-    activeTemplateFooterConfig = context.parameters?.templateFooter;
+    activeTemplateUsageConfig = context.parameters?.templateUsage ?? context.parameters?.templateFooter;
   } else {
     activeTemplateStoryTitle = null;
-    activeTemplateFooterConfig = null;
-    removeTemplateFooter();
+    activeTemplateUsageConfig = null;
+    disconnectTemplateUsageObserver();
+    removeTemplateUsage();
   }
 
   return Story();
 };
 
 export const preview = {
-  decorators: [theme, deprecatedBadgeDecorator, templateFooterDecorator],
+  decorators: [theme, deprecatedBadgeDecorator, templateUsageDecorator],
   parameters: {
     options: {
       storySort: (a, b) => {
