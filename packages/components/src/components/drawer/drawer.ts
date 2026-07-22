@@ -17,7 +17,7 @@ import Modal from '../../internal/modal';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Drawers slide in from a container to expose additional options and information.
+ * @summary Used as a panel that slides out from the side of the screen which contains a set of information or actions.
  * @documentation https://solid.union-investment.com/[storybook-link]/drawer
  * @status stable
  * @since 1.9

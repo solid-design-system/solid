@@ -25,7 +25,7 @@ import type SdOption from '../option/option';
 import type SdPopup from '../popup/popup';
 
 /**
- * @summary Comboboxes allow you to choose items from a menu of predefined options.
+ * @summary Used to select one or multiple options from a list of options or to enter a search string and choose from a list of suggestions.
  * @documentation https://solid.union-investment.com/[storybook-link]/combobox
  * @status experimental
  * @since 3.23.0
@@ -86,6 +86,7 @@ import type SdPopup from '../popup/popup';
  * @cssproperty --sd-form-control__listbox-border-top-right-radius - The border radius for the top right corner of the listbox.
  * @cssproperty --sd-form-control--hover-color-background - The background color for form controls on hover.
  * @cssproperty --sd-combobox__tag-border-width - The border width for the tags for multiple options combobox.
+ * @cssproperty --sd-form-control-color-icon-fill - The icons color for slots, chevron and search icons.
  */
 
 @customElement('sd-combobox')
@@ -1227,7 +1228,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
     // Conditional Styles
     const cursorStyles = this.disabled || this.visuallyDisabled ? 'cursor-not-allowed' : 'cursor-pointer';
-    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'sd-icon-fill-primary';
+    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'form-control-color-icon-fill';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
     const iconMarginRight = { sm: 'mr-1', md: 'mr-2', lg: 'mr-2' }[this.size];
     const iconSize = {
@@ -1493,7 +1494,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 part="right"
                 class=${cx(
                   'inline-flex ml-2 leading-[0]',
-                  this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'sd-icon-fill-primary',
+                  this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'form-control-color-icon-fill',
                   iconSize
                 )}
               >
@@ -1514,7 +1515,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               ${this.type === 'search'
                 ? html`
                     <button
-                      class=${cx('flex items-center sd-interactive', iconMarginLeft)}
+                      class=${cx('flex items-center', iconMarginLeft)}
                       type="button"
                       @mousedown=${this.preventLoosingFocus}
                       @click=${this.handleSearchClick}
@@ -1529,7 +1530,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   `
                 : html`
                     <button
-                      class="sd-interactive combobox-button absolute top-2 sd-color-icon-fill-primary"
+                      class="combobox-button absolute top-2"
                       tabindex="-1"
                       aria-hidden="true"
                       @keydown=${this.handleComboboxMouseDown}
@@ -1656,12 +1657,15 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         @apply bg-transparent text-inherit font-bold;
       }
 
-      [part='chevron'] {
-        color: rgb(var(--sd-color-icon-fill-primary));
+      [part='chevron'],
+      :host([type='search']) sd-icon[name='magnifying-glass'] {
+        color: rgba(var(--sd-form-control-color-icon-fill));
       }
 
       :host([visually-disabled])::part(chevron),
-      :host([disabled])::part(chevron) {
+      :host([disabled])::part(chevron),
+      :host([type='search'][disabled]) sd-icon[name='magnifying-glass'],
+      :host([type='search'][visually-disabled]) sd-icon[name='magnifying-glass'] {
         color: rgba(var(--sd-color-icon-fill-neutral-500, --sd-color-neutral-500));
       }
     `

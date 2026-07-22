@@ -11,7 +11,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Flexible button / link component that can be used to quickly build navigations. Takes one of 3 forms: link (overrides all other if 'href' is provided), button (default), or accordion (if 'children' slot defined).
+ * @summary Used to facilitate seamless page transitions and help users orient themselves within the application.
  * @status stable
  * @since 1.15.0
  *
@@ -33,6 +33,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart divider - The component's optional top divider.
  *
  * @cssproperty --sd-navigation-item-color-text - The navigation-item text color.
+ * @cssproperty --sd-navigation-item--default-color-text - The default navigation-items text color.
  * @cssproperty --sd-navigable-border-radius - The navigation-item border radius on hover and active state.
  * @cssproperty --sd-navigable-font-size - The navigation-item font size.
  * @cssproperty --sd-navigable__current-indicator-border-radius - The navigation-item current indicator border radius value.
@@ -204,7 +205,7 @@ export default class SdNavigationItem extends SolidElement {
       children: this.hasSlotController.test('children')
     };
 
-    const horizontalPadding = this.vertical ? 'py-3' : this.isStackedHorizontal ? 'py-1' : 'py-2';
+    const horizontalPadding = this.vertical ? 'py-3' : this.isStackedHorizontal ? 'pt-1 pb-0' : 'py-2';
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -216,7 +217,7 @@ export default class SdNavigationItem extends SolidElement {
           this.isStackedHorizontal
             ? 'text-xs leading-4.5'
             : { md: 'navigable-font-size', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
-          this.disabled ? 'text-neutral-500 pointer-events-none' : 'sd-navigation-item-color-text',
+          this.disabled ? 'text-neutral-500 pointer-events-none' : 'sd-navigation-item--default-color-text',
           this.current && !this.disabled && 'sd-navigation-item--current-color-text',
           this.current && !this.isStackedHorizontal && 'font-bold',
           !this.current && !this.isStackedHorizontal && 'choice-control-font-weight',
@@ -245,11 +246,10 @@ export default class SdNavigationItem extends SolidElement {
         part="current-indicator"
         class=${cx(
           'absolute bg-accent pointer-events-none navigable__current-indicator-border-radius',
+          this.isStackedHorizontal && 'hidden',
           this.vertical
             ? 'navigable__current-indicator-width h-[calc(100%-16px)] top-2 left-0 group-hover:h-full group-hover:top-0'
-            : this.isStackedHorizontal
-              ? 'h-[2px] left-6 right-6 bottom-0'
-              : 'navigable__current-indicator-height w-[calc(100%-16px)] left-2 bottom-0 group-hover:w-full group-hover:left-0 transition-all',
+            : 'navigable__current-indicator-height w-[calc(100%-16px)] left-2 bottom-0 group-hover:w-full group-hover:left-0 transition-all',
           this.disabled && 'bg-neutral-500'
         )}></div>
         <div 
@@ -283,7 +283,7 @@ export default class SdNavigationItem extends SolidElement {
                 this.vertical
                   ? 'flex-auto gap-2'
                   : this.isStackedHorizontal
-                    ? 'text-center'
+                    ? 'relative text-center pb-1'
                     : 'flex-auto flex-col justify-center gap-1 text-center'
               )}
             >
@@ -298,6 +298,18 @@ export default class SdNavigationItem extends SolidElement {
                       : 'justify-center gap-1 text-center'
                 )}
               ></slot>
+              ${
+                this.isStackedHorizontal
+                  ? html`<span
+                      part="current-indicator"
+                      aria-hidden="true"
+                      class=${cx(
+                        'absolute left-0 right-0 bottom-0 h-[2px] pointer-events-none bg-accent navigable__current-indicator-border-radius',
+                        this.disabled && 'bg-neutral-500'
+                      )}
+                    ></span>`
+                  : ''
+              }
             </span>
             ${
               this.chevron || (slots['children'] && this.vertical && !this.separated)

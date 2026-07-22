@@ -1,5 +1,23 @@
 # @solid-design-system/docs
 
+## 2.21.1
+
+### Patch Changes
+
+- Reworked the General "Introduction" page: added a Union Investment introduction with logo, restructured the content under "Introduction" and "Solid Design System" headings, updated the vision statement and fixed the "tested Browser versions" link color. _[`#3131`](https://github.com/solid-design-system/solid/pull/3131) [`321e5c9`](https://github.com/solid-design-system/solid/commit/321e5c9fa8a76b3ae1bb36d8b5497ca686eb8756) [@balco0110](https://github.com/balco0110)_
+
+## 2.21.0
+
+### Minor Changes
+
+- Add sparda theme. _[`#3124`](https://github.com/solid-design-system/solid/pull/3124) [`0812ec8`](https://github.com/solid-design-system/solid/commit/0812ec83a8430a7573d31e7f8902f63aaa0f1528) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 2.20.1
+
+### Patch Changes
+
+- Added a multi-theming explanation to the tokens package overview to clarify how it differs from a white-label approach _[`#3130`](https://github.com/solid-design-system/solid/pull/3130) [`5276028`](https://github.com/solid-design-system/solid/commit/5276028b631bd7eba364fe7fa4c4fb832de8cfa8) [@balco0110](https://github.com/balco0110)_
+
 ## 2.20.0
 
 ### Minor Changes

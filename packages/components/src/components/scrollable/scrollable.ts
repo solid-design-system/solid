@@ -8,7 +8,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Scrollable is used to indicate there is hidden content to be scrolled.
+ * @summary Used as a container to create scrollable sections within the user interface.
  * @documentation https://solid.union-investment.com/[storybook-link]/scrollable
  * @status stable
  * @since 1.0
