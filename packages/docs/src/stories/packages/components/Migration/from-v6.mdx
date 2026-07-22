@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Packages/Components/Migration/from v6" />
+
+# Migration from v6
+
+The v6 release removes the default margin from inline `sd-notification` components, giving consumers full control over their spacing.
+
+## Removed the default margin from inline `sd-notification`
+
+Previously, `sd-notification` applied a margin regardless of whether it was displayed inline or as a toast. This could make inline notifications difficult to align with their surrounding layout.
+
+The margin is now applied only to notifications inside an `.sd-toast-stack`. Toast notifications therefore keep their existing spacing, while inline notifications no longer have a default margin.
+
+If your inline notifications rely on the previous spacing, add it explicitly to your layout or through the `base` CSS part.
+
+**Before**:
+
+```html
+<sd-notification open>Notification message</sd-notification>
+```
+
+The component applied its own margin.
+
+**After**:
+
+```html
+<sd-notification class="my-notification" open>Notification message</sd-notification>
+
+<style>
+  .my-notification::part(base) {
+    margin: 0.5rem;
+  }
+</style>
+```
+
+Inline notifications without additional styling now align directly with their containing layout.
