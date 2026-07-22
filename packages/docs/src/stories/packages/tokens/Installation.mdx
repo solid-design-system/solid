@@ -400,6 +400,22 @@ export default {
   </sd-tab-panel>
 </sd-tab-group>
 
+## Token fallbacks stylesheet
+
+If you already import Tailwind from this package (`@solid-design-system/tokens/dist/themes/tailwind.css`), no extra action is required:
+fallbacks are already included there.
+
+Use `token-fallbacks.css` as additional host-level hardening when consumers on the same page may run different SDS versions,
+or when you want a standalone compatibility layer that is independent from Tailwind imports.
+
+It provides fallback UI variables and deprecated aliases even when a full theme file is missing.
+
+You can import it from npm:
+
+```css
+@import '@solid-design-system/tokens/dist/token-fallbacks.css';
+```
+
 That's it — you're ready to build. Head over to the <sd-link href="?path=/docs/packages-tokens-usage--docs">Usage page</sd-link> to learn about local development, standalone fallbacks, and versioning coordination.
 
   </sd-tab-panel>

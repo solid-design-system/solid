@@ -319,6 +319,12 @@ import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
 
 If your app should be able to run standalone, you may add a runtime fallback that loads a theme.
 
+For mixed SDS versions, load the token fallbacks stylesheet first to keep deprecated aliases and fallback UI variables available:
+
+```js
+import '@solid-design-system/tokens/dist/token-fallbacks.css';
+```
+
 You can load the theme however fits your setup — including lazy loading via a dynamically injected `<link>` tag. What matters is **scoping**: the fallback theme must never leak into the host's document.
 
 <sd-notification variant="warning" open>

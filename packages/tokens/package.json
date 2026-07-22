@@ -24,6 +24,7 @@
     "./package.json": "./package.json",
     "./dist/tailwind.json": "./dist/tokens.tailwind.json",
     "./dist/tailwind.css": "./dist/themes/tailwind.css",
+    "./dist/token-fallbacks.css": "./dist/themes/token-fallbacks.css",
     "./dist/themes": "./dist/themes",
     "./dist/themes/*": "./dist/themes/*",
     "./dist/theme.js": "./dist/theme.js",

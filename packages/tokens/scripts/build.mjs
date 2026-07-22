@@ -8,9 +8,11 @@ import path from 'node:path';
 
 const outdir = 'dist';
 const cdndir = 'cdn';
+const tokenFallbacksFilename = 'token-fallbacks.css';
 let stylesheet;
 let themes;
 let themejs;
+let tokenFallbackStylesheet;
 
 const config = {
   input: 'figma-variables.json',
@@ -20,6 +22,91 @@ const config = {
   themeBlock: 'build:theme',
   componentsBlock: 'build:components'
 };
+
+function getTokenFallbackStylesheet(defaultThemeContent, defaultThemeName) {
+  // Keep UI token values available when no theme stylesheet is loaded.
+  const scopedThemeSelector = new RegExp(`:root,\\s*\\.sd-theme-${defaultThemeName}\\b`, 'g');
+  return defaultThemeContent.replace(scopedThemeSelector, ':root').trim();
+}
+
+function addLiteralFallbacksToStylesheet(cssText) {
+  const declarationRegex = /^\s*(--sd-[^:\s]+):\s*(.+);$/gm;
+  const tokenMap = new Map();
+  let match;
+
+  while ((match = declarationRegex.exec(cssText)) !== null) {
+    tokenMap.set(match[1], match[2]);
+  }
+
+  const resolve = (value, depth = 0) => {
+    if (depth > 12) return value;
+
+    return value.replace(/var\((--sd-[^,)\s]+)\)/g, (_, varName) => {
+      const resolved = tokenMap.get(varName);
+      if (!resolved) return `var(${varName})`;
+      if (!resolved.includes('var(')) return resolved;
+      return resolve(resolved, depth + 1);
+    });
+  };
+
+  const resolvedMap = new Map();
+  for (const [name, value] of tokenMap) {
+    resolvedMap.set(name, resolve(value));
+  }
+
+  const inject = value => {
+    let output = '';
+
+    for (let index = 0; index < value.length; index += 1) {
+      if (value.slice(index, index + 4) !== 'var(') {
+        output += value[index];
+        continue;
+      }
+
+      let depth = 1;
+      let cursor = index + 4;
+      while (cursor < value.length && depth > 0) {
+        if (value[cursor] === '(') depth += 1;
+        if (value[cursor] === ')') depth -= 1;
+        cursor += 1;
+      }
+
+      if (depth !== 0) {
+        output += value.slice(index, cursor);
+        index = cursor - 1;
+        continue;
+      }
+
+      const fullVarExpression = value.slice(index, cursor);
+      const inner = value.slice(index + 4, cursor - 1);
+
+      // Keep existing explicit fallbacks untouched.
+      if (inner.includes(',')) {
+        output += fullVarExpression;
+        index = cursor - 1;
+        continue;
+      }
+
+      const varName = inner.trim();
+      const fallback = resolvedMap.get(varName);
+
+      if (fallback) {
+        output += `var(${varName}, ${fallback})`;
+      } else {
+        output += fullVarExpression;
+      }
+
+      index = cursor - 1;
+    }
+
+    return output;
+  };
+
+  return cssText.replace(declarationRegex, (full, name, value) => {
+    const nextValue = inject(value);
+    return full.replace(value, nextValue);
+  });
+}
 
 async function runBuild() {
   await nextTask('Cleaning up old build directories', () => {
@@ -75,10 +162,21 @@ async function runBuild() {
         theme.content = `${theme.content.trim()}\n\n${append.process?.(css, theme) ?? css}`;
       }
 
+      theme.content = addLiteralFallbacksToStylesheet(theme.content);
+
       mkdirSync(`${config.buildPath}/${theme.name}`, { recursive: true });
       writeFileSync(`${config.buildPath}/${config.output}.css`, stylesheet);
       writeFileSync(`${config.buildPath}/${theme.name}/${theme.name}.css`, theme.content);
     });
+
+    const defaultTheme = themes.find(theme => theme.name === config.defaultTheme);
+    if (!defaultTheme) {
+      throw new Error(`Default theme '${config.defaultTheme}' was not found while building token-fallbacks CSS.`);
+    }
+
+    tokenFallbackStylesheet = addLiteralFallbacksToStylesheet(
+      getTokenFallbackStylesheet(defaultTheme.content, config.defaultTheme)
+    );
   });
 
   await nextTask('Extracting component variables', () => {
@@ -101,6 +199,7 @@ async function runBuild() {
     });
 
     writeFileSync(`./${outdir}/${config.buildPath}/${config.output}.css`, stylesheet);
+    writeFileSync(`./${outdir}/${config.buildPath}/${tokenFallbacksFilename}`, tokenFallbackStylesheet);
   });
 
   await nextTask(`Creating ${cdndir} output`, () => {
@@ -112,6 +211,7 @@ async function runBuild() {
     });
 
     writeFileSync(`./${cdndir}/${config.buildPath}/${config.output}.css`, stylesheet);
+    writeFileSync(`./${cdndir}/${config.buildPath}/${tokenFallbacksFilename}`, minimizeCss(tokenFallbackStylesheet));
   });
 
   await nextTask('Generating theme.js', async () => {
