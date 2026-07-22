@@ -122,7 +122,104 @@ export class TokenProcessingEngine {
     }
 
     processors.forEach(processor => processor.reset());
+
+    // Add default-theme fallbacks to generated stores.
+    this.addFallbacks(result, options.defaultTheme);
+
     return this.sortTokens(result);
+  }
+
+  /**
+   * Add fallback values from the default theme to generated CSS entries.
+   * This keeps Tailwind output resilient when the theme stylesheet is not loaded.
+   */
+  addFallbacks(result, defaultTheme) {
+    const themeEntries = result[defaultTheme];
+    if (!themeEntries || !Array.isArray(themeEntries)) return;
+
+    // Build lookup: --sd-var-name -> resolved value
+    const themeMap = new Map();
+    for (const entry of themeEntries) {
+      const match = entry.match(/^(--sd-[^:]+):\s*(.+);$/);
+      if (match) {
+        themeMap.set(match[1], match[2]);
+      }
+    }
+
+    // Recursively resolve var() references within the theme map.
+    const resolve = (value, depth = 0) => {
+      if (depth > 10) return value;
+      return value.replace(/var\((--sd-[^,)]+)\)/g, (_, varName) => {
+        const resolved = themeMap.get(varName);
+        if (resolved && !resolved.includes('var(')) return resolved;
+        if (resolved) return resolve(resolved, depth + 1);
+        return `var(${varName})`;
+      });
+    };
+
+    const resolvedMap = new Map();
+    for (const [key, value] of themeMap) {
+      resolvedMap.set(key, resolve(value));
+    }
+
+    const injectFallbacks = value => {
+      let output = '';
+
+      for (let index = 0; index < value.length; index += 1) {
+        if (value.slice(index, index + 4) !== 'var(') {
+          output += value[index];
+          continue;
+        }
+
+        let depth = 1;
+        let cursor = index + 4;
+        while (cursor < value.length && depth > 0) {
+          if (value[cursor] === '(') depth += 1;
+          if (value[cursor] === ')') depth -= 1;
+          cursor += 1;
+        }
+
+        if (depth !== 0) {
+          output += value.slice(index, cursor);
+          index = cursor - 1;
+          continue;
+        }
+
+        const inner = value.slice(index + 4, cursor - 1);
+        const commaIndex = inner.indexOf(',');
+
+        if (commaIndex !== -1) {
+          output += value.slice(index, cursor);
+          index = cursor - 1;
+          continue;
+        }
+
+        const varName = inner.trim();
+        const fallback = resolvedMap.get(varName);
+
+        if (fallback) {
+          output += `var(${varName}, ${fallback})`;
+        } else {
+          output += value.slice(index, cursor);
+        }
+
+        index = cursor - 1;
+      }
+
+      return output;
+    };
+
+    const stores = ['baseVars', 'spacing', 'utilities', 'components'];
+
+    for (const store of stores) {
+      if (!Array.isArray(result[store])) continue;
+
+      result[store] = result[store].map(entry => {
+        // Replace top-level var(--sd-X) with var(--sd-X, <fallback>) while leaving
+        // existing fallback arguments untouched.
+        return injectFallbacks(entry);
+      });
+    }
   }
 
   /**
