@@ -163,7 +163,7 @@
 }
 
 @utility sd-badge--green-color--inverted-background {
-  background-color: rgba(var(--sd-badge--green-color--inverted-background, rgba(var(--sd-color-success))));
+  background-color: rgba(var(--sd-badge--green-color--inverted-background, rgba(var(--sd-color-accent-550))));
 }
 
 @utility sd-badge--green-color--inverted-text {
@@ -171,7 +171,7 @@
 }
 
 @utility sd-badge--green-color-background {
-  background-color: rgba(var(--sd-badge--green-color-background, rgba(var(--sd-color-success))));
+  background-color: rgba(var(--sd-badge--green-color-background, rgba(var(--sd-color-accent-550))));
 }
 
 @utility sd-badge--inverted-color-border {
@@ -827,7 +827,7 @@
 }
 
 @utility sd-radio--checked--hover__icon-color-background {
-  background-color: rgba(var(--sd-radio--checked--hover__icon-color-background, rgba(var(--sd-color-success))));
+  background-color: rgba(var(--sd-radio--checked--hover__icon-color-background, rgba(var(--sd-color-accent-550))));
 }
 
 @utility sd-radio--checked--invalid--default-color-background {
@@ -835,7 +835,7 @@
 }
 
 @utility sd-radio--checked--invalid--default__icon-color-background {
-  background-color: rgba(var(--sd-radio--checked--invalid--default__icon-color-background, rgba(var(--sd-color-error))));
+  background-color: rgba(var(--sd-radio--checked--invalid--default__icon-color-background, rgba(var(--sd-color-error-300))));
 }
 
 @utility sd-radio--checked--invalid--hover__icon-color-background {
@@ -907,7 +907,7 @@
 }
 
 @utility sd-switch--checked--hover-color-background {
-  background-color: rgba(var(--sd-switch--checked--hover-color-background, rgba(var(--sd-color-success))));
+  background-color: rgba(var(--sd-switch--checked--hover-color-background, rgba(var(--sd-color-accent-550))));
 }
 
 @utility sd-switch--unchecked--hover-color-background {

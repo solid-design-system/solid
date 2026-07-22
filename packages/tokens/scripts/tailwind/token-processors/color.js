@@ -74,10 +74,8 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       const coreToken = path.slice(1);
       coreToken.splice(1, 1);
 
-      const replacement = Object.values(coreColors)
-        .find(core => core.value === color)
-        ?.path.join('-')
-        .replace('-default', '');
+      const resolvedCore = this.#resolveCoreColor(token, color, variant, dictionary);
+      const replacement = resolvedCore?.path.join('-').replace('-default', '');
 
       const variable = {
         type: 'color',
@@ -90,7 +88,9 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     }
 
     if (!isUtility) {
-      const coreToken = this.#getCoreTokenFromColor(token.value, variant, dictionary);
+      const coreToken = this.#resolveCoreColor(token, token.value, variant, dictionary)?.path.map(
+        this.cleanupTokenName
+      );
 
       const variable = {
         type: 'color',
@@ -101,7 +101,6 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
 
       cssvariables.push(variable);
     }
-
     return cssvariables;
   }
 
@@ -121,15 +120,23 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     return isUtility ? name : `${processed.path[0]}-${name}`;
   }
 
-  #getCoreTokenFromColor(color, variant, dictionary) {
+  #resolveAliasPath(token) {
+    const original = token?.original?.value;
+    if (typeof original !== 'string') return null;
+    const match = original.match(/^\{[^.]+\.utilities\.color\.(.+)\}$/);
+    if (!match) return null;
+    // e.g. "accent.550" → "accent-550", "success.default" → "success"
+    return match[1].replace(/\./g, '-').replace(/-default$/, '');
+  }
+
+  #resolveCoreColor(token, color, variant, dictionary) {
     const coreColors = this.#getCoreColors(dictionary, variant);
-    const token = Object.values(coreColors).find(core => core.value === color);
-
-    if (!token) {
-      return null;
+    const aliasPath = this.#resolveAliasPath(token);
+    if (aliasPath) {
+      const aliasToken = coreColors.find(core => core.path.join('-') === `color-${aliasPath}`);
+      if (aliasToken) return aliasToken;
     }
-
-    return token.path.map(this.cleanupTokenName);
+    return coreColors.find(core => core.value === color) ?? null;
   }
 
   #processUtilityToken(token) {
@@ -154,7 +161,9 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       .join('-')
       .replaceAll('-__', '__');
 
-    const coreToken = this.#getCoreTokenFromColor(token.value, variant, dictionary)?.join('-');
+    const coreToken = this.#resolveCoreColor(token, token.value, variant, dictionary)
+      ?.path.map(this.cleanupTokenName)
+      ?.join('-');
     const value = `rgba(${this.cssvar(name, coreToken ? `rgba(${this.cssvar(coreToken)})` : token.value)})`;
 
     for (const [property, cssproperty] of Object.entries(this.semantic)) {
