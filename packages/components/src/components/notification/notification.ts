@@ -7,7 +7,7 @@ import { getAnimation, setDefaultAnimation } from '../../utilities/animation-reg
 import { kebabToCamelCase, uppercaseFirstLetter } from '../../internal/string';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize.js';
-import { property, query, state } from 'lit/decorators.js';
+import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
 import cx from 'classix';
@@ -112,9 +112,6 @@ export default class SdNotification extends SolidElement {
   /** The position of the toasted sd-notification. */
   @property({ type: String, reflect: true, attribute: 'toast-stack' }) toastStack: 'top-right' | 'bottom-center' =
     'top-right';
-
-  /** Tracks whether the notification is displayed as a toast (via the `toast()` method) rather than inline. */
-  @state() private isToast = false;
 
   private remainingDuration = this.duration;
   private startTime = Date.now();
@@ -265,7 +262,6 @@ export default class SdNotification extends SolidElement {
    * calling this method again. The returned promise will resolve after the notification is hidden.
    */
   async toast() {
-    this.isToast = true;
     return new Promise<void>(resolve => {
       if (this.stack.parentElement === null) {
         document.body.append(this.stack);
@@ -295,7 +291,7 @@ export default class SdNotification extends SolidElement {
     return html`
       <div
         part="base"
-        class=${cx('w-full flex items-stretch focus-visible:focus-outline', this.isToast ? 'm-2' : '')}
+        class=${cx('w-full flex items-stretch focus-visible:focus-outline')}
         id="notification"
         tabindex=${ifDefined(this.closable ? '0' : undefined)}
         role="alert"
