@@ -207,7 +207,7 @@ export const DisabledMultiple = {
       <div class="h-[340px] w-full">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:w-[50%] [&_*]:min-w-0'
+            classes: 'w-full md:[&>tbody>tr>td]:w-[50%] md:[&_*]:min-w-0'
           },
           axis: {
             y: {
@@ -239,7 +239,7 @@ export const DisabledMultiple = {
       <div class="h-[340px] w-full">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:w-[50%] [&_*]:min-w-0'
+            classes: 'w-full md:[&>tbody>tr>td]:w-[50%] md:[&_*]:min-w-0'
           },
           axis: {
             y: {
@@ -281,7 +281,7 @@ export const ValidInvalid = {
       <form class="h-[340px] w-full flex gap-4">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:align-top [&>tbody>tr>td]:w-[50%] [&_*]:min-w-0'
+            classes: 'w-full [&>tbody>tr>td]:align-top md:[&>tbody>tr>td]:w-[50%] md:[&_*]:min-w-0'
           },
           axis: {
             y: {
@@ -393,7 +393,7 @@ export const Slots = {
             }
           },
           constants: [
-            { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
+            { type: 'template', name: 'width', value: '<div class="w-full md:w-[300px]">%TEMPLATE%</div>' },
             clearableConstant,
             labelConstant,
             helpTextConstant,

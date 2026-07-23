@@ -320,7 +320,7 @@ export const Sizes = {
           },
           options: {
             classes:
-              'w-full table-fixed [&_td.template]:w-[75%] [&_td.template]:px-2 [&_tbody_th]:px-1 [&_th[rowspan]]:w-6!'
+              'w-full md:table-fixed md:[&_td.template]:w-[75%] [&_td.template]:px-2 [&_tbody_th]:px-1 [&_th[rowspan]]:w-6!'
           },
           args
         })}
@@ -335,7 +335,7 @@ export const Sizes = {
           },
           options: {
             classes:
-              'w-full table-fixed [&_td.template]:w-[75%] [&_td.template]:px-2 [&_tbody_th]:px-1 [&_th[rowspan]]:w-6!'
+              'w-full md:table-fixed md:[&_td.template]:w-[75%] [&_td.template]:px-2 [&_tbody_th]:px-1 [&_th[rowspan]]:w-6!'
           },
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
@@ -369,7 +369,7 @@ export const StyleOnValid = {
           },
           options: {
             classes:
-              'w-full table-fixed [&_td.template]:w-[75%] [&_td.template]:px-2 [&_tbody_th]:px-1 [&_th[rowspan]]:w-6!'
+              'w-full md:table-fixed md:[&_td.template]:w-[75%] [&_td.template]:px-2 [&_tbody_th]:px-1 [&_th[rowspan]]:w-6!'
           },
           args
         })}
@@ -383,7 +383,7 @@ export const StyleOnValid = {
           },
           options: {
             classes:
-              'w-full table-fixed [&_td.template]:w-[75%] [&_td.template]:px-2 [&_tbody_th]:px-1 [&_th[rowspan]]:w-6!'
+              'w-full md:table-fixed md:[&_td.template]:w-[75%] [&_td.template]:px-2 [&_tbody_th]:px-1 [&_th[rowspan]]:w-6!'
           },
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
@@ -985,7 +985,8 @@ export const Slots = {
             }
           },
           options: {
-            classes: 'w-full max-w-[500px] table-fixed [&_thead>tr:first-child>td:first-child]:w-8 [&_td.template]:px-2'
+            classes:
+              'w-full md:max-w-[500px] md:table-fixed [&_thead>tr:first-child>td:first-child]:w-8 [&_td.template]:px-2'
           },
           constants: [
             { type: 'template', name: 'width', value: '<div style="width: 100%; max-width: 400px">%TEMPLATE%</div>' },
@@ -1039,7 +1040,7 @@ export const Parts = {
         }
       },
       options: {
-        classes: 'w-full max-w-[500px] table-fixed [&_td.template]:w-[65%]'
+        classes: 'w-full md:max-w-[500px] md:table-fixed md:[&_td.template]:w-[65%]'
       },
       constants: [
         { type: 'attribute', name: 'clearable', value: true },

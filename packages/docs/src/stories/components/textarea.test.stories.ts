@@ -575,7 +575,11 @@ export const Slots = {
             }
           },
           constants: [
-            { type: 'template', name: 'width', value: '<div style="width: 120%; max-width:300px">%TEMPLATE%</div>' },
+            {
+              type: 'template',
+              name: 'width',
+              value: '<div class="w-full md:w-[120%] max-w-[300px]">%TEMPLATE%</div>'
+            },
             { type: 'attribute', name: 'value', value: 'value' },
             { type: 'attribute', name: 'label', value: 'Label' },
             { type: 'attribute', name: 'help-text', value: 'Help-text' }
