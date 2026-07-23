@@ -59,7 +59,7 @@
     "directory": "packages/mcp"
   },
   "scripts": {
-    "build": "pnpm run build:components && pnpm run build:tokens && pnpm run build:ts && pnpm run build:metadata && cd ../.. && pnpm exec prettier --write --log-level warn packages/mcp/metadata",
+    "build": "pnpm run build:components && pnpm run build:tokens && pnpm run build:ts && pnpm run build:metadata && pnpm run format:metadata",
     "build:components": "cd ../components && pnpm exec node scripts/make-metadata.js --outdir dist",
     "build:tokens": "cd ../tokens && pnpm run build",
     "build:ts": "node --input-type=module -e \"import{rmSync}from'node:fs';rmSync('dist',{recursive:true,force:true})\" && tsc",
@@ -67,10 +67,11 @@
     "lint:js": "cd ../.. && pnpm exec eslint packages/mcp/src",
     "lint": "pnpm run /^lint:.*/",
     "test": "node --import tsx/esm --test \"test/**/*.spec.ts\"",
-    "check:metadata": "git diff --exit-code -- metadata ':!metadata/packages/icons' || (echo '❌ Generated metadata is out of sync with source. Run \"pnpm build\" in packages/mcp and commit the resulting changes in metadata/.' && exit 1)",
-    "verify": "pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Test verified'",
+    "check:metadata": "git diff --exit-code -- metadata || (echo '❌ Generated metadata is out of sync with source or not formatted. Run \"pnpm build\" in packages/mcp and commit the resulting changes in metadata/.' && exit 1)",
+    "verify": "pnpm build && pnpm check:metadata && echo '✅ Build verified' && pnpm test && echo '✅ Test verified'",
     "mcp:inspector": "npx @modelcontextprotocol/inspector node dist/bin/start.js",
-    "postversion": "pnpm build"
+    "postversion": "pnpm build",
+    "format:metadata": "prettier --write --log-level warn metadata"
   },
   "type": "module",
   "version": "6.28.0"
