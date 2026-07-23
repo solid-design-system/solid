@@ -342,6 +342,9 @@ importers:
       lit-html:
         specifier: ^3.3.3
         version: 3.3.3
+      magic-string:
+        specifier: ^0.30.21
+        version: 0.30.21
       normalize.css:
         specifier: ^8.0.1
         version: 8.0.1

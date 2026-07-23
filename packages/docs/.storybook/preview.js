@@ -5,11 +5,14 @@ import '../../tokens/themes/vb/vb.css';
 import '../../tokens/themes/sp/sp.css';
 import '../../tokens/themes/ui-dark/ui-dark.css';
 import '../../tokens/themes/ui-light/ui-light.css';
+import { addons } from 'storybook/preview-api';
+import { DOCS_RENDERED, STORY_RENDERED } from 'storybook/internal/core-events';
 import { getWcStorybookHelpers } from 'wc-storybook-helpers';
 import { withThemeByClassName } from './addons/with-theme.js';
 import { storybookUtilities } from '../scripts/storybook/helper.js';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
 import { initDeprecatedBadgeEnhancer } from '../scripts/storybook/deprecated-badge-enhancer.js';
+import { observeTemplateUsage, removeTemplateUsage, renderTemplateUsage } from '../scripts/storybook/template-usage.js';
 import { themes, allModes, DEFAULT_THEME } from './modes.js';
 
 const theme = withThemeByClassName({
@@ -25,8 +28,59 @@ const deprecatedBadgeDecorator = Story => {
   return Story();
 };
 
+let activeTemplateStoryTitle = null;
+let activeTemplateUsageConfig = null;
+let activeTemplateUsageData = null;
+let templateUsageObserver = null;
+
+const disconnectTemplateUsageObserver = () => {
+  templateUsageObserver?.disconnect();
+  templateUsageObserver = null;
+};
+
+const channel = addons.getChannel?.();
+if (channel) {
+  const handleRender = () => {
+    if (!activeTemplateStoryTitle) {
+      disconnectTemplateUsageObserver();
+      removeTemplateUsage();
+      return;
+    }
+
+    const options = {
+      storyTitle: activeTemplateStoryTitle,
+      config: activeTemplateUsageConfig,
+      usageData: activeTemplateUsageData
+    };
+    renderTemplateUsage(options);
+    disconnectTemplateUsageObserver();
+    templateUsageObserver = observeTemplateUsage(options);
+  };
+
+  channel.on(DOCS_RENDERED, handleRender);
+  channel.on(STORY_RENDERED, handleRender);
+}
+
+const templateUsageDecorator = (Story, context) => {
+  const isTemplatePage = context.title?.startsWith('Templates/');
+
+  if (isTemplatePage) {
+    activeTemplateStoryTitle = context.title;
+    activeTemplateUsageConfig = context.parameters?.templateUsage ?? context.parameters?.templateFooter;
+    activeTemplateUsageData = context.parameters?.templateUsageData ?? null;
+  } else {
+    activeTemplateStoryTitle = null;
+    activeTemplateUsageConfig = null;
+    activeTemplateUsageData = null;
+    disconnectTemplateUsageObserver();
+    removeTemplateUsage();
+  }
+
+  return Story();
+};
+
 export const preview = {
-  decorators: [theme, deprecatedBadgeDecorator],
+  decorators: [theme, deprecatedBadgeDecorator, templateUsageDecorator],
   parameters: {
     options: {
       storySort: (a, b) => {
