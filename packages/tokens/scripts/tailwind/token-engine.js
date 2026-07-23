@@ -148,12 +148,12 @@ export class TokenProcessingEngine {
 
     // Recursively resolve var() references within the theme map.
     const resolve = (value, depth = 0) => {
-      if (depth > 10) return value;
+      if (depth > 12) return value;
       return value.replace(/var\((--sd-[^,)]+)\)/g, (_, varName) => {
         const resolved = themeMap.get(varName);
-        if (resolved && !resolved.includes('var(')) return resolved;
-        if (resolved) return resolve(resolved, depth + 1);
-        return `var(${varName})`;
+        if (!resolved) return `var(${varName})`;
+        if (!resolved.includes('var(')) return resolved;
+        return resolve(resolved, depth + 1);
       });
     };
 
@@ -185,11 +185,12 @@ export class TokenProcessingEngine {
           continue;
         }
 
+        const fullVarExpression = value.slice(index, cursor);
         const inner = value.slice(index + 4, cursor - 1);
-        const commaIndex = inner.indexOf(',');
 
-        if (commaIndex !== -1) {
-          output += value.slice(index, cursor);
+        // Keep existing explicit fallbacks untouched.
+        if (inner.includes(',')) {
+          output += fullVarExpression;
           index = cursor - 1;
           continue;
         }
@@ -200,7 +201,7 @@ export class TokenProcessingEngine {
         if (fallback) {
           output += `var(${varName}, ${fallback})`;
         } else {
-          output += value.slice(index, cursor);
+          output += fullVarExpression;
         }
 
         index = cursor - 1;
