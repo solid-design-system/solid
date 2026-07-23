@@ -194,8 +194,9 @@ async function runBuild() {
     mkdirSync(`./${outdir}/${config.buildPath}`, { recursive: true });
 
     themes.forEach(theme => {
+      const themeWithFallback = `${tokenFallbackStylesheet}\n\n${theme.content}`;
       mkdirSync(`./${outdir}/${config.buildPath}/${theme.name}`, { recursive: true });
-      writeFileSync(`./${outdir}/${config.buildPath}/${theme.name}/${theme.name}.css`, theme.content);
+      writeFileSync(`./${outdir}/${config.buildPath}/${theme.name}/${theme.name}.css`, themeWithFallback);
     });
 
     writeFileSync(`./${outdir}/${config.buildPath}/${config.output}.css`, stylesheet);
@@ -206,8 +207,9 @@ async function runBuild() {
     mkdirSync(`./${cdndir}/${config.buildPath}`, { recursive: true });
 
     themes.forEach(theme => {
+      const themeWithFallback = `${tokenFallbackStylesheet}\n\n${theme.content}`;
       mkdirSync(`./${cdndir}/${config.buildPath}/${theme.name}`, { recursive: true });
-      writeFileSync(`./${cdndir}/${config.buildPath}/${theme.name}/${theme.name}.css`, minimizeCss(theme.content));
+      writeFileSync(`./${cdndir}/${config.buildPath}/${theme.name}/${theme.name}.css`, minimizeCss(themeWithFallback));
     });
 
     writeFileSync(`./${cdndir}/${config.buildPath}/${config.output}.css`, stylesheet);

@@ -402,11 +402,12 @@ export default {
 
 ## Token fallbacks stylesheet
 
-If you already import Tailwind from this package (`@solid-design-system/tokens/dist/themes/tailwind.css`), no extra action is required:
-fallbacks are already included there.
+If you import any SDS theme stylesheet from this package (for example `ui-light.css`), no extra action is required:
+fallbacks are included automatically.
 
-Use `token-fallbacks.css` as additional host-level hardening when consumers on the same page may run different SDS versions,
-or when you want a standalone compatibility layer that is independent from Tailwind imports.
+The same applies when importing Tailwind from this package (`@solid-design-system/tokens/dist/themes/tailwind.css`).
+
+Use `token-fallbacks.css` only when you want a standalone compatibility layer without importing an SDS theme stylesheet.
 
 It provides fallback UI variables and deprecated aliases even when a full theme file is missing.
 
