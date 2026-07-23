@@ -50,8 +50,8 @@ Use the components tool by passing the args `component` and `example` for any of
 - part.icon: The container that wraps the optional icon.
 - part.content: The container that wraps the notifications's main content and the close button.
 - part.message: The container that wraps the notifications's main content.
-- part.duration-indicator\_\_elapsed: The current duration indicator.
-- part.duration-indicator\_\_total: The total duration indicator.
+- part.duration-indicator__elapsed: The current duration indicator.
+- part.duration-indicator__total: The total duration indicator.
 - part.close-button: The close button, an `<sd-icon-button>`.
 
 ## Guidelines

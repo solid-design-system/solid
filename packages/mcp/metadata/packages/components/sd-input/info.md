@@ -33,10 +33,10 @@ Use the components tool by passing the args `component` and `example` for any of
 
 ### Key Properties
 
-- prop.type: |'date'|'datetime-local'|'email'|'number'|'password'|'search'|'tel'|'text'|'time'|'url', default='text' — The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
+- prop.type: 'date'|'datetime-local'|'email'|'number'|'password'|'search'|'tel'|'text'|'time'|'url', default='text' — The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
   to `text`.
 - prop.size: 'lg'|'md'|'sm', default='lg' — The input's size.
-- prop.inputmode: |'none'|'text'|'decimal'|'numeric'|'tel'|'search'|'email'|'url' — Tells the browser what type of data will be entered by the user, allowing it to display the appropriate virtual
+- prop.inputmode: 'none'|'text'|'decimal'|'numeric'|'tel'|'search'|'email'|'url' — Tells the browser what type of data will be entered by the user, allowing it to display the appropriate virtual
   keyboard on supportive devices.
 - prop.value: string, default='' — The current value of the input, submitted as a name/value pair with form data.
 - prop.defaultValue: string, default='' — The default value of the form control. Primarily used for resetting the form control.
@@ -64,11 +64,11 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.pattern: string — A regular expression pattern to validate input against.
 - prop.step: number|'any' — Specifies the granularity that the value must adhere to, or the special value `any` which means no stepping is
   implied, allowing any numeric value. Only applies to date and number input types.
-- prop.autocapitalize: |'off'|'none'|'on'|'sentences'|'words'|'characters' — Controls whether and how text input is automatically capitalized as it is entered by the user.
+- prop.autocapitalize: 'off'|'none'|'on'|'sentences'|'words'|'characters' — Controls whether and how text input is automatically capitalized as it is entered by the user.
 - prop.autocomplete: string — Specifies what permission the browser has to provide assistance in filling out form field values. Refer to
   [this page on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for available values.
 - prop.autofocus: boolean — Indicates that the input should receive focus on page load.
-- prop.enterkeyhint: |'enter'|'done'|'go'|'next'|'previous'|'search'|'send' — Used to customize the label or icon of the Enter key on virtual keyboards.
+- prop.enterkeyhint: 'enter'|'done'|'go'|'next'|'previous'|'search'|'send' — Used to customize the label or icon of the Enter key on virtual keyboards.
 - prop.styleOnValid [attr: style-on-valid]: boolean, default=false — Shows success styles if the validity of the input is valid.
 - prop.spellcheck: boolean, default=true — Enables spell checking on the input.
 - prop.valueAsDate: — Gets or sets the current value as a `Date` object. Returns `null` if the value can't be converted.

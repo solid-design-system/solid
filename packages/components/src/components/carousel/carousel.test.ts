@@ -712,10 +712,11 @@ describe('<sd-carousel>', () => {
         // Act
         el.goToSlide(1);
         await el.updateComplete;
-        await aTimeout(0); // wait for requestAnimationFrame
 
         // Assert
         const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
+        // The announcement text is set inside a requestAnimationFrame, so poll until it is populated.
+        await waitUntil(() => announcementRegion.textContent?.includes('Node 2'));
         expect(announcementRegion.textContent).to.include('Node 2');
         expect(announcementRegion.textContent).to.match(/2.*3|slide 2/i);
       });
@@ -734,10 +735,11 @@ describe('<sd-carousel>', () => {
         // Act
         el.goToSlide(1);
         await el.updateComplete;
-        await aTimeout(0);
 
         // Assert
         const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
+        // The announcement text is set inside a requestAnimationFrame, so poll until it is populated.
+        await waitUntil(() => announcementRegion.textContent?.includes('A cat on a chair'));
         expect(announcementRegion.textContent).to.include('A cat on a chair');
       });
     });

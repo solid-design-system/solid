@@ -50,7 +50,6 @@ ${generateTemplate({
 args
 })}
 </sd-dropdown>
-
 </div>`;
 }
 };

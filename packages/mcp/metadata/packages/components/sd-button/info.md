@@ -33,7 +33,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.value: string, default='' — The value of the button, submitted as a pair with the button's name as part of the form data, but only when this
   button is the submitter. This attribute is ignored when `href` is present.
 - prop.href: string, default='' — When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
-- prop.target: '\_blank'|'\_parent'|'\_self'|'\_top' — Tells the browser where to open the link. Only used when `href` is present.
+- prop.target: '_blank'|'_parent'|'_self'|'_top' — Tells the browser where to open the link. Only used when `href` is present.
 - prop.download: string|undefined — Tells the browser to download the linked file as this filename. Only used when `href` is present.
 - prop.form: string — The "form owner" to associate the button with. If omitted, the closest containing form will be used instead. The
   value of this attribute must be an id of a form in the same document or shadow root as the button.
@@ -41,7 +41,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.formEnctype [attr: formenctype]: 'application/x-www-form-urlencoded'|'multipart/form-data'|'text/plain' — Used to override the form owner's `enctype` attribute.
 - prop.formMethod [attr: formmethod]: 'post'|'get' — Used to override the form owner's `method` attribute.
 - prop.formNoValidate [attr: formnovalidate]: boolean — Used to override the form owner's `novalidate` attribute.
-- prop.formTarget [attr: formtarget]: '\_self'|'\_blank'|'\_parent'|'\_top' — Used to override the form owner's `target` attribute.
+- prop.formTarget [attr: formtarget]: '_self'|'_blank'|'_parent'|'_top' — Used to override the form owner's `target` attribute.
 - prop.validity: — Gets the validity state object
 - prop.validationMessage: — Gets the validation message
 - prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.

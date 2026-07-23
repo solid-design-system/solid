@@ -27,7 +27,8 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.fade: boolean, default=false — When set, slides will fade between each other instead of scrolling.
 - prop.slidesPerPage [attr: slides-per-page]: number, default=1 — Specifies how many slides should be shown at a given time.
 - prop.slidesPerMove [attr: slides-per-move]: number, default=1 — Use `slides-per-move` to set how many slides the carousel advances when scrolling. This is useful when specifying a `slides-per-page` greater than one. By setting `slides-per-move` to the same value as `slides-per-page`, the carousel will advance by one page at a time.<br>
-<b>Note:</b><br>
+  <b>Note:</b><br>
+
 <li> The number of slides should be divisible by the number of `slides-per-page` to maintain consistent scroll behavior.</li>
 <li>Variations between `slides-per-move` and `slides-per-page` can lead to unexpected scrolling behavior. Keep your intended UX in mind when adjusting these values.</li>
 - prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.

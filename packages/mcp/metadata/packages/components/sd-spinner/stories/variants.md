@@ -22,7 +22,7 @@
   return generateTemplate({ args });
   }
   };
-  /\*\*
+  /**
   Use the `color` attribute to set the spinner's color:
 - `currentColor` (default): used to inherit the `text-color` from the parent element
 - `primary`: used on light backgrounds

@@ -19,7 +19,7 @@
 - prop.arrow: boolean, default=false — Attaches an arrow to the popup. The arrow's size and color can be customized using the `--arrow-size` and
   `--arrow-color` custom properties. For additional customizations, you can also target the arrow using
   `::part(arrow)` in your stylesheet.
-- prop.arrowPlacement [attr: arrow-placement]: |'start'|'end'|'center'|'anchor', default='anchor' — The placement of the arrow. The default is `anchor`, which will align the arrow as close to the center of the
+- prop.arrowPlacement [attr: arrow-placement]: 'start'|'end'|'center'|'anchor', default='anchor' — The placement of the arrow. The default is `anchor`, which will align the arrow as close to the center of the
   anchor as possible, considering available space and `arrow-padding`. A value of `start`, `end`, or `center` will
   align the arrow to the start, end, or center of the popover instead.
 - prop.arrowPadding [attr: arrow-padding]: number, default=10 — The amount of padding between the arrow and the edges of the popup. If the popup has a border-radius, for example,

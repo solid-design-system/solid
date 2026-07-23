@@ -23,7 +23,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.removable: boolean, default=false — Displays the tag with a removability indicator.
 - prop.disabled: boolean, default=false — Displays the tag in a disabled state.
 - prop.href: string, default='' — When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
-- prop.target: '\_blank'|'\_parent'|'\_self'|'\_top' — Tells the browser where to open the link. Only used when `href` is present.
+- prop.target: '_blank'|'_parent'|'_self'|'_top' — Tells the browser where to open the link. Only used when `href` is present.
 - prop.download: string|undefined — Tells the browser to download the linked file as this filename. Only used when `href` is present.
 - prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
 - prop.lang: string — The element's language.

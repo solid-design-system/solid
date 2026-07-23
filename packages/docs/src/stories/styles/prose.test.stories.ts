@@ -678,9 +678,9 @@ export const Default = {
     return generateTemplate({
       options: {
         templateContent: html` <div
-          class="sd-container ${args['sd-prose--inverted-attr'] === true
-            ? 'sd-container--variant-primary'
-            : 'sd-container--variant-white'}"
+          class="sd-container ${
+            args['sd-prose--inverted-attr'] === true ? 'sd-container--variant-primary' : 'sd-container--variant-white'
+          }"
         >
           <div class="%CLASSES%">${args['default-slot'] || content}</div>
         </div>`

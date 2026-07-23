@@ -38,7 +38,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - part.body: The tab group's body where tab panels are slotted in.
 - part.scroll-button--start: The starting scroll button.
 - part.scroll-button--end: The ending scroll button.
-- part.scroll-button\_\_base: The scroll button's exported `base` part.
+- part.scroll-button__base: The scroll button's exported `base` part.
 
 ## Guidelines
 

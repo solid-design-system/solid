@@ -93,9 +93,9 @@ Use the components tool by passing the args `component` and `example` for any of
 - part.listbox: The listbox container where options are slotted.
 - part.tags: The container that houses option tags when `multiselect` is used.
 - part.tag: The individual tags that represent each multiselect option.
-- part.tag\_\_base: The tag's base part.
-- part.tag\_\_content: The tag's content part.
-- part.tag\_\_removable-indicator: The tag's remove button.
+- part.tag__base: The tag's base part.
+- part.tag__content: The tag's content part.
+- part.tag__removable-indicator: The tag's remove button.
 - part.clear-button: The clear button.
 - part.expand-icon: The container that wraps the expand icon.
 

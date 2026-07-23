@@ -52,7 +52,7 @@ Use the components tool by passing the args `component` and `example` for any of
 ### CSS Parts
 
 - part.base: The component's base wrapper.
-- part.base\_\_popup: The popup's exported `popup` part. Use this to target the dropdowns' popup container.
+- part.base__popup: The popup's exported `popup` part. Use this to target the dropdowns' popup container.
 - part.trigger: The container that wraps the trigger.
 - part.panel: The panel that gets shown when the dropdown is open.
 
