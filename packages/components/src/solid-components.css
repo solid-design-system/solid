@@ -21,6 +21,10 @@
     inset-inline-start: 50%;
   }
 
+  sd-notification::part(base) {
+    @apply m-2;
+  }
+
   sd-notification::part(wrapper) {
     @apply shadow;
   }

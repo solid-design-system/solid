@@ -291,7 +291,7 @@ export default class SdNotification extends SolidElement {
     return html`
       <div
         part="base"
-        class=${cx('w-full flex items-stretch m-2 focus-visible:focus-outline')}
+        class=${cx('w-full flex items-stretch focus-visible:focus-outline')}
         id="notification"
         tabindex=${ifDefined(this.closable ? '0' : undefined)}
         role="alert"
@@ -316,12 +316,14 @@ export default class SdNotification extends SolidElement {
             )}
           >
             <sd-icon
-              name=${{
-                info: 'info-circle',
-                success: 'confirm-circle',
-                warning: 'exclamation-circle',
-                error: 'warning'
-              }[this.variant] || ''}
+              name=${
+                {
+                  info: 'info-circle',
+                  success: 'confirm-circle',
+                  warning: 'exclamation-circle',
+                  error: 'warning'
+                }[this.variant] || ''
+              }
               library="_internal"
               class="h-6 w-6 text-white"
             ></sd-icon>
@@ -342,42 +344,46 @@ export default class SdNotification extends SolidElement {
           >
             <slot id="message" part="message" class="block w-full pl-3 py-2"></slot>
 
-            ${this.closable
-              ? html`
-                  <sd-button
-                    size="md"
-                    variant="tertiary"
-                    part="close-button"
-                    class="ml-auto flex flex-[0_0_auto] items-stretch"
-                    @click=${this.handleCloseClick}
-                  >
-                    <sd-icon
-                      label=${this.localize.term('close')}
-                      name="close"
-                      library="_internal"
-                      color="currentColor"
-                    ></sd-icon>
-                  </sd-button>
-                `
-              : ''}
+            ${
+              this.closable
+                ? html`
+                    <sd-button
+                      size="md"
+                      variant="tertiary"
+                      part="close-button"
+                      class="ml-auto flex flex-[0_0_auto] items-stretch"
+                      @click=${this.handleCloseClick}
+                    >
+                      <sd-icon
+                        label=${this.localize.term('close')}
+                        name="close"
+                        library="_internal"
+                        color="currentColor"
+                      ></sd-icon>
+                    </sd-button>
+                  `
+                : ''
+            }
           </div>
 
-          ${this.durationIndicator
-            ? html`
-                <div
-                  part="duration-indicator__elapsed"
-                  id="duration-indicator__elapsed"
-                  style=${`animation-duration: ${this.duration}ms`}
-                  class=${cx(
-                    `absolute w-0 h-[2px] bottom-0 sd-notification__duration-indicator-color-background z-10 animate-grow`
-                  )}
-                ></div>
-                <div
-                  part="duration-indicator__total"
-                  class="w-full h-[2px] bottom-0 absolute border border-neutral-400"
-                ></div>
-              `
-            : ''}
+          ${
+            this.durationIndicator
+              ? html`
+                  <div
+                    part="duration-indicator__elapsed"
+                    id="duration-indicator__elapsed"
+                    style=${`animation-duration: ${this.duration}ms`}
+                    class=${cx(
+                      `absolute w-0 h-[2px] bottom-0 sd-notification__duration-indicator-color-background z-10 animate-grow`
+                    )}
+                  ></div>
+                  <div
+                    part="duration-indicator__total"
+                    class="w-full h-[2px] bottom-0 absolute border border-neutral-400"
+                  ></div>
+                `
+              : ''
+          }
         </div>
       </div>
     `;
