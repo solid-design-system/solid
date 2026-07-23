@@ -30,6 +30,7 @@ const deprecatedBadgeDecorator = Story => {
 
 let activeTemplateStoryTitle = null;
 let activeTemplateUsageConfig = null;
+let activeTemplateUsageData = null;
 let templateUsageObserver = null;
 
 const disconnectTemplateUsageObserver = () => {
@@ -46,7 +47,11 @@ if (channel) {
       return;
     }
 
-    const options = { storyTitle: activeTemplateStoryTitle, config: activeTemplateUsageConfig };
+    const options = {
+      storyTitle: activeTemplateStoryTitle,
+      config: activeTemplateUsageConfig,
+      usageData: activeTemplateUsageData
+    };
     renderTemplateUsage(options);
     disconnectTemplateUsageObserver();
     templateUsageObserver = observeTemplateUsage(options);
@@ -62,9 +67,11 @@ const templateUsageDecorator = (Story, context) => {
   if (isTemplatePage) {
     activeTemplateStoryTitle = context.title;
     activeTemplateUsageConfig = context.parameters?.templateUsage ?? context.parameters?.templateFooter;
+    activeTemplateUsageData = context.parameters?.templateUsageData ?? null;
   } else {
     activeTemplateStoryTitle = null;
     activeTemplateUsageConfig = null;
+    activeTemplateUsageData = null;
     disconnectTemplateUsageObserver();
     removeTemplateUsage();
   }

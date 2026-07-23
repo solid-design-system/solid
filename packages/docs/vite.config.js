@@ -12,6 +12,7 @@ import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright
 import VitePluginGetTailwindTheme from './scripts/vite-plugin-get-tailwind-theme';
 import VitePluginLitTailwind from './scripts/vite-plugin-lit-tailwind.js';
 import VitePluginSolidStyles from './scripts/vite-plugin-solid-styles/index.js';
+import VitePluginTemplateUsage from './scripts/vite-plugin-template-usage.js';
 
 // https://vitejs.dev/config/
 export default () => {
@@ -40,6 +41,7 @@ export default () => {
           ['solid-custom-tags', 'remove-html-members'].includes(plugin.name)
         )
       }),
+      VitePluginTemplateUsage(),
       {
         name: 'docs-css-processor',
         async transform(code, id) {
