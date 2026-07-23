@@ -144,7 +144,7 @@ export const SizeMultiple = {
       <div class="h-[340px]">
         ${generateTemplate({
           options: {
-            classes: 'w-full'
+            classes: 'w-full max-md:min-w-[960px]'
           },
           axis: {
             x: {
@@ -170,7 +170,7 @@ export const SizeMultiple = {
       <div class="h-[340px]">
         ${generateTemplate({
           options: {
-            classes: 'w-full'
+            classes: 'w-full max-md:min-w-[960px]'
           },
           axis: {
             x: {
@@ -207,7 +207,7 @@ export const DisabledMultiple = {
       <div class="h-[340px] w-full">
         ${generateTemplate({
           options: {
-            classes: 'w-full md:[&>tbody>tr>td]:w-[50%] md:[&_*]:min-w-0'
+            classes: 'w-full max-md:min-w-[960px] [&>tbody>tr>td]:w-[50%] [&_*]:min-w-0'
           },
           axis: {
             y: {
@@ -239,7 +239,7 @@ export const DisabledMultiple = {
       <div class="h-[340px] w-full">
         ${generateTemplate({
           options: {
-            classes: 'w-full md:[&>tbody>tr>td]:w-[50%] md:[&_*]:min-w-0'
+            classes: 'w-full max-md:min-w-[960px] [&>tbody>tr>td]:w-[50%] [&_*]:min-w-0'
           },
           axis: {
             y: {
@@ -281,7 +281,7 @@ export const ValidInvalid = {
       <form class="h-[340px] w-full flex gap-4">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:align-top md:[&>tbody>tr>td]:w-[50%] md:[&_*]:min-w-0'
+            classes: 'w-full max-md:min-w-[960px] [&>tbody>tr>td]:align-top [&>tbody>tr>td]:w-[50%] [&_*]:min-w-0'
           },
           axis: {
             y: {
@@ -312,7 +312,7 @@ export const ValidInvalid = {
       <form class="h-[340] w-full flex gap-4">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:align-top'
+            classes: 'w-full max-md:min-w-[960px] [&>tbody>tr>td]:align-top'
           },
           axis: {
             y: {
@@ -393,7 +393,7 @@ export const Slots = {
             }
           },
           constants: [
-            { type: 'template', name: 'width', value: '<div class="w-full md:w-[300px]">%TEMPLATE%</div>' },
+            { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
             clearableConstant,
             labelConstant,
             helpTextConstant,
@@ -429,6 +429,9 @@ export const Parts = {
     delete args['open-attr'];
 
     return generateTemplate({
+      options: {
+        classes: 'max-md:min-w-[960px]'
+      },
       axis: {
         x: { type: 'attribute', name: 'useTags' },
         y: {
@@ -465,7 +468,7 @@ export const StyleOnValid = {
       <div class="h-[340px]">
         ${generateTemplate({
           options: {
-            classes: 'w-full'
+            classes: 'w-full max-md:min-w-[960px]'
           },
           axis: {
             x: {
@@ -481,7 +484,7 @@ export const StyleOnValid = {
       <div class="h-[340px]">
         ${generateTemplate({
           options: {
-            classes: 'w-full'
+            classes: 'w-full max-md:min-w-[960px]'
           },
           axis: {
             x: {
@@ -523,7 +526,7 @@ export const Mouseless = {
     return html`
       <div>Default</div>
       <br />
-      <div class="mouseless h-[260px] w-full flex gap-4">
+      <div class="mouseless h-[260px] w-full flex gap-4 max-md:[&>*]:w-[240px] max-md:[&>*]:shrink-0">
         ${generateTemplate({
           constants: [twoOptionsConstant, { type: 'attribute', name: 'label', value: 'Default' }],
           args
@@ -544,7 +547,7 @@ export const Mouseless = {
       </div>
       <div>Floating Label</div>
       <br />
-      <div class="mouseless h-[260px] w-full flex gap-4">
+      <div class="mouseless h-[260px] w-full flex gap-4 max-md:[&>*]:w-[240px] max-md:[&>*]:shrink-0">
         ${generateTemplate({
           constants: [
             twoOptionsConstant,
