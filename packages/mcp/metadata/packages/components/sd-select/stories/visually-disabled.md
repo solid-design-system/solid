@@ -3,7 +3,7 @@ Use the `visually-disabled` attribute to style the component as if it was disabl
 **Accessibility Hint:** Disabling elements is not recommended for accessibility reasons.
 
 ```html
-<div class="w-[400px] h-[200px] mt-12">
+<div class="max-w-[400px] h-[200px] mt-12">
   <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm">
     <sd-select size="lg" label="Label" placeholder="Visually disabled" placement="bottom" value="" visually-disabled>
       <sd-option value="option-1">Option 1</sd-option>
