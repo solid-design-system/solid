@@ -74,7 +74,7 @@ async function main() {
     execSync('git push origin next', { stdio: 'inherit' });
 
     console.log('Publishing to NPM...');
-    execSync('pnpm changeset publish -r', { stdio: 'inherit' });
+    execSync('pnpm changeset publish', { stdio: 'inherit' });
 
     console.log('Pushing tags...');
     execSync('git push --tags', { stdio: 'inherit' });
