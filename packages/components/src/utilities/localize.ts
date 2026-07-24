@@ -90,6 +90,11 @@ export interface Translation extends DefaultTranslation {
   dateRangePlaceholder: string;
   endDateSelected: string;
   expandNavigationItem: string;
+  fileButtonText: string;
+  fileButtonTextMultiple: string;
+  fileDragDrop: string;
+  folderButtonText: string;
+  folderDragDrop: string;
   goToSlide: (slide: number, count: number) => string;
   hidePassword: string;
   invalidDate: string;
@@ -102,6 +107,7 @@ export interface Translation extends DefaultTranslation {
   nextYear: string;
   noResults: string;
   notifications: string;
+  numFilesSelected: (num: number, isDirectory: boolean) => string;
   numOptionsSelected: (num: number) => string;
   open: string;
   openTranscript: string;

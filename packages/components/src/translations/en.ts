@@ -24,6 +24,11 @@ const translation: Translation = {
   dateRangePlaceholder: 'Select date range',
   endDateSelected: 'End date selected',
   expandNavigationItem: 'Expand navigation item',
+  fileButtonText: 'Choose file',
+  fileButtonTextMultiple: 'Choose files',
+  fileDragDrop: 'Drag & drop a file here or click to browse',
+  folderButtonText: 'Choose folder',
+  folderDragDrop: 'Drag & drop a folder here or click to browse',
   goToSlide: (slide, count) => `Go to slide ${slide} of ${count}`,
   hidePassword: 'Hide password',
   invalidDate: 'Invalid date',
@@ -36,6 +41,12 @@ const translation: Translation = {
   nextYear: 'Next year',
   noResults: 'No results found',
   notifications: 'Notifications',
+  numFilesSelected: (num, isDirectory) => {
+    if (num === 0) {
+      return isDirectory ? 'No folder selected' : 'No file selected';
+    }
+    return isDirectory ? `${num} folder${num === 1 ? '' : 's'} selected` : `${num} files selected`;
+  },
   numOptionsSelected: num => {
     if (num === 0) return '';
     return `Options selected (${num})`;

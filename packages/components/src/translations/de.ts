@@ -24,6 +24,11 @@ const translation: Translation = {
   dateRangePlaceholder: 'Datumsbereich auswählen',
   endDateSelected: 'Enddatum ausgewählt',
   expandNavigationItem: 'Navigationspunkt erweitern',
+  fileButtonText: 'Datei auswählen',
+  fileButtonTextMultiple: 'Dateien auswählen',
+  fileDragDrop: 'Datei hierher ziehen oder klicken, um zu suchen',
+  folderButtonText: 'Ordner auswählen',
+  folderDragDrop: 'Ordner hierher ziehen oder klicken, um zu suchen',
   goToSlide: (slide, count) => `Zu Folie ${slide} von ${count} gehen`,
   hidePassword: 'Passwort verbergen',
   invalidDate: 'Ungültiges Datum',
@@ -36,6 +41,12 @@ const translation: Translation = {
   nextYear: 'Nächstes Jahr',
   noResults: 'Keine Ergebnisse gefunden',
   notifications: 'Benachrichtigungen',
+  numFilesSelected: (num, isDirectory) => {
+    if (num === 0) {
+      return isDirectory ? 'Kein Ordner ausgewählt' : 'Keine Datei ausgewählt';
+    }
+    return isDirectory ? `${num} Ordner ausgewählt` : `${num} Datei${num === 1 ? '' : 'en'} ausgewählt`;
+  },
   numOptionsSelected: num => {
     if (num === 0) return '';
     return `Optionen ausgewählt (${num})`;
