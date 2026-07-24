@@ -23,10 +23,6 @@ const config = {
   componentsBlock: 'build:components'
 };
 
-function getLegacyVariablesStylesheet(cssText) {
-  return `:root {\n${cssText.trim()}\n}`;
-}
-
 async function runBuild() {
   await nextTask('Cleaning up old build directories', () => {
     if (existsSync(outdir)) {
@@ -78,13 +74,7 @@ async function runBuild() {
       writeFileSync(`${config.buildPath}/${theme.name}/${theme.name}.css`, theme.content);
     });
 
-    const defaultTheme = themes.find(theme => theme.name === config.defaultTheme);
-    if (!defaultTheme) {
-      throw new Error(`Default theme '${config.defaultTheme}' was not found while building legacy fallback CSS.`);
-    }
-
-    const legacyVariablesSource = readFileSync(`./themes/${legacyVariablesFilename}`, { encoding: 'utf-8' });
-    legacyVariablesStylesheet = `${getLegacyVariablesStylesheet(legacyVariablesSource)}`;
+    legacyVariablesStylesheet = readFileSync(`./themes/${legacyVariablesFilename}`, { encoding: 'utf-8' }).trim();
   });
 
   await nextTask('Extracting component variables', () => {
