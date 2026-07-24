@@ -200,7 +200,8 @@ export default class SdDropdown extends SolidElement {
 
   getMenu() {
     return this.panel.assignedElements({ flatten: true }).find(el => el.tagName.toLowerCase() === 'sd-menu') as
-      SdMenu | undefined;
+      | SdMenu
+      | undefined;
   }
 
   handleKeyDown(event: KeyboardEvent) {

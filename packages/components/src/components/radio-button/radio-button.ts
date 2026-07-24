@@ -154,14 +154,9 @@ export default class SdRadioButton extends SolidElement {
             )}"
             ?hidden=${!hasIconSlot}
           ></slot>
-          ${
-            hasDefaultSlot
-              ? html`<slot
-                  part="label"
-                  class="button__label inline-flex relative items-center whitespace-nowrap"
-                ></slot>`
-              : null
-          }
+          ${hasDefaultSlot
+            ? html`<slot part="label" class="button__label inline-flex relative items-center whitespace-nowrap"></slot>`
+            : null}
         </button>
       </div>
     `;
