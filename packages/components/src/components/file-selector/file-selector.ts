@@ -315,7 +315,6 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     this.userIsDragging = false;
   }
 
-  // eslint-disable-next-line complexity
   private async handleDrop(e: DragEvent) {
     e.preventDefault();
     e.stopPropagation();
@@ -348,7 +347,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         const dropIconAnimation = getAnimation(this.dropareaIcon, 'file-selector.iconDrop', {
           dir: this.localize.dir()
         });
-        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+
         animateTo(this.dropareaIcon, dropIconAnimation.keyframes, dropIconAnimation.options);
       }
 
@@ -397,7 +396,6 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     `;
   }
 
-  /* eslint-disable @typescript-eslint/unbound-method */
   private renderDroparea() {
     const iconSize = { sm: 'text-2xl', md: 'text-3xl', lg: 'text-4xl' }[this.size];
     const padding = { sm: 'p-4', md: 'p-6', lg: 'p-8' }[this.size];
@@ -447,9 +445,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
       </div>
     `;
   }
-  /* eslint-enable @typescript-eslint/unbound-method */
 
-  /* eslint-disable @typescript-eslint/unbound-method */
   private renderButton() {
     let buttonText = this.localize.term('fileButtonText');
     if (this.multiple) buttonText = this.localize.term('fileButtonTextMultiple');
@@ -472,9 +468,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
       </div>
     `;
   }
-  /* eslint-enable @typescript-eslint/unbound-method */
 
-  /* eslint-disable @typescript-eslint/unbound-method */
   render() {
     const hasLabel = this.label ? true : !!this.hasSlotController.test('label');
     const hasHelpText = this.helpText ? true : !!this.hasSlotController.test('help-text');
@@ -559,7 +553,6 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
       ${this.formControlController.renderInvalidMessage(this.size)}
     `;
   }
-  /* eslint-enable @typescript-eslint/unbound-method */
 
   /**
    * Inherits global stylesheet including TailwindCSS.
