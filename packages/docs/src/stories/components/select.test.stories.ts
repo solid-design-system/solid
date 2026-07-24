@@ -95,7 +95,7 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return html`<div class="h-[260px] w-[420px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="h-[260px] max-w-[420px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -105,7 +105,7 @@ export const Labels = {
     label: 'Label'
   },
   render: (args: any) => {
-    return html`<div class="h-[260px] w-[420px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="h-[260px] max-w-[420px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -115,14 +115,14 @@ export const FloatingLabel = {
     label: 'Label'
   },
   render: (args: any) => {
-    return html` <div class="h-[260px] w-[420px]">
+    return html` <div class="h-[260px] max-w-[420px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
         })}
       </div>
       <br />
-      <div class="h-[260px] w-[420px]">
+      <div class="h-[260px] max-w-[420px]">
         ${generateTemplate({
           constants: [
             { type: 'attribute', name: 'value', value: 'option-1' },
@@ -144,7 +144,7 @@ export const SizeMultiple = {
       <div class="h-[340px]">
         ${generateTemplate({
           options: {
-            classes: 'w-full'
+            classes: 'w-full max-md:min-w-[960px]'
           },
           axis: {
             x: {
@@ -170,7 +170,7 @@ export const SizeMultiple = {
       <div class="h-[340px]">
         ${generateTemplate({
           options: {
-            classes: 'w-full'
+            classes: 'w-full max-md:min-w-[960px]'
           },
           axis: {
             x: {
@@ -207,7 +207,7 @@ export const DisabledMultiple = {
       <div class="h-[340px] w-full">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:w-[50%]'
+            classes: 'w-full max-md:min-w-[960px] [&>tbody>tr>td]:w-[50%] [&_*]:min-w-0'
           },
           axis: {
             y: {
@@ -239,7 +239,7 @@ export const DisabledMultiple = {
       <div class="h-[340px] w-full">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:w-[50%]'
+            classes: 'w-full max-md:min-w-[960px] [&>tbody>tr>td]:w-[50%] [&_*]:min-w-0'
           },
           axis: {
             y: {
@@ -281,7 +281,7 @@ export const ValidInvalid = {
       <form class="h-[340px] w-full flex gap-4">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:align-top [&>tbody>tr>td]:w-[50%]'
+            classes: 'w-full max-md:min-w-[960px] [&>tbody>tr>td]:align-top [&>tbody>tr>td]:w-[50%] [&_*]:min-w-0'
           },
           axis: {
             y: {
@@ -312,7 +312,7 @@ export const ValidInvalid = {
       <form class="h-[340] w-full flex gap-4">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:align-top'
+            classes: 'w-full max-md:min-w-[960px] [&>tbody>tr>td]:align-top'
           },
           axis: {
             y: {
@@ -353,7 +353,7 @@ export const ValidInvalid = {
 export const BorderVisibility = {
   name: 'Border visibility',
   render: () => {
-    return html`<div class="h-[150px] w-[420px]">
+    return html`<div class="h-[150px] max-w-[420px]">
       ${generateTemplate({
         args: overrideArgs([
           twentyOptionsConstant,
@@ -429,6 +429,9 @@ export const Parts = {
     delete args['open-attr'];
 
     return generateTemplate({
+      options: {
+        classes: 'max-md:min-w-[960px]'
+      },
       axis: {
         x: { type: 'attribute', name: 'useTags' },
         y: {
@@ -465,7 +468,7 @@ export const StyleOnValid = {
       <div class="h-[340px]">
         ${generateTemplate({
           options: {
-            classes: 'w-full'
+            classes: 'w-full max-md:min-w-[960px]'
           },
           axis: {
             x: {
@@ -481,7 +484,7 @@ export const StyleOnValid = {
       <div class="h-[340px]">
         ${generateTemplate({
           options: {
-            classes: 'w-full'
+            classes: 'w-full max-md:min-w-[960px]'
           },
           axis: {
             x: {
@@ -523,7 +526,7 @@ export const Mouseless = {
     return html`
       <div>Default</div>
       <br />
-      <div class="mouseless h-[260px] w-full flex gap-4">
+      <div class="mouseless h-[260px] w-full flex gap-4 max-md:[&>*]:w-[240px] max-md:[&>*]:shrink-0">
         ${generateTemplate({
           constants: [twoOptionsConstant, { type: 'attribute', name: 'label', value: 'Default' }],
           args
@@ -544,7 +547,7 @@ export const Mouseless = {
       </div>
       <div>Floating Label</div>
       <br />
-      <div class="mouseless h-[260px] w-full flex gap-4">
+      <div class="mouseless h-[260px] w-full flex gap-4 max-md:[&>*]:w-[240px] max-md:[&>*]:shrink-0">
         ${generateTemplate({
           constants: [
             twoOptionsConstant,
@@ -586,7 +589,7 @@ export const Mouseless = {
 export const SampleGroupingOptions = {
   name: 'Sample: Grouping options',
   render: (args: any) => {
-    return html`<div class="h-[290px] w-[420px]">
+    return html`<div class="h-[290px] max-w-[420px]">
       ${generateTemplate({
         constants: [
           {

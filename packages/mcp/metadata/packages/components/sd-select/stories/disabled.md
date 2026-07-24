@@ -1,7 +1,7 @@
 Use the `disabled` attribute to disable the select.
 
 ```html
-<div class="w-[400px]">
+<div class="max-w-[400px]">
   <sd-select size="lg" label="Label" placeholder="Disabled" placement="bottom" value="" disabled>
     <sd-option value="option-1">Option 1</sd-option>
     <sd-option value="option-2">Option 2</sd-option>
