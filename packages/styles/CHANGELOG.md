@@ -1,5 +1,11 @@
 # @solid-design-system/styles
 
+## 7.0.0-next.1
+
+### Patch Changes
+
+- Fix versioned icons to work with next versions. _[`#3186`](https://github.com/solid-design-system/solid/pull/3186) [`30af3ad`](https://github.com/solid-design-system/solid/commit/30af3ad6d2e8daebeaa9d6a863fdd5794a015da9) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 7.0.0-next.0
 
 ## 6.28.0
