@@ -19,8 +19,8 @@ test('sd-icon element selector should be versioned inside sd-status-badge rules'
     'Found unversioned "sd-icon" as a CSS descendant selector in dist-versioned output'
   );
 
-  // Versioned sd-icon must appear (e.g. sd-6-15-1-icon)
-  const versionedIconSelector = /sd-\d+-\d+-\d+-icon/;
+  // Versioned sd-icon must appear (e.g. sd-6-15-1-icon or sd-7-0-0-next-0-icon)
+  const versionedIconSelector = /sd-\d+(-\d+)*(-\w+)*-icon/;
   assert.ok(
     versionedIconSelector.test(css),
     'Expected to find a versioned "sd-<version>-icon" selector in dist-versioned output'
