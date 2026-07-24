@@ -3,5 +3,5 @@
 '@solid-design-system/docs': minor
 ---
 
-- Added fallback values to our tailwind and themes stylesheets;
-- Added `dist/token-fallbacks.css` as fall back when stylesheets fail to load entirely or variables have been removed/renamed.
+- Added fallback values from the ui-light theme to tailwind.css so aplications that do not require theming can still work without installing a theme;
+- Added `dist/legacy-variables.css` as an optional fallback stylesheet option for accessing removed depracted variables.
