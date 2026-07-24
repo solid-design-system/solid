@@ -50,7 +50,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`<div class="h-[260px] w-[400px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="h-[260px] max-w-[400px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -64,8 +64,15 @@ export const Default = {
  */
 export const Size = {
   render: () => html`
-    <div class="flex gap-12 h-[500px]">
-      <sd-select size="lg" label="Label" placeholder="Large" placement="bottom" value="" class="test">
+    <div class="flex flex-wrap md:flex-nowrap gap-12 h-[500px]">
+      <sd-select
+        size="lg"
+        label="Label"
+        placeholder="Large"
+        placement="bottom"
+        value=""
+        class="test w-full min-w-[200px] md:min-w-0 max-w-[400px]"
+      >
         <sd-option value="option-1" size="lg">Option 1</sd-option>
         <sd-option value="option-2" size="lg">Option 2</sd-option>
         <sd-option value="option-3" size="lg">Option 3</sd-option>
@@ -73,7 +80,14 @@ export const Size = {
         <sd-option value="option-5" size="lg">Option 5</sd-option>
       </sd-select>
 
-      <sd-select size="md" label="Label" placeholder="Medium" placement="bottom" value="" class="test">
+      <sd-select
+        size="md"
+        label="Label"
+        placeholder="Medium"
+        placement="bottom"
+        value=""
+        class="test w-full min-w-[200px] md:min-w-0 max-w-[400px]"
+      >
         <sd-option value="option-1" size="md">Option 1</sd-option>
         <sd-option value="option-2" size="md">Option 2</sd-option>
         <sd-option value="option-3" size="md">Option 3</sd-option>
@@ -81,7 +95,14 @@ export const Size = {
         <sd-option value="option-5" size="md">Option 5</sd-option>
       </sd-select>
 
-      <sd-select size="sm" label="Label" placeholder="Small" placement="bottom" value="">
+      <sd-select
+        size="sm"
+        label="Label"
+        placeholder="Small"
+        placement="bottom"
+        value=""
+        class="w-full min-w-[200px] md:min-w-0 max-w-[400px]"
+      >
         <sd-option value="option-1" size="sm">Option 1</sd-option>
         <sd-option value="option-2" size="sm">Option 2</sd-option>
         <sd-option value="option-3" size="sm">Option 3</sd-option>
@@ -99,8 +120,14 @@ export const Size = {
  */
 export const Placement = {
   render: () => html`
-    <div class="flex items-center gap-12 h-[500px]">
-      <sd-select class="self-baseline" size="lg" label="Label" placement="bottom" value="">
+    <div class="flex flex-wrap md:flex-nowrap items-center gap-12 h-[500px]">
+      <sd-select
+        class="self-baseline w-full min-w-[200px] md:min-w-0 max-w-[400px]"
+        size="lg"
+        label="Label"
+        placement="bottom"
+        value=""
+      >
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -108,7 +135,7 @@ export const Placement = {
         <sd-option value="option-5">Option 5</sd-option>
       </sd-select>
 
-      <sd-select size="lg" label="Label" placement="top" value="">
+      <sd-select size="lg" label="Label" placement="top" value="" class="w-full min-w-[200px] md:min-w-0 max-w-[400px]">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -126,8 +153,14 @@ export const Placement = {
  */
 export const Label = {
   render: () => html`
-    <div class="flex gap-12 h-[500px]">
-      <sd-select size="lg" label="Label attribute" placement="bottom" value="">
+    <div class="flex flex-wrap md:flex-nowrap gap-12 h-[500px]">
+      <sd-select
+        size="lg"
+        label="Label attribute"
+        placement="bottom"
+        value=""
+        class="w-full min-w-[200px] md:min-w-0 max-w-[400px]"
+      >
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -135,7 +168,7 @@ export const Label = {
         <sd-option value="option-5">Option 5</sd-option>
       </sd-select>
 
-      <sd-select size="lg" placement="bottom" value="">
+      <sd-select size="lg" placement="bottom" value="" class="w-full min-w-[200px] md:min-w-0 max-w-[400px]">
         <div slot="label" class="text-lg">Label slot</div>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -154,7 +187,7 @@ export const Label = {
  */
 export const FloatingLabel = {
   render: () => html`
-    <div class="flex gap-12 w-[400px] h-[500px]">
+    <div class="max-w-[400px] h-[500px]">
       <sd-select size="lg" label="Floating Label" floating-label placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -171,7 +204,7 @@ export const FloatingLabel = {
  */
 export const Placeholder = {
   render: () => html`
-    <div class="w-[400px] h-[500px]">
+    <div class="max-w-[400px] h-[500px]">
       <sd-select size="lg" label="Label" placeholder="Placeholder example" placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -200,7 +233,7 @@ export const Disabled = {
     }
   },
   render: () => html`
-    <div class="w-[400px]">
+    <div class="max-w-[400px]">
       <sd-select size="lg" label="Label" placeholder="Disabled" placement="bottom" value="" disabled>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -233,7 +266,7 @@ export const VisuallyDisabled = {
     }
   },
   render: () => html`
-    <div class="w-[400px] h-[200px] mt-12">
+    <div class="max-w-[400px] h-[200px] mt-12">
       <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm">
         <sd-select
           size="lg"
@@ -261,8 +294,15 @@ export const VisuallyDisabled = {
  */
 export const HelpText = {
   render: () => html`
-    <div class="flex gap-12 h-[500px]">
-      <sd-select size="lg" label="Label" placement="bottom" value="" help-text="Help text attribute">
+    <div class="flex flex-wrap md:flex-nowrap gap-12 h-[500px]">
+      <sd-select
+        size="lg"
+        label="Label"
+        placement="bottom"
+        value=""
+        help-text="Help text attribute"
+        class="w-full min-w-[200px] md:min-w-0 max-w-[400px]"
+      >
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -270,7 +310,13 @@ export const HelpText = {
         <sd-option value="option-5">Option 5</sd-option>
       </sd-select>
 
-      <sd-select size="lg" label="Label" placement="bottom" value="">
+      <sd-select
+        size="lg"
+        label="Label"
+        placement="bottom"
+        value=""
+        class="w-full min-w-[200px] md:min-w-0 max-w-[400px]"
+      >
         <div slot="help-text" class="text-lg">Help text slot</div>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -288,7 +334,7 @@ export const HelpText = {
 
 export const Clearable = {
   render: () => html`
-    <div class="w-[400px] h-[500px]">
+    <div class="max-w-[400px] h-[500px]">
       <sd-select size="lg" label="Label" placement="bottom" clearable="" value="option-1">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -307,7 +353,7 @@ export const Clearable = {
 
 export const Multiple = {
   render: () => html`
-    <div class="w-[400px] h-[500px]">
+    <div class="max-w-[400px] h-[500px]">
       <sd-select size="lg" label="Label" placement="bottom" multiple="" value="option-1 option-2">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -326,7 +372,7 @@ export const Multiple = {
  */
 export const useTags = {
   render: () => html`
-    <div class="w-[400px] h-[500px]">
+    <div class="max-w-[400px] h-[500px]">
       <sd-select size="lg" label="Label" placement="bottom" multiple="" value="option-1 option-2" useTags>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -347,7 +393,7 @@ export const useTags = {
  */
 export const MaxOptionsVisible = {
   render: () => html`
-    <div class="w-[400px] h-[500px]">
+    <div class="max-w-[400px] h-[500px]">
       <sd-select
         size="lg"
         label="Label"
@@ -373,7 +419,7 @@ export const MaxOptionsVisible = {
 
 export const Required = {
   render: () => html`
-    <div class="w-[400px] h-[400px]">
+    <div class="max-w-[400px] h-[400px]">
       <sd-select size="lg" label="Required" placeholder="Please select" placement="bottom" value="" required="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -393,7 +439,7 @@ export const Required = {
 
 export const Valid = {
   render: () => html`
-    <div class="w-[400px] h-[400px]">
+    <div class="max-w-[400px] h-[400px]">
       <sd-select
         size="lg"
         placement="bottom"
@@ -426,7 +472,7 @@ export const Valid = {
 
 export const Invalid = {
   render: () => html`
-    <div class="w-[400px] h-[300px]">
+    <div class="max-w-[400px] h-[300px]">
       <sd-select
         size="lg"
         placement="bottom"
