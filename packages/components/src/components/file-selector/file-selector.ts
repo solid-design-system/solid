@@ -18,6 +18,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
 import type SdButton from '../button/button';
 
 /**
+ * //TODO FIX THIS
  * @summary File selectors allow selecting an arbitrary number of files for uploading.
  * @documentation https://solid.union-investment.com/[storybook-link]/file-selector
  * @status experimental
@@ -47,7 +48,9 @@ import type SdButton from '../button/button';
  * @csspart droparea-background - The background of the drop zone.
  * @csspart droparea-icon - The container that wraps the icon for the drop zone.
  * @csspart droparea-value - The text for the drop zone.
- * @csspart trigger - The container that wraps the trigger.
+ *
+ * @cssproperty --sd-form-control-border-radius - The border radius of the file selector.
+ * @cssproperty --sd-form-control-color-border - The border color of the file selector.
  *
  * @animation file-selector.iconDrop - The animation to use for the file icon when a file is dropped.
  * @animation file-selector.text.disappear - The disappear animation to use for the file placeholder text when a file is dropped.
@@ -59,7 +62,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     assumeInteractionOn: ['sd-change'],
     value: (el: SdFileSelector) => el.files
   });
-  private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label', 'message');
+  private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
   public localize = new LocalizeController(this);
 
   /** @internal */
@@ -129,6 +132,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
   /** Comma-separated list of supported file types (e.g. `.jpg,.png,image/*`). */
   @property({ type: String }) accept = '';
 
+  //TODO CHECK THIS
   /**
    * Specifies which camera to use for capture of image or video data. Works only when not using a droparea.
    */
@@ -145,8 +149,8 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
 
   /**
    * By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
-   * to place the form control outside of a form and associate it with the form that has this `id`. The form must be
-   * in the same document or shadow root for this to work.
+   * to place the form control outside of a form and associate it with the form that has this `id`. The form must be in
+   * the same document or shadow root for this to work.
    */
   @property({ type: String, reflect: true }) form = '';
 
@@ -178,11 +182,6 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     return this.input.checkValidity();
   }
 
-  /** Gets the associated form, if one exists. */
-  getForm(): HTMLFormElement | null {
-    return this.formControlController.getForm();
-  }
-
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   reportValidity() {
     return this.input.reportValidity();
@@ -196,8 +195,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
 
   @watch('disabled', { waitUntilFirstUpdate: true })
   handleDisabledChange() {
-    // Disabled form controls are always valid.
-    this.formControlController.setValidity(this.disabled);
+    this.formControlController.setValidity(this.disabled || this.visuallyDisabled);
   }
 
   @watch('value', { waitUntilFirstUpdate: true })
@@ -210,6 +208,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     this.formControlController.updateValidity();
   }
 
+  //TODO THIS IS NOT WORKING AS EXPECTED, NEEDS TO BE TESTED
   /** Sets focus on the button or droparea. */
   focus(options?: FocusOptions) {
     if (this.droparea) {
@@ -219,7 +218,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
 
     this.button?.focus(options);
   }
-
+  //TODO THIS IS NOT WORKING AS EXPECTED, NEEDS TO BE TESTED
   /** Removes focus from the button or droparea. */
   blur() {
     if (this.droparea) {
@@ -243,6 +242,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     this.files = files;
   }
 
+  //TODO CHECK WHAT IT DOES
   private async handleTransferItems(items: DataTransferItemList | null): Promise<FileList> {
     if (!items) {
       this.value = '';
@@ -258,7 +258,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     files.forEach(f => dataTransfer.items.add(f));
     return dataTransfer.files;
   }
-
+  //TODO CHECK WHAT IT DOES
   private async getFilesFromEntry(entry: FileSystemEntry | null): Promise<File[]> {
     if (!entry) {
       return [];
@@ -334,29 +334,24 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
       return;
     }
 
-    const hasTrigger = this.hasSlotController.test('trigger');
-    if (!hasTrigger) {
-      const disappearAnimation = getAnimation(this.inputChosen, 'file-selector.text.disappear', {
+    const disappearAnimation = getAnimation(this.inputChosen, 'file-selector.text.disappear', {
+      dir: this.localize.dir()
+    });
+    const appearAnimation = getAnimation(this.inputChosen, 'file-selector.text.appear', {
+      dir: this.localize.dir()
+    });
+
+    if (this.droparea) {
+      const dropIconAnimation = getAnimation(this.dropareaIcon, 'file-selector.iconDrop', {
         dir: this.localize.dir()
       });
-      const appearAnimation = getAnimation(this.inputChosen, 'file-selector.text.appear', {
-        dir: this.localize.dir()
-      });
 
-      if (this.droparea) {
-        const dropIconAnimation = getAnimation(this.dropareaIcon, 'file-selector.iconDrop', {
-          dir: this.localize.dir()
-        });
-
-        animateTo(this.dropareaIcon, dropIconAnimation.keyframes, dropIconAnimation.options);
-      }
-
-      await animateTo(this.inputChosen, disappearAnimation.keyframes, disappearAnimation.options);
-      this.handleFiles(files);
-      await animateTo(this.inputChosen, appearAnimation.keyframes, appearAnimation.options);
-    } else {
-      this.handleFiles(files);
+      animateTo(this.dropareaIcon, dropIconAnimation.keyframes, dropIconAnimation.options);
     }
+
+    await animateTo(this.inputChosen, disappearAnimation.keyframes, disappearAnimation.options);
+    this.handleFiles(files);
+    await animateTo(this.inputChosen, appearAnimation.keyframes, appearAnimation.options);
 
     this.input.dispatchEvent(new Event('change'));
   }
@@ -386,8 +381,8 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         class=${cx(
           'input__value truncate',
           this.hideValue && 'hidden',
-          !hasFiles && 'text-neutral-700',
-          this.disabled && 'text-neutral-500'
+          !hasFiles ? 'text-neutral-700' : 'text-black',
+          (this.disabled || this.visuallyDisabled) && 'text-neutral-500'
         )}
         part="value"
       >
@@ -397,14 +392,11 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
   }
 
   private renderDroparea() {
-    const iconSize = { sm: 'text-2xl', md: 'text-3xl', lg: 'text-4xl' }[this.size];
-    const padding = { sm: 'p-4', md: 'p-6', lg: 'p-8' }[this.size];
-
     return html`
       <div
         class=${cx(
-          'droparea flex form-control-border-radius transition-colors ease-in-out duration-medium hover:duration-fast focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
-          this.disabled || this.readonly ? 'cursor-not-allowed' : 'cursor-pointer'
+          'droparea',
+          this.disabled || this.visuallyDisabled || this.readonly ? 'cursor-not-allowed' : 'cursor-pointer'
         )}
         @click=${this.handleClick}
         @keypress=${this.handleClick}
@@ -413,32 +405,39 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         tabindex=${this.disabled ? -1 : 0}
         part="droparea"
       >
+        <!-- //TODO CHECK BORDER RADIUS CHECK BACKGROUND COLOR ON userIsDragging (figma is using primary-50 that doesn't exists) -->
         <div
           part="droparea-background"
           class=${cx(
-            'droparea__background w-full flex flex-col items-center justify-center gap-2 form-control-border-radius border-2 border-dashed transition-colors ease-in-out duration-medium',
-            padding,
-            this.disabled
+            'droparea__background w-full flex flex-row items-center gap-4 p-6 form-control-border-radius border border-dotted transition-colors ease-in-out duration-medium',
+            this.disabled || this.visuallyDisabled
               ? 'border-neutral-500 bg-neutral-100'
               : this.showInvalidStyle
-                ? 'border-error bg-error-100'
+                ? 'border-error'
                 : this.userIsDragging
-                  ? 'border-primary bg-primary-100'
-                  : 'border-neutral-500 bg-neutral-100'
+                  ? 'bg-primary-100'
+                  : 'form-control-color-border hover:bg-neutral-200'
           )}
         >
-          <span
+          <!-- //TODO CHECK ICON SIZE -->
+          <div
             part="droparea-icon"
-            class=${cx('droparea__icon inline-flex', this.disabled ? 'text-neutral-500' : 'text-primary', iconSize)}
+            class=${cx('droparea__icon inline-flex h-[72px]', this.disabled ? 'text-neutral-500' : 'text-primary')}
           >
-            <slot name="droparea-icon">
-              <sd-icon library="_internal" name="upload"></sd-icon>
-            </slot>
-          </span>
-          <p part="droparea-value" class="text-center">
-            <strong class=${cx('block', this.disabled ? 'text-neutral-500' : 'text-black')}>
-              ${this.localize.term(this.webkitdirectory ? 'folderDragDrop' : 'fileDragDrop')}
-            </strong>
+            <sd-icon library="_internal" name="upload"></sd-icon>
+          </div>
+          <!-- //TODO CHECK TITLE COLOR -->
+          <p part="droparea-value">
+            <span
+              class=${cx(
+                'block sd-headline sd-headline--size-lg',
+                this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary'
+              )}
+            >
+              ${this.localize.term(
+                this.webkitdirectory ? 'folderDragDrop' : this.multiple ? 'fileDragDropMultiple' : 'fileDragDrop'
+              )}
+            </span>
             ${this.renderValue()}
           </p>
         </div>
@@ -456,7 +455,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         <sd-button
           class="button"
           @click=${this.handleClick}
-          ?disabled=${this.disabled || this.readonly}
+          ?disabled=${this.disabled || this.visuallyDisabled || this.readonly}
           exportparts="base:button__base"
           part="button"
           size=${this.size}
@@ -472,7 +471,6 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
   render() {
     const hasLabel = this.label ? true : !!this.hasSlotController.test('label');
     const hasHelpText = this.helpText ? true : !!this.hasSlotController.test('help-text');
-    const hasTrigger = !!this.hasSlotController.test('trigger');
 
     const textSize = { sm: 'text-sm', md: 'text-base', lg: 'text-base' }[this.size];
 
@@ -494,44 +492,40 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         @drop=${this.handleDrop}
         part="form-control"
       >
-        ${hasTrigger
-          ? html` <slot @click=${this.handleClick} @keypress=${this.handleClick} name="trigger" part="trigger"></slot> `
-          : html`
-              ${hasLabel
-                ? html`
-                    <label
-                      aria-hidden=${hasLabel ? 'false' : 'true'}
-                      class=${cx(
-                        'form-control__label inline-block mb-2',
-                        textSize,
-                        this.disabled ? 'text-neutral-500' : 'form-control-color-text'
-                      )}
-                      for="input"
-                      part="form-control-label"
-                    >
-                      <slot name="label">${this.label}</slot>
-                    </label>
-                  `
-                : null}
-
-              <div class="form-control-input" part="form-control-input">
-                ${this.droparea ? this.renderDroparea() : this.renderButton()}
-              </div>
-
-              <slot
-                name="help-text"
-                part="form-control-help-text"
-                id="help-text"
+        ${hasLabel
+          ? html`
+              <label
+                aria-hidden=${hasLabel ? 'false' : 'true'}
                 class=${cx(
-                  'text-sm mt-1',
-                  hasHelpText ? 'block' : 'hidden',
-                  this.disabled ? 'text-neutral-500' : 'text-neutral-700'
+                  'form-control__label inline-block mb-2',
+                  textSize,
+                  this.disabled ? 'text-neutral-500' : 'form-control-color-text'
                 )}
-                aria-hidden=${hasHelpText ? 'false' : 'true'}
+                for="input"
+                part="form-control-label"
               >
-                ${this.helpText}
-              </slot>
-            `}
+                <slot name="label">${this.label}</slot>
+              </label>
+            `
+          : null}
+
+        <div class="form-control-input" part="form-control-input">
+          ${this.droparea ? this.renderDroparea() : this.renderButton()}
+        </div>
+
+        <slot
+          name="help-text"
+          part="form-control-help-text"
+          id="help-text"
+          class=${cx(
+            'text-sm mt-1',
+            hasHelpText ? 'block' : 'hidden',
+            this.disabled ? 'text-neutral-500' : 'text-neutral-700'
+          )}
+          aria-hidden=${hasHelpText ? 'false' : 'true'}
+        >
+          ${this.helpText}
+        </slot>
 
         <input
           accept=${this.accept}

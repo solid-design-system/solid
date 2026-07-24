@@ -93,6 +93,7 @@ export interface Translation extends DefaultTranslation {
   fileButtonText: string;
   fileButtonTextMultiple: string;
   fileDragDrop: string;
+  fileDragDropMultiple: string;
   folderButtonText: string;
   folderDragDrop: string;
   goToSlide: (slide: number, count: number) => string;
