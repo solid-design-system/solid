@@ -1,0 +1,19 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@solid-design-system/components": "6.28.0",
+    "@solid-design-system/docs": "2.21.1",
+    "@solid-design-system/eslint-plugin": "1.0.6",
+    "@solid-design-system/mcp": "6.28.0",
+    "@solid-design-system/placeholders": "3.0.2",
+    "@solid-design-system/styles": "6.28.0",
+    "@solid-design-system/theming": "1.2.1",
+    "@solid-design-system/tokens": "6.28.0",
+    "@solid-design-system/versioning": "1.0.2"
+  },
+  "changesets": [
+    "cozy-clouds-allow",
+    "honest-balloons-wait"
+  ]
+}

@@ -2,7 +2,7 @@ Use the `--distribution-media` and `--distribution-content` CSS properties to ad
 
 ```html
 <sd-teaser style="--distribution-media: 20%; --distribution-content: 80%;">
-  <h3 slot="headline">Lorem ipsum sic semper</h3>
+  <h3 slot="headline" class="sd-headline sd-headline--size-lg">Lorem ipsum sic semper</h3>
   <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
   <p>
     Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim

@@ -1,6 +1,6 @@
 {
   "name": "@solid-design-system/tokens",
-  "version": "6.28.0",
+  "version": "7.0.0-next.0",
   "description": "Solid Design System: Tokens",
   "publishConfig": {
     "access": "public",

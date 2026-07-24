@@ -15,37 +15,31 @@ Dear devs, when adding a migration guide, please include:
 
 Remove all placeholder comments before the release.
 
-## Breaking change #1
+## Removed enforced headline styling from `sd-teaser-media`.
 
-### Removed the default margin from inline `sd-notification`
+Removed this CSS rule that used to force styles into whatever is slotted into slot="headline"
 
-Previously, the `base` part of every `sd-notification` had a default margin of `0.5rem`. This also affected inline notifications and could make them difficult to align with their surrounding layout.
+```css
+::slotted([slot='headline']) { '@apply font-bold !m-0 !text-lg;'}
+```
 
-The default margin has been removed from the component's `base` part. Notifications displayed as toasts keep their existing spacing because `.sd-toast-stack` now applies the margin to the `wrapper` part instead and resets the `base` margin to `0`.
-
-You are affected only if your inline notifications rely on the previous default spacing. In that case, add the required spacing explicitly through your layout or the `base` CSS part.
+Result: `sd-teaser` no longer forces font-weight, margin or test size on headline elements. Headline sizing/spacing must now be provided by the user.
 
 **Before**:
 
 ```html
-<sd-notification open>Notification message</sd-notification>
+<sd-teaser>
+  <h3 slot="headline" class="sd-headline">Expert views</h3>
+</sd-teaser>
 ```
-
-The notification's `base` part automatically had a margin of `0.5rem`.
 
 **After**:
 
 ```html
-<sd-notification class="my-notification" open>Notification message</sd-notification>
-
-<style>
-  .my-notification::part(base) {
-    margin: 0.5rem;
-  }
-</style>
+<sd-teaser>
+  <h3 slot="headline" class="sd-headline sd-headline--size-lg">Expert views</h3>
+</sd-teaser>
 ```
-
-Inline notifications without additional styling now have no margin and align directly with their containing layout.
 
 ## Breaking change #2
 
