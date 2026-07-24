@@ -15,9 +15,31 @@ Dear devs, when adding a migration guide, please include:
 
 Remove all placeholder comments before the release.
 
-## Breaking change #1
+## Removed enforced headline styling from `sd-teaser-media`.
 
-[...]
+Removed this CSS rule that used to force styles into whatever is slotted into slot="headline"
+
+```css
+::slotted([slot='headline']) { '@apply font-bold !m-0 !text-lg;'}
+```
+
+Result: `sd-teaser` no longer forces font-weight, margin or test size on headline elements. Headline sizing/spacing must now be provided by the user.
+
+**Before**:
+
+```html
+<sd-teaser>
+  <h3 slot="headline" class="sd-headline">Expert views</h3>
+</sd-teaser>
+```
+
+**After**:
+
+```html
+<sd-teaser>
+  <h3 slot="headline" class="sd-headline sd-headline--size-lg">Expert views</h3>
+</sd-teaser>
+```
 
 ## Breaking change #2
 

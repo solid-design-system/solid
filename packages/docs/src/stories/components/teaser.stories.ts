@@ -70,31 +70,35 @@ export const Variant = {
   render: () => html`
     <div class="grid grid-cols-2 gap-12">
       <sd-teaser variant="white" inset>
-        <h3 slot="headline">Teaser with white background</h3>
+        <h3 slot="headline" class="sd-headline sd-headline--size-lg">Teaser with white background</h3>
         <p class="sd-paragraph">
           Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.
         </p>
       </sd-teaser>
       <sd-teaser variant="white border-neutral-400">
-        <h3 slot="headline">Teaser with white background and border neutral-400</h3>
+        <h3 slot="headline" class="sd-headline sd-headline--size-lg">
+          Teaser with white background and border neutral-400
+        </h3>
         <p class="sd-paragraph">
           Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.
         </p>
       </sd-teaser>
       <sd-teaser variant="neutral-100" inset>
-        <h3 slot="headline">Teaser with neutral-100 background</h3>
+        <h3 slot="headline" class="sd-headline sd-headline--size-lg">Teaser with neutral-100 background</h3>
         <p class="sd-paragraph">
           Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.
         </p>
       </sd-teaser>
       <sd-teaser variant="primary-100" inset>
-        <h3 slot="headline">Teaser with primary-100 background</h3>
+        <h3 slot="headline" class="sd-headline sd-headline--size-lg">Teaser with primary-100 background</h3>
         <p class="sd-paragraph">
           Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.
         </p>
       </sd-teaser>
       <sd-teaser variant="primary" inset>
-        <h3 slot="headline">Teaser with primary background</h3>
+        <h3 slot="headline" class="sd-headline sd-headline--size-lg sd-headline--inverted">
+          Teaser with primary background
+        </h3>
         <p class="sd-paragraph sd-paragraph--inverted">
           Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.
         </p>
@@ -113,7 +117,7 @@ export const DefaultAndHeadlineSlot = {
   name: 'Default and Headline Slot',
   render: () => html`
     <sd-teaser>
-      <h3 slot="headline">Lorem ipsum sic semper</h3>
+      <h3 slot="headline" class="sd-headline sd-headline--size-lg">Lorem ipsum sic semper</h3>
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
@@ -132,7 +136,7 @@ export const DefaultAndHeadlineSlot = {
 export const MediaSlot = {
   render: () => html`
     <sd-teaser>
-      <h3 slot="headline">Lorem ipsum sic semper</h3>
+      <h3 slot="headline" class="sd-headline sd-headline--size-lg">Lorem ipsum sic semper</h3>
       <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
@@ -150,7 +154,7 @@ export const MediaSlot = {
 export const MetaSlot = {
   render: () => html`
     <sd-teaser>
-      <h3 slot="headline">Lorem ipsum sic semper</h3>
+      <h3 slot="headline" class="sd-headline sd-headline--size-lg">Lorem ipsum sic semper</h3>
       <div slot="meta">
         <time class="sd-meta sd-meta--pipe" datetime="2023-01-01">01.01.2023</time>
         <span class="sd-meta">Author name</span>
@@ -171,7 +175,7 @@ export const MetaSlot = {
 export const Inset = {
   render: () => html`
     <sd-teaser inset variant="primary-100">
-      <h3 slot="headline">Teaser with inset Padding</h3>
+      <h3 slot="headline" class="sd-headline sd-headline--size-lg">Teaser with inset Padding</h3>
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
@@ -191,7 +195,7 @@ export const Breakpoint = {
   render: () => html`
     <div class="flex gap-8 flex-col">
       <sd-teaser breakpoint="0">
-        <h3 slot="headline">Horizontal</h3>
+        <h3 slot="headline" class="sd-headline sd-headline--size-lg">Horizontal</h3>
         <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
         <p>
           Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
@@ -201,7 +205,7 @@ export const Breakpoint = {
       </sd-teaser>
 
       <sd-teaser breakpoint="9999" class="w-[256px]">
-        <h3 slot="headline">Vertical</h3>
+        <h3 slot="headline" class="sd-headline sd-headline--size-lg">Vertical</h3>
         <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
         <p>
           Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
@@ -220,7 +224,7 @@ export const Breakpoint = {
 export const Reverse = {
   render: () => html`
     <sd-teaser reversed-layout>
-      <h3 slot="headline">Horizontal</h3>
+      <h3 slot="headline" class="sd-headline sd-headline--size-lg">Horizontal</h3>
       <img slot="media" src="./placeholders/images/architecture.jpg" alt="" class="w-full h-auto" />
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
@@ -238,7 +242,7 @@ export const Reverse = {
 export const Distribution = {
   render: () => html`
     <sd-teaser style="--distribution-media: 20%; --distribution-content: 80%;">
-      <h3 slot="headline">Lorem ipsum sic semper</h3>
+      <h3 slot="headline" class="sd-headline sd-headline--size-lg">Lorem ipsum sic semper</h3>
       <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
