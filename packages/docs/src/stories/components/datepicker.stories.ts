@@ -162,7 +162,7 @@ export const VisuallyDisabled = {
  */
 export const HelpText = {
   render: () =>
-    html`<div class="flex flex-wrap md:flex-nowrap gap-12 h-[500px] max-w-[370px]">
+    html`<div class="flex flex-wrap md:flex-nowrap gap-12 h-[500px]">
       <sd-datepicker
         label="Label"
         help-text="Help text attribute"
