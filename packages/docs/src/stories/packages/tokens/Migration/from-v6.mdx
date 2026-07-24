@@ -7,6 +7,36 @@ import '../../../../../../components/src/solid-components';
 
 The v6 release improves token stability, cleans up unused CSS variables, and introduces several fixes and refinements across different components.
 
-## Breaking change #1
+## Added legacy variables fallback
 
-[...]
+Added `dist/legacy-variables.css` as an optional fallback stylesheet option for accessing removed deprecated variables.
+
+### When to use
+
+If you manage an environment that still requires the use of deprecated CSS variables, you can use this stylesheet as a fallback layer instead of immediately updating all your custom styles.
+
+### Installation
+
+Import the stylesheet **before any other stylesheet** so it provides fallback values for removed variables:
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="npm" variant="container">NPM</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="cdn" variant="container">CDN</sd-tab>
+
+<sd-tab-panel name="npm">```js import '@solid-design-system/tokens/dist/legacy-variables.css'; ```</sd-tab-panel>
+
+  <sd-tab-panel name="cdn">
+```html
+<link
+  rel="stylesheet"
+  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/legacy-variables.css"
+/>
+```
+  </sd-tab-panel>
+</sd-tab-group>
+
+### Migration path
+
+While this fallback helps you transition smoothly, we recommend updating your custom styles to use the current token names as soon as possible. Check the [Deprecated CSS variables (tokens)](/?path=/docs/packages-tokens-usage--docs) section for a complete list of removed variables and their replacements.
