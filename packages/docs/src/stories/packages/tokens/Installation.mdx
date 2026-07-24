@@ -400,21 +400,14 @@ export default {
   </sd-tab-panel>
 </sd-tab-group>
 
-## Token fallbacks stylesheet
+## Legacy fallback stylesheet
 
-If you import any SDS theme stylesheet from this package (for example `ui-light.css`), no extra action is required:
-fallbacks are included automatically.
-
-The same applies when importing Tailwind from this package (`@solid-design-system/tokens/dist/themes/tailwind.css`).
-
-Use `token-fallbacks.css` only when you want a standalone compatibility layer without importing an SDS theme stylesheet.
-
-It provides fallback UI variables and deprecated aliases even when a full theme file is missing.
+Use `legacy-variables.css` only when you need compatibility aliases for deprecated CSS variables.
 
 You can import it from npm:
 
 ```css
-@import '@solid-design-system/tokens/dist/token-fallbacks.css';
+@import '@solid-design-system/tokens/dist/legacy-variables.css';
 ```
 
 That's it — you're ready to build. Head over to the <sd-link href="?path=/docs/packages-tokens-usage--docs">Usage page</sd-link> to learn about local development, standalone fallbacks, and versioning coordination.
