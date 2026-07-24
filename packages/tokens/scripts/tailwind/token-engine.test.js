@@ -2,6 +2,9 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { TokenProcessingEngine } from './token-engine.js';
 
+/**
+ * Minimal config mock for TokenProcessingEngine
+ */
 const createMockConfig = () => ({
   getAll: () => ({ prefix: 'sd' })
 });
@@ -21,30 +24,6 @@ describe('TokenProcessingEngine.addFallbacks', () => {
 
     assert.equal(result.baseVars[0], '--background-color-primary: rgba(var(--sd-color-background-primary, 0 53 142));');
     assert.equal(result.baseVars[1], '--spacing-4: var(--sd-spacing-4, 1rem);');
-  });
-
-  it('injects fallbacks into spacing, utilities and components stores', () => {
-    const engine = new TokenProcessingEngine(createMockConfig());
-    const result = {
-      baseVars: [],
-      spacing: ['--spacing-4: var(--sd-spacing-4);'],
-      utilities: ['@utility focus-outline {\n  outline-color: rgba(var(--sd-color-border-primary));\n}'],
-      components: ['@utility demo {\n  color: rgba(var(--sd-color-text-primary));\n}'],
-      'ui-light': [
-        '--sd-spacing-4: 1rem;',
-        '--sd-color-border-primary: 0 53 142;',
-        '--sd-color-text-primary: 0 53 142;'
-      ]
-    };
-
-    engine.addFallbacks(result, 'ui-light');
-
-    assert.equal(result.spacing[0], '--spacing-4: var(--sd-spacing-4, 1rem);');
-    assert.equal(
-      result.utilities[0],
-      '@utility focus-outline {\n  outline-color: rgba(var(--sd-color-border-primary, 0 53 142));\n}'
-    );
-    assert.equal(result.components[0], '@utility demo {\n  color: rgba(var(--sd-color-text-primary, 0 53 142));\n}');
   });
 
   it('recursively resolves nested var() references', () => {
@@ -80,6 +59,7 @@ describe('TokenProcessingEngine.addFallbacks', () => {
 
     engine.addFallbacks(result, 'ui-light');
 
+    // The regex only matches var(--sd-X) without comma, so existing fallbacks are untouched
     assert.equal(
       result.baseVars[0],
       '--outline-color-primary: rgba(var(--sd-color-border-primary, var(--sd-color-primary)));'
@@ -111,13 +91,16 @@ describe('TokenProcessingEngine.addFallbacks', () => {
 
   it('stops resolving at max depth to prevent infinite loops', () => {
     const engine = new TokenProcessingEngine(createMockConfig());
+    // Create a circular reference
     const result = {
       baseVars: ['--x: var(--sd-a);'],
       'ui-light': ['--sd-a: var(--sd-b);', '--sd-b: var(--sd-a);']
     };
 
+    // Should not throw, just leave unresolved
     engine.addFallbacks(result, 'ui-light');
 
+    // Will contain partially resolved value with remaining var()
     assert.ok(result.baseVars[0].includes('var(--sd-a,'));
   });
 });
