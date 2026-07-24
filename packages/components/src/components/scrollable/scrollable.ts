@@ -259,9 +259,9 @@ export default class SdScrollable extends SolidElement {
                       <div
                         part="button-left"
                         class=${cx(
-                        'absolute z-10 flex items-center justify-center top-0 left-0 h-full w-8 transition-opacity duration-medium ease-in-out',
-                        !this.canScroll.left && 'opacity-0 pointer-events-none'
-                      )}
+                          'absolute z-10 flex items-center justify-center top-0 left-0 h-full w-8 transition-opacity duration-medium ease-in-out',
+                          !this.canScroll.left && 'opacity-0 pointer-events-none'
+                        )}
                       >
                         <button
                           part="button-start"
@@ -284,9 +284,9 @@ export default class SdScrollable extends SolidElement {
                       <div
                         part="button-right"
                         class=${cx(
-                        'absolute z-10 flex items-center justify-center top-0 right-0 h-full w-8 transition-opacity duration-medium ease-in-out',
-                        !this.canScroll.right && 'opacity-0 pointer-events-none'
-                      )}
+                          'absolute z-10 flex items-center justify-center top-0 right-0 h-full w-8 transition-opacity duration-medium ease-in-out',
+                          !this.canScroll.right && 'opacity-0 pointer-events-none'
+                        )}
                       >
                         <button
                           part="button-end"
@@ -315,9 +315,9 @@ export default class SdScrollable extends SolidElement {
                       <div
                         part="button-top"
                         class=${cx(
-                        'absolute z-10 flex items-center justify-center top-0 left-0 w-full h-8 transition-opacity duration-medium ease-in-out',
-                        !this.canScroll.up && 'opacity-0 pointer-events-none'
-                      )}
+                          'absolute z-10 flex items-center justify-center top-0 left-0 w-full h-8 transition-opacity duration-medium ease-in-out',
+                          !this.canScroll.up && 'opacity-0 pointer-events-none'
+                        )}
                       >
                         <button
                           part="button-start"
@@ -339,9 +339,9 @@ export default class SdScrollable extends SolidElement {
                       <div
                         part="button-bottom"
                         class=${cx(
-                        'absolute z-10 flex items-center justify-center bottom-0 left-0 w-full h-8 transition-opacity duration-medium ease-in-out',
-                        !this.canScroll.down && 'opacity-0 pointer-events-none'
-                      )}
+                          'absolute z-10 flex items-center justify-center bottom-0 left-0 w-full h-8 transition-opacity duration-medium ease-in-out',
+                          !this.canScroll.down && 'opacity-0 pointer-events-none'
+                        )}
                       >
                         <button
                           part="button-end"
@@ -375,18 +375,18 @@ export default class SdScrollable extends SolidElement {
                       <div
                         part="shadow-left"
                         class=${cx(
-                        'left top-0 left-0 w-[6px] h-full',
-                        scrollShadowClasses,
-                        this.canScroll.left ? 'opacity-100' : 'opacity-0'
-                      )}
+                          'left top-0 left-0 w-[6px] h-full',
+                          scrollShadowClasses,
+                          this.canScroll.left ? 'opacity-100' : 'opacity-0'
+                        )}
                       ></div>
                       <div
                         part="shadow-right"
                         class=${cx(
-                        'right top-0 right-0 w-[6px] h-full',
-                        scrollShadowClasses,
-                        this.canScroll.right ? 'opacity-100' : 'opacity-0'
-                      )}
+                          'right top-0 right-0 w-[6px] h-full',
+                          scrollShadowClasses,
+                          this.canScroll.right ? 'opacity-100' : 'opacity-0'
+                        )}
                       ></div>
                     `
                   : null
@@ -397,18 +397,18 @@ export default class SdScrollable extends SolidElement {
                       <div
                         part="shadow-top"
                         class=${cx(
-                        'top top-0 left-0 w-full h-[6px]',
-                        scrollShadowClasses,
-                        this.canScroll.up ? 'opacity-100' : 'opacity-0'
-                      )}
+                          'top top-0 left-0 w-full h-[6px]',
+                          scrollShadowClasses,
+                          this.canScroll.up ? 'opacity-100' : 'opacity-0'
+                        )}
                       ></div>
                       <div
                         part="shadow-bottom"
                         class=${cx(
-                        'bottom bottom-0 left-0 w-full h-[6px]',
-                        scrollShadowClasses,
-                        this.canScroll.down ? 'opacity-100' : 'opacity-0'
-                      )}
+                          'bottom bottom-0 left-0 w-full h-[6px]',
+                          scrollShadowClasses,
+                          this.canScroll.down ? 'opacity-100' : 'opacity-0'
+                        )}
                       ></div>
                     `
                   : null

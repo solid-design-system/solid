@@ -753,33 +753,33 @@ export default class SdCarousel extends SolidElement {
                           <button
                             part="pagination-item ${isActive ? 'pagination-item--active' : ''}"
                             class="${cx(
-                            'carousel__pagination-item',
-                            'block cursor-pointer bg-none border-0 rounded-full',
-                            isActive ? 'bg-accent' : '',
-                            this.inverted ? 'focus-within:focus-outline-inverted' : 'focus-within:focus-outline'
-                          )}"
+                              'carousel__pagination-item',
+                              'block cursor-pointer bg-none border-0 rounded-full',
+                              isActive ? 'bg-accent' : '',
+                              this.inverted ? 'focus-within:focus-outline-inverted' : 'focus-within:focus-outline'
+                            )}"
                             role="tab"
                             tabindex="0"
                             aria-selected="${isActive ? 'true' : 'false'}"
                             aria-label="${this.localize.term('goToSlide', index + 1, pagesCount)}"
                             @click="${(e: MouseEvent) => {
-                            this.goToSlide(index * slidesPerMove);
-                            this.unblockAutoplay(e, this.paginationItems[index]);
-                          }}"
+                              this.goToSlide(index * slidesPerMove);
+                              this.unblockAutoplay(e, this.paginationItems[index]);
+                            }}"
                           >
                             <span
                               class=${cx(
-                              'h-4 w-4 block border sd-carousel__pager-dot-border-width rounded-full transition-colors duration-slow hover:duration-fast ease-in-out',
-                              this.inverted
-                                ? 'sd-carousel__pager-dot--inverted-border hover:border-primary-200'
-                                : 'border-primary hover:border-primary-500',
-                              isActive && 'border-none',
-                              isActive
-                                ? this.inverted
-                                  ? 'sd-carousel__pager-dot--inverted-background hover:sd-carousel__pager-dot--inverted--hovered-background'
-                                  : 'sd-carousel__pager-dot-background hover:bg-accent-550'
-                                : ''
-                            )}
+                                'h-4 w-4 block border sd-carousel__pager-dot-border-width rounded-full transition-colors duration-slow hover:duration-fast ease-in-out',
+                                this.inverted
+                                  ? 'sd-carousel__pager-dot--inverted-border hover:border-primary-200'
+                                  : 'border-primary hover:border-primary-500',
+                                isActive && 'border-none',
+                                isActive
+                                  ? this.inverted
+                                    ? 'sd-carousel__pager-dot--inverted-background hover:sd-carousel__pager-dot--inverted--hovered-background'
+                                    : 'sd-carousel__pager-dot-background hover:bg-accent-550'
+                                  : ''
+                              )}
                             ></span>
                           </button>
                         `;
