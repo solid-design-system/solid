@@ -23,7 +23,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`<div class="h-[500px] w-[370px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="h-[500px] max-w-[370px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -39,7 +39,7 @@ export const Default = {
 
 export const Size = {
   render: () => html`
-    <div class="flex flex-col gap-4 w-[370px] h-[500px]">
+    <div class="flex flex-col gap-4 max-w-[370px] h-[500px]">
       <sd-datepicker size="lg" placeholder="Large" label="Label"></sd-datepicker>
       <sd-datepicker size="md" placeholder="Medium" label="Label"></sd-datepicker>
       <sd-datepicker size="sm" placeholder="Small" label="Label"></sd-datepicker>
@@ -56,7 +56,7 @@ export const Size = {
 
 export const Alignment = {
   render: () =>
-    html` <div class="w-[370px] h-[500px]">
+    html` <div class="max-w-[370px] h-[500px]">
       <sd-datepicker label="Label" size="lg" alignment="right" value="2025.11.10"></sd-datepicker>
     </div>`
 };
@@ -69,9 +69,9 @@ export const Alignment = {
 
 export const Label = {
   render: () =>
-    html`<div class="flex gap-12 h-[500px]">
-      <sd-datepicker label="Label attribute"></sd-datepicker>
-      <sd-datepicker>
+    html`<div class="flex flex-wrap md:flex-nowrap gap-12 h-[500px]">
+      <sd-datepicker label="Label attribute" class="min-w-[200px] md:min-w-0 max-w-[370px]"></sd-datepicker>
+      <sd-datepicker class="min-w-[200px] md:min-w-0 max-w-[370px]">
         <div slot="label">Label slot</div>
       </sd-datepicker>
     </div>`
@@ -84,7 +84,7 @@ export const Label = {
  */
 export const FloatingLabel = {
   render: () => html`
-    <div class="flex gap-12 h-[500px] w-[370px]">
+    <div class="flex gap-12 h-[500px] max-w-[370px]">
       <sd-datepicker label="Floating Label" floating-label></sd-datepicker>
     </div>
   `
@@ -96,7 +96,7 @@ export const FloatingLabel = {
 
 export const Placeholder = {
   render: () =>
-    html`<div class="w-[370px] h-[500px]">
+    html`<div class="max-w-[370px] h-[500px]">
       <sd-datepicker label="Label" placeholder="Select date"></sd-datepicker>
     </div>`
 };
@@ -121,7 +121,7 @@ export const Disabled = {
     }
   },
   render: () =>
-    html`<div class="w-[370px] h-[500px]">
+    html`<div class="max-w-[370px] h-[500px]">
       <sd-datepicker label="Label" placeholder="Disabled" disabled></sd-datepicker>
     </div>`
 };
@@ -148,7 +148,7 @@ export const VisuallyDisabled = {
     }
   },
   render: () =>
-    html` <div class="w-[370px] h-[500px]">
+    html` <div class="max-w-[370px] h-[500px]">
       <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
         <sd-datepicker label="Label" placeholder="Visually Disabled" visually-disabled></sd-datepicker>
       </sd-tooltip>
@@ -162,9 +162,13 @@ export const VisuallyDisabled = {
  */
 export const HelpText = {
   render: () =>
-    html`<div class="flex gap-12 h-[500px] w-[370px] h-[500px]">
-      <sd-datepicker label="Label" help-text="Help text attribute"></sd-datepicker>
-      <sd-datepicker label="Label">
+    html`<div class="flex flex-wrap md:flex-nowrap gap-12 h-[500px]">
+      <sd-datepicker
+        label="Label"
+        help-text="Help text attribute"
+        class="min-w-[200px] md:min-w-0 max-w-[370px]"
+      ></sd-datepicker>
+      <sd-datepicker label="Label" class="min-w-[200px] md:min-w-0 max-w-[370px]">
         <div slot="help-text">Help text slot</div>
       </sd-datepicker>
     </div>`
@@ -175,7 +179,7 @@ export const HelpText = {
  */
 export const Required = {
   render: () =>
-    html` <div class="w-[370px] h-[500px]">
+    html` <div class="max-w-[370px] h-[500px]">
       <sd-datepicker label="Label" required></sd-datepicker>
     </div>`
 };
@@ -188,7 +192,7 @@ export const Required = {
 
 export const Valid = {
   render: () => html`
-    <div class="w-[370px] h-[500px]">
+    <div class="max-w-[370px] h-[500px]">
       <sd-datepicker id="valid-example" label="Label" value="2025.11.10" style-on-valid=""></sd-datepicker>
     </div>
     <script type="module">
@@ -207,7 +211,7 @@ export const Valid = {
  */
 export const Invalid = {
   render: () => html`
-    <div class="w-[370px] h-[500px]">
+    <div class="max-w-[370px] h-[500px]">
       <sd-datepicker id="invalid-example" label="Label" style-on-valid="" required></sd-datepicker>
     </div>
     <script type="module">
@@ -226,7 +230,7 @@ export const Invalid = {
  */
 export const DisabledWeekends = {
   render: () =>
-    html` <div class="w-[370px] h-[500px]">
+    html` <div class="max-w-[370px] h-[500px]">
       <sd-datepicker label="Label" disabled-weekends></sd-datepicker>
     </div>`
 };
@@ -236,7 +240,7 @@ export const DisabledWeekends = {
  */
 export const DisabledDates = {
   render: () => html`
-    <div class="w-[370px] h-[500px]">
+    <div class="max-w-[370px] h-[500px]">
       <sd-datepicker
         label="Label"
         value="2025-11-10"
@@ -251,7 +255,7 @@ export const DisabledDates = {
  */
 export const Range = {
   render: () => html`
-    <div class="w-[370px] h-[500px]">
+    <div class="max-w-[370px] h-[500px]">
       <sd-datepicker label="Label" range range-start="2025-11-02" range-end="2025-11-12"></sd-datepicker>
     </div>
   `
@@ -262,7 +266,7 @@ export const Range = {
  */
 export const VisibleMonth = {
   render: () =>
-    html` <div class="w-[370px] h-[500px]">
+    html` <div class="max-w-[370px] h-[500px]">
       <sd-datepicker label="Label" view-month="2026-08"></sd-datepicker>
     </div>`
 };

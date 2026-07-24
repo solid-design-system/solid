@@ -68,7 +68,7 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
+    return html`<div class="max-w-[250px]">${generateTemplate({ args })}</div> `;
   }
 };
 
@@ -77,7 +77,7 @@ export const Labels = {
   args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
   render: (args: any) => {
     return html`
-      <div class="w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           args
         })}
@@ -93,14 +93,14 @@ export const FloatingLabel = {
   },
   render: (args: any) => {
     return html`
-      <div class="w-[350px]">
+      <div class="max-w-[350px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
         })}
       </div>
       <br />
-      <div class="w-[350px]">
+      <div class="max-w-[350px]">
         ${generateTemplate({
           constants: [
             { type: 'attribute', name: 'value', value: 'Floating Label with value' },
@@ -123,7 +123,7 @@ export const HelpText = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           args
         })}
@@ -132,7 +132,7 @@ export const HelpText = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           args,
           constants: [{ type: 'attribute', name: 'floating-label', value: true }]
@@ -149,7 +149,7 @@ export const Placeholders = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           args
         })}
@@ -158,7 +158,7 @@ export const Placeholders = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           args,
           constants: [{ type: 'attribute', name: 'floating-label', value: true }]
@@ -175,7 +175,7 @@ export const Clearable = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           args
         })}
@@ -184,7 +184,7 @@ export const Clearable = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           args,
           constants: [{ type: 'attribute', name: 'floating-label', value: true }]
@@ -201,7 +201,7 @@ export const TogglePassword = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           args,
           constants: [
@@ -214,7 +214,7 @@ export const TogglePassword = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           args,
           constants: [
@@ -239,7 +239,7 @@ export const Disabled = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'disabled', value: true }],
           args
@@ -249,7 +249,7 @@ export const Disabled = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           constants: [
             { type: 'attribute', name: 'disabled', value: true },
@@ -273,7 +273,7 @@ export const Readonly = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'readonly', value: true }],
           args
@@ -283,7 +283,7 @@ export const Readonly = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[250px]">
+      <div class="max-w-[250px]">
         ${generateTemplate({
           constants: [
             { type: 'attribute', name: 'readonly', value: true },
@@ -313,10 +313,14 @@ export const Sizes = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[250px]">
+      <div class="max-w-[400px]">
         ${generateTemplate({
           axis: {
             y: { type: 'attribute', name: 'size' }
+          },
+          options: {
+            classes:
+              'w-full md:table-fixed md:[&_td.template]:w-[75%] [&_td.template]:px-2 [&_tbody_th]:px-1 [&_th[rowspan]]:w-6!'
           },
           args
         })}
@@ -324,10 +328,14 @@ export const Sizes = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[250px]">
+      <div class="max-w-[400px]">
         ${generateTemplate({
           axis: {
             y: { type: 'attribute', name: 'size', values: ['lg', 'md'] }
+          },
+          options: {
+            classes:
+              'w-full md:table-fixed md:[&_td.template]:w-[75%] [&_td.template]:px-2 [&_tbody_th]:px-1 [&_th[rowspan]]:w-6!'
           },
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
@@ -354,20 +362,28 @@ export const StyleOnValid = {
     return html`
       <div>Default</div>
       <br />
-      <div class="h-[340px]">
+      <div class="h-[340px] max-w-[400px]">
         ${generateTemplate({
           axis: {
             y: { type: 'attribute', name: 'style-on-valid' }
+          },
+          options: {
+            classes:
+              'w-full md:table-fixed md:[&_td.template]:w-[75%] [&_td.template]:px-2 [&_tbody_th]:px-1 [&_th[rowspan]]:w-6!'
           },
           args
         })}
       </div>
       <div>Floating Label</div>
       <br />
-      <div class="h-[340px]">
+      <div class="h-[340px] max-w-[400px]">
         ${generateTemplate({
           axis: {
             y: { type: 'attribute', name: 'style-on-valid' }
+          },
+          options: {
+            classes:
+              'w-full md:table-fixed md:[&_td.template]:w-[75%] [&_td.template]:px-2 [&_tbody_th]:px-1 [&_th[rowspan]]:w-6!'
           },
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
@@ -396,7 +412,7 @@ export const Types = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[370px]">
+      <div class="max-w-[400px]">
         <div class="mb-2">
           ${generateTemplate({
             constants: [
@@ -526,7 +542,7 @@ export const Types = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[370px]">
+      <div class="max-w-[400px]">
         <div class="mb-2">
           ${generateTemplate({
             constants: [
@@ -671,7 +687,7 @@ export const Validation = {
   name: 'Validation',
   render: (args: any) => {
     return html`
-      <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
+      <form action="" method="get" id="testForm" name="testForm" class="max-w-[400px]">
         <div class="mb-2">
           ${generateTemplate({
             constants: [
@@ -968,8 +984,12 @@ export const Slots = {
               ]
             }
           },
+          options: {
+            classes:
+              'w-full md:max-w-[500px] md:table-fixed [&_thead>tr:first-child>td:first-child]:w-8 [&_td.template]:px-2'
+          },
           constants: [
-            { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
+            { type: 'template', name: 'width', value: '<div style="width: 100%; max-width: 400px">%TEMPLATE%</div>' },
             { type: 'attribute', name: 'clearable', value: true },
             { type: 'attribute', name: 'value', value: 'Value' },
             { type: 'attribute', name: 'label', value: 'Label' },
@@ -1019,6 +1039,9 @@ export const Parts = {
           })
         }
       },
+      options: {
+        classes: 'w-full md:max-w-[500px] md:table-fixed md:[&_td.template]:w-[65%]'
+      },
       constants: [
         { type: 'attribute', name: 'clearable', value: true },
         { type: 'attribute', name: 'value', value: 'Value' },
@@ -1048,7 +1071,7 @@ export const setCustomValidity = {
   render: () => {
     return html`
       <!-- block submit and show alert instead -->
-      <form id="validationForm" class="flex flex-col gap-2">
+      <form id="validationForm" class="flex flex-col gap-2 max-w-[400px]">
         <sd-input id="custom-input" label="Input" style-on-valid></sd-input>
         <div>
           <sd-button type="submit">Submit</sd-button>
@@ -1101,12 +1124,12 @@ export const Mouseless = {
     return html`
       <div>Default</div>
       <br />
-      <div class="mouseless w-[250px]">${generateTemplate({ args })}</div>
+      <div class="mouseless max-w-[250px]">${generateTemplate({ args })}</div>
       <br />
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="mouseless w-[250px]">
+      <div class="mouseless max-w-[250px]">
         ${generateTemplate({
           args,
           constants: [{ type: 'attribute', name: 'floating-label', value: true }]
