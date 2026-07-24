@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Packages/Components/Migration/from v6" />
+
+# Migration from v6
+
+## Component updates
+
+### `<sd-input>` and `<sd-textarea>`
+
+The `autocorrect` property is now a `boolean` instead of a `string`. This is required by the updated `HTMLElement.autocorrect` type shipped in TypeScript 5.9, which now matches how browsers implement the native `autocorrect` IDL attribute.
+
+The `autocorrect` HTML attribute is unaffected and still accepts `"on"` and `"off"`, so no markup changes are needed.
+
+```html
+<!-- No changes required -->
+<sd-input autocorrect="off"></sd-input>
+<sd-textarea autocorrect="off"></sd-textarea>
+```
+
+Only code that sets the property directly in JavaScript/TypeScript needs to be updated:
+
+**Before:**
+
+```js
+input.autocorrect = 'off';
+```
+
+**After:**
+
+```js
+input.autocorrect = false;
+```

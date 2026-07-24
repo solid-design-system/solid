@@ -370,6 +370,29 @@ describe('<sd-textarea>', () => {
     });
   });
 
+  describe('when using autocorrect', () => {
+    it('should not set the attribute by default', async () => {
+      const el = await fixture<SdTextarea>(html` <sd-textarea></sd-textarea> `);
+      const textarea = el.shadowRoot!.querySelector<HTMLTextAreaElement>('textarea')!;
+      expect(el.autocorrect).to.be.undefined;
+      expect(textarea.hasAttribute('autocorrect')).to.be.false;
+    });
+
+    it('should enable autocorrect when set to "on"', async () => {
+      const el = await fixture<SdTextarea>(html` <sd-textarea autocorrect="on"></sd-textarea> `);
+      const textarea = el.shadowRoot!.querySelector<HTMLTextAreaElement>('textarea')!;
+      expect(el.autocorrect).to.be.true;
+      expect(textarea.getAttribute('autocorrect')).to.equal('on');
+    });
+
+    it('should disable autocorrect when set to "off"', async () => {
+      const el = await fixture<SdTextarea>(html` <sd-textarea autocorrect="off"></sd-textarea> `);
+      const textarea = el.shadowRoot!.querySelector<HTMLTextAreaElement>('textarea')!;
+      expect(el.autocorrect).to.be.false;
+      expect(textarea.getAttribute('autocorrect')).to.equal('off');
+    });
+  });
+
   it('should focus the textarea when clicking on the floating label or its span', async () => {
     const el = await fixture<SdTextarea>(html` <sd-textarea label="Name" floating-label></sd-textarea> `);
     await el.updateComplete;

@@ -606,6 +606,29 @@ describe('<sd-input>', () => {
     });
   });
 
+  describe('when using autocorrect', () => {
+    it('should not set the attribute by default', async () => {
+      const el = await fixture<SdInput>(html` <sd-input></sd-input> `);
+      const input = el.shadowRoot!.querySelector<HTMLInputElement>('input')!;
+      expect(el.autocorrect).to.be.undefined;
+      expect(input.hasAttribute('autocorrect')).to.be.false;
+    });
+
+    it('should enable autocorrect when set to "on"', async () => {
+      const el = await fixture<SdInput>(html` <sd-input autocorrect="on"></sd-input> `);
+      const input = el.shadowRoot!.querySelector<HTMLInputElement>('input')!;
+      expect(el.autocorrect).to.be.true;
+      expect(input.getAttribute('autocorrect')).to.equal('on');
+    });
+
+    it('should disable autocorrect when set to "off"', async () => {
+      const el = await fixture<SdInput>(html` <sd-input autocorrect="off"></sd-input> `);
+      const input = el.shadowRoot!.querySelector<HTMLInputElement>('input')!;
+      expect(el.autocorrect).to.be.false;
+      expect(input.getAttribute('autocorrect')).to.equal('off');
+    });
+  });
+
   describe('when using spin-buttons', () => {
     it('should show spin buttons when spin-buttons is set', async () => {
       const el = await fixture<SdInput>(html` <sd-input type="number" spin-buttons></sd-input> `);

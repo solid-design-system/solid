@@ -44,7 +44,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.minlength: number — The minimum length of input that will be considered valid.
 - prop.maxlength: number — The maximum length of input that will be considered valid.
 - prop.autocapitalize: |'off'|'none'|'on'|'sentences'|'words'|'characters' — Controls whether and how text input is automatically capitalized as it is entered by the user.
-- prop.autocorrect: 'off'|'on' — Indicates whether the browser's autocorrect feature is on or off.
+- prop.autocorrect: boolean — Indicates whether the browser's autocorrect feature is on or off.
 - prop.autocomplete: string — Specifies what permission the browser has to provide assistance in filling out form field values. Refer to
   [this page on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for available values.
 - prop.autofocus: boolean — Indicates that the input should receive focus on page load.

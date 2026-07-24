@@ -228,7 +228,17 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     | 'words'
     | 'characters';
 
-  @property({ type: String, reflect: true }) autocorrect: 'off' | 'on';
+  /** Indicates whether the browser's autocorrect feature is on or off. */
+  @property({
+    type: Boolean,
+    reflect: true,
+    converter: {
+      // Allow "on|off" attribute values but keep the property boolean
+      fromAttribute: value => value !== 'off',
+      toAttribute: value => (value ? 'on' : 'off')
+    }
+  })
+  autocorrect: boolean;
 
   /**
    * Specifies what permission the browser has to provide assistance in filling out form field values. Refer to
@@ -689,7 +699,15 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 ifDefined(this.autocomplete as any)
               }
-              autocorrect=${ifDefined(this.type === 'password' ? 'off' : this.autocorrect)}
+              autocorrect=${ifDefined(
+                this.type === 'password'
+                  ? 'off'
+                  : this.autocorrect === undefined
+                    ? undefined
+                    : this.autocorrect
+                      ? 'on'
+                      : 'off'
+              )}
               ?autofocus=${this.autofocus}
               spellcheck=${this.spellcheck}
               pattern=${ifDefined(this.pattern)}

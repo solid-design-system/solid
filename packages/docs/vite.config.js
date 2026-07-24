@@ -82,6 +82,12 @@ export default () => {
     ],
     css: {
       postcss: {}
+    },
+    build: {
+      // Vite 8 defaults to Lightning CSS for minification, which fails to parse some of our
+      // generated Tailwind utility selectors. Fall back to the previous esbuild-based minifier.
+      // https://vite.dev/guide/migration.html#css-minification-by-lightning-css
+      cssMinify: 'esbuild'
     }
   };
 };
