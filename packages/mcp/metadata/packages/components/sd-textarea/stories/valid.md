@@ -1,7 +1,7 @@
 The component gets `valid` state when the input is valid. Use the `style-on-valid` attribute to automatically indicate and show a valid state.
 
 ```html
-<form class="w-[500px]">
+<form class="max-w-[500px]">
   <sd-textarea
     id="valid-textarea"
     value="Input text here"

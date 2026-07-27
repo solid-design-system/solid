@@ -1,7 +1,7 @@
 The component gets `invalid` state when the datepicker is not valid.
 
 ```html
-<div class="w-[370px] h-[500px]">
+<div class="max-w-[370px] h-[500px]">
   <sd-datepicker id="invalid-example" label="Label" style-on-valid="" required></sd-datepicker>
 </div>
 <script type="module">

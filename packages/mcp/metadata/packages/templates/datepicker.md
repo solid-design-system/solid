@@ -9,7 +9,7 @@ version: 1.0.0
 ## Template: Datepicker with a Selected Date and Unavailable Weekends
 
 ```html
-<div class="w-[370px]">
+<div class="max-w-[370px]">
   <sd-datepicker value="2025.11.21" disabled-weekends alignment="right" label="Appointment"></sd-datepicker>
 </div>
 ```
@@ -17,7 +17,7 @@ version: 1.0.0
 ## Template: Datepicker with a Selected Date and Unavailable Dates
 
 ```html
-<div class="w-[370px]">
+<div class="max-w-[370px]">
   <sd-datepicker
     value="2025.11.21"
     disabled-dates="2025.11.04,2025.11.12,2025.11.18,2025.11.26"
@@ -31,7 +31,7 @@ version: 1.0.0
 ## Template: Datepicker with a Selected Range
 
 ```html
-<div class="w-[370px]">
+<div class="max-w-[370px]">
   <sd-datepicker
     value="2025.11.21"
     range
