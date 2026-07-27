@@ -67,7 +67,7 @@ export const Open = {
   name: 'Open',
   render: () => html`
     <div class="h-[40vh]">
-      <sd-button id="drawer-trigger">Open Dialog</sd-button>
+      <sd-button id="drawer-trigger">Open dialog</sd-button>
       <sd-dialog id="dialog" open>
         <span slot="headline" class="sd-headline sd-headline--size-3xl">Lorem ipsum</span>
         <p class="sd-paragraph">
@@ -96,7 +96,7 @@ export const Headline = {
   name: 'Headline',
   render: () => html`
     <div class="h-[40vh]">
-      <sd-button id="headline-drawer-trigger">Open Dialog</sd-button>
+      <sd-button id="headline-drawer-trigger">Open dialog</sd-button>
       <sd-dialog id="headline-dialog" open headline="Headline">
         <p class="sd-paragraph">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
@@ -123,10 +123,10 @@ export const Headline = {
  */
 
 export const NoCloseButton = {
-  name: 'No Close Button',
+  name: 'No close button',
   render: () => html`
     <div class="h-[40vh]">
-      <sd-button id="no-close-drawer-trigger">Open Dialog</sd-button>
+      <sd-button id="no-close-drawer-trigger">Open dialog</sd-button>
       <sd-dialog id="no-close-dialog" headline="Headline" open no-close-button>
         <p class="sd-paragraph">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et

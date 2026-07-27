@@ -56,7 +56,7 @@ export const Default = {
   name: 'Default',
   render: (args: any) => {
     return html` <div style="width: auto; height: 40vh; position: relative;">
-        <sd-button id="open-default-drawer">Open Drawer</sd-button>
+        <sd-button id="open-default-drawer">Open drawer</sd-button>
         ${generateTemplate({
           args
         })}
@@ -75,7 +75,7 @@ export const Default = {
 export const Open = {
   name: 'Open',
   render: () => html`
-    <sd-button id="openButton">Open Drawer</sd-button>
+    <sd-button id="openButton">Open drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
       <sd-drawer open label="example" placement="start" id="openDrawer">
         <sd-button slot="header" variant="tertiary">
@@ -106,14 +106,14 @@ export const Open = {
 export const Placement = {
   name: 'Placement',
   render: () => html`
-    <sd-button id="placementButton">Open Drawer</sd-button>
+    <sd-button id="placementButton">Open drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
       <sd-drawer open placement="start" id="placementDrawer" label="Placement drawer">
         <sd-input slot="header" type="search" size="lg" placeholder="Start typing" label="Search"></sd-input>
         <div class="slot slot--border slot--text h-full">Default slot</div>
         <div slot="footer" class="flex flex-col w-full gap-4">
-          <sd-button variant="primary">Primary Action</sd-button>
-          <sd-button variant="secondary">Secondary Action</sd-button>
+          <sd-button variant="primary">Primary action</sd-button>
+          <sd-button variant="secondary">Secondary action</sd-button>
         </div>
       </sd-drawer>
     </div>
@@ -131,7 +131,7 @@ export const Placement = {
 export const NoHeader = {
   name: 'No Header',
   render: () => html`
-    <sd-button id="noHeaderButton">Open Drawer</sd-button>
+    <sd-button id="noHeaderButton">Open drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
       <sd-drawer open no-header placement="start" id="noHeaderDrawer" label="No header drawer">
         <div class="slot slot--border slot--text h-full">Default slot</div>

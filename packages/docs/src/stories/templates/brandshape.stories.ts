@@ -45,7 +45,7 @@ export const Transparent = {
       </style>
       <div class="brandshape-wrapper">
         <sd-brandshape variant="primary|80">
-          <h4 class="sd-headline sd-headline--3xl mb-4 text-white">
+          <h4 class="sd-headline sd-headline--3xl mb-4 !text-white">
             Exclusion criteria: Ensure minimum standards, avoid controversies
           </h4>
           <p class="sd-paragraph text-white">
