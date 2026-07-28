@@ -10,7 +10,7 @@ version: 1.0.0
 ## Template: Input With Currency Stepper
 
 ```html
-<div class="w-[250px]">
+<div class="max-w-[250px]">
   <sd-input label="Currency stepper" id="stepperSampleInput" type="number" spin-buttons min="0" value="0.00">
     <span slot="right" class="text-sm inline-flex items-center">
       <span class="text-neutral-700">EUR</span>

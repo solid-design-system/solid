@@ -4,7 +4,7 @@ Once the maximum number of options is reached, the selection will display a mess
 To remove the limit, set the attribute to `0`.
 
 ```html
-<div class="w-[400px] h-[500px]">
+<div class="max-w-[400px] h-[500px]">
   <sd-select
     size="lg"
     label="Label"
