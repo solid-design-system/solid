@@ -120,6 +120,7 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
         const theme = getThemeAttributes();
         const font = fontConfig[theme.font as keyof typeof fontConfig] ?? fontConfig.ui;
         const themePath = theme.css;
+        const codepenFontFaces = font.fontFaces.replaceAll('%ASSETS-BASE-URL%', urls().assets);
 
         // Docs: https://blog.codepen.io/documentation/prefill/
         const data = {
@@ -132,7 +133,7 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
 /* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-styles-installation--docs */
 @import url("${urls().styles}/solid-styles.css");
 
-${font.fontFaces}
+${codepenFontFaces}
 
 /* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components-installation--docs */
 body {

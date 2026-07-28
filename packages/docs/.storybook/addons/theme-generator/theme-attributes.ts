@@ -54,7 +54,21 @@ export const fontConfig = {
     fontFamily: `'Bricolage Grotesque'`
   },
   bbbank: {
-    fontFaces: '',
+    fontFaces: `@font-face {
+  font-family: 'BBBank Type TT';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('%ASSETS-BASE-URL%/fonts/bbbank/BBBankTypeTT-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'BBBank Type TT';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('%ASSETS-BASE-URL%/fonts/bbbank/BBBankTypeTT-Bold.woff2') format('woff2');
+}`,
     fontFamily: `'BBBank Type TT'`
   }
 } as const;
