@@ -19,7 +19,9 @@ const build = async () => {
   await buildStyles();
   await buildTemplates();
   await buildTokens();
-  await buildIcons();
+  if (process.env.SKIP_ICON_FETCH !== 'true') {
+    await buildIcons();
+  }
   await buildPackageDocs();
 
   // Should be run last as we will copy files where we see fit and paths must exist
