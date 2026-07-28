@@ -2,7 +2,7 @@ The component gets `valid` state when the input is valid.
 Use the `style-on-valid` attribute to automatically indicate and show a valid state.
 
 ```html
-<div class="w-[400px] h-[400px]">
+<div class="max-w-[400px] h-[400px]">
   <sd-select
     size="lg"
     placement="bottom"

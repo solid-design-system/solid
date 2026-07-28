@@ -1,7 +1,7 @@
 Use the `disable-dates` attribute to manually disable days in your datepicker. If this attribute is active the range selection will not be possible.
 
 ```html
-<div class="w-[370px] h-[500px]">
+<div class="max-w-[370px] h-[500px]">
   <sd-datepicker
     label="Label"
     value="2025-11-10"

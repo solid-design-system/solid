@@ -1,10 +1,24 @@
 Use the `type` attribute to control the type of input the browser renders.
 
 ```html
-<div class="grid grid-cols-2 gap-12 content-end">
-  <sd-input type="text" placeholder="Lorem ipsum" label="Text (default)" help-text="Default type" spellcheck></sd-input>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 content-end">
+  <sd-input
+    type="text"
+    placeholder="Lorem ipsum"
+    label="Text (default)"
+    help-text="Default type"
+    spellcheck
+    class="max-w-[400px]"
+  ></sd-input>
 
-  <sd-input type="search" placeholder="Search term" label="Search" help-text="Use search format" spellcheck></sd-input>
+  <sd-input
+    type="search"
+    placeholder="Search term"
+    label="Search"
+    help-text="Use search format"
+    spellcheck
+    class="max-w-[400px]"
+  ></sd-input>
 
   <sd-input
     type="date"
@@ -12,6 +26,7 @@ Use the `type` attribute to control the type of input the browser renders.
     value="2025-03-01"
     help-text="Value is restricted to date format"
     spellcheck
+    class="max-w-[400px]"
   ></sd-input>
 
   <sd-input
@@ -20,9 +35,17 @@ Use the `type` attribute to control the type of input the browser renders.
     value="2025-03-01T10:30"
     help-text="Value is restricted to datetime format"
     spellcheck
+    class="max-w-[400px]"
   ></sd-input>
 
-  <sd-input type="time" label="Time" value="10:30" help-text="Value is restricted to time format" spellcheck></sd-input>
+  <sd-input
+    type="time"
+    label="Time"
+    value="10:30"
+    help-text="Value is restricted to time format"
+    spellcheck
+    class="max-w-[400px]"
+  ></sd-input>
 
   <sd-input
     type="number"
@@ -31,6 +54,7 @@ Use the `type` attribute to control the type of input the browser renders.
     help-text="Value is restricted to numbers"
     spin-buttons
     spellcheck
+    class="max-w-[400px]"
   ></sd-input>
 
   <sd-input
@@ -39,6 +63,7 @@ Use the `type` attribute to control the type of input the browser renders.
     label="Email"
     help-text="Validate with email address format"
     spellcheck
+    class="max-w-[400px]"
   ></sd-input>
 
   <sd-input
@@ -47,6 +72,7 @@ Use the `type` attribute to control the type of input the browser renders.
     label="Tel"
     help-text="Shows optimized keyboard on touch devices or similar"
     spellcheck
+    class="max-w-[400px]"
   ></sd-input>
 
   <sd-input
@@ -56,6 +82,7 @@ Use the `type` attribute to control the type of input the browser renders.
     help-text="Use password display format"
     password-toggle
     spellcheck
+    class="max-w-[400px]"
   ></sd-input>
 
   <sd-input
@@ -66,6 +93,7 @@ Use the `type` attribute to control the type of input the browser renders.
     password-toggle
     password-visible
     spellcheck
+    class="max-w-[400px]"
   ></sd-input>
 
   <sd-input
@@ -75,6 +103,7 @@ Use the `type` attribute to control the type of input the browser renders.
     help-text="Validate with url format"
     name="url field"
     spellcheck
+    class="max-w-[400px]"
   ></sd-input>
 </div>
 ```
