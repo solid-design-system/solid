@@ -3,7 +3,7 @@ Use the `style-on-valid` attribute to automatically indicate and show a valid st
 
 ```html
 <form id="valid-form">
-  <sd-input id="valid-input" class="w-[250px]" label="Label" style-on-valid value="Input text here"></sd-input>
+  <sd-input id="valid-input" class="max-w-[400px]" label="Label" style-on-valid value="Input text here"></sd-input>
 </form>
 <script type="module">
   await Promise.all([customElements.whenDefined('sd-input')]).then(() => {

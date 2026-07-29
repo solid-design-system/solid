@@ -117,7 +117,7 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return html`<div class="h-[260px] w-full max-w-[400px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="h-[260px] max-w-[400px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -127,7 +127,7 @@ export const Labels = {
     label: 'Label'
   },
   render: (args: any) => {
-    return html`<div class="h-[260px] w-full max-w-[400px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="h-[260px] max-w-[400px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -138,14 +138,14 @@ export const FloatingLabel = {
   },
   render: (args: any) => {
     return html`
-      <div class="h-[260px] w-full max-w-[400px]">
+      <div class="h-[260px] max-w-[400px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
         })}
       </div>
       <br />
-      <div class="h-[260px] w-full max-w-[400px]">
+      <div class="h-[260px] max-w-[400px]">
         ${generateTemplate({
           constants: [
             { type: 'attribute', name: 'value', value: 'option-1' },
@@ -170,7 +170,7 @@ export const SizeMultiple = {
 
     return html` <div>Default</div>
       <br />
-      <div class="min-h-[340px] w-full max-w-[700px]">
+      <div class="min-h-[340px] max-w-[700px]">
         ${generateTemplate({
           options: {
             classes: 'w-full'
@@ -188,7 +188,7 @@ export const SizeMultiple = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="min-h-[340px] w-full max-w-[700px]">
+      <div class="min-h-[340px] max-w-[700px]">
         ${generateTemplate({
           options: {
             classes: 'w-full'
@@ -224,10 +224,10 @@ export const DisabledMultiple = {
       <div class="min-h-[340px] w-full">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:w-[50%] [&_*]:min-w-0'
+            classes: 'w-full [&_*]:min-w-0'
           },
           axis: {
-            x: {
+            y: {
               type: 'attribute',
               name: 'disabled',
               values: [false, true]
@@ -250,10 +250,10 @@ export const DisabledMultiple = {
       <div class="min-h-[340px] w-full">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:w-[50%] [&_*]:min-w-0'
+            classes: 'w-full [&_*]:min-w-0'
           },
           axis: {
-            x: {
+            y: {
               type: 'attribute',
               name: 'disabled',
               values: [false, true]
@@ -291,16 +291,19 @@ export const ValidInvalid = {
 
     return html`
       <div>Default</div>
-      <form id="valid-invalid-default" class="h-[260px] w-full flex gap-4">
+      <form id="valid-invalid-default" class="w-full">
         ${generateTemplate({
           options: {
             classes: 'w-full [&>tbody>tr>td]:align-top'
           },
           axis: {
-            x: {
+            y: {
               type: 'attribute',
               name: 'value',
-              values: ['option-1 option-2', '']
+              values: [
+                { value: 'option-1 option-2', title: 'valid' },
+                { value: '', title: 'invalid' }
+              ]
             }
           },
           constants: [twoOptionsConstant, labelConstant, multipleConstant],
@@ -310,16 +313,19 @@ export const ValidInvalid = {
 
       <br />
       <div>Floating Label</div>
-      <form id="valid-invalid-floating" class="h-[260px] w-full flex gap-4">
+      <form id="valid-invalid-floating" class="w-full">
         ${generateTemplate({
           options: {
             classes: 'w-full [&>tbody>tr>td]:align-top'
           },
           axis: {
-            x: {
+            y: {
               type: 'attribute',
               name: 'value',
-              values: ['option-1 option-2', '']
+              values: [
+                { value: 'option-1 option-2', title: 'valid' },
+                { value: '', title: 'invalid' }
+              ]
             }
           },
           constants: [
@@ -369,7 +375,7 @@ export const BorderVisibility = {
   render: () => {
     return html` <div>Default</div>
       <br />
-      <div class="h-[150px] w-full max-w-[400px]">
+      <div class="h-[150px] max-w-[400px]">
         ${generateTemplate({
           args: overrideArgs([
             twentyOptionsConstant,
@@ -383,7 +389,7 @@ export const BorderVisibility = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="h-[150px] w-full max-w-[400px]">
+      <div class="h-[150px] max-w-[400px]">
         ${generateTemplate({
           args: overrideArgs([
             twentyOptionsConstant,
@@ -423,15 +429,14 @@ export const Slots = {
                       ? `<sd-option></sd-option>`
                       : `<div
                           slot='${slot}'
-                          class="slot slot--border slot--background h-6 ${slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'}"
-                      >${slot === 'label' ? 'Label' : ''}</div>`,
+                          class="slot slot--border slot--background h-6 ${slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'}">${slot === 'label' ? 'Label' : ''}</div>`,
                   title: slot
                 }
               ]
             }
           },
           constants: [
-            { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
+            { type: 'template', name: 'width', value: '<div style="width: 100%; max-width: 300px">%TEMPLATE%</div>' },
             clearableConstant,
             labelConstant,
             helpTextConstant,
@@ -540,7 +545,7 @@ export const Focus = {
   render: () => html`
     <div>Default</div>
     <br />
-    <div class="h-[260px] w-full max-w-[400px]">
+    <div class="h-[260px] max-w-[400px]">
       <sd-combobox label="Label">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -550,7 +555,7 @@ export const Focus = {
     <br />
     <div>Floating Label</div>
     <br />
-    <div class="h-[260px] w-full max-w-[400px]">
+    <div class="h-[260px] max-w-[400px]">
       <sd-combobox label="Label" floating-label>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -635,7 +640,7 @@ export const Tags = {
   render: () => html`
     <div>Default</div>
     <br />
-    <div class="h-[260px] w-full max-w-[400px]">
+    <div class="h-[260px] max-w-[400px]">
       <sd-combobox label="Label" multiple value="option-1 option-2">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -645,7 +650,7 @@ export const Tags = {
     <br />
     <div>Floating Label</div>
     <br />
-    <div class="h-[260px] w-full max-w-[400px]">
+    <div class="h-[260px] max-w-[400px]">
       <sd-combobox label="Label" floating-label multiple value="option-1 option-2">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -660,7 +665,7 @@ export const SimpleSuggests = {
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
     return html`
-      <div class="h-[260px] w-full max-w-[400px]">
+      <div class="h-[260px] max-w-[400px]">
         <sd-combobox label="Preferred color"> ${createColorOptionsHtml()} </sd-combobox>
       </div>
     `;
@@ -681,7 +686,7 @@ export const NotFoundMessage = {
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
     return html`
-      <div class="h-[260px] w-full max-w-[400px]">
+      <div class="h-[260px] max-w-[400px]">
         <sd-combobox label="Preferred Color"> ${createColorOptionsHtml()} </sd-combobox>
       </div>
     `;
@@ -702,7 +707,7 @@ export const HighlightQuery = {
   render: () => {
     const optionRenderer = highlightOptionRenderer;
     return html`
-      <div class="h-[260px] w-full max-w-[400px]">
+      <div class="h-[260px] max-w-[400px]">
         <sd-combobox label="Preferred color" class="highlight-combobox"> ${createColorOptionsHtml()} </sd-combobox>
       </div>
       <script type="module">
@@ -845,8 +850,8 @@ export const SampleForm = {
     ];
 
     return html`
-      <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
-        <div class="mb-6 w-full max-w-[400px]">
+      <form action="" method="get" id="testForm" name="testForm" class="max-w-[370px]">
+        <div class="mb-6 max-w-[400px]">
           ${generateTemplate({
             constants: [
               ...sharedConstants,
@@ -856,7 +861,7 @@ export const SampleForm = {
             args
           })}
         </div>
-        <div class="mb-6 w-full max-w-[400px]">
+        <div class="mb-6 max-w-[400px]">
           ${generateTemplate({
             constants: [
               ...sharedConstants,
@@ -867,7 +872,7 @@ export const SampleForm = {
             args
           })}
         </div>
-        <div class="mb-8 w-full max-w-[400px]">
+        <div class="mb-8 max-w-[400px]">
           ${generateTemplate({
             constants: [
               ...sharedConstants,

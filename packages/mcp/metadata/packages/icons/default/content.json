@@ -850,6 +850,11 @@
     "tags": ["beglaubigt", "Anteilsschein", "Wertpapiere", "Dokument"]
   },
   {
+    "technicalId": "wave",
+    "displayNameDe": "Welle",
+    "tags": ["Trend", "Tendenz", "Altersvorsorge"]
+  },
+  {
     "technicalId": "wind-energy",
     "displayNameDe": "Windenergie",
     "tags": ["Wetter", "Energie", "Nachhaltigkeit"]
@@ -1175,6 +1180,11 @@
     "tags": ["Uhr", "Deadline", "dringend", "Alarm", "Eile"]
   },
   {
+    "technicalId": "wind",
+    "displayNameDe": "Wind",
+    "tags": ["Wandel", "Altersvorsorge", "Veränderung"]
+  },
+  {
     "technicalId": "commen-ground",
     "displayNameDe": "Schnittmenge",
     "tags": ["Übereinstimmung", "Gemeinsamkeit", "Überschneidung"]
@@ -1325,14 +1335,14 @@
     "tags": ["Eile", "Notfall", "Deadline", "Uhr", "dringend"]
   },
   {
-    "technicalId": "yen",
-    "displayNameDe": "Yen",
-    "tags": ["Japan", "Geld", "Symbol", "Währung"]
-  },
-  {
     "technicalId": "checkbox",
     "displayNameDe": "Checkbox",
     "tags": ["fertig", "erledigt", "Haken", "abhaken"]
+  },
+  {
+    "technicalId": "yen",
+    "displayNameDe": "Yen",
+    "tags": ["Japan", "Geld", "Symbol", "Währung"]
   },
   {
     "technicalId": "badge",
@@ -1463,6 +1473,11 @@
     "technicalId": "rotate-device",
     "displayNameDe": "Gerät drehen",
     "tags": ["Handy", "umdrehen", "Device", "kippen"]
+  },
+  {
+    "technicalId": "lighthouse",
+    "displayNameDe": "Leutturm",
+    "tags": ["Orientierung", "Sicherheit", "Zuverlässigkeit", "Altersvorsorge"]
   },
   {
     "technicalId": "face-neutral",
@@ -1735,14 +1750,14 @@
     "tags": ["Ablauf", "Prozess", "Projekt"]
   },
   {
-    "technicalId": "house-percent",
-    "displayNameDe": "Haus Prozent",
-    "tags": ["Immobilien", "Quoten", "mieten", "Vermietungsquote"]
-  },
-  {
     "technicalId": "person-newspaper",
     "displayNameDe": "Person Zeitung",
     "tags": ["Neuigkeiten", "News", "Magazin", "Zeitung"]
+  },
+  {
+    "technicalId": "house-percent",
+    "displayNameDe": "Haus Prozent",
+    "tags": ["Immobilien", "Quoten", "mieten", "Vermietungsquote"]
   },
   {
     "technicalId": "house-protective-shield",
