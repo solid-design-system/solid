@@ -43,11 +43,7 @@ Result: `sd-teaser` no longer forces font-weight, margin or test size on headlin
 
 ## Removed the default margin from inline `sd-notification`
 
-Previously, the `base` CSS part of `sd-notification` applied a margin regardless of whether the notification was displayed inline or as a toast. This could make inline notifications difficult to align with their surrounding layout.
-
-The component no longer applies that margin itself. Inline notifications therefore have no default margin. For notifications inside an `.sd-toast-stack`, the global component stylesheet now sets the `base` CSS part to `m-0` and applies `m-2 shadow` to the `wrapper` CSS part. Toast notifications keep their existing spacing and shadow without reintroducing margin on `base`.
-
-If your inline notifications rely on the previous spacing, add it explicitly to your layout or through the `base` CSS part.
+Inline `sd-notification` components no longer have a default margin applied. If your inline notifications relied on the previous spacing, add it manually via the base CSS part (e.g. m-2).
 
 **Before**:
 
@@ -68,8 +64,6 @@ The component applied its own margin.
   }
 </style>
 ```
-
-Inline notifications without additional styling now align directly with their containing layout.
 
 ## Breaking change #3
 
