@@ -1,4 +1,5 @@
 import '../loader/loader';
+import '../theme-listener/theme-listener';
 import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { FormControlController, validValidityState } from '../../internal/form';
@@ -19,6 +20,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  *
  * @dependency sd-icon
  * @dependency sd-loader
+ * @dependency sd-theme-listener
  *
  * @event sd-blur - Emitted when the button loses focus.
  * @event sd-focus - Emitted when the button gains focus.
@@ -109,7 +111,6 @@ import type { SolidFormControl } from '../../internal/solid-element';
  */
 @customElement('sd-button')
 export default class SdButton extends SolidElement implements SolidFormControl {
-  private readonly themeClassObserver = new MutationObserver(() => this.updateMotionTheme());
   private readonly formControlController = new FormControlController(this, {
     form: input => {
       // Buttons support a form attribute that points to an arbitrary form, so if this attribute it set we need to query
@@ -227,16 +228,6 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   connectedCallback(): void {
     super.connectedCallback();
     this.updateMotionTheme();
-    this.themeClassObserver.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-      subtree: true
-    });
-  }
-
-  disconnectedCallback(): void {
-    super.disconnectedCallback();
-    this.themeClassObserver.disconnect();
   }
 
   firstUpdated() {
@@ -245,8 +236,13 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     }
   }
 
+  protected onThemeChange(): void {
+    this.updateMotionTheme();
+  }
+
   private updateMotionTheme(): void {
-    this.hasUiMotion = Boolean(this.closest('.sd-theme-ui-light, .sd-theme-ui-dark'));
+    const theme = getComputedStyle(this).getPropertyValue('--sd-theme').trim().replace(/['"]/g, '');
+    this.hasUiMotion = theme === '' || theme === 'ui-light' || theme === 'ui-dark';
   }
 
   private handleBlur() {
@@ -356,6 +352,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
     return html`
+      <sd-theme-listener></sd-theme-listener>
       <${tag}
       part="base"
       class=${cx(
