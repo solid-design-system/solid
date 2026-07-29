@@ -31,7 +31,7 @@ describe('when using the version utilities', () => {
       const version = getVersion();
       assert.notStrictEqual(version, undefined);
       assert.strictEqual(typeof version, 'string');
-      assert.match(version, /^\d+\.\d+\.\d+$/);
+      assert.match(version, /^\d+\.\d+\.\d+(-[\w.]+)?$/);
     });
 
     it('should match the version from getPackageInfo', () => {

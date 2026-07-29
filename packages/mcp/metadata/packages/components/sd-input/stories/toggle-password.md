@@ -2,7 +2,7 @@ Use the `password-toggle` attribute to add a toggle button that will show the pa
 **Hint:** Only works with `type=password`.
 
 ```html
-<div class="w-[250px]">
+<div class="max-w-[400px]">
   <sd-input type="password" label="Toggle password" password-toggle spellcheck></sd-input>
 </div>
 ```

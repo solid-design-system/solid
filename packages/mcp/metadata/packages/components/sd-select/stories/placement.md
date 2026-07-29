@@ -4,8 +4,14 @@ Use the `placement` attribute to define where the select panel should appear:
 - `top`
 
 ```html
-<div class="flex items-center gap-12 h-[500px]">
-  <sd-select class="self-baseline" size="lg" label="Label" placement="bottom" value="">
+<div class="flex flex-wrap md:flex-nowrap items-center gap-12 h-[500px]">
+  <sd-select
+    class="self-baseline w-full min-w-[200px] md:min-w-0 max-w-[400px]"
+    size="lg"
+    label="Label"
+    placement="bottom"
+    value=""
+  >
     <sd-option value="option-1">Option 1</sd-option>
     <sd-option value="option-2">Option 2</sd-option>
     <sd-option value="option-3">Option 3</sd-option>
@@ -13,7 +19,7 @@ Use the `placement` attribute to define where the select panel should appear:
     <sd-option value="option-5">Option 5</sd-option>
   </sd-select>
 
-  <sd-select size="lg" label="Label" placement="top" value="">
+  <sd-select size="lg" label="Label" placement="top" value="" class="w-full min-w-[200px] md:min-w-0 max-w-[400px]">
     <sd-option value="option-1">Option 1</sd-option>
     <sd-option value="option-2">Option 2</sd-option>
     <sd-option value="option-3">Option 3</sd-option>
