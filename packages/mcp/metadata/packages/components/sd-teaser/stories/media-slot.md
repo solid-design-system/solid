@@ -3,7 +3,7 @@ Teasers accept a `media` slot to display images or videos.
 
 ```html
 <sd-teaser>
-  <h3 slot="headline">Lorem ipsum sic semper</h3>
+  <h3 slot="headline" class="sd-headline sd-headline--size-lg">Lorem ipsum sic semper</h3>
   <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
   <p>
     Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
