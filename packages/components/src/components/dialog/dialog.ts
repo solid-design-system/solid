@@ -1,5 +1,6 @@
 import '../button/button';
 import '../icon/icon';
+import '../theme-listener/theme-listener';
 import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
@@ -24,6 +25,7 @@ import SolidElement from '../../internal/solid-element';
  *
  * @dependency sd-button
  * @dependency sd-icon
+ * @dependency sd-theme-listener
  *
  * @slot - The dialog's main content.
  * @slot headline - The dialog's headline. Alternatively, you can use the `headline` attribute.
@@ -62,7 +64,6 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-dialog')
 export default class SdDialog extends SolidElement {
-  private readonly themeClassObserver = new MutationObserver(() => this.updateMotionTheme());
   private readonly hasSlotController = new HasSlotController(this, 'footer');
   public localize = new LocalizeController(this);
   private modal: Modal;
@@ -92,11 +93,6 @@ export default class SdDialog extends SolidElement {
   connectedCallback() {
     super.connectedCallback();
     this.updateMotionTheme();
-    this.themeClassObserver.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-      subtree: true
-    });
     this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
     this.modal = new Modal(this);
   }
@@ -113,12 +109,16 @@ export default class SdDialog extends SolidElement {
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.themeClassObserver.disconnect();
     unlockBodyScrolling(this);
   }
 
+  protected onThemeChange(): void {
+    this.updateMotionTheme();
+  }
+
   private updateMotionTheme(): void {
-    this.hasUiMotion = Boolean(this.closest('.sd-theme-ui-light, .sd-theme-ui-dark'));
+    const theme = getComputedStyle(this).getPropertyValue('--sd-theme').trim().replace(/['"]/g, '');
+    this.hasUiMotion = theme === '' || theme === 'ui-light' || theme === 'ui-dark';
   }
 
   private get prefersReducedMotion() {
@@ -287,6 +287,7 @@ export default class SdDialog extends SolidElement {
   render() {
     /* eslint-disable lit-a11y/click-events-have-key-events */
     return html`
+      <sd-theme-listener></sd-theme-listener>
       <div
         part="base"
         class=${cx(
