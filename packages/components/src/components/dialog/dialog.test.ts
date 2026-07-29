@@ -99,9 +99,12 @@ describe('<sd-dialog>', () => {
 
   describe('when themes change', () => {
     it('should use the simple motion for non-UI themes', async () => {
-      const el = await fixture<SdDialog>(html`
-        <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+      const wrapper = await fixture<HTMLElement>(html`
+        <div class="sd-theme-bb">
+          <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+        </div>
       `);
+      const el = wrapper.querySelector<SdDialog>('sd-dialog')!;
       const keyframes = await getPanelShowKeyframes(el);
 
       expect(keyframes[0]).to.deep.equal({ opacity: 0, scale: 0.8 });

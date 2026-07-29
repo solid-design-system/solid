@@ -102,7 +102,12 @@ describe('<sd-button>', () => {
 
   describe('when themes change', () => {
     it('should use the simple motion for non-UI themes', async () => {
-      const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
+      const wrapper = await fixture<HTMLElement>(html`
+        <div class="sd-theme-bb">
+          <sd-button>Default Slot</sd-button>
+        </div>
+      `);
+      const el = wrapper.querySelector<SdButton>('sd-button')!;
       const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
       const motionWrapper = el.shadowRoot!.querySelector<HTMLElement>('[part~="motion-wrapper"]')!;
 
