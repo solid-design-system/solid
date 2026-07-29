@@ -1,7 +1,7 @@
 Use the `spin-buttons` attribute display custom spin buttons for number inputs.
 
 ```html
-<div class="w-[250px]">
+<div class="max-w-[400px]">
   <sd-input
     label="Spin buttons"
     type="number"

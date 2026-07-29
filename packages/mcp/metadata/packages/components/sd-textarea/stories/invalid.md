@@ -1,7 +1,7 @@
 The component gets `invalid` state when the form is not valid.
 
 ```html
-<form class="w-[500px]">
+<form class="max-w-[500px]">
   <sd-textarea
     id="invalid-textarea"
     value=""
