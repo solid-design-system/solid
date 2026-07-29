@@ -50,7 +50,8 @@ To register a new theme in Storybook:
 1. Add the font files to a new folder under `packages/docs/.storybook/fonts/`.
 2. Register the fonts in `.storybook/preview-head.html`.
 3. Update `packages/tokens/tailwind/token-processors/typography.js` with the typography configuration for the new theme.
-4. Add a new entry to `theme-attributes.js` in the `fontConfig` map and configure a new property `font` in `themeAttributes`.
+4. Add a new theme entry to the `fontConfig` map in the `theme-attributes.js` file.
+5. Add the id from the previous step entry to the `themeAttributes` map in the `theme-attributes.js` as a the `font` property of your theme.
 
 #### Adding logos
 
