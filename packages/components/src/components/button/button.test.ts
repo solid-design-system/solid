@@ -103,7 +103,7 @@ describe('<sd-button>', () => {
   describe('when themes change', () => {
     it('should use the simple motion for non-UI themes', async () => {
       const wrapper = await fixture<HTMLElement>(html`
-        <div class="sd-theme-bb">
+        <div style="--sd-theme: 'bb'">
           <sd-button>Default Slot</sd-button>
         </div>
       `);
