@@ -31,8 +31,6 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
 
   process(token, dictionary, options) {
     const { path, variant } = this.processTokenPath(token);
-    const coreColors = this.#getCoreColors(dictionary, variant);
-
     const isUtility = this.isUtilityToken(path);
     const isComponent = !isUtility && path[0].startsWith('components');
     if (!isUtility && !isComponent) return [];
