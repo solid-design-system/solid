@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.21.3
+
+### Patch Changes
+
+- Update Installation.mdx with GitLab Duo setup _[`#3166`](https://github.com/solid-design-system/solid/pull/3166) [`45c02e8`](https://github.com/solid-design-system/solid/commit/45c02e8df764c238950394fd25a68ecc70b390ae) [@Vahid1919](https://github.com/Vahid1919)_
+
 ## 2.21.2
 
 ### Patch Changes
