@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 3.0.0-next.1
+
+### Patch Changes
+
+- - Removed SDS's cdn usage from the Codepen extension. _[`#3200`](https://github.com/solid-design-system/solid/pull/3200) [`bfcd108`](https://github.com/solid-design-system/solid/commit/bfcd10845b25f9aa410ec69b16ad6468117d473b) [@martascorreia](https://github.com/martascorreia)_
+
+  - Added fonts, logos and `sd-icon` theming to the Codepen extension.
+
 ## 3.0.0-next.0
 
 ### Major Changes

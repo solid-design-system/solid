@@ -13,9 +13,11 @@
     "@solid-design-system/versioning": "1.0.2"
   },
   "changesets": [
+    "chilly-teams-roll",
     "cozy-clouds-allow",
     "flat-wombats-shave",
     "floppy-cougars-peel",
-    "honest-balloons-wait"
+    "honest-balloons-wait",
+    "three-clouds-swim"
   ]
 }

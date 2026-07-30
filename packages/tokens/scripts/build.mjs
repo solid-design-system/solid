@@ -47,7 +47,7 @@ async function runBuild() {
 
   await nextTask('Extracting themes', () => {
     const toAppend = [
-      { name: 'icons.css' },
+      { name: 'icons.css', process: (css, theme) => `:root, .sd-theme-${theme.name} {\n${css}\n}` },
       { name: 'overrides.css' },
       {
         name: 'legacy-variables.css',
