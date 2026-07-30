@@ -1,5 +1,17 @@
 # @solid-design-system/docs
 
+## 2.21.3
+
+### Patch Changes
+
+- Update Installation.mdx with GitLab Duo setup _[`#3166`](https://github.com/solid-design-system/solid/pull/3166) [`45c02e8`](https://github.com/solid-design-system/solid/commit/45c02e8df764c238950394fd25a68ecc70b390ae) [@Vahid1919](https://github.com/Vahid1919)_
+
+## 2.21.2
+
+### Patch Changes
+
+- Fixed `sd-input`, `sd-select`, `sd-textarea`, `sd-datepicker` and `sd-combobox` stories and templates being clipped in mobile view. _[`#3115`](https://github.com/solid-design-system/solid/pull/3115) [`4dc09dd`](https://github.com/solid-design-system/solid/commit/4dc09dd3d0d4030e1b4e8410c75780d283c80e5a) [@balco0110](https://github.com/balco0110)_
+
 ## 2.21.1
 
 ### Patch Changes
