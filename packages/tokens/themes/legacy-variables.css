@@ -1,4 +1,10 @@
-:root {
+:root,
+.sd-theme-kid,
+.sd-theme-bb,
+.sd-theme-vb,
+.sd-theme-sp,
+.sd-theme-ui-dark,
+.sd-theme-ui-light {
    /*
     * Deprecated variables – manually overriding these in custom themes might lead to problems in future versions of Solid.
     * Use the actual used value instead. Example:

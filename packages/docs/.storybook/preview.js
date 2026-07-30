@@ -5,6 +5,7 @@ import '../../tokens/themes/vb/vb.css';
 import '../../tokens/themes/sp/sp.css';
 import '../../tokens/themes/ui-dark/ui-dark.css';
 import '../../tokens/themes/ui-light/ui-light.css';
+import '../../tokens/themes/legacy-variables.css';
 import { getWcStorybookHelpers } from 'wc-storybook-helpers';
 import { withThemeByClassName } from './addons/with-theme.js';
 import { storybookUtilities } from '../scripts/storybook/helper.js';
