@@ -349,6 +349,59 @@ export default class SdButton extends SolidElement implements SolidFormControl {
 
     const hasBorder = this.variant === 'secondary';
 
+    const variantBackgroundColors = {
+      primary: this.inverted
+        ? {
+            motionBackground:
+              'sd-button--primary--inverted--hover-color-background group-active:sd-button--primary--inverted--active-color-background',
+            baseBackground:
+              'hover:sd-button--primary--inverted--hover-color-background active:sd-button--primary--inverted--active-color-background'
+          }
+        : {
+            motionBackground:
+              'sd-button--primary--hover-color-background group-active:sd-button--primary--active-color-background',
+            baseBackground:
+              'hover:sd-button--primary--hover-color-background active:sd-button--primary--active-color-background'
+          },
+      secondary: this.inverted
+        ? {
+            motionBackground:
+              'sd-button--secondary--inverted--hover-color-background group-active:sd-button--secondary--inverted--active-color-background group-active:sd-button--secondary--inverted--active-color-text',
+            baseBackground:
+              'hover:sd-button--secondary--inverted--hover-color-background active:sd-button--secondary--inverted--active-color-background'
+          }
+        : {
+            motionBackground:
+              'sd-button--secondary--hover-color-background group-active:sd-button--secondary--active-color-background',
+            baseBackground:
+              'hover:sd-button--secondary--hover-color-background active:sd-button--secondary--active-color-background'
+          },
+      tertiary: this.inverted
+        ? {
+            motionBackground:
+              'sd-button--tertiary--inverted--hover-color-background group-active:sd-button--tertiary--inverted--active-color-background group-active:sd-button--tertiary--inverted--active-color-text',
+            baseBackground:
+              'hover:sd-button--tertiary--inverted--hover-color-background active:sd-button--tertiary--inverted--active-color-background'
+          }
+        : {
+            motionBackground:
+              'sd-button--tertiary--hover-color-background group-active:sd-button--tertiary--active-color-background',
+            baseBackground:
+              'hover:sd-button--tertiary--hover-color-background active:sd-button--tertiary--active-color-background'
+          },
+      cta: this.inverted
+        ? {
+            motionBackground:
+              'sd-button--cta--inverted--hover-color-background group-active:sd-button--cta--inverted--active-color-background',
+            baseBackground:
+              'hover:sd-button--cta--inverted--hover-color-background active:sd-button--cta--inverted--active-color-background'
+          }
+        : {
+            motionBackground: 'bg-accent-500 group-active:bg-accent-700',
+            baseBackground: 'hover:bg-accent-500 active:bg-accent-700'
+          }
+    }[this.variant];
+
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
     return html`
@@ -392,13 +445,13 @@ export default class SdButton extends SolidElement implements SolidFormControl {
             ? `${
                 this.visuallyDisabled
                   ? 'sd-button--primary--disabled-color-background border-neutral-500 text-white'
-                  : 'sd-button--primary--default-color-background border-transparent sd-button--primary--default-color-text hover:sd-button--primary--hover-color-text active:sd-button--primary--active-color-text active:sd-button--primary--active-color-background'
+                  : 'sd-button--primary--default-color-background border-transparent sd-button--primary--default-color-text hover:sd-button--primary--hover-color-text active:sd-button--primary--active-color-text'
               }
           disabled:sd-button--primary--disabled-color-background disabled:text-white`
             : `${
                 this.visuallyDisabled
                   ? 'sd-button--inverted--disabled-color-background text-white border-neutral-500'
-                  : 'sd-button--primary--inverted--default-color-text sd-button--primary--inverted--default-color-background border-white hover:sd-button--primary--inverted--hover-color-text active:sd-button--primary--inverted--active-color-text active:sd-button--primary--inverted--active-color-background'
+                  : 'sd-button--primary--inverted--default-color-text sd-button--primary--inverted--default-color-background border-white hover:sd-button--primary--inverted--hover-color-text active:sd-button--primary--inverted--active-color-text'
               }
           disabled:sd-button--inverted--disabled-color-background disabled:text-white`,
           secondary: !this.inverted
@@ -411,7 +464,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
             : `border sd-button-border-width ${
                 this.visuallyDisabled
                   ? 'text-neutral-600 border-neutral-600'
-                  : 'sd-button--secondary--inverted-color-text sd-button--secondary--inverted-color-border hover:sd-button--secondary--inverted-color-border hover:sd-button--secondary--inverted--hover-color-text hover:sd-button--secondary--inverted--hover-color-background active:sd-button--secondary--inverted--active-color-text active:border-primary-200 active:sd-button--secondary--inverted--active-color-background'
+                  : 'sd-button--secondary--inverted-color-text sd-button--secondary--inverted-color-border hover:sd-button--secondary--inverted-color-border hover:sd-button--secondary--inverted--hover-color-text active:sd-button--secondary--inverted--active-color-text active:border-primary-200'
               }
           disabled:sd-button--inverted--disabled-color-border disabled:sd-button--inverted--disabled-color-text`,
           tertiary: !this.inverted
@@ -424,12 +477,13 @@ export default class SdButton extends SolidElement implements SolidFormControl {
             : `border-transparent  ${
                 this.visuallyDisabled
                   ? 'text-neutral-600'
-                  : 'sd-button--tertiary--inverted-color-text hover:sd-button--tertiary--inverted--hover-color-text hover:sd-button--tertiary--inverted--hover-color-background active:sd-button--tertiary--inverted--active-color-background active:sd-button--tertiary--inverted--active-color-text'
+                  : 'sd-button--tertiary--inverted-color-text hover:sd-button--tertiary--inverted--hover-color-text active:sd-button--tertiary--inverted--active-color-text'
               }
           disabled:sd-button--inverted--disabled-color-text`,
-          cta: `${this.visuallyDisabled ? 'sd-button--primary--disabled-color-background border-neutral-500' : 'bg-accent border-transparent hover:bg-accent-500'}
-          ${!this.inverted ? 'text-white bg-accent disabled:sd-button--primary--disabled-color-background hover:bg-accent-500 disabled:border-neutral-500 disabled:text-white' : 'sd-button--cta--inverted--default-color-background sd-button--cta--inverted--default-color-text hover:sd-button--cta--inverted--hover-color-text active:sd-button--cta--inverted--active-color-text disabled:sd-button--inverted--disabled-color-background disabled:text-white'}`
-        }[this.variant]
+          cta: `${this.visuallyDisabled ? 'sd-button--primary--disabled-color-background border-neutral-500' : 'border-transparent'}
+          ${!this.inverted ? 'text-white bg-accent disabled:sd-button--primary--disabled-color-background disabled:border-neutral-500 disabled:text-white' : 'sd-button--cta--inverted--default-color-background sd-button--cta--inverted--default-color-text hover:sd-button--cta--inverted--hover-color-text active:sd-button--cta--inverted--active-color-text disabled:sd-button--inverted--disabled-color-background disabled:text-white'}`
+        }[this.variant],
+        !this.hasUiMotion && !this.disabled && !this.visuallyDisabled && variantBackgroundColors.baseBackground
       )}
         ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
         type=${ifDefined(isLink ? undefined : this.type)}
@@ -462,37 +516,12 @@ export default class SdButton extends SolidElement implements SolidFormControl {
           <div class='absolute inset-0 w-full h-full transition-all duration-fast translate-y-full group-hover:translate-y-0 group-hover:mt-[-22%] mt-[11%]'>
             <div class=${cx(
               'absolute right-0 min-w-full min-h-full aspect-square skew-y-[-11deg] mt-[11%]',
-              {
-                primary: !this.inverted
-                  ? 'sd-button--primary--hover-color-background group-active:sd-button--primary--active-color-background'
-                  : 'sd-button--primary--inverted--hover-color-background group-active:sd-button--primary--inverted--active-color-background',
-                secondary: !this.inverted
-                  ? 'sd-button--secondary--hover-color-background group-active:sd-button--secondary--active-color-background'
-                  : 'sd-button--secondary--inverted--hover-color-background group-active:sd-button--secondary--inverted--active-color-background group-active:sd-button--secondary--inverted--active-color-text',
-                tertiary: !this.inverted
-                  ? 'sd-button--tertiary--hover-color-background group-active:sd-button--tertiary--active-color-background'
-                  : 'sd-button--tertiary--inverted--hover-color-background group-active:sd-button--tertiary--inverted--active-color-background group-active:sd-button--tertiary--inverted--active-color-text',
-                cta: !this.inverted
-                  ? 'bg-accent-500 group-active:bg-accent-700'
-                  : 'sd-button--cta--inverted--hover-color-background group-active:sd-button--cta--inverted--active-color-background'
-              }[this.variant]
+              variantBackgroundColors.motionBackground
             )}></div>
             <div class=${cx(
               'absolute w-full h-full mt-[22%]',
-              {
-                primary: !this.inverted
-                  ? 'sd-button--primary--hover-color-background group-active:sd-button--primary--active-color-background'
-                  : 'sd-button--primary--inverted--hover-color-background group-active:sd-button--primary--inverted--active-color-background',
-                secondary: !this.inverted
-                  ? 'sd-button--secondary--hover-color-background group-active:sd-button--secondary--active-color-background'
-                  : 'sd-button--secondary--inverted--hover-color-background group-active:sd-button--secondary--inverted--active-color-background group-active:sd-button--secondary--inverted--active-color-text group-active:sd-button--secondary--active-color-border',
-                tertiary: !this.inverted
-                  ? 'sd-button--tertiary--hover-color-background group-active:sd-button--tertiary--active-color-background'
-                  : 'sd-button--tertiary--inverted--hover-color-background group-active:sd-button--tertiary--inverted--active-color-background group-active:sd-button--tertiary--inverted--active-color-text',
-                cta: !this.inverted
-                  ? 'bg-accent-500 group-active:bg-accent-700'
-                  : 'sd-button--cta--inverted--hover-color-background group-active:sd-button--cta--inverted--active-color-background'
-              }[this.variant]
+              variantBackgroundColors.motionBackground,
+              this.variant === 'secondary' && this.inverted && 'group-active:sd-button--secondary--active-color-border'
             )}></div>
           </div>
         </div>
