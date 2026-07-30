@@ -2,4 +2,4 @@
 '@solid-design-system/components': minor
 ---
 
-Add themed animations ensuring only UI-light and UI-Dark keep SDS brand specific animations.
+Updated `sd-button` and `sd-dialog` animations so that only the `ui-light` and `ui-dark` themes use SDS brand-specific animations.
