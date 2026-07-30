@@ -491,7 +491,7 @@
   --sd-video--play-button-color-icon-fill: var(--sd-color-info);
 }
 
-.sd-theme-bb {
+:root, .sd-theme-bb {
     --sd-icon--calendar: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M21 4.55h-3.25V2.88H16.1v1.67H7.9V2.88H6.25v1.67H3v15.33h17.84v-.01H21zM19.36 6.3v1.67H4.64V6.3zM4.64 9.68h14.72v8.5H4.64z"/><path d="M7.91 11.38H6.28v1.7H7.9zM11.19 11.38H9.55v1.7h1.64zM7.91 14.78H6.28v1.7H7.9zM11.19 14.78H9.55v1.7h1.64zM14.45 11.38H12.8v1.7h1.64zM17.72 11.38H16.1v1.7h1.63zM14.45 14.78H12.8v1.7h1.64zM17.72 14.78H16.1v1.7h1.63z"/></svg>';
     --sd-icon--chevron-down: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" viewBox="0 0 24 24" fill="none"><path d="m5.62 9.82 6.5 6.41 6.5-6.4-1.6-1.6-4.9 4.83-4.89-4.83z"/></svg>';
     --sd-icon--chevron-left: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="m14.63 5.64-6.42 6.5 6.42 6.5 1.58-1.6-4.82-4.9 4.82-4.89z"/></svg>';
