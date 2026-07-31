@@ -63,13 +63,14 @@ export const Sizes = {
  *
  * This label is visually hidden by default, to display it, use the show-label attribute.
  */
-//TODO COMPOR EXEMPLOS
 export const Label = {
   render: () =>
     html`<div class="flex flex-col gap-10">
-      <sd-file-selector label="Select a file to upload"></sd-file-selector
-      ><sd-file-selector label="Select a file to upload" show-label></sd-file-selector
-      ><sd-file-selector label="Select a file to upload" show-label><h2 slot="label">I'm a label</h2></sd-file-selector>
+      <sd-file-selector label="Select a file to upload"></sd-file-selector>
+      <sd-file-selector label="Select a file to upload" show-label></sd-file-selector>
+      <sd-file-selector label="Select a file to upload" show-label>
+        <div slot="label" class="text-lg">Label slot</div>
+      </sd-file-selector>
     </div>`
 };
 
