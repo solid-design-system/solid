@@ -5,7 +5,6 @@
 '@solid-design-system/tokens': patch
 '@solid-design-system/docs': patch
 '@solid-design-system/mcp': patch
-'@solid-design-system/': patch
 ---
 
 Updated dependencies. See details in the Pull Request
