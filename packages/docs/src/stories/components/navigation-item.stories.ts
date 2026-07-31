@@ -49,8 +49,8 @@ export const Size = {
 
 export const Orientation = {
   render: () =>
-    html`<sd-navigation-item>Horizontal Navigation</sd-navigation-item>
-      <sd-navigation-item vertical>Vertical Navigation</sd-navigation-item>`
+    html`<sd-navigation-item>Horizontal navigation</sd-navigation-item>
+      <sd-navigation-item vertical>Vertical navigation</sd-navigation-item>`
 };
 
 /**
@@ -71,8 +71,8 @@ export const AsLink = {
 export const Current = {
   render: () =>
     html`<div class="flex flex-col gap-6">
-      <sd-navigation-item class="w-[174px]" current>Current Horizontal</sd-navigation-item>
-      <sd-navigation-item vertical current>Current Vertical</sd-navigation-item>
+      <sd-navigation-item class="w-[174px]" current>Current horizontal</sd-navigation-item>
+      <sd-navigation-item vertical current>Current vertical</sd-navigation-item>
     </div>`
 };
 
@@ -81,7 +81,7 @@ export const Current = {
  */
 
 export const Disabled = {
-  render: () => html` <sd-navigation-item disabled>Disabled Navigation</sd-navigation-item> `
+  render: () => html` <sd-navigation-item disabled>Disabled navigation</sd-navigation-item> `
 };
 
 /**
@@ -104,7 +104,7 @@ export const Stacked = {
  */
 
 export const Divider = {
-  render: () => html` <sd-navigation-item vertical divider>Vertical Navigation with Divider</sd-navigation-item> `
+  render: () => html` <sd-navigation-item vertical divider>Vertical navigation with divider</sd-navigation-item> `
 };
 
 /**
@@ -117,7 +117,7 @@ export const Divider = {
  */
 
 export const Chevron = {
-  render: () => html` <sd-navigation-item vertical chevron>Vertical Navigation with Chevron</sd-navigation-item>`
+  render: () => html` <sd-navigation-item vertical chevron>Vertical navigation with chevron</sd-navigation-item>`
 };
 
 /**
@@ -131,10 +131,10 @@ export const Chevron = {
 export const Accordion = {
   render: () =>
     html`<sd-navigation-item vertical>
-      <div>Vertical Navigation with Accordion</div>
-      <sd-navigation-item vertical indented slot="children"> Sub Navigation 1 </sd-navigation-item>
-      <sd-navigation-item vertical indented slot="children"> Sub Navigation 2 </sd-navigation-item>
-      <sd-navigation-item vertical indented slot="children"> Sub Navigation 3 </sd-navigation-item>
+      <div>Vertical navigation with accordion</div>
+      <sd-navigation-item vertical indented slot="children"> Sub navigation 1 </sd-navigation-item>
+      <sd-navigation-item vertical indented slot="children"> Sub navigation 2 </sd-navigation-item>
+      <sd-navigation-item vertical indented slot="children"> Sub navigation 3 </sd-navigation-item>
     </sd-navigation-item>`
 };
 
@@ -148,10 +148,10 @@ export const Accordion = {
 export const Separated = {
   render: () =>
     html`<sd-navigation-item href="https://www.union-investment.de/" target="_blank" vertical separated>
-      <div>Vertical Navigation Separated</div>
-      <sd-navigation-item vertical indented slot="children"> Sub Navigation 1 </sd-navigation-item>
-      <sd-navigation-item vertical indented slot="children"> Sub Navigation 2 </sd-navigation-item>
-      <sd-navigation-item vertical indented slot="children"> Sub Navigation 3 </sd-navigation-item>
+      <div>Vertical navigation separated</div>
+      <sd-navigation-item vertical indented slot="children"> Sub navigation 1 </sd-navigation-item>
+      <sd-navigation-item vertical indented slot="children"> Sub navigation 2 </sd-navigation-item>
+      <sd-navigation-item vertical indented slot="children"> Sub navigation 3 </sd-navigation-item>
     </sd-navigation-item>`
 };
 
@@ -163,7 +163,7 @@ export const Separated = {
 export const Description = {
   render: () =>
     html` <sd-navigation-item vertical>
-      Vertical Navigation with Description
+      Vertical navigation with description
       <p slot="description" class="sd-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullam.
       </p>
@@ -179,7 +179,7 @@ export const Description = {
 export const Indented = {
   render: () =>
     html`<div>
-      <sd-navigation-item vertical indented>Indented Navigation</sd-navigation-item>
+      <sd-navigation-item vertical indented>Indented navigation</sd-navigation-item>
     </div>`
 };
 
@@ -192,6 +192,6 @@ export const Indented = {
 export const Relaxed = {
   render: () =>
     html`<div class="w-[400px]">
-      <sd-navigation-item vertical relaxed>Relaxed Navigation</sd-navigation-item>
+      <sd-navigation-item vertical relaxed>Relaxed navigation</sd-navigation-item>
     </div>`
 };

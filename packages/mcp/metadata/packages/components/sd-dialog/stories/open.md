@@ -52,7 +52,7 @@ Use the `open` attribute to show the dialog.
 
 ```html
 <div class="h-[40vh]">
-  <sd-button id="drawer-trigger">Open Dialog</sd-button>
+  <sd-button id="drawer-trigger">Open dialog</sd-button>
   <sd-dialog id="dialog" open>
     <span slot="headline" class="sd-headline sd-headline--size-3xl">Lorem ipsum</span>
     <p class="sd-paragraph">

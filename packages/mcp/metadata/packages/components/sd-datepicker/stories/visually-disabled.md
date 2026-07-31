@@ -5,7 +5,7 @@ Use the `visually-disabled` attribute to style the component as if it was disa
 ```html
 <div class="max-w-[370px] h-[500px]">
   <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
-    <sd-datepicker label="Label" placeholder="Visually Disabled" visually-disabled></sd-datepicker>
+    <sd-datepicker label="Label" placeholder="Visually disabled" visually-disabled></sd-datepicker>
   </sd-tooltip>
 </div>
 ```
