@@ -164,36 +164,40 @@ export default class SdOption extends SolidElement {
             !this.disabled && this.hasHover ? 'h-full top-0' : 'top-1'
           )}
         ></span>
-        ${this.checkbox
-          ? html`<span
-              id="control"
-              part="control ${this.selected ? ' control--checked' : 'control--unchecked'}"
-              class=${cx(
-                'relative flex flex-shrink-0 items-center justify-center border sd-checkbox-border-width rounded-sm h-4 w-4 mr-2',
-                {
-                  sm: 'mt-0.5',
-                  md: 'mt-1',
-                  lg: 'mt-1'
-                }[this.size],
-                this.disabled
-                  ? 'sd-option--disabled-color-border'
-                  : this.selected
-                    ? 'bg-accent border-accent'
-                    : 'bg-white form-control-color-border'
-              )}
-            >
-              ${this.selected
-                ? html`
-                    <sd-icon
-                      part="checked-icon"
-                      class="text-white w-3 h-3"
-                      library="_internal"
-                      name="status-check"
-                    ></sd-icon>
-                  `
-                : ''}
-            </span>`
-          : ''}
+        ${
+          this.checkbox
+            ? html`<span
+                id="control"
+                part="control ${this.selected ? ' control--checked' : 'control--unchecked'}"
+                class=${cx(
+                  'relative flex flex-shrink-0 items-center justify-center border sd-checkbox-border-width rounded-sm h-4 w-4 mr-2',
+                  {
+                    sm: 'mt-0.5',
+                    md: 'mt-1',
+                    lg: 'mt-1'
+                  }[this.size],
+                  this.disabled
+                    ? 'sd-option--disabled-color-border'
+                    : this.selected
+                      ? 'bg-accent border-accent'
+                      : 'bg-white form-control-color-border'
+                )}
+              >
+                ${
+                  this.selected
+                    ? html`
+                        <sd-icon
+                          part="checked-icon"
+                          class="text-white w-3 h-3"
+                          library="_internal"
+                          name="status-check"
+                        ></sd-icon>
+                      `
+                    : ''
+                }
+              </span>`
+            : ''
+        }
         ${slots['left'] ? html`<slot name="left" part="left" class="inline-flex mr-2"></slot>` : ''}
         <slot part="label" class="inline-block flex-grow" @slotchange=${this.handleDefaultSlotChange}></slot>
         ${slots['right'] ? html`<slot name="right" part="right" class="inline-flex ml-2"></slot>` : ''}

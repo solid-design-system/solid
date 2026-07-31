@@ -1,5 +1,17 @@
 # @solid-design-system/tokens
 
+## 6.28.2
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull Request _[`#3163`](https://github.com/solid-design-system/solid/pull/3163) [`91ff1c8`](https://github.com/solid-design-system/solid/commit/91ff1c81831fb3522c534306a61b8a5be3562f64) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 6.28.1
+
+### Patch Changes
+
+- Fixed token imports to preserve the color mappings defined in Figma. For example, `--sd-color-background-accent-550` now correctly references `accent-550` in `ui-light`. _[`#3206`](https://github.com/solid-design-system/solid/pull/3206) [`83c417b`](https://github.com/solid-design-system/solid/commit/83c417b8739091e9b1a8e2f9e87c484443a8707f) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 6.28.0
 
 ## 6.27.2

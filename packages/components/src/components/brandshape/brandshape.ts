@@ -33,14 +33,8 @@ export default class SdBrandshape extends SolidElement {
 
   /** The brandshape's theme variant. */
   @property({ type: String, reflect: true }) variant:
-    | 'neutral-100'
-    | 'primary'
-    | 'white'
-    | 'border-primary'
-    | 'border-white'
-    | 'primary|80'
-    | 'white|80'
-    | 'image' = 'primary';
+    'neutral-100' | 'primary' | 'white' | 'border-primary' | 'border-white' | 'primary|80' | 'white|80' | 'image' =
+    'primary';
 
   /** Defines which shapes of the brandshape should be displayed. */
   @property({ type: Array }) shapes: ('top' | 'middle' | 'bottom')[] = ['top', 'middle', 'bottom'];

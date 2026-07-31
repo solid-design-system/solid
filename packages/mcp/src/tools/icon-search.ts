@@ -115,9 +115,9 @@ export const iconSearchTool = (server: McpServer) => {
         };
       }
 
-      const selectedLibrary = library as Library;
+      const selectedLibrary = library;
       const allowedCategories = categoriesByLibrary[selectedLibrary];
-      if (category !== 'all' && !allowedCategories.includes(category as IconCategory)) {
+      if (category !== 'all' && !allowedCategories.includes(category)) {
         return {
           content: [
             {

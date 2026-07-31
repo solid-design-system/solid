@@ -1,5 +1,19 @@
 # @solid-design-system/docs
 
+## 2.21.5
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull Request _[`#3163`](https://github.com/solid-design-system/solid/pull/3163) [`91ff1c8`](https://github.com/solid-design-system/solid/commit/91ff1c81831fb3522c534306a61b8a5be3562f64) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 2.21.4
+
+### Patch Changes
+
+- Applied sentence case across the template and component documentation in Storybook. _[`#3190`](https://github.com/solid-design-system/solid/pull/3190) [`319d1f7`](https://github.com/solid-design-system/solid/commit/319d1f78991ec8a50ef726da5761cc8ae213ed22) [@balco0110](https://github.com/balco0110)_
+
+  Updated the `sd-brandshape` transparent template with new sample copy and fixed the headline text color on the transparent variant.
+
 ## 2.21.3
 
 ### Patch Changes

@@ -45,7 +45,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - part.summary-icon: The container that wraps the expand/collapse icons.
 - part.summary-border: The container that wraps the currently active accordions border.
 - part.content: The container that wraps the accordion content slot.
-- part.content\_\_slot: The accordion content slot.
+- part.content__slot: The accordion content slot.
 
 ## Guidelines
 

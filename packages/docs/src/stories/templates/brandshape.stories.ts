@@ -45,14 +45,14 @@ export const Transparent = {
       </style>
       <div class="brandshape-wrapper">
         <sd-brandshape variant="primary|80">
-          <h4 class="sd-headline sd-headline--3xl mb-4 text-white">
-            Exclusion criteria: Ensure minimum standards, avoid controversies
+          <h4 class="sd-headline sd-headline--3xl mb-4 !text-white">
+            Diversification benefits from shifting from USD to euro credits
           </h4>
           <p class="sd-paragraph text-white">
-            In this approach, single or multiple criteria are defined that exclude investment in certain companies,
-            industries or countries. The individual criteria can be determined individually within the SIRIS platform,
-            such as the exclusion of companies that generate more than 5 per cent of their turnover from gambling. The
-            exclusion criteria are additionally reviewed in a two-stage research process.
+            Euro-denominated corporate bonds with good to very good credit ratings offer an attractive risk-return
+            ratio, especially in turbulent times. Christian Kopf, Head of Fixed Income and FX at Union Investment,
+            explains what else speaks in favour of this fixed-income segment – especially from an international
+            perspective.
           </p>
           <sd-button variant="cta" class="mt-4">Find out more</sd-button>
         </sd-brandshape>

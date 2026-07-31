@@ -378,67 +378,73 @@ export default class SdTabGroup extends SolidElement {
         @keydown=${this.handleKeyDown}
       >
         <div part="nav" class=${cx(this.hasScrollControls && 'relative py-0 px-12')}>
-          ${this.hasScrollControls
-            ? html`
-                <button
-                  part="scroll-button--start"
-                  exportparts="base:scroll-button__base"
-                  tabindex="-1"
-                  aria-hidden="true"
-                  disabled=${ifDefined(!this.canScroll.left || undefined)}
-                  class=${cx(
-                    'sd-interactive flex items-center justify-center absolute top-0 bottom-0 left-0 !outline-offset-0 border-b border-neutral-400 z-10',
-                    this.localize.dir() === 'rtl' && 'left-auto right-0'
-                  )}
-                  @click=${this.handleScrollToStart}
-                >
-                  <sd-icon
-                    library="_internal"
-                    name=${isRtl ? 'chevron-up' : 'chevron-down'}
-                    label="previous"
-                    class=${cx('h-6 w-12 rotate-90 grid place-items-center')}
-                  ></sd-icon>
-                </button>
-              `
-            : ''}
+          ${
+            this.hasScrollControls
+              ? html`
+                  <button
+                    part="scroll-button--start"
+                    exportparts="base:scroll-button__base"
+                    tabindex="-1"
+                    aria-hidden="true"
+                    disabled=${ifDefined(!this.canScroll.left || undefined)}
+                    class=${cx(
+                      'sd-interactive flex items-center justify-center absolute top-0 bottom-0 left-0 !outline-offset-0 border-b border-neutral-400 z-10',
+                      this.localize.dir() === 'rtl' && 'left-auto right-0'
+                    )}
+                    @click=${this.handleScrollToStart}
+                  >
+                    <sd-icon
+                      library="_internal"
+                      name=${isRtl ? 'chevron-up' : 'chevron-down'}
+                      label="previous"
+                      class=${cx('h-6 w-12 rotate-90 grid place-items-center')}
+                    ></sd-icon>
+                  </button>
+                `
+              : ''
+          }
 
           <div part="scroll-container" class="flex overflow-x-auto focus-visible:focus-outline !outline-offset-0">
             <div part="tabs" class=${cx('flex flex-auto relative flex-row')} role="tablist">
-              ${this.activeTab?.variant !== 'container'
-                ? html` <div
-                    part="active-tab-indicator"
-                    id="indicator"
-                    class="absolute h-1 bg-accent bottom-0 transition-[transform,width] duration-medium ease-in-out z-30  navigable__current-indicator-height navigable__current-indicator-border-radius"
-                  ></div>`
-                : ''}
+              ${
+                this.activeTab?.variant !== 'container'
+                  ? html` <div
+                      part="active-tab-indicator"
+                      id="indicator"
+                      class="absolute h-1 bg-accent bottom-0 transition-[transform,width] duration-medium ease-in-out z-30  navigable__current-indicator-height navigable__current-indicator-border-radius"
+                    ></div>`
+                  : ''
+              }
               <div part="separation" class="border-neutral-400 absolute w-full h-0.25 bottom-0 border-b z-10"></div>
               <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
             </div>
           </div>
 
-          ${this.hasScrollControls
-            ? html`
-                <button
-                  part="scroll-button--end"
-                  exportparts="base:scroll-button__base"
-                  tabindex="-1"
-                  aria-hidden="true"
-                  disabled=${ifDefined(!this.canScroll.right || undefined)}
-                  class=${cx(
-                    'sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0 !outline-offset-0 border-b border-neutral-400 z-10',
-                    this.localize.dir() === 'rtl' && 'right-auto left-0'
-                  )}
-                  @click=${this.handleScrollToEnd}
-                >
-                  <sd-icon
-                    library="_internal"
-                    name=${isRtl ? 'chevron-down' : 'chevron-up'}
-                    label="next"
-                    class=${cx('h-6 w-12 rotate-90 grid place-items-center')}
-                  ></sd-icon>
-                </button>
-              `
-            : ''}
+          ${
+            this.hasScrollControls
+              ? html`
+                  <button
+                    part="scroll-button--end"
+                    exportparts="base:scroll-button__base"
+                    tabindex="-1"
+                    aria-hidden="true"
+                    disabled=${ifDefined(!this.canScroll.right || undefined)}
+                    class=${cx(
+                      'sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0 !outline-offset-0 border-b border-neutral-400 z-10',
+                      this.localize.dir() === 'rtl' && 'right-auto left-0'
+                    )}
+                    @click=${this.handleScrollToEnd}
+                  >
+                    <sd-icon
+                      library="_internal"
+                      name=${isRtl ? 'chevron-down' : 'chevron-up'}
+                      label="next"
+                      class=${cx('h-6 w-12 rotate-90 grid place-items-center')}
+                    ></sd-icon>
+                  </button>
+                `
+              : ''
+          }
         </div>
 
         <slot
