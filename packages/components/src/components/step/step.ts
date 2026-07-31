@@ -253,49 +253,55 @@ export default class SdStep extends SolidElement {
                         this.size === 'sm' && !hasDescription ? 'mt-1' : 'mt-3'
                       )}
                     >
-                      ${hasLabel &&
-                      html`
-                        <div
-                          part="label"
-                          id="label"
-                          class=${cx(
-                            'font-bold whitespace-nowrap',
-                            this.disabled && 'text-neutral-500',
-                            this.waiting && 'text-neutral-700',
-                            !this.disabled && !this.current && !this.notInteractive && !this.waiting && 'text-black'
-                          )}
-                        >
-                          <slot name="label">${this.label}</slot>
-                        </div>
-                      `}
-                      ${!this.noTail
-                        ? html`
-                            <div
-                              part="tail"
-                              class=${cx(
-                                'border-t flex-1 mr-2 mt-3',
-                                !this.disabled && !this.current && !this.notInteractive && !this.waiting
-                                  ? 'border-primary group-hover:border-primary-500'
-                                  : 'border-neutral-400'
-                              )}
-                            ></div>
-                          `
-                        : ''}
+                      ${
+                        hasLabel &&
+                        html`
+                          <div
+                            part="label"
+                            id="label"
+                            class=${cx(
+                              'font-bold whitespace-nowrap',
+                              this.disabled && 'text-neutral-500',
+                              this.waiting && 'text-neutral-700',
+                              !this.disabled && !this.current && !this.notInteractive && !this.waiting && 'text-black'
+                            )}
+                          >
+                            <slot name="label">${this.label}</slot>
+                          </div>
+                        `
+                      }
+                      ${
+                        !this.noTail
+                          ? html`
+                              <div
+                                part="tail"
+                                class=${cx(
+                                  'border-t flex-1 mr-2 mt-3',
+                                  !this.disabled && !this.current && !this.notInteractive && !this.waiting
+                                    ? 'border-primary group-hover:border-primary-500'
+                                    : 'border-neutral-400'
+                                )}
+                              ></div>
+                            `
+                          : ''
+                      }
                     </div>
-                    ${hasDescription
-                      ? html` <div
-                          part="description"
-                          id="description"
-                          class=${cx(
-                            'sd-paragraph sd-paragraph--size-sm wrap-break-word',
-                            hasDescription ? 'flex-1' : 'w-0 h-0 overflow-hidden',
-                            hasDescription && !this.noTail && 'pr-4',
-                            (this.disabled || this.waiting) && '!text-neutral-700'
-                          )}
-                        >
-                          ${this.description || html`<slot></slot>`}
-                        </div>`
-                      : ''}
+                    ${
+                      hasDescription
+                        ? html` <div
+                            part="description"
+                            id="description"
+                            class=${cx(
+                              'sd-paragraph sd-paragraph--size-sm wrap-break-word',
+                              hasDescription ? 'flex-1' : 'w-0 h-0 overflow-hidden',
+                              hasDescription && !this.noTail && 'pr-4',
+                              (this.disabled || this.waiting) && '!text-neutral-700'
+                            )}
+                          >
+                            ${this.description || html`<slot></slot>`}
+                          </div>`
+                        : ''
+                    }
                   </div>
                 `
               : this.noTail

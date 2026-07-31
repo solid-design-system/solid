@@ -535,12 +535,14 @@ export const storybookTemplate = (customElementTag: string) => {
           white-space: nowrap;
         }
 
-        ${options?.templateBackground &&
-        `
+        ${
+          options?.templateBackground &&
+          `
           .${uuid}.story-template tbody tr.template-row td.template {
             background: ${options?.templateBackground};
           }
-        `}
+        `
+        }
 
         ${options?.templateBackgrounds?.colors.map((color, index) => {
           const calculateNth = (index: number) => {
@@ -567,12 +569,15 @@ export const storybookTemplate = (customElementTag: string) => {
           return html`
             <table class="story-template ${uuid} ${options?.classes}">
               <thead>
-                ${options?.title &&
-                html`<tr>
-                  <th class="title" colspan=${(xAxis.values?.length || 0) + 3}><code>${options?.title}</code></th>
-                </tr>`}
-                ${xAxis?.values &&
-                html`
+                ${
+                  options?.title &&
+                  html`<tr>
+                    <th class="title" colspan=${(xAxis.values?.length || 0) + 3}><code>${options?.title}</code></th>
+                  </tr>`
+                }
+                ${
+                  xAxis?.values &&
+                  html`
                   <tr>
                     ${showYLabel ? html`<td></td>` : ''} <td></td>
                     ${
@@ -588,20 +593,25 @@ export const storybookTemplate = (customElementTag: string) => {
                       ${xAxis?.values?.map((xValue: any) => html`<td><code>${xValue.title || xValue}</code></td>`)}
                     </tr>
                   `}
-                `}
+                `
+                }
               </thead>
               <tbody>
                 ${(yAxis?.values || ['']).map((yValue: any) => {
                   const row = html`
                     <tr class="template-row">
-                      ${firstRow && showYLabel
-                        ? html`<th rowspan="${yAxis?.values?.length}">
-                            <span><code>${yAxis.title || yAxis.name}</code></span>
-                          </th>`
-                        : ''}
-                      ${typeof (yValue.title || yValue) === 'boolean' || yValue.title || yValue
-                        ? html`<th><code>${yValue.title || yValue}</code></th>`
-                        : html`<th><span class="sr-only">Y axis</span></th>`}
+                      ${
+                        firstRow && showYLabel
+                          ? html`<th rowspan="${yAxis?.values?.length}">
+                              <span><code>${yAxis.title || yAxis.name}</code></span>
+                            </th>`
+                          : ''
+                      }
+                      ${
+                        typeof (yValue.title || yValue) === 'boolean' || yValue.title || yValue
+                          ? html`<th><code>${yValue.title || yValue}</code></th>`
+                          : html`<th><span class="sr-only">Y axis</span></th>`
+                      }
                       ${(xAxis?.values || ['']).map((xValue: any) => {
                         return html`
                           <td class="template template-x-${xAxis?.values?.indexOf(xValue) || 0 + 1} template-y-${

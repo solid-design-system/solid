@@ -43,12 +43,12 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.floatingLabel [attr: floating-label]: boolean, default=false — Enables the floating label behavior for the input.
 - prop.minlength: number — The minimum length of input that will be considered valid.
 - prop.maxlength: number — The maximum length of input that will be considered valid.
-- prop.autocapitalize: |'off'|'none'|'on'|'sentences'|'words'|'characters' — Controls whether and how text input is automatically capitalized as it is entered by the user.
+- prop.autocapitalize: 'off'|'none'|'on'|'sentences'|'words'|'characters' — Controls whether and how text input is automatically capitalized as it is entered by the user.
 - prop.autocorrect: 'off'|'on' — Indicates whether the browser's autocorrect feature is on or off.
 - prop.autocomplete: string — Specifies what permission the browser has to provide assistance in filling out form field values. Refer to
   [this page on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for available values.
 - prop.autofocus: boolean — Indicates that the input should receive focus on page load.
-- prop.enterkeyhint: |'enter'|'done'|'go'|'next'|'previous'|'search'|'send' — Used to customize the label or icon of the Enter key on virtual keyboards.
+- prop.enterkeyhint: 'enter'|'done'|'go'|'next'|'previous'|'search'|'send' — Used to customize the label or icon of the Enter key on virtual keyboards.
 - prop.styleOnValid [attr: style-on-valid]: boolean, default=false — Shows success styles if the validity of the input is valid.
 - prop.spellcheck: boolean, default=true — Enables spell checking on the textarea.
 - prop.inputmode: 'none'|'text' — Tells the browser what type of data will be entered by the user, allowing it to display the appropriate virtual
