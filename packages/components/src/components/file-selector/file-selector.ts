@@ -13,8 +13,6 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 import type SdButton from '../button/button';
-//TODO FIX VISUALLY DISABLED
-//TODO FIX REQUIRED
 //TODO TEST AND FINISH ACCEPT
 //TODO FIX THIS
 /**
@@ -87,6 +85,11 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
   @property({ type: String, reflect: true }) name = '';
 
   /**
+   * The `title` attribute specifies extra information about an element most often as a default browser tooltip text when the mouse moves over the element.
+   */
+  @property({ type: String, reflect: true }) title = ''; // make reactive to pass through
+
+  /**
    * The value of the file selector contains a string that represents the path of the selected file. If multiple
    * files are selected, the value represents the first file in the list. The only valid value when setting a file
    * input is an empty string.
@@ -122,9 +125,6 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
 
   /** Styles the input as if it was disabled and enables aria-disabled */
   @property({ type: Boolean, reflect: true, attribute: 'visually-disabled' }) visuallyDisabled = false;
-
-  /** Sets the file selector to a readonly state. */
-  @property({ type: Boolean, reflect: true }) readonly = false;
 
   /** Draw the file selector as a drop area. */
   @property({ type: Boolean, reflect: true, attribute: 'drop-area' }) droparea = false;
@@ -198,7 +198,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
 
   @watch('disabled', { waitUntilFirstUpdate: true })
   handleDisabledChange() {
-    this.formControlController.setValidity(this.disabled || this.visuallyDisabled);
+    this.formControlController.setValidity(this.disabled);
   }
 
   @watch('value', { waitUntilFirstUpdate: true })
@@ -286,6 +286,12 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
 
   private handleClick(e: Event) {
     e.preventDefault();
+
+    if (this.disabled || this.visuallyDisabled) {
+      e.stopPropagation();
+      return;
+    }
+
     this.input.click();
   }
 
@@ -301,7 +307,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     e.preventDefault();
     e.stopPropagation();
 
-    if (this.disabled || this.readonly) return;
+    if (this.disabled || this.visuallyDisabled) return;
 
     this.userIsDragging = true;
   }
@@ -310,7 +316,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     e.preventDefault();
     e.stopPropagation();
 
-    if (this.disabled || this.readonly) return;
+    if (this.disabled || this.visuallyDisabled) return;
 
     this.userIsDragging = false;
   }
@@ -319,7 +325,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     e.preventDefault();
     e.stopPropagation();
 
-    if (this.disabled || this.readonly) return;
+    if (this.disabled || this.visuallyDisabled) return;
     if (!e.dataTransfer) return;
 
     const files = await this.handleTransferItems(e.dataTransfer.items);
@@ -375,10 +381,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
   private renderDroparea() {
     return html`
       <div
-        class=${cx(
-          'droparea',
-          this.disabled || this.visuallyDisabled || this.readonly ? 'cursor-not-allowed' : 'cursor-pointer'
-        )}
+        class=${cx('droparea', this.disabled || this.visuallyDisabled ? 'cursor-not-allowed' : 'cursor-pointer')}
         @click=${this.handleClick}
         @keypress=${this.handleClick}
         @focus=${this.handleFocus}
@@ -433,7 +436,8 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         <sd-button
           class="button"
           @click=${this.handleClick}
-          ?disabled=${this.disabled || this.visuallyDisabled || this.readonly}
+          ?disabled=${this.disabled}
+          ?visually-disabled=${this.visuallyDisabled}
           exportparts="base:button__base"
           part="button"
           size=${this.size}
@@ -503,15 +507,17 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         <input
           accept=${this.accept}
           aria-describedby="help-text"
+          aria-disabled=${this.disabled || this.visuallyDisabled ? 'true' : 'false'}
           @change=${this.handleChange}
           class="input__control sr-only"
           capture=${ifDefined(this.capture)}
-          ?disabled=${this.disabled || this.readonly}
+          ?disabled=${this.disabled}
           id="input"
           @invalid=${this.handleInvalid}
           ?multiple=${this.multiple}
           name=${ifDefined(this.name)}
           ?required=${this.required}
+          title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
           type="file"
           tabindex="-1"
           ?webkitdirectory=${this.webkitdirectory}
