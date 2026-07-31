@@ -2,7 +2,7 @@ Use the `headline` attribute to set the headline of the dialog. If you need to u
 
 ```html
 <div class="h-[40vh]">
-  <sd-button id="headline-drawer-trigger">Open Dialog</sd-button>
+  <sd-button id="headline-drawer-trigger">Open dialog</sd-button>
   <sd-dialog id="headline-dialog" open headline="Headline">
     <p class="sd-paragraph">
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et

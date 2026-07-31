@@ -189,7 +189,7 @@ version: 1.0.0
 <div style="height: 40vh;">
   <div class="flex gap-2">
     <sd-button id="open-dialog">Open Dialog</sd-button>
-    <sd-button id="open-timed-dialog">Open Timed Dialog</sd-button>
+    <sd-button id="open-timed-dialog">Open timed Dialog</sd-button>
   </div>
 
   <sd-dialog id="default-dialog">

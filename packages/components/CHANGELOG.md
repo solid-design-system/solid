@@ -13,6 +13,8 @@
 - Uncompressed: 625 KB (-1 KB / 0%)
 - Gzipped: 140 KB (unchanged)
 
+## 6.28.1
+
 ## 6.28.0
 
 ### Minor Changes
