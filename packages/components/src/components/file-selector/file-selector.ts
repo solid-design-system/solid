@@ -13,11 +13,9 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 import type SdButton from '../button/button';
-//TODO TEST AND FINISH ACCEPT
-//TODO FIX THIS
+
 /**
- *
- * @summary File selectors allow selecting an arbitrary number of files for uploading.
+ * @summary Used to select a file by clicking or dragging a file into a drop-area.
  * @documentation https://solid.union-investment.com/[storybook-link]/file-selector
  * @status experimental
  * @since 6.28.0
@@ -470,21 +468,23 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         aria-describedby=${ifDefined(hasHelpText ? 'help-text' : undefined)}
         part="form-control"
       >
-        ${showLabel
-          ? html`
-              <label
-                aria-hidden=${hasLabel ? 'false' : 'true'}
-                class=${cx(
-                  'form-control__label inline-block mb-2 text-base',
-                  this.disabled ? 'text-neutral-500' : 'form-control-color-text'
-                )}
-                for="input"
-                part="form-control-label"
-              >
-                <slot name="label">${this.label}</slot>
-              </label>
-            `
-          : null}
+        ${
+          showLabel
+            ? html`
+                <label
+                  aria-hidden=${hasLabel ? 'false' : 'true'}
+                  class=${cx(
+                    'form-control__label inline-block mb-2 text-base',
+                    this.disabled ? 'text-neutral-500' : 'form-control-color-text'
+                  )}
+                  for="input"
+                  part="form-control-label"
+                >
+                  <slot name="label">${this.label}</slot>
+                </label>
+              `
+            : null
+        }
 
         <div class="form-control-input" part="form-control-input">
           ${this.droparea ? this.renderDroparea() : this.renderButton()}
