@@ -6,5 +6,5 @@ Use the `chevron` attribute to add a chevron to the navigation item.
 - `Accordion` variant always show up / down chevron to reflect open state.
 
 ```html
-<sd-navigation-item vertical chevron>Vertical Navigation with Chevron</sd-navigation-item>
+<sd-navigation-item vertical chevron>Vertical navigation with chevron</sd-navigation-item>
 ```
