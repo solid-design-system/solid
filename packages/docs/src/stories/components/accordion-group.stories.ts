@@ -39,7 +39,7 @@ export const Default = {
  */
 
 export const CloseOthers = {
-  name: 'Close Others',
+  name: 'Close others',
   render: () => html`
     <sd-accordion-group close-others>
       <sd-accordion summary="Accordion 1">

@@ -78,7 +78,7 @@ export const Size = {
         <span slot="label">Small</span>
       </sd-step>
       <sd-step size="xs" orientation="vertical" class="pl-16">
-        <span slot="label">Extra Small</span>
+        <span slot="label">Extra small</span>
       </sd-step>
     </div>
   `
