@@ -48,15 +48,7 @@ async function runBuild() {
   });
 
   await nextTask('Extracting themes', () => {
-    const toAppend = [
-      { name: 'icons.css', process: (css, theme) => `:root, .sd-theme-${theme.name} {\n${css}\n}` },
-      { name: 'overrides.css' },
-      {
-        name: 'legacy-variables.css',
-        shared: true,
-        process: (css, theme) => `:root, .sd-theme-${theme.name} {\n${css}\n}`
-      }
-    ];
+    const toAppend = [{ name: 'icons.css' }, { name: 'overrides.css' }];
 
     themes = getStylesheetThemes(stylesheet, config);
     themes.forEach(theme => {

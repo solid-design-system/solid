@@ -1,6 +1,6 @@
 ---
-'@solid-design-system/tokens': minor
-'@solid-design-system/docs': minor
+'@solid-design-system/tokens': major
+'@solid-design-system/docs': major
 ---
 
 - Added fallback values from the ui-light theme to tailwind.css so aplications that do not require theming can still work without installing a theme;
