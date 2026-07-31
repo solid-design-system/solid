@@ -50,6 +50,15 @@ export const docsPackagePath = join(currentDirname, '../../metadata/packages/doc
 /** Package-level docs for the tokens package (Installation, Usage, etc.) */
 export const tokenPackageDocsPath = join(currentDirname, '../../metadata/packages/tokens/docs');
 
+/**
+ * CD Toolbox package metadata — one sub-directory per toolbox item.
+ * Each item dir contains: info.md (and optionally stories/)
+ */
+export const cdToolboxPath = join(currentDirname, '../../metadata/packages/cd-toolbox');
+
+/** Package-level docs for the cd-toolbox package */
+export const cdToolboxPackageDocsPath = join(currentDirname, '../../metadata/packages/cd-toolbox/docs');
+
 /** Root of all static AI-rule markdown files */
 export const staticPath = join(currentDirname, '../../metadata/static');
 

@@ -1,3 +1,4 @@
+export * from './cd-toolbox.js';
 export * from './quickstart.js';
 export * from './components.js';
 export * from './icon-search.js';
