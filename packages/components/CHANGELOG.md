@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 6.29.0
+
+### Minor Changes
+
+- Updated `sd-button` and `sd-dialog` animations so that only the `ui-light` and `ui-dark` themes use SDS brand-specific animations. _[`#3141`](https://github.com/solid-design-system/solid/pull/3141) [`435a51f`](https://github.com/solid-design-system/solid/commit/435a51f420dd4be412b561d0f4b8e068fdc3295b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+### 📈 Stats
+* Uncompressed: 627 KB (+3 KB / +0%)
+* Gzipped: 140 KB (unchanged)
+
 ## 6.28.2
 
 ### Patch Changes
@@ -7,8 +17,9 @@
 - Updated dependencies. See details in the Pull Request _[`#3163`](https://github.com/solid-design-system/solid/pull/3163) [`91ff1c8`](https://github.com/solid-design-system/solid/commit/91ff1c81831fb3522c534306a61b8a5be3562f64) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
 
 ### 📈 Stats
-* Uncompressed: 624 KB (-2 KB / 0%)
-* Gzipped: 140 KB (unchanged)
+
+- Uncompressed: 624 KB (-2 KB / 0%)
+- Gzipped: 140 KB (unchanged)
 
 ## 6.28.1
 

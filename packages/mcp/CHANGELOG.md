@@ -1,5 +1,7 @@
 # Changelog
 
+## 6.29.0
+
 ## 6.28.2
 
 ### Patch Changes
