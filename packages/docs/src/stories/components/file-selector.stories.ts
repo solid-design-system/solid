@@ -57,11 +57,11 @@ export const Sizes = {
 };
 
 /**
- * Use the label attribute to add an accessible label to the file selector.
+ * Use the `label` attribute to add an accessible label to the file selector.
  *
  * For labels that contain HTML, use the label slot instead.
  *
- * This label is visually hidden by default, to display it, use the show-label attribute.
+ * This label is visually hidden by default, to display it, use the `show-label` attribute.
  */
 export const Label = {
   render: () =>
@@ -104,10 +104,16 @@ export const VisuallyDisabled = {
  */
 export const HelpText = {
   render: () =>
-    html` <sd-file-selector
-      label="Select a file to upload"
-      help-text="Max file size is 3 MB. Only PDF, JPG and PNG files are supported."
-    ></sd-file-selector>`
+    html`<div class="flex flex-col gap-10">
+      <sd-file-selector
+        label="Select a file to upload"
+        help-text="Max file size is 3 MB. Only PDF, JPG and PNG files are supported."
+      >
+      </sd-file-selector>
+      <sd-file-selector label="Select a file to upload">
+        <div slot="help-text" class="text-lg">Max file size is 3 MB. Only PDF, JPG and PNG files are supported.</div>
+      </sd-file-selector>
+    </div>`
 };
 
 /**
