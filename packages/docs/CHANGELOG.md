@@ -1,10 +1,38 @@
 # @solid-design-system/docs
 
+## 3.0.0-next.2
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull Request _[`#3163`](https://github.com/solid-design-system/solid/pull/3163) [`91ff1c8`](https://github.com/solid-design-system/solid/commit/91ff1c81831fb3522c534306a61b8a5be3562f64) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 3.0.0-next.1
+
+### Patch Changes
+
+- - Removed SDS's cdn usage from the Codepen extension. _[`#3200`](https://github.com/solid-design-system/solid/pull/3200) [`bfcd108`](https://github.com/solid-design-system/solid/commit/bfcd10845b25f9aa410ec69b16ad6468117d473b) [@martascorreia](https://github.com/martascorreia)_
+
+  - Added fonts, logos and `sd-icon` theming to the Codepen extension.
+
 ## 3.0.0-next.0
 
 ### Major Changes
 
 - Fixed the restriction of changing the font size and margin for headline in `sd-teaser`. _[`#3165`](https://github.com/solid-design-system/solid/pull/3165) [`b6f28e6`](https://github.com/solid-design-system/solid/commit/b6f28e6d427e41c3d3f2c0b68b29715e3ce6d934) [@balco0110](https://github.com/balco0110)_
+
+## 2.21.4
+
+### Patch Changes
+
+- Applied sentence case across the template and component documentation in Storybook. _[`#3190`](https://github.com/solid-design-system/solid/pull/3190) [`319d1f7`](https://github.com/solid-design-system/solid/commit/319d1f78991ec8a50ef726da5761cc8ae213ed22) [@balco0110](https://github.com/balco0110)_
+
+  Updated the `sd-brandshape` transparent template with new sample copy and fixed the headline text color on the transparent variant.
+
+## 2.21.3
+
+### Patch Changes
+
+- Update Installation.mdx with GitLab Duo setup _[`#3166`](https://github.com/solid-design-system/solid/pull/3166) [`45c02e8`](https://github.com/solid-design-system/solid/commit/45c02e8df764c238950394fd25a68ecc70b390ae) [@Vahid1919](https://github.com/Vahid1919)_
 
 ## 2.21.2
 

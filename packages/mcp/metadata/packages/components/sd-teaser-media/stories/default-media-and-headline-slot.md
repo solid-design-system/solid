@@ -1,6 +1,6 @@
 - Use the `default` slot to display main information and/or action elements below the headline.
 - Use the `media` slot to add an image to the teaser.
-- Use the `headline` slot to display titles. It should always contain a <h\*> element.
+- Use the `headline` slot to display titles. It should always contain a <h*> element.
   **Accessibility Hint:**
 - Please make sure to use semantically correct headline tags for the headline slot to provide accessible content.
 - The heading in a teaser should be the first item in the DOM. A heading introduces a new thematic region and separates the following content from the previous region.

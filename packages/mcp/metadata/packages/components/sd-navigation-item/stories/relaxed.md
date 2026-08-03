@@ -3,6 +3,6 @@ Use `relaxed` attribute to add padding to both sides.
 
 ```html
 <div class="w-[400px]">
-  <sd-navigation-item vertical relaxed>Relaxed Navigation</sd-navigation-item>
+  <sd-navigation-item vertical relaxed>Relaxed navigation</sd-navigation-item>
 </div>
 ```

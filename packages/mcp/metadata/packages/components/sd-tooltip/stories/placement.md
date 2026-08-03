@@ -10,17 +10,17 @@ Use the `placement` attribute to set the placement:
 ```html
 <div class="grid grid-cols-1 justify-items-center md:grid-cols-3 md:justify-items-start gap-24 p-12">
   <div>
-    <sd-tooltip content="Top Start Positioning" placement="top-start" open size="lg" trigger="click focus"></sd-tooltip>
+    <sd-tooltip content="Top Start positioning" placement="top-start" open size="lg" trigger="click focus"></sd-tooltip>
   </div>
   <div>
-    <sd-tooltip content="Top Positioning" placement="top" open size="lg" trigger="click focus"></sd-tooltip>
+    <sd-tooltip content="Top positioning" placement="top" open size="lg" trigger="click focus"></sd-tooltip>
   </div>
   <div>
-    <sd-tooltip content="Top End Positioning" placement="top-end" open size="lg" trigger="click focus"></sd-tooltip>
+    <sd-tooltip content="Top End positioning" placement="top-end" open size="lg" trigger="click focus"></sd-tooltip>
   </div>
   <div>
     <sd-tooltip
-      content="Bottom Start Positioning"
+      content="Bottom Start positioning"
       placement="bottom-start"
       open
       size="lg"
@@ -28,11 +28,11 @@ Use the `placement` attribute to set the placement:
     ></sd-tooltip>
   </div>
   <div>
-    <sd-tooltip content="Bottom Positioning" placement="bottom" open size="lg" trigger="click focus"></sd-tooltip>
+    <sd-tooltip content="Bottom positioning" placement="bottom" open size="lg" trigger="click focus"></sd-tooltip>
   </div>
   <div>
     <sd-tooltip
-      content="Bottom End Positioning"
+      content="Bottom End positioning"
       placement="bottom-end"
       open
       size="lg"

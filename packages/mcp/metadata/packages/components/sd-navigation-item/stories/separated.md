@@ -6,9 +6,9 @@ Use the `separated` attribute, to have more that only one action. It is possible
 
 ```html
 <sd-navigation-item href="https://www.union-investment.de/" target="_blank" vertical separated>
-  <div>Vertical Navigation Separated</div>
-  <sd-navigation-item vertical indented slot="children"> Sub Navigation 1 </sd-navigation-item>
-  <sd-navigation-item vertical indented slot="children"> Sub Navigation 2 </sd-navigation-item>
-  <sd-navigation-item vertical indented slot="children"> Sub Navigation 3 </sd-navigation-item>
+  <div>Vertical navigation separated</div>
+  <sd-navigation-item vertical indented slot="children"> Sub navigation 1 </sd-navigation-item>
+  <sd-navigation-item vertical indented slot="children"> Sub navigation 2 </sd-navigation-item>
+  <sd-navigation-item vertical indented slot="children"> Sub navigation 3 </sd-navigation-item>
 </sd-navigation-item>
 ```

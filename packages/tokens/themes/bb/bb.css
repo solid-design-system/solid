@@ -147,11 +147,11 @@
   --sd-color-accent: 210 0 0;
   --sd-color-background-accent-300: var(--sd-color-primary-400);
   --sd-color-background-accent-500: var(--sd-color-primary-700);
-  --sd-color-background-accent-550: var(--sd-color-info);
+  --sd-color-background-accent-550: var(--sd-color-primary-600);
   --sd-color-background-accent-700: var(--sd-color-primary-800);
   --sd-color-background-accent: var(--sd-color-info);
-  --sd-color-background-error-400: var(--sd-color-error);
-  --sd-color-background-error: var(--sd-color-error);
+  --sd-color-background-error-400: var(--sd-color-error-400);
+  --sd-color-background-error: var(--sd-color-error-300);
   --sd-color-background-info: var(--sd-color-info);
   --sd-color-background-neutral-100: var(--sd-color-neutral-100);
   --sd-color-background-neutral-200: var(--sd-color-neutral-100);
@@ -159,7 +159,7 @@
   --sd-color-background-neutral-400: var(--sd-color-neutral-300);
   --sd-color-background-neutral-500: var(--sd-color-neutral-500);
   --sd-color-background-neutral-600: var(--sd-color-neutral-600);
-  --sd-color-background-neutral-800: var(--sd-color-black);
+  --sd-color-background-neutral-800: var(--sd-color-neutral-800);
   --sd-color-background-primary-100: var(--sd-color-primary-100);
   --sd-color-background-primary-200: var(--sd-color-primary-200);
   --sd-color-background-primary-300: var(--sd-color-primary-300);
@@ -170,18 +170,18 @@
   --sd-color-background-warning: var(--sd-color-warning);
   --sd-color-background-white: var(--sd-color-white);
   --sd-color-black: 0 0 0 / 0.86;
-  --sd-color-border-accent-550: var(--sd-color-info);
+  --sd-color-border-accent-550: var(--sd-color-primary-600);
   --sd-color-border-accent: var(--sd-color-info);
-  --sd-color-border-error-400: var(--sd-color-error);
-  --sd-color-border-error: var(--sd-color-error);
+  --sd-color-border-error-400: var(--sd-color-error-400);
+  --sd-color-border-error: var(--sd-color-error-300);
   --sd-color-border-neutral-400: var(--sd-color-neutral-400);
   --sd-color-border-neutral-500: var(--sd-color-neutral-500);
   --sd-color-border-neutral-600: var(--sd-color-neutral-600);
-  --sd-color-border-neutral-800: var(--sd-color-black);
+  --sd-color-border-neutral-800: var(--sd-color-neutral-800);
   --sd-color-border-primary-100: var(--sd-color-primary-100);
   --sd-color-border-primary-200: var(--sd-color-primary-100);
   --sd-color-border-primary-400: var(--sd-color-neutral-400);
-  --sd-color-border-primary-500: var(--sd-color-info);
+  --sd-color-border-primary-500: var(--sd-color-primary-600);
   --sd-color-border-primary-800: var(--sd-color-primary-800);
   --sd-color-border-primary: var(--sd-color-info);
   --sd-color-border-success: var(--sd-color-success);
@@ -194,16 +194,16 @@
   --sd-color-icon-fill-accent-550: 134 205 210;
   --sd-color-icon-fill-accent: 134 205 210;
   --sd-color-icon-fill-content-icons-primary: var(--sd-color-info);
-  --sd-color-icon-fill-error-400: var(--sd-color-error);
-  --sd-color-icon-fill-error: var(--sd-color-error);
+  --sd-color-icon-fill-error-400: var(--sd-color-error-400);
+  --sd-color-icon-fill-error: var(--sd-color-error-300);
   --sd-color-icon-fill-neutral-400: var(--sd-color-neutral-200);
   --sd-color-icon-fill-neutral-500: var(--sd-color-neutral-500);
   --sd-color-icon-fill-neutral-600: 255 255 255 / 0.4;
-  --sd-color-icon-fill-neutral-800: var(--sd-color-black);
+  --sd-color-icon-fill-neutral-800: var(--sd-color-neutral-800);
   --sd-color-icon-fill-primary-100: var(--sd-color-primary-100);
   --sd-color-icon-fill-primary-200: var(--sd-color-primary-200);
   --sd-color-icon-fill-primary-400: 255 255 255 / 0.84;
-  --sd-color-icon-fill-primary-500: var(--sd-color-info);
+  --sd-color-icon-fill-primary-500: var(--sd-color-primary-600);
   --sd-color-icon-fill-primary-800: var(--sd-color-primary-800);
   --sd-color-icon-fill-primary: var(--sd-color-info);
   --sd-color-icon-fill-risk-high: var(--sd-color-risk-high);
@@ -241,14 +241,14 @@
   --sd-color-success: 12 115 54;
   --sd-color-text-accent: 134 205 210;
   --sd-color-text-black: var(--sd-color-black);
-  --sd-color-text-error: var(--sd-color-error);
+  --sd-color-text-error: var(--sd-color-error-300);
   --sd-color-text-neutral-500: var(--sd-color-neutral-500);
   --sd-color-text-neutral-600: 255 255 255 / 0.4;
   --sd-color-text-neutral-700: var(--sd-color-neutral-700);
   --sd-color-text-primary-100: var(--sd-color-primary-100);
   --sd-color-text-primary-200: var(--sd-color-primary-200);
   --sd-color-text-primary-400: var(--sd-color-white);
-  --sd-color-text-primary-500: var(--sd-color-info);
+  --sd-color-text-primary-500: var(--sd-color-primary-600);
   --sd-color-text-primary-800: var(--sd-color-primary-800);
   --sd-color-text-primary: var(--sd-color-info);
   --sd-color-text-success: var(--sd-color-success);
@@ -368,9 +368,9 @@
   --sd-radio--checked--default-color-background: var(--sd-color-info);
   --sd-radio--checked--default__icon-color-background: var(--sd-color-white);
   --sd-radio--checked--disabled__icon-color-background: var(--sd-color-white);
-  --sd-radio--checked--hover-color-background: var(--sd-color-info);
+  --sd-radio--checked--hover-color-background: var(--sd-color-primary-600);
   --sd-radio--checked--hover__icon-color-background: var(--sd-color-white);
-  --sd-radio--checked--invalid--default-color-background: var(--sd-color-error);
+  --sd-radio--checked--invalid--default-color-background: var(--sd-color-error-300);
   --sd-radio--checked--invalid--default__icon-color-background: var(--sd-color-white);
   --sd-radio--checked--invalid--hover__icon-color-background: var(--sd-color-white);
   --sd-radio--default--invalid-color-background: 253 237 237;
@@ -491,6 +491,7 @@
   --sd-video--play-button-color-icon-fill: var(--sd-color-info);
 }
 
+:root, .sd-theme-bb {
 .sd-theme-bb {
     --sd-icon--calendar: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M21 4.55h-3.25V2.88H16.1v1.67H7.9V2.88H6.25v1.67H3v15.33h17.84v-.01H21zM19.36 6.3v1.67H4.64V6.3zM4.64 9.68h14.72v8.5H4.64z"/><path d="M7.91 11.38H6.28v1.7H7.9zM11.19 11.38H9.55v1.7h1.64zM7.91 14.78H6.28v1.7H7.9zM11.19 14.78H9.55v1.7h1.64zM14.45 11.38H12.8v1.7h1.64zM17.72 11.38H16.1v1.7h1.63zM14.45 14.78H12.8v1.7h1.64zM17.72 14.78H16.1v1.7h1.63z"/></svg>';
     --sd-icon--chevron-down: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" viewBox="0 0 24 24" fill="none"><path d="m5.62 9.82 6.5 6.41 6.5-6.4-1.6-1.6-4.9 4.83-4.89-4.83z"/></svg>';
@@ -522,6 +523,7 @@
     --sd-icon--transcript: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M4 2v20h15V5.35L15.67 2zm13.33 18.33H5.67V3.67h10l1.66 1.67z"/><path d="M18.41 5.34h-2.74v-2.7H14v4.37h4.41zM12.33 5.35h-5V7h5zM15.67 8.68H7.33v1.67h8.34zM15.67 12.01H7.33v1.67h8.34zM15.67 15.35H7.33V17h8.34z"/><path d="m15.26 3.27.13 3.31 2.13-.16.54-.93s-.32-.84-.45-.94-2.35-1.28-2.35-1.28"/></svg>';
     --sd-icon--volume: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="m7.55 14.32 3.79 3.24V6.39L7.55 9.63l-.5.47H3.83v3.75h3.2zm-5.59 1.4v-7.5h4.38c3.87-3.32 6.13-5.31 6.87-5.94v19.38c-.74-.63-3-2.62-6.87-5.94zm13.68-5.2-.43-.34 1.13-1.53.5.43a3.7 3.7 0 0 1 1.37 2.9c0 1.16-.54 2.22-1.36 2.92l-.51.4-1.13-1.5.43-.38a1.85 1.85 0 0 0 0-2.9m2.38-2.92-.55-.43 1.1-1.53.62.51a7.52 7.52 0 0 1 0 11.64l-.62.51-1.1-1.52.55-.43a5.7 5.7 0 0 0 2.07-4.38c0-1.76-.82-3.32-2.07-4.37"/></svg>';
     --sd-icon--warning: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" d="M21.9 19.5A1 1 0 0 1 21 21H3a1 1 0 0 1-.9-1.5l9-16a1 1 0 0 1 1.8 0zM12 6 4.7 19h14.6zm-1 4a1 1 0 1 1 2 0v4a1 1 0 1 1-2 0zm0 7a1 1 0 1 1 2 0 1 1 0 1 1-2 0" clip-rule="evenodd"/></svg>';
+}
 }
 
 :root, .sd-theme-bb {
