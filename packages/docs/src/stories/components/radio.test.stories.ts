@@ -16,7 +16,7 @@ export default {
   title: 'Components/sd-radio/Screenshots: sd-radio',
   tags: ['!autodocs'],
   component: 'sd-radio',
-  args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
+  args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default slot' }]),
   argTypes,
   parameters: { ...parameters, controls: { disable: true } }
 };
@@ -95,7 +95,7 @@ export const Invalid = {
 };
 
 export const LongLabelWithWrapping = {
-  name: 'Long Label with Wrapping',
+  name: 'Long label with wrapping',
   render: () => html`
     <style>
       #long-label sd-radio-group {

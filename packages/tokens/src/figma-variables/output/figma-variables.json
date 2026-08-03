@@ -7773,7 +7773,9 @@
                 "value": "{ui-dark.utilities.color.primary.100}"
               },
               "text": {
-                "description": "Used for inverted hover interaction button label"
+                "description": "Used for inverted hover interaction button label",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.500}"
               }
             }
           },

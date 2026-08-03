@@ -3,6 +3,6 @@ Use `indented` attribute to add padding to the left side.
 
 ```html
 <div>
-  <sd-navigation-item vertical indented>Indented Navigation</sd-navigation-item>
+  <sd-navigation-item vertical indented>Indented navigation</sd-navigation-item>
 </div>
 ```
