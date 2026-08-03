@@ -6,6 +6,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 The v6 release improves token stability, cleans up unused CSS variables, and introduces several fixes and refinements across different components.
 
+<div hidden>
 Dear devs, when adding a migration guide, please include:
 
 1. What changed and why
@@ -52,3 +53,33 @@ Result: `sd-teaser` no longer forces font-weight, margin or test size on headlin
 ## Breaking change #4
 
 [...]
+
+</div>
+
+## Component updates
+
+### `<sd-input>` and `<sd-textarea>`
+
+The `autocorrect` property is now a `boolean` instead of a `string`. This is required by the updated `HTMLElement.autocorrect` type shipped in TypeScript 5.9, which now matches how browsers implement the native `autocorrect` IDL attribute.
+
+The `autocorrect` HTML attribute is unaffected and still accepts `"on"` and `"off"`, so no markup changes are needed.
+
+```html
+<!-- No changes required -->
+<sd-input autocorrect="off"></sd-input>
+<sd-textarea autocorrect="off"></sd-textarea>
+```
+
+Only code that sets the property directly in JavaScript/TypeScript needs to be updated:
+
+**Before:**
+
+```js
+input.autocorrect = 'off';
+```
+
+**After:**
+
+```js
+input.autocorrect = false;
+```
