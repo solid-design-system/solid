@@ -16,32 +16,6 @@ Dear devs, when adding a migration guide, please include:
 
 Remove all placeholder comments before the release.
 
-## Removed enforced headline styling from `sd-teaser-media`.
-
-Removed this CSS rule that used to force styles into whatever is slotted into slot="headline"
-
-```css
-::slotted([slot='headline']) { '@apply font-bold !m-0 !text-lg;'}
-```
-
-Result: `sd-teaser` no longer forces font-weight, margin or test size on headline elements. Headline sizing/spacing must now be provided by the user.
-
-**Before**:
-
-```html
-<sd-teaser>
-  <h3 slot="headline" class="sd-headline">Expert views</h3>
-</sd-teaser>
-```
-
-**After**:
-
-```html
-<sd-teaser>
-  <h3 slot="headline" class="sd-headline sd-headline--size-lg">Expert views</h3>
-</sd-teaser>
-```
-
 ## Breaking change #2
 
 [...]
@@ -55,6 +29,40 @@ Result: `sd-teaser` no longer forces font-weight, margin or test size on headlin
 [...]
 
 </div>
+
+## `sd-teaser` headline slot no longer enforces styles
+
+Previously, `sd-teaser` used `!important` to force `font-size`, `font-weight`, and `margin` on whatever element was placed in `slot="headline"`, preventing any overrides from Light DOM styles.
+
+These `!important` declarations have been removed. The same defaults still apply when no conflicting styles exist, but **any author-level styles targeting the headline element (e.g. global `h3` rules) will now take effect**.
+
+**Who is affected:** Users who have heading styles in their stylesheets and rely on `sd-teaser` suppressing them.
+
+**Before** (global `h3` styles were silently ignored):
+
+```css
+h3 {
+  font-size: 2rem;
+  margin: 1rem 0;
+} /* had no effect inside sd-teaser */
+```
+
+**After** (global `h3` styles now apply):
+
+```css
+h3 {
+  font-size: 2rem;
+  margin: 1rem 0;
+} /* now visible inside sd-teaser */
+```
+
+To restore the previous fixed appearance, apply the size explicitly on the slotted element:
+
+```html
+<sd-teaser>
+  <h3 slot="headline" class="sd-headline sd-headline--size-lg">Headline</h3>
+</sd-teaser>
+```
 
 ## Component updates
 
