@@ -65,6 +65,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.step: number|'any' — Specifies the granularity that the value must adhere to, or the special value `any` which means no stepping is
   implied, allowing any numeric value. Only applies to date and number input types.
 - prop.autocapitalize: |'off'|'none'|'on'|'sentences'|'words'|'characters' — Controls whether and how text input is automatically capitalized as it is entered by the user.
+- prop.autocorrect: boolean — Indicates whether the browser's autocorrect feature is on or off.
 - prop.autocomplete: string — Specifies what permission the browser has to provide assistance in filling out form field values. Refer to
   [this page on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for available values.
 - prop.autofocus: boolean — Indicates that the input should receive focus on page load.

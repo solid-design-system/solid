@@ -126,7 +126,7 @@
     "prettier": "^3.9.5",
     "recursive-copy": "^2.0.14",
     "sinon": "^22.0.0",
-    "tailwindcss": "^4.3.2",
+    "tailwindcss": "^4.3.0",
     "typescript": "5.8.3",
     "user-agent-data-types": "^0.4.3"
   },

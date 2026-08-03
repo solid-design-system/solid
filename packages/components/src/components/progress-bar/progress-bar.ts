@@ -88,16 +88,18 @@ export default class SdProgressBar extends SolidElement {
 
     return html`
       <div part="base" class="text-start" aria-hidden=${!hasLabel}>
-        ${hasLabel
-          ? html`<label
-              part="label"
-              id="label"
-              class=${cx('text-base', !this.showLabel && 'sr-only', this.inverted ? 'text-white' : 'text-black')}
-              aria-hidden=${hasLabel ? 'false' : 'true'}
-            >
-              <slot name="label">${this.label}</slot>
-            </label>`
-          : nothing}
+        ${
+          hasLabel
+            ? html`<label
+                part="label"
+                id="label"
+                class=${cx('text-base', !this.showLabel && 'sr-only', this.inverted ? 'text-white' : 'text-black')}
+                aria-hidden=${hasLabel ? 'false' : 'true'}
+              >
+                <slot name="label">${this.label}</slot>
+              </label>`
+            : nothing
+        }
         <div
           class=${cx(
             this.valuePosition === 'right'
@@ -122,68 +124,74 @@ export default class SdProgressBar extends SolidElement {
             aria-labelledby=${ifDefined(hasLabel ? 'label' : this.label)}
             style=${`--percentage: ${this.percentage}%;`}
           >
-            ${this.isLoading
-              ? html`
-                  <div
-                    part="track"
-                    class=${cx(
-                      'absolute top-0 left-0 h-full progress-bar__track--loading-left',
-                      this.inverted
-                        ? 'sd-progress-bar__slide-bar--inverted-color-background'
-                        : 'sd-progress-bar__slide-bar-color-background'
-                    )}
-                  ></div>
-                  <div
-                    part="track"
-                    class=${cx(
-                      'absolute top-0 right-0 h-full progress-bar__track--loading-right',
-                      this.inverted
-                        ? 'sd-progress-bar__slide-bar--inverted-color-background'
-                        : 'sd-progress-bar__slide-bar-color-background'
-                    )}
-                  ></div>
-                  <div
-                    part="indicator"
-                    class=${cx(
-                      'absolute top-0 h-full progress-bar__indicator--loading',
-                      this.inverted ? 'sd-progress-bar--active--inverted-color-background' : 'bg-accent'
-                    )}
-                  ></div>
-                `
-              : html`
-                  <div
-                    part="indicator"
-                    class=${cx(
-                      'w-[var(--percentage)]',
-                      this.inverted ? 'sd-progress-bar--active--inverted-color-background' : 'bg-accent'
-                    )}
-                  ></div>
-                  ${this.value && this.value > 0 && this.value < this.safeMax
-                    ? html`<div class="w-0.5 shrink-0"></div>`
-                    : nothing}
-                  <div
-                    part="track"
-                    class=${cx(
-                      'flex-1',
-                      this.inverted
-                        ? 'sd-progress-bar__slide-bar--inverted-color-background'
-                        : 'sd-progress-bar__slide-bar-color-background'
-                    )}
-                  ></div>
-                `}
+            ${
+              this.isLoading
+                ? html`
+                    <div
+                      part="track"
+                      class=${cx(
+                        'absolute top-0 left-0 h-full progress-bar__track--loading-left',
+                        this.inverted
+                          ? 'sd-progress-bar__slide-bar--inverted-color-background'
+                          : 'sd-progress-bar__slide-bar-color-background'
+                      )}
+                    ></div>
+                    <div
+                      part="track"
+                      class=${cx(
+                        'absolute top-0 right-0 h-full progress-bar__track--loading-right',
+                        this.inverted
+                          ? 'sd-progress-bar__slide-bar--inverted-color-background'
+                          : 'sd-progress-bar__slide-bar-color-background'
+                      )}
+                    ></div>
+                    <div
+                      part="indicator"
+                      class=${cx(
+                        'absolute top-0 h-full progress-bar__indicator--loading',
+                        this.inverted ? 'sd-progress-bar--active--inverted-color-background' : 'bg-accent'
+                      )}
+                    ></div>
+                  `
+                : html`
+                    <div
+                      part="indicator"
+                      class=${cx(
+                        'w-[var(--percentage)]',
+                        this.inverted ? 'sd-progress-bar--active--inverted-color-background' : 'bg-accent'
+                      )}
+                    ></div>
+                    ${
+                      this.value && this.value > 0 && this.value < this.safeMax
+                        ? html`<div class="w-0.5 shrink-0"></div>`
+                        : nothing
+                    }
+                    <div
+                      part="track"
+                      class=${cx(
+                        'flex-1',
+                        this.inverted
+                          ? 'sd-progress-bar__slide-bar--inverted-color-background'
+                          : 'sd-progress-bar__slide-bar-color-background'
+                      )}
+                    ></div>
+                  `
+            }
           </div>
-          ${this.showValue
-            ? html`<span
-                class=${cx(
-                  'text-neutral-700 text-xs w-shrink-0',
-                  this.inverted ? 'text-white' : 'text-neutral-700',
-                  this.valuePosition === 'bottom' ? 'text-start' : 'text-center',
-                  this.valuePosition === 'right' && 'whitespace-nowrap'
-                )}
-                part="value-${this.valuePosition}"
-                >${this.valueFormatter(this.clampedValue)}</span
-              >`
-            : nothing}
+          ${
+            this.showValue
+              ? html`<span
+                  class=${cx(
+                    'text-neutral-700 text-xs w-shrink-0',
+                    this.inverted ? 'text-white' : 'text-neutral-700',
+                    this.valuePosition === 'bottom' ? 'text-start' : 'text-center',
+                    this.valuePosition === 'right' && 'whitespace-nowrap'
+                  )}
+                  part="value-${this.valuePosition}"
+                  >${this.valueFormatter(this.clampedValue)}</span
+                >`
+              : nothing
+          }
         </div>
       </div>
     `;
