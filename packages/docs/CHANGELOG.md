@@ -8,6 +8,8 @@
 
 ## 3.0.0-next.2
 
+## 2.21.5
+
 ### Patch Changes
 
 - Updated dependencies. See details in the Pull Request _[`#3163`](https://github.com/solid-design-system/solid/pull/3163) [`91ff1c8`](https://github.com/solid-design-system/solid/commit/91ff1c81831fb3522c534306a61b8a5be3562f64) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
