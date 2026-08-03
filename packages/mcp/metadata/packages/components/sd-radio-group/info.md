@@ -56,7 +56,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - part.form-control-label: The label's wrapper.
 - part.form-control-input: The input's wrapper.
 - part.button-group: The button group that wraps radio buttons.
-- part.button-group\_\_base: The button group's `base` part.
+- part.button-group__base: The button group's `base` part.
 
 ## Guidelines
 

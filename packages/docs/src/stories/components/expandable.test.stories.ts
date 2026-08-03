@@ -205,7 +205,7 @@ export const Samples = {
           }
         })}
       </div>
-      <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">Lead Text Example</div>
+      <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">Lead text example</div>
       <div class="background-sample bg-neutral-100 ">
         ${generateTemplate({
           args: overrideArgs([
@@ -233,7 +233,7 @@ export const Samples = {
           ])
         })}
       </div>
-      <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">Paragraph Example</div>
+      <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">Paragraph example</div>
       <div class="background-sample bg-neutral-100 ">
         ${generateTemplate({
           args: overrideArgs([

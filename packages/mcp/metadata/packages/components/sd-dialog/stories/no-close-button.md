@@ -3,7 +3,7 @@ Use the `no-close-button` attribute to hide the close button in the dialog.
 
 ```html
 <div class="h-[40vh]">
-  <sd-button id="no-close-drawer-trigger">Open Dialog</sd-button>
+  <sd-button id="no-close-drawer-trigger">Open dialog</sd-button>
   <sd-dialog id="no-close-dialog" headline="Headline" open no-close-button>
     <p class="sd-paragraph">
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et

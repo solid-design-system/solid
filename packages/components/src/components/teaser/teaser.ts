@@ -36,11 +36,7 @@ import type { PropertyValues } from 'lit';
 export default class SdTeaser extends SolidElement {
   /** Variant of the teaser */
   @property({ type: String, reflect: true }) variant:
-    | 'white'
-    | 'white border-neutral-400'
-    | 'neutral-100'
-    | 'primary'
-    | 'primary-100' = 'white';
+    'white' | 'white border-neutral-400' | 'neutral-100' | 'primary' | 'primary-100' = 'white';
 
   /** Breakpoint where the teaser switches from `vertical` to `horizontal`. `0` is always `horizontal`, `9999` is always `vertical`. */
   @property({ reflect: true, type: Number }) breakpoint = 448;
@@ -118,11 +114,13 @@ export default class SdTeaser extends SolidElement {
         part="base"
       >
         <div
-          style=${this._orientation === 'horizontal'
-            ? `width: var(--distribution-content, 100%); ${
-                inset ? 'width: var(--distribution-content, calc(100% - 2rem));' : ''
-              }`
-            : ''}
+          style=${
+            this._orientation === 'horizontal'
+              ? `width: var(--distribution-content, 100%); ${
+                  inset ? 'width: var(--distribution-content, calc(100% - 2rem));' : ''
+                }`
+              : ''
+          }
           class=${cx(
             'flex flex-col text-left order-2',
             this._orientation === 'horizontal' && `flex flex-col`,
