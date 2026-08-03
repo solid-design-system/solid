@@ -6,33 +6,15 @@ To develop with Solid Design System, you need the following three packages:
 - `@solid-design-system/styles`: Smaller components built with CSS.
 - `@solid-design-system/tokens`: Tokens and themes for consistent design.
 
-<sd-tab-group>
-  {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="npm" variant="container"> NPM </sd-tab>
-  {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="cdn" variant="container"> CDN </sd-tab>
-  <sd-tab-panel name="npm">
-    ```bash
-    pnpm i @solid-design-system/components @solid-design-system/styles @solid-design-system/tokens
-    ```
+```bash
+pnpm i @solid-design-system/components @solid-design-system/styles @solid-design-system/tokens
+```
 
-    ```js
-    import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
-    import '@solid-design-system/styles/dist/solid-styles.css';
-    import '@solid-design-system/components/dist/solid-components.css';
-    import '@solid-design-system/components/dist/solid-components.js';
-    ```
+```js
 
-  </sd-tab-panel>
-  <sd-tab-panel name="cdn">
-    ```html
-    <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css" />
-    <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%/cdn/solid-styles.css" />
-    <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.css" />
-    <script type="module" src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.js"></script>
-    ```
-  </sd-tab-panel>
-</sd-tab-group>
+```
+
+For environments without a bundler (e.g. a CMS), see [CDN Hosting](?path=/docs/general-cdn-hosting--docs).
 
 Now you are ready to use Solid Design System in your project!
 
