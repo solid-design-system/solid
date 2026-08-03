@@ -250,160 +250,172 @@ export default class SdScrollable extends SolidElement {
           <slot></slot>
         </div>
       </div>
-      ${this.buttons
-        ? html`
-            ${this.isScrollHorizontalEnabled
-              ? html`
-                  <div
-                    part="button-left"
-                    class=${cx(
-                      'absolute z-10 flex items-center justify-center top-0 left-0 h-full w-8 transition-opacity duration-medium ease-in-out',
-                      !this.canScroll.left && 'opacity-0 pointer-events-none'
-                    )}
-                  >
-                    <button
-                      part="button-start"
-                      class=${cx(scrollButtonClasses)}
-                      aria-hidden=${ifDefined(!this.canScroll.left || undefined)}
-                      tabindex=${ifDefined(!this.canScroll.left ? -1 : undefined)}
-                      @click=${(e: PointerEvent) => this.handleScroll('left', e)}
-                      @blur=${(e: FocusEvent) => this.handleButtonBlur('left', e)}
-                    >
-                      <slot name="icon-start">
-                        <sd-icon
-                          library="_internal"
-                          name="chevron-up"
-                          class="rotate-[-90deg]"
-                          label=${this.localize.term('scrollToStart')}
-                        ></sd-icon>
-                      </slot>
-                    </button>
-                  </div>
-                  <div
-                    part="button-right"
-                    class=${cx(
-                      'absolute z-10 flex items-center justify-center top-0 right-0 h-full w-8 transition-opacity duration-medium ease-in-out',
-                      !this.canScroll.right && 'opacity-0 pointer-events-none'
-                    )}
-                  >
-                    <button
-                      part="button-end"
-                      class=${cx(scrollButtonClasses)}
-                      aria-hidden=${ifDefined(!this.canScroll.right || undefined)}
-                      tabindex=${ifDefined(!this.canScroll.right ? -1 : undefined)}
-                      @click=${(e: PointerEvent) => this.handleScroll('right', e)}
-                      @blur=${(e: FocusEvent) => this.handleButtonBlur('right', e)}
-                    >
-                      <slot name="icon-end">
-                        <sd-icon
-                          library="_internal"
-                          name="chevron-down"
-                          class="rotate-[-90deg]"
-                          label=${this.localize.term('scrollToEnd')}
-                        ></sd-icon>
-                      </slot>
-                    </button>
-                  </div>
-                `
-              : null}
-            ${this.isScrollVerticalEnabled
-              ? html`
-                  <div
-                    part="button-top"
-                    class=${cx(
-                      'absolute z-10 flex items-center justify-center top-0 left-0 w-full h-8 transition-opacity duration-medium ease-in-out',
-                      !this.canScroll.up && 'opacity-0 pointer-events-none'
-                    )}
-                  >
-                    <button
-                      part="button-start"
-                      class=${cx(scrollButtonClasses)}
-                      aria-hidden=${ifDefined(!this.canScroll.up || undefined)}
-                      tabindex=${ifDefined(!this.canScroll.up ? -1 : undefined)}
-                      @click=${(e: PointerEvent) => this.handleScroll('up', e)}
-                      @blur=${(e: FocusEvent) => this.handleButtonBlur('up', e)}
-                    >
-                      <slot name="icon-start">
-                        <sd-icon
-                          library="_internal"
-                          name="chevron-up"
-                          label=${this.localize.term('scrollToStart')}
-                        ></sd-icon>
-                      </slot>
-                    </button>
-                  </div>
-                  <div
-                    part="button-bottom"
-                    class=${cx(
-                      'absolute z-10 flex items-center justify-center bottom-0 left-0 w-full h-8 transition-opacity duration-medium ease-in-out',
-                      !this.canScroll.down && 'opacity-0 pointer-events-none'
-                    )}
-                  >
-                    <button
-                      part="button-end"
-                      class=${cx(scrollButtonClasses)}
-                      aria-hidden=${ifDefined(!this.canScroll.down || undefined)}
-                      tabindex=${ifDefined(!this.canScroll.down ? -1 : undefined)}
-                      @click=${(e: PointerEvent) => this.handleScroll('down', e)}
-                      @blur=${(e: FocusEvent) => this.handleButtonBlur('down', e)}
-                    >
-                      <slot name="icon-end">
-                        <sd-icon
-                          library="_internal"
-                          name="chevron-down"
-                          label=${this.localize.term('scrollToEnd')}
-                        ></sd-icon>
-                      </slot>
-                    </button>
-                  </div>
-                `
-              : null}
-          `
-        : null}
-      ${this.shadows
-        ? html`
-            ${this.isScrollHorizontalEnabled
-              ? html`
-                  <div
-                    part="shadow-left"
-                    class=${cx(
-                      'left top-0 left-0 w-[6px] h-full',
-                      scrollShadowClasses,
-                      this.canScroll.left ? 'opacity-100' : 'opacity-0'
-                    )}
-                  ></div>
-                  <div
-                    part="shadow-right"
-                    class=${cx(
-                      'right top-0 right-0 w-[6px] h-full',
-                      scrollShadowClasses,
-                      this.canScroll.right ? 'opacity-100' : 'opacity-0'
-                    )}
-                  ></div>
-                `
-              : null}
-            ${this.isScrollVerticalEnabled
-              ? html`
-                  <div
-                    part="shadow-top"
-                    class=${cx(
-                      'top top-0 left-0 w-full h-[6px]',
-                      scrollShadowClasses,
-                      this.canScroll.up ? 'opacity-100' : 'opacity-0'
-                    )}
-                  ></div>
-                  <div
-                    part="shadow-bottom"
-                    class=${cx(
-                      'bottom bottom-0 left-0 w-full h-[6px]',
-                      scrollShadowClasses,
-                      this.canScroll.down ? 'opacity-100' : 'opacity-0'
-                    )}
-                  ></div>
-                `
-              : null}
-          `
-        : null}
+      ${
+        this.buttons
+          ? html`
+              ${
+                this.isScrollHorizontalEnabled
+                  ? html`
+                      <div
+                        part="button-left"
+                        class=${cx(
+                          'absolute z-10 flex items-center justify-center top-0 left-0 h-full w-8 transition-opacity duration-medium ease-in-out',
+                          !this.canScroll.left && 'opacity-0 pointer-events-none'
+                        )}
+                      >
+                        <button
+                          part="button-start"
+                          class=${cx(scrollButtonClasses)}
+                          aria-hidden=${ifDefined(!this.canScroll.left || undefined)}
+                          tabindex=${ifDefined(!this.canScroll.left ? -1 : undefined)}
+                          @click=${(e: PointerEvent) => this.handleScroll('left', e)}
+                          @blur=${(e: FocusEvent) => this.handleButtonBlur('left', e)}
+                        >
+                          <slot name="icon-start">
+                            <sd-icon
+                              library="_internal"
+                              name="chevron-up"
+                              class="rotate-[-90deg]"
+                              label=${this.localize.term('scrollToStart')}
+                            ></sd-icon>
+                          </slot>
+                        </button>
+                      </div>
+                      <div
+                        part="button-right"
+                        class=${cx(
+                          'absolute z-10 flex items-center justify-center top-0 right-0 h-full w-8 transition-opacity duration-medium ease-in-out',
+                          !this.canScroll.right && 'opacity-0 pointer-events-none'
+                        )}
+                      >
+                        <button
+                          part="button-end"
+                          class=${cx(scrollButtonClasses)}
+                          aria-hidden=${ifDefined(!this.canScroll.right || undefined)}
+                          tabindex=${ifDefined(!this.canScroll.right ? -1 : undefined)}
+                          @click=${(e: PointerEvent) => this.handleScroll('right', e)}
+                          @blur=${(e: FocusEvent) => this.handleButtonBlur('right', e)}
+                        >
+                          <slot name="icon-end">
+                            <sd-icon
+                              library="_internal"
+                              name="chevron-down"
+                              class="rotate-[-90deg]"
+                              label=${this.localize.term('scrollToEnd')}
+                            ></sd-icon>
+                          </slot>
+                        </button>
+                      </div>
+                    `
+                  : null
+              }
+              ${
+                this.isScrollVerticalEnabled
+                  ? html`
+                      <div
+                        part="button-top"
+                        class=${cx(
+                          'absolute z-10 flex items-center justify-center top-0 left-0 w-full h-8 transition-opacity duration-medium ease-in-out',
+                          !this.canScroll.up && 'opacity-0 pointer-events-none'
+                        )}
+                      >
+                        <button
+                          part="button-start"
+                          class=${cx(scrollButtonClasses)}
+                          aria-hidden=${ifDefined(!this.canScroll.up || undefined)}
+                          tabindex=${ifDefined(!this.canScroll.up ? -1 : undefined)}
+                          @click=${(e: PointerEvent) => this.handleScroll('up', e)}
+                          @blur=${(e: FocusEvent) => this.handleButtonBlur('up', e)}
+                        >
+                          <slot name="icon-start">
+                            <sd-icon
+                              library="_internal"
+                              name="chevron-up"
+                              label=${this.localize.term('scrollToStart')}
+                            ></sd-icon>
+                          </slot>
+                        </button>
+                      </div>
+                      <div
+                        part="button-bottom"
+                        class=${cx(
+                          'absolute z-10 flex items-center justify-center bottom-0 left-0 w-full h-8 transition-opacity duration-medium ease-in-out',
+                          !this.canScroll.down && 'opacity-0 pointer-events-none'
+                        )}
+                      >
+                        <button
+                          part="button-end"
+                          class=${cx(scrollButtonClasses)}
+                          aria-hidden=${ifDefined(!this.canScroll.down || undefined)}
+                          tabindex=${ifDefined(!this.canScroll.down ? -1 : undefined)}
+                          @click=${(e: PointerEvent) => this.handleScroll('down', e)}
+                          @blur=${(e: FocusEvent) => this.handleButtonBlur('down', e)}
+                        >
+                          <slot name="icon-end">
+                            <sd-icon
+                              library="_internal"
+                              name="chevron-down"
+                              label=${this.localize.term('scrollToEnd')}
+                            ></sd-icon>
+                          </slot>
+                        </button>
+                      </div>
+                    `
+                  : null
+              }
+            `
+          : null
+      }
+      ${
+        this.shadows
+          ? html`
+              ${
+                this.isScrollHorizontalEnabled
+                  ? html`
+                      <div
+                        part="shadow-left"
+                        class=${cx(
+                          'left top-0 left-0 w-[6px] h-full',
+                          scrollShadowClasses,
+                          this.canScroll.left ? 'opacity-100' : 'opacity-0'
+                        )}
+                      ></div>
+                      <div
+                        part="shadow-right"
+                        class=${cx(
+                          'right top-0 right-0 w-[6px] h-full',
+                          scrollShadowClasses,
+                          this.canScroll.right ? 'opacity-100' : 'opacity-0'
+                        )}
+                      ></div>
+                    `
+                  : null
+              }
+              ${
+                this.isScrollVerticalEnabled
+                  ? html`
+                      <div
+                        part="shadow-top"
+                        class=${cx(
+                          'top top-0 left-0 w-full h-[6px]',
+                          scrollShadowClasses,
+                          this.canScroll.up ? 'opacity-100' : 'opacity-0'
+                        )}
+                      ></div>
+                      <div
+                        part="shadow-bottom"
+                        class=${cx(
+                          'bottom bottom-0 left-0 w-full h-[6px]',
+                          scrollShadowClasses,
+                          this.canScroll.down ? 'opacity-100' : 'opacity-0'
+                        )}
+                      ></div>
+                    `
+                  : null
+              }
+            `
+          : null
+      }
     `;
   }
 

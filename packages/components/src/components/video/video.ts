@@ -148,11 +148,13 @@ export default class SdVideo extends SolidElement {
             </slot>
           </div>
         </button>
-        ${this.hasSlotController.test('poster')
-          ? html` <div part="poster-wrapper" class="absolute left-0 top-0 w-full z-10 overflow-hidden">
-              <slot name="poster" role="presentation"> </slot>
-            </div>`
-          : null}
+        ${
+          this.hasSlotController.test('poster')
+            ? html` <div part="poster-wrapper" class="absolute left-0 top-0 w-full z-10 overflow-hidden">
+                <slot name="poster" role="presentation"> </slot>
+              </div>`
+            : null
+        }
         <slot></slot>
       </div>
     `;

@@ -97,9 +97,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
 
   /** Defines the thumbs tooltip behaviour. */
   @property({ attribute: 'tooltip', type: String, reflect: true }) tooltip:
-    | 'on-interaction'
-    | 'hidden'
-    | 'always-visible' = 'on-interaction';
+    'on-interaction' | 'hidden' | 'always-visible' = 'on-interaction';
 
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue = '';
@@ -672,19 +670,21 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     const hasHelpText = !!(this.helpText || slots['helpText']);
 
     return html`<div part="form-control" @focusout=${this.onBlur} class="flex flex-col">
-      ${hasLabel
-        ? html`<div class="flex items-center gap-1">
-            <label
-              id="label"
-              part="form-control-label"
-              aria-hidden=${hasLabel ? 'false' : 'true'}
-              class=${cx('w-full text-start', hasLabel ? 'inline-block' : 'hidden')}
-              @click=${this.focus}
-            >
-              <slot name="label">${this.label}</slot>
-            </label>
-          </div>`
-        : null}
+      ${
+        hasLabel
+          ? html`<div class="flex items-center gap-1">
+              <label
+                id="label"
+                part="form-control-label"
+                aria-hidden=${hasLabel ? 'false' : 'true'}
+                class=${cx('w-full text-start', hasLabel ? 'inline-block' : 'hidden')}
+                @click=${this.focus}
+              >
+                <slot name="label">${this.label}</slot>
+              </label>
+            </div>`
+          : null
+      }
 
       <label id="aria-label-hidden" class="sr-only"> (${this._value.map(this.tooltipFormatter).join(' - ')}) </label>
 
