@@ -142,10 +142,10 @@ A way to use this method is to hide the `<body>` with `opacity: 0` and add a cla
   await Promise.allSettled([
     customElements.whenDefined('sd-button'),
     customElements.whenDefined('sd-icon'),
-    customElements.whenDefined('sd-spinner')
+    customElements.whenDefined('sd-loader')
   ]);
 
-  // Button, icon and spinner are registered now! Add
+  // Button, icon and loader are registered now! Add
   // the `ready` class so the UI fades in.
   document.body.classList.add('ready');
 </script>
