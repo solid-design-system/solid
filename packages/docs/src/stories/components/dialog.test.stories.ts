@@ -99,14 +99,6 @@ export const ExtendedFooter = {
   name: 'Sample: Extended Footer',
   render: () => {
     return html`
-      <style>
-        @media (max-width: 414px) {
-          sd-dialog::part(footer) {
-            flex-direction: column;
-          }
-        }
-      </style>
-
       <div style="height: 40vh;">
         <sd-dialog open="" id="extended-footer"
           ><p class="sd-paragraph">
@@ -114,8 +106,10 @@ export const ExtendedFooter = {
             phasellus dui vel id. Velit in sed.
           </p>
           <span slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</span>
-          <sd-button variant="secondary" slot="footer" class="w-full">Button</sd-button>
-          <sd-button slot="footer" class="w-full">Button</sd-button>
+          <div slot="footer" class="flex flex-col sm:flex-row w-full gap-4">
+            <sd-button variant="secondary" class="w-full">Button</sd-button>
+            <sd-button class="w-full">Button</sd-button>
+          </div>
         </sd-dialog>
       </div>
     `;

@@ -77,6 +77,19 @@ describe('<sd-dialog>', () => {
     expect(closeButton).not.to.exist;
   });
 
+  it('should render the footer at the full width of the panel', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog open>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        <button slot="footer">Button</button>
+      </sd-dialog>
+    `);
+    const panel = el.shadowRoot!.querySelector<HTMLElement>('[part~="panel"]')!;
+    const footer = el.shadowRoot!.querySelector<HTMLElement>('[part~="footer"]')!;
+
+    expect(footer.getBoundingClientRect().width).to.equal(panel.clientWidth);
+  });
+
   it('should emit sd-show and sd-after-show when calling show()', async () => {
     const el = await fixture<SdDialog>(html`
       <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
