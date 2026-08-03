@@ -1,5 +1,7 @@
 # @solid-design-system/styles
 
+## 7.0.0-next.3
+
 ## 7.0.0-next.2
 
 ### Patch Changes
