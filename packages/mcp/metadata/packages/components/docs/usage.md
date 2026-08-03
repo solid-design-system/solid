@@ -94,10 +94,10 @@ Custom elements cannot have self-closing tags. Similar to `<script>` and `<texta
 
 ```html
 <!-- Don't do this -->
-<sd-spinner />
+<sd-button />
 
 <!-- Always do this -->
-<sd-spinner></sd-spinner>
+<sd-button></sd-button>
 ```
 
 ### Differences from Native Elements
