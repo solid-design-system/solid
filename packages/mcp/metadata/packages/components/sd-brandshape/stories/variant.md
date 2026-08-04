@@ -33,7 +33,6 @@ options: shapes
 },
 decorators: [
 (story: () => typeof html) => html`
-
 <style>
 body:not(:has(.sd-theme-ui-light, .sd-theme-ui-dark)) .slot {
 display: none;

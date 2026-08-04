@@ -1,5 +1,5 @@
 Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
-**Accessibility Hint:** To ensure screen-reader compatibility, consider including a statement such as "Fields marked with an asterisk (\*) are required" at the start of the form.
+**Accessibility Hint:** To ensure screen-reader compatibility, consider including a statement such as "Fields marked with an asterisk (*) are required" at the start of the form.
 
 ```html
 <form id="required-form" class="flex flex-col gap-8">
