@@ -38,6 +38,10 @@ export default {
         td.template {
           width: 100%;
         }
+
+        #duration-example::part(base) {
+          margin-top: 0.5rem;
+        }
       </style>
       ${story()}
     `
