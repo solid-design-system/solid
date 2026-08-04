@@ -42,64 +42,13 @@ Result: `sd-teaser` no longer forces font-weight, margin or test size on headlin
 </sd-teaser>
 ```
 
-## Removed the default margin from inline `sd-notification`
+## Breaking change #2
 
-Inline `sd-notification` components no longer have a default margin applied. If your inline notifications relied on the previous spacing, add it manually via the `base` CSS part.
+[...]
 
-**Before**:
+## Breaking change #3
 
-```html
-<sd-notification open>Notification message</sd-notification>
-```
-
-The component applied its own margin.
-
-**After**:
-
-```html
-<sd-notification class="my-notification" open>Notification message</sd-notification>
-
-<style>
-  .my-notification::part(base) {
-    @apply m-2;
-  }
-</style>
-```
-
-## Removed footer alignment and responsive styling from `sd-dialog`
-
-The `sd-dialog` footer now always takes the full width of the dialog. It no longer pushes slotted elements to the right
-or changes the footer layout at smaller viewport sizes. This keeps layout and responsive behavior under the control of
-the user.
-
-This affects dialogs that rely on the component to align footer actions. Wrap the actions in an element assigned to the
-`footer` slot and apply the required alignment and responsive styles to that element.
-
-**Before**:
-
-```html
-<sd-dialog headline="Cancel your subscription?">
-  <p>Your subscription will be canceled immediately.</p>
-  <sd-button slot="footer" variant="secondary">Maybe later</sd-button>
-  <sd-button slot="footer" variant="primary">Cancel subscription</sd-button>
-</sd-dialog>
-```
-
-The component aligned the buttons to the right and controlled the footer's responsive behavior.
-
-**After**:
-
-```html
-<sd-dialog headline="Cancel your subscription?">
-  <p>Your subscription will be canceled immediately.</p>
-  <div slot="footer" class="flex flex-col-reverse sm:flex-row justify-end w-full gap-2">
-    <sd-button variant="secondary">Maybe later</sd-button>
-    <sd-button variant="primary">Cancel subscription</sd-button>
-  </div>
-</sd-dialog>
-```
-
-The slotted wrapper now defines the alignment, spacing, and responsive layout of the footer actions.
+[...]
 
 ## Breaking change #4
 
@@ -133,4 +82,21 @@ input.autocorrect = 'off';
 
 ```js
 input.autocorrect = false;
+```
+
+## Removed sd-spinner
+
+The `sd-spinner` component has been removed from the library.
+Please use `sd-loader` instead.
+
+**Before**:
+
+```html
+<sd-spinner></sd-spinner>
+```
+
+**After**:
+
+```html
+<sd-loader></sd-loader>
 ```
