@@ -1,0 +1,136 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Packages/Components/Migration/from v6" />
+
+# Migration from v6
+
+The v6 release improves token stability, cleans up unused CSS variables, and introduces several fixes and refinements across different components.
+
+<div hidden>
+Dear devs, when adding a migration guide, please include:
+
+1. What changed and why
+2. Who is affected
+3. The required migration steps
+4. A “Before” and “After” example, when applicable
+
+Remove all placeholder comments before the release.
+
+## Removed enforced headline styling from `sd-teaser-media`.
+
+Removed this CSS rule that used to force styles into whatever is slotted into slot="headline"
+
+```css
+::slotted([slot='headline']) { '@apply font-bold !m-0 !text-lg;'}
+```
+
+Result: `sd-teaser` no longer forces font-weight, margin or test size on headline elements. Headline sizing/spacing must now be provided by the user.
+
+**Before**:
+
+```html
+<sd-teaser>
+  <h3 slot="headline" class="sd-headline">Expert views</h3>
+</sd-teaser>
+```
+
+**After**:
+
+```html
+<sd-teaser>
+  <h3 slot="headline" class="sd-headline sd-headline--size-lg">Expert views</h3>
+</sd-teaser>
+```
+
+## Removed the default margin from inline `sd-notification`
+
+Inline `sd-notification` components no longer have a default margin applied. If your inline notifications relied on the previous spacing, add it manually via the `base` CSS part.
+
+**Before**:
+
+```html
+<sd-notification open>Notification message</sd-notification>
+```
+
+The component applied its own margin.
+
+**After**:
+
+```html
+<sd-notification class="my-notification" open>Notification message</sd-notification>
+
+<style>
+  .my-notification::part(base) {
+    @apply m-2;
+  }
+</style>
+```
+
+## Removed footer alignment and responsive styling from `sd-dialog`
+
+The `sd-dialog` footer now always takes the full width of the dialog. It no longer pushes slotted elements to the right
+or changes the footer layout at smaller viewport sizes. This keeps layout and responsive behavior under the control of
+the user.
+
+This affects dialogs that rely on the component to align footer actions. Wrap the actions in an element assigned to the
+`footer` slot and apply the required alignment and responsive styles to that element.
+
+**Before**:
+
+```html
+<sd-dialog headline="Cancel your subscription?">
+  <p>Your subscription will be canceled immediately.</p>
+  <sd-button slot="footer" variant="secondary">Maybe later</sd-button>
+  <sd-button slot="footer" variant="primary">Cancel subscription</sd-button>
+</sd-dialog>
+```
+
+The component aligned the buttons to the right and controlled the footer's responsive behavior.
+
+**After**:
+
+```html
+<sd-dialog headline="Cancel your subscription?">
+  <p>Your subscription will be canceled immediately.</p>
+  <div slot="footer" class="flex flex-col-reverse sm:flex-row justify-end w-full gap-2">
+    <sd-button variant="secondary">Maybe later</sd-button>
+    <sd-button variant="primary">Cancel subscription</sd-button>
+  </div>
+</sd-dialog>
+```
+
+The slotted wrapper now defines the alignment, spacing, and responsive layout of the footer actions.
+
+## Breaking change #4
+
+[...]
+
+</div>
+
+## Component updates
+
+### `<sd-input>` and `<sd-textarea>`
+
+The `autocorrect` property is now a `boolean` instead of a `string`. This is required by the updated `HTMLElement.autocorrect` type shipped in TypeScript 5.9, which now matches how browsers implement the native `autocorrect` IDL attribute.
+
+The `autocorrect` HTML attribute is unaffected and still accepts `"on"` and `"off"`, so no markup changes are needed.
+
+```html
+<!-- No changes required -->
+<sd-input autocorrect="off"></sd-input>
+<sd-textarea autocorrect="off"></sd-textarea>
+```
+
+Only code that sets the property directly in JavaScript/TypeScript needs to be updated:
+
+**Before:**
+
+```js
+input.autocorrect = 'off';
+```
+
+**After:**
+
+```js
+input.autocorrect = false;
+```
