@@ -181,10 +181,6 @@ export default class SdTeaser extends SolidElement {
       ::slotted(*) {
         @apply m-0;
       }
-
-      ::slotted([slot='headline']) {
-        @apply font-bold !m-0 !text-lg;
-      }
     `
   ];
 }

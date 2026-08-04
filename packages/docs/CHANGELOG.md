@@ -1,10 +1,38 @@
 # @solid-design-system/docs
 
+## 3.0.0-next.4
+
+### Major Changes
+
+- Removed the `sd-spinner` component _[`#3219`](https://github.com/solid-design-system/solid/pull/3219) [`cbdc1cb`](https://github.com/solid-design-system/solid/commit/cbdc1cb0098cabdbdad324803d5176de76a2215f) [@balco0110](https://github.com/balco0110)_
+
+## 3.0.0-next.3
+
+### Patch Changes
+
+- Dependencies updated. For further details, please refer to the associated Pull Request. _[`#3184`](https://github.com/solid-design-system/solid/pull/3184) [`81cd65b`](https://github.com/solid-design-system/solid/commit/81cd65ba91559c9f138920a5ba505fb1461eb92a) [@mariohamann](https://github.com/mariohamann)_
+
+## 3.0.0-next.2
+
 ## 2.21.5
 
 ### Patch Changes
 
 - Updated dependencies. See details in the Pull Request _[`#3163`](https://github.com/solid-design-system/solid/pull/3163) [`91ff1c8`](https://github.com/solid-design-system/solid/commit/91ff1c81831fb3522c534306a61b8a5be3562f64) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 3.0.0-next.1
+
+### Patch Changes
+
+- - Removed SDS's cdn usage from the Codepen extension. _[`#3200`](https://github.com/solid-design-system/solid/pull/3200) [`bfcd108`](https://github.com/solid-design-system/solid/commit/bfcd10845b25f9aa410ec69b16ad6468117d473b) [@martascorreia](https://github.com/martascorreia)_
+
+  - Added fonts, logos and `sd-icon` theming to the Codepen extension.
+
+## 3.0.0-next.0
+
+### Major Changes
+
+- Fixed the restriction of changing the font size and margin for headline in `sd-teaser`. _[`#3165`](https://github.com/solid-design-system/solid/pull/3165) [`b6f28e6`](https://github.com/solid-design-system/solid/commit/b6f28e6d427e41c3d3f2c0b68b29715e3ce6d934) [@balco0110](https://github.com/balco0110)_
 
 ## 2.21.4
 

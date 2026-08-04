@@ -124,10 +124,8 @@ version: 1.0.0
                 alt="A parent and child reading a book together on the couch."
               />
             </div>
-            <h3 slot="headline">
-              <span class="sd-headline sd-headline--size-base">
-                Steuerliche und rechtliche Basics beim Sparen fürs Kind</span
-              >
+            <h3 slot="headline" class="sd-headline sd-headline--size-base">
+              Steuerliche und rechtliche Basics beim Sparen fürs Kind
             </h3>
             <p class="sd-paragraph">
               Beim Sparen fürs Kind gibt es neben der Finanzplanung auch wichtige steuerliche und rechtliche Punkte zu

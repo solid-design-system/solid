@@ -1,5 +1,23 @@
 # @solid-design-system/components
 
+## 7.0.0-next.4
+
+### Major Changes
+
+- Removed the `sd-spinner` component _[`#3219`](https://github.com/solid-design-system/solid/pull/3219) [`cbdc1cb`](https://github.com/solid-design-system/solid/commit/cbdc1cb0098cabdbdad324803d5176de76a2215f) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+* Uncompressed: 625 KB (-2 KB / 0%)
+* Gzipped: 140 KB (unchanged)
+
+## 7.0.0-next.3
+
+### Major Changes
+
+- The `autocorrect` property of `sd-input` and `sd-textarea` is now a `boolean` instead of a `string`, to align with the updated `HTMLElement.autocorrect` type shipped in TypeScript 5.9. Checkout the migration guide for more details. _[`#3184`](https://github.com/solid-design-system/solid/pull/3184) [`81cd65b`](https://github.com/solid-design-system/solid/commit/81cd65ba91559c9f138920a5ba505fb1461eb92a) [@mariohamann](https://github.com/mariohamann)_
+
+## 7.0.0-next.2
+
 ## 6.29.0
 
 ### Minor Changes
@@ -7,8 +25,9 @@
 - Updated `sd-button` and `sd-dialog` animations so that only the `ui-light` and `ui-dark` themes use SDS brand-specific animations. _[`#3141`](https://github.com/solid-design-system/solid/pull/3141) [`435a51f`](https://github.com/solid-design-system/solid/commit/435a51f420dd4be412b561d0f4b8e068fdc3295b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
 
 ### 📈 Stats
-* Uncompressed: 627 KB (+3 KB / +0%)
-* Gzipped: 140 KB (unchanged)
+
+- Uncompressed: 627 KB (+3 KB / +0%)
+- Gzipped: 140 KB (unchanged)
 
 ## 6.28.2
 
@@ -18,7 +37,20 @@
 
 ### 📈 Stats
 
-- Uncompressed: 624 KB (-2 KB / 0%)
+- Uncompressed: 624 KB (-1 KB / 0%)
+- Gzipped: 140 KB (unchanged)
+
+## 7.0.0-next.1
+
+## 7.0.0-next.0
+
+### Major Changes
+
+- Fixed the restriction of changing the font size and margin for headline in `sd-teaser`. _[`#3165`](https://github.com/solid-design-system/solid/pull/3165) [`b6f28e6`](https://github.com/solid-design-system/solid/commit/b6f28e6d427e41c3d3f2c0b68b29715e3ce6d934) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+
+- Uncompressed: 625 KB (-1 KB / 0%)
 - Gzipped: 140 KB (unchanged)
 
 ## 6.28.1

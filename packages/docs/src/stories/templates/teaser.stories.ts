@@ -74,7 +74,7 @@ export const ClickableTeaser = {
       </style>
       <div class="max-w-[426.67px]">
         <sd-teaser variant="primary-100" inset class="clickable relative m-2 translate-x-0 translate-y-0">
-          <h2 slot="headline">Union Investment's climate strategy</h2>
+          <h2 slot="headline" class="sd-headline sd-headline--size-lg">Union Investment's climate strategy</h2>
           <div slot="media" class="relative">
             <img
               class="aspect-video object-cover"
