@@ -100,3 +100,34 @@ Please use `sd-loader` instead.
 ```html
 <sd-loader></sd-loader>
 ```
+
+## Updated the `sd-dialog` footer layout
+
+The `sd-dialog` footer now always takes the full width of the dialog. It no longer pushes slotted elements to the right
+or controls their responsive layout. This allows consumers to define the alignment and responsive behavior that best
+fits their content.
+
+This affects dialogs that rely on the component to align footer actions automatically. Wrap the actions in an element
+assigned to the `footer` slot and apply the required layout styles to that element.
+
+**Before**:
+
+```html
+<sd-dialog headline="Cancel your subscription?">
+  <p>Your subscription will be canceled immediately.</p>
+  <sd-button slot="footer" variant="secondary">Maybe later</sd-button>
+  <sd-button slot="footer" variant="primary">Cancel subscription</sd-button>
+</sd-dialog>
+```
+
+**After**:
+
+```html
+<sd-dialog headline="Cancel your subscription?">
+  <p>Your subscription will be canceled immediately.</p>
+  <div slot="footer" class="flex flex-col-reverse sm:flex-row justify-end w-full gap-2">
+    <sd-button variant="secondary">Maybe later</sd-button>
+    <sd-button variant="primary">Cancel subscription</sd-button>
+  </div>
+</sd-dialog>
+```
