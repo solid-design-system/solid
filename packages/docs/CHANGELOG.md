@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 3.0.0-next.4
+
+### Major Changes
+
+- Removed the `sd-spinner` component _[`#3219`](https://github.com/solid-design-system/solid/pull/3219) [`cbdc1cb`](https://github.com/solid-design-system/solid/commit/cbdc1cb0098cabdbdad324803d5176de76a2215f) [@balco0110](https://github.com/balco0110)_
+
 ## 3.0.0-next.3
 
 ### Patch Changes
