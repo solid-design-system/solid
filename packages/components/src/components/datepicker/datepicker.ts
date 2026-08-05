@@ -1211,7 +1211,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       const rs = this.rangeStart ? DateUtils.parseLocalISO(this.rangeStart) : null;
       const re = this.rangeEnd ? DateUtils.parseLocalISO(this.rangeEnd) : null;
 
-      // The first date of the range, not the last.
       if (inViewAndEnabled(rs)) target = DateUtils.startOfDayLocal(rs!);
       else if (inViewAndEnabled(re)) target = DateUtils.startOfDayLocal(re!);
     } else if (this.value) {
@@ -1241,7 +1240,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     }
 
     this.requestUpdate();
-    // Lit renders asynchronously, so the button may not exist yet on the next frame alone.
     this.updateComplete.then(() => {
       requestAnimationFrame(() => {
         const root = this.shadowRoot;
@@ -1273,8 +1271,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     }
 
     if (ev.key === 'Tab') {
-      // Grid and header form a ring: the last control tabs forward into the grid and the first
-      // one shift-tabs back into it. The two controls in between use the native tab order.
       const wrapsIntoGrid = ev.shiftKey ? position === 'first' : position === 'last';
       if (!wrapsIntoGrid) return;
 
@@ -1474,7 +1470,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       return;
     }
 
-    // Tab leaves the grid: forward onto the header controls, backwards to the input.
     if (ev.key === 'Tab') {
       ev.preventDefault();
       ev.stopPropagation();
@@ -1490,8 +1485,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       return;
     }
 
-    // Escape returns early: the tail of this handler re-focuses a day button, which is a no-op
-    // once the calendar is hidden and would leave focus on `<body>`.
     if (ev.key === 'Escape') {
       ev.preventDefault();
       ev.stopPropagation();
@@ -1575,9 +1568,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       return;
     }
 
-    // Tab 2: move focus off the input and into the calendar, onto the focus target day.
-    // Without this the native tab order would skip the grid and land on the header buttons,
-    // because the header markup precedes the grid in the DOM.
     if (ev.key === 'Tab' && !ev.shiftKey && this.open) {
       ev.preventDefault();
       ev.stopPropagation();
@@ -1679,11 +1669,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     return labels;
   }
 
-  /**
-   * The single day that carries the roving tabindex, and therefore the day that receives focus
-   * when the user tabs into the grid. Priority follows the accessibility review on the ticket:
-   * range start, then the selected date, then today, then the first enabled day of the view.
-   */
   private getTabTargetDayForCurrentView(weeks: Date[][]): Date | null {
     const viewMonth = this.viewMonth ?? this.ensureViewMonth();
 
@@ -1697,16 +1682,13 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       const rs = this.rangeStart ? DateUtils.parseLocalISO(this.rangeStart) : null;
       const re = this.rangeEnd ? DateUtils.parseLocalISO(this.rangeEnd) : null;
 
-      // "If a date range is selected, the focused date is the first date of the range."
       if (inViewAndEnabled(rs)) return DateUtils.startOfDayLocal(rs!);
       if (inViewAndEnabled(re)) return DateUtils.startOfDayLocal(re!);
     } else if (this.value) {
-      // "If a date is selected, the focused date is the selected date."
       const selected = DateUtils.parseLocalISO(this.value);
       if (inViewAndEnabled(selected)) return DateUtils.startOfDayLocal(selected!);
     }
 
-    // "If no date is selected, the focused date is today."
     const inViewToday = weeks
       .flat()
       .find(d => d.getMonth() === viewMonth.getMonth() && DateUtils.isSameDay(d, this.today) && !this.isDisabled(d));
@@ -1959,10 +1941,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                         !inSelectedRange && inPreviewRange && !isRangeStart && !isRangeEnd
                           ? 'in-preview-range bg-primary-100 text-primary-500 rounded-none'
                           : '',
-                        // Today is outlined with a border while it is the focus target, which is how
-                        // the calendar looks the moment it opens. Once the user moves to another day
-                        // the border is gone, and while today itself holds keyboard focus the border
-                        // turns transparent so the focus ring is the only indicator.
                         isToday && !isSelectedSingle && !isRangeStart && !isRangeEnd && isFocused
                           ? 'today border border-primary focus-visible:border-transparent sd-datepicker__date-item--current-font-weight'
                           : '',
