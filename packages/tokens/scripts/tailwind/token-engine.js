@@ -139,6 +139,7 @@ export class TokenProcessingEngine {
     let i = 0;
     let result = '';
 
+    // Finds var() and replaces with fallback
     while (i < css.length) {
       const start = css.indexOf('var(', i);
       if (start === -1) {
@@ -167,6 +168,7 @@ export class TokenProcessingEngine {
       const commaIndex = content.indexOf(',');
       const varName = (commaIndex === -1 ? content : content.slice(0, commaIndex)).trim();
 
+      // Adds fallback
       if (varName.startsWith('--sd-')) {
         const fallback = resolvedMap.get(varName);
         if (fallback) {
@@ -191,7 +193,8 @@ export class TokenProcessingEngine {
     const themeEntries = result[defaultTheme];
     if (!themeEntries || !Array.isArray(themeEntries)) return;
 
-    // creates a theme map of the variables
+    // Creates a theme map from ui-light theme CSS entries.
+    // "--sd-color-primary: 0 53 142;" -> ("--sd-color-primary", "0 53 142")
     const themeMap = new Map();
     for (const entry of themeEntries) {
       const match = entry.match(/^(--sd-[^:]+):\s*(.+);$/);
@@ -200,7 +203,8 @@ export class TokenProcessingEngine {
       }
     }
 
-    // resolves nested var() references within the theme map
+    // Resolves nested var() references.
+    // ("--sd-color-primary", "0 53 142") -> ("--sd-color-border-primary", "0 53 142")
     const resolve = (value, depth = 0) => {
       if (depth > 5) return value;
       return value.replace(/var\((--sd-[^,)]+)\)/g, (_, varName) => {
@@ -216,7 +220,8 @@ export class TokenProcessingEngine {
       resolvedMap.set(key, resolve(value));
     }
 
-    // adds fallbacks in tailwind.css
+    // Adds fallbacks in tailwind.css
+    // "var(--sd-color-border-primary)" -> "var(--sd-color-border-primary, 0 53 142)".
     result.baseVars = result.baseVars.map(entry => {
       return entry.replace(/var\((--sd-[^,)]+)\)/g, (original, varName) => {
         const fallback = resolvedMap.get(varName);
@@ -225,7 +230,8 @@ export class TokenProcessingEngine {
       });
     });
 
-    // add fallbacks in components.css
+    // Adds fallbacks in components.css
+    // "fill: var(--sd-color-border-primary)" -> "fill: var(--sd-color-border-primary, 0 53 142)".
     if (Array.isArray(result.components)) {
       result.components = result.components.map(entry => this.applyResolvedFallbacksToCss(entry, resolvedMap));
     }
