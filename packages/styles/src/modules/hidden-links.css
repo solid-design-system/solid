@@ -25,7 +25,7 @@
     @apply bg-white shadow flex flex-col px-2 py-4;
     &:before {
       @apply font-bold px-4 py-2;
-      content: var(--sd-hidden-links-title);
+      content: var(--sd-hidden-links-title, 'Jump to');
     }
   }
 }

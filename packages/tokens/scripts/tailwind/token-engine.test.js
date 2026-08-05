@@ -50,7 +50,7 @@ describe('TokenProcessingEngine.addFallbacks', () => {
     assert.equal(result.baseVars[0], '--x: var(--sd-a, final-value);');
   });
 
-  it('does not modify vars that already have a fallback', () => {
+  it('does not rewrite outer baseVars fallback chains', () => {
     const engine = new TokenProcessingEngine(createMockConfig());
     const result = {
       baseVars: ['--outline-color-primary: rgba(var(--sd-color-border-primary, var(--sd-color-primary)));'],
@@ -59,10 +59,27 @@ describe('TokenProcessingEngine.addFallbacks', () => {
 
     engine.addFallbacks(result, 'ui-light');
 
-    // The regex only matches var(--sd-X) without comma, so existing fallbacks are untouched
     assert.equal(
       result.baseVars[0],
-      '--outline-color-primary: rgba(var(--sd-color-border-primary, var(--sd-color-primary)));'
+      '--outline-color-primary: rgba(var(--sd-color-border-primary, var(--sd-color-primary, 0 53 142)));'
+    );
+  });
+
+  it('applies resolved default theme fallbacks in component utility blocks', () => {
+    const engine = new TokenProcessingEngine(createMockConfig());
+    const result = {
+      baseVars: [],
+      components: [
+        '@utility form-control-color-text {\n  color: rgba(var(--sd-form-control-color-text, rgba(var(--sd-color-black), 255 255 255)));\n}'
+      ],
+      'ui-light': ['--sd-form-control-color-text: var(--sd-color-black);', '--sd-color-black: 5 21 48;']
+    };
+
+    engine.addFallbacks(result, 'ui-light');
+
+    assert.equal(
+      result.components[0],
+      '@utility form-control-color-text {\n  color: rgba(var(--sd-form-control-color-text, 5 21 48));\n}'
     );
   });
 

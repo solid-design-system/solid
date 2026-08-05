@@ -41,7 +41,7 @@
   }
 
   /* TODO clean this up and add the classes marker-font-size, marker-border-width and marker-font-weight (breaking change) */
-  font-size: var(--sd-chip-font-size);
-  border-width: var(--sd-chip-border-width);
-  font-weight: var(--sd-chip-font-weight);
+  font-size: var(--sd-chip-font-size, var(--sd-marker-font-size, 0.875rem));
+  border-width: var(--sd-chip-border-width, var(--sd-marker-border-width, 0));
+  font-weight: var(--sd-chip-font-weight, var(--sd-marker-font-weight, 400));
 }

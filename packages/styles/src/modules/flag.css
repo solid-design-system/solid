@@ -38,5 +38,5 @@
   }
 
   /* TODO clean this up and add the class marker-border-width (breaking change) */
-  border-width: var(--sd-flag-border-width);
+  border-width: var(--sd-flag-border-width, var(--sd-marker-border-width, 0));
 }
