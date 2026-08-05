@@ -139,20 +139,18 @@ export const Required = {
   render: () => html` <sd-file-selector label="Required" show-label required></sd-file-selector>`
 };
 
-//TODO fix invalid
 /**
  * The component gets an `invalid` state either when the form is not valid (default variant) or when selected files don't meet the required restrictions (drop-area variant).
  */
 export const Invalid = {
   render: () =>
     html` <form id="invalid-form">
-        <sd-file-selector id="invalid-file-selector" label="Select a file to upload" show-label style-on-valid>
-        </sd-file-selector>
+        <sd-file-selector id="invalid-file-selector" label="Select a file to upload" show-label> </sd-file-selector>
       </form>
       <script type="module">
         await Promise.all([customElements.whenDefined('sd-file-selector')]).then(() => {
           const fileSelector = document.getElementById('invalid-file-selector');
-          fileSelector.setCustomValidity('Error text');
+          fileSelector.setCustomValidity('Please select a file.');
           fileSelector.reportValidity();
         });
       </script>`

@@ -44,6 +44,9 @@ import type SdButton from '../button/button';
  * @csspart droparea-background - The background of the drop zone.
  * @csspart droparea-icon - The container that wraps the icon for the drop zone.
  * @csspart droparea-value - The text for the drop zone.
+ * @csspart invalid-icon-message - The container that wraps the invalid icon and message.
+ * @csspart invalid-icon - The invalid icon.
+ * @csspart invalid-message - The invalid message.
  *
  * @cssproperty --sd-form-control-border-radius - The border radius of the file selector.
  * @cssproperty --sd-form-control-color-border - The border color of the file selector.
@@ -185,6 +188,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   reportValidity() {
+    this.formControlController.fakeUserInteraction();
     return this.input.reportValidity();
   }
 
@@ -230,6 +234,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
+    this.invalidMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
   private handleFiles(files: FileList | null) {
@@ -364,6 +369,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
 
     return html`
       <span
+        id="file-status"
         class=${cx(
           'input__value truncate text-sm',
           this.hideValue && 'hidden',
@@ -385,6 +391,8 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         @focus=${this.handleFocus}
         @blur=${this.handleBlur}
         tabindex=${this.disabled ? -1 : 0}
+        role="button"
+        aria-describedby="file-status"
         part="droparea"
       >
         <div
@@ -440,6 +448,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
           part="button"
           size=${this.size}
           variant="secondary"
+          aria-hidden
         >
           ${buttonText}
         </sd-button>
@@ -465,7 +474,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         @dragover=${this.handleDragOver}
         @drop=${this.handleDrop}
         aria-label=${ifDefined(hasLabel ? this.label : undefined)}
-        aria-describedby=${ifDefined(hasHelpText ? 'help-text' : undefined)}
+        aria-describedby=${ifDefined(hasHelpText ? 'help-text' : 'file-status')}
         part="form-control"
       >
         ${
@@ -506,7 +515,6 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
 
         <input
           accept=${this.accept}
-          aria-describedby="help-text"
           aria-disabled=${this.disabled || this.visuallyDisabled ? 'true' : 'false'}
           @change=${this.handleChange}
           class="input__control sr-only"
@@ -523,7 +531,14 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
           ?webkitdirectory=${this.webkitdirectory}
         />
       </div>
-      ${this.formControlController.renderInvalidMessage(this.size)}
+      <div part="invalid-icon-message" class="flex items-center gap-2 mt-2">
+        ${
+          this.showInvalidStyle
+            ? html` <sd-icon part="invalid-icon" class=${cx('text-error')} library="_internal" name="risk"></sd-icon> `
+            : ''
+        }
+        ${this.formControlController.renderInvalidMessage(this.size)}
+      </div>
     `;
   }
 
