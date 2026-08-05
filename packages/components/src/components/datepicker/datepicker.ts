@@ -1668,7 +1668,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     }
     return labels;
   }
-
+  /** Chooses a tabbable day when tabbing into the grid (today or first enabled). */
   private getTabTargetDayForCurrentView(weeks: Date[][]): Date | null {
     const viewMonth = this.viewMonth ?? this.ensureViewMonth();
 
