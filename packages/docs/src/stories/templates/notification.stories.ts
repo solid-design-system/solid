@@ -12,7 +12,17 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2951-15059&t=JCsisVFNkWSlhSSN-4'
     }
-  }
+  },
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        .innerZoomElementWrapper > div:has(> [id^='story--templates-notification--']) {
+          display: contents !important;
+        }
+      </style>
+      ${story()}
+    `
+  ]
 };
 
 /**

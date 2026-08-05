@@ -35,6 +35,10 @@ export default {
   decorators: [
     (story: () => typeof html) => html`
       <style>
+        .innerZoomElementWrapper > div:has(> [id^='story--components-sd-notification--']) {
+          display: contents !important;
+        }
+
         td.template {
           width: 100%;
         }

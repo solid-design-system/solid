@@ -8,11 +8,6 @@ body.sb-show-main,
   @apply !bg-white !text-black;
 }
 
-.innerZoomElementWrapper
-  > div:has(> :is([id^='story--components-sd-notification--'], [id^='story--templates-notification--'])) {
-  display: contents !important;
-}
-
 /* Lists */
 .sbdocs .sbdocs-content ol {
   @apply !list-decimal;
