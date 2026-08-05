@@ -8,6 +8,11 @@ export default {
   tags: ['!dev', 'autodocs'],
   parameters: {
     chromatic: { disableSnapshot: true },
+    docs: {
+      source: {
+        excludeDecorators: true
+      }
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2951-15059&t=JCsisVFNkWSlhSSN-4'

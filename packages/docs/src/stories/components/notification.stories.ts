@@ -28,6 +28,13 @@ export default {
   argTypes,
   parameters: {
     ...parameters,
+    docs: {
+      ...parameters.docs,
+      source: {
+        ...parameters.docs?.source,
+        excludeDecorators: true
+      }
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2265-6174&node-type=section&t=5PpAC3TA3kYF7ufX-0'
@@ -121,7 +128,6 @@ export const Duration = {
   parameters: {
     docs: {
       source: {
-        excludeDecorators: true,
         transform: docsCodepenEnhancer
       }
     }
