@@ -318,6 +318,23 @@ Example for Storybook's `preview.js`:
 import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
 ```
 
+## Optional: Standalone fallback
+
+If your app should be able to run standalone, you may add a runtime fallback that loads a theme.
+
+You can load the theme however fits your setup — including lazy loading via a dynamically injected `<link>` tag. What matters is **scoping**: the fallback theme must never leak into the host's document.
+
+<sd-notification variant="warning" open>
+  **Always scope the fallback theme to your own subtree.** Never inject unscoped theme variables into the host's
+  document. Options include:
+
+- Wrapping the theme's CSS variables inside a selector targeting your app's root element (e.g. `#my-app { ... }`)
+- Injecting the theme `<link>` inside a Shadow DOM boundary
+
+Injecting global, unscoped theme variables can silently override the host's theme and cause hard-to-debug styling
+issues across the entire page.
+</sd-notification>
+
 ## Versioning coordination
 
 Coordinate with the Theme Host team on versioning:
