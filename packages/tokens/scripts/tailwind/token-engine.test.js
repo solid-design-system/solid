@@ -50,7 +50,7 @@ describe('TokenProcessingEngine.addFallbacks', () => {
     assert.equal(result.baseVars[0], '--x: var(--sd-a, final-value);');
   });
 
-  it('does not rewrite outer baseVars fallback chains', () => {
+  it('does not modify vars that already have a fallback', () => {
     const engine = new TokenProcessingEngine(createMockConfig());
     const result = {
       baseVars: ['--outline-color-primary: rgba(var(--sd-color-border-primary, var(--sd-color-primary)));'],

@@ -10,7 +10,10 @@ The v6 release improves token stability, cleans up unused CSS variables, and int
 ## Deprecated CSS variables (tokens)
 
 The following CSS variables (tokens) are deprecated and were removed in this release.
-Please update your custom styles to use the recommended replacements:
+Please update your custom styles to use the recommended replacements below.
+
+If your environment still requires the use of these variables, refer to the
+**Legacy Variables Fallback** section.
 
 <table>
   <tr>
@@ -97,23 +100,13 @@ Please update your custom styles to use the recommended replacements:
 
 ## Legacy Variables Fallback
 
-The `dist/legacy-variables.css` was added as an optional fallback stylesheet option for accessing removed deprecated variables.
-If you manage an environment that still requires the use of deprecated CSS variables, you can import this stylesheet as a fallback layer instead of immediately updating all your custom styles.
+As deprecated variables were removed, `dist/legacy-variables.css` was added as an optional fallback stylesheet for accessing removed deprecated variables.
+If you manage an environment that still requires deprecated CSS variables, you can import this stylesheet as a fallback layer instead of immediately updating all your custom styles.
 
-<sd-tab-group>
-  {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="npm" variant="container">NPM</sd-tab>
-  {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="cdn" variant="container">CDN</sd-tab>
-
-<sd-tab-panel name="npm">`js import '@solid-design-system/tokens/dist/legacy-variables.css'; `</sd-tab-panel>
-
-  <sd-tab-panel name="cdn">
-```html
-<link
-  rel="stylesheet"
-  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/legacy-variables.css"
-/>
+```js
+import '@solid-design-system/tokens/dist/legacy-variables.css';
 ```
-  </sd-tab-panel>
-</sd-tab-group>
+
+## Built-in Fallbacks for Theme
+
+Fallback values are now implemented directly in the token and component styling flow, defaulting to the **ui-light** theme. This means theme installation is no longer required in setups that only use component versions **above v6** or **below v4**.
