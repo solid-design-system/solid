@@ -1,0 +1,69 @@
+## Overview
+
+`<sd-badge>` — Used to draw attention to a particular element and display statuses or counts.
+
+## API
+
+### Examples
+
+Use the components tool by passing the args `component` and `example` for any of these combinations:
+
+- component: sd-badge, example: variant
+- component: sd-badge, example: size
+- component: sd-badge, example: inverted
+- component: sd-badge, example: overflow
+
+### Key Properties
+
+- prop.size: 'lg'|'md'|'sm', default='lg' — The badge's size.
+- prop.variant: 'blue'|'green'|'red', default='blue' — The badge's variant.
+- prop.inverted: boolean, default=false — Inverts the badge.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
+
+### Slots
+
+- slot.default: The badge's content.
+
+### CSS Parts
+
+- part.base: The badge's base wrapper.
+- part.content: The badge's main content.
+
+## Guidelines
+
+### Use Cases
+
+- Indicate the number of items selected, such as when using a filter.
+- Show the count of newly added items.
+- Display the number of messages received or tasks still pending.
+- Present the quantity of items collected, like those in a shopping cart.
+
+### Rules
+
+### Content
+
+- Use only numbers as content and a “+” for overflow, which is set by the application.
+
+### Colour Variants
+
+- Consistently apply one of the provided colour choices for a cohesive look.
+- Use default variants for standard notifications to ensure consistency with the overall design.
+- Select blue, green, or red notifications depending on the emphasis you desire. Blue notifications integrate smoothly with the overall design, green notifications attract more attention, and red notifications make notifications stand out the most. Don’t associate colour variants with success or error states.
+
+### Placement and Formatting
+
+- Place where it preserves relation to the element to which it is assigned, while remaining easy to see.
+- Make sure it doesn’t cover any informative element or text.
+- Refrain from altering the formatting of the number to prevent usability or accessibility issues.
+
+### Background
+
+- Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
+
+### Accessibility
+
+- Avoid using badges for purely decorative purposes.
+- Make sure the badge is appropriately sized and placed so it does not obscure other important content or controls.
+- If the badge conveys critical information, such as the number of items in a cart, ensure that this data is also provided in text elsewhere — such as in the cart details — to guarantee accessibility.
+- If the badge content changes dynamically (e.g., a notification count), use ”aria-live” to announce these changes to screen reader users.

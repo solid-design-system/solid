@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Interactive
 
-Used in interactive elements as a "quartery" button that has no paddings and no background.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -57,4 +55,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Styles/sd-interactive/Overview" />
 
-<OverviewFormatter story={SdInteractiveStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdInteractiveStories.Default} tag="sd-interactive">
+  {content}
+</OverviewFormatter>

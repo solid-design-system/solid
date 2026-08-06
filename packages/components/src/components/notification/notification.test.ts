@@ -312,9 +312,7 @@ describe('<sd-notification>', () => {
     variants.forEach(variant => {
       it(`adapts to the variant: ${variant}`, async () => {
         const notification = await fixture<SdNotification>(
-          html`<sd-notification variant="${variant as 'info' | 'success' | 'warning' | 'error'}"
-            >I am a notification</sd-notification
-          >`
+          html`<sd-notification variant="${variant}">I am a notification</sd-notification>`
         );
 
         const notificationContainer = getIconSlot(notification);

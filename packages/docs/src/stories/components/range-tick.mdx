@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Range Tick
 
-Used to represent a tick within a sd-range.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -30,4 +28,6 @@ Used to represent a tick within a sd-range.
 
 <Meta title="Components/sd-range-tick/Overview" />
 
-<OverviewFormatter story={SdRangeTickStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdRangeTickStories.Default} tag="sd-range-tick">
+  {content}
+</OverviewFormatter>

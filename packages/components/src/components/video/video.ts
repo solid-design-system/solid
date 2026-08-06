@@ -8,7 +8,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Used to wrap external video elements (e. g. from Moving Image or bare <video>-Tags) and provide some basic styling for Union Investment.
+ * @summary Used to wrap videos to provide basic styling.
  * @status stable
  * @since 1.19.0
  *
@@ -148,11 +148,13 @@ export default class SdVideo extends SolidElement {
             </slot>
           </div>
         </button>
-        ${this.hasSlotController.test('poster')
-          ? html` <div part="poster-wrapper" class="absolute left-0 top-0 w-full z-10 overflow-hidden">
-              <slot name="poster" role="presentation"> </slot>
-            </div>`
-          : null}
+        ${
+          this.hasSlotController.test('poster')
+            ? html` <div part="poster-wrapper" class="absolute left-0 top-0 w-full z-10 overflow-hidden">
+                <slot name="poster" role="presentation"> </slot>
+              </div>`
+            : null
+        }
         <slot></slot>
       </div>
     `;

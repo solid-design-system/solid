@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Status Badge
 
-Used as a visual, non-interactive indicator of a status related to a particular element.
-
 The icons used in this component, should be exclusively from the sd-status-assets [icon library](/?path=/story/components-sd-icon-default--status-library).
 
 <DefaultStory />
@@ -59,4 +57,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Styles/sd-status-badge/Overview" />
 
-<OverviewFormatter story={SdStatusBadgeStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdStatusBadgeStories.Default} tag="sd-status-badge">
+  {content}
+</OverviewFormatter>

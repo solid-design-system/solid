@@ -1,0 +1,80 @@
+## Overview
+
+`<sd-step>` — Used to determine a step in a process or task inside `sd-step-group`.
+
+## API
+
+### Examples
+
+Use the components tool by passing the args `component` and `example` for any of these combinations:
+
+- component: sd-step, example: size
+- component: sd-step, example: orientation
+- component: sd-step, example: horizontal-inline
+- component: sd-step, example: current
+- component: sd-step, example: waiting
+- component: sd-step, example: disabled
+- component: sd-step, example: as-link
+- component: sd-step, example: no-tail
+- component: sd-step, example: not-interactive
+- component: sd-step, example: icon
+- component: sd-step, example: label
+- component: sd-step, example: description
+- component: sd-step, example: description-and-label-using-attributes
+
+### Key Properties
+
+- prop.size: 'lg'|'sm'|'xs', default='lg' — The step's size.
+- prop.orientation: 'horizontal'|'vertical', default='horizontal' — Determines the orientation of the step.
+- prop.horizontalInline [attr: horizontal-inline]: boolean, default=false — Enables the horizontal inline variant for more compact layout.
+- prop.waiting: boolean, default=false — Sets the step to a waiting state.
+- prop.disabled: boolean, default=false — Sets the step to a disabled state.
+- prop.current: boolean, default=false — Sets the step to an active state.
+- prop.noTail [attr: no-tail]: boolean, default=false — Removes the tail from the step.
+- prop.notInteractive [attr: not-interactive]: boolean, default=false — Determines if the step is not interactive.
+- prop.label: string, default='' — The step's label overwriting the `label` slot. Use the `label` slot for complex label content.
+- prop.description: string, default='' — The step's description overwriting the `description` slot. Use the `description` slot for complex description content.
+- prop.index: number, default=1 — The step's number in a step-group
+- prop.href: string, default='' — When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
+
+### Events
+
+- event.sd-blur: Emitted when the button loses focus.
+- event.sd-focus: Emitted when the button gains focus.
+
+### Slots
+
+- slot.default: The step's description.
+- slot.label: The step's label.
+- slot.circle-content: The content inside a step circle. This could be an icon or a number.
+
+### CSS Parts
+
+- part.base: The component's base wrapper.
+- part.circle-and-tail-container: The container that wraps the step's circle and tail.
+- part.circle: The circle that marks the step's state.
+- part.tail: The step's tail.
+- part.text-container: The container that wraps the step's label and description.
+- part.label: The step's label.
+- part.description: The step's description.
+
+## Guidelines
+
+### Rules
+
+### Content
+
+- Keep titles concise, typically between 1 to 2 words.
+- Provide a description when additional context is needed. Use the "default" slot for the description, or the "description" attribute if applicable.
+- Hide the title if desired, depending on design requirements.
+
+### Styling
+
+- Add a content icon to a non-interactive item using the "circle-content" slot.
+- Maintain consistency in icon usage, ensuring icons are either included on all steps or none.
+
+### Background
+
+- Use light background options such as white, neutral-100, or primary-100.

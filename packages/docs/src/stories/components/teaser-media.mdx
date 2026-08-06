@@ -13,8 +13,6 @@ export const links = {
 export const content = `
 # Teaser Media
 
-Used as a flexible container that groups related items and links them to further content.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -77,4 +75,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-teaser-media/Overview" />
 
-<OverviewFormatter story={SdTeaserMediaStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdTeaserMediaStories.Default} tag="sd-teaser-media">
+  {content}
+</OverviewFormatter>

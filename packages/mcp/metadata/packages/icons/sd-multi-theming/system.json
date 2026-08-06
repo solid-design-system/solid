@@ -1,0 +1,307 @@
+[
+  {
+    "technicalId": "anchor-link",
+    "displayNameDe": "anchor link",
+    "tags": []
+  },
+  {
+    "technicalId": "arrow-left",
+    "displayNameDe": "arrow left",
+    "tags": []
+  },
+  {
+    "technicalId": "arrow-right",
+    "displayNameDe": "arrow right",
+    "tags": []
+  },
+  {
+    "technicalId": "calendar",
+    "displayNameDe": "calendar",
+    "tags": []
+  },
+  {
+    "technicalId": "shopping-cart",
+    "displayNameDe": "shopping cart",
+    "tags": []
+  },
+  {
+    "technicalId": "chevron-bottom",
+    "displayNameDe": "chevron bottom",
+    "tags": []
+  },
+  {
+    "technicalId": "chevron-left",
+    "displayNameDe": "chevron left",
+    "tags": []
+  },
+  {
+    "technicalId": "chevron-right",
+    "displayNameDe": "chevron right",
+    "tags": []
+  },
+  {
+    "technicalId": "chevron-small-left",
+    "displayNameDe": "chevron small left",
+    "tags": []
+  },
+  {
+    "technicalId": "chevron-small-right",
+    "displayNameDe": "chevron small right",
+    "tags": []
+  },
+  {
+    "technicalId": "chevron-top",
+    "displayNameDe": "chevron top",
+    "tags": []
+  },
+  {
+    "technicalId": "chevrons-small-left",
+    "displayNameDe": "chevrons small left",
+    "tags": []
+  },
+  {
+    "technicalId": "chevrons-small-right",
+    "displayNameDe": "chevrons small right",
+    "tags": []
+  },
+  {
+    "technicalId": "clock",
+    "displayNameDe": "clock",
+    "tags": []
+  },
+  {
+    "technicalId": "close-circle",
+    "displayNameDe": "close circle",
+    "tags": []
+  },
+  {
+    "technicalId": "close",
+    "displayNameDe": "close",
+    "tags": []
+  },
+  {
+    "technicalId": "confirm-circle",
+    "displayNameDe": "confirm circle",
+    "tags": []
+  },
+  {
+    "technicalId": "dashboard",
+    "displayNameDe": "dashboard",
+    "tags": []
+  },
+  {
+    "technicalId": "download",
+    "displayNameDe": "download",
+    "tags": []
+  },
+  {
+    "technicalId": "e-mail",
+    "displayNameDe": "e mail",
+    "tags": []
+  },
+  {
+    "technicalId": "exclamation-circle",
+    "displayNameDe": "exclamation circle",
+    "tags": []
+  },
+  {
+    "technicalId": "external-link",
+    "displayNameDe": "external link",
+    "tags": []
+  },
+  {
+    "technicalId": "eye-crossed-out",
+    "displayNameDe": "eye crossed out",
+    "tags": []
+  },
+  {
+    "technicalId": "eye-open",
+    "displayNameDe": "eye-open",
+    "tags": []
+  },
+  {
+    "technicalId": "file-pdf",
+    "displayNameDe": "file pdf",
+    "tags": []
+  },
+  {
+    "technicalId": "slider",
+    "displayNameDe": "slider",
+    "tags": []
+  },
+  {
+    "technicalId": "folder",
+    "displayNameDe": "folder",
+    "tags": []
+  },
+  {
+    "technicalId": "globe",
+    "displayNameDe": "globe",
+    "tags": []
+  },
+  {
+    "technicalId": "highlighter",
+    "displayNameDe": "highlighter",
+    "tags": []
+  },
+  {
+    "technicalId": "home",
+    "displayNameDe": "home",
+    "tags": []
+  },
+  {
+    "technicalId": "image",
+    "displayNameDe": "image",
+    "tags": []
+  },
+  {
+    "technicalId": "info-circle",
+    "displayNameDe": "info circle",
+    "tags": []
+  },
+  {
+    "technicalId": "list",
+    "displayNameDe": "list",
+    "tags": []
+  },
+  {
+    "technicalId": "lock-open",
+    "displayNameDe": "lock open",
+    "tags": []
+  },
+  {
+    "technicalId": "lock-locked",
+    "displayNameDe": "lock locked",
+    "tags": []
+  },
+  {
+    "technicalId": "log-out",
+    "displayNameDe": "log out",
+    "tags": []
+  },
+  {
+    "technicalId": "magnifying-glass",
+    "displayNameDe": "magnifying glass",
+    "tags": []
+  },
+  {
+    "technicalId": "menu",
+    "displayNameDe": "menu",
+    "tags": []
+  },
+  {
+    "technicalId": "minus-circle",
+    "displayNameDe": "minus circle",
+    "tags": []
+  },
+  {
+    "technicalId": "minus",
+    "displayNameDe": "minus",
+    "tags": []
+  },
+  {
+    "technicalId": "more-functions",
+    "displayNameDe": "more functions",
+    "tags": []
+  },
+  {
+    "technicalId": "mute",
+    "displayNameDe": "mute",
+    "tags": []
+  },
+  {
+    "technicalId": "pause",
+    "displayNameDe": "pause",
+    "tags": []
+  },
+  {
+    "technicalId": "pen",
+    "displayNameDe": "pen",
+    "tags": []
+  },
+  {
+    "technicalId": "phone",
+    "displayNameDe": "phone",
+    "tags": []
+  },
+  {
+    "technicalId": "play",
+    "displayNameDe": "play",
+    "tags": []
+  },
+  {
+    "technicalId": "plus-circle",
+    "displayNameDe": "plus circle",
+    "tags": []
+  },
+  {
+    "technicalId": "position",
+    "displayNameDe": "position",
+    "tags": []
+  },
+  {
+    "technicalId": "print",
+    "displayNameDe": "print",
+    "tags": []
+  },
+  {
+    "technicalId": "reload",
+    "displayNameDe": "reload",
+    "tags": []
+  },
+  {
+    "technicalId": "risk",
+    "displayNameDe": "risk",
+    "tags": []
+  },
+  {
+    "technicalId": "share",
+    "displayNameDe": "share",
+    "tags": []
+  },
+  {
+    "technicalId": "shopping-cart-crossed-out",
+    "displayNameDe": "shopping cart crossed out",
+    "tags": []
+  },
+  {
+    "technicalId": "star-empty",
+    "displayNameDe": "star empty",
+    "tags": []
+  },
+  {
+    "technicalId": "star-filled",
+    "displayNameDe": "star filled",
+    "tags": []
+  },
+  {
+    "technicalId": "table",
+    "displayNameDe": "table",
+    "tags": []
+  },
+  {
+    "technicalId": "transcript",
+    "displayNameDe": "transcript",
+    "tags": []
+  },
+  {
+    "technicalId": "user",
+    "displayNameDe": "user",
+    "tags": []
+  },
+  {
+    "technicalId": "volume",
+    "displayNameDe": "volume",
+    "tags": []
+  },
+  {
+    "technicalId": "warning",
+    "displayNameDe": "warning",
+    "tags": []
+  },
+  {
+    "technicalId": "website",
+    "displayNameDe": "website",
+    "tags": []
+  }
+]

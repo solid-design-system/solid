@@ -7,7 +7,14 @@
     }
   ],
   "commit": false,
-  "fixed": [["@solid-design-system/components", "@solid-design-system/styles", "@solid-design-system/tokens"]],
+  "fixed": [
+    [
+      "@solid-design-system/components",
+      "@solid-design-system/styles",
+      "@solid-design-system/tokens",
+      "@solid-design-system/mcp"
+    ]
+  ],
   "linked": [],
   "access": "public",
   "baseBranch": "main",

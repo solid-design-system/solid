@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Progress Bar
 
-Used to visually represent the progression of an activity.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -52,4 +50,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-progress-bar/Overview" />
 
-<OverviewFormatter story={SdProgressBarStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdProgressBarStories.Default} tag="sd-progress-bar">
+  {content}
+</OverviewFormatter>

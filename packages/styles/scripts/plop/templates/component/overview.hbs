@@ -10,8 +10,6 @@ export const figmaDocs = '';
 export const content = `
 # {{ tagToTitle tag }}
 
-DESCRIPTION
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -43,4 +41,4 @@ Add other guidelines here.
 
 <Meta title="Styles/{{ tag }}/Overview" />
 
-<OverviewFormatter story={ {{ properCase tag }}Stories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={ {{ properCase tag }}Stories.Default} tag="{{ tag }}">{content}</OverviewFormatter>

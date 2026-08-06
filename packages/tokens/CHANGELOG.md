@@ -1,5 +1,70 @@
 # @solid-design-system/tokens
 
+## 7.0.0-next.4
+
+## 7.0.0-next.3
+
+## 7.0.0-next.2
+
+## 6.29.0
+
+## 6.28.2
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull Request _[`#3163`](https://github.com/solid-design-system/solid/pull/3163) [`91ff1c8`](https://github.com/solid-design-system/solid/commit/91ff1c81831fb3522c534306a61b8a5be3562f64) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 7.0.0-next.1
+
+## 7.0.0-next.0
+
+## 6.28.1
+
+### Patch Changes
+
+- Fixed token imports to preserve the color mappings defined in Figma. For example, `--sd-color-background-accent-550` now correctly references `accent-550` in `ui-light`. _[`#3206`](https://github.com/solid-design-system/solid/pull/3206) [`83c417b`](https://github.com/solid-design-system/solid/commit/83c417b8739091e9b1a8e2f9e87c484443a8707f) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.28.0
+
+## 6.27.2
+
+## 6.27.1
+
+## 6.27.0
+
+## 6.26.0
+
+### Minor Changes
+
+- Add sparda theme. _[`#3124`](https://github.com/solid-design-system/solid/pull/3124) [`0812ec8`](https://github.com/solid-design-system/solid/commit/0812ec83a8430a7573d31e7f8902f63aaa0f1528) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Add new tokens:
+    - --sd-checkbox--invalid-color-background
+    - --sd-form-control-color-icon-fill
+    - --sd-color-icon-fill-content-icons-primary
+    - --sd-navigation-item--default-color-text
+    - --sd-tag--size-lg-padding-inline
+    - --sd-tag--size-sm-padding-inline
+    - --sd-tag--removable--size-lg-padding-right
+    - --sd-tag--removable--size-lg-padding-left
+    - --sd-tag--removable--size-sm-padding-right
+    - --sd-tag--removable--size-sm-padding-left
+
+## 6.25.2
+
+## 6.25.1
+
+### Patch Changes
+
+- Add `--sd-form-control__tooltip-color-icon` to legacy variables. _[`#3122`](https://github.com/solid-design-system/solid/pull/3122) [`d86bfbf`](https://github.com/solid-design-system/solid/commit/d86bfbff9500cbe012d6d26c4dd2a78ad1ad8ac0) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.25.0
+
+### Minor Changes
+
+- Expose `./package.json` in the package exports so you can read the installed version programmatically, for example `import pkg from '@solid-design-system/components/package.json' with { type: 'json' }` or `require.resolve('@solid-design-system/components/package.json')`. _[`#3119`](https://github.com/solid-design-system/solid/pull/3119) [`7973bf9`](https://github.com/solid-design-system/solid/commit/7973bf97cc5c2961831452e078b92f08be1089e4) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.24.2
+
 ## 6.24.1
 
 ## 6.24.0

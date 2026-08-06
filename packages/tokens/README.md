@@ -11,3 +11,13 @@ These tokens are exposed in two forms:
 
 - **Themes** — pre-built CSS files that resolve tokens into a visual style (e.g. `ui-light`, `ui-dark`, brand themes). Themes are loaded once per page and inherited by all components automatically.
 - **Token utilities** — CSS variables, SCSS variables, and Tailwind configuration that let you consume tokens directly when building custom components or layouts.
+
+## Multi-theming
+
+With Multi-theming, the Solid Design System can adapt its established components for different brands and touchpoints.
+
+Each theme is a translation of a brand's corporate design into the Solid DS – not a 1:1 reproduction, but the closest possible approximation within a consistent, scalable system. Certain design decisions are defined system-wide to ensure quality, consistency, and accessibility across all brands.
+
+Unlike a Whitelabel System – where each brand builds and maintains its own library from a blank foundation – the Solid DS retains a shared, opinionated base and adapts only the visual layer.
+
+Regardless of the theme – the proven Solid DS quality remains intact. Structure, logic, accessibility, and maintainability are secured across the entire system. The theme determines how components look. The Solid DS determines how well they work.

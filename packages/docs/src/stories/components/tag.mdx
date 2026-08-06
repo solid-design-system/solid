@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Tag
 
-Used to categorise or label content. Can also be used to filter or search for content.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -53,4 +51,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-tag/Overview" />
 
-<OverviewFormatter story={SdTagStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdTagStories.Default} tag="sd-tag">
+  {content}
+</OverviewFormatter>

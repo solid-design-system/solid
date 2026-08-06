@@ -1,0 +1,164 @@
+---
+name: teaser-media
+title: Teaser Media
+components:
+  - sd-button
+  - sd-headline
+  - sd-headline--inverted
+  - sd-headline--size-lg
+  - sd-meta
+  - sd-meta--inverted
+  - sd-meta--pipe
+  - sd-paragraph
+  - sd-paragraph--inverted
+  - sd-teaser-media
+version: 1.0.0
+---
+
+## Template: Teaser Media with Link
+
+```html
+<div class="flex flex-col gap-12">
+  <sd-teaser-media variant="gradient-dark">
+    <h3 slot="headline" class="sd-headline sd-headline--inverted sd-headline--size-lg">Market turnaround in sight</h3>
+    <div slot="media" class="relative">
+      <img
+        class="w-full aspect-ratio"
+        src="./placeholders/images/coins.jpg"
+        alt="Close-up of hands stacking coins into small piles on a table, suggesting financial planning or saving."
+      />
+    </div>
+    <div slot="meta" class="meta-info">
+      <span class="sd-meta sd-meta--pipe sd-meta--inverted sd-headline--size-lg">August 2024</span>
+      <span class="sd-meta sd-meta--inverted">Olaf Janßen</span>
+    </div>
+    <div>
+      <p class="sd-paragraph sd-paragraph--inverted mb-4 mt-2">
+        After a long wait for good news, real estate investors are now seeing the first signs of a recovery on the
+        European commercial real estate markets.
+      </p>
+      <div>
+        <sd-button href="#" target="_blank" variant="primary" inverted>View research</sd-button>
+      </div>
+    </div>
+  </sd-teaser-media>
+  <sd-teaser-media variant="primary">
+    <h3 slot="headline" class="sd-headline sd-headline--inverted sd-headline--size-lg">Your contact person</h3>
+    <img
+      slot="media"
+      class="w-full"
+      src="./placeholders/images/collaboration.jpg"
+      alt="Two professionals representing accessible customer support."
+    />
+    <div class="flex flex-col gap-4">
+      <p class="sd-paragraph sd-paragraph--inverted sd-headline--size-lg">
+        If you have any questions or would like to obtain further information, please find your dedicated contact below.
+      </p>
+      <div>
+        <sd-button href="#" target="_blank" variant="cta" inverted>Feel free to contact us</sd-button>
+      </div>
+    </div>
+  </sd-teaser-media>
+  <sd-teaser-media variant="neutral-100" class="teaser-neutral-100">
+    <h3 slot="headline" class="sd-headline sd-headline--size-lg">USA or Europe? It depends on the mix</h3>
+    <img
+      slot="media"
+      class="w-full aspect-ratio"
+      src="./placeholders/images/skyline.jpg"
+      alt="A vibrant city skyline at dusk, symbolizing economic growth and investment opportunities in urban hubs."
+    />
+    <div class="flex flex-col gap-4">
+      <p class="sd-paragraph">
+        A positive growth environment, the tech boom and government investment incentives show this: The USA is ahead of
+        the eurozone in many respects. Moritz Bauer, Head of Investment Strategy at Union Investment, explains why
+        investors should nevertheless also keep an eye on European investments.
+      </p>
+      <div slot="meta" class="meta-info">
+        <span class="meta-info-item">12.06.2024</span>
+      </div>
+      <div>
+        <sd-button href="#" target="_blank" variant="primary">Read now</sd-button>
+      </div>
+    </div>
+  </sd-teaser-media>
+</div>
+```
+
+## Template: Teaser Media Overrides
+
+```html
+<style>
+  .media-overrides::part(content) {
+    display: flex;
+    align-items: center;
+  }
+</style>
+<sd-teaser-media variant="gradient-dark" class="media-overrides">
+  <h3 slot="headline" class="sd-headline sd-headline--inverted sd-headline--size-lg">Gender</h3>
+  <div slot="media" class="relative">
+    <img
+      class="w-full aspect-ratio"
+      src="./placeholders/images/coffeeshop.jpg"
+      alt="Diverse group of individuals in a casual meeting setting, emphasizing gender equality and collaboration."
+    />
+  </div>
+  <p class="sd-paragraph sd-paragraph--inverted pt-1">We are actively promoting gender equality.</p>
+</sd-teaser-media>
+```
+
+## Template: Teaser Media Expandable
+
+```html
+<style>
+  .media-overrides::part(content) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+</style>
+<div class="flex flex-row gap-2 media-overrides">
+  <sd-teaser-media variant="gradient-dark" class="media-overrides">
+    <h3 slot="headline">Retirement planning</h3>
+    <img
+      slot="media"
+      src="./placeholders/images/senior-coffee.jpg"
+      class="aspect-4/5 object-cover self-stretch h-80"
+      alt=""
+    />
+    <div slot="expandable">
+      <p class="sd-paragraph sd-paragraph--inverted text-center">
+        Start today. We take proactive action to strengthen your finances in retirement.
+      </p>
+    </div>
+  </sd-teaser-media>
+  <sd-teaser-media variant="gradient-dark" class="media-overrides">
+    <h3 slot="headline">Save</h3>
+    <img
+      slot="media"
+      src="./placeholders/images/couple-moving-03.jpg"
+      class="aspect-4/5 object-cover self-stretch h-80"
+      alt=""
+    />
+    <div slot="expandable">
+      <p class="sd-paragraph sd-paragraph--inverted text-center">
+        We build smart saving habits that secure your financial future.
+      </p>
+    </div>
+  </sd-teaser-media>
+  <sd-teaser-media variant="gradient-dark" class="media-overrides">
+    <h3 slot="headline">Invest</h3>
+    <img
+      slot="media"
+      src="./placeholders/images/calculator-work.jpg"
+      class="aspect-4/5 object-cover self-stretch h-80"
+      alt=""
+    />
+    <div slot="expandable">
+      <p class="sd-paragraph sd-paragraph--inverted text-center">
+        We align your investments with the lifestyle you want after work.
+      </p>
+    </div>
+  </sd-teaser-media>
+</div>
+```

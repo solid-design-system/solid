@@ -1,0 +1,445 @@
+# Installation
+
+This page guides you through installing and setting up the `@solid-design-system/tokens` package to use themes and/or design tokens in your project.
+
+<sd-notification type="info" open>
+  The `components`, `styles`, and `tokens` packages always share the same version. We use fixed versioning to keep them
+  fully in sync, so every release updates all three packages, even if only one of them changed. Make sure to install or
+  update them using the same version number.
+</sd-notification>
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="host">Theme Host</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="consumer">Theme Consumer</sd-tab>
+
+  <sd-tab-panel name="host">
+## Install the package
+
+```bash
+npm install @solid-design-system/tokens
+```
+
+## Import a theme
+
+Load at least one theme — either via NPM import or a CDN `<link>` tag. This only needs to be done **once per document**. Every component and embedded consumer on the page will automatically inherit the theme.
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="npm" variant="container">NPM</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="cdn" variant="container">CDN</sd-tab>
+  <sd-tab-panel name="npm">
+```js
+```
+
+  </sd-tab-panel>
+  <sd-tab-panel name="cdn">
+```html
+<link
+  rel="stylesheet"
+  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
+/>
+```
+
+  </sd-tab-panel>
+</sd-tab-group>
+
+## Next steps
+
+Depending on the theme, make sure the following page-level concerns are covered.
+
+### Fonts
+
+Solid doesn't provide **any fonts** — you have to include them yourself, either via a CDN (recommended) or by self-hosting the font files. Reach out to your brand department if you want to self-host.
+
+<sd-accordion summary="Example CSS for Union Investment (CDN)">
+
+Please make sure to change `latest` to a concrete package version you want to use.
+
+```css
+@font-face {
+  font-family: 'Frutiger Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-Bk.woff2')
+    format('woff2');
+}
+
+@font-face {
+  font-family: 'Frutiger Neue';
+  font-style: italic;
+  font-weight: 400;
+  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-BkIt.woff2')
+    format('woff2');
+}
+
+body {
+  font-family:
+    'Frutiger Neue',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans',
+    sans-serif;
+}
+```
+
+</sd-accordion>
+
+<sd-accordion summary="Example CSS for Volksbank (CDN)">
+```css
+@font-face {
+  font-family: 'GenosGFG';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://markenwelt.wegfrei-portal.de/fonts/GenosGFG-Regular.woff2') format('woff2');
+}
+
+body {
+font-family:
+'GenosGFG',
+ui-sans-serif,
+system-ui,
+-apple-system,
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+'Helvetica Neue',
+Arial,
+'Noto Sans',
+sans-serif;
+}
+
+````
+
+</sd-accordion>
+
+<sd-accordion summary="Example CSS for Sparda (CDN)">
+```css
+@font-face {
+  font-family: 'GenosGFG';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://markenwelt.wegfrei-portal.de/fonts/GenosGFG-Regular.woff2') format('woff2');
+}
+
+body {
+font-family:
+'GenosGFG',
+ui-sans-serif,
+system-ui,
+-apple-system,
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+'Helvetica Neue',
+Arial,
+'Noto Sans',
+sans-serif;
+}
+
+````
+
+</sd-accordion>
+
+<sd-accordion summary="Example CSS for Kidstarter (CDN)">
+```css
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local('Bricolage Grotesque'),
+    url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400&display=swap') format('woff2');
+}
+
+@font-face {
+font-family: 'Bricolage Grotesque';
+font-style: normal;
+font-weight: 600;
+src:
+local('Bricolage Grotesque'),
+url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600&display=swap') format('woff2');
+}
+
+body {
+font-family:
+'Bricolage Grotesque',
+ui-sans-serif,
+system-ui,
+-apple-system,
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+'Helvetica Neue',
+Arial,
+'Noto Sans',
+sans-serif;
+}
+
+````
+
+</sd-accordion>
+
+<sd-accordion summary="Example CSS for BBBank (CDN)">
+```css
+@font-face {
+  font-family: 'BBBank Type TT';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/path/to/font.woff2') format('woff2');
+}
+
+body {
+font-family:
+'BBBank Type TT',
+ui-sans-serif,
+system-ui,
+-apple-system,
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+'Helvetica Neue',
+Arial,
+'Noto Sans',
+sans-serif;
+}
+
+````
+
+<sd-notification open>
+Replace  with the path where you saved the font. We are not allowed to share it, please reach out to the provider directly to request it; for more information, visit: <sd-link href="https://marken-portal.bbbank.de/schrift/">BBBank Marken Portal</sd-link>
+</sd-notification>
+</sd-accordion>
+
+<sd-accordion summary="Example CSS for self-hosted fonts">
+```css
+@font-face {
+  font-family: 'Genos GFG';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/geno/GenosGFG-Regular.woff2') format('woff2');
+}
+
+@font-face {
+font-family: 'Genos GFG';
+font-style: normal;
+font-weight: 700;
+font-display: swap;
+src: url('/fonts/geno/GenosGFG-Bold.woff2') format('woff2');
+}
+
+body {
+font-family:
+'Genos GFG',
+ui-sans-serif,
+system-ui,
+-apple-system,
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+'Helvetica Neue',
+Arial,
+'Noto Sans',
+sans-serif,
+'Apple Color Emoji',
+'Segoe UI Emoji',
+'Segoe UI Symbol',
+'Noto Color Emoji';
+}
+
+````
+
+</sd-accordion>
+
+### Font rendering
+
+To improve font rendering, add the following CSS to your project:
+
+```css
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  font-size: 16px;
+}
+```
+
+### Normalizing browser styles
+
+We recommend using [normalize.css](https://necolas.github.io/normalize.css/) or similar to handle cross-browser inconsistencies. If you prefer not to use normalize.css, at least reset line-heights for `<sub>` and `<sup>` elements:
+
+<sd-accordion summary="Minimal reset CSS">
+```css
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+bottom: -0.25em;
+}
+
+sup {
+top: -0.5em;
+}
+
+````
+
+That's it — your page is now themed. Head over to the <sd-link href="?path=/docs/packages-tokens-usage--docs">Usage page</sd-link> to learn how to switch themes, customize tokens, and create your own theme.
+
+</sd-accordion>
+
+  </sd-tab-panel>
+
+  <sd-tab-panel name="consumer">
+
+<sd-notification variant="warning" open>
+  **Do not import or bundle theme CSS.** The Theme Host already provides the theme for the entire page. Bundling it
+  yourself leads to unnecessary bundle size, potential conflicts, and version mismatches.
+</sd-notification>
+
+Your components will automatically inherit whichever theme the host has set — including light/dark switching — without any extra work on your end.
+
+## Install the package
+
+Even though you don't load a theme, you still install `@solid-design-system/tokens` to access token utilities (CSS variables, SCSS variables, Tailwind config) for your own custom styling.
+
+```bash
+npm install @solid-design-system/tokens
+```
+
+## Use tokens in your code
+
+Pick the format that fits your stack:
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="css" variant="container">CSS</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="scss" variant="container">SCSS</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="tw4" variant="container">Tailwind v4</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="tw3" variant="container">Tailwind v3</sd-tab>
+
+  <sd-tab-panel name="css">
+
+The theme loaded by the host exposes CSS variables you can use directly — no additional import needed.
+
+```css
+.my-element {
+  background-color: rgba(var(--sd-color-background-primary-100));
+  color: rgba(var(--sd-color-text-black));
+}
+```
+
+  </sd-tab-panel>
+  <sd-tab-panel name="scss">
+
+Import the SCSS file to access all tokens as SCSS variables.
+
+```scss
+@import '@solid-design-system/tokens/dist/scss';
+```
+
+```scss
+.my-element {
+  background-color: rgba($sd-color-background-primary-100);
+  color: rgba($sd-color-text-black);
+}
+```
+
+  </sd-tab-panel>
+  <sd-tab-panel name="tw4">
+```css
+@import 'tailwindcss';
+@import '@solid-design-system/tokens/dist/themes/tailwind.css';
+```
+
+This automatically makes all Solid Design System tokens available as Tailwind utility classes.
+
+  </sd-tab-panel>
+  <sd-tab-panel name="tw3">
+```js
+// tailwind.config.js
+
+export default {
+theme: {
+extend: {
+...solidTheme
+}
+}
+};
+
+```
+
+  </sd-tab-panel>
+</sd-tab-group>
+
+That's it — you're ready to build. Head over to the <sd-link href="?path=/docs/packages-tokens-usage--docs">Usage page</sd-link> to learn about local development, standalone fallbacks, and versioning coordination.
+
+  </sd-tab-panel>
+</sd-tab-group>
+
+## ⚠️ Upcoming breaking changes
+
+Breaking changes will be introduced in a future release (date to be announced).
+
+### CSS Variables
+
+Some CSS variables used for custom theming will be removed.
+
+- Deprecated variables are still functional for now
+- All deprecated variables are clearly marked in the documentation
+- Recommended replacements are already provided
+
+**Where to find deprecated variables**: You can find this information directly on each component’s documentation page.
+
+Deprecated variables:
+
+- `--sd-button--size-lg-border-radius` replace with `--sd-button-border-radius`
+- `--sd-button--size-md-border-radius` replace with `--sd-button-border-radius`
+- `--sd-button--size-sm-border-radius` replace with `--sd-button-border-radius`
+- `--sd-button--secondary--inverted--color-border` replace with `--sd-button-secondary-inverted-color-border`
+- `--sd-chip-font-size` replace with `--sd-marker-font-size`
+- `--sd-chip-border-width` replace with `--sd-marker-border-width`
+- `--sd-chip-font-weight` replace with `--sd-marker-font-weight`
+- `--sd-flag-border-width` replace with `--sd-marker-border-width`
+- `--sd-form-control-color-icon` replace with `--sd-form-control-color-icon-fill`
+- `--sd-menu-color-icon` replace with `--sd-menu-item-color-icon-fill`
+- `--sd-menu-color-text` replace with `--sd-menu-item-color-text`
+- `--sd-menu--disabled-color-icon` replace with `--sd-menu-item--disabled-color-icon-fill`
+- `--sd-menu--disabled-color-text` replace with `--sd-menu-item--disabled-color-text`
+- `--sd-tag-font-weight` replace with `--sd-choice-control-font-weight`
+- `--sd-tag--disabled-color-border` replace with `--sd-color-border-neutral-500`
+- `--sd-navigation-item--current-color-text` replace with `--sd-navigation-item-color-text`
+- `--sd-option--disabled-color-border` replace with `--sd-color-border-neutral-500`
+- `--sd-audio__timestamp-color-text` replace with `--sd-color-text-neutral-700`
+- `--sd-accordion__chevron-color-text` replace with `--sd-accordion-color-icon-fill`
+
+---
+
+### Minimum dependency requirement
+
+Currently, any version of the **components** and **styles** packages is compatible with any version of the **tokens** package. In a future release:
+
+- A **minimum dependency requirement** will be introduced
+- The **tokens package version must be equal to or higher than** the components and styles versions
+
+We recommend reviewing your setup now to ensure that your tokens package is **aligned with (or ahead of)** your components and styles. This will help you avoid compatibility issues once the new requirement is enforced.
+```

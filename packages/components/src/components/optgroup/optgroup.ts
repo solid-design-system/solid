@@ -10,8 +10,8 @@ import SolidElement from '../../internal/solid-element';
 import type SdOption from '../option/option';
 
 /**
- * @summary The <sd-optgroup> element creates a grouping for <sd-option>s within a <sd-combobox>.
- * @documentation @documentation https://solid.union-investment.com/[storybook-link]/components-sd-optgroup
+ * @summary Used to group `sd-option`components within an `sd-combobox`.
+ * @documentation https://solid.union-investment.com/[storybook-link]/components-sd-optgroup
  * @status experimental
  * @since 3.23.0
  *

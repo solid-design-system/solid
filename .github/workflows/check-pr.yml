@@ -12,12 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
     container:
-      image: mcr.microsoft.com/playwright:v1.60.0-noble
+      image: mcr.microsoft.com/playwright:v1.61.1-noble
     strategy:
       matrix:
         package:
           - packages/components
           - packages/docs
+          - packages/mcp
           - packages/placeholders
           - packages/styles
           - packages/theming
@@ -27,6 +28,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+
+      - name: Configure git safe directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Install Node.js
         uses: actions/setup-node@v6

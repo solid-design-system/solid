@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Button
 
-Used to allow users to perform actions with a single click.
-
 Buttons perform various functions (e.g. download, link) or activate other functions (e.g. filter). All buttons can be displayed with or without an icon.
 
 <DefaultStory />
@@ -82,4 +80,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-button/Overview" />
 
-<OverviewFormatter story={SdButtonStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdButtonStories.Default} tag="sd-button">
+  {content}
+</OverviewFormatter>

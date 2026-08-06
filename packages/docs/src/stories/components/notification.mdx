@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Notification
 
-Used to communicate information or status to users, notifications can be displayed inline or as toast messages, either individually or in stacks.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -106,4 +104,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-notification/Overview" />
 
-<OverviewFormatter story={SdNotificationStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdNotificationStories.Default} tag="sd-notification">
+  {content}
+</OverviewFormatter>

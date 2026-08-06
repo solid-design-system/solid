@@ -1,0 +1,32 @@
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+import { getStructuredMetaData, getStructuredMetaDataForComponent } from '../../src/utilities/metadata.js';
+import type { MetadataFile } from '../../src/utilities/metadata.js';
+
+const isMetadataFile = (file: MetadataFile | null): file is MetadataFile => file !== null;
+
+describe('when using the metadata utilities', () => {
+  describe('getStructuredMetaData', () => {
+    it('should return an empty array when the metadata folder does not exist', async () => {
+      const metadata = await getStructuredMetaData('../../test/utilities/non-existent-testdata');
+      assert.deepStrictEqual(metadata, []);
+    });
+  });
+
+  describe('getStructuredMetaDataForComponent', () => {
+    it('should return the correct metadata for a given component without applied filter', async () => {
+      const metadata = await getStructuredMetaDataForComponent('sd-button');
+      assert.ok(metadata.length > 0);
+      const filesThatAreRead = metadata.filter(isMetadataFile).map(file => file.filename);
+      assert.ok(filesThatAreRead.includes('info.md'));
+    });
+
+    it('should return the correct metadata for a given component with a custom filter applied', async () => {
+      const metadata = await getStructuredMetaDataForComponent('sd-button', filename => filename.endsWith('.md'));
+      assert.ok(metadata.length > 0);
+      const filesThatAreRead = metadata.filter(isMetadataFile).map(file => file.filename);
+      assert.ok(filesThatAreRead.includes('info.md'));
+      assert.ok(!filesThatAreRead.some(f => f.endsWith('.json')));
+    });
+  });
+});

@@ -13,7 +13,7 @@ import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
- * @summary Textareas collect data from the user and allow multiple lines of text.
+ * @summary Used to allow users to input and edit multiple lines of text.
  * @status stable
  * @since 1.31.0
  *
@@ -118,15 +118,19 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
   /** Controls whether and how text input is automatically capitalized as it is entered by the user. */
   @property({ type: String, reflect: true }) autocapitalize:
-    | 'off'
-    | 'none'
-    | 'on'
-    | 'sentences'
-    | 'words'
-    | 'characters';
+    'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
 
   /** Indicates whether the browser's autocorrect feature is on or off. */
-  @property({ type: String, reflect: true }) autocorrect: 'off' | 'on';
+  @property({
+    type: Boolean,
+    reflect: true,
+    converter: {
+      // Allow "on|off" attribute values but keep the property boolean
+      fromAttribute: value => value !== 'off',
+      toAttribute: value => (value ? 'on' : 'off')
+    }
+  })
+  autocorrect: boolean;
   /**
    * Specifies what permission the browser has to provide assistance in filling out form field values. Refer to
    * [this page on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for available values.
@@ -138,13 +142,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
   /** Used to customize the label or icon of the Enter key on virtual keyboards. */
   @property({ type: String, reflect: true }) enterkeyhint:
-    | 'enter'
-    | 'done'
-    | 'go'
-    | 'next'
-    | 'previous'
-    | 'search'
-    | 'send';
+    'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
 
   /** Shows success styles if the validity of the input is valid. */
   @property({ type: Boolean, reflect: true, attribute: 'style-on-valid' }) styleOnValid = false;
@@ -380,54 +378,58 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
     return html`
       <div part="form-control" class="flex flex-col h-full text-left">
-        ${(hasLabel && !this.floatingLabel) || hasTooltip
-          ? html`<div class="flex items-center gap-1 mb-2">
-              <label
-                part="form-control-label"
-                id="label"
-                class=${cx(
-                  hasLabel ? 'inline-block' : 'hidden',
-                  textSize,
-                  this.visuallyDisabled || this.disabled ? 'text-neutral-500' : ' form-control-color-text'
-                )}
-                for="input"
-                aria-hidden=${hasLabel ? 'false' : 'true'}
-              >
-                <slot name="label">${this.label}</slot>
-              </label>
-
-              ${slots['tooltip'] ? html`<slot name="tooltip"></slot>` : ''}
-            </div>`
-          : null}
-
-        <div part="form-control-input" class=${cx('relative h-full w-full', this.disabled && 'cursor-not-allowed')}>
-          ${hasLabel && this.floatingLabel
-            ? html`
+        ${
+          (hasLabel && !this.floatingLabel) || hasTooltip
+            ? html`<div class="flex items-center gap-1 mb-2">
                 <label
+                  part="form-control-label"
                   id="label"
-                  part="form-control-floating-label"
                   class=${cx(
-                    'absolute left-4 z-20 transition-all duration-200 cursor-text',
+                    hasLabel ? 'inline-block' : 'hidden',
                     textSize,
-                    !isFloatingLabelActive ? 'top-2.5 form-control-color-text' : 'top-2 text-xs'
+                    this.visuallyDisabled || this.disabled ? 'text-neutral-500' : ' form-control-color-text'
                   )}
                   for="input"
+                  aria-hidden=${hasLabel ? 'false' : 'true'}
                 >
-                  <span
-                    class=${cx(
-                      'leading-none',
-                      (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
-                      isFloatingLabelActive &&
-                        !this.visuallyDisabled &&
-                        !this.disabled &&
-                        'form-control--filled__floating-label-color-text'
-                    )}
-                  >
-                    ${this.label}
-                  </span>
+                  <slot name="label">${this.label}</slot>
                 </label>
-              `
-            : null}
+
+                ${slots['tooltip'] ? html`<slot name="tooltip"></slot>` : ''}
+              </div>`
+            : null
+        }
+
+        <div part="form-control-input" class=${cx('relative h-full w-full', this.disabled && 'cursor-not-allowed')}>
+          ${
+            hasLabel && this.floatingLabel
+              ? html`
+                  <label
+                    id="label"
+                    part="form-control-floating-label"
+                    class=${cx(
+                      'absolute left-4 z-20 transition-all duration-200 cursor-text',
+                      textSize,
+                      !isFloatingLabelActive ? 'top-2.5 form-control-color-text' : 'top-2 text-xs'
+                    )}
+                    for="input"
+                  >
+                    <span
+                      class=${cx(
+                        'leading-none',
+                        (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                        isFloatingLabelActive &&
+                          !this.visuallyDisabled &&
+                          !this.disabled &&
+                          'form-control--filled__floating-label-color-text'
+                      )}
+                    >
+                      ${this.label}
+                    </span>
+                  </label>
+                `
+              : null
+          }
           <div
             part="border"
             class=${cx(
@@ -488,7 +490,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               maxlength=${ifDefined(this.maxlength)}
               rows=${ifDefined(this.rows)}
               autocapitalize=${ifDefined(this.autocapitalize)}
-              autocorrect=${ifDefined(this.autocorrect)}
+              autocorrect=${ifDefined(this.autocorrect === undefined ? undefined : this.autocorrect ? 'on' : 'off')}
               ?autofocus=${this.autofocus}
               spellcheck=${ifDefined(this.spellcheck)}
               enterkeyhint=${ifDefined(this.enterkeyhint)}
@@ -502,26 +504,30 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
             ></textarea>
-            ${this.showInvalidStyle
-              ? html`
-                  <sd-icon
-                    class=${cx('text-error absolute right-4 pointer-events-none', iconSize)}
-                    library="_internal"
-                    name="risk"
-                    part="invalid-icon"
-                  ></sd-icon>
-                `
-              : ''}
-            ${this.styleOnValid && this.showValidStyle
-              ? html`
-                  <sd-icon
-                    class=${cx('text-success absolute right-4 pointer-events-none', iconSize)}
-                    library="_internal"
-                    name="confirm-circle"
-                    part="valid-icon"
-                  ></sd-icon>
-                `
-              : ''}
+            ${
+              this.showInvalidStyle
+                ? html`
+                    <sd-icon
+                      class=${cx('text-error absolute right-4 pointer-events-none', iconSize)}
+                      library="_internal"
+                      name="risk"
+                      part="invalid-icon"
+                    ></sd-icon>
+                  `
+                : ''
+            }
+            ${
+              this.styleOnValid && this.showValidStyle
+                ? html`
+                    <sd-icon
+                      class=${cx('text-success absolute right-4 pointer-events-none', iconSize)}
+                      library="_internal"
+                      name="confirm-circle"
+                      part="valid-icon"
+                    ></sd-icon>
+                  `
+                : ''
+            }
           </div>
         </div>
         <slot

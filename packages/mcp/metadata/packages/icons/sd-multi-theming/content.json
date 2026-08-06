@@ -1,0 +1,27 @@
+[
+  {
+    "technicalId": "calculator",
+    "displayNameDe": "calculator",
+    "tags": []
+  },
+  {
+    "technicalId": "image",
+    "displayNameDe": "image",
+    "tags": []
+  },
+  {
+    "technicalId": "person-newspaper",
+    "displayNameDe": "person newspaper",
+    "tags": []
+  },
+  {
+    "technicalId": "podcast",
+    "displayNameDe": "podcast",
+    "tags": []
+  },
+  {
+    "technicalId": "video",
+    "displayNameDe": "video",
+    "tags": []
+  }
+]

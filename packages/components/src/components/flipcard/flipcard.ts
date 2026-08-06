@@ -8,7 +8,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Flipcard allows for the addition of content/information on both "sides" of the card, through means of a flip animation. Used  to add dynamism and interactivity to a page.
+ * @summary Used to display content on both sides of a card by presenting information on one side and revealing additional information when flipped.
  * @documentation https://solid.union-investment.com/[storybook-link]/flipcard
  * @status stable
  * @since 3.8.0
@@ -195,18 +195,22 @@ export default class SdFlipcard extends SolidElement {
           <sd-button
             part="front-button"
             size="md"
-            variant=${{
-              primary: 'tertiary',
-              'primary-100': 'tertiary',
-              'gradient-light': 'primary',
-              'gradient-dark': 'primary'
-            }[this.frontVariant] as 'primary' | 'secondary' | 'tertiary' | 'cta'}
-            ?inverted=${{
-              primary: true,
-              'primary-100': false,
-              'gradient-light': true,
-              'gradient-dark': true
-            }[this.frontVariant]}
+            variant=${
+              {
+                primary: 'tertiary',
+                'primary-100': 'tertiary',
+                'gradient-light': 'primary',
+                'gradient-dark': 'primary'
+              }[this.frontVariant]
+            }
+            ?inverted=${
+              {
+                primary: true,
+                'primary-100': false,
+                'gradient-light': true,
+                'gradient-dark': true
+              }[this.frontVariant]
+            }
             class=${cx('absolute right-0 p-2 flex-shrink-0', this.placement === 'top' ? 'bottom-0' : 'top-0')}
             @click=${this.flipFront}
             @keydown=${this.handleFrontKeydown}
@@ -288,18 +292,22 @@ export default class SdFlipcard extends SolidElement {
           <sd-button
             size="md"
             part="back-button"
-            variant=${{
-              primary: 'tertiary',
-              'primary-100': 'tertiary',
-              'gradient-light': 'primary',
-              'gradient-dark': 'primary'
-            }[this.backVariant] as 'primary' | 'secondary' | 'tertiary' | 'cta'}
-            ?inverted=${{
-              primary: true,
-              'primary-100': false,
-              'gradient-light': true,
-              'gradient-dark': true
-            }[this.backVariant]}
+            variant=${
+              {
+                primary: 'tertiary',
+                'primary-100': 'tertiary',
+                'gradient-light': 'primary',
+                'gradient-dark': 'primary'
+              }[this.backVariant]
+            }
+            ?inverted=${
+              {
+                primary: true,
+                'primary-100': false,
+                'gradient-light': true,
+                'gradient-dark': true
+              }[this.backVariant]
+            }
             class=${cx('absolute right-0 p-2 flex-shrink-0', this.placement === 'top' ? 'bottom-0' : 'top-0')}
             @click=${this.flipBack}
             @keydown=${this.handleBackKeydown}

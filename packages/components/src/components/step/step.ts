@@ -9,7 +9,7 @@ import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 /**
- * @summary Steps are used inside [step groups](/components/step-group) to guide users through the steps of a process or task..
+ * @summary Used to determine a step in a process or task inside `sd-step-group`.
  * @documentation https://solid.union-investment.com/[storybook-link]/step
  * @status stable
  * @since 3.2.0
@@ -170,7 +170,7 @@ export default class SdStep extends SolidElement {
           ? 'w-12'
           : this.size === 'xs'
             ? 'w-2'
-            : 'w-8',
+            : 'w-8 h-8',
       this.disabled && 'border-neutral-500 text-neutral-500',
       this.waiting && 'border-neutral-400 text-neutral-700',
       this.waiting && this.size === 'xs' && 'border-neutral-700',
@@ -253,49 +253,55 @@ export default class SdStep extends SolidElement {
                         this.size === 'sm' && !hasDescription ? 'mt-1' : 'mt-3'
                       )}
                     >
-                      ${hasLabel &&
-                      html`
-                        <div
-                          part="label"
-                          id="label"
-                          class=${cx(
-                            'font-bold whitespace-nowrap',
-                            this.disabled && 'text-neutral-500',
-                            this.waiting && 'text-neutral-700',
-                            !this.disabled && !this.current && !this.notInteractive && !this.waiting && 'text-black'
-                          )}
-                        >
-                          <slot name="label">${this.label}</slot>
-                        </div>
-                      `}
-                      ${!this.noTail
-                        ? html`
-                            <div
-                              part="tail"
-                              class=${cx(
-                                'border-t flex-1 mr-2 mt-3',
-                                !this.disabled && !this.current && !this.notInteractive && !this.waiting
-                                  ? 'border-primary group-hover:border-primary-500'
-                                  : 'border-neutral-500'
-                              )}
-                            ></div>
-                          `
-                        : ''}
+                      ${
+                        hasLabel &&
+                        html`
+                          <div
+                            part="label"
+                            id="label"
+                            class=${cx(
+                              'font-bold whitespace-nowrap',
+                              this.disabled && 'text-neutral-500',
+                              this.waiting && 'text-neutral-700',
+                              !this.disabled && !this.current && !this.notInteractive && !this.waiting && 'text-black'
+                            )}
+                          >
+                            <slot name="label">${this.label}</slot>
+                          </div>
+                        `
+                      }
+                      ${
+                        !this.noTail
+                          ? html`
+                              <div
+                                part="tail"
+                                class=${cx(
+                                  'border-t flex-1 mr-2 mt-3',
+                                  !this.disabled && !this.current && !this.notInteractive && !this.waiting
+                                    ? 'border-primary group-hover:border-primary-500'
+                                    : 'border-neutral-400'
+                                )}
+                              ></div>
+                            `
+                          : ''
+                      }
                     </div>
-                    ${hasDescription
-                      ? html` <div
-                          part="description"
-                          id="description"
-                          class=${cx(
-                            'sd-paragraph sd-paragraph--size-sm wrap-break-word',
-                            hasDescription ? 'flex-1' : 'w-0 h-0 overflow-hidden',
-                            hasDescription && !this.noTail && 'pr-4',
-                            (this.disabled || this.waiting) && '!text-neutral-700'
-                          )}
-                        >
-                          ${this.description || html`<slot></slot>`}
-                        </div>`
-                      : ''}
+                    ${
+                      hasDescription
+                        ? html` <div
+                            part="description"
+                            id="description"
+                            class=${cx(
+                              'sd-paragraph sd-paragraph--size-sm wrap-break-word',
+                              hasDescription ? 'flex-1' : 'w-0 h-0 overflow-hidden',
+                              hasDescription && !this.noTail && 'pr-4',
+                              (this.disabled || this.waiting) && '!text-neutral-700'
+                            )}
+                          >
+                            ${this.description || html`<slot></slot>`}
+                          </div>`
+                        : ''
+                    }
                   </div>
                 `
               : this.noTail
@@ -309,7 +315,7 @@ export default class SdStep extends SolidElement {
                           : 'border-l grow shrink-0 basis-auto h-full w-[1px] mx-auto',
                         !this.disabled && !this.current && !this.notInteractive && !this.waiting
                           ? 'border-primary group-hover:border-primary-500'
-                          : 'border-neutral-500'
+                          : 'border-neutral-400'
                       )}
                     ></div>
                   `

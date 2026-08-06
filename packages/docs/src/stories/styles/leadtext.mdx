@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Leadtext
 
-Used for text that should be highlighted and a focal point of the page.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -49,4 +47,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Styles/sd-leadtext/Overview" />
 
-<OverviewFormatter story={SdLeadtextStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdLeadtextStories.Default} tag="sd-leadtext">
+  {content}
+</OverviewFormatter>

@@ -9,7 +9,7 @@ import SolidElement from '../../internal/solid-element';
 import type SdCheckbox from '../checkbox/checkbox';
 
 /**
- * @summary Checkbox groups are used to group multiple [checkbox](/components/checkbox). It provides only presentational functionality.
+ * @summary Used to group multiple options from a list of options. Presentational only.
  * @documentation https://solid.union-investment.com/[storybook-link]/checkbox-group
  * @status stable
  * @since 1.22.0
@@ -102,20 +102,22 @@ export default class SdCheckboxGroup extends SolidElement {
         role="group"
         aria-labelledby="label"
       >
-        ${hasLabel || hasTooltip
-          ? html`<div class="flex items-center gap-1 mb-2">
-              <label
-                part="form-control-label"
-                id="label"
-                class=${cx('p-0 font-bold leading-normal text-black', hasLabel ? 'flex' : 'hidden')}
-                aria-hidden=${hasLabel ? 'false' : 'true'}
-              >
-                <slot name="label">${this.label}</slot>
-              </label>
+        ${
+          hasLabel || hasTooltip
+            ? html`<div class="flex items-center gap-1 mb-2">
+                <label
+                  part="form-control-label"
+                  id="label"
+                  class=${cx('p-0 font-bold leading-normal text-black', hasLabel ? 'flex' : 'hidden')}
+                  aria-hidden=${hasLabel ? 'false' : 'true'}
+                >
+                  <slot name="label">${this.label}</slot>
+                </label>
 
-              ${hasTooltip ? html`<slot name="tooltip"></slot>` : ''}
-            </div>`
-          : null}
+                ${hasTooltip ? html`<slot name="tooltip"></slot>` : ''}
+              </div>`
+            : null
+        }
 
         <div
           part="form-control-input"

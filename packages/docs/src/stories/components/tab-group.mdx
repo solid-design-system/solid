@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Tab Group
 
-Used to organise content into a container that shows one section at a time.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -78,4 +76,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-tab-group/Overview" />
 
-<OverviewFormatter story={SdTabGroupStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdTabGroupStories.Default} tag="sd-tab-group">
+  {content}
+</OverviewFormatter>

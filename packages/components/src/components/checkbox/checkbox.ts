@@ -12,7 +12,7 @@ import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
- * @summary Checkboxes allow the user to toggle an option on or off.
+ * @summary Used to toggle an option on or off.
  * @documentation https://solid.union-investment.com/[storybook-link]/checkbox
  * @status stable
  * @since 1.22.0
@@ -35,6 +35,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart label - The container that wraps the checkbox's label.
  *
  * @cssproperty --sd-checkbox-border-width - The border width of the checkbox.
+ * @cssproperty --sd-checkbox--invalid-color-background - The background color of the checkbox when invalid.
  * @cssproperty --sd-form-control-color-border - The color border for form controls.
  */
 @customElement('sd-checkbox')
@@ -246,9 +247,9 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
 
           <span
             id="control"
-            part="control ${this.checked ? ' control--checked' : 'control--unchecked'} ${this.indeterminate
-              ? ' control--indeterminate'
-              : ''}"
+            part="control ${this.checked ? ' control--checked' : 'control--unchecked'} ${
+              this.indeterminate ? ' control--indeterminate' : ''
+            }"
             class=${cx(
               'relative flex shrink-0 items-center justify-center border sd-checkbox-border-width rounded-sm h-4 w-4',
               'transition-colors ease-in-out duration-medium group-hover:duration-fast',
@@ -264,7 +265,8 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
                 invalidIndeterminate: 'border-error bg-error group-hover:bg-error-400 group-hover:border-error-400',
-                invalid: 'border-error group-hover:border-error-400 group-hover:bg-transparent',
+                invalid:
+                  'border-error group-hover:border-error-400 sd-checkbox--invalid-color-background group-hover:bg-transparent',
                 filled:
                   'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent group-hover:bg-accent-550',
                 default: 'form-control-color-border hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
@@ -287,33 +289,37 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
                     disabled: '',
                     visuallyDisabled: '',
                     invalidIndeterminate: ' bg-error group-hover:bg-error-400',
-                    invalid: '',
+                    invalid: 'sd-checkbox--invalid-color-background',
                     filled: 'bg-accent group-hover:bg-accent-550',
                     default: 'hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
                   }[checkboxState]
                 )}
               ></div>
             </div>
-            ${this.checked
-              ? html`
-                  <sd-icon
-                    part="checked-icon"
-                    class="text-white w-3 h-3"
-                    library="sd-status-assets"
-                    name="status-check"
-                  ></sd-icon>
-                `
-              : ''}
-            ${!this.checked && this.indeterminate
-              ? html`
-                  <sd-icon
-                    part="indeterminate-icon"
-                    class="text-white w-3 h-3"
-                    library="sd-status-assets"
-                    name="status-minus"
-                  ></sd-icon>
-                `
-              : ''}
+            ${
+              this.checked
+                ? html`
+                    <sd-icon
+                      part="checked-icon"
+                      class="text-white w-3 h-3"
+                      library="sd-status-assets"
+                      name="status-check"
+                    ></sd-icon>
+                  `
+                : ''
+            }
+            ${
+              !this.checked && this.indeterminate
+                ? html`
+                    <sd-icon
+                      part="indeterminate-icon"
+                      class="text-white w-3 h-3"
+                      library="sd-status-assets"
+                      name="status-minus"
+                    ></sd-icon>
+                  `
+                : ''
+            }
           </span>
           <span
             part="label"
@@ -331,9 +337,11 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           part="invalid-icon-message"
           class=${cx('flex items-center gap-2', this.showInvalidStyle && 'mt-2')}
         >
-          ${this.showInvalidStyle
-            ? html` <sd-icon id="invalid-icon" part="invalid-icon" library="_internal" name="risk"> </sd-icon>`
-            : ''}
+          ${
+            this.showInvalidStyle
+              ? html` <sd-icon id="invalid-icon" part="invalid-icon" library="_internal" name="risk"> </sd-icon>`
+              : ''
+          }
           ${this.formControlController.renderInvalidMessage(this.size)}
         </div>
       </div>

@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Accordion
 
-Used to show a brief summary and expands to display additional content.
-
 The following sections cover the use of the standalone component. See sd-accordion-group for group usage guidelines.
 
 <DefaultStory />
@@ -70,4 +68,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-accordion/Overview" />
 
-<OverviewFormatter story={SdAccordionStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdAccordionStories.Default} tag="sd-accordion">
+  {content}
+</OverviewFormatter>

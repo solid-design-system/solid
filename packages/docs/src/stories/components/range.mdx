@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Range
 
-Used to allow users to select a single or multiple values within a defined range using a slider.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -69,4 +67,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-range/Overview" />
 
-<OverviewFormatter story={SdRangeStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdRangeStories.Default} tag="sd-range">
+  {content}
+</OverviewFormatter>

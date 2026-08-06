@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Checkbox
 
-Used to toggle an option on or off.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -60,4 +58,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-checkbox/Overview" />
 
-<OverviewFormatter story={SdCheckboxStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdCheckboxStories.Default} tag="sd-checkbox">
+  {content}
+</OverviewFormatter>

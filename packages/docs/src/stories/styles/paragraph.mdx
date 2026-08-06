@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Paragraph
 
-Used to display blocks of text. It uses the base font size and can contain bold and/or link styles.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -49,4 +47,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Styles/sd-paragraph/Overview" />
 
-<OverviewFormatter story={SdParagraphStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdParagraphStories.Default} tag="sd-paragraph">
+  {content}
+</OverviewFormatter>

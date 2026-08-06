@@ -10,8 +10,6 @@ export const links = {
 export const content = `
 # Hidden Links
 
-Used to show links only for keyboard users.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -56,4 +54,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Styles/sd-hidden-links/Overview" />
 
-<OverviewFormatter story={SdHiddenLinksStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdHiddenLinksStories.Default} tag="sd-hidden-links">
+  {content}
+</OverviewFormatter>

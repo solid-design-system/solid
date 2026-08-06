@@ -8,7 +8,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary A marker identifies a location on google map
+ * @summary Used to show a location or a cluster of locations on a map.
  * @documentation https://solid.union-investment.com/[storybook-link]/components-sd-map-marker--docs
  *
  * @status stable

@@ -63,7 +63,7 @@ export const AsLink = {
       <sd-link
         href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
         >Link</sd-link
-      ><sd-link href="https://union-investment.com" target="_blank">New Window</sd-link
+      ><sd-link href="https://union-investment.com" target="_blank">New window</sd-link
       ><sd-link href="./placeholders/src/images/collaboration.jpg" download>Download</sd-link>
     </div>
   `
@@ -79,10 +79,10 @@ export const Icon = {
     <div class="flex gap-12">
       <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" standalone>
         <sd-icon name="system/image" slot="icon-left"></sd-icon>
-        Icon Left
+        Icon left
       </sd-link>
       <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" standalone>
-        Icon Right
+        Icon right
         <sd-icon name="system/image" slot="icon-right"></sd-icon>
       </sd-link>
     </div>
@@ -143,16 +143,16 @@ export const Disabled = {
  * **Accessibility Hint:** Disabling elements is not recommended for accessibility reasons.
  */
 export const VisuallyDisabled = {
-  name: 'Visually Disabled',
+  name: 'Visually disabled',
   render: () => html`
     <div class="flex gap-12 h-[100px] pt-12">
-      <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm">
+      <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm">
         <sd-link
           size="lg"
           href="https://solid-design-system.fe.union-investment.de/docs/"
           visually-disabled
           class="visually-disabled-link"
-          >Visually Disabled</sd-link
+          >Visually disabled</sd-link
         >
       </sd-tooltip>
     </div>

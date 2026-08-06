@@ -9,7 +9,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Tags are used as labels to organize things or to indicate a selection.
+ * @summary Used to categorise or label content. Can also be used to filter or search for content.
  * @documentation https://solid.union-investment.com/[storybook-link]/tag
  * @status stable
  * @since 1.10
@@ -47,6 +47,12 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-tag--size-sm-font-size - The font size for small tags.
  * @cssproperty --sd-choice-control-font-weight - The font weight for tags.
  * @cssproperty --sd-tag--disabled-color-text - The text color for disabled tags.
+ * @cssproperty --sd-tag--size-lg-padding-inline - The padding inline for large tags.
+ * @cssproperty --sd-tag--size-sm-padding-inline - The padding inline for small tags.
+ * @cssproperty --sd-tag--removable--size-lg-padding-right - The padding right for large removable tags.
+ * @cssproperty --sd-tag--removable--size-lg-padding-left - The padding left for large removable tags.
+ * @cssproperty --sd-tag--removable--size-sm-padding-right - The padding right for small removable tags.
+ * @cssproperty --sd-tag--removable--size-sm-padding-left - The padding left for small removable tags.
  *
  * @cssproperty --sd-tag--disabled-color-border - This custom property is deprecated. Use `--sd-color-border-neutral-500` instead.
  * @cssproperty --sd-tag-font-weight - This custom property is deprecated. Use `--sd-choice-control-font-weight` instead.
@@ -155,8 +161,12 @@ export default class SdTag extends SolidElement {
           }[this.size],
           {
             /* padding */
-            lg: !isRemovable ? 'px-4 py-2' : 'pl-4 pr-3 py-2',
-            sm: !isRemovable ? 'px-3 py-[5px]' : 'pl-3 pr-2 py-2'
+            lg: !isRemovable
+              ? 'py-2 sd-tag--size-lg-padding-inline'
+              : 'sd-tag--removable--size-lg-padding-right sd-tag--removable--size-lg-padding-left py-3',
+            sm: !isRemovable
+              ? 'py-1 sd-tag--size-sm-padding-inline'
+              : 'sd-tag--removable--size-sm-padding-right sd-tag--removable--size-sm-padding-left py-2'
           }[this.size],
           /* colors */
           !this.disabled

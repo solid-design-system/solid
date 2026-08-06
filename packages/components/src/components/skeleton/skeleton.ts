@@ -5,7 +5,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Skeleton loaders are used as placeholder previews of content before data gets loaded.
+ * @summary Used as a placeholder preview of the content before the data gets loaded to reduce load-time frustration.
  * @documentation https://solid.union-investment.com/[storybook-link]/skeleton
  * @status stable
  * @since 5.17.0

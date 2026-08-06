@@ -13,8 +13,6 @@ export const links = {
 export const content = `
 # Video
 
-Used to embed and control videos.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -59,4 +57,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-video/Overview" />
 
-<OverviewFormatter story={SdVideoStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdVideoStories.Default} tag="sd-video">
+  {content}
+</OverviewFormatter>

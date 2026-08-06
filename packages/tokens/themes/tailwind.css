@@ -70,6 +70,7 @@
   --drop-shadow: var(--sd-drop-shadow);
   --fill-accent-550: rgba(var(--sd-color-icon-fill-accent-550));
   --fill-accent: rgba(var(--sd-color-icon-fill-accent));
+  --fill-content-icons-primary: rgba(var(--sd-color-icon-fill-content-icons-primary));
   --fill-error-400: rgba(var(--sd-color-icon-fill-error-400));
   --fill-error: rgba(var(--sd-color-icon-fill-error));
   --fill-neutral-400: rgba(var(--sd-color-icon-fill-neutral-400));

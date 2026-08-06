@@ -1,5 +1,6 @@
 /**
  * A paragraph is used to display blocks of text. It uses the base font size and can contain bold and/or link styles.
+ * @summary Used to display blocks of text. It uses the base font size and can contain bold and/or link styles.
  * @name sd-paragraph
  * @status stable
  * @since 1.7

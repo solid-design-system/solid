@@ -1,5 +1,6 @@
 import '../button/button';
 import '../icon/icon';
+import '../theme-listener/theme-listener';
 import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
@@ -14,13 +15,14 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Dialogs, sometimes called "modals", appear above the page and require the user's immediate attention.
+ * @summary Used over other content. It requires an interaction from the user before they can return to what is underneath.
  * @documentation https://solid.union-investment.com/[storybook-link]/dialog
  * @status stable
  * @since 1.40.0
  *
  * @dependency sd-button
  * @dependency sd-icon
+ * @dependency sd-theme-listener
  *
  * @slot - The dialog's main content.
  * @slot headline - The dialog's headline. Alternatively, you can use the `headline` attribute.
@@ -61,6 +63,9 @@ import SolidElement from '../../internal/solid-element';
 export default class SdDialog extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, 'footer');
   public localize = new LocalizeController(this);
+  private modal: Modal;
+  private originalTrigger: HTMLElement | null;
+  private hasUiMotion = false;
 
   @query('[part="base"]') dialog: HTMLDialogElement;
   @query('[part="overlay"]') overlay: HTMLElement;
@@ -82,6 +87,13 @@ export default class SdDialog extends SolidElement {
    */
   @property({ attribute: 'no-close-button', type: Boolean, reflect: true }) noCloseButton = false;
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.updateMotionTheme();
+    this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
+    this.modal = new Modal(this);
+  }
+
   firstUpdated() {
     this.dialog.addEventListener('cancel', (event: Event) => {
       event.preventDefault();
@@ -91,6 +103,20 @@ export default class SdDialog extends SolidElement {
     if (this.open) {
       this.dialog.showModal();
     }
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    unlockBodyScrolling(this);
+  }
+
+  protected onThemeChange(): void {
+    this.updateMotionTheme();
+  }
+
+  private updateMotionTheme(): void {
+    const theme = getComputedStyle(this).getPropertyValue('--sd-theme').trim().replace(/['"]/g, '');
+    this.hasUiMotion = theme === '' || theme === 'ui-light' || theme === 'ui-dark';
   }
 
   private get prefersReducedMotion() {
@@ -104,7 +130,9 @@ export default class SdDialog extends SolidElement {
     });
 
     if (sdRequestClose.defaultPrevented) {
-      const animation = getAnimation(this, 'dialog.denyClose', { dir: this.localize.dir() });
+      const animation = getAnimation(this, this.hasUiMotion ? 'dialog.denyClose' : 'dialog.denyCloseSimple', {
+        dir: this.localize.dir()
+      });
       animateTo(this.panel, animation.keyframes, animation.options);
       return;
     }
@@ -154,10 +182,16 @@ export default class SdDialog extends SolidElement {
         }
       });
 
+      const showAnimation = this.hasUiMotion ? 'dialog.show' : 'dialog.showSimple';
       const panelAnimation = this.prefersReducedMotion
         ? getAnimation(this, 'dialog.showReducedMotion', { dir: this.localize.dir() })
-        : getAnimation(this, 'dialog.show', { dir: this.localize.dir() });
-      await animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options);
+        : getAnimation(this, showAnimation, { dir: this.localize.dir() });
+      const overlayShowAnimation = this.hasUiMotion ? 'dialog.overlay.show' : 'dialog.overlay.showSimple';
+      const overlayAnimation = getAnimation(this, overlayShowAnimation, { dir: this.localize.dir() });
+      await Promise.all([
+        animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options),
+        animateTo(this.overlay, overlayAnimation.keyframes, overlayAnimation.options)
+      ]);
 
       this.emit('sd-after-show');
     } else {
@@ -167,13 +201,46 @@ export default class SdDialog extends SolidElement {
       await stopAnimations(this.dialog);
       const overlayHideAnimation = getAnimation(this, 'dialog.overlay.hide', { dir: this.localize.dir() });
       animateTo(this.overlay, overlayHideAnimation.keyframes, overlayHideAnimation.options);
+      const hideAnimation = this.hasUiMotion ? 'dialog.hide' : 'dialog.hideSimple';
 
       const panelAnimation = this.prefersReducedMotion
         ? getAnimation(this, 'dialog.hideReducedMotion', { dir: this.localize.dir() })
-        : getAnimation(this, 'dialog.hide', { dir: this.localize.dir() });
+        : getAnimation(this, hideAnimation, { dir: this.localize.dir() });
+      const overlayHideAnimation = this.hasUiMotion ? 'dialog.overlay.hide' : 'dialog.overlay.hideSimple';
+      const overlayAnimation = getAnimation(this, overlayHideAnimation, { dir: this.localize.dir() });
 
-      await animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options);
-      this.dialog.close();
+      // Animate the overlay and the panel at the same time. Because animation durations might be different, we need to
+      // hide each one individually when the animation finishes, otherwise the first one that finishes will reappear
+      // unexpectedly. We'll unhide them after all animations have completed.
+      await Promise.all([
+        animateTo(this.overlay, overlayAnimation.keyframes, overlayAnimation.options).then(() => {
+          this.overlay.hidden = true;
+        }),
+        animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options).then(() => {
+          this.panel.hidden = true;
+        })
+      ]);
+
+      this.dialog.hidden = true;
+
+      // Now that the dialog is hidden, restore the overlay and panel for next time
+      this.overlay.hidden = false;
+      this.panel.hidden = false;
+
+      unlockBodyScrolling(this);
+
+      // Restore focus to the original trigger
+      const trigger = this.originalTrigger;
+      if (typeof trigger?.focus === 'function' && trigger.isConnected) {
+        setTimeout(() => {
+          try {
+            trigger.focus({ preventScroll: true });
+          } catch {
+            trigger.focus();
+          }
+          this.originalTrigger = null;
+        });
+      }
 
       this.emit('sd-after-hide');
     }
@@ -202,6 +269,7 @@ export default class SdDialog extends SolidElement {
   render() {
     /* eslint-disable lit-a11y/click-events-have-key-events */
     return html`
+      <sd-theme-listener></sd-theme-listener>
       <dialog
         part="base"
         class=${cx(
@@ -222,31 +290,35 @@ export default class SdDialog extends SolidElement {
         >
           <header part="header" class="flex flex-grow-0 flex-shrink-0 basis-auto px-6 sm:px-10">
             <h2 part="title" class="flex-auto m-0" id="title">
-              ${this.headline.length > 0
-                ? html`<span class="sd-headline sd-headline--size-3xl leading-tight">${this.headline}</span>`
-                : html`<slot name="headline"> </slot>`}
+              ${
+                this.headline.length > 0
+                  ? html`<span class="sd-headline sd-headline--size-3xl leading-tight">${this.headline}</span>`
+                  : html`<slot name="headline"> </slot>`
+              }
             </h2>
 
-            ${!this.noCloseButton
-              ? html`
-                  <sd-button
-                    part="close-button"
-                    variant="tertiary"
-                    exportparts="base:close-button__base"
-                    class=${cx('absolute top-2 right-2')}
-                    name="x-lg"
-                    @click="${() => this.requestClose('close-button')}"
-                    type="button"
-                  >
-                    <sd-icon
-                      label=${this.localize.term('close')}
-                      name="close"
-                      library="_internal"
-                      color="currentColor"
-                    ></sd-icon>
-                  </sd-button>
-                `
-              : ''}
+            ${
+              !this.noCloseButton
+                ? html`
+                    <sd-button
+                      part="close-button"
+                      variant="tertiary"
+                      exportparts="base:close-button__base"
+                      class=${cx('absolute top-2 right-2')}
+                      name="x-lg"
+                      @click="${() => this.requestClose('close-button')}"
+                      type="button"
+                    >
+                      <sd-icon
+                        label=${this.localize.term('close')}
+                        name="close"
+                        library="_internal"
+                        color="currentColor"
+                      ></sd-icon>
+                    </sd-button>
+                  `
+                : ''
+            }
           </header>
 
           <main part="body" class="flex flex-auto overflow-auto w-full px-6 sm:px-10">
@@ -320,6 +392,14 @@ setDefaultAnimation('dialog.showReducedMotion', {
   options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
+setDefaultAnimation('dialog.showSimple', {
+  keyframes: [
+    { opacity: 0, scale: 0.8 },
+    { opacity: 1, scale: 1 }
+  ],
+  options: { duration: 250, easing: 'ease' }
+});
+
 setDefaultAnimation('dialog.hide', {
   keyframes: [
     { opacity: 1, transform: 'translate(0, 0)' },
@@ -333,19 +413,42 @@ setDefaultAnimation('dialog.hideReducedMotion', {
   options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
+setDefaultAnimation('dialog.hideSimple', {
+  keyframes: [
+    { opacity: 1, scale: 1 },
+    { opacity: 0, scale: 0.8 }
+  ],
+  options: { duration: 250, easing: 'ease' }
+});
+
 setDefaultAnimation('dialog.denyClose', {
+  keyframes: [{ scale: 1 }, { scale: 1.02 }, { scale: 1 }],
+  options: { duration: 250 }
+});
+
+setDefaultAnimation('dialog.denyCloseSimple', {
   keyframes: [{ scale: 1 }, { scale: 1.02 }, { scale: 1 }],
   options: { duration: 250 }
 });
 
 setDefaultAnimation('dialog.overlay.show', {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'linear', reducedMotion: 'allow' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out', reducedMotion: 'allow' }
+});
+
+setDefaultAnimation('dialog.overlay.showSimple', {
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  options: { duration: 250, reducedMotion: 'allow' }
 });
 
 setDefaultAnimation('dialog.overlay.hide', {
   keyframes: [{ opacity: 1 }, { opacity: 0 }],
-  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'linear', reducedMotion: 'allow' }
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out', reducedMotion: 'allow' }
+});
+
+setDefaultAnimation('dialog.overlay.hideSimple', {
+  keyframes: [{ opacity: 1 }, { opacity: 0 }],
+  options: { duration: 250, reducedMotion: 'allow' }
 });
 
 declare global {

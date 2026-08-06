@@ -1,5 +1,121 @@
 # @solid-design-system/components
 
+## 7.0.0-next.4
+
+### Major Changes
+
+- Removed the `sd-spinner` component _[`#3219`](https://github.com/solid-design-system/solid/pull/3219) [`cbdc1cb`](https://github.com/solid-design-system/solid/commit/cbdc1cb0098cabdbdad324803d5176de76a2215f) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+* Uncompressed: 625 KB (-2 KB / 0%)
+* Gzipped: 140 KB (unchanged)
+
+## 7.0.0-next.3
+
+### Major Changes
+
+- The `autocorrect` property of `sd-input` and `sd-textarea` is now a `boolean` instead of a `string`, to align with the updated `HTMLElement.autocorrect` type shipped in TypeScript 5.9. Checkout the migration guide for more details. _[`#3184`](https://github.com/solid-design-system/solid/pull/3184) [`81cd65b`](https://github.com/solid-design-system/solid/commit/81cd65ba91559c9f138920a5ba505fb1461eb92a) [@mariohamann](https://github.com/mariohamann)_
+
+## 7.0.0-next.2
+
+## 6.29.0
+
+### Minor Changes
+
+- Updated `sd-button` and `sd-dialog` animations so that only the `ui-light` and `ui-dark` themes use SDS brand-specific animations. _[`#3141`](https://github.com/solid-design-system/solid/pull/3141) [`435a51f`](https://github.com/solid-design-system/solid/commit/435a51f420dd4be412b561d0f4b8e068fdc3295b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+### 📈 Stats
+
+- Uncompressed: 627 KB (+3 KB / +0%)
+- Gzipped: 140 KB (unchanged)
+
+## 6.28.2
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull Request _[`#3163`](https://github.com/solid-design-system/solid/pull/3163) [`91ff1c8`](https://github.com/solid-design-system/solid/commit/91ff1c81831fb3522c534306a61b8a5be3562f64) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+### 📈 Stats
+
+- Uncompressed: 624 KB (-1 KB / 0%)
+- Gzipped: 140 KB (unchanged)
+
+## 7.0.0-next.1
+
+## 7.0.0-next.0
+
+### Major Changes
+
+- Fixed the restriction of changing the font size and margin for headline in `sd-teaser`. _[`#3165`](https://github.com/solid-design-system/solid/pull/3165) [`b6f28e6`](https://github.com/solid-design-system/solid/commit/b6f28e6d427e41c3d3f2c0b68b29715e3ce6d934) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+
+- Uncompressed: 625 KB (-1 KB / 0%)
+- Gzipped: 140 KB (unchanged)
+
+## 6.28.1
+
+## 6.28.0
+
+### Minor Changes
+
+- Add Sparda theme icons to the multi-theming icon library. _[`#3143`](https://github.com/solid-design-system/solid/pull/3143) [`2fd4696`](https://github.com/solid-design-system/solid/commit/2fd469668f4b95a88c0459ba24a51f5ce0a9e816) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.27.2
+
+### Patch Changes
+
+- Fix `sd-step` so that the sm horizontal variant renders fully rounded. _[`#3140`](https://github.com/solid-design-system/solid/pull/3140) [`31b8bf1`](https://github.com/solid-design-system/solid/commit/31b8bf1acfcea56ae3c5fa90c0a2612f11d77179) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.27.1
+
+## 6.27.0
+
+## 6.26.0
+
+### Minor Changes
+
+- Add sparda theme. _[`#3124`](https://github.com/solid-design-system/solid/pull/3124) [`0812ec8`](https://github.com/solid-design-system/solid/commit/0812ec83a8430a7573d31e7f8902f63aaa0f1528) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - New variable `sd-checkbox--invalid-color-background` allows you to customize the checkbox's background color when invalid.
+  - New variable `sd-form-control-color-icon-fill` allows you to customize the icon color for the form components: `sd-combobox`, `sd-datepicker`, `sd-input` and `sd-select`.
+  - New variable `sd-navigation-item--default-color-text` allows you to customize the navigation-item default color text.
+  - New variables `sd-tag--size-lg-padding-inline` and `sd-tag--size-sm-padding-inline` allows you to customize the padding inline for large and small tags.
+  - New variables `sd-tag--removable--size-lg-padding-right`, `sd-tag--removable--size-lg-padding-left`, `sd-tag--removable--size-sm-padding-right` and `sd-tag--removable--size-sm-padding-left` allows you to customize the padding right and left for large and small removable tags.
+  - New variable `sd-teaser-media-color-icon-fill` allows you to customize the `sd-teaser-media` chevron color.
+  - Fix `sd-step` tail color.
+  - Fix `sd-button` paddings for BBBank theme.
+  - Fix `sd-notification` border color for BBBank theme.
+  - Fix `sd-tag` disabled color text for BBBank theme.
+  - Fix `sd-accordion` background color on hover for dark mode.
+  - Fix `sd-accordion` color border for dark mode.
+  - Fix `sd-accordion` color text for VB theme.
+  - Fix `sd-notification` border color for VB theme.
+
+### 📈 Stats
+
+- Uncompressed: 626 KB (+2 KB / +0%)
+- Gzipped: 140 KB (unchanged)
+
+## 6.25.2
+
+### Patch Changes
+
+- Making the current indicator the same size as text in the stacked layout of the `sd-navigation-item` component. _[`#3128`](https://github.com/solid-design-system/solid/pull/3128) [`60ec4dd`](https://github.com/solid-design-system/solid/commit/60ec4dd3e5332e688984f9c75a5401617932cb5b) [@martascorreia](https://github.com/martascorreia)_
+
+## 6.25.1
+
+## 6.25.0
+
+### Minor Changes
+
+- Expose `./package.json` in the package exports so you can read the installed version programmatically, for example `import pkg from '@solid-design-system/components/package.json' with { type: 'json' }` or `require.resolve('@solid-design-system/components/package.json')`. _[`#3119`](https://github.com/solid-design-system/solid/pull/3119) [`7973bf9`](https://github.com/solid-design-system/solid/commit/7973bf97cc5c2961831452e078b92f08be1089e4) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.24.2
+
+### Patch Changes
+
+- Fix height of large combobox with floating label. _[`#3116`](https://github.com/solid-design-system/solid/pull/3116) [`14dc4af`](https://github.com/solid-design-system/solid/commit/14dc4af7fbd5f5f6f80d77b45774e92f072e4a23) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 6.24.1
 
 ### Patch Changes

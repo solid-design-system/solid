@@ -1,5 +1,6 @@
 /**
  * Display provides larger text sizes that are not used as headlines. The different sizes allow for a more versatile styling of text elements. Display text should not be used as substitute for headlines.
+ * @summary Used to provide larger text sizes that are not used as headlines.
  * @name sd-display
  * @status stable
  * @since 1.7

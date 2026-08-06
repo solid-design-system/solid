@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Audio
 
-Used to play audio files that are part of the page content.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -53,4 +51,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-audio/Overview" />
 
-<OverviewFormatter story={SdAudioStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdAudioStories.Default} tag="sd-audio">
+  {content}
+</OverviewFormatter>

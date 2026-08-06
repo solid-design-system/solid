@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Flag
 
-Used as a small, non-interactive label that represents a category.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -54,4 +52,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Styles/sd-flag/Overview" />
 
-<OverviewFormatter story={SdFlagStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdFlagStories.Default} tag="sd-flag">
+  {content}
+</OverviewFormatter>

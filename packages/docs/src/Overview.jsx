@@ -1,7 +1,21 @@
 import React from 'react';
 import { Markdown, Canvas } from '@storybook/addon-docs/blocks';
+import { getWcStorybookHelpers } from 'wc-storybook-helpers';
 
-export const OverviewFormatter = ({ children, story }) => {
+export const OverviewFormatter = ({ children, story, tag }) => {
+  let summary = '';
+  if (tag) {
+    try {
+      summary = getWcStorybookHelpers(tag)?.manifest?.summary ?? '';
+    } catch {
+      summary = '';
+    }
+  }
+  // The manifest's `@summary` JSDoc is the single source of truth for this text (see custom-elements.json);
+  // it's read here at render time, not at MDX module-eval time, since the manifest isn't guaranteed to be
+  // registered on window yet when the .mdx module's top-level code first runs.
+  const markdown = summary ? children.replace(/(^\s*# .+\n\n)/, `$1${summary}\n\n`) : children;
+
   const links = ({ children, ...props }) => <sd-link {...props}>{children}</sd-link>;
   const defaultStoryCanvas = () => <Canvas of={story} />;
   const documentationLinks = ({ children, ...props }) => (
@@ -84,7 +98,7 @@ export const OverviewFormatter = ({ children, story }) => {
           }
         }}
       >
-        {children}
+        {markdown}
       </Markdown>
     </div>
   );

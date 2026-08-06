@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "solid-design-system": {
+      "command": "node",
+      "args": ["./packages/mcp/dist/bin/start.js"]
+    }
+  }
+}

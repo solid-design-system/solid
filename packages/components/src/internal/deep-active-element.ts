@@ -9,7 +9,7 @@ export function getDeepActiveElement(element: Element | null = document.activeEl
   if (element?.shadowRoot) {
     const shadowActiveElement = element.shadowRoot.activeElement;
     if (shadowActiveElement) {
-      return getDeepActiveElement(shadowActiveElement as HTMLElement);
+      return getDeepActiveElement(shadowActiveElement);
     }
   }
   return element as HTMLElement;

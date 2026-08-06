@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Skeleton
 
-Used as a placeholder preview of the content before the data gets loaded to reduce load-time frustration.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -60,4 +58,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-skeleton/Overview" />
 
-<OverviewFormatter story={SdSkeletonStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdSkeletonStories.Default} tag="sd-skeleton">
+  {content}
+</OverviewFormatter>

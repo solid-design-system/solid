@@ -67,6 +67,7 @@ import { isoDateConverter, viewMonthConverter, disabledDatesConverter } from './
  * @cssproperty --sd-form-control__listbox-border-top-right-radius - The border radius for the top right corner of the datepicker.
  * @cssproperty --sd-form-control--hover-color-background - The background color for form controls on hover.
  * @cssproperty --sd-form-control--read-only-color-background - The background color for read-only form controls.
+ * @cssproperty --sd-form-control-color-icon-fill - The color for form control icons.
  * @cssproperty --sd-datepicker__date-item--default-color-text - The default text color for date items.
  * @cssproperty --sd-datepicker__date-item--hover--default-color-background - The background color for date items in hover state.
  * @cssproperty --sd-datepicker__date-item--hover--default-color-text - The text color for date items in hover state.
@@ -464,8 +465,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       return null;
     };
 
-    const min = normalizeBound(this.min as string | number | Date | undefined | null);
-    const max = normalizeBound(this.max as string | number | Date | undefined | null);
+    const min = normalizeBound(this.min);
+    const max = normalizeBound(this.max);
 
     if (min && d < min) return false;
     if (max && d > max) return false;
@@ -1650,6 +1651,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     };
 
     const tabTarget = this.getTabTargetDayForCurrentView(weeks);
+    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'icon-color';
 
     return html`
       <div
@@ -1669,7 +1671,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             <button
               type="button"
               tabindex="0"
-              class="nav prev w-6 h-6 hover:cursor-pointer sd-interactive"
+              class=${cx('nav prev w-6 h-6 hover:cursor-pointer', iconColor)}
               part="prev-year-button"
               @click=${() => this.setYear(-1)}
               @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'year', -1, false)}
@@ -1681,7 +1683,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             <button
               type="button"
               tabindex="0"
-              class="nav prev w-6 h-6 hover:cursor-pointer sd-interactive"
+              class=${cx('nav prev w-6 h-6 hover:cursor-pointer', iconColor)}
               part="prev-month-button"
               @click=${() => this.setMonth(-1)}
               @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'month', -1, false)}
@@ -1706,7 +1708,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             <button
               type="button"
               tabindex="0"
-              class="nav next w-6 h-6 hover:cursor-pointer sd-interactive"
+              class=${cx('nav next w-6 h-6 hover:cursor-pointer', iconColor)}
               part="next-month-button"
               @click=${() => this.setMonth(1)}
               @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'month', 1, false)}
@@ -1718,7 +1720,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             <button
               type="button"
               tabindex="0"
-              class="nav next w-6 h-6 hover:cursor-pointer sd-interactive"
+              class=${cx('nav next w-6 h-6 hover:cursor-pointer', iconColor)}
               part="next-year-button"
               @click=${() => this.setYear(1)}
               @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'year', 1, true)}
@@ -1857,12 +1859,12 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                       aria-labelledby=${'col-' + (colIndex + 1)}
                       .tabIndex=${tabIndex}
                       ?disabled=${disabled || this.disabled || this.readonly}
-                      aria-disabled=${disabled || this.visuallyDisabled || this.disabled || this.readonly
-                        ? 'true'
-                        : 'false'}
-                      aria-selected=${isSelectedSingle || inSelectedRange || isRangeStart || isRangeEnd
-                        ? 'true'
-                        : 'false'}
+                      aria-disabled=${
+                        disabled || this.visuallyDisabled || this.disabled || this.readonly ? 'true' : 'false'
+                      }
+                      aria-selected=${
+                        isSelectedSingle || inSelectedRange || isRangeStart || isRangeEnd ? 'true' : 'false'
+                      }
                       aria-current=${isToday ? 'date' : nothing}
                       aria-label=${label}
                       aria-roledescription=${roleDesc ?? nothing}
@@ -1951,24 +1953,26 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
           (this.disabled || this.visuallyDisabled) && 'cursor-not-allowed'
         )}
       >
-        ${(hasLabel && !this.floatingLabel) || hasTooltip
-          ? html`<div class="flex items-center gap-1 mb-2">
-              <label
-                part="form-control-label"
-                id="label"
-                class=${cx(
-                  hasLabel ? 'inline-block' : 'hidden',
-                  this.visuallyDisabled || this.disabled ? 'text-neutral-500' : 'form-control-color-text',
-                  textSize
-                )}
-                for="input"
-                aria-hidden=${hasLabel ? 'false' : 'true'}
-              >
-                <slot name="label">${this.label}</slot>
-              </label>
-              ${slots['tooltip'] ? html`<slot name="tooltip"></slot>` : ''}
-            </div>`
-          : null}
+        ${
+          (hasLabel && !this.floatingLabel) || hasTooltip
+            ? html`<div class="flex items-center gap-1 mb-2">
+                <label
+                  part="form-control-label"
+                  id="label"
+                  class=${cx(
+                    hasLabel ? 'inline-block' : 'hidden',
+                    this.visuallyDisabled || this.disabled ? 'text-neutral-500' : 'form-control-color-text',
+                    textSize
+                  )}
+                  for="input"
+                  aria-hidden=${hasLabel ? 'false' : 'true'}
+                >
+                  <slot name="label">${this.label}</slot>
+                </label>
+                ${slots['tooltip'] ? html`<slot name="tooltip"></slot>` : ''}
+              </div>`
+            : null
+        }
 
         <div
           part="form-control-input"
@@ -1978,37 +1982,39 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             this.visuallyDisabled && 'cursor-not-allowed'
           )}
         >
-          ${hasLabel && this.floatingLabel
-            ? html`
-                <label
-                  id="label"
-                  part="form-control-floating-label"
-                  class=${cx(
-                    'absolute left-4 z-20 pointer-events-none transition-all duration-200 form-control--filled__floating-label-color-text',
-                    !isFloatingLabelActive
-                      ? 'top-1/2 -translate-y-1/2 form-control-color-text'
-                      : this.size === 'lg'
-                        ? 'top-2 text-xs'
-                        : 'top-1 text-xs',
-                    isFloatingLabelActive && 'mt-1'
-                  )}
-                  for="input"
-                >
-                  <span
+          ${
+            hasLabel && this.floatingLabel
+              ? html`
+                  <label
+                    id="label"
+                    part="form-control-floating-label"
                     class=${cx(
-                      'leading-none',
-                      (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
-                      isFloatingLabelActive &&
-                        !this.visuallyDisabled &&
-                        !this.disabled &&
-                        'form-control--filled__floating-label-color-text'
+                      'absolute left-4 z-20 pointer-events-none transition-all duration-200 form-control--filled__floating-label-color-text',
+                      !isFloatingLabelActive
+                        ? 'top-1/2 -translate-y-1/2 form-control-color-text'
+                        : this.size === 'lg'
+                          ? 'top-2 text-xs'
+                          : 'top-1 text-xs',
+                      isFloatingLabelActive && 'mt-1'
                     )}
+                    for="input"
                   >
-                    ${this.label}
-                  </span>
-                </label>
-              `
-            : null}
+                    <span
+                      class=${cx(
+                        'leading-none',
+                        (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                        isFloatingLabelActive &&
+                          !this.visuallyDisabled &&
+                          !this.disabled &&
+                          'form-control--filled__floating-label-color-text'
+                      )}
+                    >
+                      ${this.label}
+                    </span>
+                  </label>
+                `
+              : null
+          }
           <div
             part="border"
             class=${cx(
@@ -2072,9 +2078,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 )}
                 autocomplete="off"
                 spellcheck="false"
-                placeholder=${!this.floatingLabel || isFloatingLabelActive
-                  ? this.placeholder || this.localize.term(this.range ? 'dateRangePlaceholder' : 'datePlaceholder')
-                  : ''}
+                placeholder=${
+                  !this.floatingLabel || isFloatingLabelActive
+                    ? this.placeholder || this.localize.term(this.range ? 'dateRangePlaceholder' : 'datePlaceholder')
+                    : ''
+                }
                 ?disabled=${this.disabled}
                 ?required=${this.required}
                 ?readonly=${this.readonly || this.visuallyDisabled}
@@ -2086,22 +2094,26 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 @invalid=${this.handleInvalid}
               />
 
-              ${this.showInvalidStyle
-                ? html`<sd-icon
-                    part="invalid-icon"
-                    class=${cx('text-error', iconMarginLeft, iconSize)}
-                    library="_internal"
-                    name="risk"
-                  ></sd-icon>`
-                : ''}
-              ${this.showValidStyle && this.styleOnValid
-                ? html`<sd-icon
-                    class=${cx('text-success shrink-0', iconMarginLeft, iconSize)}
-                    library="_internal"
-                    name="confirm-circle"
-                    part="valid-icon"
-                  ></sd-icon>`
-                : ''}
+              ${
+                this.showInvalidStyle
+                  ? html`<sd-icon
+                      part="invalid-icon"
+                      class=${cx('text-error', iconMarginLeft, iconSize)}
+                      library="_internal"
+                      name="risk"
+                    ></sd-icon>`
+                  : ''
+              }
+              ${
+                this.showValidStyle && this.styleOnValid
+                  ? html`<sd-icon
+                      class=${cx('text-success shrink-0', iconMarginLeft, iconSize)}
+                      library="_internal"
+                      name="confirm-circle"
+                      part="valid-icon"
+                    ></sd-icon>`
+                  : ''
+              }
 
               <sd-icon
                 class=${cx(iconColor, iconMarginLeft, iconSize, 'hover:cursor-pointer')}
@@ -2155,11 +2167,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       }
 
       .icon-color {
-        color: rgb(var(--sd-color-icon-fill-primary));
+        color: rgba(var(--sd-form-control-color-icon-fill));
       }
 
       .month-label {
-        color: rgb(var(--sd-color-border-primary)) !important;
+        color: rgba(var(--sd-color-border-primary)) !important;
       }
     `
   ];

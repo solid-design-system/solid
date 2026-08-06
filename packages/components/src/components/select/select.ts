@@ -23,7 +23,7 @@ import type SdOption from '../option/option';
 import type SdPopup from '../popup/popup';
 
 /**
- * @summary Selects allow you to choose items from a menu of predefined options.
+ * @summary Used to choose items from a menu of predefined options.
  * @status stable
  * @since 1.30.0
  *
@@ -74,6 +74,7 @@ import type SdPopup from '../popup/popup';
  * @cssproperty --sd-form-control__listbox-border-top-left-radius - The border radius for the top left corner of the listbox.
  * @cssproperty --sd-form-control__listbox-border-top-right-radius - The border radius for the top right corner of the listbox.
  * @cssproperty --sd-form-control--hover-color-background - The background color for form controls on hover.
+ * @cssproperty --sd-form-control-color-icon-fill - The color for form control icons.
  */
 @customElement('sd-select')
 export default class SdSelect extends SolidElement implements SolidFormControl {
@@ -964,58 +965,62 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       >
         <span class="sr-only" aria-live="polite">${this.deletedTagLabel}</span>
 
-        ${(hasLabel && !this.floatingLabel) || hasTooltip
-          ? html`<div class="flex items-center gap-1 mb-2">
-              <label
-                id="label"
-                part="form-control-label"
-                class=${cx(
-                  hasLabel && 'inline-block',
-                  this.visuallyDisabled || this.disabled ? 'text-neutral-500' : ' form-control-color-text'
-                )}
-                aria-hidden=${hasLabel ? 'false' : 'true'}
-                @click=${this.handleLabelClick}
-              >
-                <slot name="label">${this.label}</slot>
-              </label>
+        ${
+          (hasLabel && !this.floatingLabel) || hasTooltip
+            ? html`<div class="flex items-center gap-1 mb-2">
+                <label
+                  id="label"
+                  part="form-control-label"
+                  class=${cx(
+                    hasLabel && 'inline-block',
+                    this.visuallyDisabled || this.disabled ? 'text-neutral-500' : ' form-control-color-text'
+                  )}
+                  aria-hidden=${hasLabel ? 'false' : 'true'}
+                  @click=${this.handleLabelClick}
+                >
+                  <slot name="label">${this.label}</slot>
+                </label>
 
-              ${slots['tooltip'] ? html`<slot name="tooltip"></slot>` : ''}
-            </div>`
-          : null}
+                ${slots['tooltip'] ? html`<slot name="tooltip"></slot>` : ''}
+              </div>`
+            : null
+        }
         <div
           part="form-control-input"
           class=${cx('relative w-full bg-white', selectState === 'disabled' ? 'text-neutral-500' : 'text-black')}
         >
-          ${hasLabel && this.floatingLabel
-            ? html`
-                <label
-                  id="label"
-                  part="form-control-floating-label"
-                  class=${cx(
-                    'absolute left-4 z-20 pointer-events-none transition-all duration-200',
-                    !isFloatingLabelActive
-                      ? 'top-1/2 -translate-y-1/2 form-control-color-text'
-                      : this.size === 'lg'
-                        ? 'top-2 text-xs'
-                        : 'top-1 text-xs',
-                    isFloatingLabelActive && 'mt-1'
-                  )}
-                  for="input"
-                >
-                  <span
+          ${
+            hasLabel && this.floatingLabel
+              ? html`
+                  <label
+                    id="label"
+                    part="form-control-floating-label"
                     class=${cx(
-                      'leading-none',
-                      isFloatingLabelActive &&
-                        !this.visuallyDisabled &&
-                        !this.disabled &&
-                        'form-control--filled__floating-label-color-text'
+                      'absolute left-4 z-20 pointer-events-none transition-all duration-200',
+                      !isFloatingLabelActive
+                        ? 'top-1/2 -translate-y-1/2 form-control-color-text'
+                        : this.size === 'lg'
+                          ? 'top-2 text-xs'
+                          : 'top-1 text-xs',
+                      isFloatingLabelActive && 'mt-1'
                     )}
+                    for="input"
                   >
-                    ${this.label}
-                  </span>
-                </label>
-              `
-            : null}
+                    <span
+                      class=${cx(
+                        'leading-none',
+                        isFloatingLabelActive &&
+                          !this.visuallyDisabled &&
+                          !this.disabled &&
+                          'form-control--filled__floating-label-color-text'
+                      )}
+                    >
+                      ${this.label}
+                    </span>
+                  </label>
+                `
+              : null
+          }
           <div
             part="border"
             class=${cx(
@@ -1093,9 +1098,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   )}
                   type="text"
                   .disabled=${this.disabled}
-                  placeholder=${!this.floatingLabel || isFloatingLabelActive
-                    ? this.placeholder || this.localize.term('selectDefaultPlaceholder')
-                    : ''}
+                  placeholder=${
+                    !this.floatingLabel || isFloatingLabelActive
+                      ? this.placeholder || this.localize.term('selectDefaultPlaceholder')
+                      : ''
+                  }
                   .value=${this.displayLabel}
                   autocomplete="off"
                   spellcheck="false"
@@ -1112,14 +1119,16 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   tabindex="-1"
                 />
 
-                ${this.multiple && this.useTags && this.tags && this.tags.length > 0
-                  ? html` <div
-                      part="tags"
-                      class=${cx('flex-grow flex flex-wrap items-center gap-1 min-w-0', this.floatingLabel && 'pt-4')}
-                    >
-                      ${this.tags}
-                    </div>`
-                  : ''}
+                ${
+                  this.multiple && this.useTags && this.tags && this.tags.length > 0
+                    ? html` <div
+                        part="tags"
+                        class=${cx('flex-grow flex flex-wrap items-center gap-1 min-w-0', this.floatingLabel && 'pt-4')}
+                      >
+                        ${this.tags}
+                      </div>`
+                    : ''
+                }
 
                 <div aria-live="polite" id="control-value" class="absolute top-0 left-0 opacity-0 -z-10">
                   ${this.selectedOptions.map(option => option?.getTextLabel()).join(', ')}
@@ -1137,51 +1146,57 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   @focus=${() => this.focus()}
                   @invalid=${this.handleInvalid}
                 />
-                ${hasClearIcon
-                  ? html`
-                      <button
-                        part="clear-button"
-                        class=${cx(
-                          'select__clear flex justify-center',
-                          iconMarginLeft,
-                          this.value.length > 0 ? 'visible' : 'hidden'
-                        )}
-                        type="button"
-                        aria-label=${this.localize.term('clearEntry')}
-                        @mousedown=${this.handleClearMouseDown}
-                        @click=${this.handleClearClick}
-                        tabindex="-1"
-                      >
-                        <slot name="clear-icon">
-                          <sd-icon
-                            class=${cx('text-neutral-700 z-10', iconSize)}
-                            library="_internal"
-                            name="closing-round"
-                          ></sd-icon>
-                        </slot>
-                      </button>
-                    `
-                  : ''}
-                ${this.showInvalidStyle
-                  ? html`
-                      <sd-icon
-                        part="invalid-icon"
-                        class=${cx(iconMarginLeft, iconSize)}
-                        library="_internal"
-                        name="risk"
-                      ></sd-icon>
-                    `
-                  : ''}
-                ${this.styleOnValid && this.showValidStyle
-                  ? html`
-                      <sd-icon
-                        part="valid-icon"
-                        class=${cx('flex-shrink-0 text-success', iconMarginLeft, iconSize)}
-                        library="_internal"
-                        name="confirm-circle"
-                      ></sd-icon>
-                    `
-                  : ''}
+                ${
+                  hasClearIcon
+                    ? html`
+                        <button
+                          part="clear-button"
+                          class=${cx(
+                            'select__clear flex justify-center',
+                            iconMarginLeft,
+                            this.value.length > 0 ? 'visible' : 'hidden'
+                          )}
+                          type="button"
+                          aria-label=${this.localize.term('clearEntry')}
+                          @mousedown=${this.handleClearMouseDown}
+                          @click=${this.handleClearClick}
+                          tabindex="-1"
+                        >
+                          <slot name="clear-icon">
+                            <sd-icon
+                              class=${cx('text-neutral-700 z-10', iconSize)}
+                              library="_internal"
+                              name="closing-round"
+                            ></sd-icon>
+                          </slot>
+                        </button>
+                      `
+                    : ''
+                }
+                ${
+                  this.showInvalidStyle
+                    ? html`
+                        <sd-icon
+                          part="invalid-icon"
+                          class=${cx(iconMarginLeft, iconSize)}
+                          library="_internal"
+                          name="risk"
+                        ></sd-icon>
+                      `
+                    : ''
+                }
+                ${
+                  this.styleOnValid && this.showValidStyle
+                    ? html`
+                        <sd-icon
+                          part="valid-icon"
+                          class=${cx('flex-shrink-0 text-success', iconMarginLeft, iconSize)}
+                          library="_internal"
+                          name="confirm-circle"
+                        ></sd-icon>
+                      `
+                    : ''
+                }
                 <slot
                   name="expand-icon"
                   part="expand-icon"
@@ -1308,7 +1323,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       }
 
       .icon-color {
-        color: rgb(var(--sd-color-icon-fill-primary));
+        color: rgb(var(--sd-form-control-color-icon-fill));
       }
     `
   ];

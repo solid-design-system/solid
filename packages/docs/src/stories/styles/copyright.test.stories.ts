@@ -58,7 +58,14 @@ export const Variants = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'sd-copyright--color-...' }
+        x: {
+          type: 'attribute',
+          name: 'sd-copyright--color-...',
+          values: [
+            { value: '', title: 'Default' },
+            { value: 'black', title: 'Black' }
+          ]
+        }
       },
       options: {
         templateContent: `<div class="%CLASSES% max-w-xl text-left" style="--copyright: '${args['--copyright']}';">%SLOT%</div>`
@@ -90,7 +97,14 @@ export const Orientation = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'sd-copyright--orientation-...' }
+        x: {
+          type: 'attribute',
+          name: 'sd-copyright--orientation-...',
+          values: [
+            { value: '', title: 'Default' },
+            { value: 'vertical', title: 'Vertical' }
+          ]
+        }
       },
       options: {
         templateContent: `<div class="%CLASSES% max-w-xl text-left" style="--copyright: '${args['--copyright']}';">%SLOT%</div>`
@@ -106,7 +120,14 @@ export const Placement = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'sd-copyright--placement-...' }
+        x: {
+          type: 'attribute',
+          name: 'sd-copyright--placement-...',
+          values: [
+            { value: '', title: 'Default' },
+            { value: 'top', title: 'Top' }
+          ]
+        }
       },
       options: {
         templateContent: `<div class="%CLASSES% max-w-xl text-left" style="--copyright: '${args['--copyright']}';">%SLOT%</div>`

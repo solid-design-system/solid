@@ -1,5 +1,77 @@
 # @solid-design-system/docs
 
+## 3.0.0-next.4
+
+### Major Changes
+
+- Removed the `sd-spinner` component _[`#3219`](https://github.com/solid-design-system/solid/pull/3219) [`cbdc1cb`](https://github.com/solid-design-system/solid/commit/cbdc1cb0098cabdbdad324803d5176de76a2215f) [@balco0110](https://github.com/balco0110)_
+
+## 3.0.0-next.3
+
+### Patch Changes
+
+- Dependencies updated. For further details, please refer to the associated Pull Request. _[`#3184`](https://github.com/solid-design-system/solid/pull/3184) [`81cd65b`](https://github.com/solid-design-system/solid/commit/81cd65ba91559c9f138920a5ba505fb1461eb92a) [@mariohamann](https://github.com/mariohamann)_
+
+## 3.0.0-next.2
+
+## 2.21.5
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull Request _[`#3163`](https://github.com/solid-design-system/solid/pull/3163) [`91ff1c8`](https://github.com/solid-design-system/solid/commit/91ff1c81831fb3522c534306a61b8a5be3562f64) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 3.0.0-next.1
+
+### Patch Changes
+
+- - Removed SDS's cdn usage from the Codepen extension. _[`#3200`](https://github.com/solid-design-system/solid/pull/3200) [`bfcd108`](https://github.com/solid-design-system/solid/commit/bfcd10845b25f9aa410ec69b16ad6468117d473b) [@martascorreia](https://github.com/martascorreia)_
+
+  - Added fonts, logos and `sd-icon` theming to the Codepen extension.
+
+## 3.0.0-next.0
+
+### Major Changes
+
+- Fixed the restriction of changing the font size and margin for headline in `sd-teaser`. _[`#3165`](https://github.com/solid-design-system/solid/pull/3165) [`b6f28e6`](https://github.com/solid-design-system/solid/commit/b6f28e6d427e41c3d3f2c0b68b29715e3ce6d934) [@balco0110](https://github.com/balco0110)_
+
+## 2.21.4
+
+### Patch Changes
+
+- Applied sentence case across the template and component documentation in Storybook. _[`#3190`](https://github.com/solid-design-system/solid/pull/3190) [`319d1f7`](https://github.com/solid-design-system/solid/commit/319d1f78991ec8a50ef726da5761cc8ae213ed22) [@balco0110](https://github.com/balco0110)_
+
+  Updated the `sd-brandshape` transparent template with new sample copy and fixed the headline text color on the transparent variant.
+
+## 2.21.3
+
+### Patch Changes
+
+- Update Installation.mdx with GitLab Duo setup _[`#3166`](https://github.com/solid-design-system/solid/pull/3166) [`45c02e8`](https://github.com/solid-design-system/solid/commit/45c02e8df764c238950394fd25a68ecc70b390ae) [@Vahid1919](https://github.com/Vahid1919)_
+
+## 2.21.2
+
+### Patch Changes
+
+- Fixed `sd-input`, `sd-select`, `sd-textarea`, `sd-datepicker` and `sd-combobox` stories and templates being clipped in mobile view. _[`#3115`](https://github.com/solid-design-system/solid/pull/3115) [`4dc09dd`](https://github.com/solid-design-system/solid/commit/4dc09dd3d0d4030e1b4e8410c75780d283c80e5a) [@balco0110](https://github.com/balco0110)_
+
+## 2.21.1
+
+### Patch Changes
+
+- Reworked the General "Introduction" page: added a Union Investment introduction with logo, restructured the content under "Introduction" and "Solid Design System" headings, updated the vision statement and fixed the "tested Browser versions" link color. _[`#3131`](https://github.com/solid-design-system/solid/pull/3131) [`321e5c9`](https://github.com/solid-design-system/solid/commit/321e5c9fa8a76b3ae1bb36d8b5497ca686eb8756) [@balco0110](https://github.com/balco0110)_
+
+## 2.21.0
+
+### Minor Changes
+
+- Add sparda theme. _[`#3124`](https://github.com/solid-design-system/solid/pull/3124) [`0812ec8`](https://github.com/solid-design-system/solid/commit/0812ec83a8430a7573d31e7f8902f63aaa0f1528) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 2.20.1
+
+### Patch Changes
+
+- Added a multi-theming explanation to the tokens package overview to clarify how it differs from a white-label approach _[`#3130`](https://github.com/solid-design-system/solid/pull/3130) [`5276028`](https://github.com/solid-design-system/solid/commit/5276028b631bd7eba364fe7fa4c4fb832de8cfa8) [@balco0110](https://github.com/balco0110)_
+
 ## 2.20.0
 
 ### Minor Changes

@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Map Marker
 
-Used to show a location or a cluster of locations on a map.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -54,4 +52,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-map-marker/Overview" />
 
-<OverviewFormatter story={SdMapMarkerStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdMapMarkerStories.Default} tag="sd-map-marker">
+  {content}
+</OverviewFormatter>

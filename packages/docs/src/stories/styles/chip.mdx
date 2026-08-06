@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Chip
 
-Used as a small, non-interactive label that represents a status, property or meta-data.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -58,4 +56,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Styles/sd-chip/Overview" />
 
-<OverviewFormatter story={SdChipStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdChipStories.Default} tag="sd-chip">
+  {content}
+</OverviewFormatter>

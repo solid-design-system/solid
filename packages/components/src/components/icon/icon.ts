@@ -10,7 +10,7 @@ import SolidElement from '../../internal/solid-element';
 let parser: DOMParser;
 
 /**
- * @summary Icons are symbols that can be used to represent various options within an application.
+ * @summary Used to display icons.
  * @status stable
  * @since 1.0
  *
@@ -154,6 +154,10 @@ export default class SdIcon extends SolidElement {
 
       :host([color='primary']) svg {
         color: rgba(var(--sd-color-icon-fill-primary, var(--sd-color-primary)));
+      }
+
+      :host([name^='content/'][color='primary']) svg {
+        color: rgba(var(--sd-color-icon-fill-content-icons-primary, var(--sd-color-primary)));
       }
 
       :host([color='white']) svg {

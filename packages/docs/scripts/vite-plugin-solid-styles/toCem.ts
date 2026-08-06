@@ -166,12 +166,20 @@ const getCssPropertiesForTags = (tags: Tag[]): CssCustomProperty[] =>
  * @returns module The schema module
  */
 const tagsToSchemaModule = (tags: Tag[]): StyleModule => {
-  const [name, status, since] = tags;
+  const nameTag = tags.find(tag => tag.tag === 'name');
+  const statusTag = tags.find(tag => tag.tag === 'status');
+  const sinceTag = tags.find(tag => tag.tag === 'since');
+  const summaryTag = tags.find(tag => tag.tag === 'summary');
+
+  const tagName = nameTag?.name ?? '';
+  // comment-parser splits `@summary <sentence>` into `name` (first word) + `description` (the rest)
+  const summary = summaryTag ? `${summaryTag.name} ${summaryTag.description}`.trim() : '';
+
   const attributes = getAttributesForTags(tags);
   const members = getMembersForTags(tags);
   const cssProperties = getCssPropertiesForTags(tags);
 
-  const tagNameWithoutPrefix = name.name.includes('-') ? name.name.split('-').slice(1).join('-') : name.name;
+  const tagNameWithoutPrefix = tagName.includes('-') ? tagName.split('-').slice(1).join('-') : tagName;
 
   return {
     declarations: [
@@ -179,24 +187,25 @@ const tagsToSchemaModule = (tags: Tag[]): StyleModule => {
         attributes,
         customElement: true,
         kind: 'class',
-        status: status.name,
-        since: since.name,
+        status: statusTag?.name,
+        since: sinceTag?.name,
+        summary,
         members,
-        name: name.name,
+        name: tagName,
         slots: [
           {
-            description: `Main content of ${name.name}`,
+            description: `Main content of ${tagName}`,
             name: ''
           }
         ],
         cssProperties,
-        tagName: name.name,
+        tagName,
         tagNameWithoutPrefix
       }
     ],
-    description: name.description,
+    description: summary,
     kind: 'javascript-module',
-    path: name.fileName
+    path: tags[0]?.fileName ?? ''
   };
 };
 

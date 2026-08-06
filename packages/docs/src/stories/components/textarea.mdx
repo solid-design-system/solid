@@ -13,8 +13,6 @@ export const links = {
 export const content = `
 # Textarea
 
-Used to allow users to input and edit multiple lines of text.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -73,4 +71,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-textarea/Overview" />
 
-<OverviewFormatter story={SdTextareaStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdTextareaStories.Default} tag="sd-textarea">
+  {content}
+</OverviewFormatter>

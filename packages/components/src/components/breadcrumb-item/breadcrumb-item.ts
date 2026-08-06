@@ -8,7 +8,7 @@ import { watch } from '../../internal/watch';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary An individual breadcrumb item for use exclusively within the `sd-breadcrumb`.
+ * @summary Used within `sd-breadcrumb` as individual item.
  * @status experimental
  * @since 5.8
  *

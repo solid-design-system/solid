@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Loader
 
-Used as a visual indicator with an animation that shows loading is in process.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -61,4 +59,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-loader/Overview" />
 
-<OverviewFormatter story={SdLoaderStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdLoaderStories.Default} tag="sd-loader">
+  {content}
+</OverviewFormatter>

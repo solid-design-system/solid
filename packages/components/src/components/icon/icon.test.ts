@@ -9,6 +9,11 @@ const testLibraryIcons = {
       <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
     </svg>
   `,
+  'content/test-icon1': `
+    <svg id="content-test-icon1">
+      <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
+    </svg>
+  `,
   'test-icon2': `
     <svg id="test-icon2">
     <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
@@ -131,6 +136,23 @@ describe('<sd-icon>', () => {
 
       const svg = el.shadowRoot?.querySelector('svg');
       expect(svg?.getAttribute('fill')).to.equal('currentColor');
+    });
+
+    it('uses the content icon primary color for content icons', async () => {
+      const el = await fixture<SdIcon>(html`
+        <sd-icon
+          color="primary"
+          library="test-library"
+          style="--sd-color-icon-fill-content-icons-primary: 1, 2, 3; --sd-color-primary: 4, 5, 6;"
+        ></sd-icon>
+      `);
+      const listener = oneEvent(el, 'sd-load');
+
+      el.name = 'content/test-icon1';
+      await listener;
+      await elementUpdated(el);
+
+      expect(getComputedStyle(el.shadowRoot!.querySelector('svg')!).color).to.equal('rgb(1, 2, 3)');
     });
   });
 

@@ -20,7 +20,7 @@ import type SdNavigationItem from '../navigation-item/navigation-item';
 import type SdPopup from '../popup/popup';
 
 /**
- * @summary Dropdowns expose additional content that "drops down" in a panel.
+ * @summary Used to display a list of actions or options in a panel when activated.
  * @documentation https://solid.union-investment.com/[storybook-link]/dropdown
  * @status stable
  * @since 1.8
@@ -200,8 +200,7 @@ export default class SdDropdown extends SolidElement {
 
   getMenu() {
     return this.panel.assignedElements({ flatten: true }).find(el => el.tagName.toLowerCase() === 'sd-menu') as
-      | SdMenu
-      | undefined;
+      SdMenu | undefined;
   }
 
   handleKeyDown(event: KeyboardEvent) {
