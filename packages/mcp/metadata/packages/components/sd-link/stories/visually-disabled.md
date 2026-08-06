@@ -4,13 +4,13 @@ Use the `visually-disabled` attribute to style the component as if it was disabl
 
 ```html
 <div class="flex gap-12 h-[100px] pt-12">
-  <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm">
+  <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm">
     <sd-link
       size="lg"
       href="https://solid-design-system.fe.union-investment.de/docs/"
       visually-disabled
       class="visually-disabled-link"
-      >Visually Disabled</sd-link
+      >Visually disabled</sd-link
     >
   </sd-tooltip>
 </div>

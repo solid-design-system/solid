@@ -7,9 +7,9 @@ Add `children` slot to the navigation item to create an accordion.
 
 ```html
 <sd-navigation-item vertical>
-  <div>Vertical Navigation with Accordion</div>
-  <sd-navigation-item vertical indented slot="children"> Sub Navigation 1 </sd-navigation-item>
-  <sd-navigation-item vertical indented slot="children"> Sub Navigation 2 </sd-navigation-item>
-  <sd-navigation-item vertical indented slot="children"> Sub Navigation 3 </sd-navigation-item>
+  <div>Vertical navigation with accordion</div>
+  <sd-navigation-item vertical indented slot="children"> Sub navigation 1 </sd-navigation-item>
+  <sd-navigation-item vertical indented slot="children"> Sub navigation 2 </sd-navigation-item>
+  <sd-navigation-item vertical indented slot="children"> Sub navigation 3 </sd-navigation-item>
 </sd-navigation-item>
 ```

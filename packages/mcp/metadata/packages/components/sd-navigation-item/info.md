@@ -27,7 +27,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.vertical: boolean, default=false — The navigation item's orientation. If false, properties below this point are not used.
 - prop.size: 'md'|'lg'|'sm', default='md' — The navigation item's font size.
 - prop.href: string — The navigation item's href target. If provided, the navigation item will use an anchor tag otherwise it will use a button tag. The 'children' slot and accordion behavior will be ignored if an 'href' is provided.
-- prop.target: '\_blank'|'\_parent'|'\_self'|'\_top' — Tells the browser where to open the link. Only used when `href` is defined.
+- prop.target: '_blank'|'_parent'|'_self'|'_top' — Tells the browser where to open the link. Only used when `href` is defined.
 - prop.download: string|undefined — Tells the browser to download the linked file as this filename. Only used when `href` is defined.
 - prop.current: boolean, default=false — Indicates that the navigation item is currently selected. The aria-current attribute is set to "page" on the host if true.
 - prop.disabled: boolean, default=false — Disables the navigation item.
@@ -48,7 +48,7 @@ Use the components tool by passing the args `component` and `example` for any of
 ### Slots
 
 - slot.default: The navigation item's label.
-- slot.description: \*Vertical only: Slot used to provide a description for the navigation item.
+- slot.description: *Vertical only: Slot used to provide a description for the navigation item.
 - slot.children: Slot used to provide nested child navigation elements. If provided, details and summary elements will be used. A chevron will be shown on the right side regardless of the chevron property.
 
 ### CSS Parts
