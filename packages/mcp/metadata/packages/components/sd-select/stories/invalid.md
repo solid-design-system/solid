@@ -1,7 +1,7 @@
 The component gets `invalid` state when the form is not valid.
 
 ```html
-<div class="w-[400px] h-[300px]">
+<div class="max-w-[400px] h-[300px]">
   <sd-select
     size="lg"
     placement="bottom"

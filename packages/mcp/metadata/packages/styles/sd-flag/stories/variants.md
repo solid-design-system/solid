@@ -22,8 +22,8 @@ args
 });
 }
 };
-/\*_
-Use the `sd-flag--_` classes for alternative appearances:
+/**
+Use the `sd-flag--*` classes for alternative appearances:
 
 - neutral-200 is the default appearance
 - `sd-flag--neutral-300`

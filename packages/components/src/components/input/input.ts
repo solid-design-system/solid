@@ -113,16 +113,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
    * to `text`.
    */
   @property({ type: String, reflect: true }) type:
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url' = 'text';
+    'date' | 'datetime-local' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'time' | 'url' = 'text';
 
   /** The input's size. */
   @property({ type: String, reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
@@ -132,14 +123,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
    * keyboard on supportive devices.
    */
   @property({ type: String, reflect: true }) inputmode:
-    | 'none'
-    | 'text'
-    | 'decimal'
-    | 'numeric'
-    | 'tel'
-    | 'search'
-    | 'email'
-    | 'url';
+    'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
 
   /** The current value of the input, submitted as a name/value pair with form data. */
   @property() value = '';
@@ -221,12 +205,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   /** Controls whether and how text input is automatically capitalized as it is entered by the user. */
   @property({ type: String, reflect: true }) autocapitalize:
-    | 'off'
-    | 'none'
-    | 'on'
-    | 'sentences'
-    | 'words'
-    | 'characters';
+    'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
 
   @property({ type: String, reflect: true }) autocorrect: 'off' | 'on';
 
@@ -241,13 +220,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   /** Used to customize the label or icon of the Enter key on virtual keyboards. */
   @property({ type: String, reflect: true }) enterkeyhint:
-    | 'enter'
-    | 'done'
-    | 'go'
-    | 'next'
-    | 'previous'
-    | 'search'
-    | 'send';
+    'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
 
   /** Shows success styles if the validity of the input is valid. */
   @property({ type: Boolean, reflect: true, attribute: 'style-on-valid' }) styleOnValid = false;
@@ -603,25 +576,27 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     // Render
     return html`
       <div part="form-control" class=${cx((this.disabled || this.visuallyDisabled) && 'cursor-not-allowed')}>
-        ${(hasLabel || hasTooltip) && !this.floatingLabel
-          ? html`<div class="flex items-center gap-1 mb-2">
-              <label
-                part="form-control-label"
-                id="label"
-                class=${cx(
-                  hasLabel ? 'inline-block' : 'hidden',
-                  textSize,
-                  this.visuallyDisabled || this.disabled ? 'text-neutral-500' : ' form-control-color-text'
-                )}
-                for="input"
-                aria-hidden=${hasLabel ? 'false' : 'true'}
-              >
-                <slot name="label">${this.label}</slot>
-              </label>
+        ${
+          (hasLabel || hasTooltip) && !this.floatingLabel
+            ? html`<div class="flex items-center gap-1 mb-2">
+                <label
+                  part="form-control-label"
+                  id="label"
+                  class=${cx(
+                    hasLabel ? 'inline-block' : 'hidden',
+                    textSize,
+                    this.visuallyDisabled || this.disabled ? 'text-neutral-500' : ' form-control-color-text'
+                  )}
+                  for="input"
+                  aria-hidden=${hasLabel ? 'false' : 'true'}
+                >
+                  <slot name="label">${this.label}</slot>
+                </label>
 
-              ${slots['tooltip'] ? html`<slot name="tooltip"></slot>` : ''}
-            </div>`
-          : null}
+                ${slots['tooltip'] ? html`<slot name="tooltip"></slot>` : ''}
+              </div>`
+            : null
+        }
         <div
           part="form-control-input"
           class=${cx(
@@ -652,13 +627,15 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               verticalPadding
             )}
           >
-            ${slots['left']
-              ? html`<slot
-                  name="left"
-                  part="left"
-                  class=${cx('inline-flex', this.size === 'sm' ? 'mr-1' : 'mr-2', iconColor, iconSize)}
-                ></slot>`
-              : ''}
+            ${
+              slots['left']
+                ? html`<slot
+                    name="left"
+                    part="left"
+                    class=${cx('inline-flex', this.size === 'sm' ? 'mr-1' : 'mr-2', iconColor, iconSize)}
+                  ></slot>`
+                : ''
+            }
             <input
               part="input"
               id="input"
@@ -705,203 +682,229 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
             />
-            ${hasLabel && this.floatingLabel
-              ? html`
-                  <label
-                    part="form-control-floating-label"
-                    class=${cx(
-                      'pointer-events-none absolute',
-                      hasIconLeft ? floatingLabelHorizontalAlignmentWithIconLeft : 'left-4',
-                      !this.readonly && 'transition-all duration-medium ease-out',
-                      !isFloatingLabelActive || (!hasValue && (this.readonly || this.visuallyDisabled))
-                        ? 'top-1/2 -translate-y-1/2 form-control-color-text'
-                        : this.size === 'lg'
-                          ? 'top-2'
-                          : 'top-1'
-                    )}
-                    for="input"
-                    aria-hidden=${hasLabel ? 'false' : 'true'}
-                  >
-                    <span
-                      id="floating-label"
+            ${
+              hasLabel && this.floatingLabel
+                ? html`
+                    <label
+                      part="form-control-floating-label"
                       class=${cx(
-                        'pointer-events-none leading-none',
+                        'pointer-events-none absolute',
+                        hasIconLeft ? floatingLabelHorizontalAlignmentWithIconLeft : 'left-4',
                         !this.readonly && 'transition-all duration-medium ease-out',
                         !isFloatingLabelActive || (!hasValue && (this.readonly || this.visuallyDisabled))
-                          ? textSize
-                          : 'text-xs',
-                        (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
-                        isFloatingLabelActive &&
-                          !this.visuallyDisabled &&
-                          !this.disabled &&
-                          'form-control--filled__floating-label-color-text'
+                          ? 'top-1/2 -translate-y-1/2 form-control-color-text'
+                          : this.size === 'lg'
+                            ? 'top-2'
+                            : 'top-1'
                       )}
+                      for="input"
+                      aria-hidden=${hasLabel ? 'false' : 'true'}
                     >
-                      ${this.label}
-                    </span>
-                  </label>
-                `
-              : null}
-            ${hasClearIcon
-              ? html`
-                  <button
-                    part="clear-button"
-                    class=${cx('flex justify-center', iconMarginLeft)}
-                    type="button"
-                    aria-label=${this.localize.term('clearEntry')}
-                    @click=${this.handleClearClick}
-                    tabindex="-1"
-                  >
-                    <slot name="clear-icon">
-                      <sd-icon
+                      <span
+                        id="floating-label"
                         class=${cx(
-                          this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-neutral-700',
-                          iconSize
+                          'pointer-events-none leading-none',
+                          !this.readonly && 'transition-all duration-medium ease-out',
+                          !isFloatingLabelActive || (!hasValue && (this.readonly || this.visuallyDisabled))
+                            ? textSize
+                            : 'text-xs',
+                          (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                          isFloatingLabelActive &&
+                            !this.visuallyDisabled &&
+                            !this.disabled &&
+                            'form-control--filled__floating-label-color-text'
                         )}
-                        library="_internal"
-                        name="closing-round"
-                      ></sd-icon>
-                    </slot>
-                  </button>
-                `
-              : ''}
-            ${this.passwordToggle && this.type === 'password'
-              ? html`
-                  <button
-                    aria-label=${this.localize.term(this.passwordVisible ? 'hidePassword' : 'showPassword')}
-                    part="password-toggle-button"
-                    class=${cx(
-                      'flex items-center sd-interactive',
-                      iconMarginLeft,
-                      this.floatingLabel && !isFloatingLabelActive && 'hide-password-toggle'
-                    )}
-                    type="button"
-                    @click=${this.handlePasswordToggle}
-                    @mousedown=${this.handleClickableIconFocusIn}
-                    @focus=${() => this.handleClickableIconFocusIn()}
-                    @blur=${this.handleClickableIconFocusOut}
-                  >
-                    ${this.passwordVisible
-                      ? html`
-                          <slot name="show-password-icon"
-                            ><sd-icon class=${cx(iconColor, iconSize)} library="_internal" name="eye"></sd-icon
-                          ></slot>
-                        `
-                      : html`
-                          <slot name="hide-password-icon"
-                            ><sd-icon
-                              class=${cx(iconColor, iconSize)}
-                              library="_internal"
-                              name="eye-crossed-out"
-                            ></sd-icon
-                          ></slot>
-                        `}
-                  </button>
-                `
-              : ''}
-            ${(this.type === 'date' || this.type === 'datetime-local') && !isFirefox
-              ? html`
-                  <sd-icon
-                    class=${cx(iconColor, iconMarginLeft, iconSize)}
-                    library="_internal"
-                    name="calendar"
-                  ></sd-icon>
-                `
-              : ''}
-            ${this.type === 'time'
-              ? html`
-                  <sd-icon class=${cx(iconColor, iconMarginLeft, iconSize)} library="_internal" name="clock"></sd-icon>
-                `
-              : ''}
-            ${this.type === 'search'
-              ? html`
-                  <button
-                    class=${cx('flex items-center sd-interactive', iconMarginLeft)}
-                    type="button"
-                    @click=${this.handleSearchClick}
-                  >
-                    <sd-icon
-                      class=${cx(iconColor, iconSize)}
-                      library="_internal"
-                      name="magnifying-glass"
-                      label=${this.localize.term('search')}
-                    ></sd-icon>
-                  </button>
-                `
-              : ''}
-            ${this.showInvalidStyle
-              ? html`
-                  <sd-icon
-                    part="invalid-icon"
-                    class=${cx('text-error', iconMarginLeft, iconSize)}
-                    library="_internal"
-                    name="risk"
-                  ></sd-icon>
-                `
-              : ''}
-            ${this.showValidStyle && this.styleOnValid
-              ? html`
-                  <sd-icon
-                    class=${cx('text-success flex-shrink-0', iconMarginLeft, iconSize)}
-                    library="_internal"
-                    name="confirm-circle"
-                    part="valid-icon"
-                  ></sd-icon>
-                `
-              : ''}
-            ${slots['right']
-              ? html`<slot
-                  name="right"
-                  part="right"
-                  class=${cx('inline-flex', iconColor, iconMarginLeft, iconSize)}
-                ></slot>`
-              : ''}
-            ${this.type === 'number' && this.spinButtons
-              ? html`
-                  <div part="stepper" class="flex items-center">
+                      >
+                        ${this.label}
+                      </span>
+                    </label>
+                  `
+                : null
+            }
+            ${
+              hasClearIcon
+                ? html`
                     <button
-                      part="decrement-number-stepper"
-                      class="stepper-button flex"
+                      part="clear-button"
+                      class=${cx('flex justify-center', iconMarginLeft)}
                       type="button"
-                      ?disabled=${this.isDecrementDisabled()}
-                      aria-hidden="true"
-                      ${longPress({ start: () => this.handleStepDown(), end: () => this.handleChange() })}
+                      aria-label=${this.localize.term('clearEntry')}
+                      @click=${this.handleClearClick}
                       tabindex="-1"
+                    >
+                      <slot name="clear-icon">
+                        <sd-icon
+                          class=${cx(
+                            this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-neutral-700',
+                            iconSize
+                          )}
+                          library="_internal"
+                          name="closing-round"
+                        ></sd-icon>
+                      </slot>
+                    </button>
+                  `
+                : ''
+            }
+            ${
+              this.passwordToggle && this.type === 'password'
+                ? html`
+                    <button
+                      aria-label=${this.localize.term(this.passwordVisible ? 'hidePassword' : 'showPassword')}
+                      part="password-toggle-button"
+                      class=${cx(
+                        'flex items-center sd-interactive',
+                        iconMarginLeft,
+                        this.floatingLabel && !isFloatingLabelActive && 'hide-password-toggle'
+                      )}
+                      type="button"
+                      @click=${this.handlePasswordToggle}
                       @mousedown=${this.handleClickableIconFocusIn}
                       @focus=${() => this.handleClickableIconFocusIn()}
                       @blur=${this.handleClickableIconFocusOut}
                     >
-                      <slot name="decrement-number-stepper">
-                        <sd-icon
-                          library="_internal"
-                          name="minus-circle"
-                          label="Decrease value"
-                          class=${cx(iconColor, iconMarginLeft, iconSize)}
-                        ></sd-icon>
-                      </slot>
+                      ${
+                        this.passwordVisible
+                          ? html`
+                              <slot name="show-password-icon"
+                                ><sd-icon class=${cx(iconColor, iconSize)} library="_internal" name="eye"></sd-icon
+                              ></slot>
+                            `
+                          : html`
+                              <slot name="hide-password-icon"
+                                ><sd-icon
+                                  class=${cx(iconColor, iconSize)}
+                                  library="_internal"
+                                  name="eye-crossed-out"
+                                ></sd-icon
+                              ></slot>
+                            `
+                      }
                     </button>
-
+                  `
+                : ''
+            }
+            ${
+              (this.type === 'date' || this.type === 'datetime-local') && !isFirefox
+                ? html`
+                    <sd-icon
+                      class=${cx(iconColor, iconMarginLeft, iconSize)}
+                      library="_internal"
+                      name="calendar"
+                    ></sd-icon>
+                  `
+                : ''
+            }
+            ${
+              this.type === 'time'
+                ? html`
+                    <sd-icon
+                      class=${cx(iconColor, iconMarginLeft, iconSize)}
+                      library="_internal"
+                      name="clock"
+                    ></sd-icon>
+                  `
+                : ''
+            }
+            ${
+              this.type === 'search'
+                ? html`
                     <button
-                      part="increment-number-stepper"
-                      class="stepper-button flex"
+                      class=${cx('flex items-center sd-interactive', iconMarginLeft)}
                       type="button"
-                      ?disabled=${this.isIncrementDisabled()}
-                      aria-hidden="true"
-                      ${longPress({ start: () => this.handleStepUp(), end: () => this.handleChange() })}
-                      tabindex="-1"
+                      @click=${this.handleSearchClick}
                     >
-                      <slot name="increment-number-stepper">
-                        <sd-icon
-                          library="_internal"
-                          name="plus-circle"
-                          label="Decrease value"
-                          class=${cx(iconColor, iconMarginLeft, iconSize)}
-                        ></sd-icon>
-                      </slot>
+                      <sd-icon
+                        class=${cx(iconColor, iconSize)}
+                        library="_internal"
+                        name="magnifying-glass"
+                        label=${this.localize.term('search')}
+                      ></sd-icon>
                     </button>
-                  </div>
-                `
-              : ''}
+                  `
+                : ''
+            }
+            ${
+              this.showInvalidStyle
+                ? html`
+                    <sd-icon
+                      part="invalid-icon"
+                      class=${cx('text-error', iconMarginLeft, iconSize)}
+                      library="_internal"
+                      name="risk"
+                    ></sd-icon>
+                  `
+                : ''
+            }
+            ${
+              this.showValidStyle && this.styleOnValid
+                ? html`
+                    <sd-icon
+                      class=${cx('text-success flex-shrink-0', iconMarginLeft, iconSize)}
+                      library="_internal"
+                      name="confirm-circle"
+                      part="valid-icon"
+                    ></sd-icon>
+                  `
+                : ''
+            }
+            ${
+              slots['right']
+                ? html`<slot
+                    name="right"
+                    part="right"
+                    class=${cx('inline-flex', iconColor, iconMarginLeft, iconSize)}
+                  ></slot>`
+                : ''
+            }
+            ${
+              this.type === 'number' && this.spinButtons
+                ? html`
+                    <div part="stepper" class="flex items-center">
+                      <button
+                        part="decrement-number-stepper"
+                        class="stepper-button flex"
+                        type="button"
+                        ?disabled=${this.isDecrementDisabled()}
+                        aria-hidden="true"
+                        ${longPress({ start: () => this.handleStepDown(), end: () => this.handleChange() })}
+                        tabindex="-1"
+                        @mousedown=${this.handleClickableIconFocusIn}
+                        @focus=${() => this.handleClickableIconFocusIn()}
+                        @blur=${this.handleClickableIconFocusOut}
+                      >
+                        <slot name="decrement-number-stepper">
+                          <sd-icon
+                            library="_internal"
+                            name="minus-circle"
+                            label="Decrease value"
+                            class=${cx(iconColor, iconMarginLeft, iconSize)}
+                          ></sd-icon>
+                        </slot>
+                      </button>
+
+                      <button
+                        part="increment-number-stepper"
+                        class="stepper-button flex"
+                        type="button"
+                        ?disabled=${this.isIncrementDisabled()}
+                        aria-hidden="true"
+                        ${longPress({ start: () => this.handleStepUp(), end: () => this.handleChange() })}
+                        tabindex="-1"
+                      >
+                        <slot name="increment-number-stepper">
+                          <sd-icon
+                            library="_internal"
+                            name="plus-circle"
+                            label="Decrease value"
+                            class=${cx(iconColor, iconMarginLeft, iconSize)}
+                          ></sd-icon>
+                        </slot>
+                      </button>
+                    </div>
+                  `
+                : ''
+            }
           </div>
         </div>
 

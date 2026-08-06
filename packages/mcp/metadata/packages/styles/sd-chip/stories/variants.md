@@ -22,8 +22,8 @@ args
 });
 }
 };
-/\*_
-Use the `sd-chip--_` classes for alternative appearances:
+/**
+Use the `sd-chip--*` classes for alternative appearances:
 
 - primary-200 is the default appearance
 - `sd-chip--primary-300`

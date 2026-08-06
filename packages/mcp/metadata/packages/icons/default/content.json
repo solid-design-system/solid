@@ -245,6 +245,11 @@
     "tags": ["Viereck", "Geometrie", "Würfel"]
   },
   {
+    "technicalId": "speech-bubble-question",
+    "displayNameDe": "Sprechblase Frage",
+    "tags": ["Fragen", "Frage", "FAQ"]
+  },
+  {
     "technicalId": "puzzle",
     "displayNameDe": "Puzzel",
     "tags": ["Teile", "Zielbild"]
@@ -845,6 +850,11 @@
     "tags": ["beglaubigt", "Anteilsschein", "Wertpapiere", "Dokument"]
   },
   {
+    "technicalId": "wave",
+    "displayNameDe": "Welle",
+    "tags": ["Trend", "Tendenz", "Altersvorsorge"]
+  },
+  {
     "technicalId": "wind-energy",
     "displayNameDe": "Windenergie",
     "tags": ["Wetter", "Energie", "Nachhaltigkeit"]
@@ -1170,6 +1180,11 @@
     "tags": ["Uhr", "Deadline", "dringend", "Alarm", "Eile"]
   },
   {
+    "technicalId": "wind",
+    "displayNameDe": "Wind",
+    "tags": ["Wandel", "Altersvorsorge", "Veränderung"]
+  },
+  {
     "technicalId": "commen-ground",
     "displayNameDe": "Schnittmenge",
     "tags": ["Übereinstimmung", "Gemeinsamkeit", "Überschneidung"]
@@ -1320,14 +1335,14 @@
     "tags": ["Eile", "Notfall", "Deadline", "Uhr", "dringend"]
   },
   {
-    "technicalId": "yen",
-    "displayNameDe": "Yen",
-    "tags": ["Japan", "Geld", "Symbol", "Währung"]
-  },
-  {
     "technicalId": "checkbox",
     "displayNameDe": "Checkbox",
     "tags": ["fertig", "erledigt", "Haken", "abhaken"]
+  },
+  {
+    "technicalId": "yen",
+    "displayNameDe": "Yen",
+    "tags": ["Japan", "Geld", "Symbol", "Währung"]
   },
   {
     "technicalId": "badge",
@@ -1460,6 +1475,11 @@
     "tags": ["Handy", "umdrehen", "Device", "kippen"]
   },
   {
+    "technicalId": "lighthouse",
+    "displayNameDe": "Leutturm",
+    "tags": ["Orientierung", "Sicherheit", "Zuverlässigkeit", "Altersvorsorge"]
+  },
+  {
     "technicalId": "face-neutral",
     "displayNameDe": "Gesicht neutral",
     "tags": ["neutral", "unentschieden", "nicht festgelegt"]
@@ -1537,7 +1557,7 @@
   {
     "technicalId": "beaver",
     "displayNameDe": "Biber",
-    "tags": []
+    "tags": ["Gemeinschaftssinn", "kreative Gestaltungskraft", "Fleiß"]
   },
   {
     "technicalId": "airplane",
@@ -1628,6 +1648,11 @@
     "technicalId": "bull-bear",
     "displayNameDe": "Bulle/Bär",
     "tags": ["Baisse", "Kurse", "Hausse", "Aktien"]
+  },
+  {
+    "technicalId": "circles-concentric-2",
+    "displayNameDe": "Kreise konzentrisch 2",
+    "tags": ["Zukunftsschmiede", "Entwicklungsraum", "ZS-Campus"]
   },
   {
     "technicalId": "skyscraper-measures",
@@ -1725,14 +1750,14 @@
     "tags": ["Ablauf", "Prozess", "Projekt"]
   },
   {
-    "technicalId": "house-percent",
-    "displayNameDe": "Haus Prozent",
-    "tags": ["Immobilien", "Quoten", "mieten", "Vermietungsquote"]
-  },
-  {
     "technicalId": "person-newspaper",
     "displayNameDe": "Person Zeitung",
     "tags": ["Neuigkeiten", "News", "Magazin", "Zeitung"]
+  },
+  {
+    "technicalId": "house-percent",
+    "displayNameDe": "Haus Prozent",
+    "tags": ["Immobilien", "Quoten", "mieten", "Vermietungsquote"]
   },
   {
     "technicalId": "house-protective-shield",
@@ -2178,6 +2203,11 @@
     "technicalId": "handshake",
     "displayNameDe": "Handschlag",
     "tags": ["partnerschaftliches Unternehmen", "Vertragsabschluss", "Partnerschaft", "Partner"]
+  },
+  {
+    "technicalId": "person-mountain-goal",
+    "displayNameDe": "Person Berg/Ziel",
+    "tags": ["ZS-Campus", "Zukunftsschmiede", "Persönliche Wirksamkeit"]
   },
   {
     "technicalId": "group-presentation",

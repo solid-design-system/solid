@@ -1,5 +1,37 @@
 # @solid-design-system/docs
 
+## 2.21.5
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull Request _[`#3163`](https://github.com/solid-design-system/solid/pull/3163) [`91ff1c8`](https://github.com/solid-design-system/solid/commit/91ff1c81831fb3522c534306a61b8a5be3562f64) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 2.21.4
+
+### Patch Changes
+
+- Applied sentence case across the template and component documentation in Storybook. _[`#3190`](https://github.com/solid-design-system/solid/pull/3190) [`319d1f7`](https://github.com/solid-design-system/solid/commit/319d1f78991ec8a50ef726da5761cc8ae213ed22) [@balco0110](https://github.com/balco0110)_
+
+  Updated the `sd-brandshape` transparent template with new sample copy and fixed the headline text color on the transparent variant.
+
+## 2.21.3
+
+### Patch Changes
+
+- Update Installation.mdx with GitLab Duo setup _[`#3166`](https://github.com/solid-design-system/solid/pull/3166) [`45c02e8`](https://github.com/solid-design-system/solid/commit/45c02e8df764c238950394fd25a68ecc70b390ae) [@Vahid1919](https://github.com/Vahid1919)_
+
+## 2.21.2
+
+### Patch Changes
+
+- Fixed `sd-input`, `sd-select`, `sd-textarea`, `sd-datepicker` and `sd-combobox` stories and templates being clipped in mobile view. _[`#3115`](https://github.com/solid-design-system/solid/pull/3115) [`4dc09dd`](https://github.com/solid-design-system/solid/commit/4dc09dd3d0d4030e1b4e8410c75780d283c80e5a) [@balco0110](https://github.com/balco0110)_
+
+## 2.21.1
+
+### Patch Changes
+
+- Reworked the General "Introduction" page: added a Union Investment introduction with logo, restructured the content under "Introduction" and "Solid Design System" headings, updated the vision statement and fixed the "tested Browser versions" link color. _[`#3131`](https://github.com/solid-design-system/solid/pull/3131) [`321e5c9`](https://github.com/solid-design-system/solid/commit/321e5c9fa8a76b3ae1bb36d8b5497ca686eb8756) [@balco0110](https://github.com/balco0110)_
+
 ## 2.21.0
 
 ### Minor Changes

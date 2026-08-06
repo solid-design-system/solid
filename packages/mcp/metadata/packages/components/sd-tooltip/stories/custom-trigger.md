@@ -4,7 +4,7 @@ In this example we provide a solution to this problem by using a live region to 
 
 ```html
 <sd-tooltip size="lg" content="This tooltip is accessible" placement="bottom" trigger="click" class="custom-tooltip">
-  <sd-button class="custom-button">Custom Trigger</sd-button>
+  <sd-button class="custom-button">Custom trigger</sd-button>
 </sd-tooltip>
 <div aria-live="assertive" class="sr-only live-region"></div>
 <script>
