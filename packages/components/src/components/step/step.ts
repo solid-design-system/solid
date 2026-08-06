@@ -7,6 +7,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { property } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
+import { paragraphStyles } from '../../internal/shared-styles';
 import SolidElement from '../../internal/solid-element';
 /**
  * @summary Used to determine a step in a process or task inside `sd-step-group`.
@@ -367,6 +368,7 @@ export default class SdStep extends SolidElement {
 
   static styles = [
     ...SolidElement.styles,
+    paragraphStyles,
     css`
       :host {
         @apply flex-1;

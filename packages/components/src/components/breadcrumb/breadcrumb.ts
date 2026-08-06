@@ -5,6 +5,7 @@ import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import cx from 'classix';
+import { interactiveStyles } from '../../internal/shared-styles';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -152,6 +153,7 @@ export default class SdBreadcrumb extends SolidElement {
 
   static styles = [
     ...SolidElement.styles,
+    interactiveStyles,
     css`
       :host {
         @apply block relative;

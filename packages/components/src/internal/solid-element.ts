@@ -1,42 +1,10 @@
-import { cssVar, parseDuration } from './animate';
 import { LitElement, unsafeCSS } from 'lit';
-import { property } from 'lit/decorators.js';
 
 const css = unsafeCSS;
 
-const tokenProcessors: Record<string, (value: string) => string | number> = {
-  'sd-duration': (value: string): number => parseDuration(value)
-};
-
 export default class SolidElement extends LitElement {
-  /** The element's directionality. */
-  @property() dir: 'ltr' | 'rtl' | 'auto';
-
-  /** The element's language. */
-  @property() lang: string;
-
-  protected onThemeChange?(e: CustomEvent<{ theme: string }>): void;
-
-  connectedCallback(): void {
-    super.connectedCallback();
-
-    if (!this.onThemeChange) return;
-    this.renderRoot.addEventListener('sd-theme-change', this.onThemeChange.bind(this));
-  }
-
-  disconnectedCallback(): void {
-    super.disconnectedCallback();
-
-    if (!this.onThemeChange) return;
-    this.renderRoot.removeEventListener('sd-theme-change', this.onThemeChange.bind(this));
-  }
-
-  static styles = [
+  static readonly styles = [
     css`
-      @import '../styles/src/modules/interactive.css';
-      @import '../styles/src/modules/paragraph.css';
-      @import '../styles/src/modules/headline.css';
-
       :host {
         /* Add default tailwind variables that get lost during compilation */
         --tw-blur: initial;
@@ -114,18 +82,6 @@ export default class SolidElement extends LitElement {
     this.dispatchEvent(event);
 
     return event;
-  }
-
-  /** Retrieves the value of a css variable token. */
-  token<T>(name: string, fallback: T): T {
-    const value = cssVar(`var(${name})`, this);
-
-    if (value === null) {
-      return fallback;
-    }
-
-    const processor = Object.keys(tokenProcessors).find(token => name.startsWith(token));
-    return (tokenProcessors[processor ?? name]?.(value) as T) ?? (value as T) ?? fallback;
   }
 }
 

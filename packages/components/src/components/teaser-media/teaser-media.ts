@@ -3,6 +3,7 @@ import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { property, query } from 'lit/decorators.js';
 import cx from 'classix';
+import { interactiveStyles } from '../../internal/shared-styles';
 import SolidElement from '../../internal/solid-element';
 /**
  * @summary Used as a flexible container with image that groups related items and links them to further content.
@@ -158,6 +159,7 @@ export default class SdTeaserMedia extends SolidElement {
 
   static styles = [
     ...SolidElement.styles,
+    interactiveStyles,
     css`
       :host {
         @apply block;
