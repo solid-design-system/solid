@@ -63,8 +63,6 @@ import SolidElement from '../../internal/solid-element';
 export default class SdDialog extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, 'footer');
   public localize = new LocalizeController(this);
-  private modal: Modal;
-  private originalTrigger: HTMLElement | null;
   private hasUiMotion = false;
 
   @query('[part="base"]') dialog: HTMLDialogElement;
@@ -90,8 +88,6 @@ export default class SdDialog extends SolidElement {
   connectedCallback() {
     super.connectedCallback();
     this.updateMotionTheme();
-    this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
-    this.modal = new Modal(this);
   }
 
   firstUpdated() {
@@ -103,11 +99,6 @@ export default class SdDialog extends SolidElement {
     if (this.open) {
       this.dialog.showModal();
     }
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    unlockBodyScrolling(this);
   }
 
   protected onThemeChange(): void {
@@ -160,9 +151,6 @@ export default class SdDialog extends SolidElement {
       await stopAnimations(this.dialog);
       this.dialog.showModal();
 
-      const overlayShowAnimation = getAnimation(this, 'dialog.overlay.show', { dir: this.localize.dir() });
-      animateTo(this.overlay, overlayShowAnimation.keyframes, overlayShowAnimation.options);
-
       // Set initial focus
       requestAnimationFrame(() => {
         const slInitialFocus = this.emit('sd-initial-focus', { cancelable: true });
@@ -199,8 +187,6 @@ export default class SdDialog extends SolidElement {
       this.emit('sd-hide');
 
       await stopAnimations(this.dialog);
-      const overlayHideAnimation = getAnimation(this, 'dialog.overlay.hide', { dir: this.localize.dir() });
-      animateTo(this.overlay, overlayHideAnimation.keyframes, overlayHideAnimation.options);
       const hideAnimation = this.hasUiMotion ? 'dialog.hide' : 'dialog.hideSimple';
 
       const panelAnimation = this.prefersReducedMotion
@@ -221,26 +207,11 @@ export default class SdDialog extends SolidElement {
         })
       ]);
 
-      this.dialog.hidden = true;
+      this.dialog.close();
 
       // Now that the dialog is hidden, restore the overlay and panel for next time
       this.overlay.hidden = false;
       this.panel.hidden = false;
-
-      unlockBodyScrolling(this);
-
-      // Restore focus to the original trigger
-      const trigger = this.originalTrigger;
-      if (typeof trigger?.focus === 'function' && trigger.isConnected) {
-        setTimeout(() => {
-          try {
-            trigger.focus({ preventScroll: true });
-          } catch {
-            trigger.focus();
-          }
-          this.originalTrigger = null;
-        });
-      }
 
       this.emit('sd-after-hide');
     }
@@ -341,7 +312,8 @@ export default class SdDialog extends SolidElement {
         @apply contents;
       }
 
-      :host(:not([open])) {
+      /* Hide the dialog once the native <dialog> element is actually closed, so the hide animation can play out first. */
+      [part='base']:not([open]) {
         display: none;
       }
 
