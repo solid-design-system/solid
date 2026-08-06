@@ -245,7 +245,6 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     this.files = files;
   }
 
-  //TODO CHECK IF IT IS WORKING CORRECTLY
   private async handleTransferItems(items: DataTransferItemList | null): Promise<FileList> {
     if (!items) {
       this.value = '';
@@ -261,7 +260,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     files.forEach(f => dataTransfer.items.add(f));
     return dataTransfer.files;
   }
-  //TODO CHECK IF IT IS WORKING CORRECTLY
+
   private async getFilesFromEntry(entry: FileSystemEntry | null): Promise<File[]> {
     if (!entry) {
       return [];
@@ -497,22 +496,24 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         @drop=${this.handleDrop}
         part="form-control"
       >
-        ${hasLabel
-          ? html`
-              <label
-                id="form-control-label"
-                class=${cx(
-                  'form-control__label text-base',
-                  showLabel ? 'inline-block mb-2' : 'sr-only',
-                  this.disabled ? 'text-neutral-500' : 'form-control-color-text'
-                )}
-                for="input"
-                part="form-control-label"
-              >
-                <slot name="label">${this.label}</slot>
-              </label>
-            `
-          : null}
+        ${
+          hasLabel
+            ? html`
+                <label
+                  id="form-control-label"
+                  class=${cx(
+                    'form-control__label text-base',
+                    showLabel ? 'inline-block mb-2' : 'sr-only',
+                    this.disabled ? 'text-neutral-500' : 'form-control-color-text'
+                  )}
+                  for="input"
+                  part="form-control-label"
+                >
+                  <slot name="label">${this.label}</slot>
+                </label>
+              `
+            : null
+        }
 
         <div class="form-control-input" part="form-control-input">
           ${this.droparea ? this.renderDroparea() : this.renderButton()}
@@ -551,9 +552,11 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         />
       </div>
       <div part="invalid-icon-message" class="flex items-center gap-2 mt-2">
-        ${this.showInvalidStyle
-          ? html` <sd-icon part="invalid-icon" class=${cx('text-error')} library="_internal" name="risk"></sd-icon> `
-          : ''}
+        ${
+          this.showInvalidStyle
+            ? html` <sd-icon part="invalid-icon" class=${cx('text-error')} library="_internal" name="risk"></sd-icon> `
+            : ''
+        }
         ${this.formControlController.renderInvalidMessage(this.size)}
       </div>
     `;
