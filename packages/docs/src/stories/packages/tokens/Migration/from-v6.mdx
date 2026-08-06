@@ -7,6 +7,106 @@ import '../../../../../../components/src/solid-components';
 
 The v6 release improves token stability, cleans up unused CSS variables, and introduces several fixes and refinements across different components.
 
-## Breaking change #1
+## Deprecated CSS variables (tokens)
 
-[...]
+The following CSS variables (tokens) are deprecated and were removed in this release.
+Please update your custom styles to use the recommended replacements below.
+
+If your environment still requires the use of these variables, refer to the
+**Legacy Variables Fallback** section.
+
+<table>
+  <tr>
+    <th>Deprecated variable</th>
+    <th>Replacement</th>
+  </tr>
+  <tr>
+    <td>`--sd-button--size-lg-border-radius`</td>
+    <td>`--sd-button-border-radius`</td>
+  </tr>
+  <tr>
+    <td>`--sd-button--size-md-border-radius`</td>
+    <td>`--sd-button-border-radius`</td>
+  </tr>
+  <tr>
+    <td>`--sd-button--size-sm-border-radius`</td>
+    <td>`--sd-button-border-radius`</td>
+  </tr>
+  <tr>
+    <td>`--sd-button--secondary--inverted--color-border`</td>
+    <td>`--sd-button-secondary-inverted-color-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip-font-size`</td>
+    <td>`--sd-marker-font-size`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip-border-width`</td>
+    <td>`--sd-marker-border-width`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip-font-weight`</td>
+    <td>`--sd-marker-font-weight`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag-border-width`</td>
+    <td>`--sd-marker-border-width`</td>
+  </tr>
+  <tr>
+    <td>`--sd-form-control-color-icon`</td>
+    <td>`--sd-form-control-color-icon-fill`</td>
+  </tr>
+  <tr>
+    <td>`--sd-menu-color-icon`</td>
+    <td>`--sd-menu-item-color-icon-fill`</td>
+  </tr>
+  <tr>
+    <td>`--sd-menu-color-text`</td>
+    <td>`--sd-menu-item-color-text`</td>
+  </tr>
+  <tr>
+    <td>`--sd-menu--disabled-color-icon`</td>
+    <td>`--sd-menu-item--disabled-color-icon-fill`</td>
+  </tr>
+  <tr>
+    <td>`--sd-menu--disabled-color-text`</td>
+    <td>`--sd-menu-item--disabled-color-text`</td>
+  </tr>
+  <tr>
+    <td>`--sd-tag-font-weight`</td>
+    <td>`--sd-choice-control-font-weight`</td>
+  </tr>
+  <tr>
+    <td>`--sd-tag--disabled-color-border`</td>
+    <td>`--sd-color-border-neutral-500`</td>
+  </tr>
+  <tr>
+    <td>`--sd-navigation-item--current-color-text`</td>
+    <td>`--sd-navigation-item-color-text`</td>
+  </tr>
+  <tr>
+    <td>`--sd-option--disabled-color-border`</td>
+    <td>`--sd-color-border-neutral-500`</td>
+  </tr>
+  <tr>
+    <td>`--sd-audio__timestamp-color-text`</td>
+    <td>`--sd-color-text-neutral-700`</td>
+  </tr>
+  <tr>
+    <td>`--sd-accordion__chevron-color-text`</td>
+    <td>`--sd-accordion-color-icon-fill`</td>
+  </tr>
+</table>
+
+## Legacy Variables Fallback
+
+As deprecated variables were removed, `dist/legacy-variables.css` was added as an optional fallback stylesheet for accessing removed deprecated variables.
+If you manage an environment that still requires deprecated CSS variables, you can import this stylesheet as a fallback layer instead of immediately updating all your custom styles.
+
+```js
+import '@solid-design-system/tokens/dist/legacy-variables.css';
+```
+
+## Built-in Fallbacks for Theme
+
+Fallback values are now implemented directly in the token and component styling flow, defaulting to the **ui-light** theme. This means theme installation is no longer required in setups that only use component versions **above v6** or **below v4**.

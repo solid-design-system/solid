@@ -35,5 +35,5 @@
     @apply sd-flag--white-color-background sd-flag--white-color-border;
   }
 
-  border-width: var(--sd-marker-border-width);
+  border-width: var(--sd-marker-border-width, 0);
 }

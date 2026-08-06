@@ -36,7 +36,7 @@
     @apply sd-chip--white-color-background sd-chip--white-color-border;
   }
 
-  font-size: var(--sd-marker-font-size);
-  border-width: var(--sd-marker-border-width);
-  font-weight: var(--sd-marker-font-weight);
+  font-size: var(--sd-marker-font-size, 0.875rem);
+  border-width: var(--sd-marker-border-width, 0);
+  font-weight: var(--sd-marker-font-weight, 400);
 }
