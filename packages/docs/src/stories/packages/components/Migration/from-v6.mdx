@@ -103,12 +103,8 @@ Please use `sd-loader` instead.
 
 ## Updated the `sd-dialog` footer layout
 
-The `sd-dialog` footer now always takes the full width of the dialog. It no longer pushes slotted elements to the right
-or controls their responsive layout. This allows consumers to define the alignment and responsive behavior that best
-fits their content.
-
-This affects dialogs that rely on the component to align footer actions automatically. Wrap the actions in an element
-assigned to the `footer` slot and apply the required layout styles to that element.
+`sd-dialog` no longer aligns footer actions automatically. Wrap the actions in a full-width element assigned to the
+`footer` slot and define their layout on that element.
 
 **Before**:
 
