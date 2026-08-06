@@ -1244,9 +1244,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       requestAnimationFrame(() => {
         const root = this.shadowRoot;
         const focusedBtn =
-          root?.querySelector<HTMLButtonElement>('button.day.focused:not(:disabled)') ||
-          root?.querySelector<HTMLButtonElement>('button.day[tabindex="0"]:not(:disabled)') ||
-          root?.querySelector<HTMLButtonElement>('button.day:not(:disabled)');
+          root?.querySelector<HTMLButtonElement>('button.day.focused:not([aria-disabled="true"])') ||
+          root?.querySelector<HTMLButtonElement>('button.day[tabindex="0"]:not([aria-disabled="true"])') ||
+          root?.querySelector<HTMLButtonElement>('button.day:not([aria-disabled="true"])');
 
         focusedBtn?.focus({ preventScroll: true });
       });
@@ -1951,7 +1951,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                       aria-colindex=${colIndex + 1}
                       aria-labelledby=${'col-' + (colIndex + 1)}
                       .tabIndex=${tabIndex}
-                      ?disabled=${disabled || this.disabled || this.readonly}
+                      ?disabled=${this.disabled || this.readonly}
                       aria-disabled=${
                         disabled || this.visuallyDisabled || this.disabled || this.readonly ? 'true' : 'false'
                       }
