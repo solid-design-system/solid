@@ -298,6 +298,14 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     this.input.click();
   }
 
+  private handleDropareaKeyDown(e: KeyboardEvent) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+
+    // Prevent Space from scrolling the page and activate the drop area like a native button.
+    e.preventDefault();
+    this.handleClick(e);
+  }
+
   private handleChange(e: Event) {
     e.preventDefault();
     e.stopPropagation();
@@ -311,7 +319,6 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     e.stopPropagation();
 
     if (this.disabled || this.visuallyDisabled) return;
-
     this.userIsDragging = true;
   }
 
@@ -370,9 +377,12 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     return html`
       <span
         id="file-status"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
         class=${cx(
           'input__value truncate text-sm',
-          this.hideValue && 'hidden',
+          this.hideValue && 'sr-only',
           this.disabled || this.visuallyDisabled ? 'text-neutral-500' : !hasFiles ? 'text-neutral-700' : 'text-black'
         )}
         part="value"
@@ -387,12 +397,13 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
       <div
         class=${cx('droparea', this.disabled || this.visuallyDisabled ? 'cursor-not-allowed' : 'cursor-pointer')}
         @click=${this.handleClick}
-        @keypress=${this.handleClick}
+        @keydown=${this.handleDropareaKeyDown}
         @focus=${this.handleFocus}
         @blur=${this.handleBlur}
         tabindex=${this.disabled ? -1 : 0}
         role="button"
-        aria-describedby="file-status"
+        aria-labelledby="form-control-label"
+        aria-describedby="file-status help-text invalid-message"
         part="droparea"
       >
         <div
@@ -410,7 +421,10 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         >
           <div
             part="droparea-icon"
-            class=${cx('droparea__icon inline-flex h-18', this.disabled ? 'text-neutral-500' : 'text-primary')}
+            class=${cx(
+              'droparea__icon inline-flex h-18',
+              this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary'
+            )}
           >
             <sd-icon class="w-full h-full" library="_internal" name="upload"></sd-icon>
           </div>
@@ -438,7 +452,13 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     if (this.webkitdirectory) buttonText = this.localize.term('folderButtonText');
 
     return html`
-      <div part="button-wrapper" class="button__wrapper flex flex-row items-center gap-4">
+      <div
+        part="button-wrapper"
+        class=${cx(
+          'button__wrapper flex flex-row items-center gap-4',
+          this.disabled || this.visuallyDisabled ? 'cursor-not-allowed' : 'cursor-pointer'
+        )}
+      >
         <sd-button
           class="button"
           @click=${this.handleClick}
@@ -448,7 +468,9 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
           part="button"
           size=${this.size}
           variant="secondary"
-          aria-hidden
+          aria-labelledby="form-control-label"
+          aria-describedby="file-status help-text invalid-message"
+          aria-invalid=${this.showInvalidStyle ? 'true' : 'false'}
         >
           ${buttonText}
         </sd-button>
@@ -473,27 +495,24 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         @dragleave=${this.handleDragLeave}
         @dragover=${this.handleDragOver}
         @drop=${this.handleDrop}
-        aria-label=${ifDefined(hasLabel ? this.label : undefined)}
-        aria-describedby=${ifDefined(hasHelpText ? 'help-text' : 'file-status')}
         part="form-control"
       >
-        ${
-          showLabel
-            ? html`
-                <label
-                  aria-hidden=${hasLabel ? 'false' : 'true'}
-                  class=${cx(
-                    'form-control__label inline-block mb-2 text-base',
-                    this.disabled ? 'text-neutral-500' : 'form-control-color-text'
-                  )}
-                  for="input"
-                  part="form-control-label"
-                >
-                  <slot name="label">${this.label}</slot>
-                </label>
-              `
-            : null
-        }
+        ${hasLabel
+          ? html`
+              <label
+                id="form-control-label"
+                class=${cx(
+                  'form-control__label text-base',
+                  showLabel ? 'inline-block mb-2' : 'sr-only',
+                  this.disabled ? 'text-neutral-500' : 'form-control-color-text'
+                )}
+                for="input"
+                part="form-control-label"
+              >
+                <slot name="label">${this.label}</slot>
+              </label>
+            `
+          : null}
 
         <div class="form-control-input" part="form-control-input">
           ${this.droparea ? this.renderDroparea() : this.renderButton()}
@@ -532,11 +551,9 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         />
       </div>
       <div part="invalid-icon-message" class="flex items-center gap-2 mt-2">
-        ${
-          this.showInvalidStyle
-            ? html` <sd-icon part="invalid-icon" class=${cx('text-error')} library="_internal" name="risk"></sd-icon> `
-            : ''
-        }
+        ${this.showInvalidStyle
+          ? html` <sd-icon part="invalid-icon" class=${cx('text-error')} library="_internal" name="risk"></sd-icon> `
+          : ''}
         ${this.formControlController.renderInvalidMessage(this.size)}
       </div>
     `;
@@ -549,7 +566,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
     ...SolidElement.styles,
     css`
       :host {
-        @apply block w-full;
+        @apply block w-full text-left;
       }
 
       :host([required]) .form-control__label::after {

@@ -1,15 +1,15 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
-
-const { argTypes, args, parameters } = storybookDefaults('sd-file-selector');
+import { storybookDefaults, storybookTemplate, storybookHelpers } from '../../../scripts/storybook/helper';
+const { argTypes, parameters } = storybookDefaults('sd-file-selector');
+const { overrideArgs } = storybookHelpers('sd-file-selector');
 const { generateTemplate } = storybookTemplate('sd-file-selector');
 
 export default {
   tags: ['!dev', 'autodocs'],
   title: 'Components/sd-file-selector',
   component: 'sd-file-selector',
-  args,
+  args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Select a file to upload' }]),
   argTypes,
   parameters: {
     ...parameters,
