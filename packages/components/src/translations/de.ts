@@ -43,10 +43,13 @@ const translation: Translation = {
   noResults: 'Keine Ergebnisse gefunden',
   notifications: 'Benachrichtigungen',
   numFilesSelected: (num, isDirectory) => {
-    if (num === 0) {
-      return isDirectory ? 'Kein Ordner ausgewählt' : 'Keine Datei ausgewählt';
-    }
-    return isDirectory ? `${num} Ordner ausgewählt` : `${num} Datei${num === 1 ? '' : 'en'} ausgewählt`;
+    return num === 0
+      ? isDirectory
+        ? 'Kein Ordner ausgewählt'
+        : 'Keine Datei ausgewählt'
+      : isDirectory
+        ? `${num} Ordner ausgewählt`
+        : `${num} Datei${num === 1 ? '' : 'en'} ausgewählt`;
   },
   numOptionsSelected: num => {
     if (num === 0) return '';

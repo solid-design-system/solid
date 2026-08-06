@@ -43,10 +43,13 @@ const translation: Translation = {
   noResults: 'No results found',
   notifications: 'Notifications',
   numFilesSelected: (num, isDirectory) => {
-    if (num === 0) {
-      return isDirectory ? 'No folder selected' : 'No file selected';
-    }
-    return isDirectory ? `${num} folder${num === 1 ? '' : 's'} selected` : `${num} files selected`;
+    return num === 0
+      ? isDirectory
+        ? 'No folder selected'
+        : 'No file selected'
+      : isDirectory
+        ? `${num} folder${num === 1 ? '' : 's'} selected`
+        : `${num} files selected`;
   },
   numOptionsSelected: num => {
     if (num === 0) return '';
