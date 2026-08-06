@@ -33,12 +33,12 @@ export const icons = {
       <path d="m7.6 13.3.6.8.3-.3.7-.6V18h1.3v-6H9.4zm7-1.4q-2.2 0-2.2 3.1 0 3 2.2 3c2.2 0 2.2-1 2.2-3q0-3.1-2.1-3.1m0 5.3q-1 0-1-2.3t1-2.2c1 0 1 .8 1 2.3q0 2.2-1 2.2"/>
     </svg>
   `,
-  'chevron-bottom': `
+  'chevron-down': `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M20.3 6.3 12 15.5 3.7 6.3 3 6a1 1 0 0 0-.7 1.7l9 10a1 1 0 0 0 1.4 0l9-10q.3-.3.3-.7a1 1 0 0 0-1.7-.7"/>
     </svg>
   `,
-  'chevron-top': `
+  'chevron-up': `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M12.7 6.3a1 1 0 0 0-1.4 0l-9 10-.3.7a1 1 0 0 0 1.7.7L12 8.5l8.3 9.2q.2.2.7.3a1 1 0 0 0 .7-1.7z"/>
     </svg>
@@ -53,17 +53,17 @@ export const icons = {
       <path d="M17.7 2.3a1 1 0 0 0-1.4 0l-10 9a1 1 0 0 0 0 1.4l10 9a1 1 0 0 0 1.4-1.4L8.5 12l9.2-8.3a1 1 0 0 0 0-1.4"/>
     </svg>
   `,
-  'chevron-small-right': `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+  'chevron-sm-right': `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
     <path fill="currentColor" d="M10.688 6.257a1 1 0 1 0-1.336 1.485h.002L14.528 12l-5.174 4.257a1 1 0 0 0 1.336 1.485h-.002l6-5a.997.997 0 0 0 .002-1.485l-.002-.001-6-5Z"/>
   </svg>`,
-  'chevron-small-left': `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+  'chevron-sm-left': `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
     <path fill="currentColor" d="M14.742 6.333a.997.997 0 0 0-1.41-.076l.001-.001-6 5a.997.997 0 0 0 0 1.486v.001l6 5a1 1 0 0 0 1.333-1.487l-5.173-4.257 5.173-4.257a.997.997 0 0 0 .076-1.409Z"/>
   </svg>`,
-  'chevrons-small-left': `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+  'chevrons-sm-left': `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
     <path fill="currentColor" d="M11.74 6.333a.997.997 0 0 0-1.41-.076l.001-.001-6 5a.997.997 0 0 0-.001 1.486l.001.001 6 5a1 1 0 0 0 1.333-1.487l-5.173-4.257 5.173-4.257a.997.997 0 0 0 .076-1.409Z"/>
     <path fill="currentColor" d="M18.74 6.333a.997.997 0 0 0-1.41-.076l.001-.001-6 5a.997.997 0 0 0-.001 1.486l.001.001 6 5a1 1 0 0 0 1.333-1.487l-5.173-4.257 5.173-4.257a.997.997 0 0 0 .076-1.409Z"/>
   </svg>`,
-  'chevrons-small-right': `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+  'chevrons-sm-right': `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
     <path fill="currentColor" d="M13.718 6.257a1 1 0 1 0-1.336 1.485h.002L17.557 12l-5.173 4.257a1 1 0 0 0 1.336 1.485h-.002l6-5a.997.997 0 0 0 .001-1.485l-.001-.001-6-5Z"/>
     <path fill="currentColor" d="M6.718 6.257a1 1 0 1 0-1.336 1.485h.002L10.557 12l-5.173 4.257a1 1 0 0 0 1.336 1.485h-.002l6-5a.997.997 0 0 0 .001-1.485l-.001-.001-6-5Z"/>
   </svg>`,
@@ -78,13 +78,13 @@ export const icons = {
       <path d="M21.7 2.3a1 1 0 0 0-1.4 0L12 10.6 3.7 2.3a1 1 0 0 0-1.4 1.4l8.3 8.3-8.3 8.3a1 1 0 0 0 0 1.4 1 1 0 0 0 1.4 0l8.3-8.3 8.3 8.3a1 1 0 0 0 1.4 0 1 1 0 0 0 0-1.4L13.4 12l8.3-8.3a1 1 0 0 0 0-1.4"/>
     </svg>
   `,
-  'close-circle': `
+  'closing-round': `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20m0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16"/>
       <path d="M16.4 7.6a1 1 0 0 0-1.4 0l-3 3-3-3A1 1 0 0 0 7.6 9l3 3-3 3A1 1 0 0 0 9 16.4l3-3 3 3a1 1 0 0 0 1.4-1.4l-3-3 3-3a1 1 0 0 0 0-1.4"/>
     </svg>
   `,
-  'eye-open': `
+  eye: `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M12 19c-5.3 0-10-5.7-10-7s4.7-7 10-7 10 5.7 10 7-4.7 7-10 7m-7.9-7c.8 1.2 4 5 7.9 5s7.1-3.8 7.9-5c-.8-1.2-4-5-7.9-5s-7.1 3.8-7.9 5"/>
       <path d="M12 16.1A4 4 0 0 1 7.9 12 4 4 0 0 1 12 7.9a4 4 0 0 1 4.1 4.1 4 4 0 0 1-4.1 4.1m0-6.2a2.1 2.1 0 1 0 0 4.2 2.1 2.1 0 0 0 0-4.2"/>
@@ -131,13 +131,13 @@ export const icons = {
       <path d="M36 6a30 30 0 1 0 30 30A30 30 0 0 0 36 6Zm0 54a24 24 0 1 1 24-24 24 24 0 0 1-24 24Z"/>
     </svg>
   `,
-  warning: `
+  risk: `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M12.9 2.6a1 1 0 0 0-1.8 0l-9 18A1 1 0 0 0 3 22h18a1 1 0 0 0 .9-1.5zM4.6 20 12 5.2 19.4 20z"/>
       <path d="M11 10.7V15a1 1 0 0 0 2 0v-4.3a1 1 0 0 0-2 0m2 7.3a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
     </svg>
   `,
-  play: `
+  start: `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
       <path d="m57.4 29.8-37.3-24A2.7 2.7 0 0 0 16 8v48a2.7 2.7 0 0 0 2.7 2.7 3 3 0 0 0 1.4-.5l37.3-24a3 3 0 0 0 1.2-2.2q0-1.4-1.2-2.2M21.4 51V13L51 32z"/>
     </svg>
@@ -146,6 +146,12 @@ export const icons = {
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20m0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16"/>
       <path d="M15.8 7.5a1 1 0 0 0-1.4.3L10.9 14 9 12.3a1 1 0 0 0-1.6.7q0 .4.2.7l2.7 2.7q.3.2.7.3h.1q.5-.1.8-.5l4.3-7.4.1-.5a1 1 0 0 0-.5-.8"/>
+    </svg>
+  `,
+  warning: `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12.9 2.6a1 1 0 0 0-1.8 0l-9 18-.1.4q0 1 1 1h18a1 1 0 0 0 .9-1.5zM4.6 20 12 5.2 19.4 20z"/>
+      <path d="M11 10.7V15a1 1 0 0 0 2 0v-4.3a1 1 0 0 0-2 0m2 7.3a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
     </svg>
   `,
   'exclamation-circle': `
@@ -190,16 +196,16 @@ const internalLibrary: IconLibrary = {
       ? window.getComputedStyle(element).getPropertyValue(`--sd-icon--${name}`).trim()
       : null;
 
-    // If the icon is defined as a CSS variable, we return its data URI.
+    // If defined as a CSS variable
     if (cssVariableIcon) return toDataUri(cssVariableIcon);
 
-    // If the icon is not defined as a CSS variable, we check if the element has a theme and return the corresponding themed icon URL.
+    // If not a CSS variable, checks if its themed
     const theme = getTheme(element);
     if (theme && !name.includes('status') && !name.includes('content')) {
-      return `https://celum-icons.fe.union-investment.de/${theme}/system/${name}.svg`;
+      return `https://celum-icons.fe.union-investment.de/internal/${theme}/${name}.svg`;
     }
 
-    // If the icon is not defined as a CSS variable and the element has no theme, we check if the icon is defined in the internal library and return its data URI.
+    // Uses internal library
     if (name in icons) return toDataUri(icons[name]);
 
     return '';
