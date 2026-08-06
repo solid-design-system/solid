@@ -66,7 +66,19 @@ export const Default = {
 export const Open = {
   name: 'Open',
   render: () => html`
-    <div class="h-[40vh]">
+    <style>
+      .dialog-example {
+        container-type: inline-size;
+      }
+
+      @container (max-width: 414px) {
+        .dialog-example .dialog-footer {
+          justify-content: flex-start;
+        }
+      }
+    </style>
+
+    <div class="dialog-example h-[40vh]">
       <sd-button id="drawer-trigger">Open dialog</sd-button>
       <sd-dialog id="dialog" open>
         <span slot="headline" class="sd-headline sd-headline--size-3xl">Lorem ipsum</span>
@@ -74,7 +86,9 @@ export const Open = {
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
         </p>
-        <sd-button slot="footer">Button</sd-button>
+        <div slot="footer" class="dialog-footer flex w-full justify-end">
+          <sd-button>Button</sd-button>
+        </div>
       </sd-dialog>
     </div>
     <script type="module">
@@ -95,14 +109,28 @@ export const Open = {
 export const Headline = {
   name: 'Headline',
   render: () => html`
-    <div class="h-[40vh]">
+    <style>
+      .dialog-example {
+        container-type: inline-size;
+      }
+
+      @container (max-width: 414px) {
+        .dialog-example .dialog-footer {
+          justify-content: flex-start;
+        }
+      }
+    </style>
+
+    <div class="dialog-example h-[40vh]">
       <sd-button id="headline-drawer-trigger">Open dialog</sd-button>
       <sd-dialog id="headline-dialog" open headline="Headline">
         <p class="sd-paragraph">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
         </p>
-        <sd-button slot="footer">Button</sd-button>
+        <div slot="footer" class="dialog-footer flex w-full justify-end">
+          <sd-button>Button</sd-button>
+        </div>
       </sd-dialog>
     </div>
     <script type="module">
@@ -125,14 +153,28 @@ export const Headline = {
 export const NoCloseButton = {
   name: 'No close button',
   render: () => html`
-    <div class="h-[40vh]">
+    <style>
+      .dialog-example {
+        container-type: inline-size;
+      }
+
+      @container (max-width: 414px) {
+        .dialog-example .dialog-footer {
+          justify-content: flex-start;
+        }
+      }
+    </style>
+
+    <div class="dialog-example h-[40vh]">
       <sd-button id="no-close-drawer-trigger">Open dialog</sd-button>
       <sd-dialog id="no-close-dialog" headline="Headline" open no-close-button>
         <p class="sd-paragraph">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
         </p>
-        <sd-button class="close-button" slot="footer" variant="primary">Button</sd-button>
+        <div slot="footer" class="dialog-footer flex w-full justify-end">
+          <sd-button class="close-button" variant="primary">Button</sd-button>
+        </div>
       </sd-dialog>
     </div>
 
