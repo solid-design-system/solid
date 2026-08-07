@@ -30,6 +30,7 @@ export default {
  */
 export const Default = {
   name: 'Dialog with Button Group',
+  parameters: { docs: { story: { inline: false, height: '500px' } } },
   render: () => html`
     <sd-button id="drawer-trigger">Open Dialog</sd-button>
     <sd-dialog id="dialog" open>
@@ -60,6 +61,7 @@ export const Default = {
 
 export const Scrollable = {
   name: 'Dialog with scrollable content',
+  parameters: { docs: { story: { inline: false, height: '700px' } } },
   render: () => html`
     <style>
       sd-button::part(icon-left) {

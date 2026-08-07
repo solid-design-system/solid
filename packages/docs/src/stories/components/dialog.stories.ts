@@ -19,11 +19,6 @@ export default {
   tags: ['!dev', 'autodocs'],
   args: overrideArgs([
     {
-      type: 'attribute',
-      name: 'open',
-      value: true
-    },
-    {
       type: 'slot',
       name: 'default',
       value: `<div class="slot slot--border slot--text h-16 w-full">Default slot</div>`
@@ -51,11 +46,17 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html` <div style="height: 40vh;">
+    return html`
+      <sd-button id="open-default-dialog">Open Dialog</sd-button>
       ${generateTemplate({
         args
       })}
-    </div>`;
+      <script>
+        document.querySelector('#open-default-dialog').addEventListener('click', () => {
+          document.querySelector('sd-dialog').show();
+        });
+      </script>
+    `;
   }
 };
 
@@ -65,6 +66,7 @@ export const Default = {
 
 export const Open = {
   name: 'Open',
+  parameters: { docs: { story: { inline: false, height: '500px' } } },
   render: () => html`
     <style>
       .dialog-example {
@@ -108,6 +110,7 @@ export const Open = {
 
 export const Headline = {
   name: 'Headline',
+  parameters: { docs: { story: { inline: false, height: '500px' } } },
   render: () => html`
     <style>
       .dialog-example {
@@ -152,6 +155,7 @@ export const Headline = {
 
 export const NoCloseButton = {
   name: 'No close button',
+  parameters: { docs: { story: { inline: false, height: '500px' } } },
   render: () => html`
     <style>
       .dialog-example {
