@@ -30,6 +30,7 @@ export default {
  */
 export const Default = {
   name: 'Dialog with Button Group',
+  parameters: { docs: { story: { inline: false, height: '500px' } } },
   render: () => html`
     <!-- TODO: remove once this bugfix is addressed: https://github.com/solid-design-system/solid/issues/1325 -->
     <style>
@@ -70,6 +71,7 @@ export const Default = {
 
 export const Scrollable = {
   name: 'Dialog with scrollable content',
+  parameters: { docs: { story: { inline: false, height: '700px' } } },
   render: () => html`
     <style>
       sd-button::part(icon-left) {
