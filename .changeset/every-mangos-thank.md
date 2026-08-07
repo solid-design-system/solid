@@ -3,4 +3,4 @@
 '@solid-design-system/docs': patch
 ---
 
-Updated `sd-dialog` with a full-width footer and removed automatic right alignment.
+Updated `sd-dialog` so its footer spans the full dialog width at all viewport sizes.
