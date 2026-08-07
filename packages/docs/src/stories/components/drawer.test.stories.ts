@@ -31,7 +31,6 @@ export default {
       value: `<div slot='footer' class="slot slot--border slot--text h-12">Footer slot</div>`
     },
     { type: 'attribute', name: 'open', value: true },
-    { type: 'attribute', name: 'contained', value: true },
     { type: 'attribute', name: 'label', value: 'Label' }
   ]),
   argTypes,
@@ -44,6 +43,16 @@ export default {
           {
             id: 'landmark-unique',
             selector: '.padding-template',
+            enabled: false
+          },
+          // Padding/Placement/Parts render several <sd-drawer open> instances side by side for screenshots, so
+          // duplicate banner/contentinfo landmarks are expected here and not representative of real-world usage.
+          {
+            id: 'landmark-no-duplicate-banner',
+            enabled: false
+          },
+          {
+            id: 'landmark-no-duplicate-contentinfo',
             enabled: false
           }
         ]

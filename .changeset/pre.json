@@ -13,6 +13,7 @@
     "@solid-design-system/versioning": "1.0.2"
   },
   "changesets": [
+    "bumpy-snails-eat",
     "chilly-teams-roll",
     "cold-banks-sort",
     "cold-sails-chew",
@@ -23,6 +24,7 @@
     "honest-balloons-wait",
     "lazy-melons-drum",
     "little-beers-melt",
+    "native-dialog-refactor",
     "silly-otters-hunt",
     "tame-goats-invite",
     "three-clouds-swim",
