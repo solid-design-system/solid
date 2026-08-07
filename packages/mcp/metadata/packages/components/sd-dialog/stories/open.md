@@ -8,11 +8,6 @@
   tags: ['!dev', 'autodocs'],
   args: overrideArgs([
   {
-  type: 'attribute',
-  name: 'open',
-  value: true
-  },
-  {
   type: 'slot',
   name: 'default',
   value: `<div class="slot slot--border slot--text h-16 w-full">Default slot</div>`
@@ -39,12 +34,19 @@
   };
   export const Default = {
   render: (args: any) => {
-  return html` <div style="height: 40vh;">
+  return html`
+  <sd-button id="open-default-dialog">Open Dialog</sd-button>
   ${generateTemplate({
   args
   })}
 
-</div>`;
+<script>
+document.querySelector('#open-default-dialog').addEventListener('click', () => {
+document.querySelector('sd-dialog').show();
+});
+</script>
+
+`;
 }
 };
 /**
