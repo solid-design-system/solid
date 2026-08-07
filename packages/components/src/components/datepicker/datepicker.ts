@@ -1228,13 +1228,13 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     this.requestUpdate();
     requestAnimationFrame(() => {
       const root = this.shadowRoot;
-      const focusedBtn =
+      const selectedBtn =
         root?.querySelector<HTMLButtonElement>('button.day.focused') ||
         root?.querySelector<HTMLButtonElement>('button.day[tabindex="0"]') ||
         root?.querySelector<HTMLButtonElement>('button.day.selected') ||
         root?.querySelector<HTMLButtonElement>('button.day');
 
-      focusedBtn?.focus({ preventScroll: true });
+      selectedBtn?.focus({ preventScroll: true });
     });
   }
 
