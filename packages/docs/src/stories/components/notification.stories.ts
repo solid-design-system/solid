@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import '../../../../components/src/solid-components';
 import { html } from 'lit';
-import docsCodepenEnhancer from '../../../scripts/storybook/docs-codepen-enhancer';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-notification');
@@ -43,10 +42,6 @@ export default {
   decorators: [
     (story: () => typeof html) => html`
       <style>
-        .innerZoomElementWrapper > div:has(> [id^='story--components-sd-notification--']) {
-          display: contents !important;
-        }
-
         td.template {
           width: 100%;
         }
@@ -125,23 +120,16 @@ export const Closable = {
 export const Duration = {
   name: 'Duration',
   tags: ['skip-playwright'],
-  parameters: {
-    docs: {
-      source: {
-        transform: docsCodepenEnhancer
-      }
-    }
-  },
   render: () => html`
-    <style>
-      #duration-example::part(base) {
-        margin-top: 0.5rem;
-      }
-    </style>
     <sd-notification variant="info" open duration="Infinity">Notification will stay open (Infinity)</sd-notification>
     <sd-notification id="duration-example" variant="info" open duration="5000">
       Notification will self close after 5 seconds
     </sd-notification>
+    <style>
+      sd-notification#duration-example::part(base) {
+        margin-top: 0.5rem;
+      }
+    </style>
     <script>
       var notificationDuration = document.querySelector('#duration-example');
       notificationDuration.addEventListener('sd-after-hide', () => {

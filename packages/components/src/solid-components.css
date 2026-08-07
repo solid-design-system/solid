@@ -22,11 +22,11 @@
   }
 
   sd-notification::part(base) {
-    @apply m-0;
+    @apply m-2;
   }
 
   sd-notification::part(wrapper) {
-    @apply m-2 shadow;
+    @apply shadow;
   }
 
   sd-notification::part(content) {

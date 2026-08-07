@@ -108,3 +108,27 @@ Please use `sd-loader` instead.
 ```html
 <sd-loader></sd-loader>
 ```
+
+## Removed the default margin from inline `sd-notification`
+
+Inline `sd-notification` components no longer have a default margin applied. If your inline notifications relied on the previous spacing, add it manually via the `base` CSS part.
+
+**Before**:
+
+```html
+<sd-notification open>Notification message</sd-notification>
+```
+
+The component applied its own margin.
+
+**After**:
+
+```html
+<sd-notification class="my-notification" open>Notification message</sd-notification>
+
+<style>
+  .my-notification::part(base) {
+    @apply m-2;
+  }
+</style>
+```
