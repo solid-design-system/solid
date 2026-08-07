@@ -111,7 +111,7 @@ Please use `sd-loader` instead.
 
 ## Removed the default margin from inline `sd-notification`
 
-Inline `sd-notification` components no longer have a default margin applied. If your inline notifications relied on the previous spacing, add it manually via the `base` CSS part.
+Inline `sd-notification` components no longer include the default `0.5rem` margin. Toast notifications displayed through `.sd-toast-stack` retain their existing spacing. If your inline notifications relied on the previous spacing, add it manually via the `base` CSS part.
 
 **Before**:
 
@@ -128,7 +128,7 @@ The component applied its own margin.
 
 <style>
   .my-notification::part(base) {
-    @apply m-2;
+    margin: 0.5rem;
   }
 </style>
 ```
