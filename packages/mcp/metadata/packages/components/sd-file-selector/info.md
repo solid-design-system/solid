@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-file-selector>` — Used to select a file by clicking or dragging a file into a drop-area.
+`<sd-file-selector>` — Used to select a file by clicking or by dragging a file into a drop-area.
 
 ## API
 
