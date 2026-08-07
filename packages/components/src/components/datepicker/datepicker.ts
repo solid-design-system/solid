@@ -1191,7 +1191,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     if (this.range) {
       const rs = this.rangeStart ? DateUtils.parseLocalISO(this.rangeStart) : null;
       const re = this.rangeEnd ? DateUtils.parseLocalISO(this.rangeEnd) : null;
-
       if (rs) target = DateUtils.startOfDayLocal(rs);
       else if (re) target = DateUtils.startOfDayLocal(re);
     }
