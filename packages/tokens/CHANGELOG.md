@@ -1,8 +1,14 @@
 # @solid-design-system/tokens
 
+## 7.0.0-next.4
+
 ## 7.0.0-next.3
 
 ## 7.0.0-next.2
+
+## 6.29.0
+
+## 6.28.2
 
 ### Patch Changes
 
