@@ -201,8 +201,8 @@ const internalLibrary: IconLibrary = {
 
     // If not a CSS variable, checks if its themed
     const theme = getTheme(element);
-    if (theme && !name.includes('status') && !name.includes('content')) {
-      return `https://celum-icons.fe.union-investment.de/internal/${theme}/${name}.svg`;
+    if (theme) {
+      return `https://celum-icons.fe.union-investment.de/${theme}/sd-internal/${name}.svg`;
     }
 
     // Uses internal library
