@@ -19,7 +19,6 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.label: string, default='' — You should always include a relevant label even when using
   `no-header`, as it is required for proper accessibility.
 - prop.placement: 'end'|'start', default='end' — The direction from which the drawer will open.
-- prop.contained: boolean, default=false — By default, the drawer slides out of its containing block (the viewport). Contained is a hidden feature used only for testing purposes. Please do not use it in production as it will likely change.
 - prop.noHeader [attr: no-header]: boolean, default=false — Removes the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the drawer.
 - prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
 - prop.lang: string — The element's language.
@@ -42,13 +41,13 @@ Use the components tool by passing the args `component` and `example` for any of
 ### CSS Parts
 
 - part.base: The component's base wrapper.
-- part.overlay: The overlay that covers the screen behind the drawer.
 - part.panel: The drawer's panel (where the drawer and its content are rendered).
 - part.header: The drawer's header. This element wraps the title and the close-button.
 - part.title: The drawer's title.
 - part.close-button: The close button, an `<sd-button>`.
 - part.body: The drawer's body.
 - part.footer: The drawer's footer.
+- part.overlay: The overlay that covers the screen behind the drawer.
 
 ## Guidelines
 

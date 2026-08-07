@@ -2,7 +2,7 @@ Use the `meta` slot to add additional content to the teaser.
 
 ```html
 <sd-teaser>
-  <h3 slot="headline" class="sd-headline sd-headline--size-lg">Lorem ipsum sic semper</h3>
+  <h3 slot="headline">Lorem ipsum sic semper</h3>
   <div slot="meta">
     <time class="sd-meta sd-meta--pipe" datetime="2023-01-01">01.01.2023</time>
     <span class="sd-meta">Author name</span>
