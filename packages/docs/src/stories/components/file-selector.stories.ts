@@ -107,7 +107,7 @@ export const VisuallyDisabled = {
 };
 
 /**
- * Use the `help-text`attribute to provide additional context or instructions as:
+ * Use the `help-text` attribute to provide additional context or instructions as:
  *
  * - file size restrictions
  * - file format requirements

@@ -56,7 +56,7 @@ Use the \`drop-area\` attribute when file selector is the primary action on the 
 #### Error Handling
 
 - Use error-text to surface validation errors: below the component (default variant) or next to each individual file selector when the "show selected files" attribute is active (drop-area variant).
-- Write error text in plain language with clear solution (e.g., "The file is too large. Maximum allowed size is 5 MB.").
+- Write error text in plain language with a clear solution (e.g., "The file is too large. Maximum allowed size is 5 MB.").
 
 #### Per-error-type copy guidance
 
@@ -72,9 +72,9 @@ Add other guidelines here.
 
 - The drop-area must be fully keyboard-accessible (Enter or Space to trigger).
 - Announce selected files to assistive technologies after selection.
-- Use visually-disabled to keep disabled elements focusable and tooltip-accessible.
-- Associate error text via aria-described by so they are announced on focus.
-- Use the "visually disabled" attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
+- Use \`visually-disabled\` to keep disabled elements focusable and tooltip-accessible.
+- Associate error text via \`aria-describedby\` by so they are announced on focus.
+- Use the \`visually-disabled\` attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
 - A label must always be provided, even when it is visually hidden. The label is used to provide an accessible name for the file selector, ensuring that screen reader users can identify the purpose of the control.
 
 Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=38262-58412&t=1qhfYXrbNhSCYCzZ-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;

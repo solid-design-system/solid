@@ -136,7 +136,6 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
   /** Shows success styles if the validity of the input is valid. */
   @property({ type: Boolean, reflect: true, attribute: 'style-on-valid' }) styleOnValid = false;
 
-  //TODO CHECK THIS
   /**
    * Specifies which camera to use for capture of image or video data. Works only when not using a droparea.
    */
@@ -167,8 +166,6 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
   @query('.input__control') input: HTMLInputElement;
   @query('.button') button: SdButton;
   @query('.droparea') dropareaWrapper: HTMLDivElement;
-  @query('.droparea__icon') dropareaIcon: HTMLSpanElement;
-  @query('.input__value') inputChosen: HTMLSpanElement;
   @query('#invalid-message') invalidMessage: HTMLDivElement;
 
   /** Gets the validity state object. */
@@ -363,14 +360,14 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
 
   private renderValue() {
     let hasFiles = false;
-    let fileChosenLabel = this.localize.term('numFilesSelected', 0, this.webkitdirectory);
+    let fileChosenLabel = this.localize.term('numFilesSelected', 0, this.webkitdirectory, this.multiple);
 
     if (this.files && this.files.length > 0) {
       hasFiles = true;
       fileChosenLabel =
         this.files.length === 1
           ? this.files[0].name
-          : this.localize.term('numFilesSelected', this.files.length, this.webkitdirectory);
+          : this.localize.term('numFilesSelected', this.files.length, this.webkitdirectory, this.multiple);
     }
 
     return html`
@@ -455,7 +452,7 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         part="button-wrapper"
         class=${cx(
           'button__wrapper flex flex-row items-center gap-4',
-          this.disabled || this.visuallyDisabled ? 'cursor-not-allowed' : 'cursor-pointer'
+          this.disabled || this.visuallyDisabled ? 'cursor-not-allowed' : 'cursor-default'
         )}
       >
         <sd-button

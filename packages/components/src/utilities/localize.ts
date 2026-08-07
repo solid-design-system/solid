@@ -108,7 +108,7 @@ export interface Translation extends DefaultTranslation {
   nextYear: string;
   noResults: string;
   notifications: string;
-  numFilesSelected: (num: number, isDirectory: boolean) => string;
+  numFilesSelected: (num: number, isDirectory: boolean, isMultiple: boolean) => string;
   numOptionsSelected: (num: number) => string;
   open: string;
   openTranscript: string;

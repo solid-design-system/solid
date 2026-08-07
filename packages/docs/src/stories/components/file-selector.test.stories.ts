@@ -35,7 +35,7 @@ export default {
       }
     }
   },
-  args: overrideArgs([{ type: 'attribute', name: 'label', value: 'sd-file-selector default variant' }]),
+  args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
   argTypes
 };
 

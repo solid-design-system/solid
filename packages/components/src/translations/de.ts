@@ -42,11 +42,15 @@ const translation: Translation = {
   nextYear: 'Nächstes Jahr',
   noResults: 'Keine Ergebnisse gefunden',
   notifications: 'Benachrichtigungen',
-  numFilesSelected: (num, isDirectory) => {
+  numFilesSelected: (num, isDirectory, isMultiple) => {
     return num === 0
       ? isDirectory
-        ? 'Kein Ordner ausgewählt'
-        : 'Keine Datei ausgewählt'
+        ? isMultiple
+          ? 'Keine Ordner ausgewählt'
+          : 'Kein Ordner ausgewählt'
+        : isMultiple
+          ? 'Keine Dateien ausgewählt'
+          : 'Keine Datei ausgewählt'
       : isDirectory
         ? `${num} Ordner ausgewählt`
         : `${num} Datei${num === 1 ? '' : 'en'} ausgewählt`;
