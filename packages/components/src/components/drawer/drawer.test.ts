@@ -187,6 +187,9 @@ describe('<sd-drawer>', () => {
 
     // wait until dialog is closed
     await waitUntil(() => !el.open);
+    // The native <dialog> restores focus to the previously focused element asynchronously, so wait for it instead of
+    // asserting immediately (this can otherwise cause WebKit to hang when running under automation).
+    await waitUntil(() => document.activeElement === trigger);
     expect(document.activeElement).to.equal(trigger);
   });
 
@@ -229,6 +232,9 @@ describe('<sd-drawer>', () => {
 
     // wait until dialog is closed
     await waitUntil(() => !el.open);
+    // The native <dialog> restores focus to the previously focused element asynchronously, so wait for it instead of
+    // asserting immediately (this can otherwise cause WebKit to hang when running under automation).
+    await waitUntil(() => testElement.shadowRoot!.activeElement === trigger);
     const activeElementInsideTestElement = testElement.shadowRoot!.activeElement;
     expect(activeElementInsideTestElement).to.equal(trigger);
   });
