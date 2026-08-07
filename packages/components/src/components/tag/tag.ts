@@ -153,8 +153,8 @@ export default class SdTag extends SolidElement {
           'flex border box-border sd-tag-border-radius items-center leading-none whitespace-nowrap transition-colors duration-fast ease-in-out focus-visible:focus-outline',
           {
             /* sizes, fonts */
-            lg: 'h-8 sd-choice-control-font-weight sd-tag--size-lg-font-size gap-2',
-            sm: 'h-6 sd-choice-control-font-weight sd-tag--size-sm-font-size gap-1'
+            lg: 'h-8 choice-control-font-weight sd-tag--size-lg-font-size gap-2',
+            sm: 'h-6 choice-control-font-weight sd-tag--size-sm-font-size gap-1'
           }[this.size],
           {
             /* padding */
