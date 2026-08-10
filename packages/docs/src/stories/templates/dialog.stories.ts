@@ -30,7 +30,7 @@ export default {
  */
 export const Default = {
   name: 'Dialog with Button Group',
-  parameters: { docs: { story: { inline: false, height: '500px' } } },
+  parameters: { docs: { story: { inline: false, height: '750px' } } },
   render: () => html`
     <sd-button id="drawer-trigger">Open Dialog</sd-button>
     <sd-dialog id="dialog" open>
@@ -202,6 +202,7 @@ export const Scrollable = {
  */
 export const PreventClosing = {
   name: 'Prevent Closing',
+  parameters: { docs: { story: { inline: false, height: '750px' } } },
   render: () => {
     return html`
       <div style="height: 40vh;">
