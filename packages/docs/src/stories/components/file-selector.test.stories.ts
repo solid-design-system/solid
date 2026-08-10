@@ -249,10 +249,7 @@ export const Parts = {
             'form-control-help-text',
             'button-wrapper',
             'button',
-            'value',
-            'invalid-icon-message',
-            'invalid-icon',
-            'invalid-message'
+            'value'
           ].map(part => ({
             title: part,
             value: `
