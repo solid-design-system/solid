@@ -154,7 +154,7 @@ export const Required = {
 };
 
 /**
- * The component gets an `invalid` state either when the form is not valid (default variant) or when selected files don't meet the required restrictions (drop-area variant).
+ * The component gets an `invalid` state either when the form is not valid or when selected files don't meet the required restrictions.
  */
 export const Invalid = {
   render: () =>
