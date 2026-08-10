@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-file-selector>` — Used to select a file by clicking or by dragging a file into a drop-area.
+`<sd-file-selector>` — Used to select a file by clicking or dragging a file into a drop-area.
 
 ## API
 
@@ -95,7 +95,7 @@ Use the components tool by passing the args `component` and `example` for any of
 
 #### Default
 
-Use the `default` attribute when the select action is secondary to other form fields, or when space is limited.
+Use the `default` variant when the select action is secondary to other form fields, or when space is limited.
 
 - Inline file selector in dense or compact forms.
 - Single-file selection where minimal visual weight is needed.
@@ -103,7 +103,7 @@ Use the `default` attribute when the select action is secondary to other form fi
 
 #### Drop Area
 
-Use the `drop-area` attribute when file selector is the primary action on the page or step.
+Use the `drop-area` variant when file selector is the primary action on the page or step.
 
 - Dedicated selector steps in multi-step flows.
 - Scenarios where drag-and-drop is a likely or preferred interaction.
@@ -122,23 +122,19 @@ Use the `drop-area` attribute when file selector is the primary action on the pa
 ### Error Handling
 
 - Use error-text to surface validation errors: below the component (default variant) or next to each individual file selector when the "show selected files" attribute is active (drop-area variant).
-- Write error text in plain language with clear solution (e.g., "The file is too large. Maximum allowed size is 5 MB.").
+- Write error text in plain language with a clear solution (e.g., "The file is too large. Maximum allowed size is 5 MB.").
 
 ### Per-error-type copy guidance
 
-- Provide distinct error messages for each failure scenario rather than a generic fallback — for example: wrong file type, file too large, empty file, too many files, or selection failure. See the GOV.UK Design System for a comprehensive reference on error message patterns.
+- Provide distinct error messages for each failure scenario rather than a generic fallback — for example: wrong file type, file too large, empty file, too many files, or selection failure.
 
 ### Background
 
 - Use light background options such as white, neutral-100, or primary-100.
 
-Add other guidelines here.
-
 ### Accessibility
 
-- The drop-area must be fully keyboard-accessible (Enter or Space to trigger).
-- Announce selected files to assistive technologies after selection.
-- Use visually-disabled to keep disabled elements focusable and tooltip-accessible.
-- Associate error text via aria-described by so they are announced on focus.
-- Use the "visually disabled" attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
+- Use `visually-disabled` to keep disabled elements focusable and tooltip-accessible.
+- Associate error text via `aria-describedby` so they are announced on focus.
+- Use the `visually-disabled` attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
 - A label must always be provided, even when it is visually hidden. The label is used to provide an accessible name for the file selector, ensuring that screen reader users can identify the purpose of the control.
