@@ -40,7 +40,7 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return html` <div style="height: 40vh;">
+    return html` <div class="[&_[slot=footer]]:!ml-auto [&_[slot=footer]]:!w-auto" style="height: 40vh;">
       ${generateTemplate({
         args
       })}
@@ -51,7 +51,7 @@ export const Default = {
 export const NoCloseButton = {
   name: 'No Close Button',
   render: (args: any) => {
-    return html` <div style="height: 40vh;">
+    return html` <div class="[&_[slot=footer]]:!ml-auto [&_[slot=footer]]:!w-auto" style="height: 40vh;">
       ${generateTemplate({
         args,
         constants: [
@@ -80,7 +80,7 @@ export const NoCloseButton = {
 export const Scrolling = {
   name: 'Scrolling',
   render: (args: any) => {
-    return html` <div style="height: 100vh;">
+    return html` <div class="[&_[slot=footer]]:!ml-auto [&_[slot=footer]]:!w-auto" style="height: 100vh;">
       ${generateTemplate({
         args,
         constants: [
@@ -106,9 +106,9 @@ export const ExtendedFooter = {
             phasellus dui vel id. Velit in sed.
           </p>
           <span slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</span>
-          <div slot="footer" class="flex flex-col sm:flex-row w-full gap-4">
-            <sd-button variant="secondary" class="w-full">Button</sd-button>
-            <sd-button class="w-full">Button</sd-button>
+          <div slot="footer" class="flex w-full flex-row justify-end gap-4">
+            <sd-button variant="secondary" class="w-20">Button</sd-button>
+            <sd-button class="w-20">Button</sd-button>
           </div>
         </sd-dialog>
       </div>
@@ -127,7 +127,9 @@ export const SmallHeadline = {
             phasellus dui vel id. Velit in sed.
           </p>
           <span slot="headline" class="font-bold">Lorem Ipsum</span>
-          <sd-button slot="footer" class="w-full">Button</sd-button>
+          <div slot="footer" class="flex w-full flex-row justify-end gap-4">
+            <sd-button class="w-20">Button</sd-button>
+          </div>
         </sd-dialog>
       </div>
     `;
@@ -137,7 +139,11 @@ export const SmallHeadline = {
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
-    return html`<div class="mouseless" style="height: 40vh;">${generateTemplate({ args })}</div>`;
+    return html`
+      <div class="mouseless [&_[slot=footer]]:!ml-auto [&_[slot=footer]]:!w-auto" style="height: 40vh;">
+        ${generateTemplate({ args })}
+      </div>
+    `;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
