@@ -404,16 +404,19 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         <div
           part="droparea-background"
           class=${cx(
-            'droparea__background w-full flex flex-row items-center gap-4 p-6 form-control-border-radius border border-dotted transition-colors ease-in-out duration-medium',
+            'droparea__background relative w-full flex flex-row items-center gap-4 p-6 form-control-border-radius transition-colors ease-in-out duration-medium',
             this.disabled || this.visuallyDisabled
-              ? 'border-neutral-500 bg-neutral-100'
+              ? 'droparea__background--disabled bg-neutral-100'
               : this.showInvalidStyle
-                ? 'border-error'
+                ? 'droparea__background--invalid'
                 : this.userIsDragging
                   ? 'bg-primary-100'
-                  : 'form-control-color-border hover:bg-neutral-200'
+                  : 'hover:bg-neutral-200'
           )}
         >
+          <svg class="droparea__border" aria-hidden="true" preserveAspectRatio="none">
+            <rect class="droparea__border-rect" x="0.5" y="0.5" width="calc(100% - 1px)" height="calc(100% - 1px)" />
+          </svg>
           <div
             part="droparea-icon"
             class=${cx(
@@ -581,6 +584,42 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
         clip: rect(0, 0, 0, 0);
         white-space: nowrap;
         border: 0;
+      }
+
+      .droparea__background {
+        --sd-droparea-border-color: rgba(var(--sd-form-control-color-border, rgba(var(--sd-color-neutral-800))));
+      }
+
+      .droparea__background--disabled {
+        --sd-droparea-border-color: rgba(var(--sd-color-neutral-500));
+      }
+
+      .droparea__background--invalid {
+        --sd-droparea-border-color: rgba(var(--sd-color-error));
+      }
+
+      .droparea__border {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        pointer-events: none;
+      }
+
+      .droparea__border-rect {
+        fill: none;
+        stroke: var(--sd-droparea-border-color);
+        stroke-width: 2px;
+
+        /* A zero-length dash with round linecap renders as a 1px dot; the 5px cycle = 1px dot + 4px gap. */
+        stroke-dasharray: 0 8px;
+        stroke-linecap: square;
+
+        rx: var(--sd-form-control-border-radius, var(--sd-spacing-1));
+        ry: var(--sd-form-control-border-radius, var(--sd-spacing-1));
+
+        vector-effect: non-scaling-stroke;
       }
     `
   ];
