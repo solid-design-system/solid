@@ -4,4 +4,4 @@
 '@solid-design-system/mcp': minor
 ---
 
-Add `sd-file-selector`.
+Add `sd-file-selector` component.

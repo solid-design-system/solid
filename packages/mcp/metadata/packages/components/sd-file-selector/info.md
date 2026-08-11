@@ -74,7 +74,6 @@ Use the components tool by passing the args `component` and `example` for any of
 - part.form-control-help-text: The help text's wrapper.
 - part.button-wrapper: The wrapper around the button and text value.
 - part.button: The sd-button acting as a file input trigger.
-- part.button__base: The sd-button's exported `base` part.
 - part.value: The chosen files or placeholder text for the file input.
 - part.droparea: The element wrapping the drop zone.
 - part.droparea-background: The background of the drop zone.

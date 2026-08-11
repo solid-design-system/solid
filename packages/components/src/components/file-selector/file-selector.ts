@@ -38,7 +38,6 @@ import type SdButton from '../button/button';
  * @csspart form-control-help-text - The help text's wrapper.
  * @csspart button-wrapper - The wrapper around the button and text value.
  * @csspart button - The sd-button acting as a file input trigger.
- * @csspart button__base - The sd-button's exported `base` part.
  * @csspart value - The chosen files or placeholder text for the file input.
  * @csspart droparea - The element wrapping the drop zone.
  * @csspart droparea-background - The background of the drop zone.
@@ -460,7 +459,6 @@ export default class SdFileSelector extends SolidElement implements SolidFormCon
           @click=${this.handleClick}
           ?disabled=${this.disabled}
           ?visually-disabled=${this.visuallyDisabled}
-          exportparts="base:button__base"
           part="button"
           size=${this.size}
           variant="secondary"
