@@ -23,12 +23,15 @@ import type { PropertyValues } from 'lit';
  * @cssproperty --sd-header-padding-bottom - padding bottom of the header content
  * @cssproperty --sd-header__underline-color-background - the background color of the underlined background
  * @cssproperty --sd-header__underline-height - height of the underlined header
- * @cssproperty --sd-header__shadow-height - height of the shadow when the header is fixed
+ * @cssproperty --sd-header__shadow-height - height of the shadow
  */
 @customElement('sd-header')
 export default class SdHeader extends SolidElement {
-  /**  Determines whether the header is fixed or not. If the header is fixed at the top of the page, a shadow is shown underneath. */
+  /**  Determines whether the header is fixed or not. If the header is fixed, it stays at the top of the page while scrolling. */
   @property({ reflect: true, type: Boolean }) fixed = false;
+
+  /**  Determines whether a drop shadow is shown underneath the header. Can be used with out without the `fixed` attribute */
+  @property({ reflect: true, type: Boolean }) shadow = false;
 
   @query('header') header: HTMLElement;
 
@@ -104,12 +107,12 @@ export default class SdHeader extends SolidElement {
 
           header {
             @apply fixed w-full left-0 top-0;
-
-            &::after {
-              @apply content-[''] absolute left-0 right-0 top-full sd-header__shadow-height bg-gradient-to-b from-black/40 to-black/0;
-            }
           }
         }
+      }
+
+      :host([shadow]) header::after {
+        @apply content-[''] absolute left-0 right-0 top-full sd-header__shadow-height bg-gradient-to-b from-black/40 to-black/0;
       }
 
       [part='main'] {
