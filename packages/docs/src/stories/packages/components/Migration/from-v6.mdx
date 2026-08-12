@@ -139,14 +139,10 @@ Both components previously implemented their own modal behavior (a custom `Modal
 
 Previously, setting `fixed` on `sd-header` always rendered a drop shadow underneath it. The shadow is now controlled by a separate `shadow` attribute, which is off by default and can be combined with `fixed` or used on its own.
 
-**What changed and why:** Position and elevation were coupled in a single attribute, so products that needed a fixed header had to accept the enforced elevation. Separating them lets consumers align the header with their own design language.
-
-**Who is affected:** Anyone using `<sd-header fixed>`. The header keeps its fixed position, but renders no drop shadow until `shadow` is added.
-
 **Migration steps:**
 
 - Add the `shadow` attribute to every fixed header that should keep its drop shadow.
-- If you previously suppressed the shadow by overriding `--sd-header__shadow-height` with `0`, that override is no longer needed and can be removed.
+- If you previously suppressed the header shadow, the custom override is no longer needed and can be removed.
 
 **Before** (the drop shadow came with `fixed`):
 

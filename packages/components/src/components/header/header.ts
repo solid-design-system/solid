@@ -121,7 +121,7 @@ export default class SdHeader extends SolidElement {
         padding: var(--sd-header-padding, 12px 16px);
       }
 
-      header::before {
+      :host([shadow]) header::before {
         @apply content-[''] block w-full absolute bottom-0 left-0;
         background-color: rgb(var(--sd-header__underline-color-background));
         height: var(--sd-header__underline-height, var(--sd-spacing-2));
