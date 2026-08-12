@@ -131,6 +131,8 @@ The component applied its own margin.
     padding: 0.5rem;
   }
 </style>
+```
+
 ## `sd-dialog` and `sd-drawer` now use the native `<dialog>` element
 
 Both components previously implemented their own modal behavior (a custom `Modal` focus trap, manual body scroll locking, and manual Escape-key handling). They now render their `part="base"` element as a native `<dialog>` and use its built-in `showModal()`/`close()` APIs instead.
