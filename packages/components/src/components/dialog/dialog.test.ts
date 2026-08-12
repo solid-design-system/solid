@@ -154,7 +154,10 @@ describe('<sd-dialog>', () => {
     const overlay = el.shadowRoot!.querySelector<HTMLElement>('[part~="overlay"]')!;
 
     // Stub out the animations so they never finish, letting us inspect the mid-animation state
-    const neverFinishingAnimation = { addEventListener: sinon.stub() } as unknown as Animation;
+    const neverFinishingAnimation = {
+      // eslint-disable-next-line @typescript-eslint/no-empty-function -- intentionally never invokes the listener
+      addEventListener: () => {}
+    } as unknown as Animation;
     const panelAnimate = sinon.stub(panel, 'animate').callsFake(() => neverFinishingAnimation);
     const overlayAnimate = sinon.stub(overlay, 'animate').callsFake(() => neverFinishingAnimation);
 
