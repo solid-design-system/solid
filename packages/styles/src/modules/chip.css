@@ -46,13 +46,13 @@
  * @cssproperty --sd-chip--white-color-background - The background color for white chips.
  * @cssproperty --sd-chip--white-color-filled-border - The border color for filled white chips.
  * @cssproperty --sd-chip-border-radius - The border radius for chips.
- * @cssproperty --sd-chip-font-size - The font size for chips.
  * @cssproperty --sd-chip-border-width - The border width for chips.
- * @cssproperty --sd-chip-font-weight - The font weight for chips.
+ * @cssproperty --sd-marker-font-size - The font size for chips.
+ * @cssproperty --sd-marker-font-weight - The font weight for chips.
  */
 
 .sd-chip {
-  @apply h-6 border sd-chip-border-width sd-chip-font-size sd-chip-font-weight sd-chip--primary-subtle-color-background sd-chip--primary-subtle-color-filled-border sd-chip-border-radius text-black inline-flex items-center whitespace-nowrap px-2 overflow-hidden;
+  @apply h-6 border sd-chip-border-width marker-font-size marker-font-weight sd-chip--primary-subtle-color-background sd-chip--primary-subtle-color-filled-border sd-chip-border-radius text-black inline-flex items-center whitespace-nowrap px-2 overflow-hidden;
 
   &--size-lg {
     @apply h-8 px-3;

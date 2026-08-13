@@ -5028,20 +5028,10 @@
             }
           }
         },
-        "font-weight": {
-          "description": "Used for font weight inside sd-chip",
-          "type": "string",
-          "value": "{ui-light.utilities.font-weight.normal}"
-        },
         "border-width": {
           "description": "Used for sd-chip",
           "type": "float",
           "value": "0"
-        },
-        "font-size": {
-          "description": "Used for sd-chip",
-          "type": "float",
-          "value": "{ui-light.utilities.text.sm}"
         },
         "--neutral-low": {
           "color": {
@@ -5803,6 +5793,18 @@
               "value": "{ui-light.utilities.text.base}"
             }
           }
+        }
+      },
+      "marker": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-chip, sd-status-badge",
+          "type": "string",
+          "value": "{ui-light.utilities.font-weight.normal}"
+        },
+        "font-size": {
+          "description": "Used for sd-chip, sd-status-badge",
+          "type": "float",
+          "value": "{ui-light.utilities.text.sm}"
         }
       },
       "sd-combobox": {
@@ -8738,20 +8740,10 @@
             }
           }
         },
-        "font-weight": {
-          "description": "Used for font weight inside sd-chip",
-          "type": "string",
-          "value": "{ui-dark.utilities.font-weight.normal}"
-        },
         "border-width": {
           "description": "Used for sd-chip",
           "type": "float",
           "value": "0"
-        },
-        "font-size": {
-          "description": "Used for sd-chip",
-          "type": "float",
-          "value": "{ui-dark.utilities.text.sm}"
         },
         "--neutral-low": {
           "color": {
@@ -9513,6 +9505,18 @@
               "value": "{ui-dark.utilities.text.base}"
             }
           }
+        }
+      },
+      "marker": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-chip, sd-status-badge",
+          "type": "string",
+          "value": "{ui-dark.utilities.font-weight.normal}"
+        },
+        "font-size": {
+          "description": "Used for sd-chip, sd-status-badge",
+          "type": "float",
+          "value": "{ui-dark.utilities.text.sm}"
         }
       },
       "sd-combobox": {
@@ -12448,20 +12452,10 @@
             }
           }
         },
-        "font-weight": {
-          "description": "Used for font weight inside sd-chip",
-          "type": "string",
-          "value": "{vb.utilities.font-weight.normal}"
-        },
         "border-width": {
           "description": "Used for sd-chip",
           "type": "float",
           "value": "{vb.utilities.border-width.default}"
-        },
-        "font-size": {
-          "description": "Used for sd-chip",
-          "type": "float",
-          "value": "{vb.utilities.text.sm}"
         },
         "--neutral-low": {
           "color": {
@@ -13223,6 +13217,18 @@
               "value": "{vb.utilities.text.base}"
             }
           }
+        }
+      },
+      "marker": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-chip, sd-status-badge",
+          "type": "string",
+          "value": "{vb.utilities.font-weight.normal}"
+        },
+        "font-size": {
+          "description": "Used for sd-chip, sd-status-badge",
+          "type": "float",
+          "value": "{vb.utilities.text.sm}"
         }
       },
       "sd-combobox": {
@@ -16158,20 +16164,10 @@
             }
           }
         },
-        "font-weight": {
-          "description": "Used for font weight inside sd-chip",
-          "type": "string",
-          "value": "{sp.utilities.font-weight.normal}"
-        },
         "border-width": {
           "description": "Used for sd-chip",
           "type": "float",
           "value": "{sp.utilities.border-width.default}"
-        },
-        "font-size": {
-          "description": "Used for sd-chip",
-          "type": "float",
-          "value": "{sp.utilities.text.sm}"
         },
         "--neutral-low": {
           "color": {
@@ -16933,6 +16929,18 @@
               "value": "{sp.utilities.text.base}"
             }
           }
+        }
+      },
+      "marker": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-chip, sd-status-badge",
+          "type": "string",
+          "value": "{sp.utilities.font-weight.normal}"
+        },
+        "font-size": {
+          "description": "Used for sd-chip, sd-status-badge",
+          "type": "float",
+          "value": "{sp.utilities.text.sm}"
         }
       },
       "sd-combobox": {
@@ -19868,20 +19876,10 @@
             }
           }
         },
-        "font-weight": {
-          "description": "Used for font weight inside sd-chip",
-          "type": "string",
-          "value": "{bb.utilities.font-weight.normal}"
-        },
         "border-width": {
           "description": "Used for sd-chip",
           "type": "float",
           "value": "{bb.utilities.border-width.default}"
-        },
-        "font-size": {
-          "description": "Used for sd-chip",
-          "type": "float",
-          "value": "{bb.utilities.text.sm}"
         },
         "--neutral-low": {
           "color": {
@@ -20643,6 +20641,18 @@
               "value": "{bb.utilities.text.base}"
             }
           }
+        }
+      },
+      "marker": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-chip, sd-status-badge",
+          "type": "string",
+          "value": "{bb.utilities.font-weight.normal}"
+        },
+        "font-size": {
+          "description": "Used for sd-chip, sd-status-badge",
+          "type": "float",
+          "value": "{bb.utilities.text.sm}"
         }
       },
       "sd-combobox": {
@@ -23578,20 +23588,10 @@
             }
           }
         },
-        "font-weight": {
-          "description": "Used for font weight inside sd-chip",
-          "type": "string",
-          "value": "{kid.utilities.font-weight.bold}"
-        },
         "border-width": {
           "description": "Used for sd-chip",
           "type": "float",
           "value": "{kid.utilities.border-width.default}"
-        },
-        "font-size": {
-          "description": "Used for sd-chip",
-          "type": "float",
-          "value": "{kid.utilities.text.xs}"
         },
         "--neutral-low": {
           "color": {
@@ -24353,6 +24353,18 @@
               "value": "{kid.utilities.text.sm}"
             }
           }
+        }
+      },
+      "marker": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-chip, sd-status-badge",
+          "type": "string",
+          "value": "{kid.utilities.font-weight.bold}"
+        },
+        "font-size": {
+          "description": "Used for sd-chip, sd-status-badge",
+          "type": "float",
+          "value": "{kid.utilities.text.xs}"
         }
       },
       "sd-combobox": {

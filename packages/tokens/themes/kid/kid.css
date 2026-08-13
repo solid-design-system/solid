@@ -160,8 +160,6 @@
   --sd-chip--white-color-filled-border: 255 255 255 / 0;
   --sd-chip-border-radius: 624.9375rem;
   --sd-chip-border-width: var(--sd-spacing-0\.25);
-  --sd-chip-font-size: var(--sd-spacing-3);
-  --sd-chip-font-weight: var(--sd-font-weight-bold);
   --sd-choice-control-font-weight: var(--sd-font-weight-bold);
   --sd-color-accent-100: 247 242 236;
   --sd-color-accent-200: 249 224 208;
@@ -346,6 +344,8 @@
   --sd-map-marker--pin--default-color-background: var(--sd-color-accent-100);
   --sd-map-marker--pin--hover-color-background: var(--sd-color-neutral-100);
   --sd-map-marker--pin-color-text: var(--sd-color-black);
+  --sd-marker-font-size: var(--sd-spacing-3);
+  --sd-marker-font-weight: var(--sd-font-weight-bold);
   --sd-menu-item--disabled-color-icon-fill: var(--sd-color-neutral-500);
   --sd-menu-item--disabled-color-text: var(--sd-color-neutral-500);
   --sd-menu-item-color-icon-fill: var(--sd-color-black);
@@ -556,6 +556,8 @@
   --sd-button--size-md-border-radius: var(--sd-button-border-radius);
   --sd-button--size-sm-border-radius: var(--sd-button-border-radius);
   --sd-button--secondary--inverted--color-border: var(--sd-button-secondary-inverted-color-border);
+  --sd-chip-font-size: var(--sd-marker-font-size);
+  --sd-chip-font-weight: var(--sd-marker-font-weight);
   --sd-form-control-color-icon: var(--sd-form-control-color-icon-fill);
   --sd-menu-color-icon: var(--sd-menu-item-color-icon-fill);
   --sd-menu-color-text: var(--sd-menu-item-color-text);

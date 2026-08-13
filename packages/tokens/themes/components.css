@@ -70,6 +70,14 @@
   color: rgba(var(--sd-interactive--default-color-text, rgba(var(--sd-color-primary))));
 }
 
+@utility marker-font-size {
+ font-size: var(--sd-marker-font-size, 0.875rem);
+}
+
+@utility marker-font-weight {
+  font-weight: var(--sd-marker-font-weight, var(--sd-font-weight-normal));
+}
+
 @utility navigable-border-radius {
  border-radius: var(--sd-navigable-border-radius, 0);
 }
@@ -668,14 +676,6 @@
 
 @utility sd-chip-border-width {
  border-width: var(--sd-chip-border-width, 0);
-}
-
-@utility sd-chip-font-size {
- font-size: var(--sd-chip-font-size, 0.875rem);
-}
-
-@utility sd-chip-font-weight {
-  font-weight: var(--sd-chip-font-weight, var(--sd-font-weight-normal));
 }
 
 @utility sd-combobox__tag-border-width {

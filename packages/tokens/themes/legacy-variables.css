@@ -7,6 +7,8 @@
   --sd-button--size-md-border-radius: var(--sd-button-border-radius);
   --sd-button--size-sm-border-radius: var(--sd-button-border-radius);
   --sd-button--secondary--inverted--color-border: var(--sd-button-secondary-inverted-color-border);
+  --sd-chip-font-size: var(--sd-marker-font-size);
+  --sd-chip-font-weight: var(--sd-marker-font-weight);
   --sd-form-control-color-icon: var(--sd-form-control-color-icon-fill);
   --sd-menu-color-icon: var(--sd-menu-item-color-icon-fill);
   --sd-menu-color-text: var(--sd-menu-item-color-text);
