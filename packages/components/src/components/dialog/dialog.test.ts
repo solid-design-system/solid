@@ -166,11 +166,13 @@ describe('<sd-dialog>', () => {
     const panel = el.shadowRoot!.querySelector<HTMLElement>('[part~="panel"]')!;
     const overlay = el.shadowRoot!.querySelector<HTMLElement>('[part~="overlay"]')!;
 
-    // Keep the animations pending until we have inspected the mid-animation state.
-    const panelAnimation = new Animation();
-    const overlayAnimation = new Animation();
-    const panelAnimate = sinon.stub(panel, 'animate').returns(panelAnimation);
-    const overlayAnimate = sinon.stub(overlay, 'animate').returns(overlayAnimation);
+    // Stub out the animations so they never finish, letting us inspect the mid-animation state
+    const neverFinishingAnimation = {
+      // eslint-disable-next-line @typescript-eslint/no-empty-function -- intentionally never invokes the listener
+      addEventListener: () => {}
+    } as unknown as Animation;
+    const panelAnimate = sinon.stub(panel, 'animate').callsFake(() => neverFinishingAnimation);
+    const overlayAnimate = sinon.stub(overlay, 'animate').callsFake(() => neverFinishingAnimation);
 
     const hidePromise = el.hide();
     await new Promise(resolve => requestAnimationFrame(resolve));
