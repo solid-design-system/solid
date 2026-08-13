@@ -10,19 +10,7 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3268-12022&t=JCsisVFNkWSlhSSN-4'
     }
-  },
-  decorators: [
-    (story: any) => html`
-      <style>
-        #anchor--templates-dialog--default .innerZoomElementWrapper,
-        #anchor--templates-dialog--scrollable .innerZoomElementWrapper,
-        #anchor--templates-dialog--prevent-closing .innerZoomElementWrapper {
-          min-height: 750px;
-        }
-      </style>
-      ${story()}
-    `
-  ] as unknown
+  }
 };
 
 /**
@@ -30,7 +18,7 @@ export default {
  */
 export const Default = {
   name: 'Dialog with Button Group',
-  parameters: { docs: { story: { inline: false, height: '750px' } } },
+  parameters: { docs: { story: { inline: false, height: '500px' } } },
   render: () => html`
     <sd-button id="drawer-trigger">Open Dialog</sd-button>
     <sd-dialog id="dialog" open>
@@ -202,7 +190,6 @@ export const Scrollable = {
  */
 export const PreventClosing = {
   name: 'Prevent Closing',
-  parameters: { docs: { story: { inline: false, height: '750px' } } },
   render: () => {
     return html`
       <div style="height: 40vh;">

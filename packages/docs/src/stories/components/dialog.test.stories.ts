@@ -30,7 +30,9 @@ export default {
     {
       type: 'slot',
       name: 'footer',
-      value: `<sd-button slot="footer" class="w-full">Button</sd-button>`
+      value: `<div slot='footer' class='flex justify-end w-full'>
+            <sd-button>Button</sd-button>
+            </div>`
     }
   ]),
   argTypes,
@@ -42,16 +44,7 @@ export const Default = {
   render: (args: any) => {
     return html` <div style="height: 40vh;">
       ${generateTemplate({
-        args,
-        constants: [
-          {
-            type: 'slot',
-            name: 'footer',
-            value: `<div slot='footer' class='flex justify-end w-full'>
-            <sd-button>Button</sd-button>
-            </div>`
-          }
-        ]
+        args
       })}
     </div>`;
   }
@@ -99,13 +92,6 @@ export const Scrolling = {
             type: 'slot',
             name: 'default',
             value: `<sd-scrollable orientation='vertical' shadows class="w-full"><div class="slot slot--border slot--background slot--text" style="height:150vh; width: 100%; padding: 1rem; justify-content:start;">Scroll down and give it a try!</div></sd-scrollable>`
-          },
-          {
-            type: 'slot',
-            name: 'footer',
-            value: `<div slot='footer' class='flex justify-end w-full'>
-            <sd-button>Button</sd-button>
-            </div>`
           }
         ]
       })}
@@ -160,18 +146,7 @@ export const Mouseless = {
     return html`
       <div class="mouseless" style="height: 40vh;">
         ${generateTemplate({
-          args,
-          constants: [
-            {
-              type: 'slot',
-              name: 'footer',
-              value: `
-                <div slot="footer" class="flex w-full justify-end">
-                  <sd-button>Button</sd-button>
-                </div>
-              `
-            }
-          ]
+          args
         })}
       </div>
     `;
