@@ -1491,8 +1491,10 @@
           "type": "color",
           "value": "rgba(255, 255, 255, 0.84)"
         },
-        "type": "color",
-        "value": "#ffffff"
+        "default": {
+          "type": "color",
+          "value": "#ffffff"
+        }
       },
       "font-family": {
         "font-family-primary": {
@@ -2286,6 +2288,10 @@
               "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
               "type": "color",
               "value": "{ui-light.utilities.color.white.default}"
+            },
+            "translucent": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           },
           "neutral": {
@@ -2564,6 +2570,18 @@
                 "type": "color",
                 "value": "rgba(24, 24, 24, 0.10)"
               }
+            }
+          },
+          "neutral-grey": {
+            "default": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          },
+          "neutral-blue": {
+            "default": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
@@ -2992,6 +3010,12 @@
               "description": "Used for buttons, inverted focus state",
               "type": "color",
               "value": "{ui-light.utilities.color.white.default}"
+            }
+          },
+          "neutral-blue": {
+            "default": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
@@ -4990,7 +5014,7 @@
         }
       },
       "sd-chip": {
-        "--primary-200": {
+        "--primary-low": {
           "color": {
             "background": {
               "description": "Default icon color ",
@@ -4999,11 +5023,19 @@
             },
             "border": {
               "type": "color",
+              "value": "{ui-light.utilities.color.primary.200}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
               "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
-        "--primary-300": {
+        "--primary-medium": {
           "color": {
             "background": {
               "type": "color",
@@ -5011,23 +5043,27 @@
             },
             "border": {
               "type": "color",
+              "value": "{ui-light.utilities.color.primary.300}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
               "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
-        "--primary-500": {
+        "--primary-strong": {
           "color": {
-            "background": {
+            "border": {
               "type": "color",
               "value": "{ui-light.utilities.color.primary.500}"
             },
-            "border": {
+            "outline-fill": {
               "type": "color",
               "value": "rgba(255, 255, 255, 0.00)"
-            },
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.white.default}"
             }
           }
         },
@@ -5042,7 +5078,123 @@
               "type": "color",
               "value": "{ui-light.utilities.color.white.default}"
             },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--neutral-low": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.200}"
+            },
             "border": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.200}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--neutral-medium": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.300}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.300}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--neutral-subtle": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.100}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--neutral-high": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.400}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.400}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--primary-subtle": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.100}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--primary-high": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.400}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.400}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--neutral-strong": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.500}"
+            },
+            "outline-fill": {
               "type": "color",
               "value": "rgba(255, 255, 255, 0.00)"
             }
@@ -5696,17 +5848,17 @@
       },
       "marker": {
         "font-weight": {
-          "description": "Used for font weight inside sd-chip &amp; sd-flag",
+          "description": "Used for font weight inside sd-chip",
           "type": "string",
           "value": "{ui-light.utilities.font-weight.normal}"
         },
         "border-width": {
-          "description": "Used for sd-chip &amp; sd-flag",
+          "description": "Used for sd-chip",
           "type": "float",
           "value": "0"
         },
         "font-size": {
-          "description": "Used for sd-chip &amp; sd-flag",
+          "description": "Used for sd-chip",
           "type": "float",
           "value": "{ui-light.utilities.text.sm}"
         }
@@ -5904,6 +6056,10 @@
               "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
               "type": "color",
               "value": "{ui-dark.utilities.color.primary.900}"
+            },
+            "translucent": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           },
           "neutral": {
@@ -6182,6 +6338,18 @@
                 "type": "color",
                 "value": "rgba(24, 24, 24, 0.10)"
               }
+            }
+          },
+          "neutral-grey": {
+            "default": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          },
+          "neutral-blue": {
+            "default": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
@@ -6610,6 +6778,12 @@
               "description": "Used for buttons, inverted focus state",
               "type": "color",
               "value": "{ui-dark.utilities.color.primary.900}"
+            }
+          },
+          "neutral-blue": {
+            "default": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
@@ -8608,44 +8782,56 @@
         }
       },
       "sd-chip": {
-        "--primary-200": {
+        "--primary-low": {
           "color": {
             "background": {
               "description": "Default icon color ",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.primary.750}"
-            },
-            "border": {
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.00)"
-            }
-          }
-        },
-        "--primary-300": {
-          "color": {
-            "background": {
               "type": "color",
               "value": "{ui-dark.utilities.color.primary.700}"
             },
             "border": {
               "type": "color",
+              "value": "{ui-dark.utilities.color.primary.700}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
               "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
-        "--primary-500": {
+        "--primary-medium": {
           "color": {
             "background": {
               "type": "color",
-              "value": "{ui-dark.utilities.color.primary.750}"
+              "value": "{ui-dark.utilities.color.primary.600}"
             },
             "border": {
               "type": "color",
+              "value": "{ui-dark.utilities.color.primary.600}"
+            },
+            "outline-fill": {
+              "type": "color",
               "value": "rgba(255, 255, 255, 0.00)"
             },
-            "text": {
+            "filled-border": {
               "type": "color",
-              "value": "{ui-dark.utilities.color.white.default}"
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--primary-strong": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
@@ -8658,9 +8844,125 @@
             "background": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{ui-dark.utilities.color.primary.750}"
+              "value": "{ui-dark.utilities.color.primary.900}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--neutral-low": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.700}"
             },
             "border": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.700}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--neutral-medium": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.600}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.600}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--neutral-subtle": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.750}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--neutral-high": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.500}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.500}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--primary-subtle": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.750}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--primary-high": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.500}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.500}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--neutral-strong": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
+            },
+            "outline-fill": {
               "type": "color",
               "value": "rgba(255, 255, 255, 0.00)"
             }
@@ -9314,17 +9616,17 @@
       },
       "marker": {
         "font-weight": {
-          "description": "Used for font weight inside sd-chip &amp; sd-flag",
+          "description": "Used for font weight inside sd-chip",
           "type": "string",
           "value": "{ui-dark.utilities.font-weight.normal}"
         },
         "border-width": {
-          "description": "Used for sd-chip &amp; sd-flag",
+          "description": "Used for sd-chip",
           "type": "float",
           "value": "0"
         },
         "font-size": {
-          "description": "Used for sd-chip &amp; sd-flag",
+          "description": "Used for sd-chip",
           "type": "float",
           "value": "{ui-dark.utilities.text.sm}"
         }
@@ -9522,6 +9824,10 @@
               "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
               "type": "color",
               "value": "{vb.utilities.color.white.default}"
+            },
+            "translucent": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           },
           "neutral": {
@@ -9800,6 +10106,18 @@
                 "type": "color",
                 "value": "rgba(0, 0, 0, 0.10)"
               }
+            }
+          },
+          "neutral-grey": {
+            "default": {
+              "type": "color",
+              "value": "{core.vb.status.neutral-grey-bg}"
+            }
+          },
+          "neutral-blue": {
+            "default": {
+              "type": "color",
+              "value": "{core.vb.status.neutral-blue-bg}"
             }
           }
         },
@@ -10228,6 +10546,12 @@
               "description": "Used for buttons, inverted focus state",
               "type": "color",
               "value": "{vb.utilities.color.white.default}"
+            }
+          },
+          "neutral-blue": {
+            "default": {
+              "type": "color",
+              "value": "{core.vb.status.neutral-blue}"
             }
           }
         },
@@ -12226,44 +12550,56 @@
         }
       },
       "sd-chip": {
-        "--primary-200": {
+        "--primary-low": {
           "color": {
             "background": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{core.vb.status.neutral-grey-bg}"
+              "value": "{vb.utilities.color.background.neutral-grey.default}"
             },
             "border": {
+              "type": "color",
+              "value": "{vb.utilities.color.primary.900}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{vb.utilities.color.background.neutral-grey.default}"
+            },
+            "filled-border": {
               "type": "color",
               "value": "{vb.utilities.color.primary.900}"
             }
           }
         },
-        "--primary-300": {
+        "--primary-medium": {
           "color": {
             "background": {
               "type": "color",
-              "value": "{core.vb.status.neutral-blue-bg}"
+              "value": "{vb.utilities.color.background.neutral-blue.default}"
             },
             "border": {
               "type": "color",
-              "value": "{core.vb.status.neutral-blue}"
+              "value": "{vb.utilities.color.border.neutral-blue.default}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{vb.utilities.color.background.neutral-blue.default}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{vb.utilities.color.border.neutral-blue.default}"
             }
           }
         },
-        "--primary-500": {
+        "--primary-strong": {
           "color": {
-            "background": {
-              "type": "color",
-              "value": "{core.vb.status.neutral-blue-bg}"
-            },
             "border": {
               "type": "color",
-              "value": "{core.vb.status.neutral-blue}"
+              "value": "{vb.utilities.color.border.neutral-blue.default}"
             },
-            "text": {
+            "outline-fill": {
               "type": "color",
-              "value": "{vb.utilities.color.black.default}"
+              "value": "{vb.utilities.color.background.neutral-blue.default}"
             }
           }
         },
@@ -12276,11 +12612,127 @@
             "background": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{core.vb.status.neutral-grey-bg}"
+              "value": "{vb.utilities.color.background.neutral-grey.default}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{vb.utilities.color.primary.900}"
+            }
+          }
+        },
+        "--neutral-low": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{vb.utilities.color.background.neutral-grey.default}"
             },
             "border": {
               "type": "color",
               "value": "{vb.utilities.color.primary.900}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{vb.utilities.color.background.neutral-grey.default}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{vb.utilities.color.primary.900}"
+            }
+          }
+        },
+        "--neutral-medium": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{vb.utilities.color.background.neutral-blue.default}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{vb.utilities.color.border.neutral-blue.default}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{vb.utilities.color.background.neutral-blue.default}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{vb.utilities.color.border.neutral-blue.default}"
+            }
+          }
+        },
+        "--neutral-subtle": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{vb.utilities.color.background.neutral-grey.default}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{vb.utilities.color.primary.900}"
+            }
+          }
+        },
+        "--neutral-high": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{vb.utilities.color.background.neutral-blue.default}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{vb.utilities.color.border.neutral-blue.default}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{vb.utilities.color.background.neutral-blue.default}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{vb.utilities.color.border.neutral-blue.default}"
+            }
+          }
+        },
+        "--primary-subtle": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{vb.utilities.color.background.neutral-grey.default}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{vb.utilities.color.primary.900}"
+            }
+          }
+        },
+        "--primary-high": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{vb.utilities.color.background.neutral-blue.default}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{vb.utilities.color.border.neutral-blue.default}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{vb.utilities.color.background.neutral-blue.default}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{vb.utilities.color.border.neutral-blue.default}"
+            }
+          }
+        },
+        "--neutral-strong": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{vb.utilities.color.border.neutral-blue.default}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{core.vb.status.neutral-blue-bg}"
             }
           }
         }
@@ -12932,17 +13384,17 @@
       },
       "marker": {
         "font-weight": {
-          "description": "Used for font weight inside sd-chip &amp; sd-flag",
+          "description": "Used for font weight inside sd-chip",
           "type": "string",
           "value": "{vb.utilities.font-weight.normal}"
         },
         "border-width": {
-          "description": "Used for sd-chip &amp; sd-flag",
+          "description": "Used for sd-chip",
           "type": "float",
           "value": "{vb.utilities.border-width.default}"
         },
         "font-size": {
-          "description": "Used for sd-chip &amp; sd-flag",
+          "description": "Used for sd-chip",
           "type": "float",
           "value": "{vb.utilities.text.sm}"
         }
@@ -13140,6 +13592,10 @@
               "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
               "type": "color",
               "value": "{sp.utilities.color.white.default}"
+            },
+            "translucent": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           },
           "neutral": {
@@ -13418,6 +13874,18 @@
                 "type": "color",
                 "value": "rgba(0, 0, 0, 0.10)"
               }
+            }
+          },
+          "neutral-grey": {
+            "default": {
+              "type": "color",
+              "value": "{core.sp.grey.100}"
+            }
+          },
+          "neutral-blue": {
+            "default": {
+              "type": "color",
+              "value": "{core.sp.status.neutral-blue-bg}"
             }
           }
         },
@@ -13846,6 +14314,12 @@
               "description": "Used for buttons, inverted focus state",
               "type": "color",
               "value": "{sp.utilities.color.white.default}"
+            }
+          },
+          "neutral-blue": {
+            "default": {
+              "type": "color",
+              "value": "{core.sp.status.neutral-blue}"
             }
           }
         },
@@ -15844,44 +16318,56 @@
         }
       },
       "sd-chip": {
-        "--primary-200": {
+        "--primary-low": {
           "color": {
             "background": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{core.vb.status.neutral-grey-bg}"
+              "value": "{sp.utilities.color.background.neutral-grey.default}"
             },
             "border": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.900}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{sp.utilities.color.background.neutral-grey.default}"
+            },
+            "filled-border": {
               "type": "color",
               "value": "{sp.utilities.color.primary.900}"
             }
           }
         },
-        "--primary-300": {
+        "--primary-medium": {
           "color": {
             "background": {
               "type": "color",
-              "value": "{core.vb.status.neutral-blue-bg}"
+              "value": "{sp.utilities.color.background.neutral-blue.default}"
             },
             "border": {
               "type": "color",
-              "value": "{core.vb.status.neutral-blue}"
+              "value": "{sp.utilities.color.border.neutral-blue.default}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{sp.utilities.color.background.neutral-blue.default}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{sp.utilities.color.border.neutral-blue.default}"
             }
           }
         },
-        "--primary-500": {
+        "--primary-strong": {
           "color": {
-            "background": {
-              "type": "color",
-              "value": "{core.sp.status.neutral-blue-bg}"
-            },
             "border": {
               "type": "color",
-              "value": "{core.sp.status.neutral-blue}"
+              "value": "{sp.utilities.color.border.neutral-blue.default}"
             },
-            "text": {
+            "outline-fill": {
               "type": "color",
-              "value": "{sp.utilities.color.black.default}"
+              "value": "{sp.utilities.color.background.neutral-blue.default}"
             }
           }
         },
@@ -15894,11 +16380,127 @@
             "background": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{core.sp.status.neutral-grey-bg}"
+              "value": "{sp.utilities.color.background.neutral-grey.default}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.900}"
+            }
+          }
+        },
+        "--neutral-low": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.background.neutral-grey.default}"
             },
             "border": {
               "type": "color",
               "value": "{sp.utilities.color.primary.900}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{sp.utilities.color.background.neutral-grey.default}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.900}"
+            }
+          }
+        },
+        "--neutral-medium": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.background.neutral-blue.default}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{sp.utilities.color.border.neutral-blue.default}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{sp.utilities.color.background.neutral-blue.default}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{sp.utilities.color.border.neutral-blue.default}"
+            }
+          }
+        },
+        "--neutral-subtle": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.background.neutral-grey.default}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.900}"
+            }
+          }
+        },
+        "--neutral-high": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.background.neutral-blue.default}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{sp.utilities.color.border.neutral-blue.default}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{sp.utilities.color.background.neutral-blue.default}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{sp.utilities.color.border.neutral-blue.default}"
+            }
+          }
+        },
+        "--primary-subtle": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.background.neutral-grey.default}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.900}"
+            }
+          }
+        },
+        "--primary-high": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.background.neutral-blue.default}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{sp.utilities.color.border.neutral-blue.default}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{sp.utilities.color.background.neutral-blue.default}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{sp.utilities.color.border.neutral-blue.default}"
+            }
+          }
+        },
+        "--neutral-strong": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{sp.utilities.color.border.neutral-blue.default}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{core.sp.status.neutral-blue-bg}"
             }
           }
         }
@@ -16550,17 +17152,17 @@
       },
       "marker": {
         "font-weight": {
-          "description": "Used for font weight inside sd-chip &amp; sd-flag",
+          "description": "Used for font weight inside sd-chip",
           "type": "string",
           "value": "{sp.utilities.font-weight.normal}"
         },
         "border-width": {
-          "description": "Used for sd-chip &amp; sd-flag",
+          "description": "Used for sd-chip",
           "type": "float",
           "value": "{sp.utilities.border-width.default}"
         },
         "font-size": {
-          "description": "Used for sd-chip &amp; sd-flag",
+          "description": "Used for sd-chip",
           "type": "float",
           "value": "{sp.utilities.text.sm}"
         }
@@ -16758,6 +17360,10 @@
               "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
               "type": "color",
               "value": "{bb.utilities.color.white.default}"
+            },
+            "translucent": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           },
           "neutral": {
@@ -17036,6 +17642,18 @@
                 "type": "color",
                 "value": "rgba(0, 0, 0, 0.10)"
               }
+            }
+          },
+          "neutral-grey": {
+            "default": {
+              "type": "color",
+              "value": "{core.bb.status.neutral-grey-bg}"
+            }
+          },
+          "neutral-blue": {
+            "default": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
@@ -17464,6 +18082,12 @@
               "description": "Used for buttons, inverted focus state",
               "type": "color",
               "value": "{bb.utilities.color.white.default}"
+            }
+          },
+          "neutral-blue": {
+            "default": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
@@ -19462,44 +20086,56 @@
         }
       },
       "sd-chip": {
-        "--primary-200": {
+        "--primary-low": {
           "color": {
             "background": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{core.bb.status.neutral-grey-bg}"
+              "value": "{bb.utilities.color.background.neutral.100}"
             },
             "border": {
+              "type": "color",
+              "value": "{bb.utilities.color.primary.900}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{bb.utilities.color.background.neutral.100}"
+            },
+            "filled-border": {
               "type": "color",
               "value": "{bb.utilities.color.primary.900}"
             }
           }
         },
-        "--primary-300": {
+        "--primary-medium": {
           "color": {
             "background": {
               "type": "color",
-              "value": "{core.bb.status.neutral-blue-bg}"
+              "value": "{bb.utilities.color.background.primary.100}"
             },
             "border": {
               "type": "color",
-              "value": "{core.bb.status.neutral-blue}"
+              "value": "{bb.utilities.color.border.primary.default}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{bb.utilities.color.background.primary.100}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{bb.utilities.color.border.primary.default}"
             }
           }
         },
-        "--primary-500": {
+        "--primary-strong": {
           "color": {
-            "background": {
-              "type": "color",
-              "value": "{core.bb.status.neutral-blue-bg}"
-            },
             "border": {
               "type": "color",
-              "value": "{core.bb.status.neutral-blue}"
+              "value": "{bb.utilities.color.border.primary.default}"
             },
-            "text": {
+            "outline-fill": {
               "type": "color",
-              "value": "{bb.utilities.color.black.default}"
+              "value": "{bb.utilities.color.background.primary.100}"
             }
           }
         },
@@ -19512,11 +20148,127 @@
             "background": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{core.bb.status.neutral-grey-bg}"
+              "value": "{bb.utilities.color.background.neutral.100}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{bb.utilities.color.primary.900}"
+            }
+          }
+        },
+        "--neutral-low": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{bb.utilities.color.background.neutral.100}"
             },
             "border": {
               "type": "color",
               "value": "{bb.utilities.color.primary.900}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{bb.utilities.color.background.neutral.100}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{bb.utilities.color.primary.900}"
+            }
+          }
+        },
+        "--neutral-medium": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{bb.utilities.color.background.primary.100}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{bb.utilities.color.border.primary.default}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{bb.utilities.color.background.primary.100}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{bb.utilities.color.primary.default}"
+            }
+          }
+        },
+        "--neutral-subtle": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{bb.utilities.color.background.neutral.100}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{bb.utilities.color.primary.900}"
+            }
+          }
+        },
+        "--neutral-high": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{bb.utilities.color.background.primary.100}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{bb.utilities.color.border.primary.default}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{bb.utilities.color.background.primary.100}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{bb.utilities.color.border.primary.default}"
+            }
+          }
+        },
+        "--primary-subtle": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{bb.utilities.color.background.neutral.100}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{bb.utilities.color.primary.900}"
+            }
+          }
+        },
+        "--primary-high": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{bb.utilities.color.background.primary.100}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{bb.utilities.color.border.primary.default}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{bb.utilities.color.background.primary.100}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "{bb.utilities.color.border.primary.default}"
+            }
+          }
+        },
+        "--neutral-strong": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{bb.utilities.color.border.primary.default}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "{core.bb.status.neutral-blue-bg}"
             }
           }
         }
@@ -20168,17 +20920,17 @@
       },
       "marker": {
         "font-weight": {
-          "description": "Used for font weight inside sd-chip &amp; sd-flag",
+          "description": "Used for font weight inside sd-chip",
           "type": "string",
           "value": "{bb.utilities.font-weight.normal}"
         },
         "border-width": {
-          "description": "Used for sd-chip &amp; sd-flag",
+          "description": "Used for sd-chip",
           "type": "float",
           "value": "{bb.utilities.border-width.default}"
         },
         "font-size": {
-          "description": "Used for sd-chip &amp; sd-flag",
+          "description": "Used for sd-chip",
           "type": "float",
           "value": "{bb.utilities.text.sm}"
         }
@@ -20376,6 +21128,10 @@
               "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
               "type": "color",
               "value": "{kid.utilities.color.accent.100}"
+            },
+            "translucent": {
+              "type": "color",
+              "value": "{core.kid.white.600}"
             }
           },
           "neutral": {
@@ -20655,6 +21411,18 @@
                 "value": "rgba(5, 21, 48, 0.10)"
               }
             }
+          },
+          "neutral-grey": {
+            "default": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          },
+          "neutral-blue": {
+            "default": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
           }
         },
         "primary": {
@@ -20817,7 +21585,7 @@
         "white": {
           "default": {
             "type": "color",
-            "value": "{core.kid.white}"
+            "value": "{core.kid.white.default}"
           }
         },
         "risk": {
@@ -21082,6 +21850,12 @@
               "description": "Used for buttons, inverted focus state",
               "type": "color",
               "value": "{kid.utilities.color.accent.100}"
+            }
+          },
+          "neutral-blue": {
+            "default": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
@@ -23080,44 +23854,56 @@
         }
       },
       "sd-chip": {
-        "--primary-200": {
+        "--primary-low": {
           "color": {
             "background": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "rgba(255, 255, 255, 0.60)"
+              "value": "{kid.utilities.color.background.white.translucent}"
             },
             "border": {
               "type": "color",
-              "value": "rgba(255, 255, 255, 0.60)"
+              "value": "{kid.utilities.color.background.white.translucent}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
-        "--primary-300": {
+        "--primary-medium": {
           "color": {
             "background": {
               "type": "color",
-              "value": "rgba(255, 255, 255, 0.60)"
+              "value": "{kid.utilities.color.background.white.translucent}"
             },
             "border": {
               "type": "color",
-              "value": "rgba(255, 255, 255, 0.60)"
+              "value": "{kid.utilities.color.background.white.translucent}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
-        "--primary-500": {
+        "--primary-strong": {
           "color": {
-            "background": {
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.60)"
-            },
             "border": {
               "type": "color",
-              "value": "rgba(255, 255, 255, 0.60)"
+              "value": "{kid.utilities.color.background.white.translucent}"
             },
-            "text": {
+            "outline-fill": {
               "type": "color",
-              "value": "{kid.utilities.color.black.default}"
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
@@ -23130,11 +23916,127 @@
             "background": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "rgba(255, 255, 255, 0.60)"
+              "value": "{kid.utilities.color.background.white.translucent}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--neutral-low": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{kid.utilities.color.background.white.translucent}"
             },
             "border": {
               "type": "color",
+              "value": "{kid.utilities.color.background.white.translucent}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--neutral-medium": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{kid.utilities.color.background.white.translucent}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{kid.utilities.color.background.white.translucent}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--neutral-subtle": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{kid.utilities.color.background.white.translucent}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--neutral-high": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{kid.utilities.color.background.white.translucent}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{kid.utilities.color.background.white.translucent}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--primary-subtle": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{kid.utilities.color.background.white.translucent}"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--primary-high": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{kid.utilities.color.background.white.translucent}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{kid.utilities.color.background.white.translucent}"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "filled-border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--neutral-strong": {
+          "color": {
+            "border": {
+              "type": "color",
               "value": "rgba(255, 255, 255, 0.60)"
+            },
+            "outline-fill": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         }
@@ -23786,17 +24688,17 @@
       },
       "marker": {
         "font-weight": {
-          "description": "Used for font weight inside sd-chip &amp; sd-flag",
+          "description": "Used for font weight inside sd-chip",
           "type": "string",
           "value": "{kid.utilities.font-weight.bold}"
         },
         "border-width": {
-          "description": "Used for sd-chip &amp; sd-flag",
+          "description": "Used for sd-chip",
           "type": "float",
           "value": "{kid.utilities.border-width.default}"
         },
         "font-size": {
-          "description": "Used for sd-chip &amp; sd-flag",
+          "description": "Used for sd-chip",
           "type": "float",
           "value": "{kid.utilities.text.xs}"
         }

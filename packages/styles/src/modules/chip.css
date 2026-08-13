@@ -4,44 +4,138 @@
  * @name sd-chip
  * @status stable
  * @since 1.30.0
- * @variant { primary-300 | primary-500 | white } sd-chip--...
+ * @variant { primary | neutral | white } sd-chip--color-... 
+ * @variant { subtle | low | medium | high | none } sd-chip--shade-...
+ * @variant { sm | lg } sd-chip--size-...
+ * @boolean sd-chip--rounded Applies a rounded border radius to the chip.
+ * @boolean sd-chip--outline Applies an outline style to the chip.
  *
- * @cssproperty --sd-chip--primary-200-color-background - The background color for primary‑200 chip.
- * @cssproperty --sd-chip--primary-200-color-border - The border color for primary‑200 chips.
- * @cssproperty --sd-chip--primary-300-color-background - The background color for primary‑300 chips.
- * @cssproperty --sd-chip--primary-300-color-border - The border color for primary‑300 chips.
- * @cssproperty --sd-chip--primary-500-color-background - The background color for primary‑500 chips.
- * @cssproperty --sd-chip--primary-500-color-border - The border color for primary‑500 chips.
- * @cssproperty --sd-chip--primary-500-color-text - The text color for primary‑500 chips.
+ * @cssproperty --sd-chip--neutral-high-color-background - The background color for neutral high chips.
+ * @cssproperty --sd-chip--neutral-high-color-border - The border color for neutral high chips.
+ * @cssproperty --sd-chip--neutral-high-color-filled-border - The border color for filled neutral high chips.
+ * @cssproperty --sd-chip--neutral-high-color-outline-fill - The outline fill color for neutral high chips.
+ * @cssproperty --sd-chip--neutral-low-color-background - The background color for neutral low chips.
+ * @cssproperty --sd-chip--neutral-low-color-border - The border color for neutral low chips.
+ * @cssproperty --sd-chip--neutral-low-color-filled-border - The border color for filled neutral low chips.
+ * @cssproperty --sd-chip--neutral-low-color-outline-fill - The outline fill color for neutral low chips.
+ * @cssproperty --sd-chip--neutral-medium-color-background - The background color for neutral medium chips.
+ * @cssproperty --sd-chip--neutral-medium-color-border - The border color for neutral medium chips.
+ * @cssproperty --sd-chip--neutral-medium-color-filled-border - The border color for filled neutral medium chips.
+ * @cssproperty --sd-chip--neutral-medium-color-outline-fill - The outline fill color for neutral medium chips.
+ * @cssproperty --sd-chip--neutral-strong-color-border - The border color for neutral strong chips.
+ * @cssproperty --sd-chip--neutral-strong-color-outline-fill - The outline fill color for neutral strong chips.
+ * @cssproperty --sd-chip--neutral-subtle-color-background - The background color for neutral subtle chips.
+ * @cssproperty --sd-chip--neutral-subtle-color-filled-border - The border color for filled neutral subtle chips.
+ * @cssproperty --sd-chip--primary-high-color-background - The background color for primary high chips.
+ * @cssproperty --sd-chip--primary-high-color-border - The border color for primary high chips.
+ * @cssproperty --sd-chip--primary-high-color-filled-border - The border color for filled primary high chips.
+ * @cssproperty --sd-chip--primary-high-color-outline-fill - The outline fill color for primary high chips.
+ * @cssproperty --sd-chip--primary-low-color-background - The background color for primary low chips.
+ * @cssproperty --sd-chip--primary-low-color-border - The border color for primary low chips.
+ * @cssproperty --sd-chip--primary-low-color-filled-border - The border color for filled primary low chips.
+ * @cssproperty --sd-chip--primary-low-color-outline-fill - The outline fill color for primary low chips.
+ * @cssproperty --sd-chip--primary-medium-color-background - The background color for primary medium chips.
+ * @cssproperty --sd-chip--primary-medium-color-border - The border color for primary medium chips.
+ * @cssproperty --sd-chip--primary-medium-color-filled-border - The border color for filled primary medium chips.
+ * @cssproperty --sd-chip--primary-medium-color-outline-fill - The outline fill color for primary medium chips.
+ * @cssproperty --sd-chip--primary-strong-color-background - The background color for primary strong chips.
+ * @cssproperty --sd-chip--primary-strong-color-border - The border color for primary strong chips.
+ * @cssproperty --sd-chip--primary-strong-color-outline-fill - The outline fill color for primary strong chips.
+ * @cssproperty --sd-chip--primary-subtle-color-background - The background color for primary subtle chips.
+ * @cssproperty --sd-chip--primary-subtle-color-filled-border - The border color for filled primary subtle chips.
  * @cssproperty --sd-chip--white-color-background - The background color for white chips.
- * @cssproperty --sd-chip--white-color-border - The border color for white chips.
+ * @cssproperty --sd-chip--white-color-filled-border - The border color for filled white chips.
  * @cssproperty --sd-chip-border-radius - The border radius for chips.
+//TODO CLEAN THIS UP
  * @cssproperty --sd-marker-font-size - The font size for chips.
  * @cssproperty --sd-marker-border-width - The border width for chips.
  * @cssproperty --sd-marker-font-weight - The font weight for chips.
- *
- * @cssproperty --sd-chip-font-size - This custom property is deprecated. Use `--sd-marker-font-size` instead.
- * @cssproperty --sd-chip-border-width - This custom property is deprecated. Use `--sd-marker-border-width` instead.
- * @cssproperty --sd-chip-font-weight - This custom property is deprecated. Use `--sd-marker-font-weight` instead.
  */
 
 .sd-chip {
-  @apply border h-6 sd-chip--primary-200-color-background sd-chip-border-radius sd-chip--primary-200-color-border text-black inline-flex items-center whitespace-nowrap px-2 overflow-hidden;
+  @apply h-6 border marker-border-width marker-font-size marker-font-weight sd-chip--primary-subtle-color-background sd-chip--primary-subtle-color-filled-border sd-chip-border-radius text-black inline-flex items-center whitespace-nowrap px-2 overflow-hidden;
 
-  &--primary-500 {
-    @apply sd-chip--primary-500-color-background sd-chip--primary-500-color-border sd-chip--primary-500-color-text;
+  &--size-lg {
+    @apply h-8 px-3;
   }
 
-  &--primary-300 {
-    @apply sd-chip--primary-300-color-background sd-chip--primary-300-color-border;
+  &--sharp {
+    @apply rounded-none;
   }
 
-  &--white {
-    @apply sd-chip--white-color-background sd-chip--white-color-border;
+  /* Color: primary (default) */
+  &--shade-low {
+    @apply sd-chip--primary-low-color-background sd-chip--primary-low-color-filled-border;
   }
 
-  /* TODO clean this up and add the classes marker-font-size, marker-border-width and marker-font-weight (breaking change) */
-  font-size: var(--sd-chip-font-size);
-  border-width: var(--sd-chip-border-width);
-  font-weight: var(--sd-chip-font-weight);
+  &--shade-medium {
+    @apply sd-chip--primary-medium-color-background sd-chip--primary-medium-color-filled-border;
+  }
+
+  &--shade-high {
+    @apply sd-chip--primary-high-color-background sd-chip--primary-high-color-filled-border;
+  }
+
+  &--shade-none {
+    @apply bg-transparent border-transparent;
+  }
+
+  /* Color: neutral */
+  &--color-neutral {
+    @apply sd-chip--neutral-subtle-color-background sd-chip--neutral-subtle-color-filled-border;
+
+    &.sd-chip--shade-low {
+      @apply sd-chip--neutral-low-color-background sd-chip--neutral-low-color-filled-border;
+    }
+
+    &.sd-chip--shade-medium {
+      @apply sd-chip--neutral-medium-color-background sd-chip--neutral-medium-color-filled-border;
+    }
+
+    &.sd-chip--shade-high {
+      @apply sd-chip--neutral-high-color-background sd-chip--neutral-high-color-filled-border;
+    }
+
+    &.sd-chip--shade-none {
+      @apply bg-transparent border-transparent;
+    }
+  }
+
+  /* Color: white — no shade variants */
+  &--color-white {
+    @apply sd-chip--white-color-background sd-chip--white-color-filled-border;
+  }
+
+  /* Outline variant */
+  &--outline {
+    @apply border sd-chip--primary-low-color-border sd-chip--primary-low-color-outline-fill;
+
+    &.sd-chip--shade-low {
+      @apply sd-chip--primary-medium-color-border sd-chip--primary-medium-color-outline-fill;
+    }
+
+    &.sd-chip--shade-medium {
+      @apply sd-chip--primary-high-color-border sd-chip--primary-high-color-outline-fill;
+    }
+
+    &.sd-chip--shade-high {
+      @apply sd-chip--primary-strong-color-border sd-chip--primary-strong-color-outline-fill;
+    }
+
+    &.sd-chip--color-neutral {
+      @apply sd-chip--neutral-low-color-border sd-chip--neutral-low-color-outline-fill;
+
+      &.sd-chip--shade-low {
+        @apply sd-chip--neutral-medium-color-border sd-chip--neutral-medium-color-outline-fill;
+      }
+
+      &.sd-chip--shade-medium {
+        @apply sd-chip--neutral-high-color-border sd-chip--neutral-high-color-outline-fill;
+      }
+
+      &.sd-chip--shade-high {
+        @apply sd-chip--neutral-strong-color-border sd-chip--neutral-strong-color-outline-fill;
+      }
+    }
+  }
 }

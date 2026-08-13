@@ -538,40 +538,140 @@
  border-width: var(--sd-checkbox-border-width, var(--sd-spacing-0\.25));
 }
 
-@utility sd-chip--primary-200-color-background {
-  background-color: rgba(var(--sd-chip--primary-200-color-background, rgba(var(--sd-color-primary-200))));
+@utility sd-chip--neutral-high-color-background {
+  background-color: rgba(var(--sd-chip--neutral-high-color-background, rgba(var(--sd-color-neutral-400))));
 }
 
-@utility sd-chip--primary-200-color-border {
-  border-color: rgba(var(--sd-chip--primary-200-color-border, rgba(255, 255, 255, 0)));
+@utility sd-chip--neutral-high-color-border {
+  border-color: rgba(var(--sd-chip--neutral-high-color-border, rgba(var(--sd-color-neutral-400))));
 }
 
-@utility sd-chip--primary-300-color-background {
-  background-color: rgba(var(--sd-chip--primary-300-color-background, rgba(var(--sd-color-primary-300))));
+@utility sd-chip--neutral-high-color-filled-border {
+  border-color: rgba(var(--sd-chip--neutral-high-color-filled-border, rgba(255, 255, 255, 0)));
 }
 
-@utility sd-chip--primary-300-color-border {
-  border-color: rgba(var(--sd-chip--primary-300-color-border, rgba(255, 255, 255, 0)));
+@utility sd-chip--neutral-high-color-outline-fill {
+  background-color: rgba(var(--sd-chip--neutral-high-color-outline-fill, rgba(255, 255, 255, 0)));
 }
 
-@utility sd-chip--primary-500-color-background {
-  background-color: rgba(var(--sd-chip--primary-500-color-background, rgba(var(--sd-color-primary-500))));
+@utility sd-chip--neutral-low-color-background {
+  background-color: rgba(var(--sd-chip--neutral-low-color-background, rgba(var(--sd-color-neutral-200))));
 }
 
-@utility sd-chip--primary-500-color-border {
-  border-color: rgba(var(--sd-chip--primary-500-color-border, rgba(255, 255, 255, 0)));
+@utility sd-chip--neutral-low-color-border {
+  border-color: rgba(var(--sd-chip--neutral-low-color-border, rgba(var(--sd-color-neutral-200))));
 }
 
-@utility sd-chip--primary-500-color-text {
-  color: rgba(var(--sd-chip--primary-500-color-text, rgba(var(--sd-color-white))));
+@utility sd-chip--neutral-low-color-filled-border {
+  border-color: rgba(var(--sd-chip--neutral-low-color-filled-border, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip--neutral-low-color-outline-fill {
+  background-color: rgba(var(--sd-chip--neutral-low-color-outline-fill, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip--neutral-medium-color-background {
+  background-color: rgba(var(--sd-chip--neutral-medium-color-background, rgba(var(--sd-color-neutral-300))));
+}
+
+@utility sd-chip--neutral-medium-color-border {
+  border-color: rgba(var(--sd-chip--neutral-medium-color-border, rgba(var(--sd-color-neutral-300))));
+}
+
+@utility sd-chip--neutral-medium-color-filled-border {
+  border-color: rgba(var(--sd-chip--neutral-medium-color-filled-border, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip--neutral-medium-color-outline-fill {
+  background-color: rgba(var(--sd-chip--neutral-medium-color-outline-fill, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip--neutral-strong-color-border {
+  border-color: rgba(var(--sd-chip--neutral-strong-color-border, rgba(var(--sd-color-neutral-500))));
+}
+
+@utility sd-chip--neutral-strong-color-outline-fill {
+  background-color: rgba(var(--sd-chip--neutral-strong-color-outline-fill, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip--neutral-subtle-color-background {
+  background-color: rgba(var(--sd-chip--neutral-subtle-color-background, rgba(var(--sd-color-neutral-100))));
+}
+
+@utility sd-chip--neutral-subtle-color-filled-border {
+  border-color: rgba(var(--sd-chip--neutral-subtle-color-filled-border, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip--primary-high-color-background {
+  background-color: rgba(var(--sd-chip--primary-high-color-background, rgba(var(--sd-color-primary-400))));
+}
+
+@utility sd-chip--primary-high-color-border {
+  border-color: rgba(var(--sd-chip--primary-high-color-border, rgba(var(--sd-color-primary-400))));
+}
+
+@utility sd-chip--primary-high-color-filled-border {
+  border-color: rgba(var(--sd-chip--primary-high-color-filled-border, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip--primary-high-color-outline-fill {
+  background-color: rgba(var(--sd-chip--primary-high-color-outline-fill, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip--primary-low-color-background {
+  background-color: rgba(var(--sd-chip--primary-low-color-background, rgba(var(--sd-color-primary-200))));
+}
+
+@utility sd-chip--primary-low-color-border {
+  border-color: rgba(var(--sd-chip--primary-low-color-border, rgba(var(--sd-color-primary-200))));
+}
+
+@utility sd-chip--primary-low-color-filled-border {
+  border-color: rgba(var(--sd-chip--primary-low-color-filled-border, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip--primary-low-color-outline-fill {
+  background-color: rgba(var(--sd-chip--primary-low-color-outline-fill, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip--primary-medium-color-background {
+  background-color: rgba(var(--sd-chip--primary-medium-color-background, rgba(var(--sd-color-primary-300))));
+}
+
+@utility sd-chip--primary-medium-color-border {
+  border-color: rgba(var(--sd-chip--primary-medium-color-border, rgba(var(--sd-color-primary-300))));
+}
+
+@utility sd-chip--primary-medium-color-filled-border {
+  border-color: rgba(var(--sd-chip--primary-medium-color-filled-border, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip--primary-medium-color-outline-fill {
+  background-color: rgba(var(--sd-chip--primary-medium-color-outline-fill, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip--primary-strong-color-border {
+  border-color: rgba(var(--sd-chip--primary-strong-color-border, rgba(var(--sd-color-primary-500))));
+}
+
+@utility sd-chip--primary-strong-color-outline-fill {
+  background-color: rgba(var(--sd-chip--primary-strong-color-outline-fill, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip--primary-subtle-color-background {
+  background-color: rgba(var(--sd-chip--primary-subtle-color-background, rgba(var(--sd-color-primary-100))));
+}
+
+@utility sd-chip--primary-subtle-color-filled-border {
+  border-color: rgba(var(--sd-chip--primary-subtle-color-filled-border, rgba(255, 255, 255, 0)));
 }
 
 @utility sd-chip--white-color-background {
   background-color: rgba(var(--sd-chip--white-color-background, rgba(var(--sd-color-white))));
 }
 
-@utility sd-chip--white-color-border {
-  border-color: rgba(var(--sd-chip--white-color-border, rgba(255, 255, 255, 0)));
+@utility sd-chip--white-color-filled-border {
+  border-color: rgba(var(--sd-chip--white-color-filled-border, rgba(255, 255, 255, 0)));
 }
 
 @utility sd-chip-border-radius {
