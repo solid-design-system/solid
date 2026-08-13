@@ -42,7 +42,16 @@ export const Default = {
   render: (args: any) => {
     return html` <div class="[&_[slot=footer]]:!ml-auto [&_[slot=footer]]:!w-auto" style="height: 40vh;">
       ${generateTemplate({
-        args
+        args,
+        constants: [
+          {
+            type: 'slot',
+            name: 'footer',
+            value: `<div slot='footer' class='flex w-full'>
+            <sd-button>Button</sd-button>
+            </div>`
+          }
+        ]
       })}
     </div>`;
   }
@@ -51,7 +60,7 @@ export const Default = {
 export const NoCloseButton = {
   name: 'No Close Button',
   render: (args: any) => {
-    return html` <div class="[&_[slot=footer]]:!ml-auto [&_[slot=footer]]:!w-auto" style="height: 40vh;">
+    return html` <div style="height: 40vh;">
       ${generateTemplate({
         args,
         constants: [
@@ -63,12 +72,14 @@ export const NoCloseButton = {
           {
             type: 'slot',
             name: 'footer',
-            value: `<sd-button slot="footer" class="w-full">Close</sd-button>
+            value: `<div slot="footer" class="flex justify-end w-full">
+            <sd-button>Close</sd-button>
+            </div>
+            
             <script>
                 const dialog = document.querySelector('sd-dialog');
-                const footer = dialog.querySelector('sd-button[slot="footer"]');
-
-                footer.addEventListener('click', () => dialog.hide());
+                 const closeButton = dialog.querySelector('[slot="footer"] sd-button');
+                closeButton.addEventListener('click', () => dialog.hide());
           </script>`
           }
         ]
@@ -80,7 +91,7 @@ export const NoCloseButton = {
 export const Scrolling = {
   name: 'Scrolling',
   render: (args: any) => {
-    return html` <div class="[&_[slot=footer]]:!ml-auto [&_[slot=footer]]:!w-auto" style="height: 100vh;">
+    return html` <div style="height: 100vh;">
       ${generateTemplate({
         args,
         constants: [
@@ -88,6 +99,13 @@ export const Scrolling = {
             type: 'slot',
             name: 'default',
             value: `<sd-scrollable orientation='vertical' shadows class="w-full"><div class="slot slot--border slot--background slot--text" style="height:150vh; width: 100%; padding: 1rem; justify-content:start;">Scroll down and give it a try!</div></sd-scrollable>`
+          },
+          {
+            type: 'slot',
+            name: 'footer',
+            value: `<div slot='footer' class='flex justify-end w-full'>
+            <sd-button>Button</sd-button>
+            </div>`
           }
         ]
       })}
@@ -140,8 +158,21 @@ export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
     return html`
-      <div class="mouseless [&_[slot=footer]]:!ml-auto [&_[slot=footer]]:!w-auto" style="height: 40vh;">
-        ${generateTemplate({ args })}
+      <div class="mouseless" style="height: 40vh;">
+        ${generateTemplate({
+          args,
+          constants: [
+            {
+              type: 'slot',
+              name: 'footer',
+              value: `
+                <div slot="footer" class="flex w-full justify-end">
+                  <sd-button>Button</sd-button>
+                </div>
+              `
+            }
+          ]
+        })}
       </div>
     `;
   },

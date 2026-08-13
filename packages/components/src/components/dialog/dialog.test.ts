@@ -174,15 +174,11 @@ describe('<sd-dialog>', () => {
     const panelAnimate = sinon.stub(panel, 'animate').callsFake(() => neverFinishingAnimation);
     const overlayAnimate = sinon.stub(overlay, 'animate').callsFake(() => neverFinishingAnimation);
 
-    const hidePromise = el.hide();
+    el.hide();
     await new Promise(resolve => requestAnimationFrame(resolve));
 
     expect(base.open).to.be.true;
     expect(getComputedStyle(base).display).not.to.equal('none');
-
-    panelAnimation.dispatchEvent(new Event('finish'));
-    overlayAnimation.dispatchEvent(new Event('finish'));
-    await hidePromise;
 
     panelAnimate.restore();
     overlayAnimate.restore();
