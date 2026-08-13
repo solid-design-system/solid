@@ -125,8 +125,8 @@ export const ExtendedFooter = {
           </p>
           <span slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</span>
           <div slot="footer" class="flex w-full flex-row justify-end gap-4">
-            <sd-button variant="secondary" class="w-20">Button</sd-button>
-            <sd-button class="w-20">Button</sd-button>
+            <sd-button variant="secondary">Button</sd-button>
+            <sd-button>Button</sd-button>
           </div>
         </sd-dialog>
       </div>
@@ -146,7 +146,7 @@ export const SmallHeadline = {
           </p>
           <span slot="headline" class="font-bold">Lorem Ipsum</span>
           <div slot="footer" class="flex w-full flex-row justify-end gap-4">
-            <sd-button class="w-20">Button</sd-button>
+            <sd-button>Button</sd-button>
           </div>
         </sd-dialog>
       </div>
