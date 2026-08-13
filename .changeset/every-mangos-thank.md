@@ -3,4 +3,4 @@
 '@solid-design-system/docs': patch
 ---
 
-Updated `sd-dialog` so its footer spans the full dialog width at all viewport sizes.
+Updated `sd-dialog` to display the footer at full width across all viewport sizes.
