@@ -40,14 +40,14 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return html` <div class="[&_[slot=footer]]:!ml-auto [&_[slot=footer]]:!w-auto" style="height: 40vh;">
+    return html` <div style="height: 40vh;">
       ${generateTemplate({
         args,
         constants: [
           {
             type: 'slot',
             name: 'footer',
-            value: `<div slot='footer' class='flex w-full'>
+            value: `<div slot='footer' class='flex justify-end w-full'>
             <sd-button>Button</sd-button>
             </div>`
           }
