@@ -14,7 +14,7 @@ Use the components tool by passing the args `component` and `example` for any of
 ### Key Properties
 
 - prop.fixed: boolean, default=false — Determines whether the header is fixed or not. If the header is fixed, it stays at the top of the page while scrolling.
-- prop.shadow: boolean, default=false — Determines whether a drop shadow is shown underneath the header. Can be used with out without the `fixed` attribute
+- prop.shadow: boolean, default=false — Determines whether a drop shadow is shown underneath the header.
 - prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
 - prop.lang: string — The element's language.
 
