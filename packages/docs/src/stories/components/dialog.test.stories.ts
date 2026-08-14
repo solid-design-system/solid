@@ -30,7 +30,7 @@ export default {
     {
       type: 'slot',
       name: 'footer',
-      value: `<div slot='footer' class='flex justify-end w-full'>
+      value: `<div slot='footer' class='flex justify-end'>
             <sd-button>Button</sd-button>
             </div>`
     }
@@ -65,7 +65,7 @@ export const NoCloseButton = {
           {
             type: 'slot',
             name: 'footer',
-            value: `<div slot="footer" class="flex justify-end w-full">
+            value: `<div slot="footer" class="flex justify-end">
             <sd-button>Close</sd-button>
             </div>
             
@@ -110,7 +110,7 @@ export const ExtendedFooter = {
             phasellus dui vel id. Velit in sed.
           </p>
           <span slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</span>
-          <div slot="footer" class="flex w-full flex-row justify-end gap-4">
+          <div slot="footer" class="flex flex-row justify-end gap-4">
             <sd-button variant="secondary">Button</sd-button>
             <sd-button>Button</sd-button>
           </div>
@@ -131,7 +131,7 @@ export const SmallHeadline = {
             phasellus dui vel id. Velit in sed.
           </p>
           <span slot="headline" class="font-bold">Lorem Ipsum</span>
-          <div slot="footer" class="flex w-full flex-row justify-end gap-4">
+          <div slot="footer" class="flex flex-row justify-end gap-4">
             <sd-button>Button</sd-button>
           </div>
         </sd-dialog>

@@ -76,7 +76,7 @@ export const Open = {
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
         </p>
-        <div slot="footer" class="flex w-full justify-start sm:justify-end">
+        <div slot="footer" class="flex sm:justify-end gap-4">
           <sd-button>Button</sd-button>
         </div>
       </sd-dialog>
@@ -107,7 +107,7 @@ export const Headline = {
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
         </p>
-        <div slot="footer" class="flex w-full justify-start sm:justify-end">
+        <div slot="footer" class="flex sm:justify-end gap-4">
           <sd-button>Button</sd-button>
         </div>
       </sd-dialog>
@@ -140,7 +140,7 @@ export const NoCloseButton = {
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
         </p>
-        <div slot="footer" class="flex w-full justify-start sm:justify-end">
+        <div slot="footer" class="flex sm:justify-end gap-4">
           <sd-button class="close-button" variant="primary">Button</sd-button>
         </div>
       </sd-dialog>
