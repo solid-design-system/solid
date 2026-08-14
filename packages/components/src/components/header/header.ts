@@ -30,7 +30,7 @@ export default class SdHeader extends SolidElement {
   /**  Determines whether the header is fixed or not. If the header is fixed, it stays at the top of the page while scrolling. */
   @property({ reflect: true, type: Boolean }) fixed = false;
 
-  /**  Determines whether a drop shadow is shown underneath the header. Can be used with out without the `fixed` attribute */
+  /**  Determines whether a drop shadow is shown underneath the header. */
   @property({ reflect: true, type: Boolean }) shadow = false;
 
   @query('header') header: HTMLElement;
