@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import '../../../../components/src/solid-components';
+import '../../../../../components/src/solid-components';
 
-<Meta title="General/CDN Hosting" />
+<Meta title="Docs/General/CDN Hosting" />
 
 # CDN Hosting
 
@@ -9,7 +9,7 @@ Solid Design System does **not** provide a hosted CDN. The recommended installat
 
 If you work in an environment without a bundler (e.g. a CMS), the npm packages include pre-built artifacts under `cdn/` that you can serve from **your own CDN**. Each team is responsible for hosting and caching these files.
 
-<sd-notification type="warning" open>
+<sd-notification variant="warning" open>
   There is no Solid-managed CDN endpoint. Any CDN URL you use must point to an infrastructure your team controls.
 </sd-notification>
 

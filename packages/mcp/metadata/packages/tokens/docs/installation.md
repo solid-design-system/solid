@@ -2,7 +2,7 @@
 
 This page guides you through installing and setting up the `@solid-design-system/tokens` package to use themes and/or design tokens in your project.
 
-<sd-notification type="info" open>
+<sd-notification variant="info" open>
   The `components`, `styles`, and `tokens` packages always share the same version. We use fixed versioning to keep them
   fully in sync, so every release updates all three packages, even if only one of them changed. Make sure to install or
   update them using the same version number.

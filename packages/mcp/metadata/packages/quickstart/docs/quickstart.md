@@ -14,7 +14,7 @@ pnpm i @solid-design-system/components @solid-design-system/styles @solid-design
 
 ```
 
-For environments without a bundler (e.g. a CMS), see [CDN Hosting](?path=/docs/general-cdn-hosting--docs).
+For environments without a bundler (e.g. a CMS), see [CDN Hosting](?path=/docs/docs-general-cdn-hosting--docs).
 
 Now you are ready to use Solid Design System in your project!
 
