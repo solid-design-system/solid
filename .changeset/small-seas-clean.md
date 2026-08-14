@@ -1,0 +1,63 @@
+---
+'@solid-design-system/tokens': major
+---
+
+Consolidated `sd-chip` and `sd-flag` (checkout the [migration guide](./?path=/docs/packages-tokens-migration-from-v6--docs) for details):
+
+  - Removed tokens:
+    - `--sd-chip--primary-200-color-background`
+    - `--sd-chip--primary-200-color-border`
+    - `--sd-chip--primary-300-color-background`
+    - `--sd-chip--primary-300-color-border`
+    - `--sd-chip--primary-500-color-background`
+    - `--sd-chip--primary-500-color-border`
+    - `--sd-chip--primary-500-color-text`
+    - `--sd-chip--white-color-border`
+    - `--sd-chip-font-size` (deprecated alias)
+    - `--sd-chip-font-weight` (deprecated alias)
+    - `--sd-flag--neutral-200-color-background`
+    - `--sd-flag--neutral-200-color-border`
+    - `--sd-flag--neutral-300-color-background`
+    - `--sd-flag--neutral-300-color-border`
+    - `--sd-flag--neutral-500-color-background`
+    - `--sd-flag--neutral-500-color-border`
+    - `--sd-flag--white-color-background`
+    - `--sd-flag--white-color-border`
+    - `--sd-flag-border-radius`
+    - `--sd-flag-border-width` (deprecated alias)
+
+  - New tokens:
+    - `--sd-chip--primary-subtle-color-background`
+    - `--sd-chip--primary-subtle-color-filled-border`
+    - `--sd-chip--primary-low-color-background`
+    - `--sd-chip--primary-low-color-filled-border`
+    - `--sd-chip--primary-medium-color-background`
+    - `--sd-chip--primary-medium-color-filled-border`
+    - `--sd-chip--primary-high-color-background`
+    - `--sd-chip--primary-high-color-filled-border`
+    - `--sd-chip--neutral-subtle-color-background`
+    - `--sd-chip--neutral-subtle-color-filled-border`
+    - `--sd-chip--neutral-low-color-background`
+    - `--sd-chip--neutral-low-color-filled-border`
+    - `--sd-chip--neutral-medium-color-background`
+    - `--sd-chip--neutral-medium-color-filled-border`
+    - `--sd-chip--neutral-high-color-background`
+    - `--sd-chip--neutral-high-color-filled-border`
+    - `--sd-chip--white-color-background` (repurposed, new mapping)
+    - `--sd-chip--white-color-filled-border`
+    - `--sd-chip--primary-low-color-border`
+    - `--sd-chip--primary-low-color-outline-fill`
+    - `--sd-chip--primary-medium-color-border`
+    - `--sd-chip--primary-medium-color-outline-fill`
+    - `--sd-chip--primary-high-color-border`
+    - `--sd-chip--primary-high-color-outline-fill`
+    - `--sd-chip--primary-strong-color-border`
+    - `--sd-chip--primary-strong-color-outline-fill`
+    - `--sd-chip--neutral-low-color-border`
+    - `--sd-chip--neutral-low-color-outline-fill`
+    - `--sd-chip--neutral-medium-color-border`
+    - `--sd-chip--neutral-medium-color-outline-fill`
+    - `--sd-chip--neutral-high-color-border`
+    - `--sd-chip--neutral-high-color-outline-fill`
+    - `--sd-chip--neutral-strong-color-border`
+    - `--sd-chip--neutral-strong-color-outline-fill`
