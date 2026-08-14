@@ -53,8 +53,7 @@ export const Color = {
 };
 
 /**
- * Use the `&--shade-*` classes to select an emphasis level within the chosen color
- * (filled uses `subtle`–`high`, outlined uses `low`–`strong`):
+ * Use the `&--shade-*` classes to select an emphasis level within the chosen color:
  *
  * - sd-chip--shade-subtle is the default appearance
  * - `sd-chip--shade-low`
@@ -98,7 +97,7 @@ export const Outlined = {
 /**
  * Use the `sd-chip--sharp` class to switch the corner style.
  */
-export const Rounded = {
+export const Sharp = {
   render: () =>
     html`<div class="flex gap-12 items-center">
       <div class="sd-chip">rounded</div>

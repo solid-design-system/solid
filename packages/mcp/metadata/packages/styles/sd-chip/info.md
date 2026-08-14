@@ -12,7 +12,7 @@ Use the styles tool (with `style` + `example` args) to retrieve the HTML for any
 - sd-chip/shade
 - sd-chip/size
 - sd-chip/outlined
-- sd-chip/rounded
+- sd-chip/sharp
 
 ## Guidelines
 
@@ -36,7 +36,7 @@ Use the styles tool (with `style` + `example` args) to retrieve the HTML for any
 
 ### Corner Style
 
-- Use rounded="none" when sd-chip sits directly on top of an image or a container with no padding, so the rounded corners aren’t cut off at the edge. For all other placements, use rounded="default".
+- Use sharp="true" when sd-chip sits directly on top of an image or a container with no padding, so the rounded corners aren’t cut off at the edge. For all other placements, use sharp="true".
 
 ### Accessibility
 
