@@ -109,6 +109,30 @@ Please use `sd-loader` instead.
 <sd-loader></sd-loader>
 ```
 
+## Removed the default margin from inline `sd-notification`
+
+Inline `sd-notification` components no longer have a default margin applied. If your inline notifications relied on the previous spacing, add it to the surrounding layout instead.
+
+**Before**:
+
+```html
+<sd-notification open>Notification message</sd-notification>
+```
+
+The component applied its own margin.
+
+**After**:
+
+```html
+<sd-notification class="my-notification" open> Notification message </sd-notification>
+
+<style>
+  .my-notification {
+    padding: 0.5rem;
+  }
+</style>
+```
+
 ## `sd-dialog` and `sd-drawer` now use the native `<dialog>` element
 
 Both components previously implemented their own modal behavior (a custom `Modal` focus trap, manual body scroll locking, and manual Escape-key handling). They now render their `part="base"` element as a native `<dialog>` and use its built-in `showModal()`/`close()` APIs instead.
@@ -133,4 +157,37 @@ Both components previously implemented their own modal behavior (a custom `Modal
 
 ```html
 <sd-dialog open>...</sd-dialog> <sd-drawer open>...</sd-drawer>
+```
+
+## `sd-header` drop shadow is no longer tied to the `fixed` attribute
+
+Previously, setting `fixed` on `sd-header` always rendered a drop shadow underneath it. The shadow is now controlled by a separate `shadow` attribute, which is off by default and can be combined with `fixed` or used on its own.
+
+**Migration steps:**
+
+- Add the `shadow` attribute to every fixed header that should keep its drop shadow.
+- If you previously suppressed the header shadow, the custom override is no longer needed and can be removed.
+
+**Before** (the drop shadow came with `fixed`):
+
+```html
+<sd-header fixed>
+  <!-- Your content -->
+</sd-header>
+```
+
+**After** (the drop shadow is opt-in):
+
+```html
+<sd-header fixed shadow>
+  <!-- Your content -->
+</sd-header>
+```
+
+A header that is not fixed can now show a drop shadow as well:
+
+```html
+<sd-header shadow>
+  <!-- Your content -->
+</sd-header>
 ```
