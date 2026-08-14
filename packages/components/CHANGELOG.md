@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 7.0.0-next.7
+
+### Major Changes
+
+- Added `shadow` attribute to `sd-header` to control the drop shadow independently of the `fixed` attribute. _[`#3246`](https://github.com/solid-design-system/solid/pull/3246) [`cef7219`](https://github.com/solid-design-system/solid/commit/cef72199fa824909c31e636902e9f24aaa4db4ae) [@balco0110](https://github.com/balco0110)_
+
 ## 7.0.0-next.6
 
 ### Major Changes

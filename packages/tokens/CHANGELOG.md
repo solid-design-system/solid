@@ -1,5 +1,7 @@
 # @solid-design-system/tokens
 
+## 7.0.0-next.7
+
 ## 7.0.0-next.6
 
 ## 7.0.0-next.5

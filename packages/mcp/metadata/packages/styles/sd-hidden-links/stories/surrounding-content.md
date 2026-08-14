@@ -42,7 +42,7 @@ The style appends its position relative to the position of the parent container 
   <div class="z-20 sd-hidden-links">
     <sd-button href="#">Skip to content</sd-button>
   </div>
-  <sd-header class="z-10" fixed>
+  <sd-header class="z-10" fixed shadow>
     <div class="flex justify-between items-center">
       <!-- top-left-area start !-->
       <a class="flex flex-shrink" href="#">
