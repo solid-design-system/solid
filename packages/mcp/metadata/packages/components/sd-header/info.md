@@ -8,11 +8,13 @@
 
 Use the components tool by passing the args `component` and `example` for any of these combinations:
 
+- component: sd-header, example: shadow
 - component: sd-header, example: fixed
 
 ### Key Properties
 
-- prop.fixed: boolean, default=false — Determines whether the header is fixed or not. If the header is fixed at the top of the page, a shadow is shown underneath.
+- prop.fixed: boolean, default=false — Determines whether the header is fixed or not. If the header is fixed, it stays at the top of the page while scrolling.
+- prop.shadow: boolean, default=false — Determines whether a drop shadow is shown underneath the header. Can be used with out without the `fixed` attribute
 - prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
 - prop.lang: string — The element's language.
 
@@ -28,8 +30,8 @@ Use the components tool by passing the args `component` and `example` for any of
 
 ### Use Cases
 
-- Display primary navigation links for easy access to different sections of the website.
 - Showcase the company logo prominently to reinforce brand identity.
+- Display primary navigation links for easy access to different sections of the website.
 - Include links for user account access.
 - Provide a prominent search function to help users quickly find content.
 
