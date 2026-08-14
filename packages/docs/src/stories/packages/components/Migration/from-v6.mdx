@@ -148,3 +148,53 @@ Please use `sd-loader` instead.
 ```html
 <sd-loader></sd-loader>
 ```
+
+## Removed the default margin from inline `sd-notification`
+
+Inline `sd-notification` components no longer have a default margin applied. If your inline notifications relied on the previous spacing, add it to the surrounding layout instead.
+
+**Before**:
+
+```html
+<sd-notification open>Notification message</sd-notification>
+```
+
+The component applied its own margin.
+
+**After**:
+
+```html
+<sd-notification class="my-notification" open> Notification message </sd-notification>
+
+<style>
+  .my-notification {
+    padding: 0.5rem;
+  }
+</style>
+```
+
+## `sd-dialog` and `sd-drawer` now use the native `<dialog>` element
+
+Both components previously implemented their own modal behavior (a custom `Modal` focus trap, manual body scroll locking, and manual Escape-key handling). They now render their `part="base"` element as a native `<dialog>` and use its built-in `showModal()`/`close()` APIs instead.
+
+**What changed and why:** Focus trapping, scroll locking, and Escape handling are now provided natively by the browser via the `<dialog>` element, removing a large amount of custom JavaScript and fixing several edge-case bugs (e.g. focus restoration inside Shadow DOM).
+
+**Who is affected:** Anyone who relies on custom stacking context/`z-index` rules around `sd-dialog` or `sd-drawer`, or on the removed (non-public) `contained` property of `sd-drawer`.
+
+**Migration steps:**
+
+- **Double-check `z-index` and stacking context around dialogs and drawers.** A native `<dialog>` opened via `showModal()` is rendered in the browser's top layer, above everything else in the document regardless of `z-index`. If you previously relied on other elements (e.g. sticky headers, toasts, or custom overlays) appearing above or below the dialog via `z-index` tricks, re-verify this behavior — it may now differ.
+- `sd-drawer`'s `contained` property has been removed, since it's incompatible with native top-layer stacking. If you used `contained`, the drawer will now always render relative to the viewport.
+- `role="dialog"`/`aria-modal` are no longer set on `[part="panel"]` — the native `<dialog>` element provides this semantics automatically.
+
+**Before** (custom overlay, subject to your own stacking context):
+
+```html
+<sd-dialog open>...</sd-dialog> <sd-drawer open contained>...</sd-drawer>
+```
+
+**After** (native top layer, always renders above the rest of the page):
+
+```html
+<sd-dialog open>...</sd-dialog> <sd-drawer open>...</sd-drawer>
+```

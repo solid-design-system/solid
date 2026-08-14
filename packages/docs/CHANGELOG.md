@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 3.0.0-next.5
+
+### Patch Changes
+
+- Removed margin from `sd-notification` to improve inline styling. _[`#3147`](https://github.com/solid-design-system/solid/pull/3147) [`331332f`](https://github.com/solid-design-system/solid/commit/331332f5fdecf42abccdbdd74dda53a09bbf68f1) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 3.0.0-next.4
 
 ### Major Changes

@@ -1,5 +1,22 @@
 # @solid-design-system/components
 
+## 7.0.0-next.6
+
+### Major Changes
+
+- Removed margin from `sd-notification` to improve inline styling. _[`#3147`](https://github.com/solid-design-system/solid/pull/3147) [`331332f`](https://github.com/solid-design-system/solid/commit/331332f5fdecf42abccdbdd74dda53a09bbf68f1) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 7.0.0-next.5
+
+### Major Changes
+
+- Replaced custom modal/overlay implementation in `sd-dialog` and `sd-drawer` with the browser-native `<dialog>` element and its `showModal()`/`close()` APIs. _[`#3238`](https://github.com/solid-design-system/solid/pull/3238) [`a444acb`](https://github.com/solid-design-system/solid/commit/a444acbaa5fb374ac5587bd5eef8575a8d6b16c1) [@mariohamann](https://github.com/mariohamann)_
+
+### 📈 Stats
+
+- Uncompressed: 622 KB (-3 KB / 0%)
+- Gzipped: 139 KB (-1 KB / -1%)
+
 ## 7.0.0-next.4
 
 ### Major Changes
@@ -7,8 +24,9 @@
 - Removed the `sd-spinner` component _[`#3219`](https://github.com/solid-design-system/solid/pull/3219) [`cbdc1cb`](https://github.com/solid-design-system/solid/commit/cbdc1cb0098cabdbdad324803d5176de76a2215f) [@balco0110](https://github.com/balco0110)_
 
 ### 📈 Stats
-* Uncompressed: 625 KB (-2 KB / 0%)
-* Gzipped: 140 KB (unchanged)
+
+- Uncompressed: 625 KB (-2 KB / 0%)
+- Gzipped: 140 KB (unchanged)
 
 ## 7.0.0-next.3
 

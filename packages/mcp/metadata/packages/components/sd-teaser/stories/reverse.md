@@ -3,7 +3,7 @@ Use the `reversed-layout` attribute to invert the horizontal layout.
 
 ```html
 <sd-teaser reversed-layout>
-  <h3 slot="headline" class="sd-headline sd-headline--size-lg">Horizontal</h3>
+  <h3 slot="headline">Horizontal</h3>
   <img slot="media" src="./placeholders/images/architecture.jpg" alt="" class="w-full h-auto" />
   <p>
     Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim

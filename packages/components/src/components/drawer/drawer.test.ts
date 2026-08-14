@@ -10,25 +10,25 @@ describe('<sd-drawer>', () => {
     const el = await fixture<SdDrawer>(html`
       <sd-drawer open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-drawer>
     `);
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
 
-    expect(base.hidden).to.be.false;
+    expect(base.open).to.be.true;
   });
 
   it('should not be visible without the open attribute', async () => {
     const el = await fixture<SdDrawer>(html`
       <sd-drawer>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-drawer>
     `);
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
 
-    expect(base.hidden).to.be.true;
+    expect(base.open).to.be.false;
   });
 
   it('should emit sd-show and sd-after-show when calling show()', async () => {
     const el = await fixture<SdDrawer>(html`
       <sd-drawer>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-drawer>
     `);
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
 
@@ -41,14 +41,14 @@ describe('<sd-drawer>', () => {
 
     expect(showHandler).to.have.been.calledOnce;
     expect(afterShowHandler).to.have.been.calledOnce;
-    expect(base.hidden).to.be.false;
+    expect(base.open).to.be.true;
   });
 
   it('should emit sd-hide and sd-after-hide when calling hide()', async () => {
     const el = await fixture<SdDrawer>(html`
       <sd-drawer open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-drawer>
     `);
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
 
@@ -61,14 +61,14 @@ describe('<sd-drawer>', () => {
 
     expect(hideHandler).to.have.been.calledOnce;
     expect(afterHideHandler).to.have.been.calledOnce;
-    expect(base.hidden).to.be.true;
+    expect(base.open).to.be.false;
   });
 
   it('should emit sd-show and sd-after-show when setting open = true', async () => {
     const el = await fixture<SdDrawer>(html`
       <sd-drawer>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-drawer>
     `);
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
 
@@ -81,14 +81,14 @@ describe('<sd-drawer>', () => {
 
     expect(showHandler).to.have.been.calledOnce;
     expect(afterShowHandler).to.have.been.calledOnce;
-    expect(base.hidden).to.be.false;
+    expect(base.open).to.be.true;
   });
 
   it('should emit sd-hide and sd-after-hide when setting open = false', async () => {
     const el = await fixture<SdDrawer>(html`
       <sd-drawer open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-drawer>
     `);
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
 
@@ -101,7 +101,7 @@ describe('<sd-drawer>', () => {
 
     expect(hideHandler).to.have.been.calledOnce;
     expect(afterHideHandler).to.have.been.calledOnce;
-    expect(base.hidden).to.be.true;
+    expect(base.open).to.be.false;
   });
 
   it('should not close when sd-request-close is prevented', async () => {
@@ -187,6 +187,9 @@ describe('<sd-drawer>', () => {
 
     // wait until dialog is closed
     await waitUntil(() => !el.open);
+    // The native <dialog> restores focus to the previously focused element asynchronously, so wait for it instead of
+    // asserting immediately (this can otherwise cause WebKit to hang when running under automation).
+    await waitUntil(() => document.activeElement === trigger);
     expect(document.activeElement).to.equal(trigger);
   });
 
@@ -229,6 +232,9 @@ describe('<sd-drawer>', () => {
 
     // wait until dialog is closed
     await waitUntil(() => !el.open);
+    // The native <dialog> restores focus to the previously focused element asynchronously, so wait for it instead of
+    // asserting immediately (this can otherwise cause WebKit to hang when running under automation).
+    await waitUntil(() => testElement.shadowRoot!.activeElement === trigger);
     const activeElementInsideTestElement = testElement.shadowRoot!.activeElement;
     expect(activeElementInsideTestElement).to.equal(trigger);
   });

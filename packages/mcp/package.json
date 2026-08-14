@@ -73,5 +73,5 @@
     "postversion": "pnpm build"
   },
   "type": "module",
-  "version": "7.0.0-next.4"
+  "version": "7.0.0-next.6"
 }
