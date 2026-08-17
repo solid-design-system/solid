@@ -295,7 +295,7 @@ export default class SdDialog extends SolidElement {
           <main part="body" class="flex flex-auto overflow-auto w-full px-6 sm:px-10">
             <slot></slot>
           </main>
-          <footer part="footer" class="gap-4 px-6 sm:px-10">
+          <footer part="footer" class="px-6 sm:px-10">
             <slot name="footer"></slot>
           </footer>
         </div>
