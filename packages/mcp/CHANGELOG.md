@@ -1,5 +1,14 @@
 # Changelog
 
+## 7.0.0-next.8
+
+### Major Changes
+
+- Consolidated `sd-chip` and `sd-flag`: _[`#3267`](https://github.com/solid-design-system/solid/pull/3267) [`12db708`](https://github.com/solid-design-system/solid/commit/12db708ea227bc2ce2a7835d12190ee1ae40f891) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Removed the `sd-flag` style.
+  - Added `sd-chip--color-{primary,neutral,white}`, `sd-chip--shade-{subtle,low,medium,high}`, `sd-chip--size-{sm,lg}`, `sd-chip--outline` and `sd-chip--sharp` classes.
+
 ## 7.0.0-next.7
 
 ## 7.0.0-next.6
