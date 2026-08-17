@@ -57,6 +57,7 @@ export { default as SdTextarea } from './components/textarea/textarea.js';
 export { default as SdTooltip } from './components/tooltip/tooltip.js';
 export { default as SdVideo } from './components/video/video.js';
 export { default as SdThemeListener } from './components/theme-listener/theme-listener.js';
+export { default as SdFileSelector } from './components/file-selector/file-selector.js';
 /* plop:component */
 
 // Utilities
