@@ -140,10 +140,8 @@ across all viewport sizes, so you are responsible for styling the layout and ali
 
 **Migration steps:**
 
-- Content assigned directly to the `footer` slot is no longer aligned to the right. To keep the previous alignment, wrap
-  it in a container and define the alignment there.
-- If you added custom styles to force the footer to span the full width, they no longer have any effect and can be
-  removed.
+- Content assigned directly to the `footer` slot is no longer aligned to the right. To keep the previous alignment, wrap it in a container and define the alignment there.
+- If you added custom styles to force the footer to span the full width, they no longer have any effect and can be removed.
 
 **Before**:
 
@@ -171,6 +169,18 @@ across all viewport sizes, so you are responsible for styling the layout and ali
 <sd-dialog headline="Cancel your subscription?">
   <p>Your subscription will be canceled immediately.</p>
   <div slot="footer" class="dialog-footer">
+    <sd-button variant="secondary">Maybe later</sd-button>
+    <sd-button variant="primary">Cancel subscription</sd-button>
+  </div>
+</sd-dialog>
+```
+
+**Dialog with a full width footer**:
+
+```html
+<sd-dialog headline="Cancel your subscription?">
+  <p>Your subscription will be canceled immediately.</p>
+  <div slot="footer">
     <sd-button variant="secondary">Maybe later</sd-button>
     <sd-button variant="primary">Cancel subscription</sd-button>
   </div>
