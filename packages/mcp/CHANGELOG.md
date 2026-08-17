@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.0.0-next.7
+
+## 7.0.0-next.6
+
 ## 7.0.0-next.5
 
 ## 7.0.0-next.4
@@ -7,6 +11,14 @@
 ## 7.0.0-next.3
 
 ## 7.0.0-next.2
+
+## 6.30.0
+
+### Minor Changes
+
+- Add `sd-file-selector` component. _[`#3237`](https://github.com/solid-design-system/solid/pull/3237) [`cdab3e1`](https://github.com/solid-design-system/solid/commit/cdab3e1c704558ad4d437d9d19d5ad8db5062547) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.29.1
 
 ## 6.29.0
 

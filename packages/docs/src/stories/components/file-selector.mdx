@@ -1,0 +1,84 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdFileSelectorStories from './file-selector.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-file-selector--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=61919-1818&p=f&t=WJ35PqPNNCiwdvLU-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Solid-DS-%E2%80%93-Component-Docs?node-id=24003-6863&p=f&t=qjTZ3FNSKejocm9C-0'
+};
+
+export const content = `
+# File Selector
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Components
+
+[sd-button](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-button--docs)
+
+### Common Use Cases
+
+- Select files or documents as part of a form submission.
+- Attach supporting files in profile or account settings.
+- Replace or update assets in content management workflows.
+- Handle single or multiple file selections within any form or multi-step forms.
+
+#### Default
+
+Use the \`default\` variant when the select action is secondary to other form fields, or when space is limited.
+
+- Inline file selector in dense or compact forms.
+- Single-file selection where minimal visual weight is needed.
+- Flows where the selection action sits alongside other inputs.
+
+#### Drop Area
+
+Use the \`drop-area\` variant when file selector is the primary action on the page or step.
+
+- Dedicated selector steps in multi-step flows.
+- Scenarios where drag-and-drop is a likely or preferred interaction.
+- Select flows that support multiple files at once.
+
+### Usage Guidelines
+
+<b>Do not mix both variants within the same form or flow.</b>
+
+#### Label and Help Text
+
+- Always provide a descriptive label (e.g., "Select file", "Signed contract").
+- Use help text to communicate accepted file types and size limits
+- Do not rely on the drop-area copy alone to convey constraints.
+
+#### Error Handling
+
+- Use error-text to surface validation errors: below the component (default variant) or next to each individual file selector when the "show selected files" attribute is active (drop-area variant).
+- Write error text in plain language with a clear solution (e.g., "The file is too large. Maximum allowed size is 5 MB.").
+
+#### Per-error-type copy guidance
+
+- Provide distinct error messages for each failure scenario rather than a generic fallback — for example: wrong file type, file too large, empty file, too many files, or selection failure.
+
+#### Background
+
+- Use light background options such as white, neutral-100, or primary-100.
+
+### Accessibility Information
+
+- Use \`visually-disabled\` to keep disabled elements focusable and tooltip-accessible.
+- Associate error text via \`aria-describedby\` so they are announced on focus.
+- Use the \`visually-disabled\` attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
+- A label must always be provided, even when it is visually hidden. The label is used to provide an accessible name for the file selector, ensuring that screen reader users can identify the purpose of the control.
+
+Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=38262-58412&t=1qhfYXrbNhSCYCzZ-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-file-selector/Overview" />
+
+<OverviewFormatter story={SdFileSelectorStories.Default} tag="sd-file-selector">
+  {content}
+</OverviewFormatter>

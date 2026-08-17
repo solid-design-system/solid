@@ -79,6 +79,24 @@ export const Default = {
   }
 };
 
+export const Shadow = {
+  name: 'Shadow',
+  render: (args: any) => {
+    return html` <div style="height: 100px;">
+      ${generateTemplate({
+        constants: [
+          {
+            type: 'attribute',
+            name: 'shadow',
+            value: 'true'
+          }
+        ],
+        args
+      })}
+    </div>`;
+  }
+};
+
 export const Fixed = {
   name: 'Fixed',
   render: (args: any) => {

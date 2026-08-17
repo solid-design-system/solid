@@ -1,5 +1,17 @@
 # @solid-design-system/components
 
+## 7.0.0-next.7
+
+### Major Changes
+
+- Added `shadow` attribute to `sd-header` to control the drop shadow independently of the `fixed` attribute. _[`#3246`](https://github.com/solid-design-system/solid/pull/3246) [`cef7219`](https://github.com/solid-design-system/solid/commit/cef72199fa824909c31e636902e9f24aaa4db4ae) [@balco0110](https://github.com/balco0110)_
+
+## 7.0.0-next.6
+
+### Major Changes
+
+- Removed margin from `sd-notification` to improve inline styling. _[`#3147`](https://github.com/solid-design-system/solid/pull/3147) [`331332f`](https://github.com/solid-design-system/solid/commit/331332f5fdecf42abccdbdd74dda53a09bbf68f1) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 7.0.0-next.5
 
 ### Major Changes
@@ -7,8 +19,9 @@
 - Replaced custom modal/overlay implementation in `sd-dialog` and `sd-drawer` with the browser-native `<dialog>` element and its `showModal()`/`close()` APIs. _[`#3238`](https://github.com/solid-design-system/solid/pull/3238) [`a444acb`](https://github.com/solid-design-system/solid/commit/a444acbaa5fb374ac5587bd5eef8575a8d6b16c1) [@mariohamann](https://github.com/mariohamann)_
 
 ### 📈 Stats
-* Uncompressed: 622 KB (-3 KB / 0%)
-* Gzipped: 139 KB (-1 KB / -1%)
+
+- Uncompressed: 622 KB (-3 KB / 0%)
+- Gzipped: 139 KB (-1 KB / -1%)
 
 ## 7.0.0-next.4
 
@@ -28,6 +41,22 @@
 - The `autocorrect` property of `sd-input` and `sd-textarea` is now a `boolean` instead of a `string`, to align with the updated `HTMLElement.autocorrect` type shipped in TypeScript 5.9. Checkout the migration guide for more details. _[`#3184`](https://github.com/solid-design-system/solid/pull/3184) [`81cd65b`](https://github.com/solid-design-system/solid/commit/81cd65ba91559c9f138920a5ba505fb1461eb92a) [@mariohamann](https://github.com/mariohamann)_
 
 ## 7.0.0-next.2
+
+## 6.30.0
+
+### Minor Changes
+
+- Add `sd-file-selector` component. _[`#3237`](https://github.com/solid-design-system/solid/pull/3237) [`cdab3e1`](https://github.com/solid-design-system/solid/commit/cdab3e1c704558ad4d437d9d19d5ad8db5062547) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+### 📈 Stats
+* Uncompressed: 639 KB (+12 KB / +2%)
+* Gzipped: 143 KB (+3 KB / +2%)
+
+## 6.29.1
+
+### Patch Changes
+
+- Removed warning icon from `sd-notification`. _[`#3250`](https://github.com/solid-design-system/solid/pull/3250) [`6fd8017`](https://github.com/solid-design-system/solid/commit/6fd80179298c16869591dc91723ff3697ec465d3) [@balco0110](https://github.com/balco0110)_
 
 ## 6.29.0
 

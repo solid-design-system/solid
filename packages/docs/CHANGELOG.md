@@ -1,5 +1,17 @@
 # @solid-design-system/docs
 
+## 3.0.0-next.6
+
+### Major Changes
+
+- Added `shadow` attribute to `sd-header` to control the drop shadow independently of the `fixed` attribute. _[`#3246`](https://github.com/solid-design-system/solid/pull/3246) [`cef7219`](https://github.com/solid-design-system/solid/commit/cef72199fa824909c31e636902e9f24aaa4db4ae) [@balco0110](https://github.com/balco0110)_
+
+## 3.0.0-next.5
+
+### Patch Changes
+
+- Removed margin from `sd-notification` to improve inline styling. _[`#3147`](https://github.com/solid-design-system/solid/pull/3147) [`331332f`](https://github.com/solid-design-system/solid/commit/331332f5fdecf42abccdbdd74dda53a09bbf68f1) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 3.0.0-next.4
 
 ### Major Changes
@@ -13,6 +25,12 @@
 - Dependencies updated. For further details, please refer to the associated Pull Request. _[`#3184`](https://github.com/solid-design-system/solid/pull/3184) [`81cd65b`](https://github.com/solid-design-system/solid/commit/81cd65ba91559c9f138920a5ba505fb1461eb92a) [@mariohamann](https://github.com/mariohamann)_
 
 ## 3.0.0-next.2
+
+## 2.22.0
+
+### Minor Changes
+
+- Add `sd-file-selector` component. _[`#3237`](https://github.com/solid-design-system/solid/pull/3237) [`cdab3e1`](https://github.com/solid-design-system/solid/commit/cdab3e1c704558ad4d437d9d19d5ad8db5062547) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
 
 ## 2.21.5
 
