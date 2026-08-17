@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 7.0.0-next.8
+
+### 📈 Stats
+* Uncompressed: 634 KB (+12 KB / +2%)
+* Gzipped: 142 KB (+3 KB / +2%)
+
 ## 7.0.0-next.7
 
 ### Major Changes
@@ -49,8 +55,9 @@
 - Add `sd-file-selector` component. _[`#3237`](https://github.com/solid-design-system/solid/pull/3237) [`cdab3e1`](https://github.com/solid-design-system/solid/commit/cdab3e1c704558ad4d437d9d19d5ad8db5062547) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
 
 ### 📈 Stats
-* Uncompressed: 639 KB (+12 KB / +2%)
-* Gzipped: 143 KB (+3 KB / +2%)
+
+- Uncompressed: 639 KB (+12 KB / +2%)
+- Gzipped: 143 KB (+3 KB / +2%)
 
 ## 6.29.1
 
