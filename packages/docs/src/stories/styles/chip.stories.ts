@@ -35,19 +35,72 @@ export const Default = {
     });
   }
 };
+
 /**
- * Use the `sd-chip--*` classes for alternative appearances:
- * - primary-200 is the default appearance
- * - `sd-chip--primary-300`
- * - `sd-chip--primary-500`
- * - `sd-chip--white`
+ * Use the `&--color-*` classes to switch between color families:
+ *
+ * - sd-chip--color-primary is the default appearance
+ * - `sd-chip--color-neutral`
+ * - `sd-chip--color-white`
  */
-export const Variants = {
+export const Color = {
   render: () =>
-    html` <div class="flex gap-12">
-      <div class="sd-chip">primary-200</div>
-      <div class="sd-chip sd-chip--primary-300">primary-300</div>
-      <div class="sd-chip sd-chip--primary-500">primary-500</div>
-      <div class="sd-chip sd-chip--white">white</div>
+    html`<div class="flex gap-12 items-center">
+      <div class="sd-chip sd-chip--color-primary">primary</div>
+      <div class="sd-chip sd-chip--color-neutral">neutral</div>
+      <div class="sd-chip sd-chip--color-white">white</div>
+    </div>`
+};
+
+/**
+ * Use the `&--shade-*` classes to select an emphasis level within the chosen color:
+ *
+ * - sd-chip--shade-subtle is the default appearance
+ * - `sd-chip--shade-low`
+ * - `sd-chip--shade-medium`
+ * - `sd-chip--shade-high`
+ * - `sd-chip--shade-none` (white only)
+ */
+export const Shade = {
+  render: () =>
+    html`<div class="flex gap-12 items-center">
+      <div class="sd-chip sd-chip--shade-subtle">subtle</div>
+      <div class="sd-chip sd-chip--shade-low">low</div>
+      <div class="sd-chip sd-chip--shade-medium">medium</div>
+      <div class="sd-chip sd-chip--shade-high">high</div>
+      <div class="sd-chip sd-chip--shade-none">none</div>
+    </div>`
+};
+
+/**
+ * Use the `sd-chip--size-lg` class to have a larger chip.
+ */
+export const Size = {
+  render: () =>
+    html`<div class="flex gap-12 items-center">
+      <div class="sd-chip">sm</div>
+      <div class="sd-chip sd-chip--size-lg">lg</div>
+    </div>`
+};
+
+/**
+ * Use the `sd-chip--outline` class to switch between a filled or border-only style.
+ */
+export const Outlined = {
+  render: () =>
+    html`<div class="flex gap-12 items-center">
+      <div class="sd-chip">filled</div>
+      <div class="sd-chip sd-chip--outline">outlined</div>
+    </div>`
+};
+
+/**
+ * Use the `sd-chip--sharp` class to switch the corner style.
+ */
+export const Sharp = {
+  render: () =>
+    html`<div class="flex gap-12 items-center">
+      <div class="sd-chip">rounded</div>
+      <div class="sd-chip sd-chip--sharp">sharp</div>
     </div>`
 };

@@ -128,7 +128,7 @@ export const StatusBadgeWithChip = {
                 Available
               </div>
             </div>
-            <span class="sd-chip sd-chip--primary-200">Authorized for telephone information</span>
+            <span class="sd-chip sd-chip--shade-low">Authorized for telephone information</span>
           </div>
 
           <sd-button class="edit-button" variant="secondary">
@@ -176,7 +176,7 @@ export const StatusBadgeWithChip = {
                 Be right back
               </div>
             </div>
-            <span class="sd-chip sd-chip--primary-200">Not authorized for telephone information</span>
+            <span class="sd-chip sd-chip--shade-low">Not authorized for telephone information</span>
           </div>
 
           <sd-button class="edit-button" variant="secondary">

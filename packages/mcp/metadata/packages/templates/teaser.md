@@ -7,10 +7,6 @@ components:
   - sd-chip--primary-200
   - sd-chip--primary-500
   - sd-chip--white
-  - sd-flag
-  - sd-flag--neutral-200
-  - sd-flag--neutral-300
-  - sd-flag--white
   - sd-headline
   - sd-headline--inverted
   - sd-headline--size-3xl
@@ -165,7 +161,7 @@ version: 1.0.0
 </div>
 ```
 
-## Template: Teaser with Chip and Flag
+## Template: Teaser with Chip
 
 ```html
 <div class="flex flex-col gap-8">
@@ -180,7 +176,6 @@ version: 1.0.0
         class="aspect-video object-cover"
       />
       <span class="absolute top-3 left-4 sd-chip sd-chip--primary-500">Remote Work</span>
-      <span class="absolute top-2 right-0 sd-flag sd-flag--white">Research</span>
     </div>
     <div slot="meta" class="meta-info">
       <span class="sd-meta sd-meta--inverted sd-meta--light sd-meta--size-sm sd-meta--pipe">05.06.2024</span>
@@ -201,7 +196,6 @@ version: 1.0.0
       ECB interest rate cut: a trend reversal on the real estate markets?
     </h3>
     <span class="absolute top-3 left-4 sd-chip sd-chip--primary-200">Investment</span>
-    <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">Trends</span>
     <div slot="media" class="flex flex-wrap h-[189px] content-center justify-center">
       <sd-icon class="text-[96px]" name="content/house-percent" color="primary"></sd-icon>
     </div>
@@ -233,7 +227,6 @@ version: 1.0.0
         class="aspect-video sm:aspect-[3/4] md:aspect-[16/9] object-cover w-full"
       />
       <span class="absolute top-3 left-4 sd-chip sd-chip--white">Real Estate</span>
-      <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-300">Analytics</span>
     </div>
   </sd-teaser>
 </div>

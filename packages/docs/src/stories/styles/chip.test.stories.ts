@@ -1,6 +1,5 @@
 import '../../../../components/src/solid-components';
 
-import { FlagSamples } from './flag.test.stories';
 import {
   storybookDefaults,
   storybookHelpers,
@@ -13,59 +12,109 @@ const { overrideArgs } = storybookHelpers('sd-chip');
 const { generateTemplate } = storybookTemplate('sd-chip');
 const { generateScreenshotStory } = storybookUtilities;
 
-/**
- * A small, non-interactive label the represents a status, property or meta-data.
- *
- * <b>Variants</b><br>
- * <li>--primary-200 is the default variant</li>
- * <li>--primary-500</li>
- * <li>--primary-300</li>
- * <li>--white</li>
- */
-
 export default {
   title: 'Styles/sd-chip/Screenshots: sd-chip',
   tags: ['!autodocs'],
   component: 'sd-chip',
   parameters: {
     ...parameters,
-    controls: { disable: true },
-    backgrounds: {
-      default: 'neutral-200'
-    }
+    controls: { disable: true }
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Chip' }),
   argTypes
+};
+
+const templateContent = '<span class="%CLASSES%">%SLOT%</span>';
+
+const colors = {
+  type: 'attribute' as const,
+  name: 'sd-chip--color',
+  values: ['sd-chip--color-primary', 'sd-chip--color-neutral', 'sd-chip--color-white']
+};
+
+const shades = {
+  type: 'attribute' as const,
+  name: 'sd-chip--shade',
+  values: [
+    'sd-chip--shade-subtle',
+    'sd-chip--shade-low',
+    'sd-chip--shade-medium',
+    'sd-chip--shade-high',
+    'sd-chip--shade-none'
+  ]
 };
 
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<span class="%CLASSES%">%SLOT%</span>' },
+      options: { templateContent },
       args
     });
   }
 };
 
-export const Variants = {
-  name: 'Variants',
+export const ColorXShade = {
+  name: 'Color x Shade',
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: [
-          {
-            type: 'attribute',
-            name: 'sd-chip--variant',
-            values: ['', 'sd-chip--primary-300', 'sd-chip--primary-500', 'sd-chip--white']
-          }
-        ]
+        y: colors,
+        x: shades
       },
+      options: { templateContent },
       args
     });
   }
 };
 
-export const ChipSamples = FlagSamples;
+export const ColorXShadeOutline = {
+  name: 'Color x Shade x Outline',
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: colors,
+        x: shades
+      },
+      constants: [{ type: 'attribute', name: 'sd-chip--outline', value: true }],
+      options: { templateContent },
+      args
+    });
+  }
+};
 
-export const Combination = generateScreenshotStory([Default, Variants, ChipSamples]);
+export const Sharp = {
+  name: 'Sharp',
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'sd-chip--sharp',
+          values: ['', 'sd-chip--sharp']
+        }
+      },
+      options: { templateContent },
+      args
+    });
+  }
+};
+
+export const Size = {
+  name: 'Size',
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'sd-chip--size',
+          values: ['', 'sd-chip--size-lg']
+        }
+      },
+      options: { templateContent },
+      args
+    });
+  }
+};
+
+export const Combination = generateScreenshotStory([Default, ColorXShade, ColorXShadeOutline, Sharp, Size]);
