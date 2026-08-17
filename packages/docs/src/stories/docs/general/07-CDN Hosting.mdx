@@ -17,13 +17,14 @@ If you work in an environment without a bundler (e.g. a CMS), the npm packages i
 
 After `npm install`, the following files can be copied to your CDN:
 
-| Package                           | Path in package                  | Description                       |
-| --------------------------------- | -------------------------------- | --------------------------------- |
-| `@solid-design-system/tokens`     | `cdn/themes/<theme>/<theme>.css` | Theme CSS                         |
-| `@solid-design-system/styles`     | `cdn/solid-styles.css`           | All styles, pre-bundled           |
-| `@solid-design-system/components` | `cdn/solid-components.css`       | Component base CSS                |
-| `@solid-design-system/components` | `cdn/solid-components.js`        | ESM — registers all components    |
-| `@solid-design-system/components` | `cdn/solid-components.bundle.js` | Bundle — all dependencies inlined |
+- `@solid-design-system/tokens`
+  - `cdn/themes/<theme>/<theme>.css` — theme CSS
+- `@solid-design-system/styles`
+  - `cdn/solid-styles.css` — all styles, pre-bundled
+- `@solid-design-system/components`
+  - `cdn/solid-components.css` — component base CSS
+  - `cdn/solid-components.js` — ESM, registers all components
+  - `cdn/solid-components.bundle.js` — bundle, all dependencies inlined
 
 All three packages also ship a `cdn-versioned/` variant where component tag names include the version number (e.g. `<sd-%DASHED-COMPONENTS-VERSION%-button>`). Use this in microfrontend environments to prevent tag name collisions when multiple versions run on the same page.
 
