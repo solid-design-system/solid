@@ -35,6 +35,8 @@
   --background-color-neutral-500: rgba(var(--sd-color-background-neutral-500));
   --background-color-neutral-600: rgba(var(--sd-color-background-neutral-600));
   --background-color-neutral-800: rgba(var(--sd-color-background-neutral-800));
+  --background-color-neutral-blue: rgba(var(--sd-color-background-neutral-blue));
+  --background-color-neutral-grey: rgba(var(--sd-color-background-neutral-grey));
   --background-color-primary-100: rgba(var(--sd-color-background-primary-100));
   --background-color-primary-200: rgba(var(--sd-color-background-primary-200));
   --background-color-primary-300: rgba(var(--sd-color-background-primary-300));
@@ -43,6 +45,7 @@
   --background-color-primary: rgba(var(--sd-color-background-primary));
   --background-color-success: rgba(var(--sd-color-background-success));
   --background-color-warning: rgba(var(--sd-color-background-warning));
+  --background-color-white-translucent: rgba(var(--sd-color-background-white-translucent));
   --background-color-white: rgba(var(--sd-color-background-white));
   --border-color-accent-550: rgba(var(--sd-color-border-accent-550));
   --border-color-accent: rgba(var(--sd-color-border-accent));
@@ -52,6 +55,7 @@
   --border-color-neutral-500: rgba(var(--sd-color-border-neutral-500));
   --border-color-neutral-600: rgba(var(--sd-color-border-neutral-600));
   --border-color-neutral-800: rgba(var(--sd-color-border-neutral-800));
+  --border-color-neutral-blue: rgba(var(--sd-color-border-neutral-blue));
   --border-color-primary-100: rgba(var(--sd-color-border-primary-100));
   --border-color-primary-200: rgba(var(--sd-color-border-primary-200));
   --border-color-primary-400: rgba(var(--sd-color-border-primary-400));

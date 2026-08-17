@@ -7,6 +7,192 @@ import '../../../../../../components/src/solid-components';
 
 The v6 release improves token stability, cleans up unused CSS variables, and introduces several fixes and refinements across different components.
 
-## Breaking change #1
+## `sd-chip` and `sd-flag` consolidation
 
-[...]
+### Removed CSS variables
+
+The following custom properties have been removed. Update any theme or override to the new variable:
+
+<table class="sd-table">
+  <thead>
+    <tr>
+      <th>Removed</th>
+      <th>Replace with</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>--sd-chip--primary-200-color-background</code>
+      </td>
+      <td>
+        <code>--sd-chip--primary-low-color-background</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-chip--primary-200-color-border</code>
+      </td>
+      <td>
+        <code>--sd-chip--primary-subtle-color-filled-border</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-chip--primary-300-color-background</code>
+      </td>
+      <td>
+        <code>--sd-chip--primary-medium-color-background</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-chip--primary-300-color-border</code>
+      </td>
+      <td>
+        <code>--sd-chip--primary-medium-color-filled-border</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-chip--primary-500-color-background</code>
+      </td>
+      <td>
+        <code>--sd-chip--primary-high-color-background</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-chip--primary-500-color-border</code>
+      </td>
+      <td>
+        <code>--sd-chip--primary-high-color-filled-border</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-chip--primary-500-color-text</code>
+      </td>
+      <td>
+        no replacement (chips now use <code>text-black</code>)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-chip--white-color-border</code>
+      </td>
+      <td>
+        <code>--sd-chip--white-color-filled-border</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-chip-font-size</code>
+      </td>
+      <td>
+        <code>--sd-marker-font-size</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-chip-font-weight</code>
+      </td>
+      <td>
+        <code>--sd-marker-font-weight</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-flag-border-radius</code>
+      </td>
+      <td>
+        <code>--sd-chip-border-radius</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-flag-border-width</code>
+      </td>
+      <td>
+        <code>--sd-chip-border-width</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-flag--neutral-200-color-background</code>
+      </td>
+      <td>
+        <code>--sd-chip--neutral-low-color-background</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-flag--neutral-200-color-border</code>
+      </td>
+      <td>
+        <code>--sd-chip--neutral-low-color-filled-border</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-flag--neutral-300-color-background</code>
+      </td>
+      <td>
+        <code>--sd-chip--neutral-medium-color-background</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-flag--neutral-300-color-border</code>
+      </td>
+      <td>
+        <code>--sd-chip--neutral-medium-color-filled-border</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-flag--neutral-500-color-background</code>
+      </td>
+      <td>
+        <code>--sd-chip--neutral-high-color-background</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-flag--neutral-500-color-border</code>
+      </td>
+      <td>
+        <code>--sd-chip--neutral-high-color-filled-border</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-flag--white-color-background</code>
+      </td>
+      <td>
+        <code>--sd-chip--white-color-background</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--sd-flag--white-color-border</code>
+      </td>
+      <td>
+        <code>--sd-chip--white-color-filled-border</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### New CSS variables
+
+The new colour/shade scale introduces a matching set of custom properties, for both filled and outlined chips, across the `primary`, `neutral`, and `white` families:
+
+- `--sd-chip--primary-subtle-color-background`, `--sd-chip--primary-subtle-color-filled-border` are used by the new `sd-chip` default variant
+- `--sd-chip--primary-low-*`, `--sd-chip--primary-medium-*`, `--sd-chip--primary-high-*`
+- `--sd-chip--primary-strong-color-border`, `--sd-chip--primary-strong-color-outline-fill` are used by the `sd-chip` outlined variants
+- `--sd-chip--neutral-subtle-*`, `--sd-chip--neutral-low-*`, `--sd-chip--neutral-medium-*`, `--sd-chip--neutral-high-*`, `--sd-chip--neutral-strong-*`
+- `--sd-chip--white-color-background`, `--sd-chip--white-color-filled-border`
+- `--sd-chip-border-width` — the border width for chips (default `0`).
+
+See the [sd-chip Storybook page](./?path=/docs/styles-sd-chip--docs) for the full list.

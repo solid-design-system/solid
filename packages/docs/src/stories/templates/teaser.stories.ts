@@ -173,8 +173,8 @@ export const TeaserWithIcon = {
   }
 };
 
-export const teaserWithChipAndFlag = {
-  name: 'Teaser with Chip and Flag',
+export const teaserWithChip = {
+  name: 'Teaser with Chip',
   render: () => {
     return html`
       <div class="flex flex-col gap-8">
@@ -188,8 +188,10 @@ export const teaserWithChipAndFlag = {
               alt="Colleagues in a casual office meeting, smiling and interacting, symbolizing collaboration and the value of office spaces."
               class="aspect-video object-cover"
             />
-            <span class="absolute top-3 left-4 sd-chip sd-chip--primary-500">Remote Work</span>
-            <span class="absolute top-2 right-0 sd-flag sd-flag--white">Research</span>
+            <span class="absolute top-3 left-4 sd-chip sd-chip--color-white">Remote Work</span>
+            <span class="absolute top-3 right-0 sd-chip sd-chip--color-neutral sd-chip--shade-low sd-chip--size-lg"
+              >Research</span
+            >
           </div>
           <div slot="meta" class="meta-info">
             <span class="sd-meta sd-meta--inverted sd-meta--light sd-meta--size-sm sd-meta--pipe">05.06.2024</span>
@@ -209,8 +211,11 @@ export const teaserWithChipAndFlag = {
           <h3 slot="headline" class="sd-headline sd-headline--size-lg">
             ECB interest rate cut: a trend reversal on the real estate markets?
           </h3>
-          <span class="absolute top-3 left-4 sd-chip sd-chip--primary-200">Investment</span>
-          <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">Trends</span>
+          <span class="absolute top-3 left-4 sd-chip">Investment</span>
+          <span
+            class="absolute top-3 right-0 sd-chip sd-chip--color-neutral sd-chip--shade-low sd-chip--size-lg sd-chip--sharp"
+            >Trends</span
+          >
           <div slot="media" class="flex flex-wrap h-[189px] content-center justify-center">
             <sd-icon class="text-[96px]" name="content/house-percent" color="primary"></sd-icon>
           </div>
@@ -241,8 +246,11 @@ export const teaserWithChipAndFlag = {
               alt="City skyline, highlighting growth in real estate transactions."
               class="aspect-video sm:aspect-[3/4] md:aspect-[16/9] object-cover w-full"
             />
-            <span class="absolute top-3 left-4 sd-chip sd-chip--white">Real Estate</span>
-            <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-300">Analytics</span>
+            <span class="absolute top-3 left-4 sd-chip sd-chip--color-white">Real Estate</span>
+            <span
+              class="absolute top-3 right-0 sd-chip sd-chip--color-neutral sd-chip--shade-low sd-chip--size-lg sd-chip--sharp"
+              >Analytics</span
+            >
           </div>
         </sd-teaser>
       </div>
