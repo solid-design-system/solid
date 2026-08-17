@@ -321,7 +321,7 @@ export default class SdNotification extends SolidElement {
                   info: 'info-circle',
                   success: 'confirm-circle',
                   warning: 'exclamation-circle',
-                  error: 'warning'
+                  error: 'risk'
                 }[this.variant] || ''
               }
               library="_internal"
