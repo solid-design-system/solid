@@ -21,40 +21,24 @@ Going forward, whenever you update the design system, expect new releases of all
 
 ## Multi theming
 
-You must now import at least one theme (via NPM or CDN) to ensure components render correctly.
+You must now import at least one theme via NPM to ensure components render correctly.
 
-<sd-tab-group>
-  {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="npm" variant="container"> NPM </sd-tab>
-  {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="cdn" variant="container"> CDN </sd-tab>
-  <sd-tab-panel name="npm">
-  __Before__:
-    ```js
-    import '@solid-design-system/components/dist/solid-components.css';
-    ```
-  __After__:
-    ```bash
-    npm install @solid-design-system/tokens
-    ```
-    ```js
-    import '@solid-design-system/components/dist/solid-components.css';
-    import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
-    ```
+**Before**:
 
-  </sd-tab-panel>
-  <sd-tab-panel name="cdn">
-  __Before__:
-    ```html
-    <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.css" />
-    ```
-  __After__:
-    ```html
-    <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.css" />
-    <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css" />
-    ```
-  </sd-tab-panel>
-</sd-tab-group>
+```js
+import '@solid-design-system/components/dist/solid-components.css';
+```
+
+**After**:
+
+```bash
+npm install @solid-design-system/tokens
+```
+
+```js
+import '@solid-design-system/components/dist/solid-components.css';
+import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
+```
 
 ## Removed enforced headline styling from `sd-teaser-media`.
 
