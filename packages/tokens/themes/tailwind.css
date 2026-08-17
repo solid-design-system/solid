@@ -35,6 +35,8 @@
   --background-color-neutral-500: rgba(var(--sd-color-background-neutral-500, 174 174 174));
   --background-color-neutral-600: rgba(var(--sd-color-background-neutral-600, 136 136 136));
   --background-color-neutral-800: rgba(var(--sd-color-background-neutral-800, 81 81 81));
+  --background-color-neutral-blue: rgba(var(--sd-color-background-neutral-blue, 255 255 255 / 0));
+  --background-color-neutral-grey: rgba(var(--sd-color-background-neutral-grey, 255 255 255 / 0));
   --background-color-primary-100: rgba(var(--sd-color-background-primary-100, 236 240 249));
   --background-color-primary-200: rgba(var(--sd-color-background-primary-200, 224 233 243));
   --background-color-primary-300: rgba(var(--sd-color-background-primary-300, 200 213 231));
@@ -43,6 +45,7 @@
   --background-color-primary: rgba(var(--sd-color-background-primary, 0 53 142));
   --background-color-success: rgba(var(--sd-color-background-success, 54 123 40));
   --background-color-warning: rgba(var(--sd-color-background-warning, 187 141 32));
+  --background-color-white-translucent: rgba(var(--sd-color-background-white-translucent, 255 255 255 / 0));
   --background-color-white: rgba(var(--sd-color-background-white, 255 255 255));
   --border-color-accent-550: rgba(var(--sd-color-border-accent-550, 54 123 40));
   --border-color-accent: rgba(var(--sd-color-border-accent, 45 157 0));
@@ -52,6 +55,7 @@
   --border-color-neutral-500: rgba(var(--sd-color-border-neutral-500, 174 174 174));
   --border-color-neutral-600: rgba(var(--sd-color-border-neutral-600, 136 136 136));
   --border-color-neutral-800: rgba(var(--sd-color-border-neutral-800, 81 81 81));
+  --border-color-neutral-blue: rgba(var(--sd-color-border-neutral-blue, 255 255 255 / 0));
   --border-color-primary-100: rgba(var(--sd-color-border-primary-100, 236 240 249));
   --border-color-primary-200: rgba(var(--sd-color-border-primary-200, 224 233 243));
   --border-color-primary-400: rgba(var(--sd-color-border-primary-400, 153 171 208));

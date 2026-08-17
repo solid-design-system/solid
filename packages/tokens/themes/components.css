@@ -70,10 +70,6 @@
   color: rgba(var(--sd-interactive--default-color-text, 0 53 142));
 }
 
-@utility marker-border-width {
- border-width: var(--sd-marker-border-width, 0);
-}
-
 @utility marker-font-size {
  font-size: var(--sd-marker-font-size, 0.875rem);
 }
@@ -538,44 +534,148 @@
  border-width: var(--sd-checkbox-border-width, 0.0625rem);
 }
 
-@utility sd-chip--primary-200-color-background {
-  background-color: rgba(var(--sd-chip--primary-200-color-background, 224 233 243));
+@utility sd-chip--neutral-high-color-background {
+  background-color: rgba(var(--sd-chip--neutral-high-color-background, 195 195 195));
 }
 
-@utility sd-chip--primary-200-color-border {
-  border-color: rgba(var(--sd-chip--primary-200-color-border, 255 255 255 / 0));
+@utility sd-chip--neutral-high-color-border {
+  border-color: rgba(var(--sd-chip--neutral-high-color-border, 195 195 195));
 }
 
-@utility sd-chip--primary-300-color-background {
-  background-color: rgba(var(--sd-chip--primary-300-color-background, 200 213 231));
+@utility sd-chip--neutral-high-color-filled-border {
+  border-color: rgba(var(--sd-chip--neutral-high-color-filled-border, 255 255 255 / 0));
 }
 
-@utility sd-chip--primary-300-color-border {
-  border-color: rgba(var(--sd-chip--primary-300-color-border, 255 255 255 / 0));
+@utility sd-chip--neutral-high-color-outline-fill {
+  background-color: rgba(var(--sd-chip--neutral-high-color-outline-fill, 255 255 255 / 0));
 }
 
-@utility sd-chip--primary-500-color-background {
-  background-color: rgba(var(--sd-chip--primary-500-color-background, 70 109 175));
+@utility sd-chip--neutral-low-color-background {
+  background-color: rgba(var(--sd-chip--neutral-low-color-background, 233 233 233));
 }
 
-@utility sd-chip--primary-500-color-border {
-  border-color: rgba(var(--sd-chip--primary-500-color-border, 255 255 255 / 0));
+@utility sd-chip--neutral-low-color-border {
+  border-color: rgba(var(--sd-chip--neutral-low-color-border, 233 233 233));
 }
 
-@utility sd-chip--primary-500-color-text {
-  color: rgba(var(--sd-chip--primary-500-color-text, 255 255 255));
+@utility sd-chip--neutral-low-color-filled-border {
+  border-color: rgba(var(--sd-chip--neutral-low-color-filled-border, 255 255 255 / 0));
+}
+
+@utility sd-chip--neutral-low-color-outline-fill {
+  background-color: rgba(var(--sd-chip--neutral-low-color-outline-fill, 255 255 255 / 0));
+}
+
+@utility sd-chip--neutral-medium-color-background {
+  background-color: rgba(var(--sd-chip--neutral-medium-color-background, 218 218 218));
+}
+
+@utility sd-chip--neutral-medium-color-border {
+  border-color: rgba(var(--sd-chip--neutral-medium-color-border, 218 218 218));
+}
+
+@utility sd-chip--neutral-medium-color-filled-border {
+  border-color: rgba(var(--sd-chip--neutral-medium-color-filled-border, 255 255 255 / 0));
+}
+
+@utility sd-chip--neutral-medium-color-outline-fill {
+  background-color: rgba(var(--sd-chip--neutral-medium-color-outline-fill, 255 255 255 / 0));
+}
+
+@utility sd-chip--neutral-strong-color-border {
+  border-color: rgba(var(--sd-chip--neutral-strong-color-border, 174 174 174));
+}
+
+@utility sd-chip--neutral-strong-color-outline-fill {
+  background-color: rgba(var(--sd-chip--neutral-strong-color-outline-fill, 255 255 255 / 0));
+}
+
+@utility sd-chip--neutral-subtle-color-background {
+  background-color: rgba(var(--sd-chip--neutral-subtle-color-background, 246 246 246));
+}
+
+@utility sd-chip--neutral-subtle-color-filled-border {
+  border-color: rgba(var(--sd-chip--neutral-subtle-color-filled-border, 255 255 255 / 0));
+}
+
+@utility sd-chip--primary-high-color-background {
+  background-color: rgba(var(--sd-chip--primary-high-color-background, 153 171 208));
+}
+
+@utility sd-chip--primary-high-color-border {
+  border-color: rgba(var(--sd-chip--primary-high-color-border, 153 171 208));
+}
+
+@utility sd-chip--primary-high-color-filled-border {
+  border-color: rgba(var(--sd-chip--primary-high-color-filled-border, 255 255 255 / 0));
+}
+
+@utility sd-chip--primary-high-color-outline-fill {
+  background-color: rgba(var(--sd-chip--primary-high-color-outline-fill, 255 255 255 / 0));
+}
+
+@utility sd-chip--primary-low-color-background {
+  background-color: rgba(var(--sd-chip--primary-low-color-background, 224 233 243));
+}
+
+@utility sd-chip--primary-low-color-border {
+  border-color: rgba(var(--sd-chip--primary-low-color-border, 224 233 243));
+}
+
+@utility sd-chip--primary-low-color-filled-border {
+  border-color: rgba(var(--sd-chip--primary-low-color-filled-border, 255 255 255 / 0));
+}
+
+@utility sd-chip--primary-low-color-outline-fill {
+  background-color: rgba(var(--sd-chip--primary-low-color-outline-fill, 255 255 255 / 0));
+}
+
+@utility sd-chip--primary-medium-color-background {
+  background-color: rgba(var(--sd-chip--primary-medium-color-background, 200 213 231));
+}
+
+@utility sd-chip--primary-medium-color-border {
+  border-color: rgba(var(--sd-chip--primary-medium-color-border, 200 213 231));
+}
+
+@utility sd-chip--primary-medium-color-filled-border {
+  border-color: rgba(var(--sd-chip--primary-medium-color-filled-border, 255 255 255 / 0));
+}
+
+@utility sd-chip--primary-medium-color-outline-fill {
+  background-color: rgba(var(--sd-chip--primary-medium-color-outline-fill, 255 255 255 / 0));
+}
+
+@utility sd-chip--primary-strong-color-border {
+  border-color: rgba(var(--sd-chip--primary-strong-color-border, 70 109 175));
+}
+
+@utility sd-chip--primary-strong-color-outline-fill {
+  background-color: rgba(var(--sd-chip--primary-strong-color-outline-fill, 255 255 255 / 0));
+}
+
+@utility sd-chip--primary-subtle-color-background {
+  background-color: rgba(var(--sd-chip--primary-subtle-color-background, 236 240 249));
+}
+
+@utility sd-chip--primary-subtle-color-filled-border {
+  border-color: rgba(var(--sd-chip--primary-subtle-color-filled-border, 255 255 255 / 0));
 }
 
 @utility sd-chip--white-color-background {
   background-color: rgba(var(--sd-chip--white-color-background, 255 255 255));
 }
 
-@utility sd-chip--white-color-border {
-  border-color: rgba(var(--sd-chip--white-color-border, 255 255 255 / 0));
+@utility sd-chip--white-color-filled-border {
+  border-color: rgba(var(--sd-chip--white-color-filled-border, 255 255 255 / 0));
 }
 
 @utility sd-chip-border-radius {
  border-radius: var(--sd-chip-border-radius, 0.25rem);
+}
+
+@utility sd-chip-border-width {
+ border-width: var(--sd-chip-border-width, 0);
 }
 
 @utility sd-combobox__tag-border-width {
@@ -644,42 +744,6 @@
 
 @utility sd-dropdown-color-background {
   background-color: rgba(var(--sd-dropdown-color-background, 255 255 255));
-}
-
-@utility sd-flag--neutral-200-color-background {
-  background-color: rgba(var(--sd-flag--neutral-200-color-background, 233 233 233));
-}
-
-@utility sd-flag--neutral-200-color-border {
-  border-color: rgba(var(--sd-flag--neutral-200-color-border, 255 255 255 / 0));
-}
-
-@utility sd-flag--neutral-300-color-background {
-  background-color: rgba(var(--sd-flag--neutral-300-color-background, 218 218 218));
-}
-
-@utility sd-flag--neutral-300-color-border {
-  border-color: rgba(var(--sd-flag--neutral-300-color-border, 255 255 255 / 0));
-}
-
-@utility sd-flag--neutral-500-color-background {
-  background-color: rgba(var(--sd-flag--neutral-500-color-background, 174 174 174));
-}
-
-@utility sd-flag--neutral-500-color-border {
-  border-color: rgba(var(--sd-flag--neutral-500-color-border, 255 255 255 / 0));
-}
-
-@utility sd-flag--white-color-background {
-  background-color: rgba(var(--sd-flag--white-color-background, 255 255 255));
-}
-
-@utility sd-flag--white-color-border {
-  border-color: rgba(var(--sd-flag--white-color-border, 255 255 255 / 0));
-}
-
-@utility sd-flag-border-radius {
- border-radius: var(--sd-flag-border-radius, 0);
 }
 
 @utility sd-footnotes--target--inverted-color-background {

@@ -418,15 +418,8 @@ That's it — you're ready to build. Head over to the <sd-link href="?path=/docs
   </sd-tab-panel>
 </sd-tab-group>
 
----
+## Minimum dependency requirement
 
-## ⚠️ Upcoming breaking changes
+The installed `@solid-design-system/tokens version must always be equal to or greater than the versions of the `@solid-design-system/components`and`@solid-design-system/styles` packages.
 
-### Minimum dependency requirement
-
-Currently, any version of the **components** and **styles** packages is compatible with any version of the **tokens** package. In a future release:
-
-- A **minimum dependency requirement** will be introduced
-- The **tokens package version must be equal to or higher than** the components and styles versions
-
-We recommend reviewing your setup now to ensure that your tokens package is **aligned with (or ahead of)** your components and styles. This will help you avoid compatibility issues once the new requirement is enforced.
+For example, when using version `6.30.0` of components or styles, the minimum supported tokens version is `6.30.0`.
