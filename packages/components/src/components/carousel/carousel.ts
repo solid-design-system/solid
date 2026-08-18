@@ -671,7 +671,7 @@ export default class SdCarousel extends SolidElement {
           }}
         >
           <slot name="autoplay-start" class=${cx(!this.pausedAutoplay ? 'hidden' : '')}>
-            <sd-icon class="h-6 w-6 grid place-items-center" library="_internal" name="start"></sd-icon>
+            <sd-icon class="h-6 w-6 grid place-items-center" library="_internal" name="play"></sd-icon>
           </slot>
 
           <slot name="autoplay-pause" class=${cx(this.pausedAutoplay ? 'hidden' : '')}>
