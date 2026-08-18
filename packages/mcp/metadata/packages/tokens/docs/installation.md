@@ -394,7 +394,7 @@ That's it — you're ready to build. Head over to the <sd-link href="?path=/docs
 
 ## Minimum dependency requirement
 
-The installed `@solid-design-system/tokens` version must always be equal to or greater than the versions of the `@solid-design-system/components` and `@solid-design-system/styles` packages.
+The installed `@solid-design-system/tokens version must always be equal to or greater than the versions of the `@solid-design-system/components`and`@solid-design-system/styles` packages.
 
 For example, when using version `6.30.0` of components or styles, the minimum supported tokens version is `6.30.0`.
 ```
