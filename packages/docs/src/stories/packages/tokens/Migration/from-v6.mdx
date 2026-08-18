@@ -7,182 +7,179 @@ import '../../../../../../components/src/solid-components';
 
 The v6 release improves token stability, cleans up unused CSS variables, and introduces several fixes and refinements across different components.
 
-## `sd-chip` and `sd-flag` consolidation
+## Deprecated CSS variables (tokens)
+
+The following CSS variables (tokens) are deprecated and were removed in this release.
+Please update your custom styles to use the recommended replacements below.
+
+If your environment still requires the use of these variables, refer to the
+**Legacy Variables Fallback** section.
+
+<table class="sd-table">
+  <tr>
+    <th>Deprecated variable</th>
+    <th>Replacement</th>
+  </tr>
+  <tr>
+    <td>`--sd-button--size-lg-border-radius`</td>
+    <td>`--sd-button-border-radius`</td>
+  </tr>
+  <tr>
+    <td>`--sd-button--size-md-border-radius`</td>
+    <td>`--sd-button-border-radius`</td>
+  </tr>
+  <tr>
+    <td>`--sd-button--size-sm-border-radius`</td>
+    <td>`--sd-button-border-radius`</td>
+  </tr>
+  <tr>
+    <td>`--sd-button--secondary--inverted--color-border`</td>
+    <td>`--sd-button-secondary-inverted-color-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-form-control-color-icon`</td>
+    <td>`--sd-form-control-color-icon-fill`</td>
+  </tr>
+  <tr>
+    <td>`--sd-menu-color-icon`</td>
+    <td>`--sd-menu-item-color-icon-fill`</td>
+  </tr>
+  <tr>
+    <td>`--sd-menu-color-text`</td>
+    <td>`--sd-menu-item-color-text`</td>
+  </tr>
+  <tr>
+    <td>`--sd-menu--disabled-color-icon`</td>
+    <td>`--sd-menu-item--disabled-color-icon-fill`</td>
+  </tr>
+  <tr>
+    <td>`--sd-menu--disabled-color-text`</td>
+    <td>`--sd-menu-item--disabled-color-text`</td>
+  </tr>
+  <tr>
+    <td>`--sd-tag-font-weight`</td>
+    <td>`--sd-choice-control-font-weight`</td>
+  </tr>
+  <tr>
+    <td>`--sd-tag--disabled-color-border`</td>
+    <td>`--sd-color-border-neutral-500`</td>
+  </tr>
+  <tr>
+    <td>`--sd-navigation-item--current-color-text`</td>
+    <td>`--sd-navigation-item-color-text`</td>
+  </tr>
+  <tr>
+    <td>`--sd-option--disabled-color-border`</td>
+    <td>`--sd-color-border-neutral-500`</td>
+  </tr>
+  <tr>
+    <td>`--sd-audio__timestamp-color-text`</td>
+    <td>`--sd-color-text-neutral-700`</td>
+  </tr>
+  <tr>
+    <td>`--sd-accordion__chevron-color-text`</td>
+    <td>`--sd-accordion-color-icon-fill`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip--primary-200-color-background`</td>
+    <td>`--sd-chip--primary-low-color-background`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip--primary-200-color-border`</td>
+    <td>`--sd-chip--primary-subtle-color-filled-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip--primary-300-color-background`</td>
+    <td>`--sd-chip--primary-medium-color-background`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip--primary-300-color-border`</td>
+    <td>`--sd-chip--primary-medium-color-filled-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip--primary-500-color-background`</td>
+    <td>`--sd-chip--primary-high-color-background`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip--primary-500-color-border`</td>
+    <td>`--sd-chip--primary-high-color-filled-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip--primary-500-color-text`</td>
+    <td>`text-black`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip--white-color-border`</td>
+    <td>`--sd-chip--white-color-filled-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip-font-size`</td>
+    <td>`--sd-marker-font-size`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip-font-weight`</td>
+    <td>`--sd-marker-font-weight`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag-border-radius`</td>
+    <td>`--sd-chip-border-radius`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag-border-width`</td>
+    <td>`--sd-chip-border-width`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag--neutral-200-color-background`</td>
+    <td>`--sd-chip--neutral-low-color-background`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag--neutral-200-color-border`</td>
+    <td>`--sd-chip--neutral-low-color-filled-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag--neutral-300-color-background`</td>
+    <td>`--sd-chip--neutral-medium-color-background`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag--neutral-300-color-border`</td>
+    <td>`--sd-chip--neutral-medium-color-filled-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag--neutral-500-color-background`</td>
+    <td>`--sd-chip--neutral-high-color-background`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag--neutral-500-color-border`</td>
+    <td>`--sd-chip--neutral-high-color-filled-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag--white-color-background`</td>
+    <td>`--sd-chip--white-color-background`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag--white-color-border`</td>
+    <td>`--sd-chip--white-color-filled-border`</td>
+  </tr>
+</table>
+
+## Legacy Variables Fallback
+
+As deprecated variables were removed, `dist/legacy-variables.css` was added as an optional fallback stylesheet for accessing removed deprecated variables.
+If you manage an environment that still requires deprecated CSS variables, you can import this stylesheet as a fallback layer instead of immediately updating all your custom styles.
+
+```js
+import '@solid-design-system/tokens/dist/legacy-variables.css';
+```
+
+## Built-in Fallbacks for Theme
+
+Fallback values are now implemented directly in the token and component styling flow, defaulting to the **ui-light** theme. This means theme installation is no longer required in setups that only use component versions **above v6** or **below v4**.
+
+## Consolidation of `sd-chip` and `sd-flag`
 
 ### Removed CSS variables
 
-The following custom properties have been removed. Update any theme or override to the new variable:
-
-<table class="sd-table">
-  <thead>
-    <tr>
-      <th>Removed</th>
-      <th>Replace with</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <code>--sd-chip--primary-200-color-background</code>
-      </td>
-      <td>
-        <code>--sd-chip--primary-low-color-background</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-chip--primary-200-color-border</code>
-      </td>
-      <td>
-        <code>--sd-chip--primary-subtle-color-filled-border</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-chip--primary-300-color-background</code>
-      </td>
-      <td>
-        <code>--sd-chip--primary-medium-color-background</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-chip--primary-300-color-border</code>
-      </td>
-      <td>
-        <code>--sd-chip--primary-medium-color-filled-border</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-chip--primary-500-color-background</code>
-      </td>
-      <td>
-        <code>--sd-chip--primary-high-color-background</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-chip--primary-500-color-border</code>
-      </td>
-      <td>
-        <code>--sd-chip--primary-high-color-filled-border</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-chip--primary-500-color-text</code>
-      </td>
-      <td>
-        no replacement (chips now use <code>text-black</code>)
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-chip--white-color-border</code>
-      </td>
-      <td>
-        <code>--sd-chip--white-color-filled-border</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-chip-font-size</code>
-      </td>
-      <td>
-        <code>--sd-marker-font-size</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-chip-font-weight</code>
-      </td>
-      <td>
-        <code>--sd-marker-font-weight</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-flag-border-radius</code>
-      </td>
-      <td>
-        <code>--sd-chip-border-radius</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-flag-border-width</code>
-      </td>
-      <td>
-        <code>--sd-chip-border-width</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-flag--neutral-200-color-background</code>
-      </td>
-      <td>
-        <code>--sd-chip--neutral-low-color-background</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-flag--neutral-200-color-border</code>
-      </td>
-      <td>
-        <code>--sd-chip--neutral-low-color-filled-border</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-flag--neutral-300-color-background</code>
-      </td>
-      <td>
-        <code>--sd-chip--neutral-medium-color-background</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-flag--neutral-300-color-border</code>
-      </td>
-      <td>
-        <code>--sd-chip--neutral-medium-color-filled-border</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-flag--neutral-500-color-background</code>
-      </td>
-      <td>
-        <code>--sd-chip--neutral-high-color-background</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-flag--neutral-500-color-border</code>
-      </td>
-      <td>
-        <code>--sd-chip--neutral-high-color-filled-border</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-flag--white-color-background</code>
-      </td>
-      <td>
-        <code>--sd-chip--white-color-background</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>--sd-flag--white-color-border</code>
-      </td>
-      <td>
-        <code>--sd-chip--white-color-filled-border</code>
-      </td>
-    </tr>
-  </tbody>
-</table>
+Please refer to the "Deprecated CSS variables (tokens)" section to see the removed css variables. Update any theme or override it with the new variables.
 
 ### New CSS variables
 
