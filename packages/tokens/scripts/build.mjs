@@ -48,7 +48,7 @@ async function runBuild() {
   });
 
   await nextTask('Extracting themes', () => {
-    const toAppend = [{ name: 'icons.css' }, { name: 'overrides.css' }];
+    const toAppend = [{ name: 'overrides.css' }];
 
     themes = getStylesheetThemes(stylesheet, config);
     themes.forEach(theme => {

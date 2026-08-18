@@ -64,7 +64,7 @@ version: 1.0.0
 <sd-dropdown distance="4" rounded stay-open-on-select>
   <sd-button variant="secondary" slot="trigger">
     Menu
-    <sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
+    <sd-icon library="_internal" name="chevron-bottom" slot="icon-right"></sd-icon>
   </sd-button>
   <sd-menu>
     <sd-menu-item type="checkbox">Account overview</sd-menu-item>

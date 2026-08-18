@@ -312,7 +312,7 @@ export default class SdNavigationItem extends SolidElement {
             ${
               this.chevron || (slots['children'] && this.vertical && !this.separated)
                 ? html` <sd-icon
-                    name="chevron-down"
+                    name="chevron-bottom"
                     part="chevron"
                     library="_internal"
                     color="currentColor"
@@ -362,7 +362,7 @@ export default class SdNavigationItem extends SolidElement {
                   @click=${this.handleClickSummary}
                 >
                   <sd-icon
-                    name="chevron-down"
+                    name="chevron-bottom"
                     part="chevron"
                     library="_internal"
                     color="currentColor"

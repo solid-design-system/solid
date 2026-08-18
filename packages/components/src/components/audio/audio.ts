@@ -450,7 +450,7 @@ export default class SdAudio extends SolidElement {
         ${
           this.isPlaying
             ? html` <slot name="pause-icon"><sd-icon class="text-xl" name="pause" library="_internal"></sd-icon></slot>`
-            : html` <slot name="play-icon"><sd-icon class="text-xl" name="start" library="_internal"></sd-icon></slot>`
+            : html` <slot name="play-icon"><sd-icon class="text-xl" name="play" library="_internal"></sd-icon></slot>`
         }
       </sd-button>
 

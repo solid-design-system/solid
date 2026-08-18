@@ -395,7 +395,7 @@ export default class SdTabGroup extends SolidElement {
                   >
                     <sd-icon
                       library="_internal"
-                      name=${isRtl ? 'chevron-up' : 'chevron-down'}
+                      name=${isRtl ? 'chevron-top' : 'chevron-bottom'}
                       label="previous"
                       class=${cx('h-6 w-12 rotate-90 grid place-items-center')}
                     ></sd-icon>
@@ -437,7 +437,7 @@ export default class SdTabGroup extends SolidElement {
                   >
                     <sd-icon
                       library="_internal"
-                      name=${isRtl ? 'chevron-down' : 'chevron-up'}
+                      name=${isRtl ? 'chevron-bottom' : 'chevron-top'}
                       label="next"
                       class=${cx('h-6 w-12 rotate-90 grid place-items-center')}
                     ></sd-icon>

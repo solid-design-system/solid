@@ -1475,7 +1475,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                         <slot name="clear-icon">
                           <sd-icon
                             class=${cx('text-neutral-700', iconSize)}
-                            name="closing-round"
+                            name="close-circle"
                             library="_internal"
                           ></sd-icon>
                         </slot>
@@ -1523,7 +1523,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                           'transition-transform duration-medium ease-in-out',
                           this.open ? 'rotate-180' : 'rotate-0'
                         )}
-                        name="chevron-down"
+                        name="chevron-bottom"
                         part="chevron"
                         library="_internal"
                         color="currentColor"

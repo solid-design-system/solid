@@ -52,6 +52,8 @@ export const Content = {
           values: Array.isArray(iconsFromCdn?.content)
             ? iconsFromCdn.content
                 .filter((icon: string): icon is string => typeof icon === 'string' && icon.length > 0)
+                .slice()
+                .sort((left: string, right: string) => left.localeCompare(right))
                 .map((icon: string) => `content/${icon}`)
             : []
         }
@@ -90,6 +92,8 @@ export const System = {
           values: Array.isArray(iconsFromCdn?.system)
             ? iconsFromCdn.system
                 .filter((icon: string): icon is string => typeof icon === 'string' && icon.length > 0)
+                .slice()
+                .sort((left: string, right: string) => left.localeCompare(right))
                 .map((icon: string) => `system/${icon}`)
             : []
         }
