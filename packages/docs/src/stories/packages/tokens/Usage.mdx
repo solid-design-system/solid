@@ -25,17 +25,9 @@ This page covers advanced usage patterns for `@solid-design-system/tokens`. Make
 
 To automatically respect the user's OS-level preference, use the `prefers-color-scheme` media query on your `<link>` tags:
 
-```html
-<link
-  rel="stylesheet"
-  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
-  media="(prefers-color-scheme: light)"
-/>
-<link
-  rel="stylesheet"
-  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-dark/ui-dark.css"
-  media="(prefers-color-scheme: dark)"
-/>
+```css
+@import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css' (prefers-color-scheme: light);
+@import '@solid-design-system/tokens/dist/themes/ui-dark/ui-dark.css' (prefers-color-scheme: dark);
 ```
 
 For further information on how to make this more dynamic, check out [this article](https://pepelsbey.dev/articles/native-light-dark/).

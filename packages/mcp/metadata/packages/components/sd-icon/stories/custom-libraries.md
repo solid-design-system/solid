@@ -16,7 +16,7 @@ Here's an example that registers an icon library located in the `/assets/icons` 
 If you use the IIFE bundle, you have to access the `registerIconLibrary()` function from the `SolidComponents` global.
 
 ```html
-<script src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.iife.js"></script>
+<script src="https://your-cdn.example.com/components/%COMPONENTS-VERSION%/cdn/solid-components.iife.js"></script>
 <script>
   const { registerIconLibrary } = window['SolidComponents'];
   registerIconLibrary('my-icons', {
