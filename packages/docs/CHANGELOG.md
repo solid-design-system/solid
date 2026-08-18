@@ -13,7 +13,7 @@
 
 ### Patch Changes
 
-- Removed SDS's cdn usage from the Codepen extension. Added fonts, logos and `sd-icon` theming to the Codepen extension. _[`#3200`](https://github.com/solid-design-system/solid/pull/3200) [`bfcd108`](https://github.com/solid-design-system/solid/commit/bfcd10845b25f9aa410ec69b16ad6468117d473b) [@martascorreia](https://github.com/martascorreia)_
+- Removed SDS's CDN usage from the Codepen extension. Added fonts, logos and `sd-icon` theming to the Codepen extension. _[`#3200`](https://github.com/solid-design-system/solid/pull/3200) [`bfcd108`](https://github.com/solid-design-system/solid/commit/bfcd10845b25f9aa410ec69b16ad6468117d473b) [@martascorreia](https://github.com/martascorreia)_
 - Updated `sd-dialog` to display the footer at full width across all viewport sizes. _[`#3221`](https://github.com/solid-design-system/solid/pull/3221) [`5159c3c`](https://github.com/solid-design-system/solid/commit/5159c3ca2284e606688222b7df3769bec5ce2479) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
 - Dependencies updated. For further details, please refer to the associated Pull Request. _[`#3184`](https://github.com/solid-design-system/solid/pull/3184) [`81cd65b`](https://github.com/solid-design-system/solid/commit/81cd65ba91559c9f138920a5ba505fb1461eb92a) [@mariohamann](https://github.com/mariohamann)_
 - Removed the CDN installation instructions from the documentation and added a "CDN Hosting" page for self-hosting, as Solid Design System no longer provides a hosted CDN. _[`#3239`](https://github.com/solid-design-system/solid/pull/3239) [`c825a22`](https://github.com/solid-design-system/solid/commit/c825a22d9f6f984d3b6268fe30a7ea19be008f63) [@mariohamann](https://github.com/mariohamann)_
