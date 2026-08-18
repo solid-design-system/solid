@@ -81,7 +81,7 @@ export const LibraryInternal = {
         y: {
           type: 'attribute',
           name: 'name',
-          values: Object.keys(icons)
+          values: Object.keys(icons).sort((left, right) => left.localeCompare(right))
         }
       },
       constants: [
@@ -114,7 +114,7 @@ export const StatusLibrary = {
         y: {
           type: 'attribute',
           name: 'name',
-          values: Object.keys(statusIcons)
+          values: Object.keys(statusIcons).sort((left, right) => left.localeCompare(right))
         }
       },
       constants: [
@@ -158,8 +158,14 @@ export const MultiThemingLibrary = {
           type: 'attribute',
           name: 'name',
           values: [
-            ...vbIcons.content.map((icon: string) => `content/${icon}`),
-            ...vbIcons.system.map((icon: string) => `system/${icon}`)
+            ...vbIcons.content
+              .slice()
+              .sort((left, right) => left.localeCompare(right))
+              .map((icon: string) => `content/${icon}`),
+            ...vbIcons.system
+              .slice()
+              .sort((left, right) => left.localeCompare(right))
+              .map((icon: string) => `system/${icon}`)
           ]
         }
       },

@@ -26,7 +26,7 @@ const toDataUri = (svg: string) =>
 // All Solid components must use the internal library instead of the default library.
 // For visual consistency, they are a subset of Union Investment's official icons.
 //
-export const icons = {
+const internalIcons = {
   calendar: `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M21 2H3a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1M6 4v1.7a1 1 0 0 0 2 0V4h8v1.7a1 1 0 0 0 2 0V4h2v4H4V4zM4 20V10h16v10z"/>
@@ -176,7 +176,11 @@ export const icons = {
       <path d="M18.96 10.97q-.4 0-.7-.3l-5.3-5.3v11.6c0 .57-.43 1-1 1-.56 0-1-.43-1-1V5.37l-5.3 5.3c-.4.4-1.03.4-1.4 0a.97.97 0 0 1 0-1.4l7-7a.97.97 0 0 1 1.4 0l7 7c.4.4.4 1.04 0 1.4q-.3.3-.7.3"/><path d="M3.96 20.97c0 .57.44 1 1 1h14c.57 0 1-.43 1-1v-2.66c0-.57-.43-1-1-1-.56 0-1 .43-1 1v1.66h-12v-1.66c0-.57-.43-1-1-1-.56 0-1 .43-1 1z"/>
     </svg>
   `
-};
+} as const;
+
+export const icons = Object.fromEntries(
+  Object.entries(internalIcons).sort(([left], [right]) => left.localeCompare(right))
+) as typeof internalIcons;
 
 const internalLibrary: IconLibrary = {
   name: '_internal',

@@ -141,8 +141,8 @@ export const Libraries = {
           <h3 class="sd-headline sd-headline--size-base mb-4">Status Library</h3>
           <div class="flex gap-6">
             <sd-icon color="primary" library="sd-status-assets" name="status-check"></sd-icon>
-            <sd-icon color="primary" library="sd-status-assets" name="status-exclamation"></sd-icon>
             <sd-icon color="primary" library="sd-status-assets" name="status-close"></sd-icon>
+            <sd-icon color="primary" library="sd-status-assets" name="status-exclamation"></sd-icon>
           </div>
         </div>
 
