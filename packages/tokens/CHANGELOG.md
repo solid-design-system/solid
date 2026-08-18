@@ -5,7 +5,7 @@
 ### Major Changes
 
 - Added fallback values from the `ui-light` theme to tailwind.css and components.css so applications can work without installing a theme; _[`#3240`](https://github.com/solid-design-system/solid/pull/3240) [`d645fd7`](https://github.com/solid-design-system/solid/commit/d645fd7f6c3fe24dda2644b79dd88c4222baddb5) [@martascorreia](https://github.com/martascorreia)_
-- Added `dist/legacy-variables.css` as an optional fallback stylesheet option for accessing depracted variables; _[`#3240`](https://github.com/solid-design-system/solid/pull/3240) [`d645fd7`](https://github.com/solid-design-system/solid/commit/d645fd7f6c3fe24dda2644b79dd88c4222baddb5) [@martascorreia](https://github.com/martascorreia)_
+- Added `dist/legacy-variables.css` as an optional fallback stylesheet option for accessing deprecated variables; _[`#3240`](https://github.com/solid-design-system/solid/pull/3240) [`d645fd7`](https://github.com/solid-design-system/solid/commit/d645fd7f6c3fe24dda2644b79dd88c4222baddb5) [@martascorreia](https://github.com/martascorreia)_
 - Removed deprecated variables: _[`#3240`](https://github.com/solid-design-system/solid/pull/3240) [`d645fd7`](https://github.com/solid-design-system/solid/commit/d645fd7f6c3fe24dda2644b79dd88c4222baddb5) [@martascorreia](https://github.com/martascorreia)_
   - `--sd-button--size-lg-border-radius` replace with --sd-button-border-radius
   - `--sd-button--size-md-border-radius` replace with --sd-button-border-radius
