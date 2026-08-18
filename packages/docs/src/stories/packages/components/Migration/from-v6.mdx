@@ -4,31 +4,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Migration from v6
 
-The v6 release improves token stability, cleans up unused CSS variables, and introduces several fixes and refinements across different components.
-
-<div hidden>
-Dear devs, when adding a migration guide, please include:
-
-1. What changed and why
-2. Who is affected
-3. The required migration steps
-4. A “Before” and “After” example, when applicable
-
-Remove all placeholder comments before the release.
-
-## Breaking change #2
-
-[...]
-
-## Breaking change #3
-
-[...]
-
-## Breaking change #4
-
-[...]
-
-</div>
+The v6 release removes the dependency on the CDN, removes the deprecated component `sd-spinner`, removes deprecated CSS custom variables and introduces multi-theming to the `_internal` library icons. It also brings breaking changes to the `sd-teaser`, `sd-input`, `sd-textarea`, `sd-notification`, `sd-dialog`, `sd-drawer`, `sd-icon` and `sd-header`.
 
 ## CDN publishing ended, migrate to npm
 
@@ -70,7 +46,9 @@ import '@solid-design-system/components/dist/solid-components.js';
 
 For self-hosted CDN setups, artifact paths, and jsDelivr-based prototyping (for example CodePen demos and quick experiments), see [General/CDN Hosting](?path=/docs/docs-general-cdn-hosting--docs).
 
-## `sd-teaser` headline slot no longer enforces styles
+## Component updates
+
+### `<sd-teaser>`
 
 Previously, `sd-teaser` used `!important` to force `font-size`, `font-weight`, and `margin` on whatever element was placed in `slot="headline"`, preventing any overrides from Light DOM styles.
 
@@ -104,8 +82,6 @@ To restore the previous fixed appearance, apply the size explicitly on the slott
 </sd-teaser>
 ```
 
-## Component updates
-
 ### `<sd-input>` and `<sd-textarea>`
 
 The `autocorrect` property is now a `boolean` instead of a `string`. This is required by the updated `HTMLElement.autocorrect` type shipped in TypeScript 5.9, which now matches how browsers implement the native `autocorrect` IDL attribute.
@@ -132,7 +108,7 @@ input.autocorrect = 'off';
 input.autocorrect = false;
 ```
 
-## Removed sd-spinner
+### `<sd-spinner>`
 
 The `sd-spinner` component has been removed from the library.
 Please use `sd-loader` instead.
@@ -149,7 +125,7 @@ Please use `sd-loader` instead.
 <sd-loader></sd-loader>
 ```
 
-## Removed the default margin from inline `sd-notification`
+### `<sd-notification>`
 
 Inline `sd-notification` components no longer have a default margin applied. If your inline notifications relied on the previous spacing, add it to the surrounding layout instead.
 
@@ -173,7 +149,7 @@ The component applied its own margin.
 </style>
 ```
 
-## `sd-dialog` footer now spans the full width
+### `<sd-dialog>`
 
 Previously, the footer shrink-wrapped its content and pushed it to the right. It now spans the full width of the dialog
 across all viewport sizes, so you are responsible for styling the layout and alignment of its content.
@@ -227,7 +203,7 @@ across all viewport sizes, so you are responsible for styling the layout and ali
 </sd-dialog>
 ```
 
-## `sd-dialog` and `sd-drawer` now use the native `<dialog>` element
+### `<sd-dialog>` and `<sd-drawer>`
 
 Both components previously implemented their own modal behavior (a custom `Modal` focus trap, manual body scroll locking, and manual Escape-key handling). They now render their `part="base"` element as a native `<dialog>` and use its built-in `showModal()`/`close()` APIs instead.
 
@@ -253,7 +229,7 @@ Both components previously implemented their own modal behavior (a custom `Modal
 <sd-dialog open>...</sd-dialog> <sd-drawer open>...</sd-drawer>
 ```
 
-## `sd-header` drop shadow is no longer tied to the `fixed` attribute
+### `<sd-header>`
 
 Previously, setting `fixed` on `sd-header` always rendered a drop shadow underneath it. The shadow is now controlled by a separate `shadow` attribute, which is off by default and can be combined with `fixed` or used on its own.
 

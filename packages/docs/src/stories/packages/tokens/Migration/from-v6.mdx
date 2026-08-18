@@ -5,7 +5,7 @@ import '../../../../../../components/src/solid-components';
 
 # Migration from v6
 
-The v6 release improves token stability, cleans up unused CSS variables, and introduces several fixes and refinements across different components.
+The v6 release removes deprecated CSS variables, adds built-in theme fallbacks defaulting to `ui-light`, adds an optional import to use the legacy variables fallback and introduces new tokens for the consolidated `sd-chip` component (which replaces `sd-flag`).
 
 ## Deprecated CSS variables (tokens)
 
@@ -177,11 +177,11 @@ Fallback values are now implemented directly in the token and component styling 
 
 ## Consolidation of `sd-chip` and `sd-flag`
 
-### Removed CSS variables
+**Removed CSS variables**
 
 Please refer to the "Deprecated CSS variables (tokens)" section to see the removed css variables. Update any theme or override it with the new variables.
 
-### New CSS variables
+**New CSS variables**
 
 The new colour/shade scale introduces a matching set of custom properties, for both filled and outlined chips, across the `primary`, `neutral`, and `white` families:
 
