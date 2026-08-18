@@ -1,5 +1,20 @@
 # @solid-design-system/tokens
 
+## 7.0.0-next.11
+
+### Minor Changes
+
+- - Updated `_internal` icons library to load non-UI icons from CELUM CDN. _[`#3227`](https://github.com/solid-design-system/solid/pull/3227) [`997fcf7`](https://github.com/solid-design-system/solid/commit/997fcf71e61cbd580292bec9e2e7f0c540d0f76d) [@martascorreia](https://github.com/martascorreia)_
+
+    - Renamed `_internal` icons to be in sync with figma:
+      - `chevron-down` replaced with `chevron-bottom`
+      - `chevron-up` replaced with `chevron-top`
+      - `chevrons-sm-left` replaced with `chevrons-small-left`
+      - `chevrons-sm-right` replaced with `chevrons-small-right`
+      - `closing-round` replaced with `close-circle`
+      - `eye` replaced with `eye-open`
+      - `start` replaced with `play`
+
 ## 7.0.0-next.10
 
 ## 7.0.0-next.9

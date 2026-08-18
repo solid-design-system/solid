@@ -1,5 +1,7 @@
 # @solid-design-system/components
 
+## 7.0.0-next.11
+
 ## 7.0.0-next.10
 
 ### Major Changes
