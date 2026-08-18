@@ -1,5 +1,21 @@
 # @solid-design-system/components
 
+## 6.30.0
+
+### Minor Changes
+
+- Add `sd-file-selector` component. _[`#3237`](https://github.com/solid-design-system/solid/pull/3237) [`cdab3e1`](https://github.com/solid-design-system/solid/commit/cdab3e1c704558ad4d437d9d19d5ad8db5062547) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+### 📈 Stats
+* Uncompressed: 639 KB (+12 KB / +2%)
+* Gzipped: 143 KB (+3 KB / +2%)
+
+## 6.29.1
+
+### Patch Changes
+
+- Removed warning icon from `sd-notification`. _[`#3250`](https://github.com/solid-design-system/solid/pull/3250) [`6fd8017`](https://github.com/solid-design-system/solid/commit/6fd80179298c16869591dc91723ff3697ec465d3) [@balco0110](https://github.com/balco0110)_
+
 ## 6.29.0
 
 ### Minor Changes
@@ -7,8 +23,9 @@
 - Updated `sd-button` and `sd-dialog` animations so that only the `ui-light` and `ui-dark` themes use SDS brand-specific animations. _[`#3141`](https://github.com/solid-design-system/solid/pull/3141) [`435a51f`](https://github.com/solid-design-system/solid/commit/435a51f420dd4be412b561d0f4b8e068fdc3295b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
 
 ### 📈 Stats
-* Uncompressed: 627 KB (+3 KB / +0%)
-* Gzipped: 140 KB (unchanged)
+
+- Uncompressed: 627 KB (+3 KB / +0%)
+- Gzipped: 140 KB (unchanged)
 
 ## 6.28.2
 

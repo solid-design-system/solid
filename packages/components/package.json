@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/components",
   "description": "Solid Design System: Components",
-  "version": "6.29.0",
+  "version": "6.30.0",
   "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
   "author": "Union Investment",
   "license": "MIT",
@@ -133,8 +133,8 @@
   "readme": "README.md",
   "meta": {
     "bundleSizeInKb": {
-      "uncompressed": 627,
-      "gzip": 140
+      "uncompressed": 639,
+      "gzip": 143
     }
   }
 }
