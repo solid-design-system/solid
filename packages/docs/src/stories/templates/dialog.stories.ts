@@ -10,19 +10,7 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3268-12022&t=JCsisVFNkWSlhSSN-4'
     }
-  },
-  decorators: [
-    (story: any) => html`
-      <style>
-        #anchor--templates-dialog--default .innerZoomElementWrapper,
-        #anchor--templates-dialog--scrollable .innerZoomElementWrapper,
-        #anchor--templates-dialog--prevent-closing .innerZoomElementWrapper {
-          min-height: 750px;
-        }
-      </style>
-      ${story()}
-    `
-  ] as unknown
+  }
 };
 
 /**
@@ -32,16 +20,6 @@ export const Default = {
   name: 'Dialog with Button Group',
   parameters: { docs: { story: { inline: false, height: '500px' } } },
   render: () => html`
-    <!-- TODO: remove once this bugfix is addressed: https://github.com/solid-design-system/solid/issues/1325 -->
-    <style>
-      @media (min-width: 414px) {
-        sd-dialog::part(footer) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-    </style>
-
     <sd-button id="drawer-trigger">Open Dialog</sd-button>
     <sd-dialog id="dialog" open>
       <span slot="headline" class="sd-headline sd-headline--size-3xl">Cancel your subscription?</span>

@@ -61,7 +61,9 @@ Use the `open` attribute to show the dialog.
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
       dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
     </p>
-    <sd-button slot="footer">Button</sd-button>
+    <div slot="footer" class="flex sm:justify-end gap-4">
+      <sd-button>Button</sd-button>
+    </div>
   </sd-dialog>
 </div>
 <script type="module">

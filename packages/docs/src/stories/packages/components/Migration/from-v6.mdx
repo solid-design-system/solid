@@ -173,6 +173,60 @@ The component applied its own margin.
 </style>
 ```
 
+## `sd-dialog` footer now spans the full width
+
+Previously, the footer shrink-wrapped its content and pushed it to the right. It now spans the full width of the dialog
+across all viewport sizes, so you are responsible for styling the layout and alignment of its content.
+
+**Migration steps:**
+
+- Content assigned directly to the `footer` slot is no longer aligned to the right. To keep the previous alignment, wrap it in a container and define the alignment there.
+- If you added custom styles to force the footer to span the full width, they no longer have any effect and can be removed.
+
+**Before**:
+
+```html
+<sd-dialog headline="Cancel your subscription?">
+  <p>Your subscription will be canceled immediately.</p>
+  <div slot="footer">
+    <sd-button variant="secondary">Maybe later</sd-button>
+    <sd-button variant="primary">Cancel subscription</sd-button>
+  </div>
+</sd-dialog>
+```
+
+**After**:
+
+```html
+<style>
+  .dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+</style>
+
+<sd-dialog headline="Cancel your subscription?">
+  <p>Your subscription will be canceled immediately.</p>
+  <div slot="footer" class="dialog-footer">
+    <sd-button variant="secondary">Maybe later</sd-button>
+    <sd-button variant="primary">Cancel subscription</sd-button>
+  </div>
+</sd-dialog>
+```
+
+**Dialog with a full width footer**:
+
+```html
+<sd-dialog headline="Cancel your subscription?">
+  <p>Your subscription will be canceled immediately.</p>
+  <div slot="footer">
+    <sd-button variant="secondary">Maybe later</sd-button>
+    <sd-button variant="primary">Cancel subscription</sd-button>
+  </div>
+</sd-dialog>
+```
+
 ## `sd-dialog` and `sd-drawer` now use the native `<dialog>` element
 
 Both components previously implemented their own modal behavior (a custom `Modal` focus trap, manual body scroll locking, and manual Escape-key handling). They now render their `part="base"` element as a native `<dialog>` and use its built-in `showModal()`/`close()` APIs instead.
