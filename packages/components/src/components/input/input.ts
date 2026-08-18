@@ -757,7 +757,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                             iconSize
                           )}
                           library="_internal"
-                          name="closing-round"
+                          name="close-circle"
                         ></sd-icon>
                       </slot>
                     </button>
@@ -785,7 +785,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                         this.passwordVisible
                           ? html`
                               <slot name="show-password-icon"
-                                ><sd-icon class=${cx(iconColor, iconSize)} library="_internal" name="eye"></sd-icon
+                                ><sd-icon class=${cx(iconColor, iconSize)} library="_internal" name="eye-open"></sd-icon
                               ></slot>
                             `
                           : html`

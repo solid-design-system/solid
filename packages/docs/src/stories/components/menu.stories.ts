@@ -55,7 +55,7 @@ export const Default = {
       <sd-dropdown distance="4" rounded open>
         <sd-button variant="secondary" slot="trigger">
           Menu
-          <sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
+          <sd-icon library="_internal" name="chevron-bottom" slot="icon-right"></sd-icon>
         </sd-button>
         ${generateTemplate({
           args
@@ -139,7 +139,7 @@ export const Grouping = {
     <sd-dropdown distance="4" rounded>
       <sd-button variant="secondary" slot="trigger">
         Menu
-        <sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
+        <sd-icon library="_internal" name="chevron-bottom" slot="icon-right"></sd-icon>
       </sd-button>
       <sd-menu>
         <sd-menu-item>Menu item 1</sd-menu-item>
