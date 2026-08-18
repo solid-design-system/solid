@@ -1,5 +1,9 @@
 # @solid-design-system/styles
 
+## 7.0.0-next.10
+
+## 7.0.0-next.9
+
 ## 7.0.0-next.8
 
 ### Major Changes

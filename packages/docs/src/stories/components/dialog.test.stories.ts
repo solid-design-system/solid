@@ -30,7 +30,9 @@ export default {
     {
       type: 'slot',
       name: 'footer',
-      value: `<sd-button slot="footer" class="w-full">Button</sd-button>`
+      value: `<div slot='footer' class='flex justify-end'>
+            <sd-button>Button</sd-button>
+            </div>`
     }
   ]),
   argTypes,
@@ -63,12 +65,14 @@ export const NoCloseButton = {
           {
             type: 'slot',
             name: 'footer',
-            value: `<sd-button slot="footer" class="w-full">Close</sd-button>
+            value: `<div slot="footer" class="flex justify-end">
+            <sd-button>Close</sd-button>
+            </div>
+            
             <script>
                 const dialog = document.querySelector('sd-dialog');
-                const footer = dialog.querySelector('sd-button[slot="footer"]');
-
-                footer.addEventListener('click', () => dialog.hide());
+                 const closeButton = dialog.querySelector('[slot="footer"] sd-button');
+                closeButton.addEventListener('click', () => dialog.hide());
           </script>`
           }
         ]
@@ -99,14 +103,6 @@ export const ExtendedFooter = {
   name: 'Sample: Extended Footer',
   render: () => {
     return html`
-      <style>
-        @media (max-width: 414px) {
-          sd-dialog::part(footer) {
-            flex-direction: column;
-          }
-        }
-      </style>
-
       <div style="height: 40vh;">
         <sd-dialog open="" id="extended-footer"
           ><p class="sd-paragraph">
@@ -114,8 +110,10 @@ export const ExtendedFooter = {
             phasellus dui vel id. Velit in sed.
           </p>
           <span slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</span>
-          <sd-button variant="secondary" slot="footer" class="w-full">Button</sd-button>
-          <sd-button slot="footer" class="w-full">Button</sd-button>
+          <div slot="footer" class="flex flex-row justify-end gap-4">
+            <sd-button variant="secondary">Button</sd-button>
+            <sd-button>Button</sd-button>
+          </div>
         </sd-dialog>
       </div>
     `;
@@ -133,7 +131,9 @@ export const SmallHeadline = {
             phasellus dui vel id. Velit in sed.
           </p>
           <span slot="headline" class="font-bold">Lorem Ipsum</span>
-          <sd-button slot="footer" class="w-full">Button</sd-button>
+          <div slot="footer" class="flex flex-row justify-end gap-4">
+            <sd-button>Button</sd-button>
+          </div>
         </sd-dialog>
       </div>
     `;
@@ -143,7 +143,13 @@ export const SmallHeadline = {
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
-    return html`<div class="mouseless" style="height: 40vh;">${generateTemplate({ args })}</div>`;
+    return html`
+      <div class="mouseless" style="height: 40vh;">
+        ${generateTemplate({
+          args
+        })}
+      </div>
+    `;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
