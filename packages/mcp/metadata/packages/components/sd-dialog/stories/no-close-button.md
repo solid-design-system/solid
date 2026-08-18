@@ -9,7 +9,9 @@ Use the `no-close-button` attribute to hide the close button in the dialog.
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
       dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
     </p>
-    <sd-button class="close-button" slot="footer" variant="primary">Button</sd-button>
+    <div slot="footer" class="flex sm:justify-end gap-4">
+      <sd-button class="close-button" variant="primary">Button</sd-button>
+    </div>
   </sd-dialog>
 </div>
 

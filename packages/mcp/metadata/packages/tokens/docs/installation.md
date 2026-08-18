@@ -2,7 +2,7 @@
 
 This page guides you through installing and setting up the `@solid-design-system/tokens` package to use themes and/or design tokens in your project.
 
-<sd-notification type="info" open>
+<sd-notification variant="info" open>
   The `components`, `styles`, and `tokens` packages always share the same version. We use fixed versioning to keep them
   fully in sync, so every release updates all three packages, even if only one of them changed. Make sure to install or
   update them using the same version number.
@@ -23,28 +23,11 @@ npm install @solid-design-system/tokens
 
 ## Import a theme
 
-Load at least one theme — either via NPM import or a CDN `<link>` tag. This only needs to be done **once per document**. Every component and embedded consumer on the page will automatically inherit the theme.
+Load at least one theme via NPM import. This only needs to be done **once per document**. Every component and embedded consumer on the page will automatically inherit the theme.
 
-<sd-tab-group>
-  {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="npm" variant="container">NPM</sd-tab>
-  {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="cdn" variant="container">CDN</sd-tab>
-  <sd-tab-panel name="npm">
 ```js
-```
 
-  </sd-tab-panel>
-  <sd-tab-panel name="cdn">
-```html
-<link
-  rel="stylesheet"
-  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
-/>
 ```
-
-  </sd-tab-panel>
-</sd-tab-group>
 
 ## Next steps
 

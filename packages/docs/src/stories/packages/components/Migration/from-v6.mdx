@@ -30,6 +30,46 @@ Remove all placeholder comments before the release.
 
 </div>
 
+## CDN publishing ended, migrate to npm
+
+Starting with this release, Solid Design System no longer publishes new versions to a Solid-managed CDN endpoint.
+For updates beyond v6, install and consume the packages via npm.
+
+If you still need CDN delivery in production, host the `cdn/` or `cdn-versioned/` artifacts from npm on infrastructure your team controls.
+
+**Before (v6 CDN loading from the Solid-managed endpoint)**:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://solid-design-system.fe.union-investment.de/components/6.29.0/cdn/solid-components.css"
+/>
+<link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/styles/6.29.0/cdn/solid-styles.css" />
+<link
+  rel="stylesheet"
+  href="https://solid-design-system.fe.union-investment.de/tokens/6.29.0/cdn/themes/ui-light/ui-light.css"
+/>
+<script
+  type="module"
+  src="https://solid-design-system.fe.union-investment.de/components/6.29.0/cdn/solid-components.bundle.js"
+></script>
+```
+
+**After (npm usage)**:
+
+```bash
+npm install @solid-design-system/components @solid-design-system/styles @solid-design-system/tokens
+```
+
+```js
+import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
+import '@solid-design-system/styles/dist/solid-styles.css';
+import '@solid-design-system/components/dist/solid-components.css';
+import '@solid-design-system/components/dist/solid-components.js';
+```
+
+For self-hosted CDN setups, artifact paths, and jsDelivr-based prototyping (for example CodePen demos and quick experiments), see [General/CDN Hosting](?path=/docs/docs-general-cdn-hosting--docs).
+
 ## `sd-teaser` headline slot no longer enforces styles
 
 Previously, `sd-teaser` used `!important` to force `font-size`, `font-weight`, and `margin` on whatever element was placed in `slot="headline"`, preventing any overrides from Light DOM styles.
@@ -131,6 +171,60 @@ The component applied its own margin.
     padding: 0.5rem;
   }
 </style>
+```
+
+## `sd-dialog` footer now spans the full width
+
+Previously, the footer shrink-wrapped its content and pushed it to the right. It now spans the full width of the dialog
+across all viewport sizes, so you are responsible for styling the layout and alignment of its content.
+
+**Migration steps:**
+
+- Content assigned directly to the `footer` slot is no longer aligned to the right. To keep the previous alignment, wrap it in a container and define the alignment there.
+- If you added custom styles to force the footer to span the full width, they no longer have any effect and can be removed.
+
+**Before**:
+
+```html
+<sd-dialog headline="Cancel your subscription?">
+  <p>Your subscription will be canceled immediately.</p>
+  <div slot="footer">
+    <sd-button variant="secondary">Maybe later</sd-button>
+    <sd-button variant="primary">Cancel subscription</sd-button>
+  </div>
+</sd-dialog>
+```
+
+**After**:
+
+```html
+<style>
+  .dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+</style>
+
+<sd-dialog headline="Cancel your subscription?">
+  <p>Your subscription will be canceled immediately.</p>
+  <div slot="footer" class="dialog-footer">
+    <sd-button variant="secondary">Maybe later</sd-button>
+    <sd-button variant="primary">Cancel subscription</sd-button>
+  </div>
+</sd-dialog>
+```
+
+**Dialog with a full width footer**:
+
+```html
+<sd-dialog headline="Cancel your subscription?">
+  <p>Your subscription will be canceled immediately.</p>
+  <div slot="footer">
+    <sd-button variant="secondary">Maybe later</sd-button>
+    <sd-button variant="primary">Cancel subscription</sd-button>
+  </div>
+</sd-dialog>
 ```
 
 ## `sd-dialog` and `sd-drawer` now use the native `<dialog>` element
