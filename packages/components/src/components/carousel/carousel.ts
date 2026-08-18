@@ -839,7 +839,7 @@ export default class SdCarousel extends SolidElement {
                 <sd-icon
                   class=${cx('h-6 w-6 rotate-90 grid place-items-center')}
                   library="_internal"
-                  name="${isLtr ? 'chevron-bottom' : 'chevron-top'}"
+                  name="${isLtr ? 'chevron-top' : 'chevron-bottom'}"
                 ></sd-icon>
               </slot>
             </button>
