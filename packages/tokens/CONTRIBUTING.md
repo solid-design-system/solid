@@ -34,14 +34,13 @@ To register a new theme in Storybook:
 
 #### Adding internal icons
 
-1. Create an `icons.css` file inside `themes/<your-theme>/`.
-2. Define the icon SVGs as CSS custom properties.
-3. Build the `tokens` package. The build process will automatically include the icons in the generated theme CSS files.
+1. For UI icons, define the icon SVGs as CSS custom properties in `library.internal.ts`.
+2. For non-UI icons, add the icons to the CELUM CDN at https://celum-icons.fe.union-investment.de/internal.json.
 
 #### Adding system and content icons
 
-1. Ensure the icons are available in the CDN at https://celum-icons.fe.union-investment.de/`<your-theme-folder>`/system.json for system icons and https://celum-icons.fe.union-investment.de/`<your-theme-folder>`/content.json for content icons.
-2. Add the CDN folder name to `ThemeMap` using the same key that references the theme throughout the project.
+1. Add the icons to the CELUM CDN at https://celum-icons.fe.union-investment.de/`<your-theme-folder>`/system.json for system icons and https://celum-icons.fe.union-investment.de/`<your-theme-folder>`/content.json for content icons.
+2. Add the CDN folder name to `themeMap` in `library.multi-theming.ts` using the same key that references the theme throughout the project.
 3. Update `icon.libraries.multi-theming.stories` by adding the new theme to both the **Content** and **System** modes.
 4. Add a new example section for the theme in the **Multi-theming Library** story.
 
@@ -50,6 +49,8 @@ To register a new theme in Storybook:
 1. Add the font files to a new folder under `packages/docs/.storybook/fonts/`.
 2. Register the fonts in `.storybook/preview-head.html`.
 3. Update `packages/tokens/tailwind/token-processors/typography.js` with the typography configuration for the new theme.
+4. Add a new theme entry to the `fontConfig` map in the `theme-attributes.js` file.
+5. Add the id from the previous step entry to the `themeAttributes` map in the `theme-attributes.js` as a the `font` property of your theme.
 
 #### Adding logos
 
@@ -63,8 +64,9 @@ To register a new theme in Storybook:
    Each property should point to the corresponding SVG file and include appropriate alt text.
 
    This configuration object also defines:
-   - the path to the theme CSS file (`<your-theme>/<your-theme>.css`); and
-   - the CDN folder used to load the theme's icons.
+   - the path to the theme CSS file (`<your-theme>/<your-theme>.css`);
+   - the CDN folder used to load the theme's icons;
+   - the font family used by the theme.
 
 ### Analyzing Variable Usage
 
@@ -88,6 +90,6 @@ This helps identify dead variables that can be removed from the design system.
 Variables must not be removed from themes.
 
 If a variable is renamed or deleted in Figma but already exists in the codebase, it must stay in `legacy-variables.css` and reference the new variable or value.
-This ensures that newer tokens packages remain compatible with older versions of the components and styles packages.
+This ensures that newer tokens packages remain compatible with older versions of the components and styles packages. Make sure to add the deprecated variable, the replacement variable and fallback value corresponding to the ui-light theme (e.g. --sd-chip-font-size: var(--sd-marker-font-size, 0.875rem)).
 
 Removing customizable CSS variables is a breaking change, so a transition period may be required. During this period, a fallback must be added in the components to ensure the old variable continues to work. Deprecated variables must be documented in the component documentation pages using the standard sentence: <i>This custom property is deprecated. Use `NEW VARIABLE` instead.</i> The `deprecated` tag is styled automatically.

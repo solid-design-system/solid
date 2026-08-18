@@ -48,8 +48,6 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-accordion--hover-color-background - The accordion hover background color.
  * @cssproperty --sd-accordion--open-color-text - The accordion color text when open.
  * @cssproperty --sd-accordion-color-border - The accordion color border.
- *
- * @cssproperty --sd-accordion__chevron-color-text - This custom property is deprecated. Use `--sd-accordion-color-icon-fill`instead.
  */
 @customElement('sd-accordion')
 export default class SdAccordion extends SolidElement {
@@ -228,10 +226,10 @@ export default class SdAccordion extends SolidElement {
               this.open && 'rotate-180'
             )}
             ><slot name="expand-icon" class=${cx(this.open && 'hidden')}>
-              <sd-icon library="_internal" name="chevron-down"></sd-icon>
+              <sd-icon library="_internal" name="chevron-bottom"></sd-icon>
             </slot>
             <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
-              <sd-icon library="_internal" name="chevron-down"></sd-icon> </slot
+              <sd-icon library="_internal" name="chevron-bottom"></sd-icon> </slot
           ></span>
         </summary>
         <div part="content" id="content" class="overflow-hidden">
@@ -258,9 +256,8 @@ export default class SdAccordion extends SolidElement {
         border-block-width: var(--sd-accordion-border-width);
       }
 
-      /* TODO clean sd-accordion__chevron-color-text variable and replace with sd-accordion-color-icon-fill (breaking change) */
       [part='summary-icon'] sd-icon {
-        color: rgb(var(--sd-accordion__chevron-color-text, var(--sd-accordion-color-icon-fill)));
+        color: rgb(var(--sd-accordion-color-icon-fill));
       }
     `
   ];

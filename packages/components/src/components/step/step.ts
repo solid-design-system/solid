@@ -231,8 +231,8 @@ export default class SdStep extends SolidElement {
               ${
                 !this.disabled && !this.current && !this.notInteractive && !this.waiting && this.size !== 'xs'
                   ? html` <sd-icon
+                      library="sd-status-assets"
                       name="status-check"
-                      library="_internal"
                       class="${cx(this.size === 'sm' && 'text-sm')}"
                     ></sd-icon>`
                   : this.size === 'xs'

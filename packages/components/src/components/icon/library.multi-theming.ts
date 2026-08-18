@@ -1,12 +1,12 @@
 import type { IconLibrary } from './library';
 
 const themeMap: Record<string, string> = {
-  'ui-light': 'union-investment',
-  'ui-dark': 'union-investment',
-  vb: 'vb',
   bb: 'bbbank',
+  kid: 'kidstarter',
   sp: 'sparda',
-  kid: 'kidstarter'
+  'ui-dark': 'union-investment',
+  'ui-light': 'union-investment',
+  vb: 'vb'
 };
 
 function getTheme(element?: HTMLElement) {

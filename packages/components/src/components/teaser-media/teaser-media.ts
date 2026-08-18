@@ -138,7 +138,7 @@ export default class SdTeaserMedia extends SolidElement {
                           <sd-icon
                             class=${cx('w-6 h-6 transition-transform', this.open && 'rotate-180')}
                             library="_internal"
-                            name="chevron-down"
+                            name="chevron-bottom"
                           ></sd-icon>
                         </div>
                       </button>

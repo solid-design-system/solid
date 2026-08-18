@@ -367,7 +367,7 @@ describe('<sd-dropdown>', () => {
       <sd-dropdown distance="4" rounded>
         <sd-button variant="secondary" slot="trigger">
           Menu
-          <sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
+          <sd-icon library="_internal" name="chevron-bottom" slot="icon-right"></sd-icon>
         </sd-button>
 
         <sd-menu>
@@ -400,7 +400,7 @@ describe('<sd-dropdown>', () => {
       <sd-dropdown distance="4" rounded>
         <sd-button variant="secondary" slot="trigger">
           Menu
-          <sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
+          <sd-icon library="_internal" name="chevron-bottom" slot="icon-right"></sd-icon>
         </sd-button>
 
         <sd-menu>

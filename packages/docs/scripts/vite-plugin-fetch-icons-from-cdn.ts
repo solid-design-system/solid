@@ -7,6 +7,25 @@
 import type { Plugin } from 'vite';
 import { getThemeIconFolders } from '../.storybook/addons/theme-generator/theme-attributes';
 
+type CdnIconEntry = {
+  technicalId?: string;
+  filename?: string;
+};
+
+function getIconId(icon: CdnIconEntry) {
+  const technicalId = icon.technicalId?.trim();
+  if (technicalId) return technicalId;
+
+  const filename = icon.filename?.trim();
+  if (!filename) return '';
+
+  return filename.replace(/\.svg$/i, '');
+}
+
+function toIconIdList(icons: CdnIconEntry[]) {
+  return [...new Set(icons.map(getIconId).filter(Boolean))];
+}
+
 async function fetchIconsJson(baseUrl: string) {
   try {
     const contentUrl = `${baseUrl}/content.json`;
@@ -21,12 +40,12 @@ async function fetchIconsJson(baseUrl: string) {
       };
     }
 
-    const contentData = (await contentResponse.json()) as { technicalId: string }[];
-    const systemData = (await systemResponse.json()) as { technicalId: string }[];
+    const contentData = (await contentResponse.json()) as CdnIconEntry[];
+    const systemData = (await systemResponse.json()) as CdnIconEntry[];
 
     const icons = {
-      content: contentData.map(icon => icon.technicalId),
-      system: systemData.map(icon => icon.technicalId)
+      content: toIconIdList(contentData),
+      system: toIconIdList(systemData)
     };
     return icons;
   } catch (error) {

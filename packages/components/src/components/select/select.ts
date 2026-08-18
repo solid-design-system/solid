@@ -1166,7 +1166,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                             <sd-icon
                               class=${cx('text-neutral-700 z-10', iconSize)}
                               library="_internal"
-                              name="closing-round"
+                              name="close-circle"
                             ></sd-icon>
                           </slot>
                         </button>
@@ -1207,7 +1207,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                     iconSize
                   )}
                 >
-                  <sd-icon name="chevron-down" part="chevron" library="_internal" color="currentColor"></sd-icon>
+                  <sd-icon name="chevron-bottom" part="chevron" library="_internal" color="currentColor"></sd-icon>
                 </slot>
               </div>
 

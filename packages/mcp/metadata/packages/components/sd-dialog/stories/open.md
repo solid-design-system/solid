@@ -8,11 +8,6 @@
   tags: ['!dev', 'autodocs'],
   args: overrideArgs([
   {
-  type: 'attribute',
-  name: 'open',
-  value: true
-  },
-  {
   type: 'slot',
   name: 'default',
   value: `<div class="slot slot--border slot--text h-16 w-full">Default slot</div>`
@@ -39,12 +34,19 @@
   };
   export const Default = {
   render: (args: any) => {
-  return html` <div style="height: 40vh;">
+  return html`
+  <sd-button id="open-default-dialog">Open Dialog</sd-button>
   ${generateTemplate({
   args
   })}
 
-</div>`;
+<script>
+document.querySelector('#open-default-dialog').addEventListener('click', () => {
+document.querySelector('sd-dialog').show();
+});
+</script>
+
+`;
 }
 };
 /**
@@ -59,7 +61,9 @@ Use the `open` attribute to show the dialog.
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
       dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
     </p>
-    <sd-button slot="footer">Button</sd-button>
+    <div slot="footer" class="flex sm:justify-end gap-4">
+      <sd-button>Button</sd-button>
+    </div>
   </sd-dialog>
 </div>
 <script type="module">

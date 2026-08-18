@@ -1,5 +1,80 @@
 # @solid-design-system/components
 
+## 7.0.0-next.12
+
+### Major Changes
+
+- - Added usage and installation documentation for the removal of deprecated values and addition of the `dist/legacy-variables.css` as an optional fallback stylesheet for these varibles. _[`#3240`](https://github.com/solid-design-system/solid/pull/3240) [`d645fd7`](https://github.com/solid-design-system/solid/commit/d645fd7f6c3fe24dda2644b79dd88c4222baddb5) [@martascorreia](https://github.com/martascorreia)_
+
+    - Updated documentation requirements about the need for a theme installation.
+
+### 📈 Stats
+* Uncompressed: 632 KB (-2 KB / 0%)
+* Gzipped: 142 KB (unchanged)
+
+## 7.0.0-next.11
+
+## 7.0.0-next.10
+
+### Major Changes
+
+- Updated `sd-dialog` to display the footer at full width across all viewport sizes. _[`#3221`](https://github.com/solid-design-system/solid/pull/3221) [`5159c3c`](https://github.com/solid-design-system/solid/commit/5159c3ca2284e606688222b7df3769bec5ce2479) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 7.0.0-next.9
+
+### Patch Changes
+
+- Removed the CDN installation instructions from the documentation and added a "CDN Hosting" page for self-hosting, as Solid Design System no longer provides a hosted CDN. _[`#3239`](https://github.com/solid-design-system/solid/pull/3239) [`c825a22`](https://github.com/solid-design-system/solid/commit/c825a22d9f6f984d3b6268fe30a7ea19be008f63) [@mariohamann](https://github.com/mariohamann)_
+
+## 7.0.0-next.8
+
+### 📈 Stats
+
+- Uncompressed: 634 KB (+12 KB / +2%)
+- Gzipped: 142 KB (+3 KB / +2%)
+
+## 7.0.0-next.7
+
+### Major Changes
+
+- Added `shadow` attribute to `sd-header` to control the drop shadow independently of the `fixed` attribute. _[`#3246`](https://github.com/solid-design-system/solid/pull/3246) [`cef7219`](https://github.com/solid-design-system/solid/commit/cef72199fa824909c31e636902e9f24aaa4db4ae) [@balco0110](https://github.com/balco0110)_
+
+## 7.0.0-next.6
+
+### Major Changes
+
+- Removed margin from `sd-notification` to improve inline styling. _[`#3147`](https://github.com/solid-design-system/solid/pull/3147) [`331332f`](https://github.com/solid-design-system/solid/commit/331332f5fdecf42abccdbdd74dda53a09bbf68f1) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 7.0.0-next.5
+
+### Major Changes
+
+- Replaced custom modal/overlay implementation in `sd-dialog` and `sd-drawer` with the browser-native `<dialog>` element and its `showModal()`/`close()` APIs. _[`#3238`](https://github.com/solid-design-system/solid/pull/3238) [`a444acb`](https://github.com/solid-design-system/solid/commit/a444acbaa5fb374ac5587bd5eef8575a8d6b16c1) [@mariohamann](https://github.com/mariohamann)_
+
+### 📈 Stats
+
+- Uncompressed: 622 KB (-3 KB / 0%)
+- Gzipped: 139 KB (-1 KB / -1%)
+
+## 7.0.0-next.4
+
+### Major Changes
+
+- Removed the `sd-spinner` component _[`#3219`](https://github.com/solid-design-system/solid/pull/3219) [`cbdc1cb`](https://github.com/solid-design-system/solid/commit/cbdc1cb0098cabdbdad324803d5176de76a2215f) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+
+- Uncompressed: 625 KB (-2 KB / 0%)
+- Gzipped: 140 KB (unchanged)
+
+## 7.0.0-next.3
+
+### Major Changes
+
+- The `autocorrect` property of `sd-input` and `sd-textarea` is now a `boolean` instead of a `string`, to align with the updated `HTMLElement.autocorrect` type shipped in TypeScript 5.9. Checkout the migration guide for more details. _[`#3184`](https://github.com/solid-design-system/solid/pull/3184) [`81cd65b`](https://github.com/solid-design-system/solid/commit/81cd65ba91559c9f138920a5ba505fb1461eb92a) [@mariohamann](https://github.com/mariohamann)_
+
+## 7.0.0-next.2
+
 ## 6.30.0
 
 ### Minor Changes
@@ -7,8 +82,9 @@
 - Add `sd-file-selector` component. _[`#3237`](https://github.com/solid-design-system/solid/pull/3237) [`cdab3e1`](https://github.com/solid-design-system/solid/commit/cdab3e1c704558ad4d437d9d19d5ad8db5062547) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
 
 ### 📈 Stats
-* Uncompressed: 639 KB (+12 KB / +2%)
-* Gzipped: 143 KB (+3 KB / +2%)
+
+- Uncompressed: 639 KB (+12 KB / +2%)
+- Gzipped: 143 KB (+3 KB / +2%)
 
 ## 6.29.1
 
@@ -35,7 +111,20 @@
 
 ### 📈 Stats
 
-- Uncompressed: 624 KB (-2 KB / 0%)
+- Uncompressed: 624 KB (-1 KB / 0%)
+- Gzipped: 140 KB (unchanged)
+
+## 7.0.0-next.1
+
+## 7.0.0-next.0
+
+### Major Changes
+
+- Fixed the restriction of changing the font size and margin for headline in `sd-teaser`. _[`#3165`](https://github.com/solid-design-system/solid/pull/3165) [`b6f28e6`](https://github.com/solid-design-system/solid/commit/b6f28e6d427e41c3d3f2c0b68b29715e3ce6d934) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+
+- Uncompressed: 625 KB (-1 KB / 0%)
 - Gzipped: 140 KB (unchanged)
 
 ## 6.28.1

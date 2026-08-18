@@ -118,6 +118,11 @@ export const Duration = {
     <sd-notification id="duration-example" variant="info" open duration="5000">
       Notification will self close after 5 seconds
     </sd-notification>
+    <style>
+      sd-notification#duration-example::part(base) {
+        margin-top: 0.5rem;
+      }
+    </style>
     <script>
       var notificationDuration = document.querySelector('#duration-example');
       notificationDuration.addEventListener('sd-after-hide', () => {

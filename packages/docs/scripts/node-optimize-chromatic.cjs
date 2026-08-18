@@ -13,7 +13,9 @@ fs.readdir(directoryPath, (err, files) => {
   files.forEach(file => {
     if (file.endsWith('.js')) {
       if (
-        fs.readFileSync(path.join(directoryPath, file), 'utf8').includes(`--animate-spin: spin 1s linear infinite;`)
+        fs
+          .readFileSync(path.join(directoryPath, file), 'utf8')
+          .includes(`wave 1.3s infinite, loader-color-current 2.6s infinite;`)
       ) {
         matchedFiles.push(file);
       }
@@ -36,7 +38,6 @@ fs.readdir(directoryPath, (err, files) => {
 
       // Map of original animation to replacement
       const replacements = {
-        '--animate-spin: spin 1s linear infinite;': '--animate-spin: 1s linear infinite spin;',
         'wave 1.3s infinite, loader-color-current 2.6s infinite;':
           'wave 0s infinite, loader-color-current 0s infinite;',
         'wave 1.3s infinite, loader-color-white 2.6s infinite;': 'wave 0s infinite, loader-color-white 0s infinite;',
