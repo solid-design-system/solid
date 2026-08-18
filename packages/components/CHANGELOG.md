@@ -1,5 +1,17 @@
 # @solid-design-system/components
 
+## 7.0.0-next.12
+
+### Major Changes
+
+- - Added usage and installation documentation for the removal of deprecated values and addition of the `dist/legacy-variables.css` as an optional fallback stylesheet for these varibles. _[`#3240`](https://github.com/solid-design-system/solid/pull/3240) [`d645fd7`](https://github.com/solid-design-system/solid/commit/d645fd7f6c3fe24dda2644b79dd88c4222baddb5) [@martascorreia](https://github.com/martascorreia)_
+
+    - Updated documentation requirements about the need for a theme installation.
+
+### 📈 Stats
+* Uncompressed: 632 KB (-2 KB / 0%)
+* Gzipped: 142 KB (unchanged)
+
 ## 7.0.0-next.11
 
 ## 7.0.0-next.10

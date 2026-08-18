@@ -1,5 +1,11 @@
 # @solid-design-system/styles
 
+## 7.0.0-next.12
+
+### Major Changes
+
+- - Added fallback values from the `ui-light` theme to styles so applications can work without installing a theme. _[`#3240`](https://github.com/solid-design-system/solid/pull/3240) [`d645fd7`](https://github.com/solid-design-system/solid/commit/d645fd7f6c3fe24dda2644b79dd88c4222baddb5) [@martascorreia](https://github.com/martascorreia)_
+
 ## 7.0.0-next.11
 
 ## 7.0.0-next.10

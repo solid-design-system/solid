@@ -1,5 +1,32 @@
 # @solid-design-system/tokens
 
+## 7.0.0-next.12
+
+### Major Changes
+
+- - Added fallback values from the `ui-light` theme to tailwind.css and components.css so applications can work without installing a theme; _[`#3240`](https://github.com/solid-design-system/solid/pull/3240) [`d645fd7`](https://github.com/solid-design-system/solid/commit/d645fd7f6c3fe24dda2644b79dd88c4222baddb5) [@martascorreia](https://github.com/martascorreia)_
+
+    - Added `dist/legacy-variables.css` as an optional fallback stylesheet option for accessing depracted variables;
+    - Removed deprecated variables:
+      - `--sd-button--size-lg-border-radius` replace with --sd-button-border-radius
+      - `--sd-button--size-md-border-radius` replace with --sd-button-border-radius
+      - `--sd-button--size-sm-border-radius` replace with --sd-button-border-radius
+      - `--sd-button--secondary--inverted--color-border` replace with --sd-button-secondary-inverted-color-border
+      - `--sd-chip-font-size` replace with --sd-marker-font-size
+      - `--sd-chip-font-weight` replace with --sd-marker-font-weight
+      - `--sd-flag-border-width` replace with --sd-marker-border-width
+      - `--sd-form-control-color-icon` replace with --sd-form-control-color-icon-fill
+      - `--sd-menu-color-icon` replace with --sd-menu-item-color-icon-fill
+      - `--sd-menu-color-text` replace with --sd-menu-item-color-text
+      - `--sd-menu--disabled-color-icon` replace with --sd-menu-item--disabled-color-icon-fill
+      - `--sd-menu--disabled-color-text` replace with --sd-menu-item--disabled-color-text
+      - `--sd-tag-font-weight` replace with --sd-choice-control-font-weight
+      - `--sd-tag--disabled-color-border` replace with --sd-color-border-neutral-500
+      - `--sd-navigation-item--current-color-text` replace with --sd-navigation-item-color-text
+      - `--sd-option--disabled-color-border` replace with --sd-color-border-neutral-500
+      - `--sd-audio__timestamp-color-text` replace with --sd-color-text-neutral-700
+      - `--sd-accordion__chevron-color-text` replace with --sd-accordion-color-icon-fill
+
 ## 7.0.0-next.11
 
 ### Minor Changes
