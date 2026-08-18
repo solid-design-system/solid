@@ -287,19 +287,6 @@ That's it — your page is now themed. Head over to the <sd-link href="?path=/do
 
 </sd-accordion>
 
-### CSS Variables deprecation
-
-CSS variables used for custom theming can become deprecated as token versions are updated.
-These changes will always be communicated properly before breaking changes are applied and are currently listed in the
-<sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-installation--docs#css-variables-deprecation">Usage</sd-link> page under "Deprecated CSS variables (tokens)"
-
-However, if you manage an environment that still requires the use of these variables, you can import the `legacy-variables.css` stylesheet
-as fallback layer:
-
-```js
-
-```
-
 </sd-tab-panel>
 
 <sd-tab-panel name="consumer">
@@ -382,7 +369,7 @@ extend: {
 }
 };
 
-```
+````
 
   </sd-tab-panel>
 </sd-tab-group>
@@ -392,9 +379,20 @@ That's it — you're ready to build. Head over to the <sd-link href="?path=/docs
   </sd-tab-panel>
 </sd-tab-group>
 
+## CSS Variables deprecation
+
+CSS variables used for custom theming can become deprecated as token versions are updated.
+These changes will always be communicated properly before breaking changes are applied and are currently listed in the
+<sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-installation--docs#css-variables-deprecation">Usage</sd-link> page under "Deprecated CSS variables (tokens)"
+
+However, if you manage an environment that still requires the use of these variables, you can import the `legacy-variables.css` stylesheet
+as fallback layer:
+
+```js
+````
+
 ## Minimum dependency requirement
 
 The installed `@solid-design-system/tokens` version must always be equal to or greater than the versions of the `@solid-design-system/components` and `@solid-design-system/styles` packages.
 
 For example, when using version `6.30.0` of components or styles, the minimum supported tokens version is `6.30.0`.
-```
