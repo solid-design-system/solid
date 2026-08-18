@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 3.0.0-next.8
+
+### Patch Changes
+
+- Removed the CDN installation instructions from the documentation and added a "CDN Hosting" page for self-hosting, as Solid Design System no longer provides a hosted CDN. _[`#3239`](https://github.com/solid-design-system/solid/pull/3239) [`c825a22`](https://github.com/solid-design-system/solid/commit/c825a22d9f6f984d3b6268fe30a7ea19be008f63) [@mariohamann](https://github.com/mariohamann)_
+
 ## 3.0.0-next.7
 
 ### Major Changes
