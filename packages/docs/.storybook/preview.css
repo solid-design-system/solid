@@ -104,9 +104,7 @@ div[data-radix-scroll-area-viewport]:focus-visible {
   @apply !text-success;
 }
 
-sd-notification#license-hint::part(base),
 sd-notification#versioning-info::part(base) {
-  margin-left: 0;
   margin-bottom: 2rem;
 }
 

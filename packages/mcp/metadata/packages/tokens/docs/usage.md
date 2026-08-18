@@ -16,17 +16,9 @@ This page covers advanced usage patterns for `@solid-design-system/tokens`. Make
 
 To automatically respect the user's OS-level preference, use the `prefers-color-scheme` media query on your `<link>` tags:
 
-```html
-<link
-  rel="stylesheet"
-  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
-  media="(prefers-color-scheme: light)"
-/>
-<link
-  rel="stylesheet"
-  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-dark/ui-dark.css"
-  media="(prefers-color-scheme: dark)"
-/>
+```css
+@import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css' (prefers-color-scheme: light);
+@import '@solid-design-system/tokens/dist/themes/ui-dark/ui-dark.css' (prefers-color-scheme: dark);
 ```
 
 For further information on how to make this more dynamic, check out [this article](https://pepelsbey.dev/articles/native-light-dark/).
@@ -107,15 +99,19 @@ This will only affect the primary background color inside `sd-button` components
 <sd-notification variant="warning" open>
   Make sure the **theme you load** (from `@solid-design-system/tokens`) is at a version **equal to or higher than** the
   highest `@solid-design-system/components` and `@solid-design-system/styles` version used anywhere on the page —
-  including by any embedded consumers. This will become a hard requirement in a future release — aligning now avoids
-  breakage later.
+  including by any embedded consumers.
 </sd-notification>
 
 ### Deprecated CSS variables (tokens)
 
-The following CSS variables (tokens) are deprecated and will be removed in a future release. Update your custom styles to use the recommended replacements.
+The following CSS variables (tokens) are deprecated. Please update your custom styles to use the recommended replacements.
+If you manage an environment that still requires the use of these variables,
+please refer to the <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-installation--docs#css-variables-deprecation">Installation</sd-link>
+section on loading `legacy-variables.css`.
 
-<table>
+#### Deprecated variables:
+
+<table class="sd-table">
   <tr>
     <th>Deprecated variable</th>
     <th>Replacement</th>
@@ -135,22 +131,6 @@ The following CSS variables (tokens) are deprecated and will be removed in a fut
   <tr>
     <td>`--sd-button--secondary--inverted--color-border`</td>
     <td>`--sd-button-secondary-inverted-color-border`</td>
-  </tr>
-  <tr>
-    <td>`--sd-chip-font-size`</td>
-    <td>`--sd-marker-font-size`</td>
-  </tr>
-  <tr>
-    <td>`--sd-chip-border-width`</td>
-    <td>`--sd-marker-border-width`</td>
-  </tr>
-  <tr>
-    <td>`--sd-chip-font-weight`</td>
-    <td>`--sd-marker-font-weight`</td>
-  </tr>
-  <tr>
-    <td>`--sd-flag-border-width`</td>
-    <td>`--sd-marker-border-width`</td>
   </tr>
   <tr>
     <td>`--sd-form-control-color-icon`</td>
@@ -196,13 +176,91 @@ The following CSS variables (tokens) are deprecated and will be removed in a fut
     <td>`--sd-accordion__chevron-color-text`</td>
     <td>`--sd-accordion-color-icon-fill`</td>
   </tr>
+  <tr>
+    <td>`--sd-chip--primary-200-color-background`</td>
+    <td>`--sd-chip--primary-low-color-background`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip--primary-200-color-border`</td>
+    <td>`--sd-chip--primary-subtle-color-filled-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip--primary-300-color-background`</td>
+    <td>`--sd-chip--primary-medium-color-background`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip--primary-300-color-border`</td>
+    <td>`--sd-chip--primary-medium-color-filled-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip--primary-500-color-background`</td>
+    <td>`--sd-chip--primary-high-color-background`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip--primary-500-color-border`</td>
+    <td>`--sd-chip--primary-high-color-filled-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip--primary-500-color-text`</td>
+    <td>`text-black`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip--white-color-border`</td>
+    <td>`--sd-chip--white-color-filled-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip-font-size`</td>
+    <td>`--sd-marker-font-size`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip-font-weight`</td>
+    <td>`--sd-marker-font-weight`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag-border-radius`</td>
+    <td>`--sd-chip-border-radius`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag-border-width`</td>
+    <td>`--sd-chip-border-width`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag--neutral-200-color-background`</td>
+    <td>`--sd-chip--neutral-low-color-background`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag--neutral-200-color-border`</td>
+    <td>`--sd-chip--neutral-low-color-filled-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag--neutral-300-color-background`</td>
+    <td>`--sd-chip--neutral-medium-color-background`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag--neutral-300-color-border`</td>
+    <td>`--sd-chip--neutral-medium-color-filled-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag--neutral-500-color-background`</td>
+    <td>`--sd-chip--neutral-high-color-background`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag--neutral-500-color-border`</td>
+    <td>`--sd-chip--neutral-high-color-filled-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag--white-color-background`</td>
+    <td>`--sd-chip--white-color-background`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag--white-color-border`</td>
+    <td>`--sd-chip--white-color-filled-border`</td>
+  </tr>
 </table>
 
-You can also find deprecated variables directly on each component's documentation page.
+</sd-tab-panel>
 
-  </sd-tab-panel>
-
-  <sd-tab-panel name="consumer">
+<sd-tab-panel name="consumer">
 
 ## Using tokens
 

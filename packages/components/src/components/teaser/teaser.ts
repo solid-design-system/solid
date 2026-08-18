@@ -182,8 +182,9 @@ export default class SdTeaser extends SolidElement {
         @apply m-0;
       }
 
+      /* Defaults are intentionally without !important so Light DOM styles can override them */
       ::slotted([slot='headline']) {
-        @apply font-bold !m-0 !text-lg;
+        @apply font-bold m-0 text-lg leading-normal;
       }
     `
   ];

@@ -31,6 +31,7 @@ export default {
 
 export const Default = {
   name: 'Tablet Navigation',
+  parameters: { docs: { story: { inline: false, height: '700px' } } },
   render: () => html`
     <style>
       sd-navigation-item::part(content) {

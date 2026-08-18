@@ -122,7 +122,119 @@ export class TokenProcessingEngine {
     }
 
     processors.forEach(processor => processor.reset());
+
+    // Add ui-light fallbacks to baseVars (tailwind.css and components.css)
+    this.addFallbacks(result, options.defaultTheme);
+
     return this.sortTokens(result);
+  }
+
+  /**
+   * Rewrite all sd var() calls in a CSS string to use a resolved fallback value.
+   * Handles nested var() content safely by tracking parentheses depth.
+   */
+  applyResolvedFallbacksToCss(css, resolvedMap) {
+    if (typeof css !== 'string' || !css.includes('var(')) return css;
+
+    let i = 0;
+    let result = '';
+
+    // Finds var() and replaces with fallback
+    while (i < css.length) {
+      const start = css.indexOf('var(', i);
+      if (start === -1) {
+        result += css.slice(i);
+        break;
+      }
+
+      result += css.slice(i, start);
+
+      let j = start + 4;
+      let depth = 1;
+
+      while (j < css.length && depth > 0) {
+        if (css[j] === '(') depth += 1;
+        if (css[j] === ')') depth -= 1;
+        j += 1;
+      }
+
+      if (depth !== 0) {
+        result += css.slice(start);
+        break;
+      }
+
+      const fullCall = css.slice(start, j);
+      const content = fullCall.slice(4, -1);
+      const commaIndex = content.indexOf(',');
+      const varName = (commaIndex === -1 ? content : content.slice(0, commaIndex)).trim();
+
+      // Adds fallback
+      if (varName.startsWith('--sd-')) {
+        const fallback = resolvedMap.get(varName);
+        if (fallback) {
+          result += `var(${varName}, ${fallback})`;
+          i = j;
+          continue;
+        }
+      }
+
+      result += fullCall;
+      i = j;
+    }
+
+    return result;
+  }
+
+  /**
+   * Add fallback values from the default theme to baseVars entries.
+   * This ensures Tailwind and Component classes work even without a theme imported.
+   */
+  addFallbacks(result, defaultTheme) {
+    const themeEntries = result[defaultTheme];
+    if (!themeEntries || !Array.isArray(themeEntries)) return;
+
+    // Creates a theme map from ui-light theme CSS entries.
+    // "--sd-color-primary: 0 53 142;" -> ("--sd-color-primary", "0 53 142")
+    const themeMap = new Map();
+    for (const entry of themeEntries) {
+      const match = entry.match(/^(--sd-[^:]+):\s*(.+);$/);
+      if (match) {
+        themeMap.set(match[1], match[2]);
+      }
+    }
+
+    // Resolves nested var() references.
+    // ("--sd-color-primary", "0 53 142") -> ("--sd-color-border-primary", "0 53 142")
+    const resolve = (value, depth = 0) => {
+      if (depth > 5) return value;
+      return value.replace(/var\((--sd-[^,)]+)\)/g, (_, varName) => {
+        const resolved = themeMap.get(varName);
+        if (resolved && !resolved.includes('var(')) return resolved;
+        if (resolved) return resolve(resolved, depth + 1);
+        return `var(${varName})`;
+      });
+    };
+
+    const resolvedMap = new Map();
+    for (const [key, value] of themeMap) {
+      resolvedMap.set(key, resolve(value));
+    }
+
+    // Adds fallbacks in tailwind.css
+    // "var(--sd-color-border-primary)" -> "var(--sd-color-border-primary, 0 53 142)".
+    result.baseVars = result.baseVars.map(entry => {
+      return entry.replace(/var\((--sd-[^,)]+)\)/g, (original, varName) => {
+        const fallback = resolvedMap.get(varName);
+        if (fallback) return `var(${varName}, ${fallback})`;
+        return original;
+      });
+    });
+
+    // Adds fallbacks in components.css
+    // "fill: var(--sd-color-border-primary)" -> "fill: var(--sd-color-border-primary, 0 53 142)".
+    if (Array.isArray(result.components)) {
+      result.components = result.components.map(entry => this.applyResolvedFallbacksToCss(entry, resolvedMap));
+    }
   }
 
   /**

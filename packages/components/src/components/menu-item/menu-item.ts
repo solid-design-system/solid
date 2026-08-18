@@ -31,11 +31,6 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-menu-item-color-text - The default text color for menu items.
  * @cssproperty --sd-menu-item--disabled-color-icon-fill - The icon color for disabled menu items.
  * @cssproperty --sd-menu-item--disabled-color-text - The text color for disabled menu items.
- *
- * @cssproperty --sd-menu-color-icon - This custom property is deprecated. Use `--sd-menu-item-color-icon-fill` instead.
- * @cssproperty --sd-menu-color-text - This custom property is deprecated. Use `--sd-menu-item-color-text` instead.
- * @cssproperty --sd-menu--disabled-color-icon - This custom property is deprecated. Use `--sd-menu-item--disabled-color-icon-fill` instead.
- * @cssproperty --sd-menu--disabled-color-text - This custom property is deprecated. Use `--sd-menu-item--disabled-color-text` instead.
  */
 @customElement('sd-menu-item')
 export default class SdMenuItem extends SolidElement {
@@ -159,8 +154,8 @@ export default class SdMenuItem extends SolidElement {
       class=${cx(
         'relative flex items-stretch whitespace-nowrap py-3 px-4 no-wrap !navigable-border-radius',
         this.disabled
-          ? 'outline-none cursor-not-allowed sd-menu--disabled-color-text hover:bg-transparent'
-          : 'cursor-pointer sd-menu-color-text hover:bg-neutral-200',
+          ? 'outline-none cursor-not-allowed sd-menu-item--disabled-color-text hover:bg-transparent'
+          : 'cursor-pointer sd-menu-item-color-text hover:bg-neutral-200',
         this.isSubmenu() && isSubmenuExpanded && 'submenu-expanded'
       )}
       .disabled=${this.disabled}
@@ -251,16 +246,15 @@ export default class SdMenuItem extends SolidElement {
       :host(:hover) [part='base'] {
         @apply outline-none;
       }
-      //TODO clean up sd-menu-color-icon variable replacing with sd-menu-item-color-icon-fill (breaking change)
+
       :host [part='icon-indent'],
       :host [part='checked-icon'],
       :host [part='submenu-icon'] {
-        color: rgba(var(--sd-menu-color-icon, var(--sd-menu-item-color-icon-fill)));
+        color: rgba(var(--sd-menu-item-color-icon-fill));
       }
 
-      //TODO clean up sd-menu--disabled-color-icon variable replacing with sd-menu-item--disabled-color-icon-fill (breaking change)
       :host([aria-disabled='true']) [part='icon-indent'] {
-        color: rgba(var(--sd-menu--disabled-color-icon, var(--sd-menu-item--disabled-color-icon-fill)));
+        color: rgba(var(--sd-menu-item--disabled-color-icon-fill));
       }
 
       sd-popup::part(popup) {
@@ -273,14 +267,12 @@ export default class SdMenuItem extends SolidElement {
         max-height: var(--auto-size-available-height) !important;
       }
 
-      /* TODO clean up sd-menu-color-text variable replacing with sd-menu-item-color-text (breaking change) */
-      .sd-menu-color-text {
-        color: rgba(var(--sd-menu-color-text, var(--sd-menu-item-color-text)));
+      .sd-menu-item-color-text {
+        color: rgba(var(--sd-menu-item-color-text));
       }
 
-      /* TODO clean up sd-menu--disabled-color-text variable replacing with sd-menu-item--disabled-color-text (breaking change) */
-      .sd-menu--disabled-color-text {
-        color: rgba(var(--sd-menu--disabled-color-text, var(--sd-menu-item--disabled-color-text)));
+      .sd-menu-item--disabled-color-text {
+        color: rgba(var(--sd-menu-item--disabled-color-text));
       }
     `
   ];

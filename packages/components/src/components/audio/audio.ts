@@ -44,8 +44,6 @@ import type SdRange from '../range/range';
  *
  * @cssproperty --sd-audio__slide-bar--inverted-color-background - The background color for the progress slider when the component is inverted.
  * @cssproperty --sd-audio__track-bar--inverted-color-background - The background color for the active part of the progress slider when the component is inverted.
- *
- * @cssproperty --sd-audio__timestamp-color-text - This custom property is deprecated. Use `--sd-color-text-neutral-700` instead.
  */
 @customElement('sd-audio')
 export default class SdAudio extends SolidElement {
@@ -452,7 +450,7 @@ export default class SdAudio extends SolidElement {
         ${
           this.isPlaying
             ? html` <slot name="pause-icon"><sd-icon class="text-xl" name="pause" library="_internal"></sd-icon></slot>`
-            : html` <slot name="play-icon"><sd-icon class="text-xl" name="start" library="_internal"></sd-icon></slot>`
+            : html` <slot name="play-icon"><sd-icon class="text-xl" name="play" library="_internal"></sd-icon></slot>`
         }
       </sd-button>
 
@@ -493,10 +491,10 @@ export default class SdAudio extends SolidElement {
       )}
       part="timestamps"
     >
-      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'sd-audio__timestamp-color-text')}>
+      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'text-neutral-700')}>
         ${this.currentTime}
       </div>
-      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'sd-audio__timestamp-color-text')}>
+      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'text-neutral-700')}>
         ${this.duration}
       </div>
     </div>`;
@@ -582,11 +580,6 @@ export default class SdAudio extends SolidElement {
 
       :host([inverted]:not([animated])) sd-range::part(active-track) {
         background-color: rgba(var(--sd-audio__track-bar--inverted-color-background, rgba(var(--sd-color-white))));
-      }
-
-      /* TODO clean sd-audio__timestamp-color-text variable and replace with text-neutral-700 in lines 491 and 496 (breaking change) */
-      .sd-audio__timestamp-color-text {
-        color: rgb(var(--sd-audio__timestamp-color-text, var(--sd-color-text-neutral-700)));
       }
     `
   ];

@@ -62,7 +62,10 @@ export const Content = {
         y: {
           type: 'attribute',
           name: 'name',
-          values: vbIcons.content.map((icon: string) => `content/${icon}`)
+          values: vbIcons.content
+            .slice()
+            .sort((left, right) => left.localeCompare(right))
+            .map((icon: string) => `content/${icon}`)
         }
       },
       constants: [{ type: 'attribute', name: 'library', value: 'sd-multi-theming' }],
@@ -104,7 +107,10 @@ export const System = {
         y: {
           type: 'attribute',
           name: 'name',
-          values: vbIcons.system.map((icon: string) => `system/${icon}`)
+          values: vbIcons.system
+            .slice()
+            .sort((left, right) => left.localeCompare(right))
+            .map((icon: string) => `system/${icon}`)
         }
       },
       constants: [{ type: 'attribute', name: 'library', value: 'sd-multi-theming' }],

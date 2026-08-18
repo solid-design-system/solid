@@ -1677,7 +1677,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'year', -1, false)}
               aria-label=${this.localize.term('previousYear')}
             >
-              <sd-icon library="_internal" name="chevrons-sm-left" class="h-6 w-6"></sd-icon>
+              <sd-icon library="_internal" name="chevrons-small-left" class="h-6 w-6"></sd-icon>
             </button>
             <!-- Prev Month -->
             <button
@@ -1726,7 +1726,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'year', 1, true)}
               aria-label=${this.localize.term('nextYear')}
             >
-              <sd-icon library="_internal" name="chevrons-sm-right" class="h-6 w-6"></sd-icon>
+              <sd-icon library="_internal" name="chevrons-small-right" class="h-6 w-6"></sd-icon>
             </button>
           </div>
         </div>

@@ -8,13 +8,17 @@
 
 Use the styles tool (with `style` + `example` args) to retrieve the HTML for any of these examples:
 
-- sd-chip/variants
+- sd-chip/color
+- sd-chip/shade
+- sd-chip/size
+- sd-chip/outlined
+- sd-chip/sharp
 
 ## Guidelines
 
 ### Use Cases
 
-- Display selected items or categories within sd-teaser, such as chosen filters, tags, or interests.
+- Display selected items or categories within [sd-teaser](./?path=/docs/components-sd-teaser--docs), such as chosen filters, tags, or interests.
 - Indicate attributes of items, such as “New,” “Featured,” or “Verified”.
 - Communicate user roles, like “Moderator” or “Admin”.
 
@@ -24,15 +28,15 @@ Use the styles tool (with `style` + `example` args) to retrieve the HTML for any
 
 - Keep chip text short and easily scannable. Long text disrupts layouts and diminishes the chip’s visual impact.
 - Avoid overuse. Too many chips in one area can create visual clutter.
-- Use the “&--variant” property to apply the color variant that best works on the background, keeping it consistent throughout the product.
-
-### Chips and Flags
-
-- sd-chip and [sd-flag](./?path=/docs/styles-sd-flag--docs) can be used for similar purposes. Use them consistently throughout your product and, if both are needed, be sure to define which categories each should be used for (e.g. a chip on an article teaser informs about its subject, the flag about the type of article).
+- Use the “&--color” and “&--shade” properties to apply the color that best works on the background, and “&--outlined” for a border-only style, keeping it consistent throughout the product.
 
 ### Chips and Tags
 
-- Use only as a non-interactive element; for interactive elements (e.g., a dynamic filter), use [sd-tag](./?path=/docs/styles-sd-tag--docs) instead.
+- Use only as a non-interactive element; for interactive elements (e.g., a dynamic filter), use [sd-tag](./?path=/docs/components-sd-tag--docs) instead.
+
+### Corner Style
+
+- Use sharp="true" when sd-chip sits directly on top of an image or a container with no padding, so the rounded corners aren’t cut off at the edge. For all other placements, use sharp="true".
 
 ### Accessibility
 
@@ -43,7 +47,7 @@ Use the styles tool (with `style` + `example` args) to retrieve the HTML for any
 ### Related Templates
 
 - chip--docs
-- teaser--docs
+- tab-group--docs
 - status-badge--docs
 
 Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

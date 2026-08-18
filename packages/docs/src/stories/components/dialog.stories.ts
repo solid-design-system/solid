@@ -19,11 +19,6 @@ export default {
   tags: ['!dev', 'autodocs'],
   args: overrideArgs([
     {
-      type: 'attribute',
-      name: 'open',
-      value: true
-    },
-    {
       type: 'slot',
       name: 'default',
       value: `<div class="slot slot--border slot--text h-16 w-full">Default slot</div>`
@@ -51,11 +46,17 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html` <div style="height: 40vh;">
+    return html`
+      <sd-button id="open-default-dialog">Open Dialog</sd-button>
       ${generateTemplate({
         args
       })}
-    </div>`;
+      <script>
+        document.querySelector('#open-default-dialog').addEventListener('click', () => {
+          document.querySelector('sd-dialog').show();
+        });
+      </script>
+    `;
   }
 };
 
@@ -65,6 +66,7 @@ export const Default = {
 
 export const Open = {
   name: 'Open',
+  parameters: { docs: { story: { inline: false, height: '500px' } } },
   render: () => html`
     <div class="h-[40vh]">
       <sd-button id="drawer-trigger">Open dialog</sd-button>
@@ -74,7 +76,9 @@ export const Open = {
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
         </p>
-        <sd-button slot="footer">Button</sd-button>
+        <div slot="footer" class="flex sm:justify-end gap-4">
+          <sd-button>Button</sd-button>
+        </div>
       </sd-dialog>
     </div>
     <script type="module">
@@ -94,6 +98,7 @@ export const Open = {
 
 export const Headline = {
   name: 'Headline',
+  parameters: { docs: { story: { inline: false, height: '500px' } } },
   render: () => html`
     <div class="h-[40vh]">
       <sd-button id="headline-drawer-trigger">Open dialog</sd-button>
@@ -102,7 +107,9 @@ export const Headline = {
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
         </p>
-        <sd-button slot="footer">Button</sd-button>
+        <div slot="footer" class="flex sm:justify-end gap-4">
+          <sd-button>Button</sd-button>
+        </div>
       </sd-dialog>
     </div>
     <script type="module">
@@ -124,6 +131,7 @@ export const Headline = {
 
 export const NoCloseButton = {
   name: 'No close button',
+  parameters: { docs: { story: { inline: false, height: '500px' } } },
   render: () => html`
     <div class="h-[40vh]">
       <sd-button id="no-close-drawer-trigger">Open dialog</sd-button>
@@ -132,7 +140,9 @@ export const NoCloseButton = {
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
         </p>
-        <sd-button class="close-button" slot="footer" variant="primary">Button</sd-button>
+        <div slot="footer" class="flex sm:justify-end gap-4">
+          <sd-button class="close-button" variant="primary">Button</sd-button>
+        </div>
       </sd-dialog>
     </div>
 

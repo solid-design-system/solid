@@ -4,7 +4,7 @@ title: Status Badge
 components:
   - sd-button
   - sd-chip
-  - sd-chip--primary-200
+  - sd-chip--shade-low
   - sd-container
   - sd-container--variant-neutral-100
   - sd-headline
@@ -131,7 +131,7 @@ version: 1.0.0
             Available
           </div>
         </div>
-        <span class="sd-chip sd-chip--primary-200">Authorized for telephone information</span>
+        <span class="sd-chip sd-chip--shade-low">Authorized for telephone information</span>
       </div>
 
       <sd-button class="edit-button" variant="secondary">
@@ -179,7 +179,7 @@ version: 1.0.0
             Be right back
           </div>
         </div>
-        <span class="sd-chip sd-chip--primary-200">Not authorized for telephone information</span>
+        <span class="sd-chip sd-chip--shade-low">Not authorized for telephone information</span>
       </div>
 
       <sd-button class="edit-button" variant="secondary">

@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/eslint-plugin",
   "description": "ESLint custom rules for the Solid Design System component library",
-  "version": "1.0.7",
+  "version": "1.0.7-next.1",
   "type": "module",
   "author": {
     "name": "Union Investment"
@@ -50,7 +50,7 @@
     "plop": "^4.0.5",
     "ts-jest": "^29.4.11",
     "ts-node": "^10.9.2",
-    "typescript": "5.8.3"
+    "typescript": "5.9.3"
   },
   "peerDependencies": {
     "@html-eslint/parser": "^0.64.0",

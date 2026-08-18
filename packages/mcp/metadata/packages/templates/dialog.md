@@ -18,16 +18,6 @@ version: 1.0.0
 ## Template: Dialog with Button Group
 
 ```html
-<!-- TODO: remove once this bugfix is addressed: https://github.com/solid-design-system/solid/issues/1325 -->
-<style>
-  @media (min-width: 414px) {
-    sd-dialog::part(footer) {
-      width: 100%;
-      margin: 0;
-    }
-  }
-</style>
-
 <sd-button id="drawer-trigger">Open Dialog</sd-button>
 <sd-dialog id="dialog" open>
   <span slot="headline" class="sd-headline sd-headline--size-3xl">Cancel your subscription?</span>
