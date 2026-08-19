@@ -4,7 +4,7 @@
 
 Fixes for keyboard focus in `sd-datepicker`:
 
-- A focused start or end date of a range keeps its selected color instead of switching to the hover color.
+- Improved range start and end date focus states for better visual consistency.
 - Opening the calendar focuses today, the selected date, or the first date of the range.
 - Tab reaches the calendar from the input and then the navigation buttons; Escape closes it from anywhere.
 - Improved calendar accessibility by allowing unavailable dates to receive focus and be announced as unavailable instead of being skipped.
