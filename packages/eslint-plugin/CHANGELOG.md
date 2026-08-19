@@ -4,6 +4,20 @@
 
 ### Patch Changes
 
+- Dependencies updated. For further details, please refer to the associated Pull Request. _[`#3184`](https://github.com/solid-design-system/solid/pull/3184) [`81cd65b`](https://github.com/solid-design-system/solid/commit/81cd65ba91559c9f138920a5ba505fb1461eb92a) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.0.7-next.1
+
+### Patch Changes
+
+- Dependencies updated. For further details, please refer to the associated Pull Request. _[`#3184`](https://github.com/solid-design-system/solid/pull/3184) [`81cd65b`](https://github.com/solid-design-system/solid/commit/81cd65ba91559c9f138920a5ba505fb1461eb92a) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.0.7-next.0
+
+## 1.0.7
+
+### Patch Changes
+
 - Updated dependencies. See details in the Pull Request _[`#3163`](https://github.com/solid-design-system/solid/pull/3163) [`91ff1c8`](https://github.com/solid-design-system/solid/commit/91ff1c81831fb3522c534306a61b8a5be3562f64) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
 
 ## 1.0.6

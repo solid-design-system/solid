@@ -2,7 +2,7 @@
   "name": "@solid-design-system/docs",
   "description": "This package provides the documentation for the Solid Design System.",
   "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
-  "version": "2.22.0",
+  "version": "3.0.0",
   "author": {
     "name": "Union Investment"
   },
@@ -67,6 +67,7 @@
     "concurrently": "^10.0.3",
     "countup.js": "^2.10.1",
     "cssnano": "^8.0.2",
+    "esbuild": "^0.28.0",
     "globby": "^16.2.1",
     "http-server": "^14.1.1",
     "lit-html": "^3.3.3",
@@ -80,9 +81,9 @@
     "react-dom": "^19.2.7",
     "storybook": "^10.5.0",
     "tailwindcss": "^4.3.2",
-    "typescript": "5.8.3",
+    "typescript": "5.9.3",
     "user-agent-data-types": "^0.4.3",
-    "vite": "7.3.2",
+    "vite": "8.0.8",
     "vite-node": "^6.0.0",
     "vite-plugin-cem": "^0.8.5",
     "vite-tsconfig-paths": "^6.1.1",

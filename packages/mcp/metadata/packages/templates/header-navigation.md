@@ -63,7 +63,7 @@ version: 1.0.0
   }
 </style>
 
-<sd-header id="horizontal" fixed>
+<sd-header id="horizontal" fixed shadow>
   <div class="flex justify-between items-center my-0 lg:my-3">
     <a class="inline-flex sd-interactive" href="#">
       <img class="h-8 md:h-12 lg:h-14 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.alt}" />
@@ -776,7 +776,7 @@ version: 1.0.0
 ## Template: Header Sample A-01
 
 ```html
-<sd-header id="sample-a-header" fixed>
+<sd-header id="sample-a-header" fixed shadow>
   <div class="flex justify-between items-center">
     <!-- top-left-area start !-->
     <a class="flex flex-shrink" href="#">
@@ -923,7 +923,7 @@ version: 1.0.0
 ## Template: Header Sample A-02
 
 ```html
-<sd-header id="sample-a02-header" fixed>
+<sd-header id="sample-a02-header" fixed shadow>
   <div class="flex justify-between items-center">
     <!-- top-left-area start !-->
     <a class="flex flex-shrink" href="#">
@@ -1094,7 +1094,7 @@ version: 1.0.0
   }
 </style>
 <div class="min-h-screen grid grid-cols-[auto_1fr] grid-rows-[auto_1fr]">
-  <sd-header id="vertical" fixed class="col-span-2">
+  <sd-header id="vertical" fixed shadow class="col-span-2">
     <div class="flex justify-between items-center">
       <a class="inline-flex sd-interactive" href="#">
         <img class="h-8 md:h-12 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.alt}" />
@@ -1373,7 +1373,7 @@ version: 1.0.0
 ## Template: Header Variant B-01
 
 ```html
-<sd-header id="sample-b-01-header" fixed>
+<sd-header id="sample-b-01-header" fixed shadow>
   <div class="flex justify-between items-center">
     <!-- top-left-area: logo + 2nd sender -->
     <div class="flex items-center lg:justify-between lg:w-full">
@@ -1509,7 +1509,7 @@ version: 1.0.0
 ## Template: Header Variant B-02
 
 ```html
-<sd-header id="sample-b-02-header" fixed>
+<sd-header id="sample-b-02-header" fixed shadow>
   <div class="flex justify-between items-center">
     <div class="flex items-center lg:justify-between lg:w-full">
       <div class="flex px-2 py-4 items-center justify-center bg-neutral-100 text-primary text-sm">2nd Sender</div>

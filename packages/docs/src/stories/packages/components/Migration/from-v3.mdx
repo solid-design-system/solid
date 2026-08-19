@@ -17,103 +17,47 @@ The v4 release introduces major changes to improve performance, flexibility and 
 
 <sd-tab-group>
   {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="npm" variant="container"> NPM </sd-tab>
+  <sd-tab slot="nav" panel="unversioned"> Unversioned </sd-tab>
   {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="cdn" variant="container"> CDN </sd-tab>
-  <sd-tab-panel name="npm">
-    <sd-tab-group>
-      {/* prettier-ignore */}
-      <sd-tab slot="nav" panel="unversioned"> Unversioned </sd-tab>
-      {/* prettier-ignore */}
-      <sd-tab slot="nav" panel="versioned"> Versioned </sd-tab>
-      <sd-tab-panel name="unversioned">
+  <sd-tab slot="nav" panel="versioned"> Versioned </sd-tab>
+  <sd-tab-panel name="unversioned">
 
-        **Before:**
+    **Before:**
 
-        ```javascript
-        import '@solid-design-system/components/styles';
-        // <sd-alert> is usable, .sd-mark is available
-        ```
+    ```javascript
+    import '@solid-design-system/components/styles';
+    // <sd-alert> is usable, .sd-mark is available
+    ```
 
-        **After:**
+    **After:**
 
-        ```javascript
-        import '@solid-design-system/components/dist/solid-components.css';
-        // <sd-alert> is usable
+    ```javascript
+    import '@solid-design-system/components/dist/solid-components.css';
+    // <sd-alert> is usable
 
-        import '@solid-design-system/styles/dist/solid-styles.css';
-        // .sd-mark is available
-        ```
-
-      </sd-tab-panel>
-      <sd-tab-panel name="versioned">
-        **Before:**
-
-        ```javascript
-        import '@solid-design-system/components/versioned-styles';
-        // <sd-%DASHED-COMPONENTS-VERSION%-alert> is usable, .sd-%DASHED-STYLES-VERSION%-mark is available
-        ```
-
-        **After:**
-
-        ```javascript
-        import '@solid-design-system/components/dist-versioned/solid-components.css';
-        // <sd-%DASHED-COMPONENTS-VERSION%-alert> is usable
-
-        import '@solid-design-system/styles/dist-versioned/solid-styles.css';
-        // .sd-%DASHED-STYLES-VERSION%-mark is available
-        ```
-
-      </sd-tab-panel>
-    </sd-tab-group>
+    import '@solid-design-system/styles/dist/solid-styles.css';
+    // .sd-mark is available
+    ```
 
   </sd-tab-panel>
-  <sd-tab-panel name="cdn">
-    <sd-tab-group>
-      {/* prettier-ignore */}
-      <sd-tab slot="nav" panel="unversioned"> Unversioned </sd-tab>
-      {/* prettier-ignore */}
-      <sd-tab slot="nav" panel="versioned"> Versioned </sd-tab>
-      <sd-tab-panel name="unversioned">
+  <sd-tab-panel name="versioned">
 
-        **Before:**
+    **Before:**
 
-        ```html
-        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/3.24.0/styles/solid-styles.css" />
-        <!-- <sd-alert> is usable, .sd-mark is available -->
-        ```
+    ```javascript
+    import '@solid-design-system/components/versioned-styles';
+    // <sd-%DASHED-COMPONENTS-VERSION%-alert> is usable, .sd-%DASHED-STYLES-VERSION%-mark is available
+    ```
 
-        **After:**
+    **After:**
 
-        ```html
-        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.css" />
-        <!-- <sd-alert> is usable -->
+    ```javascript
+    import '@solid-design-system/components/dist-versioned/solid-components.css';
+    // <sd-%DASHED-COMPONENTS-VERSION%-alert> is usable
 
-        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%/cdn/solid-styles.css" />
-        <!-- .sd-mark is available -->
-        ```
-
-      </sd-tab-panel>
-      <sd-tab-panel name="versioned">
-        **Before:**
-
-        ```html
-        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/3.24.0/versioned-styles/solid-styles.css" />
-        <!-- <sd-3-24-0-alert> is usable, .sd-3-24-0-mark is available -->
-        ```
-
-        **After:**
-
-        ```html
-        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn-versioned/solid-components.css" />
-        <!-- <sd-%DASHED-COMPONENTS-VERSION%-alert> is usable -->
-
-        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%/cdn-versioned/solid-styles.css" />
-        <!-- .sd-%DASHED-STYLES-VERSION%-mark is available -->
-        ```
-
-      </sd-tab-panel>
-    </sd-tab-group>
+    import '@solid-design-system/styles/dist-versioned/solid-styles.css';
+    // .sd-%DASHED-STYLES-VERSION%-mark is available
+    ```
 
   </sd-tab-panel>
 </sd-tab-group>
@@ -126,150 +70,40 @@ The v4 release introduces major changes to improve performance, flexibility and 
 
 <sd-tab-group>
   {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="npm" variant="container"> NPM </sd-tab>
+  <sd-tab slot="nav" panel="unversioned"> Unversioned </sd-tab>
   {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="cdn" variant="container"> CDN </sd-tab>
-  <sd-tab-panel name="npm">
-    <sd-tab-group>
-      {/* prettier-ignore */}
-      <sd-tab slot="nav" panel="unversioned"> Unversioned </sd-tab>
-      {/* prettier-ignore */}
-      <sd-tab slot="nav" panel="versioned"> Versioned </sd-tab>
-      <sd-tab-panel name="unversioned">
-        **Before:**
+  <sd-tab slot="nav" panel="versioned"> Versioned </sd-tab>
+  <sd-tab-panel name="unversioned">
 
-        ```javascript
-        import '@solid-design-system/components/unversioned';
-        ```
+    **Before:**
 
-        **After:**
+    ```javascript
+    import '@solid-design-system/components/unversioned';
+    ```
 
-        ```javascript
-        import '@solid-design-system/components/dist/solid-components.js';
-        ```
+    **After:**
 
-      </sd-tab-panel>
-      <sd-tab-panel name="versioned">
-        **Before:**
-
-        ```javascript
-        import '@solid-design-system/components/versioned';
-        ```
-
-        **After:**
-
-        ```javascript
-        import '@solid-design-system/components/dist-versioned/solid-components.js';
-        ```
-
-      </sd-tab-panel>
-    </sd-tab-group>
+    ```javascript
+    import '@solid-design-system/components/dist/solid-components.js';
+    ```
 
   </sd-tab-panel>
-  <sd-tab-panel name="cdn">
-    <sd-tab-group>
-      {/* prettier-ignore */}
-      <sd-tab slot="nav" panel="unversioned"> Unversioned </sd-tab>
-      {/* prettier-ignore */}
-      <sd-tab slot="nav" panel="versioned"> Versioned </sd-tab>
-      <sd-tab-panel name="unversioned">
-        **Before:**
+  <sd-tab-panel name="versioned">
 
-        ```javascript
-        <script type="module" src="https://solid-design-system.fe.union-investment.de/3.24.0/components/es/solid-components.js"></script>
-        ```
+    **Before:**
 
-        **After:**
+    ```javascript
+    import '@solid-design-system/components/versioned';
+    ```
 
-        ```javascript
-        <script type="module" src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.js"></script>
-        ```
+    **After:**
 
-      </sd-tab-panel>
-      <sd-tab-panel name="versioned">
-        **Before:**
-
-        ```javascript
-        <script type="module" src="https://solid-design-system.fe.union-investment.de/3.24.0/versioned-components/es/solid-components.js"></script>
-        ```
-
-        **After:**
-
-        ```javascript
-        <script type="module" src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn-versioned/solid-components.js"></script>
-        ```
-
-      </sd-tab-panel>
-    </sd-tab-group>
+    ```javascript
+    import '@solid-design-system/components/dist-versioned/solid-components.js';
+    ```
 
   </sd-tab-panel>
 </sd-tab-group>
-
-## UMD/IIFE Bundle
-
-- The UMD bundle has been replaced with an **IIFE bundle**, which uses `SolidComponents` as the global variable instead of `Solid Components`.
-
-**Before:**
-
-```html
-<script src="https://solid-design-system.fe.union-investment.de/3.24.0/components/umd/solid-components.js"></script>
-
-<script>
-  // Space in the global variable name
-  if (window['Solid Components']) {
-    console.log('Solid Components are available');
-  }
-</script>
-```
-
-**After:**
-
-```html
-<script src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.iife.js"></script>
-
-<script>
-  // No space in the global variable name
-  if (window['SolidComponents']) {
-    console.log('Solid Components are available');
-  }
-</script>
-```
-
-## Removal of CDN Wildcards
-
-- Wildcard URLs are no longer supported. Explicit versions are now required.
-
-**Before:**
-
-```html
-<!-- Major Wildcard -->
-<script
-  type="module"
-  src="https://solid-design-system.fe.union-investment.de/x.x.x/components/es/solid-components.js"
-></script>
-
-<!-- Minor Wildcard -->
-<link
-  rel="stylesheet"
-  href="https://solid-design-system.fe.union-investment.de/3.x.x/components/es/solid-components.js"
-/>
-
-<!-- Patch Wildcard -->
-<link
-  rel="stylesheet"
-  href="https://solid-design-system.fe.union-investment.de/3.0.x/components/es/solid-components.js"
-/>
-```
-
-**After:**
-
-```html
-<!-- Specific version -->
-<script
-  type="module"
-  src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.js"
-></script>
-```
 
 ## Component updates
 

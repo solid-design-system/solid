@@ -40,8 +40,6 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-navigable__current-indicator-height - The horizontal navigation-item current indicator height.
  * @cssproperty --sd-navigable__current-indicator-width - The vertical navigation-item current indicator width.
  * @cssproperty --sd-choice-control-font-weight - The navigation-item default font weight.
- *
- * @cssproperty --sd-navigation-item--current-color-text - This custom property is deprecated. Use `--sd-navigation-item-color-text` instead.
  */
 @customElement('sd-navigation-item')
 export default class SdNavigationItem extends SolidElement {
@@ -218,7 +216,7 @@ export default class SdNavigationItem extends SolidElement {
             ? 'text-xs leading-4.5'
             : { md: 'navigable-font-size', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 pointer-events-none' : 'sd-navigation-item--default-color-text',
-          this.current && !this.disabled && 'sd-navigation-item--current-color-text',
+          this.current && !this.disabled && 'sd-navigation-item-color-text',
           this.current && !this.isStackedHorizontal && 'font-bold',
           !this.current && !this.isStackedHorizontal && 'choice-control-font-weight',
           !isAccordion && 'w-full',
@@ -314,7 +312,7 @@ export default class SdNavigationItem extends SolidElement {
             ${
               this.chevron || (slots['children'] && this.vertical && !this.separated)
                 ? html` <sd-icon
-                    name="chevron-down"
+                    name="chevron-bottom"
                     part="chevron"
                     library="_internal"
                     color="currentColor"
@@ -364,7 +362,7 @@ export default class SdNavigationItem extends SolidElement {
                   @click=${this.handleClickSummary}
                 >
                   <sd-icon
-                    name="chevron-down"
+                    name="chevron-bottom"
                     part="chevron"
                     library="_internal"
                     color="currentColor"
@@ -412,11 +410,6 @@ export default class SdNavigationItem extends SolidElement {
 
       :host([stacked]:not([vertical])) ::slotted(sd-icon) {
         @apply w-6 h-6;
-      }
-
-      /* TODO clean sd-navigation-item--current-color-text and delete this class from line 210 (breaking change) */
-      .sd-navigation-item--current-color-text {
-        color: rgb(var(--sd-navigation-item--current-color-text, var(--sd-navigation-item-color-text)));
       }
 
       details summary::-webkit-details-marker {

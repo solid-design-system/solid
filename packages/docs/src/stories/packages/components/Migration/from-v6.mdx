@@ -1,0 +1,263 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Packages/Components/Migration/from v6" />
+
+# Migration from v6
+
+The v7 release removes the dependency on the CDN, removes the deprecated component `sd-spinner`, removes deprecated CSS custom variables and introduces multi-theming to the `_internal` library icons. It also brings breaking changes to the `sd-teaser`, `sd-input`, `sd-textarea`, `sd-notification`, `sd-dialog`, `sd-drawer`, `sd-icon` and `sd-header`.
+
+## CDN publishing ended, migrate to npm
+
+Starting with this release, Solid Design System no longer publishes new versions to a Solid-managed CDN endpoint.
+For updates beyond v6, install and consume the packages via npm.
+
+If you still need CDN delivery in production, host the `cdn/` or `cdn-versioned/` artifacts from npm on infrastructure your team controls.
+
+**Before (v6 CDN loading from the Solid-managed endpoint)**:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://solid-design-system.fe.union-investment.de/components/6.29.0/cdn/solid-components.css"
+/>
+<link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/styles/6.29.0/cdn/solid-styles.css" />
+<link
+  rel="stylesheet"
+  href="https://solid-design-system.fe.union-investment.de/tokens/6.29.0/cdn/themes/ui-light/ui-light.css"
+/>
+<script
+  type="module"
+  src="https://solid-design-system.fe.union-investment.de/components/6.29.0/cdn/solid-components.bundle.js"
+></script>
+```
+
+**After (npm usage)**:
+
+```bash
+npm install @solid-design-system/components @solid-design-system/styles @solid-design-system/tokens
+```
+
+```js
+import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
+import '@solid-design-system/styles/dist/solid-styles.css';
+import '@solid-design-system/components/dist/solid-components.css';
+import '@solid-design-system/components/dist/solid-components.js';
+```
+
+For self-hosted CDN setups, artifact paths, and jsDelivr-based prototyping (for example CodePen demos and quick experiments), see [General/CDN Hosting](?path=/docs/docs-general-cdn-hosting--docs).
+
+## Component updates
+
+### `<sd-teaser>`
+
+Previously, `sd-teaser` used `!important` to force `font-size`, `font-weight`, and `margin` on whatever element was placed in `slot="headline"`, preventing any overrides from Light DOM styles.
+
+These `!important` declarations have been removed. The same defaults still apply when no conflicting styles exist, but **any author-level styles targeting the headline element (e.g. global `h3` rules) will now take effect**.
+
+**Who is affected:** Users who have heading styles in their stylesheets and rely on `sd-teaser` suppressing them.
+
+**Before** (global `h3` styles were silently ignored):
+
+```css
+h3 {
+  font-size: 2rem;
+  margin: 1rem 0;
+} /* had no effect inside sd-teaser */
+```
+
+**After** (global `h3` styles now apply):
+
+```css
+h3 {
+  font-size: 2rem;
+  margin: 1rem 0;
+} /* now visible inside sd-teaser */
+```
+
+To restore the previous fixed appearance, apply the size explicitly on the slotted element:
+
+```html
+<sd-teaser>
+  <h3 slot="headline" class="sd-headline sd-headline--size-lg">Headline</h3>
+</sd-teaser>
+```
+
+### `<sd-input>` and `<sd-textarea>`
+
+The `autocorrect` property is now a `boolean` instead of a `string`. This is required by the updated `HTMLElement.autocorrect` type shipped in TypeScript 5.9, which now matches how browsers implement the native `autocorrect` IDL attribute.
+
+The `autocorrect` HTML attribute is unaffected and still accepts `"on"` and `"off"`, so no markup changes are needed.
+
+```html
+<!-- No changes required -->
+<sd-input autocorrect="off"></sd-input>
+<sd-textarea autocorrect="off"></sd-textarea>
+```
+
+Only code that sets the property directly in JavaScript/TypeScript needs to be updated:
+
+**Before:**
+
+```js
+input.autocorrect = 'off';
+```
+
+**After:**
+
+```js
+input.autocorrect = false;
+```
+
+### `<sd-spinner>`
+
+The `sd-spinner` component has been removed from the library.
+Please use `sd-loader` instead.
+
+**Before**:
+
+```html
+<sd-spinner></sd-spinner>
+```
+
+**After**:
+
+```html
+<sd-loader></sd-loader>
+```
+
+### `<sd-notification>`
+
+Inline `sd-notification` components no longer have a default margin applied. If your inline notifications relied on the previous spacing, add it to the surrounding layout instead.
+
+**Before**:
+
+```html
+<sd-notification open>Notification message</sd-notification>
+```
+
+The component applied its own margin.
+
+**After**:
+
+```html
+<sd-notification class="my-notification" open> Notification message </sd-notification>
+
+<style>
+  .my-notification {
+    padding: 0.5rem;
+  }
+</style>
+```
+
+### `<sd-dialog>`
+
+Previously, the footer shrink-wrapped its content and pushed it to the right. It now spans the full width of the dialog
+across all viewport sizes, so you are responsible for styling the layout and alignment of its content.
+
+**Migration steps:**
+
+- Content assigned directly to the `footer` slot is no longer aligned to the right. To keep the previous alignment, wrap it in a container and define the alignment there.
+- If you added custom styles to force the footer to span the full width, they no longer have any effect and can be removed.
+
+**Before**:
+
+```html
+<sd-dialog headline="Cancel your subscription?">
+  <p>Your subscription will be canceled immediately.</p>
+  <div slot="footer">
+    <sd-button variant="secondary">Maybe later</sd-button>
+    <sd-button variant="primary">Cancel subscription</sd-button>
+  </div>
+</sd-dialog>
+```
+
+**After**:
+
+```html
+<style>
+  .dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+</style>
+
+<sd-dialog headline="Cancel your subscription?">
+  <p>Your subscription will be canceled immediately.</p>
+  <div slot="footer" class="dialog-footer">
+    <sd-button variant="secondary">Maybe later</sd-button>
+    <sd-button variant="primary">Cancel subscription</sd-button>
+  </div>
+</sd-dialog>
+```
+
+**Dialog with a full width footer**:
+
+```html
+<sd-dialog headline="Cancel your subscription?">
+  <p>Your subscription will be canceled immediately.</p>
+  <div slot="footer">
+    <sd-button variant="secondary">Maybe later</sd-button>
+    <sd-button variant="primary">Cancel subscription</sd-button>
+  </div>
+</sd-dialog>
+```
+
+### `<sd-dialog>` and `<sd-drawer>`
+
+Both components previously implemented their own modal behavior (a custom `Modal` focus trap, manual body scroll locking, and manual Escape-key handling). They now render their `part="base"` element as a native `<dialog>` and use its built-in `showModal()`/`close()` APIs instead.
+
+**What changed and why:** Focus trapping, scroll locking, and Escape handling are now provided natively by the browser via the `<dialog>` element, removing a large amount of custom JavaScript and fixing several edge-case bugs (e.g. focus restoration inside Shadow DOM).
+
+**Who is affected:** Anyone who relies on custom stacking context/`z-index` rules around `sd-dialog` or `sd-drawer`, or on the removed (non-public) `contained` property of `sd-drawer`.
+
+**Migration steps:**
+
+- **Double-check `z-index` and stacking context around dialogs and drawers.** A native `<dialog>` opened via `showModal()` is rendered in the browser's top layer, above everything else in the document regardless of `z-index`. If you previously relied on other elements (e.g. sticky headers, toasts, or custom overlays) appearing above or below the dialog via `z-index` tricks, re-verify this behavior — it may now differ.
+- `sd-drawer`'s `contained` property has been removed, since it's incompatible with native top-layer stacking. If you used `contained`, the drawer will now always render relative to the viewport.
+- `role="dialog"`/`aria-modal` are no longer set on `[part="panel"]` — the native `<dialog>` element provides this semantics automatically.
+
+**Before** (custom overlay, subject to your own stacking context):
+
+```html
+<sd-dialog open>...</sd-dialog> <sd-drawer open contained>...</sd-drawer>
+```
+
+**After** (native top layer, always renders above the rest of the page):
+
+```html
+<sd-dialog open>...</sd-dialog> <sd-drawer open>...</sd-drawer>
+```
+
+### `<sd-header>`
+
+Previously, setting `fixed` on `sd-header` always rendered a drop shadow underneath it. The shadow is now controlled by a separate `shadow` attribute, which is off by default and can be combined with `fixed` or used on its own.
+
+**Migration steps:**
+
+- Add the `shadow` attribute to every fixed header that should keep its drop shadow.
+- If you previously suppressed the header shadow, the custom override is no longer needed and can be removed.
+
+**Before** (the drop shadow came with `fixed`):
+
+```html
+<sd-header fixed>
+  <!-- Your content -->
+</sd-header>
+```
+
+**After** (the drop shadow is opt-in):
+
+```html
+<sd-header fixed shadow>
+  <!-- Your content -->
+</sd-header>
+```
+
+A header that is not fixed can now show a drop shadow as well:
+
+```html
+<sd-header shadow>
+  <!-- Your content -->
+</sd-header>
+```

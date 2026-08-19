@@ -1,5 +1,24 @@
 # @solid-design-system/docs
 
+## 3.0.0
+
+### Major Changes
+
+- Removed the `sd-spinner` component _[`#3219`](https://github.com/solid-design-system/solid/pull/3219) [`cbdc1cb`](https://github.com/solid-design-system/solid/commit/cbdc1cb0098cabdbdad324803d5176de76a2215f) [@balco0110](https://github.com/balco0110)_
+- Fixed the restriction of changing the font size and margin for headline in `sd-teaser`. _[`#3165`](https://github.com/solid-design-system/solid/pull/3165) [`b6f28e6`](https://github.com/solid-design-system/solid/commit/b6f28e6d427e41c3d3f2c0b68b29715e3ce6d934) [@balco0110](https://github.com/balco0110)_
+- Added `shadow` attribute to `sd-header` to control the drop shadow independently of the `fixed` attribute. _[`#3246`](https://github.com/solid-design-system/solid/pull/3246) [`cef7219`](https://github.com/solid-design-system/solid/commit/cef72199fa824909c31e636902e9f24aaa4db4ae) [@balco0110](https://github.com/balco0110)_
+- Consolidated `sd-chip` and `sd-flag`: _[`#3267`](https://github.com/solid-design-system/solid/pull/3267) [`12db708`](https://github.com/solid-design-system/solid/commit/12db708ea227bc2ce2a7835d12190ee1ae40f891) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Removed the `sd-flag` style.
+  - Added `sd-chip--color-{primary,neutral,white}`, `sd-chip--shade-{subtle,low,medium,high}`, `sd-chip--size-{sm,lg}`, `sd-chip--outline` and `sd-chip--sharp` classes.
+
+### Patch Changes
+
+- Removed SDS's CDN usage from the Codepen extension. Added fonts, logos and `sd-icon` theming to the Codepen extension. _[`#3200`](https://github.com/solid-design-system/solid/pull/3200) [`bfcd108`](https://github.com/solid-design-system/solid/commit/bfcd10845b25f9aa410ec69b16ad6468117d473b) [@martascorreia](https://github.com/martascorreia)_
+- Updated `sd-dialog` to display the footer at full width across all viewport sizes. _[`#3221`](https://github.com/solid-design-system/solid/pull/3221) [`5159c3c`](https://github.com/solid-design-system/solid/commit/5159c3ca2284e606688222b7df3769bec5ce2479) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+- Dependencies updated. For further details, please refer to the associated Pull Request. _[`#3184`](https://github.com/solid-design-system/solid/pull/3184) [`81cd65b`](https://github.com/solid-design-system/solid/commit/81cd65ba91559c9f138920a5ba505fb1461eb92a) [@mariohamann](https://github.com/mariohamann)_
+- Removed the CDN installation instructions from the documentation and added a "CDN Hosting" page for self-hosting, as Solid Design System no longer provides a hosted CDN. _[`#3239`](https://github.com/solid-design-system/solid/pull/3239) [`c825a22`](https://github.com/solid-design-system/solid/commit/c825a22d9f6f984d3b6268fe30a7ea19be008f63) [@mariohamann](https://github.com/mariohamann)_
+- Removed margin from `sd-notification` to improve inline styling. _[`#3147`](https://github.com/solid-design-system/solid/pull/3147) [`331332f`](https://github.com/solid-design-system/solid/commit/331332f5fdecf42abccdbdd74dda53a09bbf68f1) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 2.22.0
 
 ### Minor Changes
@@ -11,6 +30,7 @@
 ### Patch Changes
 
 - Updated dependencies. See details in the Pull Request _[`#3163`](https://github.com/solid-design-system/solid/pull/3163) [`91ff1c8`](https://github.com/solid-design-system/solid/commit/91ff1c81831fb3522c534306a61b8a5be3562f64) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 
 ## 2.21.4
 

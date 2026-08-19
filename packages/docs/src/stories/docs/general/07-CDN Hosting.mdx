@@ -1,0 +1,129 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import '../../../../../components/src/solid-components';
+
+<Meta title="Docs/General/CDN Hosting" />
+
+# CDN Hosting
+
+Solid Design System does **not** provide a hosted CDN. The recommended installation method is npm — see the [Quickstart](?path=/docs/packages-quickstart--docs).
+
+If you work in an environment without a bundler (e.g. a CMS), the npm packages include pre-built artifacts under `cdn/` that you can serve from **your own CDN**. Each team is responsible for hosting and caching these files.
+
+<sd-notification variant="warning" open>
+  There is no Solid-managed CDN endpoint. Any CDN URL you use must point to an infrastructure your team controls.
+</sd-notification>
+
+## Available artifacts
+
+After `npm install`, the following files can be copied to your CDN:
+
+- `@solid-design-system/tokens`
+  - `cdn/themes/<theme>/<theme>.css` — theme CSS
+- `@solid-design-system/styles`
+  - `cdn/solid-styles.css` — all styles, pre-bundled
+- `@solid-design-system/components`
+  - `cdn/solid-components.css` — component base CSS
+  - `cdn/solid-components.js` — ESM, registers all components
+  - `cdn/solid-components.bundle.js` — bundle, all dependencies inlined
+
+All three packages also ship a `cdn-versioned/` variant where component tag names include the version number (e.g. `<sd-%DASHED-COMPONENTS-VERSION%-button>`). Use this in microfrontend environments to prevent tag name collisions when multiple versions run on the same page.
+
+## Self-hosted CDN
+
+Replace `https://your-cdn.example.com` with your actual CDN base URL. All three packages must use the same version number.
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="unversioned">Unversioned</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="versioned">Versioned (microfrontends)</sd-tab>
+  <sd-tab-panel name="unversioned">
+    ```html
+    <link
+      rel="stylesheet"
+      href="https://your-cdn.example.com/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
+    />
+    <link rel="stylesheet" href="https://your-cdn.example.com/styles/%STYLES-VERSION%/cdn/solid-styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://your-cdn.example.com/components/%COMPONENTS-VERSION%/cdn/solid-components.css"
+    />
+    <script
+      type="module"
+      src="https://your-cdn.example.com/components/%COMPONENTS-VERSION%/cdn/solid-components.js"
+    ></script>
+    ```
+  </sd-tab-panel>
+  <sd-tab-panel name="versioned">
+    ```html
+    <link
+      rel="stylesheet"
+      href="https://your-cdn.example.com/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
+    />
+    <link rel="stylesheet" href="https://your-cdn.example.com/styles/%STYLES-VERSION%/cdn-versioned/solid-styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://your-cdn.example.com/components/%COMPONENTS-VERSION%/cdn-versioned/solid-components.css"
+    />
+    <script
+      type="module"
+      src="https://your-cdn.example.com/components/%COMPONENTS-VERSION%/cdn-versioned/solid-components.js"
+    ></script>
+    ```
+  </sd-tab-panel>
+</sd-tab-group>
+
+## cdn/ vs dist/
+
+The `cdn/` files are pre-bundled with all dependencies inlined — they work without a build tool. The `dist/` files are not pre-bundled, so a bundler can deduplicate shared dependencies across your whole app for a smaller total bundle size. Use `dist/` whenever you have build tooling available.
+
+## Prototyping with jsDelivr
+
+For quick prototypes, CodePens, or one-off experiments you can load the packages directly from [jsDelivr](https://www.jsdelivr.com/) — no infrastructure needed. **Do not use this in production.**
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="unversioned">Unversioned</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="versioned">Versioned (microfrontends)</sd-tab>
+  <sd-tab-panel name="unversioned">
+    ```html
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@solid-design-system/tokens@%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@solid-design-system/styles@%STYLES-VERSION%/cdn/solid-styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@solid-design-system/components@%COMPONENTS-VERSION%/cdn/solid-components.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@solid-design-system/components@%COMPONENTS-VERSION%/cdn/solid-components.js"
+    ></script>
+    ```
+  </sd-tab-panel>
+  <sd-tab-panel name="versioned">
+    ```html
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@solid-design-system/tokens@%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@solid-design-system/styles@%STYLES-VERSION%/cdn-versioned/solid-styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@solid-design-system/components@%COMPONENTS-VERSION%/cdn-versioned/solid-components.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@solid-design-system/components@%COMPONENTS-VERSION%/cdn-versioned/solid-components.js"
+    ></script>
+    ```
+  </sd-tab-panel>
+</sd-tab-group>

@@ -24,7 +24,7 @@ const posterConstant: ConstantDefinition = {
 const iconConstant: ConstantDefinition = {
   type: 'slot',
   name: 'play-icon',
-  value: '<sd-icon slot="play-icon" library="_internal" name="start"></sd-icon>'
+  value: '<sd-icon slot="play-icon" library="_internal" name="play"></sd-icon>'
 };
 
 export default {

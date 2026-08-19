@@ -8,9 +8,11 @@ import path from 'node:path';
 
 const outdir = 'dist';
 const cdndir = 'cdn';
+const legacyVariablesFilename = 'legacy-variables.css';
 let stylesheet;
 let themes;
 let themejs;
+let legacyVariablesStylesheet;
 
 const config = {
   input: 'figma-variables.json',
@@ -46,15 +48,7 @@ async function runBuild() {
   });
 
   await nextTask('Extracting themes', () => {
-    const toAppend = [
-      { name: 'icons.css' },
-      { name: 'overrides.css' },
-      {
-        name: 'legacy-variables.css',
-        shared: true,
-        process: (css, theme) => `:root, .sd-theme-${theme.name} {\n${css}\n}`
-      }
-    ];
+    const toAppend = [{ name: 'overrides.css' }];
 
     themes = getStylesheetThemes(stylesheet, config);
     themes.forEach(theme => {
@@ -79,6 +73,8 @@ async function runBuild() {
       writeFileSync(`${config.buildPath}/${config.output}.css`, stylesheet);
       writeFileSync(`${config.buildPath}/${theme.name}/${theme.name}.css`, theme.content);
     });
+
+    legacyVariablesStylesheet = readFileSync(`./themes/${legacyVariablesFilename}`, { encoding: 'utf-8' }).trim();
   });
 
   await nextTask('Extracting component variables', () => {
@@ -101,6 +97,7 @@ async function runBuild() {
     });
 
     writeFileSync(`./${outdir}/${config.buildPath}/${config.output}.css`, stylesheet);
+    writeFileSync(`./${outdir}/${config.buildPath}/${legacyVariablesFilename}`, legacyVariablesStylesheet);
   });
 
   await nextTask(`Creating ${cdndir} output`, () => {
@@ -112,6 +109,7 @@ async function runBuild() {
     });
 
     writeFileSync(`./${cdndir}/${config.buildPath}/${config.output}.css`, stylesheet);
+    writeFileSync(`./${cdndir}/${config.buildPath}/${legacyVariablesFilename}`, minimizeCss(legacyVariablesStylesheet));
   });
 
   await nextTask('Generating theme.js', async () => {

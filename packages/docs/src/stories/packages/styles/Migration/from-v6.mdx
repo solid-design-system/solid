@@ -1,0 +1,112 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import '../../../../../../components/src/solid-components';
+
+<Meta title="Packages/Styles/Migration/from v6" />
+
+# Migration from v6
+
+The v7 release consolidates `sd-flag` and `sd-chip` into a single `sd-chip` component with new color, shade, size, and shape variants.
+
+## `sd-flag` and `sd-chip` consolidated
+
+`sd-chip` and `sd-flag` were consolidated into a single non-interactive label component, `sd-chip`. The updated component offers multiple color and shade options, fill and outline variants, and rounded or sharp corners. This provides consumers with a consistent way to label UI elements without having to choose between two components with overlapping purposes.
+
+**Who is affected:**
+
+- Anyone using the `sd-flag`.
+- Anyone using the default `sd-chip`.
+- Anyone using the previous `sd-chip--primary-200 | --primary-300 | --primary-500 | --white` variants.
+
+**Migration steps:**
+
+- Replace every `sd-flag` occurrence with `sd-chip` and add the appropriate `&--color-*` and `&--shade-*`. Add `sd-chip--size-lg` if you need the larger flag height. Add `sd-chip--sharp` to match the original `sd-flag`'s non-rounded corners.
+- Replace the old `sd-chip` variants with the new `&--color-*` / `&--shade-*` combination.
+- Update any custom overrides that targeted the removed CSS variables to the new names. Check the [tokens migration guide to v6](./?path=/docs/packages-tokens-migration-from-v6--docs).
+
+**Class mapping**
+
+**`sd-chip` variants**
+
+<table class="sd-table">
+  <thead>
+    <tr>
+      <th>Before</th>
+      <th>After</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`sd-chip`</td>
+      <td>`sd-chip` `sd-chip--shade-low`</td>
+    </tr>
+    <tr>
+      <td>`sd-chip` `sd-chip--primary-300`</td>
+      <td>`sd-chip` `sd-chip--shade-medium`</td>
+    </tr>
+    <tr>
+      <td>`sd-chip` `sd-chip--primary-500`</td>
+      <td>`sd-chip` `sd-chip--shade-high`</td>
+    </tr>
+    <tr>
+      <td>`sd-chip` `sd-chip--white`</td>
+      <td>`sd-chip` `sd-chip--color-white`</td>
+    </tr>
+  </tbody>
+</table>
+
+**`sd-flag` variants**
+
+<table class="sd-table">
+  <thead>
+    <tr>
+      <th>Before</th>
+      <th>After</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`sd-flag`</td>
+      <td>`sd-chip` `sd-chip--color-neutral` `sd-chip--shade-low` `sd-chip--size-lg` `sd-chip--sharp`</td>
+    </tr>
+    <tr>
+      <td>`sd-flag` `sd-flag--neutral-300`</td>
+      <td>`sd-chip` `sd-chip--color-neutral` `sd-chip--shade-medium` `sd-chip--size-lg` `sd-chip--sharp`</td>
+    </tr>
+    <tr>
+      <td>`sd-flag` `sd-flag--neutral-500`</td>
+      <td>`sd-chip` `sd-chip--color-neutral` `sd-chip--shade-high` `sd-chip--size-lg` `sd-chip--sharp`</td>
+    </tr>
+    <tr>
+      <td>`sd-flag` `sd-flag--white`</td>
+      <td>`sd-chip` `sd-chip--color-white` `sd-chip--size-lg` `sd-chip--sharp`</td>
+    </tr>
+  </tbody>
+</table>
+
+**Before:**
+
+```html
+<span class="sd-chip">Investment</span>
+<span class="sd-chip sd-chip--primary-300">Trends</span>
+<span class="sd-chip sd-chip--primary-500">Remote Work</span>
+<span class="sd-chip sd-chip--white">Real Estate</span>
+
+<span class="sd-flag">Research</span>
+<span class="sd-flag sd-flag--neutral-300">Analytics</span>
+<span class="sd-flag sd-flag--neutral-500">Featured</span>
+<span class="sd-flag sd-flag--white">New</span>
+```
+
+**After:**
+
+```html
+<span class="sd-chip sd-chip--shade-low">Investment</span>
+<span class="sd-chip sd-chip--shade-medium">Trends</span>
+<span class="sd-chip sd-chip--shade-high">Remote Work</span>
+<span class="sd-chip sd-chip--color-white">Real Estate</span>
+
+<span class="sd-chip sd-chip--color-neutral sd-chip--shade-low sd-chip--size-lg sd-chip--sharp">Research</span>
+<span class="sd-chip sd-chip--color-neutral sd-chip--shade-medium sd-chip--size-lg sd-chip--sharp">Analytics</span>
+<span class="sd-chip sd-chip--color-neutral sd-chip--shade-high sd-chip--size-lg sd-chip--sharp">Featured</span>
+<span class="sd-chip sd-chip--color-white sd-chip--size-lg sd-chip--sharp">New</span>
+```

@@ -31,7 +31,7 @@ export const Default = {
         }
       </style>
 
-      <sd-header id="horizontal" fixed>
+      <sd-header id="horizontal" fixed shadow>
         <div class="flex justify-between items-center my-0 lg:my-3">
           <a class="inline-flex sd-interactive" href="#">
             <img class="h-8 md:h-12 lg:h-14 w-auto object-contain" src=${currentTheme.logoLg} alt=${currentTheme.alt} />

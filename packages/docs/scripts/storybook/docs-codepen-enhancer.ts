@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { getThemeAttributes } from '.storybook/addons/theme-generator/theme-attributes';
+import { fontConfig, getThemeAttributes } from '.storybook/addons/theme-generator/theme-attributes';
 import type { StoryContext } from '@storybook/web-components';
 // import TailwindConfiguration from '../../.storybook/solid-tw-configuration.json';
 
@@ -17,29 +17,22 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
   const storiesOnDocsPage = document.querySelectorAll(`#anchor--${storyContext.id}`);
 
   const urls = () => {
-    const baseUrl = 'https://solid-design-system.fe.union-investment.de';
     const githubBaseUrl = 'https://solid-design-system.github.io/solid';
     const cdnBaseUrl = 'https://cdn.jsdelivr.net/npm/@solid-design-system';
+    const isNextPrerelease = '%COMPONENTS-VERSION%'.includes('-next.');
 
+    // github pages build
     if (window.location.href.startsWith(githubBaseUrl)) {
       const urlParts = window.location.href.split('/');
       const version = urlParts[urlParts.length - 2];
 
-      if (version === 'next') {
+      if (version === 'next' || version === 'main') {
         return {
           components: `${cdnBaseUrl}/components@%COMPONENTS-VERSION%/cdn`,
           styles: `${cdnBaseUrl}/styles@%STYLES-VERSION%/cdn`,
           tokens: `${cdnBaseUrl}/tokens@%TOKENS-VERSION%/cdn`,
-          placeholders: `${cdnBaseUrl}/placeholders@%PLACEHOLDERS-VERSION%/src`
-        };
-      }
-
-      if (version === 'main') {
-        return {
-          components: `${baseUrl}/components/%COMPONENTS-VERSION%/cdn`,
-          styles: `${baseUrl}/styles/%STYLES-VERSION%/cdn`,
-          tokens: `${baseUrl}/tokens/%TOKENS-VERSION%/cdn`,
-          placeholders: `${baseUrl}/docs/placeholders`
+          placeholders: `${cdnBaseUrl}/placeholders@%PLACEHOLDERS-VERSION%/src`,
+          assets: `${githubBaseUrl}/${version}`
         };
       }
 
@@ -47,15 +40,29 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
         components: `${githubBaseUrl}/${version}/components/cdn`,
         styles: `${githubBaseUrl}/${version}/styles/cdn`,
         tokens: `${githubBaseUrl}/${version}/tokens/cdn`,
-        placeholders: `${githubBaseUrl}/${version}/placeholders`
+        placeholders: `${githubBaseUrl}/${version}/placeholders`,
+        assets: `${githubBaseUrl}/${version}`
       };
     }
 
+    // next versions (e.g. 7.0.0-next.0)
+    if (isNextPrerelease) {
+      return {
+        components: `${githubBaseUrl}/next/components/cdn`,
+        styles: `${githubBaseUrl}/next/styles/cdn`,
+        tokens: `${githubBaseUrl}/next/tokens/cdn`,
+        placeholders: `${githubBaseUrl}/next/placeholders`,
+        assets: `${githubBaseUrl}/next`
+      };
+    }
+
+    // stable versions (e.g. 6.28.0)
     return {
-      components: `${baseUrl}/components/%COMPONENTS-VERSION%/cdn`,
-      styles: `${baseUrl}/styles/%STYLES-VERSION%/cdn`,
-      tokens: `${baseUrl}/tokens/%TOKENS-VERSION%/cdn`,
-      placeholders: `${baseUrl}/docs/placeholders`
+      components: `${cdnBaseUrl}/components@%COMPONENTS-VERSION%/cdn`,
+      styles: `${cdnBaseUrl}/styles@%STYLES-VERSION%/cdn`,
+      tokens: `${cdnBaseUrl}/tokens@%TOKENS-VERSION%/cdn`,
+      placeholders: `${cdnBaseUrl}/placeholders@%PLACEHOLDERS-VERSION%/src`,
+      assets: `${githubBaseUrl}/main`
     };
   };
 
@@ -110,7 +117,10 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
         form.target = '_blank';
 
         // Theming
-        const themePath = getThemeAttributes().css;
+        const theme = getThemeAttributes();
+        const font = fontConfig[theme.font as keyof typeof fontConfig] ?? fontConfig.ui;
+        const themePath = theme.css;
+        const codepenFontFaces = font.fontFaces.replaceAll('%ASSETS-BASE-URL%', urls().assets);
 
         // Docs: https://blog.codepen.io/documentation/prefill/
         const data = {
@@ -123,10 +133,12 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
 /* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-styles-installation--docs */
 @import url("${urls().styles}/solid-styles.css");
 
+${codepenFontFaces}
+
 /* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components-installation--docs */
 body {
   font-family:
-    'Frutiger Neue',
+    ${font.fontFamily},
     ui-sans-serif,
     system-ui,
     -apple-system,
@@ -141,38 +153,6 @@ body {
     'Segoe UI Emoji',
     'Segoe UI Symbol',
     'Noto Color Emoji';
-}
-
-@font-face {
-  font-family: 'Frutiger Neue';
-  font-style: normal;
-  font-weight: 400;
-  src: url('https://solid-design-system.fe.union-investment.de/docs/fonts/FrutigerNeuefuerUIWebW05-Bk.woff2')
-    format('woff2');
-}
-
-@font-face {
-  font-family: 'Frutiger Neue';
-  font-style: italic;
-  font-weight: 400;
-  src: url('https://solid-design-system.fe.union-investment.de/docs/fonts/FrutigerNeuefuerUIWebW05-BkIt.woff2')
-    format('woff2');
-}
-
-@font-face {
-  font-family: 'Frutiger Neue';
-  font-style: normal;
-  font-weight: 600;
-  src: url('https://solid-design-system.fe.union-investment.de/docs/fonts/FrutigerNeuefuerUIWebW05-Bd.woff2')
-    format('woff2');
-}
-
-@font-face {
-  font-family: 'Frutiger Neue';
-  font-style: italic;
-  font-weight: 600;
-  src: url('https://solid-design-system.fe.union-investment.de/docs/fonts/FrutigerNeuefuerUIWebW05-BdIt.woff2')
-    format('woff2');
 }
 
 /**
@@ -229,9 +209,14 @@ body {
           description: '',
           editors: 1110,
           head: '<meta name="viewport" content="width=device-width"><script src="https://cdn.tailwindcss.com"></script> ', // + tailwindConfig,
-          html: code.replace(/\n\s*\n/g, '\n').replaceAll('./placeholders', `${urls().placeholders}`), // Regex removes empty lines and replaces placeholders
+          html: code
+            .replace(/\n\s*\n/g, '\n')
+            // Regex removes empty lines and replaces placeholders and logo assets
+            .replaceAll('./placeholders', `${urls().placeholders}`)
+            .replaceAll('src="images/', `src="${urls().assets}/images/`),
           js: `/* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components-installation--docs */
-import { registerIconLibrary } from "${urls().components}/solid-components.bundle.js";`,
+import "${urls().components}/solid-components.js";
+import { registerIconLibrary } from "${urls().components}/utilities/icon-library.js";`,
           js_external: '',
           js_module: true,
           js_pre_processor: 'none',

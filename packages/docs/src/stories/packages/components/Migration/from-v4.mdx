@@ -24,7 +24,7 @@ This change was made to better reflect the purpose of the library, which contain
 **After:**
 
 ```html
-<sd-icon library="_internal" name="chevron-down"></sd-icon>
+<sd-icon library="_internal" name="chevron-bottom"></sd-icon>
 ```
 
 ### `<sd-scrollable>`
@@ -111,10 +111,10 @@ Icon was slotted together with the text content.
 
 ```html
 <sd-expandable>
-  <sd-icon slot="toggle-open" class="mr-2 text-xl" library="_internal" name="chevron-up"></sd-icon>
+  <sd-icon slot="toggle-open" class="mr-2 text-xl" library="_internal" name="chevron-top"></sd-icon>
   <span slot="toggle-open"> <!-- Collapse --> </span>
 
-  <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="_internal" name="chevron-down"></sd-icon>
+  <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="_internal" name="chevron-bottom"></sd-icon>
   <span slot="toggle-closed"> <!-- Expand --> </span>
 </sd-expandable>
 ```
@@ -125,10 +125,10 @@ Now, the icon has separate slots.
 
 ```html
 <sd-expandable>
-  <sd-icon slot="expand-icon" class="mr-2 text-xl" library="_internal" name="chevron-down"></sd-icon>
+  <sd-icon slot="expand-icon" class="mr-2 text-xl" library="_internal" name="chevron-bottom"></sd-icon>
   <span slot="toggle-closed"> <!-- Expand --> </span>
 
-  <sd-icon slot="collapse-icon" class="mr-2 text-xl" library="_internal" name="chevron-down"></sd-icon>
+  <sd-icon slot="collapse-icon" class="mr-2 text-xl" library="_internal" name="chevron-bottom"></sd-icon>
   <span slot="toggle-open"> <!-- Collapse --> </span>
 </sd-expandable>
 ```

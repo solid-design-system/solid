@@ -53,9 +53,6 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-tag--removable--size-lg-padding-left - The padding left for large removable tags.
  * @cssproperty --sd-tag--removable--size-sm-padding-right - The padding right for small removable tags.
  * @cssproperty --sd-tag--removable--size-sm-padding-left - The padding left for small removable tags.
- *
- * @cssproperty --sd-tag--disabled-color-border - This custom property is deprecated. Use `--sd-color-border-neutral-500` instead.
- * @cssproperty --sd-tag-font-weight - This custom property is deprecated. Use `--sd-choice-control-font-weight` instead.
  */
 @customElement('sd-tag')
 export default class SdTag extends SolidElement {
@@ -156,8 +153,8 @@ export default class SdTag extends SolidElement {
           'flex border box-border sd-tag-border-radius items-center leading-none whitespace-nowrap transition-colors duration-fast ease-in-out focus-visible:focus-outline',
           {
             /* sizes, fonts */
-            lg: 'h-8 sd-tag-font-weight sd-tag--size-lg-font-size gap-2',
-            sm: 'h-6 sd-tag-font-weight sd-tag--size-sm-font-size gap-1'
+            lg: 'h-8 choice-control-font-weight sd-tag--size-lg-font-size gap-2',
+            sm: 'h-6 choice-control-font-weight sd-tag--size-sm-font-size gap-1'
           }[this.size],
           {
             /* padding */
@@ -181,7 +178,7 @@ export default class SdTag extends SolidElement {
             : cx(
                 !isLink && 'cursor-not-allowed',
                 this.selected && 'bg-neutral-500 text-white',
-                'sd-tag--disabled-color-border sd-tag--disabled-color-text'
+                'border-neutral-500 sd-tag--disabled-color-text'
               )
         )}
       >
@@ -224,16 +221,6 @@ export default class SdTag extends SolidElement {
 
       :host([size='sm'])::part(removable-indicator) {
         @apply text-[0.75rem];
-      }
-
-      /* TODO clean sd-tag--disabled-color-border and replace this class with border-neutral-500 in line 173 (breaking change) */
-      .sd-tag--disabled-color-border {
-        border-color: rgb(var(--sd-tag--disabled-color-border));
-      }
-
-      /* TODO clean sd-tag-font-weight and replace this class with choice-control-font-weight in lines 153 and 154 (breaking change) */
-      .sd-tag-font-weight {
-        font-weight: var(--sd-tag-font-weight);
       }
     `
   ];

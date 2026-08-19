@@ -45,18 +45,18 @@ describe('<sd-dialog>', () => {
       <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
     `);
 
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
 
-    expect(base.hidden).to.be.false;
+    expect(base.open).to.be.true;
   });
 
   it('should not be visible without the open attribute', async () => {
     const el = await fixture<SdDialog>(html`
       <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
     `);
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
 
-    expect(base.hidden).to.be.true;
+    expect(base.open).to.be.false;
   });
 
   it('should include a close button by default', async () => {
@@ -77,11 +77,24 @@ describe('<sd-dialog>', () => {
     expect(closeButton).not.to.exist;
   });
 
+  it('should render the footer at the full width of the panel', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog open>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        <button slot="footer">Button</button>
+      </sd-dialog>
+    `);
+    const panel = el.shadowRoot!.querySelector<HTMLElement>('[part~="panel"]')!;
+    const footer = el.shadowRoot!.querySelector<HTMLElement>('[part~="footer"]')!;
+
+    expect(footer.getBoundingClientRect().width).to.equal(panel.clientWidth);
+  });
+
   it('should emit sd-show and sd-after-show when calling show()', async () => {
     const el = await fixture<SdDialog>(html`
       <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
     `);
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
 
@@ -94,7 +107,7 @@ describe('<sd-dialog>', () => {
 
     expect(showHandler).to.have.been.calledOnce;
     expect(afterShowHandler).to.have.been.calledOnce;
-    expect(base.hidden).to.be.false;
+    expect(base.open).to.be.true;
   });
 
   describe('when themes change', () => {
@@ -129,7 +142,7 @@ describe('<sd-dialog>', () => {
     const el = await fixture<SdDialog>(html`
       <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
     `);
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
 
@@ -142,14 +155,55 @@ describe('<sd-dialog>', () => {
 
     expect(hideHandler).to.have.been.calledOnce;
     expect(afterHideHandler).to.have.been.calledOnce;
-    expect(base.hidden).to.be.true;
+    expect(base.open).to.be.false;
+  });
+
+  it('should keep the dialog open and visible while the hide animation is playing', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+    `);
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
+    const panel = el.shadowRoot!.querySelector<HTMLElement>('[part~="panel"]')!;
+    const overlay = el.shadowRoot!.querySelector<HTMLElement>('[part~="overlay"]')!;
+
+    // Stub out the animations so they never finish, letting us inspect the mid-animation state
+    const neverFinishingAnimation = {
+      // eslint-disable-next-line @typescript-eslint/no-empty-function -- intentionally never invokes the listener
+      addEventListener: () => {}
+    } as unknown as Animation;
+    const panelAnimate = sinon.stub(panel, 'animate').callsFake(() => neverFinishingAnimation);
+    const overlayAnimate = sinon.stub(overlay, 'animate').callsFake(() => neverFinishingAnimation);
+
+    el.hide();
+    await new Promise(resolve => requestAnimationFrame(resolve));
+
+    expect(base.open).to.be.true;
+    expect(getComputedStyle(base).display).not.to.equal('none');
+
+    panelAnimate.restore();
+    overlayAnimate.restore();
+  });
+
+  it('should not be interactable once the hide animation has finished', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+    `);
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
+
+    el.hide();
+    await waitUntil(() => !el.open);
+    await waitUntil(() => !base.open);
+
+    // A closed native <dialog> must not sit in the top layer blocking the rest of the page
+    expect(base.open).to.be.false;
+    expect(getComputedStyle(base).display).to.equal('none');
   });
 
   it('should emit sd-show and sd-after-show when setting open = true', async () => {
     const el = await fixture<SdDialog>(html`
       <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
     `);
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
 
@@ -162,14 +216,14 @@ describe('<sd-dialog>', () => {
 
     expect(showHandler).to.have.been.calledOnce;
     expect(afterShowHandler).to.have.been.calledOnce;
-    expect(base.hidden).to.be.false;
+    expect(base.open).to.be.true;
   });
 
   it('should emit sd-hide and sd-after-hide when setting open = false', async () => {
     const el = await fixture<SdDialog>(html`
       <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
     `);
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
 
@@ -182,7 +236,7 @@ describe('<sd-dialog>', () => {
 
     expect(hideHandler).to.have.been.calledOnce;
     expect(afterHideHandler).to.have.been.calledOnce;
-    expect(base.hidden).to.be.true;
+    expect(base.open).to.be.false;
   });
 
   it('should not close when sd-request-close is prevented', async () => {
@@ -258,6 +312,9 @@ describe('<sd-dialog>', () => {
 
     // wait until dialog is closed
     await waitUntil(() => !el.open);
+    // The native <dialog> restores focus to the previously focused element asynchronously, so wait for it instead of
+    // asserting immediately (this can otherwise cause WebKit to hang when running under automation).
+    await waitUntil(() => document.activeElement === trigger);
     expect(document.activeElement).to.equal(trigger);
   });
 
@@ -300,6 +357,9 @@ describe('<sd-dialog>', () => {
 
     // wait until dialog is closed
     await waitUntil(() => !el.open);
+    // The native <dialog> restores focus to the previously focused element asynchronously, so wait for it instead of
+    // asserting immediately (this can otherwise cause WebKit to hang when running under automation).
+    await waitUntil(() => testElement.shadowRoot!.activeElement === trigger);
     const activeElementInsideTestElement = testElement.shadowRoot!.activeElement;
     expect(activeElementInsideTestElement).to.equal(trigger);
   });
