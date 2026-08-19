@@ -868,6 +868,22 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     if (!this.open) this.show();
   }
 
+  private handleCalendarIconClick = (event: MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (this.disabled || this.visuallyDisabled || this.readonly) return;
+
+    if (this.open) {
+      this.hide();
+      this.emit('sd-datepicker-close');
+      return;
+    }
+
+    this.show();
+    this.updateComplete.then(() => this.input?.focus({ preventScroll: true }));
+  };
+
   private handleBlur() {
     this.hasFocus = false;
     this.emit('sd-blur');
@@ -1175,8 +1191,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     if (this.range) {
       const rs = this.rangeStart ? DateUtils.parseLocalISO(this.rangeStart) : null;
       const re = this.rangeEnd ? DateUtils.parseLocalISO(this.rangeEnd) : null;
-      if (re) target = DateUtils.startOfDayLocal(re);
-      else if (rs) target = DateUtils.startOfDayLocal(rs);
+      if (rs) target = DateUtils.startOfDayLocal(rs);
+      else if (re) target = DateUtils.startOfDayLocal(re);
     }
 
     const viewMonth = this.viewMonth ?? this.ensureViewMonth();
@@ -1212,9 +1228,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     requestAnimationFrame(() => {
       const root = this.shadowRoot;
       const selectedBtn =
-        root?.querySelector<HTMLButtonElement>('button.day.selected') ||
         root?.querySelector<HTMLButtonElement>('button.day.focused') ||
         root?.querySelector<HTMLButtonElement>('button.day[tabindex="0"]') ||
+        root?.querySelector<HTMLButtonElement>('button.day.selected') ||
         root?.querySelector<HTMLButtonElement>('button.day');
 
       selectedBtn?.focus({ preventScroll: true });
@@ -1230,13 +1246,19 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     if (this.disabled || this.visuallyDisabled || this.readonly) {
       return;
     }
-    // Only the last header control sends focus into the grid on Tab
+
+    if (ev.key === 'Escape' && this.open) {
+      ev.preventDefault();
+      ev.stopPropagation();
+      this.hide();
+      this.emit('sd-datepicker-close');
+      return;
+    }
+
     if (ev.key === 'Tab' && !ev.shiftKey) {
       if (isLastHeaderControl) {
-        ev.preventDefault();
-        ev.stopPropagation();
-        this.tabbingIntoGrid = true;
-        this.focusInitialGridDay();
+        this.hide();
+        this.emit('sd-datepicker-close');
       }
       return;
     }
@@ -1430,6 +1452,15 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       return;
     }
 
+    if (ev.key === 'Tab' && !ev.shiftKey) {
+      ev.preventDefault();
+      ev.stopPropagation();
+      this.shadowRoot
+        ?.querySelector<HTMLButtonElement>('button[part="prev-year-button"]')
+        ?.focus({ preventScroll: true });
+      return;
+    }
+
     const key = ev.key;
     let handled = true;
     const next = new Date(this.focusedDate);
@@ -1508,6 +1539,15 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     if ((this.disabled || this.visuallyDisabled || this.readonly) && ev.key !== 'Tab') {
       ev.preventDefault();
       ev.stopPropagation();
+      return;
+    }
+
+    if (ev.key === 'Tab' && !ev.shiftKey && this.open) {
+      ev.preventDefault();
+      ev.stopPropagation();
+
+      this.tabbingIntoGrid = true;
+      this.focusInitialGridDay();
       return;
     }
 
@@ -1602,10 +1642,32 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     }
     return labels;
   }
-
-  /** Chooses a tabbable day when tabbing into the grid (today or first enabled). */
+  /** Chooses a tabbable day when tabbing into the grid (selection, then today or first enabled). */
   private getTabTargetDayForCurrentView(weeks: Date[][]): Date | null {
     const viewMonth = this.viewMonth ?? this.ensureViewMonth();
+
+    let target: Date | null = null;
+
+    if (!this.range && this.value) {
+      const v = DateUtils.parseLocalISO(this.value);
+      if (v) target = DateUtils.startOfDayLocal(v);
+    }
+
+    if (this.range) {
+      const rs = this.rangeStart ? DateUtils.parseLocalISO(this.rangeStart) : null;
+      const re = this.rangeEnd ? DateUtils.parseLocalISO(this.rangeEnd) : null;
+      if (rs) target = DateUtils.startOfDayLocal(rs);
+      else if (re) target = DateUtils.startOfDayLocal(re);
+    }
+
+    const inViewAndEnabled = (d: Date | null) => {
+      if (!d) return false;
+      const sameMonth = d.getFullYear() === viewMonth.getFullYear() && d.getMonth() === viewMonth.getMonth();
+      return sameMonth && !this.isDisabled(d);
+    };
+
+    if (inViewAndEnabled(target)) return target;
+
     const inViewToday = weeks
       .flat()
       .find(d => d.getMonth() === viewMonth.getMonth() && DateUtils.isSameDay(d, this.today) && !this.isDisabled(d));
@@ -1656,6 +1718,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     return html`
       <div
         part="datepicker"
+        id="calendar"
+        role="dialog"
+        aria-label=${this.range ? this.localize.term('datePickerRange') : this.localize.term('datePicker')}
         class=${cx(
           'w-[284px] z-50 bg-white py-3 px-4',
           this.open ? 'block shadow-listbox' : 'hidden',
@@ -1671,7 +1736,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             <button
               type="button"
               tabindex="0"
-              class=${cx('nav prev w-6 h-6 hover:cursor-pointer', iconColor)}
+              class=${cx('nav prev w-6 h-6 hover:cursor-pointer focus-visible:focus-outline', iconColor)}
               part="prev-year-button"
               @click=${() => this.setYear(-1)}
               @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'year', -1, false)}
@@ -1683,7 +1748,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             <button
               type="button"
               tabindex="0"
-              class=${cx('nav prev w-6 h-6 hover:cursor-pointer', iconColor)}
+              class=${cx('nav prev w-6 h-6 hover:cursor-pointer focus-visible:focus-outline', iconColor)}
               part="prev-month-button"
               @click=${() => this.setMonth(-1)}
               @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'month', -1, false)}
@@ -1708,7 +1773,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             <button
               type="button"
               tabindex="0"
-              class=${cx('nav next w-6 h-6 hover:cursor-pointer', iconColor)}
+              class=${cx('nav next w-6 h-6 hover:cursor-pointer focus-visible:focus-outline', iconColor)}
               part="next-month-button"
               @click=${() => this.setMonth(1)}
               @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'month', 1, false)}
@@ -1720,7 +1785,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             <button
               type="button"
               tabindex="0"
-              class=${cx('nav next w-6 h-6 hover:cursor-pointer', iconColor)}
+              class=${cx('nav next w-6 h-6 hover:cursor-pointer focus-visible:focus-outline', iconColor)}
               part="next-year-button"
               @click=${() => this.setYear(1)}
               @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'year', 1, true)}
@@ -1816,30 +1881,30 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                       type="button"
                       part="day"
                       class=${cx(
-                        'cell day flex items-center justify-center focus-visible:outline focus:outline-2 focus:outline-primary -outline-offset-2 rounded w-[36px]',
+                        'cell day relative flex items-center justify-center rounded w-[36px] focus-visible:focus-outline focus-visible:z-10',
                         this.size === 'sm' ? 'text-sm h-6' : 'text-base h-8',
                         isRangeStart || isRangeEnd
-                          ? !isFocused
-                            ? 'outline-none sd-datepicker__date-item--selected-color-background sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected--hover-color-background hover:sd-datepicker__date-item--selected--hover-color-text'
-                            : 'outline-none sd-datepicker__date-item--selected--hover-color-background sd-datepicker__date-item--selected--hover-color-text'
+                          ? 'sd-datepicker__date-item--selected-color-background sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected--hover-color-background hover:sd-datepicker__date-item--selected--hover-color-text'
                           : 'hover:sd-datepicker__date-item--hover--default-color-text',
                         !isRangeStart &&
                           !isRangeEnd &&
                           !inSelectedRange &&
                           'hover:sd-datepicker__date-item--hover--default-color-background',
                         isSelectedSingle
-                          ? 'selected outline-none border-primary sd-datepicker__date-item--selected-color-background sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected--hover-color-text hover:sd-datepicker__date-item--selected--hover-color-background'
-                          : !inMonth
-                            ? this.disabledWeekends && isWeekendDay
-                              ? 'out-month weekend-day text-neutral-500'
-                              : isWeekendDay
-                                ? 'out-month weekend-day text-neutral-700'
-                                : 'out-month text-neutral-700 hover:sd-datepicker__date-item--hover--prev-next-color-text hover:sd-datepicker__date-item--hover--prev-next-color-background'
-                            : this.isInDisabledDates(day) || !this.inMinMax(day)
-                              ? 'out-month text-neutral-500'
-                              : this.disabledWeekends && isWeekendDay
-                                ? 'weekend-day text-neutral-500'
-                                : 'in-month sd-datepicker__date-item--default-color-text',
+                          ? 'selected border-primary sd-datepicker__date-item--selected-color-background sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected--hover-color-text hover:sd-datepicker__date-item--selected--hover-color-background'
+                          : (isRangeStart || isRangeEnd) && !inMonth
+                            ? 'out-month'
+                            : !inMonth
+                              ? this.disabledWeekends && isWeekendDay
+                                ? 'out-month weekend-day text-neutral-500'
+                                : isWeekendDay
+                                  ? 'out-month weekend-day text-neutral-700'
+                                  : 'out-month text-neutral-700 hover:sd-datepicker__date-item--hover--prev-next-color-text hover:sd-datepicker__date-item--hover--prev-next-color-background'
+                              : this.isInDisabledDates(day) || !this.inMinMax(day)
+                                ? 'out-month text-neutral-500'
+                                : this.disabledWeekends && isWeekendDay
+                                  ? 'weekend-day text-neutral-500'
+                                  : 'in-month sd-datepicker__date-item--default-color-text',
                         isRangeStart ? 'rounded-l-md rounded-r-none' : '',
                         isRangeEnd ? 'range-end rounded-r-md rounded-l-none' : '',
                         inSelectedRange && !isRangeStart && !isRangeEnd
@@ -1849,16 +1914,16 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                           ? 'in-preview-range bg-primary-100 text-primary-500 rounded-none'
                           : '',
                         isToday && !isSelectedSingle && !isRangeStart && !isRangeEnd && isFocused
-                          ? 'today border-[1px] border-primary sd-datepicker__date-item--current-font-weight'
+                          ? 'today border-[1px] border-primary focus-visible:border-transparent sd-datepicker__date-item--current-font-weight'
                           : '',
                         disabled ? 'disabled cursor-not-allowed hover:bg-transparent' : 'cursor-pointer',
-                        isFocused && !isToday ? 'focused outline outline-2 outline-primary' : ''
+                        isFocused ? 'focused' : ''
                       )}
                       role="gridcell"
                       aria-colindex=${colIndex + 1}
                       aria-labelledby=${'col-' + (colIndex + 1)}
                       .tabIndex=${tabIndex}
-                      ?disabled=${disabled || this.disabled || this.readonly}
+                      ?disabled=${this.disabled || this.readonly}
                       aria-disabled=${
                         disabled || this.visuallyDisabled || this.disabled || this.readonly ? 'true' : 'false'
                       }
@@ -2063,7 +2128,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 role="combobox"
                 aria-expanded=${this.open ? 'true' : 'false'}
                 aria-haspopup="dialog"
-                aria-controls="calendar-grid"
+                aria-controls="calendar"
                 aria-describedby=${hasHelpText ? 'help-text' : undefined}
                 aria-invalid=${this.showInvalidStyle ? 'true' : 'false'}
                 aria-label=${this.range ? 'Select date range' : 'Select a date'}
@@ -2119,7 +2184,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 class=${cx(iconColor, iconMarginLeft, iconSize, 'hover:cursor-pointer')}
                 library="_internal"
                 name="calendar"
-                @click=${this.show}
+                @click=${this.handleCalendarIconClick}
               ></sd-icon>
             </div>
             ${this.renderCalendar()}
