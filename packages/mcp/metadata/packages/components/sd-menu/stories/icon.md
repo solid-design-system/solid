@@ -44,13 +44,12 @@ return html` <div class="h-[350px]">
 <sd-dropdown distance="4" rounded open>
 <sd-button variant="secondary" slot="trigger">
 Menu
-<sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
+<sd-icon library="_internal" name="chevron-bottom" slot="icon-right"></sd-icon>
 </sd-button>
 ${generateTemplate({
 args
 })}
 </sd-dropdown>
-
 </div>`;
 }
 };

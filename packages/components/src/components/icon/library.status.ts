@@ -6,7 +6,7 @@ import type { IconLibrary } from './library';
 //
 // This library is for exclusive use with the `sd-status-badge` component.
 //
-export const icons = {
+const statusIcons = {
   'status-check': `
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 12">
       <path d="M9.202 2.228a.832.832 0 0 0-1.14.274v.003L5.006 7.691 3.542 6.23a.834.834 0 0 0-1.178 1.178L4.586 9.63a.83.83 0 0 0 .579.258h.107a.836.836 0 0 0 .609-.399l.002-.004 3.611-6.11a.833.833 0 0 0-.287-1.145l-.005-.002Z"/>
@@ -42,7 +42,11 @@ export const icons = {
       <path d="M6.843 10.167a.834.834 0 1 1-1.667 0 .834.834 0 0 1 1.667 0ZM6.01 1a2.777 2.777 0 0 0-2.778 2.777.834.834 0 0 0 1.667 0 1.111 1.111 0 0 1 2.222 0c0 .24-.517.792-.834 1.111-.555.586-1.11 1.192-1.11 1.944v.015a.834.834 0 0 0 1.666.014c.196-.316.416-.59.666-.833.6-.64 1.278-1.362 1.278-2.262A2.777 2.777 0 0 0 6.01 1Z"/>
     </svg>
   `
-};
+} as const;
+
+export const icons = Object.fromEntries(
+  Object.entries(statusIcons).sort(([left], [right]) => left.localeCompare(right))
+) as typeof statusIcons;
 
 const statusLibrary: IconLibrary = {
   name: 'sd-status-assets',

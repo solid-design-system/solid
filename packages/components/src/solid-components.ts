@@ -44,7 +44,6 @@ export { default as SdRangeTick } from './components/range-tick/range-tick.js';
 export { default as SdScrollable } from './components/scrollable/scrollable.js';
 export { default as SdSelect } from './components/select/select.js';
 export { default as SdSkeleton } from './components/skeleton/skeleton.js';
-export { default as SdSpinner } from './components/spinner/spinner.js';
 export { default as SdStep } from './components/step/step.js';
 export { default as SdStepGroup } from './components/step-group/step-group.js';
 export { default as SdSwitch } from './components/switch/switch.js';
@@ -58,6 +57,7 @@ export { default as SdTextarea } from './components/textarea/textarea.js';
 export { default as SdTooltip } from './components/tooltip/tooltip.js';
 export { default as SdVideo } from './components/video/video.js';
 export { default as SdThemeListener } from './components/theme-listener/theme-listener.js';
+export { default as SdFileSelector } from './components/file-selector/file-selector.js';
 /* plop:component */
 
 // Utilities

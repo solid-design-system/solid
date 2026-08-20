@@ -19,7 +19,7 @@ Use the components tool by passing the args `component` and `example` for any of
 
 ### Key Properties
 
-- prop.variant: |'white'|'white border-neutral-400'|'neutral-100'|'primary'|'primary-100', default='white' — Variant of the teaser
+- prop.variant: 'white'|'white border-neutral-400'|'neutral-100'|'primary'|'primary-100', default='white' — Variant of the teaser
 - prop.breakpoint: number, default=448 — Breakpoint where the teaser switches from `vertical` to `horizontal`. `0` is always `horizontal`, `9999` is always `vertical`.
 - prop.inset: boolean, default=false — The teaser's inner padding. This is always set in `white border-neutral-400`.
 - prop.reversedLayout [attr: reversed-layout]: boolean, default=false — Reverses the layout in horizontal variant

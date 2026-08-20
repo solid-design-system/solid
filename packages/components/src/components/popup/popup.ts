@@ -99,10 +99,7 @@ export default class SdPopup extends SolidElement {
    * align the arrow to the start, end, or center of the popover instead.
    */
   @property({ type: String, attribute: 'arrow-placement', reflect: true }) arrowPlacement:
-    | 'start'
-    | 'end'
-    | 'center'
-    | 'anchor' = 'anchor';
+    'start' | 'end' | 'center' | 'anchor' = 'anchor';
 
   /**
    * The amount of padding between the arrow and the edges of the popup. If the popup has a border-radius, for example,

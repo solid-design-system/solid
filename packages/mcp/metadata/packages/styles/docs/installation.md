@@ -1,8 +1,8 @@
 # Installation
 
-You can load Solid via CDN or by installing it locally.
+Solid Styles is installed via npm. For environments without a bundler, see [CDN Hosting](?path=/docs/docs-general-cdn-hosting--docs).
 
-<sd-notification type="info" open id="versioning-info">
+<sd-notification variant="info" open id="versioning-info">
   The `components`, `styles`, and `tokens` packages now always share the same version. We use fixed versioning to keep
   them fully in sync, so every release updates all three packages, even if only one of them changed. Make sure to
   install or update them using the same version number.
@@ -37,38 +37,9 @@ Including version numbers in component names provides more control over updates 
   </sd-tab-panel>
 </sd-tab-group>
 
-## CDN Installation
+## Installation
 
-### Bundle
-
-The CDN Bundle registers all Solid elements up front. Note that, if you're only using a handful of components, it could be more efficient [cherry pick](#cherry-picking) components if you want to load specific ones up front.
-
-<sd-tab-group>
-  {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="unversioned">Unversioned</sd-tab>
-  {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="versioned">Versioned</sd-tab>
-  <sd-tab-panel name="unversioned">
-    ```html
-    <link
-      rel="stylesheet"
-      href="https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%/cdn/solid-styles.css"
-    />
-    ```
-  </sd-tab-panel>
-  <sd-tab-panel name="versioned">
-    ```html
-    <link
-      rel="stylesheet"
-      href="https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%/cdn-versioned/solid-styles.css"
-    />
-    ```
-  </sd-tab-panel>
-</sd-tab-group>
-
-## npm installation
-
-If you don't want to use the CDN, you can install Solid Styles from npm with the following command.
+Install Solid Styles from npm:
 
 ```bash
 npm install @solid-design-system/styles
@@ -99,7 +70,7 @@ Alternatively, you can use a bundler.
 
 ## Cherry Picking
 
-Cherry picking can be done from [the CDN](#cdn-installation) or from [npm](#npm-installation). This approach will load only the styles you need up front, while limiting the number of files the browser has to download. The disadvantage is that you need to import each individual style.
+Cherry picking loads only the styles you need up front, limiting the number of files the browser has to download. The disadvantage is that you need to import each individual style.
 
 Here's an example that loads only the mark style that would work in Vite.
 
@@ -135,27 +106,8 @@ Here's an example that loads only the mark style that would work in Vite.
 
 tbd.
 
-## The difference between CDN and npm
+## cdn/ vs dist/
 
-CDN links all start with `/cdn/<path>` and npm imports use `/dist/<path>`. The `/cdn` files are already minified, while `npm` can be easily patched.
+The package ships both `cdn/` and `dist/` artifacts. The `/cdn` files are already minified. The `/dist` files can be more easily patched and are better suited for bundlers.
 
-TL;DR:
-
-<sd-tab-group>
-  {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="unversioned">Unversioned</sd-tab>
-  {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="versioned">Versioned</sd-tab>
-  <sd-tab-panel name="unversioned">
-
-    - `@solid-design-system/styles/cdn` is for CDN users
-    - `@solid-design-system/styles/dist` is for npm users
-
-  </sd-tab-panel>
-  <sd-tab-panel name="versioned">
-
-    - `@solid-design-system/styles/cdn-versioned` is for CDN users
-    - `@solid-design-system/styles/dist-versioned` is for npm users
-
-  </sd-tab-panel>
-</sd-tab-group>
+Use `/dist` with a bundler (recommended). Use `/cdn` only when hosting on your own CDN without build tooling — see [CDN Hosting](?path=/docs/general-cdn-hosting--docs).

@@ -17,6 +17,14 @@ describe('<sd-datepicker>', () => {
     await expect(el).to.be.accessible();
   });
 
+  it('should be accessible with the calendar open', async () => {
+    const el = await fixture<SdDatepicker>(html` <sd-datepicker value="2025-11-21"></sd-datepicker> `);
+    el.show();
+    await el.updateComplete;
+
+    await expect(el).to.be.accessible();
+  });
+
   it('default properties', async () => {
     const el = await fixture<SdDatepicker>(html`<sd-datepicker></sd-datepicker>`);
 
@@ -304,6 +312,13 @@ describe('<sd-datepicker>', () => {
   });
 
   describe('keyboard navigation', () => {
+    const tabIntoCalendarGrid = async (el: SdDatepicker) => {
+      el.shadowRoot!.querySelector<HTMLInputElement>('#input')!.focus();
+      await el.updateComplete;
+      await sendKeys({ press: 'Tab' });
+      await waitUntil(() => el.shadowRoot!.activeElement?.getAttribute('part') === 'day');
+    };
+
     it('focuses the first enabled day or today when tabbing into grid', async () => {
       const el = await fixture<SdDatepicker>(html`<sd-datepicker></sd-datepicker>`);
       el.show();
@@ -329,6 +344,154 @@ describe('<sd-datepicker>', () => {
       await el.updateComplete;
 
       expect(el.value).to.not.be.null;
+    });
+
+    it('should focus today when no date is selected', async () => {
+      const el = await fixture<SdDatepicker>(html`<sd-datepicker></sd-datepicker>`);
+
+      await tabIntoCalendarGrid(el);
+
+      expect(el.shadowRoot!.activeElement!.getAttribute('aria-current')).to.equal('date');
+    });
+
+    it('should focus the selected date when tabbing into the grid', async () => {
+      const el = await fixture<SdDatepicker>(html`<sd-datepicker value="2025-11-21"></sd-datepicker>`);
+      const selectedDay = el.shadowRoot!.querySelector<HTMLButtonElement>(
+        'button.day[aria-label="Friday, November 21, 2025"]'
+      )!;
+
+      await tabIntoCalendarGrid(el);
+
+      expect(el.shadowRoot!.activeElement).to.equal(selectedDay);
+      expect(selectedDay.getAttribute('aria-selected')).to.equal('true');
+    });
+
+    it('should focus the first date of the range and not the last', async () => {
+      const el = await fixture<SdDatepicker>(
+        html`<sd-datepicker range range-start="2025-11-21" range-end="2025-11-28"></sd-datepicker>`
+      );
+      const rangeStart = el.shadowRoot!.querySelector<HTMLButtonElement>(
+        'button.day[aria-label="Friday, November 21, 2025"]'
+      )!;
+
+      await tabIntoCalendarGrid(el);
+
+      expect(el.shadowRoot!.activeElement).to.equal(rangeStart);
+    });
+
+    it('should move focus out of the datepicker and close it after the last header button', async () => {
+      const el = await fixture<SdDatepicker>(html`
+        <sd-datepicker value="2025-11-21"></sd-datepicker>
+        <input id="after" />
+      `);
+      const nextField = document.querySelector('#after')!;
+      const closeHandler = sinon.spy();
+
+      el.addEventListener('sd-datepicker-close', closeHandler);
+      await tabIntoCalendarGrid(el);
+
+      for (const part of ['prev-year-button', 'prev-month-button', 'next-month-button', 'next-year-button']) {
+        await sendKeys({ press: 'Tab' });
+        await waitUntil(() => el.shadowRoot!.activeElement?.getAttribute('part') === part);
+      }
+
+      await sendKeys({ press: 'Tab' });
+      await waitUntil(() => closeHandler.calledOnce);
+
+      expect(document.activeElement).to.equal(nextField);
+    });
+
+    it('should keep focus on the input when the calendar is opened with the icon', async () => {
+      const el = await fixture<SdDatepicker>(html`<sd-datepicker label="Date"></sd-datepicker>`);
+      const input = el.shadowRoot!.querySelector<HTMLInputElement>('#input')!;
+      const icon = el.shadowRoot!.querySelector<HTMLElement>('sd-icon[name="calendar"]')!;
+
+      icon.click();
+      await waitUntil(() => el.shadowRoot!.activeElement === input);
+
+      await sendKeys({ press: 'Tab' });
+      await waitUntil(() => el.shadowRoot!.activeElement?.getAttribute('part') === 'day');
+
+      expect(el.shadowRoot!.activeElement!.getAttribute('part')).to.equal('day');
+    });
+
+    it('should close when pressing Escape', async () => {
+      const el = await fixture<SdDatepicker>(html`<sd-datepicker></sd-datepicker>`);
+      const input = el.shadowRoot!.querySelector<HTMLInputElement>('#input')!;
+
+      await tabIntoCalendarGrid(el);
+      await sendKeys({ press: 'Escape' });
+      await el.updateComplete;
+
+      expect(input.getAttribute('aria-expanded')).to.equal('false');
+    });
+
+    it('should render the same focus ring on days and header buttons', async () => {
+      const el = await fixture<SdDatepicker>(html`<sd-datepicker value="2025-11-21"></sd-datepicker>`);
+      const previousYear = el.shadowRoot!.querySelector<HTMLButtonElement>('[part="prev-year-button"]')!;
+
+      await tabIntoCalendarGrid(el);
+
+      const focusedDay = el.shadowRoot!.activeElement!;
+      const dayOutlineColor = getComputedStyle(focusedDay).outlineColor;
+
+      expect(focusedDay.matches(':focus-visible')).to.be.true;
+      expect(getComputedStyle(focusedDay).outlineStyle).to.equal('solid');
+
+      await sendKeys({ press: 'Tab' });
+      await waitUntil(() => el.shadowRoot!.activeElement?.getAttribute('part') === 'prev-year-button');
+
+      expect(el.shadowRoot!.activeElement).to.equal(previousYear);
+      expect(getComputedStyle(previousYear).outlineStyle).to.equal('solid');
+      expect(getComputedStyle(previousYear).outlineColor).to.equal(dayOutlineColor);
+    });
+
+    it('should keep the selected background when a range boundary is focused', async () => {
+      const el = await fixture<SdDatepicker>(
+        html`<sd-datepicker range range-start="2025-11-21" range-end="2025-11-28"></sd-datepicker>`
+      );
+      const rangeStart = el.shadowRoot!.querySelector<HTMLButtonElement>(
+        'button.day[aria-label="Friday, November 21, 2025"]'
+      )!;
+      const backgroundBeforeFocus = getComputedStyle(rangeStart).backgroundColor;
+
+      await tabIntoCalendarGrid(el);
+
+      expect(el.shadowRoot!.activeElement).to.equal(rangeStart);
+      expect(getComputedStyle(rangeStart).backgroundColor).to.equal(backgroundBeforeFocus);
+    });
+
+    it('should focus an unavailable day without letting Enter select it', async () => {
+      const el = await fixture<SdDatepicker>(
+        html`<sd-datepicker value="2025-11-07" disabled-weekends></sd-datepicker>`
+      );
+      const saturday = el.shadowRoot!.querySelector<HTMLButtonElement>(
+        'button.day[aria-label="Saturday, November 8, 2025"]'
+      )!;
+      const monday = el.shadowRoot!.querySelector<HTMLButtonElement>(
+        'button.day[aria-label="Monday, November 10, 2025"]'
+      )!;
+
+      await tabIntoCalendarGrid(el);
+      await sendKeys({ press: 'ArrowRight' });
+      await waitUntil(() => el.shadowRoot!.activeElement === saturday);
+
+      expect(saturday.disabled).to.be.false;
+      expect(saturday.getAttribute('aria-disabled')).to.equal('true');
+      expect(getComputedStyle(saturday).outlineStyle).to.equal('solid');
+
+      await sendKeys({ press: 'Enter' });
+      await el.updateComplete;
+
+      expect(el.value).to.equal('2025-11-07');
+
+      await sendKeys({ press: 'ArrowRight' });
+      await sendKeys({ press: 'ArrowRight' });
+      await waitUntil(() => el.shadowRoot!.activeElement === monday);
+      await sendKeys({ press: 'Enter' });
+      await el.updateComplete;
+
+      expect(el.value).to.equal('2025-11-10');
     });
   });
 

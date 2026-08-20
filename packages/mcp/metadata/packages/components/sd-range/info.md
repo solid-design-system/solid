@@ -24,7 +24,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.disabled: boolean, default=false — Disables the range.
 - prop.visuallyDisabled [attr: visually-disabled]: boolean, default=false — Disables the range visually.
 - prop.noTrackBar [attr: no-track-bar]: boolean, default=false — Disables the active track bar.
-- prop.tooltip: |'on-interaction'|'hidden'|'always-visible', default='on-interaction' — Defines the thumbs tooltip behaviour.
+- prop.tooltip: 'on-interaction'|'hidden'|'always-visible', default='on-interaction' — Defines the thumbs tooltip behaviour.
 - prop.defaultValue: string, default='' — The default value of the form control. Primarily used for resetting the form control.
 - prop.value: — The current values of the input (in ascending order) as a string of space separated values
 - prop.valueAsArray: — Gets or sets the current values of the range as an array of numbers

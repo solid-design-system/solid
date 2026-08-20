@@ -144,15 +144,17 @@ export default class SdVideo extends SolidElement {
             )}
           >
             <slot name="play-icon" part="play-icon" class=${cx(this.isBelowBreakpoint ? 'text-[2rem]' : 'text-[4rem]')}>
-              <sd-icon id="default-play-icon" library="_internal" name="start"></sd-icon>
+              <sd-icon id="default-play-icon" library="_internal" name="play"></sd-icon>
             </slot>
           </div>
         </button>
-        ${this.hasSlotController.test('poster')
-          ? html` <div part="poster-wrapper" class="absolute left-0 top-0 w-full z-10 overflow-hidden">
-              <slot name="poster" role="presentation"> </slot>
-            </div>`
-          : null}
+        ${
+          this.hasSlotController.test('poster')
+            ? html` <div part="poster-wrapper" class="absolute left-0 top-0 w-full z-10 overflow-hidden">
+                <slot name="poster" role="presentation"> </slot>
+              </div>`
+            : null
+        }
         <slot></slot>
       </div>
     `;

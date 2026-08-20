@@ -1,19 +1,17 @@
 import '../button/button';
 import '../icon/icon';
+import '../theme-listener/theme-listener';
 import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
-import { getDeepActiveElement } from '../../internal/deep-active-element';
 import { HasSlotController } from '../../internal/slot';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
-import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
-import Modal from '../../internal/modal';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -24,6 +22,7 @@ import SolidElement from '../../internal/solid-element';
  *
  * @dependency sd-button
  * @dependency sd-icon
+ * @dependency sd-theme-listener
  *
  * @slot - The dialog's main content.
  * @slot headline - The dialog's headline. Alternatively, you can use the `headline` attribute.
@@ -64,12 +63,11 @@ import SolidElement from '../../internal/solid-element';
 export default class SdDialog extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, 'footer');
   public localize = new LocalizeController(this);
-  private modal: Modal;
-  private originalTrigger: HTMLElement | null;
+  private hasUiMotion = false;
 
-  @query('[part="base"]') dialog: HTMLElement;
-  @query('[part="panel"]') panel: HTMLElement;
+  @query('[part="base"]') dialog: HTMLDialogElement;
   @query('[part="overlay"]') overlay: HTMLElement;
+  @query('[part="panel"]') panel: HTMLElement;
 
   /**
    * Indicates whether or not the dialog is open. You can toggle this attribute to show and hide the dialog, or you can
@@ -89,23 +87,27 @@ export default class SdDialog extends SolidElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
-    this.modal = new Modal(this);
+    this.updateMotionTheme();
   }
 
   firstUpdated() {
-    this.dialog.hidden = !this.open;
+    this.dialog.addEventListener('cancel', (event: Event) => {
+      event.preventDefault();
+      this.requestClose('keyboard');
+    });
 
     if (this.open) {
-      this.addOpenListeners();
-      this.modal.activate();
-      lockBodyScrolling(this);
+      this.dialog.showModal();
     }
   }
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    unlockBodyScrolling(this);
+  protected onThemeChange(): void {
+    this.updateMotionTheme();
+  }
+
+  private updateMotionTheme(): void {
+    const theme = getComputedStyle(this).getPropertyValue('--sd-theme').trim().replace(/['"]/g, '');
+    this.hasUiMotion = theme === '' || theme === 'ui-light' || theme === 'ui-dark';
   }
 
   private get prefersReducedMotion() {
@@ -119,7 +121,9 @@ export default class SdDialog extends SolidElement {
     });
 
     if (sdRequestClose.defaultPrevented) {
-      const animation = getAnimation(this, 'dialog.denyClose', { dir: this.localize.dir() });
+      const animation = getAnimation(this, this.hasUiMotion ? 'dialog.denyClose' : 'dialog.denyCloseSimple', {
+        dir: this.localize.dir()
+      });
       animateTo(this.panel, animation.keyframes, animation.options);
       return;
     }
@@ -127,31 +131,11 @@ export default class SdDialog extends SolidElement {
     this.hide();
   }
 
-  private addOpenListeners() {
-    document.addEventListener('keydown', this.handleDocumentKeyDown);
-  }
-
-  private removeOpenListeners() {
-    document.removeEventListener('keydown', this.handleDocumentKeyDown);
-  }
-
-  private handleDocumentKeyDown(event: KeyboardEvent) {
-    if (this.open && event.key === 'Escape') {
-      event.stopPropagation();
-      this.requestClose('keyboard');
-    }
-  }
-
   @watch('open', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
     if (this.open) {
       // Show
       this.emit('sd-show');
-      this.addOpenListeners();
-      this.originalTrigger = getDeepActiveElement();
-      this.modal.activate();
-
-      lockBodyScrolling(this);
 
       // When the dialog is shown, Safari will attempt to set focus on whatever element has autofocus. This can cause
       // the dialogs's animation to jitter (if it starts offscreen), so we'll temporarily remove the attribute, call
@@ -164,8 +148,8 @@ export default class SdDialog extends SolidElement {
         autoFocusTarget.removeAttribute('autofocus');
       }
 
-      await Promise.all([stopAnimations(this.dialog), stopAnimations(this.overlay)]);
-      this.dialog.hidden = false;
+      await stopAnimations(this.dialog);
+      this.dialog.showModal();
 
       // Set initial focus
       requestAnimationFrame(() => {
@@ -186,10 +170,12 @@ export default class SdDialog extends SolidElement {
         }
       });
 
+      const showAnimation = this.hasUiMotion ? 'dialog.show' : 'dialog.showSimple';
       const panelAnimation = this.prefersReducedMotion
         ? getAnimation(this, 'dialog.showReducedMotion', { dir: this.localize.dir() })
-        : getAnimation(this, 'dialog.show', { dir: this.localize.dir() });
-      const overlayAnimation = getAnimation(this, 'dialog.overlay.show', { dir: this.localize.dir() });
+        : getAnimation(this, showAnimation, { dir: this.localize.dir() });
+      const overlayShowAnimation = this.hasUiMotion ? 'dialog.overlay.show' : 'dialog.overlay.showSimple';
+      const overlayAnimation = getAnimation(this, overlayShowAnimation, { dir: this.localize.dir() });
       await Promise.all([
         animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options),
         animateTo(this.overlay, overlayAnimation.keyframes, overlayAnimation.options)
@@ -199,14 +185,15 @@ export default class SdDialog extends SolidElement {
     } else {
       // Hide
       this.emit('sd-hide');
-      this.removeOpenListeners();
-      this.modal.deactivate();
 
-      await Promise.all([stopAnimations(this.dialog), stopAnimations(this.overlay)]);
+      await stopAnimations(this.dialog);
+      const hideAnimation = this.hasUiMotion ? 'dialog.hide' : 'dialog.hideSimple';
+
       const panelAnimation = this.prefersReducedMotion
         ? getAnimation(this, 'dialog.hideReducedMotion', { dir: this.localize.dir() })
-        : getAnimation(this, 'dialog.hide', { dir: this.localize.dir() });
-      const overlayAnimation = getAnimation(this, 'dialog.overlay.hide', { dir: this.localize.dir() });
+        : getAnimation(this, hideAnimation, { dir: this.localize.dir() });
+      const overlayHideAnimation = this.hasUiMotion ? 'dialog.overlay.hide' : 'dialog.overlay.hideSimple';
+      const overlayAnimation = getAnimation(this, overlayHideAnimation, { dir: this.localize.dir() });
 
       // Animate the overlay and the panel at the same time. Because animation durations might be different, we need to
       // hide each one individually when the animation finishes, otherwise the first one that finishes will reappear
@@ -220,26 +207,11 @@ export default class SdDialog extends SolidElement {
         })
       ]);
 
-      this.dialog.hidden = true;
+      this.dialog.close();
 
       // Now that the dialog is hidden, restore the overlay and panel for next time
       this.overlay.hidden = false;
       this.panel.hidden = false;
-
-      unlockBodyScrolling(this);
-
-      // Restore focus to the original trigger
-      const trigger = this.originalTrigger;
-      if (typeof trigger?.focus === 'function' && trigger.isConnected) {
-        setTimeout(() => {
-          try {
-            trigger.focus({ preventScroll: true });
-          } catch {
-            trigger.focus();
-          }
-          this.originalTrigger = null;
-        });
-      }
 
       this.emit('sd-after-hide');
     }
@@ -268,70 +240,66 @@ export default class SdDialog extends SolidElement {
   render() {
     /* eslint-disable lit-a11y/click-events-have-key-events */
     return html`
-      <div
+      <sd-theme-listener></sd-theme-listener>
+      <dialog
         part="base"
         class=${cx(
-          'flex items-center justify-center fixed inset-0 z-dialog',
+          'flex items-center justify-center p-0 m-auto bg-transparent border-none overflow-visible',
           this.hasSlotController.test('footer') && 'dialog--has-footer'
         )}
       >
-        <div
-          part="overlay"
-          class="fixed inset-0 overlay-color-background"
-          @click=${() => this.requestClose('overlay')}
-          tabindex="-1"
-        ></div>
-
+        <div part="overlay" class="fixed inset-0" @click=${() => this.requestClose('overlay')}></div>
         <div
           part="panel"
           class=${cx(
             'panel-color-border border flex flex-col z-20 bg-white py-4 sm:py-8 relative gap-6 focus-visible:focus-outline-inverted overflow-y-auto',
             this.open && 'flex opacity-100'
           )}
-          role="dialog"
-          aria-modal="true"
-          aria-hidden=${this.open ? 'false' : 'true'}
           aria-label=${ifDefined(this.headline ? this.headline : undefined)}
           aria-labelledby=${ifDefined(!this.headline ? 'title' : undefined)}
           tabindex="0"
         >
           <header part="header" class="flex flex-grow-0 flex-shrink-0 basis-auto px-6 sm:px-10">
             <h2 part="title" class="flex-auto m-0" id="title">
-              ${this.headline.length > 0
-                ? html`<span class="sd-headline sd-headline--size-3xl leading-tight">${this.headline}</span>`
-                : html`<slot name="headline"> </slot>`}
+              ${
+                this.headline.length > 0
+                  ? html`<span class="sd-headline sd-headline--size-3xl leading-tight">${this.headline}</span>`
+                  : html`<slot name="headline"> </slot>`
+              }
             </h2>
 
-            ${!this.noCloseButton
-              ? html`
-                  <sd-button
-                    part="close-button"
-                    variant="tertiary"
-                    exportparts="base:close-button__base"
-                    class=${cx('absolute top-2 right-2')}
-                    name="x-lg"
-                    @click="${() => this.requestClose('close-button')}"
-                    type="button"
-                  >
-                    <sd-icon
-                      label=${this.localize.term('close')}
-                      name="close"
-                      library="_internal"
-                      color="currentColor"
-                    ></sd-icon>
-                  </sd-button>
-                `
-              : ''}
+            ${
+              !this.noCloseButton
+                ? html`
+                    <sd-button
+                      part="close-button"
+                      variant="tertiary"
+                      exportparts="base:close-button__base"
+                      class=${cx('absolute top-2 right-2')}
+                      name="x-lg"
+                      @click="${() => this.requestClose('close-button')}"
+                      type="button"
+                    >
+                      <sd-icon
+                        label=${this.localize.term('close')}
+                        name="close"
+                        library="_internal"
+                        color="currentColor"
+                      ></sd-icon>
+                    </sd-button>
+                  `
+                : ''
+            }
           </header>
 
           <main part="body" class="flex flex-auto overflow-auto w-full px-6 sm:px-10">
             <slot></slot>
           </main>
-          <footer part="footer" class="flex flex-grow-0 flex-shrink-0 basis-auto ml-auto gap-4 px-6 sm:px-10">
+          <footer part="footer" class="px-6 sm:px-10">
             <slot name="footer"></slot>
           </footer>
         </div>
-      </div>
+      </dialog>
     `;
     /* eslint-enable lit-a11y/click-events-have-key-events */
   }
@@ -341,6 +309,12 @@ export default class SdDialog extends SolidElement {
     css`
       :host {
         --width: 662px;
+        @apply contents;
+      }
+
+      /* Hide the dialog once the native <dialog> element is actually closed, so the hide animation can play out first. */
+      [part='base']:not([open]) {
+        display: none;
       }
 
       [part='panel'] {
@@ -352,6 +326,14 @@ export default class SdDialog extends SolidElement {
         -webkit-overflow-scrolling: touch;
       }
 
+      ::backdrop {
+        display: none;
+      }
+
+      [part='overlay'] {
+        background-color: rgb(var(--sd-overlay-color-background, 5 21 48 / 0.9));
+      }
+
       @media (max-width: 414px) {
         :host {
           --width: 335px;
@@ -359,10 +341,6 @@ export default class SdDialog extends SolidElement {
 
         [part='body'] {
           min-height: 50px;
-        }
-
-        [part='footer'] {
-          @apply w-full;
         }
       }
     `
@@ -382,6 +360,14 @@ setDefaultAnimation('dialog.showReducedMotion', {
   options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
+setDefaultAnimation('dialog.showSimple', {
+  keyframes: [
+    { opacity: 0, scale: 0.8 },
+    { opacity: 1, scale: 1 }
+  ],
+  options: { duration: 250, easing: 'ease' }
+});
+
 setDefaultAnimation('dialog.hide', {
   keyframes: [
     { opacity: 1, transform: 'translate(0, 0)' },
@@ -395,7 +381,20 @@ setDefaultAnimation('dialog.hideReducedMotion', {
   options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
+setDefaultAnimation('dialog.hideSimple', {
+  keyframes: [
+    { opacity: 1, scale: 1 },
+    { opacity: 0, scale: 0.8 }
+  ],
+  options: { duration: 250, easing: 'ease' }
+});
+
 setDefaultAnimation('dialog.denyClose', {
+  keyframes: [{ scale: 1 }, { scale: 1.02 }, { scale: 1 }],
+  options: { duration: 250 }
+});
+
+setDefaultAnimation('dialog.denyCloseSimple', {
   keyframes: [{ scale: 1 }, { scale: 1.02 }, { scale: 1 }],
   options: { duration: 250 }
 });
@@ -405,9 +404,19 @@ setDefaultAnimation('dialog.overlay.show', {
   options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
+setDefaultAnimation('dialog.overlay.showSimple', {
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  options: { duration: 250, reducedMotion: 'allow' }
+});
+
 setDefaultAnimation('dialog.overlay.hide', {
   keyframes: [{ opacity: 1 }, { opacity: 0 }],
   options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out', reducedMotion: 'allow' }
+});
+
+setDefaultAnimation('dialog.overlay.hideSimple', {
+  keyframes: [{ opacity: 1 }, { opacity: 0 }],
+  options: { duration: 250, reducedMotion: 'allow' }
 });
 
 declare global {

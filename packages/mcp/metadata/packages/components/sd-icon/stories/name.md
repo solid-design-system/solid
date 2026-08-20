@@ -17,7 +17,7 @@ Icons can be used to indicate an action or to represent content.
   return generateTemplate({ args });
   }
   };
-  /\*\*
+  /**
   Use the `name` attribute to change the icon. Checkout these lists of Union Investment's icons for available names:
 - [Content Icons](?path=/story/components-sd-icon-default--library-default-content)
 - [System Icons](?path=/story/components-sd-icon-default--library-default-system)

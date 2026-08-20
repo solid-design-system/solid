@@ -62,6 +62,21 @@ export const Default = {
 };
 
 /**
+ * Use the `shadow` attribute to show a drop shadow.
+ */
+
+export const Shadow = {
+  name: 'Shadow',
+  render: () => html`
+    <div style="height: 100px;">
+      <sd-header shadow>
+        <div class="slot slot--border slot--text">Default slot</div>
+      </sd-header>
+    </div>
+  `
+};
+
+/**
  * Use the `fixed` attribute to set the header to a fixed position.
  */
 

@@ -20,7 +20,7 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - prop.size: 'lg'|'sm', default='lg' — Sets the size of the default trigger icon.
 - prop.content: string, default='' — The tooltip's content. If you need to display HTML, use the `content` slot instead.
-- prop.placement: |'top'|'top-start'|'top-end'|'bottom'|'bottom-start'|'bottom-end', default='top' — The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip
+- prop.placement: 'top'|'top-start'|'top-end'|'bottom'|'bottom-start'|'bottom-end', default='top' — The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip
   inside of the viewport.
 - prop.disabled: boolean, default=false — Disables the tooltip so it won't show when triggered.
 - prop.open: boolean, default=false — Indicates whether or not the tooltip is open. You can use this in lieu of the show/hide methods.
@@ -52,8 +52,8 @@ Use the components tool by passing the args `component` and `example` for any of
 ### CSS Parts
 
 - part.base: The component's base wrapper, an `<sd-popup>` element.
-- part.base\_\_popup: The popup's exported `popup` part. Use this to target the tooltip's popup container.
-- part.base\_\_arrow: The popup's exported `arrow` part. Use this to target the tooltip's arrow.
+- part.base__popup: The popup's exported `popup` part. Use this to target the tooltip's popup container.
+- part.base__arrow: The popup's exported `arrow` part. Use this to target the tooltip's arrow.
 - part.body: The tooltip's body where its content is rendered.
 
 ## Guidelines

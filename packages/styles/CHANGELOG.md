@@ -1,5 +1,34 @@
 # @solid-design-system/styles
 
+## 7.0.1
+
+## 7.0.0
+
+### Major Changes
+
+- Added fallback values from the `ui-light` theme to styles so applications can work without installing a theme. _[`#3240`](https://github.com/solid-design-system/solid/pull/3240) [`d645fd7`](https://github.com/solid-design-system/solid/commit/d645fd7f6c3fe24dda2644b79dd88c4222baddb5) [@martascorreia](https://github.com/martascorreia)_
+- Consolidated `sd-chip` and `sd-flag` (checkout the [migration guide](./?path=/docs/packages-styles-migration-from-v6--docs) for details): _[`#3267`](https://github.com/solid-design-system/solid/pull/3267) [`12db708`](https://github.com/solid-design-system/solid/commit/12db708ea227bc2ce2a7835d12190ee1ae40f891) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Removed the `sd-flag` style and consolidated it into `sd-chip`.
+  - Added `sd-chip--color-{primary,neutral,white}`, `sd-chip--shade-{subtle,low,medium,high}`, `sd-chip--size-{sm,lg}`, `sd-chip--outline` and `sd-chip--sharp` classes.
+  - Removed `sd-chip--primary-200/300/500` and `sd-chip--white` variants.
+
+### Patch Changes
+
+- Fix versioned icons to work with next versions. _[`#3186`](https://github.com/solid-design-system/solid/pull/3186) [`30af3ad`](https://github.com/solid-design-system/solid/commit/30af3ad6d2e8daebeaa9d6a863fdd5794a015da9) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.30.0
+
+## 6.29.1
+
+## 6.29.0
+
+## 6.28.2
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull Request _[`#3163`](https://github.com/solid-design-system/solid/pull/3163) [`91ff1c8`](https://github.com/solid-design-system/solid/commit/91ff1c81831fb3522c534306a61b8a5be3562f64) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 6.28.1
 
 ## 6.28.0

@@ -835,18 +835,20 @@ version: 1.0.0
                 sortData[columnIndex] === 'none' || !header.sortable ? undefined : 'ascending'
               )}
             >
-              ${header.sortable
-                ? html` <button
-                    class="sd-interactive flex items-center gap-1"
-                    @click="${() => sortTable(columnIndex)}"
-                  >
-                    ${header.label}<sd-icon
-                      id="sortIcon-${columnIndex}"
-                      name=${sortData[columnIndex] === 'none' ? 'system/sort-down' : 'system/sort-down-filled'}
-                      class="text-[12px]"
-                    ></sd-icon>
-                  </button>`
-                : header.label}
+              ${
+                header.sortable
+                  ? html` <button
+                      class="sd-interactive flex items-center gap-1"
+                      @click="${() => sortTable(columnIndex)}"
+                    >
+                      ${header.label}<sd-icon
+                        id="sortIcon-${columnIndex}"
+                        name=${sortData[columnIndex] === 'none' ? 'system/sort-down' : 'system/sort-down-filled'}
+                        class="text-[12px]"
+                      ></sd-icon>
+                    </button>`
+                  : header.label
+              }
             </th>`;
           })}
         </tr>`;

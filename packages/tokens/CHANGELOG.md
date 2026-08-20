@@ -1,5 +1,121 @@
 # @solid-design-system/tokens
 
+## 7.0.1
+
+## 7.0.0
+
+### Major Changes
+
+- Added fallback values from the `ui-light` theme to tailwind.css and components.css so applications can work without installing a theme; _[`#3240`](https://github.com/solid-design-system/solid/pull/3240) [`d645fd7`](https://github.com/solid-design-system/solid/commit/d645fd7f6c3fe24dda2644b79dd88c4222baddb5) [@martascorreia](https://github.com/martascorreia)_
+- Added `dist/legacy-variables.css` as an optional fallback stylesheet option for accessing deprecated variables; _[`#3240`](https://github.com/solid-design-system/solid/pull/3240) [`d645fd7`](https://github.com/solid-design-system/solid/commit/d645fd7f6c3fe24dda2644b79dd88c4222baddb5) [@martascorreia](https://github.com/martascorreia)_
+- Removed deprecated variables: _[`#3240`](https://github.com/solid-design-system/solid/pull/3240) [`d645fd7`](https://github.com/solid-design-system/solid/commit/d645fd7f6c3fe24dda2644b79dd88c4222baddb5) [@martascorreia](https://github.com/martascorreia)_
+  - `--sd-button--size-lg-border-radius` replace with --sd-button-border-radius
+  - `--sd-button--size-md-border-radius` replace with --sd-button-border-radius
+  - `--sd-button--size-sm-border-radius` replace with --sd-button-border-radius
+  - `--sd-button--secondary--inverted--color-border` replace with --sd-button-secondary-inverted-color-border
+  - `--sd-chip-font-size` replace with --sd-marker-font-size
+  - `--sd-chip-font-weight` replace with --sd-marker-font-weight
+  - `--sd-flag-border-width` replace with --sd-marker-border-width
+  - `--sd-form-control-color-icon` replace with --sd-form-control-color-icon-fill
+  - `--sd-menu-color-icon` replace with --sd-menu-item-color-icon-fill
+  - `--sd-menu-color-text` replace with --sd-menu-item-color-text
+  - `--sd-menu--disabled-color-icon` replace with --sd-menu-item--disabled-color-icon-fill
+  - `--sd-menu--disabled-color-text` replace with --sd-menu-item--disabled-color-text
+  - `--sd-tag-font-weight` replace with --sd-choice-control-font-weight
+  - `--sd-tag--disabled-color-border` replace with --sd-color-border-neutral-500
+  - `--sd-navigation-item--current-color-text` replace with --sd-navigation-item-color-text
+  - `--sd-option--disabled-color-border` replace with --sd-color-border-neutral-500
+  - `--sd-audio__timestamp-color-text` replace with --sd-color-text-neutral-700
+  - `--sd-accordion__chevron-color-text` replace with --sd-accordion-color-icon-fill
+- Consolidated `sd-chip` and `sd-flag` (checkout the [migration guide](./?path=/docs/packages-tokens-migration-from-v6--docs) for details): _[`#3267`](https://github.com/solid-design-system/solid/pull/3267) [`12db708`](https://github.com/solid-design-system/solid/commit/12db708ea227bc2ce2a7835d12190ee1ae40f891) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Removed tokens:
+    - `--sd-chip--primary-200-color-background`
+    - `--sd-chip--primary-200-color-border`
+    - `--sd-chip--primary-300-color-background`
+    - `--sd-chip--primary-300-color-border`
+    - `--sd-chip--primary-500-color-background`
+    - `--sd-chip--primary-500-color-border`
+    - `--sd-chip--primary-500-color-text`
+    - `--sd-chip--white-color-border`
+    - `--sd-chip-font-size` (deprecated alias)
+    - `--sd-chip-font-weight` (deprecated alias)
+    - `--sd-flag--neutral-200-color-background`
+    - `--sd-flag--neutral-200-color-border`
+    - `--sd-flag--neutral-300-color-background`
+    - `--sd-flag--neutral-300-color-border`
+    - `--sd-flag--neutral-500-color-background`
+    - `--sd-flag--neutral-500-color-border`
+    - `--sd-flag--white-color-background`
+    - `--sd-flag--white-color-border`
+    - `--sd-flag-border-radius`
+    - `--sd-flag-border-width` (deprecated alias)
+
+  - New tokens:
+    - `--sd-chip--primary-subtle-color-background`
+    - `--sd-chip--primary-subtle-color-filled-border`
+    - `--sd-chip--primary-low-color-background`
+    - `--sd-chip--primary-low-color-filled-border`
+    - `--sd-chip--primary-medium-color-background`
+    - `--sd-chip--primary-medium-color-filled-border`
+    - `--sd-chip--primary-high-color-background`
+    - `--sd-chip--primary-high-color-filled-border`
+    - `--sd-chip--neutral-subtle-color-background`
+    - `--sd-chip--neutral-subtle-color-filled-border`
+    - `--sd-chip--neutral-low-color-background`
+    - `--sd-chip--neutral-low-color-filled-border`
+    - `--sd-chip--neutral-medium-color-background`
+    - `--sd-chip--neutral-medium-color-filled-border`
+    - `--sd-chip--neutral-high-color-background`
+    - `--sd-chip--neutral-high-color-filled-border`
+    - `--sd-chip--white-color-background` (repurposed, new mapping)
+    - `--sd-chip--white-color-filled-border`
+    - `--sd-chip--primary-low-color-border`
+    - `--sd-chip--primary-low-color-outline-fill`
+    - `--sd-chip--primary-medium-color-border`
+    - `--sd-chip--primary-medium-color-outline-fill`
+    - `--sd-chip--primary-high-color-border`
+    - `--sd-chip--primary-high-color-outline-fill`
+    - `--sd-chip--primary-strong-color-border`
+    - `--sd-chip--primary-strong-color-outline-fill`
+    - `--sd-chip--neutral-low-color-border`
+    - `--sd-chip--neutral-low-color-outline-fill`
+    - `--sd-chip--neutral-medium-color-border`
+    - `--sd-chip--neutral-medium-color-outline-fill`
+    - `--sd-chip--neutral-high-color-border`
+    - `--sd-chip--neutral-high-color-outline-fill`
+    - `--sd-chip--neutral-strong-color-border`
+    - `--sd-chip--neutral-strong-color-outline-fill`
+
+### Minor Changes
+
+- Updated `_internal` icons library to load non-UI icons from CELUM CDN. _[`#3227`](https://github.com/solid-design-system/solid/pull/3227) [`997fcf7`](https://github.com/solid-design-system/solid/commit/997fcf71e61cbd580292bec9e2e7f0c540d0f76d) [@martascorreia](https://github.com/martascorreia)_
+
+- Renamed `_internal` icons to be in sync with figma: _[`#3227`](https://github.com/solid-design-system/solid/pull/3227) [`997fcf7`](https://github.com/solid-design-system/solid/commit/997fcf71e61cbd580292bec9e2e7f0c540d0f76d) [@martascorreia](https://github.com/martascorreia)_
+  - `chevron-down` replaced with `chevron-bottom`
+  - `chevron-up` replaced with `chevron-top`
+  - `chevrons-sm-left` replaced with `chevrons-small-left`
+  - `chevrons-sm-right` replaced with `chevrons-small-right`
+  - `closing-round` replaced with `close-circle`
+  - `eye` replaced with `eye-open`
+  - `start` replaced with `play`
+
+## 6.30.0
+
+### Minor Changes
+
+- Add new `sd-icon--upload` icon. _[`#3237`](https://github.com/solid-design-system/solid/pull/3237) [`cdab3e1`](https://github.com/solid-design-system/solid/commit/cdab3e1c704558ad4d437d9d19d5ad8db5062547) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.29.1
+
+## 6.29.0
+
+## 6.28.2
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull Request _[`#3163`](https://github.com/solid-design-system/solid/pull/3163) [`91ff1c8`](https://github.com/solid-design-system/solid/commit/91ff1c81831fb3522c534306a61b8a5be3562f64) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 6.28.1
 
 ### Patch Changes

@@ -1,5 +1,36 @@
 # Changelog
 
+## 7.0.1
+
+## 7.0.0
+
+### Major Changes
+
+- Consolidated `sd-chip` and `sd-flag`: _[`#3267`](https://github.com/solid-design-system/solid/pull/3267) [`12db708`](https://github.com/solid-design-system/solid/commit/12db708ea227bc2ce2a7835d12190ee1ae40f891) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Removed the `sd-flag` style.
+  - Added `sd-chip--color-{primary,neutral,white}`, `sd-chip--shade-{subtle,low,medium,high}`, `sd-chip--size-{sm,lg}`, `sd-chip--outline` and `sd-chip--sharp` classes.
+
+### Patch Changes
+
+- Fix versioned icons to work with next versions. _[`#3186`](https://github.com/solid-design-system/solid/pull/3186) [`30af3ad`](https://github.com/solid-design-system/solid/commit/30af3ad6d2e8daebeaa9d6a863fdd5794a015da9) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.30.0
+
+### Minor Changes
+
+- Add `sd-file-selector` component. _[`#3237`](https://github.com/solid-design-system/solid/pull/3237) [`cdab3e1`](https://github.com/solid-design-system/solid/commit/cdab3e1c704558ad4d437d9d19d5ad8db5062547) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.29.1
+
+## 6.29.0
+
+## 6.28.2
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull Request _[`#3163`](https://github.com/solid-design-system/solid/pull/3163) [`91ff1c8`](https://github.com/solid-design-system/solid/commit/91ff1c81831fb3522c534306a61b8a5be3562f64) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 6.28.1
 
 ## 6.28.0
