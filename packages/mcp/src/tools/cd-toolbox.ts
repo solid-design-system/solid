@@ -2,8 +2,7 @@ import fs from 'node:fs/promises';
 import { join, basename, extname } from 'node:path';
 import { z } from 'zod';
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { cdToolboxPath, cdToolboxPackageDocsPath } from '../utilities/index.js';
-import { getAvailableCdToolboxItems } from '../utilities/index.js';
+import { cdToolboxPath, cdToolboxPackageDocsPath, getAvailableCdToolboxItems } from '../utilities/index.js';
 import { normalizeSafeSlug } from '../utilities/input.js';
 
 const readIfExists = async (filePath: string): Promise<string | null> => {
@@ -64,7 +63,6 @@ export const cdToolboxTool = (server: McpServer) => {
       title: 'CD Toolbox'
     },
     async ({ item, example, doc }) => {
-      // Validate if doc is combined with item/example - not allowed
       if (doc && (item || example)) {
         return {
           content: [
@@ -76,7 +74,6 @@ export const cdToolboxTool = (server: McpServer) => {
         };
       }
 
-      // Validate if `example` is provided without `item` - not allowed
       if (example && !item) {
         return {
           content: [
@@ -88,7 +85,6 @@ export const cdToolboxTool = (server: McpServer) => {
         };
       }
 
-      // --- package-level doc ---
       if (doc) {
         const safeDoc = normalizeSafeSlug(doc);
         if (!safeDoc) {
@@ -115,7 +111,6 @@ export const cdToolboxTool = (server: McpServer) => {
         return { content: [{ type: 'text', text: content }] };
       }
 
-      // --- specific item example (HTML story) ---
       if (item && example) {
         const safeItem = normalizeSafeSlug(item);
         if (!safeItem) {
@@ -151,7 +146,6 @@ export const cdToolboxTool = (server: McpServer) => {
         return { content: [{ type: 'text', text: storyMd }] };
       }
 
-      // --- specific item spec ---
       if (item) {
         const safeItem = normalizeSafeSlug(item);
         if (!safeItem) {
@@ -175,15 +169,13 @@ export const cdToolboxTool = (server: McpServer) => {
         return { content: [{ type: 'text', text: infoMd }] };
       }
 
-      // --- no args: index ---
       const [items, packageDocs] = await Promise.all([getAvailableCdToolboxItems(), getAvailablePackageDocs()]);
-
       const text = [
         '## Solid Design System CD Toolbox',
         '',
         'Use `item` to get the full spec for any specific toolbox item.',
         '',
-        items.map(i => (i.description ? `- ${i.name} – ${i.description}` : `- ${i.name}`)).join('\n'),
+        items.map(i => (i.description ? `- ${i.name} - ${i.description}` : `- ${i.name}`)).join('\n'),
         '',
         '## Package Docs',
         '',
