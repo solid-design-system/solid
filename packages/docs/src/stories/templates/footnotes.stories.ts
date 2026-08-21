@@ -19,12 +19,13 @@ export default {
   }
 };
 
+/**
+ * Example of how to add numbered inline footnote references within body text that link to corresponding entries at the bottom of the page. Use this pattern for long-form editorial content where sources or clarifications need to be accessible without interrupting the reading flow.
+ */
+
 export const LinkedFootnotes = {
   render: () => html`
     <div class="sd-prose">
-      <!-- Dev-note: The <a> elements have been wrapped in <span> elements due to an issue in safari
-      where using the mouse to navigate between footnotes would trigger the focus-outline. -->
-
       <h2 class="sd-headline sd-headline--3xl">The Power of a Solid Design System</h2>
       <p class="sd-paragraph">
         A solid design system is the backbone of a cohesive product, offering a single source of truth that promotes
@@ -54,7 +55,7 @@ export const LinkedFootnotes = {
         increasingly complex. A well-defined design system mitigates these challenges by acting as a blueprint for
         future iterations, preventing visual drift and maintaining brand integrity across diverse touchpoints. Teams can
         confidently experiment and innovate within the system’s boundaries, knowing that their work aligns with
-        established guidelines <span id="ref_4" class="sd-footnotes--marker"><a href="#note_4">3</a></span> .
+        established guidelines <span id="ref_4" class="sd-footnotes--marker"><a href="#note_4">4</a></span> .
       </p>
       <p>
         By continuously evolving with feedback and technological advancements, a design system remains a living entity
@@ -84,5 +85,42 @@ export const LinkedFootnotes = {
         Effective design systems evolve, remaining adaptable to product and user needs over time.
       </li>
     </ol>
+  `
+};
+
+/**
+ * Example of a numbered inline footnotes within a primary container.
+ */
+export const LinkedFootnotesInContainer = {
+  name: 'Linked Footnotes in Container',
+  render: () => html`
+    <div class="sd-container sd-container--variant-primary flex flex-col gap-8">
+      <div class="sd-prose sd-prose--inverted">
+        <h2 class="sd-headline sd-headline--inverted sd-headline--3xl">Financing that fits your life</h2>
+        <p class="sd-paragraph sd-paragraph--inverted">
+          A clear loan structure helps customers understand exactly what they're signing up for, before they commit to
+          anything
+          <span id="ref_c_1" class="sd-footnotes--marker sd-footnotes--inverted"><a href="#note_c_1">1</a></span> .
+          Transparent rates, honest fees, and flexible repayment options work together to reduce surprises, helping
+          build long-term trust between the bank and the people it serves.
+        </p>
+        <p class="sd-paragraph sd-paragraph--inverted">
+          Every application is reviewed individually, factoring in income, credit history, and personal financial goals
+          <span id="ref_c_2" class="sd-footnotes--marker sd-footnotes--inverted"><a href="#note_c_2">2</a></span> . This
+          tailored approach means financing decisions reflect each customer's real situation, rather than applying a
+          one-size-fits-all model that ignores individual circumstances.
+        </p>
+      </div>
+      <ol class="sd-footnotes sd-footnotes--inverted flex flex-col gap-4">
+        <li id="note_c_1">
+          <a href="#ref_c_1" class="sd-footnotes--marker"></a>
+          Rates shown are indicative and subject to credit approval.
+        </li>
+        <li id="note_c_2">
+          <a href="#ref_c_2" class="sd-footnotes--marker"></a>
+          Terms may vary based on income and repayment history.
+        </li>
+      </ol>
+    </div>
   `
 };
