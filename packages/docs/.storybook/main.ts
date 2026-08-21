@@ -1,6 +1,13 @@
 import tsconfigPaths from 'vite-tsconfig-paths';
+import { loadEnv } from 'vite';
+
+const environment = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
+const serializedThemePassword = JSON.stringify(environment.STORYBOOK_THEME_PASSWORD || '').replaceAll('<', '\\u003c');
+const themePasswordScript = `<script>window.__SOLID_STORYBOOK_THEME_PASSWORD__ = ${serializedThemePassword};</script>`;
 
 export default {
+  managerHead: head => `${head}${themePasswordScript}`,
+  previewHead: head => `${head}${themePasswordScript}`,
   stories: [
     // General, Migration
     '../src/stories/docs/**/[^_]*.@(mdx|stories.*)',
