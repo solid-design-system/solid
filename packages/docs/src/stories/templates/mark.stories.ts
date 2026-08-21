@@ -17,6 +17,10 @@ export default {
   }
 };
 
+/**
+ * Example of how to apply the green accent mark to highlight a key word or phrase within a headline.
+ */
+
 export const HeadlineWithMark = {
   name: 'Headline with Mark',
   render: () =>

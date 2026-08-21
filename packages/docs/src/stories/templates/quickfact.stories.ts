@@ -12,6 +12,10 @@ export default {
   title: 'Templates/Quickfact'
 };
 
+/**
+ * Example of how to display a single key stat or fact with a supporting icon, centered on the page. Use this variant when a concise figure needs to stand out without additional explanatory text.
+ */
+
 export const QuickfactWithSummary = {
   name: 'Quickfact with Summary',
   render: () =>
@@ -52,8 +56,10 @@ export const QuickfactWithDescription = {
 };
 
 /**
- * This sample shows how to group “sd-quickfacts”.<br /> Additional JavaScript is used to enable closing all other quickfacts when one is opened and to equalize the height of all summaries in a row. Open the "Show code" section to see the detailed implementation.
- */
+ * This samples show how to group `sd-quickfacts`.
+ *
+ * Code-only: Additional JavaScript is used to enable closing all other quickfacts when one is opened and to equalize the height of all summaries in a row. Open the "Show code" section to see the detailed implementation.
+ *  */
 export const Grouping = {
   render: () =>
     html`<div>

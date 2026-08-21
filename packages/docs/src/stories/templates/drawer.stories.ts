@@ -26,7 +26,9 @@ export default {
 /**
  * ### Tablet Navigation
  *
- * When consuming sd-header please ensure that there are no margins applied on the left, right and bottom of the dropdown. The top margin of the dropdown should be kept otherwise the first navigation item is cutted.
+ * The interaction in sd-drawer is the same as in sd-header, providing a consistent user experience.
+
+ * Code-only: When consuming sd-header please ensure that there are no margins applied on the left, right and bottom of the dropdown. The top margin of the dropdown should be kept otherwise the first navigation item is cutted.
  */
 
 export const Default = {

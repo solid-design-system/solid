@@ -19,6 +19,10 @@ export default {
   }
 };
 
+/**
+ * Example of how to add numbered inline footnote references within body text that link to corresponding entries at the bottom of the page. Use this pattern for long-form editorial content where sources or clarifications need to be accessible without interrupting the reading flow.
+ */
+
 export const LinkedFootnotes = {
   render: () => html`
     <div class="sd-prose">

@@ -14,7 +14,9 @@ export default {
 };
 
 /**
- * The teaser itself is not clickable, but links can be placed inside.
+ * Example of how to use a teaser where the card itself is not clickable, but contains a button as the explicit call to action. Use this when a deliberate user action is preferred over an accidentally triggered navigation.
+ *
+ * Code-only: The teaser itself is not clickable, but links can be placed inside.
  *
  * ```html
  * <sd-teaser>
@@ -53,6 +55,10 @@ export const UnclickableTeaserWithButton = {
     `;
   }
 };
+
+/**
+ * Example of how to make the entire teaser card a clickable link, turning the image, headline, and body text into a single tap/click target. Use this for article or content previews where the full card should navigate to the detail page. You can also use additional links to link realted secondary actions.
+ */
 
 export const ClickableTeaser = {
   render: () => {
@@ -100,6 +106,10 @@ export const ClickableTeaser = {
     `;
   }
 };
+
+/**
+ * Example of how to replace the teaser image with an icon to represent document types or abstract topics.
+ */
 
 export const TeaserWithIcon = {
   name: 'Teaser with Icon',
@@ -172,6 +182,10 @@ export const TeaserWithIcon = {
     `;
   }
 };
+
+/**
+ * Example of how to enrich a teaser with chips for content categorization and to highlight status or topic. Several layout variants are shown, including vertical cards, horizontal split layouts, and teasers with image overlays.
+ */
 
 export const teaserWithChip = {
   name: 'Teaser with Chip',
@@ -258,6 +272,10 @@ export const teaserWithChip = {
   }
 };
 
+/**
+ * Example of how to split a teaser evenly between an image and a text panel containing a quote, author name, and link. Use this layout for testimonial-style or featured content teasers where image and copy carry equal visual weight.
+ */
+
 export const teaserWithDivision = {
   name: 'Teaser with 50:50 Division',
   render: () => {
@@ -316,6 +334,10 @@ export const teaserWithDivision = {
     `;
   }
 };
+
+/**
+ * Example of how to use a teaser to present a contact person with a portrait image, name, role, and contact link. Use this pattern in team pages, advisor listings, or any context where a human point of contact needs to be surfaced.
+ */
 
 export const contactTeaser = {
   render: () => {

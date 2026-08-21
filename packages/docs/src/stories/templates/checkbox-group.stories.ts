@@ -14,7 +14,7 @@ export default {
 };
 
 /**
- * Example of a checkbox group with a label and two checked checkboxes.
+ * Example of how to use a checkbox group with a parent "select all" checkbox to let users pick multiple options at once. The indeterminate state on the parent indicates a partial selection, as shown with two of three investment preferences checked.
  */
 
 export const Default = {

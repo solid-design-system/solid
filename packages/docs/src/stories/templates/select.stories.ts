@@ -14,6 +14,8 @@ export default {
 };
 
 /**
+ * Example of how to organize select options into labeled groups, making long lists easier to scan.
+ *
  * - Label: Additionally a label can be shown for each option group.
  * - Divider: Use `sd-divider` to group option items visually.
  * - Accessibility hint: group labels will be neglected by most assistive devices.
@@ -57,6 +59,10 @@ export const Default = {
       </sd-select>
     </div>`
 };
+
+/**
+ * Example of how to combine a select dropdown with checkboxes to allow multiple selections within a grouped option list. The trigger label updates to reflect the number of currently selected items, giving users immediate feedback on their choices.
+ */
 
 export const SelectWithOptionAndCheckbox = {
   name: 'Select with Option and Checkbox',

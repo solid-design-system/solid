@@ -13,6 +13,10 @@ export default {
   }
 };
 
+/**
+ * Use this template to provide login options. Use “optional” to mark non-required fields. The mandatory fields remain requiered, only the asterisk is omitted.
+ */
+
 export const LoginForm = {
   render: () => html`
     <style>
@@ -54,6 +58,10 @@ export const LoginForm = {
     </script>
   `
 };
+
+/**
+ * Only mark the optional fields if most of the fields are mandatory.
+ */
 
 export const ContactForm = {
   render: () => html`

@@ -13,6 +13,10 @@ export default {
   }
 };
 
+/**
+ * Example of how to show a skeleton loading state inside an expanded accordion panel while its content is being fetched. Placeholder blocks replace the text and media elements, preventing layout shift once the real content loads.
+ */
+
 export const Default = {
   name: 'Accordion Group with Skeleton',
   render: () =>

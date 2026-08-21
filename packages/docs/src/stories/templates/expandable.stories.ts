@@ -17,9 +17,9 @@ export default {
  *
  * ### Text Styles
  *
- * Examples of the `sd-expandable` with different typography classes on the element itself:
- * - `sd-leadtext`
- * - `sd-prose`
+ * Examples of the `sd-expandable` with different typography classes on the element itself:
+ * - Leadtext (default)
+ * - Paragraph
  */
 export const TextStyles = {
   render: () =>

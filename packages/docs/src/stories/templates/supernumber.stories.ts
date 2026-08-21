@@ -13,6 +13,10 @@ export default {
   }
 };
 
+/**
+ * Example of how the supernumber component scales across different sizes.s
+ */
+
 export const SupernumberSizes = {
   render: () => html`
     <div class="flex flex-col gap-4">
@@ -39,6 +43,10 @@ export const SupernumberSizes = {
     </div>
   `
 };
+
+/**
+ * Example of how to combine a supernumber with an overline category label, a bold subline, and a descriptive caption to give a key figure full editorial context.
+ */
 
 export const OverlineSublineDescription = {
   name: 'Supernumber with Overline, Subline and Description',
@@ -69,9 +77,9 @@ export const Inverted = {
 };
 
 /**
- * Use the countUp.js library to animate a number.
- *
- * __Hint:__ Find more information in the [countUp.js documentation](https://github.com/inorganik/CountUp.js?tab=readme-ov-file#usage).
+ * Code-only: <br>
+ * Use the “countUp.js” to animate the number. <br>
+ * Find more information in the [countUp.js documentation](https://github.com/inorganik/CountUp.js?tab=readme-ov-file#usage).
  */
 
 export const SupernumberAnimation = {
@@ -97,9 +105,9 @@ export const SupernumberAnimation = {
 };
 
 /**
- * Use the prefix option of countUp.js to add a prefix to the supernumber.
- *
- * __Hint:__ Open the 'show code' section to see the script.
+ * Code-only: <br>
+ * Use the prefix option of countUp.js to add a prefix to the supernumber. <br>
+ * Open the “show code” section to see the script.
  */
 export const SupernumberAnimationPrefix = {
   name: 'Supernumber Animation with Prefix',
@@ -132,9 +140,9 @@ export const SupernumberAnimationPrefix = {
 };
 
 /**
- * Use the `suffix` option of `countUp.js` to add a suffix to the supernumber.
- *
- * __Hint:__ Open the 'show code' section to see the script.
+ * Code-only: <br>
+ * Use the suffix option of countUp.js to add a suffix to the supernumber.<br>
+ * Open the “show code” section to see the script.
  */
 
 export const SupernumberAnimationSuffix = {
@@ -168,9 +176,9 @@ export const SupernumberAnimationSuffix = {
 };
 
 /**
- * Use the `separator` and `decimal` options to format the supernumber according to your i18n needs.
- *
- * __Hint:__ Find advanced options (eg: custom numerals) in the [countUp.js documentation](https://github.com/inorganik/CountUp.js?tab=readme-ov-file#usage).
+ * Code-only:<br>
+ * Use the ”separator” and ”decimal” options to format the supernumber according to your i18n needs.<br>
+ * Find advanced options (eg: custom numerals) in the [countUp.js documentation](https://github.com/inorganik/CountUp.js?tab=readme-ov-file#usage).
  */
 
 export const SupernumberSeperatorDecimal = {

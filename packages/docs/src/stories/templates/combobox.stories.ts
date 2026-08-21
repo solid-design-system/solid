@@ -30,7 +30,7 @@ export default {
 };
 
 /**
- * A simple suggestions list shows the user a filtered list.
+ * Example of how to use the combobox to filter a list of options as the user types. The dropdown displays matching results in real time, narrowing the visible options based on the current input.
  */
 export const SimpleSuggests = {
   render: () => html`
@@ -41,9 +41,9 @@ export const SimpleSuggests = {
 };
 
 /**
- * The filtered options shown in the list can be customized by passing a function to the getOption property. Your function can return a string of HTML, a Lit Template, or an HTMLElement. The getOption() function will be called for each option. The first argument is an element and the second argument is the query string.
- * Remember that the options are rendered in a shadow root. To style them, you can use the style attribute in your template or you can add your own parts and target them with the ::part() selector.
- * Note: Be sure you trust the content you are outputting! Passing unsanitized user input to getOption() can result in XSS vulnerabilities.
+ Example of how to enhance combobox suggestions by bolding the portion of each option that matches the current query. This helps users quickly see why a result was returned and confirms the input is being recognized correctly. 
+
+ Code-only: The filtered options shown in the list can be customized by passing a function to the getOption property. Your function can return a string of HTML, a Lit Template, or an HTMLElement. The getOption() function will be called for each option. The first argument is an element and the second argument is the query string. Remember that the options are rendered in a shadow root. To style them, you can use the style attribute in your template or you can add your own parts and target them with the ::part() selector. Note: Be sure you trust the content you are outputting! Passing unsanitized user input to getOption() can result in XSS vulnerabilities.
  */
 export const HighlightQuery = {
   render: () => {
@@ -110,7 +110,11 @@ export const MultipleHighlightQuery = {
 };
 
 /**
- * Use <sd-optgroup> to group <sd-option>s visually.
+ * Example of how to organize combobox suggestions into labeled groups using sd-optgroup. The dropdown separates results into distinct categories making it easier to scan results when they come from multiple sources.
+ *
+ * Use <sd-optgroup> to group <sd-option> visually.
+ *
+ * Accessibility hint: Label can be omitted for search input fields if a button (e.g., aria-label="Search") with a search icon is present.
  */
 export const GroupingQuery = {
   render: () => html`

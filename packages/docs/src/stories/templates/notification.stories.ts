@@ -3,6 +3,10 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit';
 
+/**
+ * Example of how to use the notification component across its five semantic variants to communicate system feedback to the user.
+ */
+
 export default {
   title: 'Templates/Notification',
   tags: ['!dev', 'autodocs'],
@@ -16,8 +20,7 @@ export default {
 };
 
 /**
- * ```
- * ```
+ * Displays a neutral message, shown here in both inline and standalone button variants, for non-critical context such as access restrictions.
  */
 export const InfoNotification = {
   name: 'Info Notification',
@@ -38,6 +41,10 @@ export const InfoNotification = {
     `;
   }
 };
+
+/**
+ * Is a transient inline message with an Undo action and a dismiss button, suited for confirming reversible operations like deletions.
+ */
 
 export const InfoToastNotification = {
   name: 'Info Toast Notification',
@@ -78,6 +85,10 @@ export const InfoToastNotification = {
   }
 };
 
+/**
+ * Confirms a completed action with a bold headline and supporting text, using a green icon to reinforce the positive outcome.
+ */
+
 export const SuccessNotification = {
   name: 'Success Notification',
   render: (_args: Record<string, any>) => {
@@ -98,6 +109,10 @@ export const SuccessNotification = {
   }
 };
 
+/**
+ * Alerts the user to a failure, includes a link to further detail, and can be dismissed. Use when a process could not be completed and the user needs to act.
+ */
+
 export const ErrorNotification = {
   name: 'Error  Notification',
   render: (_args: Record<string, any>) => {
@@ -110,6 +125,10 @@ export const ErrorNotification = {
     `;
   }
 };
+
+/**
+ * Draws attention to a time-sensitive or cautionary situation, optionally including a call-to-action button to resolve the issue directly from the notification.
+ */
 
 export const WarningNotification = {
   name: 'Warning Notification',

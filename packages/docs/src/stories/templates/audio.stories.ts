@@ -13,6 +13,10 @@ export default {
   }
 };
 
+/**
+ * Example of how to combine an audio player with a title and supporting description text. The text appears above the player controls, providing context for the audio content before the user starts playback.
+ */
+
 export const Default = {
   name: 'Audio with Text',
   render: () => html`
@@ -54,6 +58,10 @@ export const Default = {
     </sd-audio>
   `
 };
+
+/**
+ * Example of how to combine an audio player within a teaser component, combining a thumbnail image, title, and description with playback controls. Use this variant when the audio content benefits from a visual preview to encourage engagement.
+ */
 
 export const AudioWithTeaser = {
   name: 'Audio with Teaser',
@@ -121,6 +129,10 @@ export const AudioWithTeaser = {
     </sd-audio>
   `
 };
+
+/**
+ * Example of how to use the audio player with an optional visual display area. The first variant shows a simple title above the player, while the second adds a waveform visualization and caption below,useful when a graphical representation of the audio enhances the content experience.
+ */
 
 export const AudioAnimated = {
   name: 'Audio with Display',
