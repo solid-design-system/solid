@@ -82,7 +82,7 @@ export default class SdTabGroup extends SolidElement {
 
     this.resizeObserver = new ResizeObserver(() => {
       this.updateScrollControls();
-      this.repositionIndicator();
+      this.repositionIndicator(false);
     });
 
     this.mutationObserver = new MutationObserver(mutations => {
@@ -93,7 +93,7 @@ export default class SdTabGroup extends SolidElement {
 
       // Sync tabs when disabled states change
       if (mutations.some(m => m.attributeName === 'disabled')) {
-        this.syncTabsAndPanels();
+        this.syncTabsAndPanels(false);
       }
     });
 
@@ -289,7 +289,7 @@ export default class SdTabGroup extends SolidElement {
       // Sync active tab and panel
       this.tabs.map(el => (el.active = el === this.activeTab));
       this.panels.map(el => (el.active = el.name === this.activeTab?.panel));
-      this.repositionIndicator();
+      this.repositionIndicator(options.emitEvents);
 
       scrollIntoView(this.activeTab, this.nav, 'horizontal', options.scrollBehavior);
 
@@ -315,10 +315,10 @@ export default class SdTabGroup extends SolidElement {
   }
 
   // This stores tabs and panels so we can refer to a cache instead of calling querySelectorAll() multiple times.
-  private syncTabsAndPanels() {
+  private syncTabsAndPanels(animate = false) {
     this.tabs = this.getAllTabs({ includeDisabled: false });
     this.panels = this.getAllPanels();
-    this.repositionIndicator();
+    this.repositionIndicator(animate);
 
     this.panels.forEach(panel => {
       panel.tabIndex = 0;
@@ -336,7 +336,7 @@ export default class SdTabGroup extends SolidElement {
     this.hasScrollControls = this.nav.scrollWidth > this.nav.clientWidth;
   }
 
-  private async repositionIndicator() {
+  private async repositionIndicator(animate = true) {
     await this.updateComplete;
 
     const currentTab = this.activeTab;
@@ -356,7 +356,7 @@ export default class SdTabGroup extends SolidElement {
     const offsetX = isCentered ? tabCenter - containerCenter : tabRect.left - containerRect.left;
 
     // Disables the transition for the indicator on first load
-    if (!this.hasPositionedIndicator) {
+    if (!animate || !this.hasPositionedIndicator) {
       indicator.style.transition = 'none';
       indicator.style.width = `${width}px`;
       indicator.style.transform = `translateX(${offsetX}px)`;
@@ -428,7 +428,7 @@ export default class SdTabGroup extends SolidElement {
                   : ''
               }
               <div part="separation" class="border-neutral-400 absolute w-full h-0.25 bottom-0 border-b z-10"></div>
-              <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
+              <slot name="nav" @slotchange=${() => this.syncTabsAndPanels()}></slot>
             </div>
           </div>
 
@@ -462,7 +462,7 @@ export default class SdTabGroup extends SolidElement {
         <slot
           part="body"
           class=${cx('block auto py-8 px-6', this.variant === 'container' && 'border border-neutral-400 border-t-0')}
-          @slotchange=${this.syncTabsAndPanels}
+          @slotchange=${() => this.syncTabsAndPanels()}
         ></slot>
       </div>
     `;
