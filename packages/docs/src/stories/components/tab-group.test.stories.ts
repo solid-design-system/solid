@@ -378,5 +378,6 @@ export const SampleWithLinks = {
 
 export const Combination = generateScreenshotStory(
   [Default, TabVariants, Scrollable, Parts, Mouseless, SampleCentered, SampleNoLine, SampleBold, SampleDeepLink],
-  { additionalChromaticOptions: { delay: 500 } }
+  // pauseAnimationAtEnd avoids capturing the active-tab-indicator mid-transition
+  { additionalChromaticOptions: { delay: 500, pauseAnimationAtEnd: true } }
 );
