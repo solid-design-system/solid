@@ -47,6 +47,8 @@ export default class SdTabGroup extends SolidElement {
   private resizeObserver: ResizeObserver;
   private tabs: SdTab[] = [];
   private panels: SdTabPanel[] = [];
+  // Prevents the indicator from transitioning into place on its very first positioning (e.g. avoids Chromatic capturing a mid-animation frame).
+  private hasPositionedIndicator = false;
 
   @query('[part=base]') tabGroup: HTMLElement;
   @query('[part=body]') body: HTMLSlotElement;
@@ -353,6 +355,17 @@ export default class SdTabGroup extends SolidElement {
 
     const width = currentTab.offsetWidth;
     const offsetX = isCentered ? tabCenter - containerCenter : tabRect.left - containerRect.left;
+
+    if (!this.hasPositionedIndicator) {
+      // Disable the transition for the initial positioning so the indicator doesn't visibly slide into place on load.
+      indicator.style.transition = 'none';
+      indicator.style.width = `${width}px`;
+      indicator.style.transform = `translateX(${offsetX}px)`;
+      void indicator.offsetWidth; // force reflow so the transition is disabled for this update
+      indicator.style.transition = '';
+      this.hasPositionedIndicator = true;
+      return;
+    }
 
     indicator.style.width = `${width}px`;
     indicator.style.transform = `translateX(${offsetX}px)`;
