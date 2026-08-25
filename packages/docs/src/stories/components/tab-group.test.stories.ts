@@ -378,5 +378,5 @@ export const SampleWithLinks = {
 
 export const Combination = generateScreenshotStory(
   [Default, TabVariants, Scrollable, Parts, Mouseless, SampleCentered, SampleNoLine, SampleBold, SampleDeepLink],
-  { additionalChromaticOptions: { delay: 500, pauseAnimationAtEnd: true } }
+  { additionalChromaticOptions: { delay: 1000, pauseAnimationAtEnd: true } }
 );
