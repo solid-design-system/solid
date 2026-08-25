@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 7.0.2
+
+### Patch Changes
+
+- Fixed the border style of `sd-combobox` and `sd-datepicker` in valid and invalid states when the flyout is open for better consistency across components. _[`#3284`](https://github.com/solid-design-system/solid/pull/3284) [`8440250`](https://github.com/solid-design-system/solid/commit/8440250444eeeca15c6d0285a914cf48c2d4dfb9) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 7.0.1
 
 ### Patch Changes
@@ -12,8 +18,9 @@
   - Improved calendar accessibility by allowing unavailable dates to receive focus and be announced as unavailable instead of being skipped.
 
 ### 📈 Stats
-* Uncompressed: 633 KB (+1 KB / +0%)
-* Gzipped: 142 KB (unchanged)
+
+- Uncompressed: 633 KB (+1 KB / +0%)
+- Gzipped: 142 KB (unchanged)
 
 ## 7.0.0
 
