@@ -68,21 +68,21 @@ export const LinkedFootnotes = {
     <ol class="sd-footnotes mt-12">
       <li id="note_1">
         <a href="#ref_1" class="sd-footnotes--marker"></a>
-        Design systems act as a "single source of truth," promoting consistency across all products.
+        A design system centralizes guidelines, ensuring consistency across teams and products.
       </li>
       <li id="note_2">
         <a href="#ref_2a" class="sd-footnotes--marker"></a>
         <a href="#ref_2b" class="sd-footnotes--marker"></a>
         <a href="#ref_2c" class="sd-footnotes--marker"></a>
-        Component libraries in design systems streamline workflows, boosting efficiency and scalability.
+        A consistent UI fosters familiarity, trust, and better accessibility for diverse users.
       </li>
       <li id="note_3">
         <a href="#ref_3" class="sd-footnotes--marker"></a>
-        A design system’s consistency helps reinforce brand identity and user trust.
+        Regular updates keep the design system adaptable to new trends and technologies.
       </li>
       <li id="note_4">
         <a href="#ref_4" class="sd-footnotes--marker"></a>
-        Effective design systems evolve, remaining adaptable to product and user needs over time.
+        Standardized components and documentation reduce development time and design inconsistencies.
       </li>
     </ol>
   `
