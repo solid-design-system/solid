@@ -199,6 +199,39 @@ describe('<sd-carousel>', () => {
       expect(el.shadowRoot!.querySelector('.number')).to.exist;
     });
 
+    it('should not focus a pagination on mousedown', async () => {
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel variant="dot">
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
+      const paginationItem = el.shadowRoot!.querySelectorAll<HTMLButtonElement>('.carousel__pagination-item')[1];
+
+      const mousedownEvent = new MouseEvent('mousedown', { bubbles: true, cancelable: true });
+      paginationItem.dispatchEvent(mousedownEvent);
+
+      expect(mousedownEvent.defaultPrevented).to.be.true;
+      expect(paginationItem).to.not.have.focus;
+    });
+
+    it('should remain keyboard focusable', async () => {
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel variant="dot">
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
+
+      const paginationItem = el.shadowRoot!.querySelectorAll<HTMLButtonElement>('.carousel__pagination-item')[1];
+
+      paginationItem.focus();
+
+      expect(paginationItem.tabIndex).to.equal(0);
+    });
+
     it('should render dot pagination when variant is dot', async () => {
       // Arrange
       const el = await fixture(html`
