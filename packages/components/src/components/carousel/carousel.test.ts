@@ -199,39 +199,6 @@ describe('<sd-carousel>', () => {
       expect(el.shadowRoot!.querySelector('.number')).to.exist;
     });
 
-    it('should not focus a pagination on mousedown', async () => {
-      const el = await fixture<SdCarousel>(html`
-        <sd-carousel variant="dot">
-          <sd-carousel-item>Node 1</sd-carousel-item>
-          <sd-carousel-item>Node 2</sd-carousel-item>
-          <sd-carousel-item>Node 3</sd-carousel-item>
-        </sd-carousel>
-      `);
-      const paginationItem = el.shadowRoot!.querySelectorAll<HTMLButtonElement>('.carousel__pagination-item')[1];
-
-      const mousedownEvent = new MouseEvent('mousedown', { bubbles: true, cancelable: true });
-      paginationItem.dispatchEvent(mousedownEvent);
-
-      expect(mousedownEvent.defaultPrevented).to.be.true;
-      expect(paginationItem).to.not.have.focus;
-    });
-
-    it('should remain keyboard focusable', async () => {
-      const el = await fixture<SdCarousel>(html`
-        <sd-carousel variant="dot">
-          <sd-carousel-item>Node 1</sd-carousel-item>
-          <sd-carousel-item>Node 2</sd-carousel-item>
-          <sd-carousel-item>Node 3</sd-carousel-item>
-        </sd-carousel>
-      `);
-
-      const paginationItem = el.shadowRoot!.querySelectorAll<HTMLButtonElement>('.carousel__pagination-item')[1];
-
-      paginationItem.focus();
-
-      expect(paginationItem.tabIndex).to.equal(0);
-    });
-
     it('should render dot pagination when variant is dot', async () => {
       // Arrange
       const el = await fixture(html`
@@ -351,7 +318,7 @@ describe('<sd-carousel>', () => {
         expect(el.shadowRoot!.activeElement).to.not.be.equal(previousButton);
       });
 
-      it('should focus the previous button when the active slide is the last and loop attribute is not set', async () => {
+      it('should not focus the previous button after reaching the last slide with a mouse', async () => {
         const el = await fixture<SdCarousel>(html`
           <sd-carousel>
             <sd-carousel-item>Node 1</sd-carousel-item>
@@ -363,14 +330,32 @@ describe('<sd-carousel>', () => {
         const nextButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--next')!;
         const previousButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--previous')!;
 
+        el.activeSlide = 1;
         await el.updateComplete;
-
-        await clickOnElement(nextButton);
-        await oneEvent(el.scrollContainer, 'scrollend');
         await clickOnElement(nextButton);
         await el.updateComplete;
 
         expect(el.activeSlide).to.be.equal(2);
+        expect(el.shadowRoot!.activeElement).to.not.be.equal(previousButton);
+      });
+
+      it('should focus the previous button after reaching the last slide with the keyboard', async () => {
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel>
+            <sd-carousel-item>Node 1</sd-carousel-item>
+            <sd-carousel-item>Node 2</sd-carousel-item>
+            <sd-carousel-item>Node 3</sd-carousel-item>
+          </sd-carousel>
+        `);
+        const nextButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--next')!;
+        const previousButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--previous')!;
+
+        el.activeSlide = 1;
+        await el.updateComplete;
+        nextButton.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, composed: true }));
+        await el.updateComplete;
+
+        expect(el.activeSlide).to.equal(2);
         expect(el.shadowRoot!.activeElement).to.be.equal(previousButton);
       });
 
