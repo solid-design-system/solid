@@ -26,7 +26,7 @@ export default {
 export const LinkedFootnotes = {
   render: () => html`
     <div class="sd-prose">
-      <h2 class="sd-headline sd-headline--3xl">The Power of a Solid Design System</h2>
+      <h2 class="sd-headline sd-headline--size-3xl">The Power of a Solid Design System</h2>
       <p class="sd-paragraph">
         A solid design system is the backbone of a cohesive product, offering a single source of truth that promotes
         consistency across all platforms and teams
@@ -94,9 +94,9 @@ export const LinkedFootnotes = {
 export const LinkedFootnotesInContainer = {
   name: 'Linked Footnotes in Container',
   render: () => html`
-    <div class="sd-container sd-container--variant-primary flex flex-col gap-8">
+    <div class="sd-container sd-container--variant-primary flex flex-col gap-8 max-w-xl">
       <div class="sd-prose sd-prose--inverted">
-        <h2 class="sd-headline sd-headline--inverted sd-headline--3xl">Financing that fits your life</h2>
+        <h2 class="sd-headline sd-headline--inverted sd-headline--size-3xl">Financing that fits your life</h2>
         <p class="sd-paragraph sd-paragraph--inverted">
           A clear loan structure helps customers understand exactly what they're signing up for, before they commit to
           anything
@@ -111,7 +111,7 @@ export const LinkedFootnotesInContainer = {
           one-size-fits-all model that ignores individual circumstances.
         </p>
       </div>
-      <ol class="sd-footnotes sd-footnotes--inverted flex flex-col gap-4">
+      <ol class="sd-footnotes sd-footnotes--inverted flex flex-col gap-2">
         <li id="note_c_1">
           <a href="#ref_c_1" class="sd-footnotes--marker"></a>
           Rates shown are indicative and subject to credit approval.
