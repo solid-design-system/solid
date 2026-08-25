@@ -12,10 +12,10 @@ fs.readdir(directoryPath, (err, files) => {
 
   files.forEach(file => {
     if (file.endsWith('.js')) {
+      const content = fs.readFileSync(path.join(directoryPath, file), 'utf8');
       if (
-        fs
-          .readFileSync(path.join(directoryPath, file), 'utf8')
-          .includes(`wave 1.3s infinite, loader-color-current 2.6s infinite;`)
+        content.includes(`wave 1.3s infinite, loader-color-current 2.6s infinite;`) ||
+        content.includes('transition-[transform,width]')
       ) {
         matchedFiles.push(file);
       }
@@ -41,7 +41,9 @@ fs.readdir(directoryPath, (err, files) => {
         'wave 1.3s infinite, loader-color-current 2.6s infinite;':
           'wave 0s infinite, loader-color-current 0s infinite;',
         'wave 1.3s infinite, loader-color-white 2.6s infinite;': 'wave 0s infinite, loader-color-white 0s infinite;',
-        'wave 1.3s infinite, loader-color-primary 2.6s infinite;': 'wave 0s infinite, loader-color-primary 0s infinite;'
+        'wave 1.3s infinite, loader-color-primary 2.6s infinite;':
+          'wave 0s infinite, loader-color-primary 0s infinite;',
+        'transition-[transform,width]': 'transition-none'
       };
 
       let found = false;
