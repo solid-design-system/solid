@@ -3,6 +3,7 @@ const path = require('path');
 
 const directoryPath = path.join(__dirname, '../dist/storybook/assets');
 const matchedFiles = [];
+const chromaticAnimationReset = '\n*,*::before,*::after{animation:none!important;transition:none!important;}\n';
 
 fs.readdir(directoryPath, (err, files) => {
   if (err) {
@@ -11,11 +12,12 @@ fs.readdir(directoryPath, (err, files) => {
   }
 
   files.forEach(file => {
-    if (file.endsWith('.js')) {
+    if (file.endsWith('.js') || file.endsWith('.css')) {
       const content = fs.readFileSync(path.join(directoryPath, file), 'utf8');
       if (
         content.includes(`wave 1.3s infinite, loader-color-current 2.6s infinite;`) ||
-        content.includes('transition-[transform,width]')
+        content.includes('transition-[transform,width]') ||
+        content.includes('transition-\\[transform\\,width\\]')
       ) {
         matchedFiles.push(file);
       }
@@ -46,8 +48,13 @@ fs.readdir(directoryPath, (err, files) => {
         'transition-[transform,width]': 'transition-none'
       };
 
-      let found = false;
+      let found = matchedFile.endsWith('.css') && data.includes(chromaticAnimationReset);
       let result = data;
+
+      if (matchedFile.endsWith('.css') && !result.includes(chromaticAnimationReset)) {
+        result += chromaticAnimationReset;
+        found = true;
+      }
 
       Object.entries(replacements).forEach(([anim, replacement]) => {
         if (result.includes(anim)) {
