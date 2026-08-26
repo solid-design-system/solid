@@ -135,7 +135,7 @@ export default class SdCarousel extends SolidElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-    ['click', 'keydown'].forEach(event => this.addEventListener(event, this.handleUserInteraction));
+    ['mousedown', 'keydown'].forEach(event => this.addEventListener(event, this.handleUserInteraction));
     this.addEventListener('focusin', this.handleFocus);
     this.addEventListener('focusout', this.handleBlur);
     this.addEventListener('keydown', this.handleKeyDown);
@@ -169,7 +169,7 @@ export default class SdCarousel extends SolidElement {
     super.disconnectedCallback();
     this.intersectionObserver.disconnect();
     this.mutationObserver.disconnect();
-    ['click', 'keydown'].forEach(event => this.removeEventListener(event, this.handleUserInteraction));
+    ['mousedown', 'keydown'].forEach(event => this.removeEventListener(event, this.handleUserInteraction));
     this.removeEventListener('focusin', this.handleFocus);
     this.removeEventListener('focusout', this.handleBlur);
     this.removeEventListener('keydown', this.handleKeyDown);
@@ -229,8 +229,8 @@ export default class SdCarousel extends SolidElement {
     );
   }
 
-  private handleUserInteraction = () => {
-    this.userInteracted = true;
+  private handleUserInteraction = (e: Event) => {
+    this.userInteracted = e.type === 'keydown';
   };
 
   public getSlides({ excludeClones = true }: { excludeClones?: boolean } = {}) {
@@ -762,6 +762,7 @@ export default class SdCarousel extends SolidElement {
                             tabindex="0"
                             aria-selected="${isActive ? 'true' : 'false'}"
                             aria-label="${this.localize.term('goToSlide', index + 1, pagesCount)}"
+                            @mousedown="${(e: MouseEvent) => e.preventDefault()}"
                             @click="${(e: MouseEvent) => {
                               this.goToSlide(index * slidesPerMove);
                               this.unblockAutoplay(e, this.paginationItems[index]);
