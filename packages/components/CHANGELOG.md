@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 7.0.3
+
+### Patch Changes
+
+- Removed focus on the mousedown event for the `sd-carousel` dots variant. _[`#3289`](https://github.com/solid-design-system/solid/pull/3289) [`3be23ef`](https://github.com/solid-design-system/solid/commit/3be23ef6ec13f9c01c4d6da11427d38581703f05) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 7.0.2
 
 ### Patch Changes
