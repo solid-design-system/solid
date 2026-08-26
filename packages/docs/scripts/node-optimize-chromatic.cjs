@@ -45,7 +45,8 @@ fs.readdir(directoryPath, (err, files) => {
         'wave 1.3s infinite, loader-color-white 2.6s infinite;': 'wave 0s infinite, loader-color-white 0s infinite;',
         'wave 1.3s infinite, loader-color-primary 2.6s infinite;':
           'wave 0s infinite, loader-color-primary 0s infinite;',
-        'transition-[transform,width]': 'transition-none'
+        'transition-[transform,width]': 'transition-none',
+        'transition-property:transform,width;': 'transition-property:none;'
       };
 
       let found = matchedFile.endsWith('.css') && data.includes(chromaticAnimationReset);
