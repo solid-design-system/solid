@@ -193,8 +193,7 @@ export const DropAreaVariant = {
             errorMessage.setAttribute('role', 'alert');
 
             const errorIcon = document.createElement('sd-icon');
-            errorIcon.setAttribute('library', '_internal');
-            errorIcon.setAttribute('name', 'risk');
+            errorIcon.setAttribute('name', 'system/warning');
             errorIcon.setAttribute('color', 'currentColor');
             errorIcon.setAttribute('aria-hidden', 'true');
 
