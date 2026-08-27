@@ -8,7 +8,7 @@ export default {
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
-      url: ''
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Solid-DS-%E2%80%93-Component-Docs?node-id=24005-43797&p=f&t=6o5TNSL9q7LrPsy2-0'
     }
   }
 };
@@ -31,13 +31,7 @@ export const DefaultVariant = {
             <sd-option value="passport">Passport</sd-option>
             <sd-option value="id-card">ID card</sd-option>
           </sd-select>
-          <sd-file-selector
-            name="identityDocument"
-            label="Upload document"
-            show-label
-            required
-            accept=".pdf,.jpg,.jpeg,.png"
-          ></sd-file-selector>
+          <sd-file-selector name="identityDocument" label="Upload document" show-label required></sd-file-selector>
         </div>
       </form>
     </section>
