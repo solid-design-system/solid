@@ -81,6 +81,10 @@ export default {
   },
   async viteFinal(config) {
     if (!config.build) config.build = {}; // fallback if build is not defined
+    config.define = {
+      ...config.define,
+      'globalThis.__SOLID_STORYBOOK_CHROMATIC__': environment.STORYBOOK_CHROMATIC === 'true'
+    };
     config.build.target = 'esnext'; // to allow top level await
     // Vite 8 defaults to Lightning CSS for minification, which fails to parse some of our
     // generated Tailwind utility selectors. Fall back to the previous esbuild-based minifier.

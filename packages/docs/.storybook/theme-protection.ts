@@ -1,5 +1,8 @@
 const PROTECTED_THEMES = new Set(['BBBank', 'KidStarter', 'SP', 'VB']);
 const ACCESS_COOKIE = 'solid-theme-access';
+const CHROMATIC_BUILD = Boolean(
+  (globalThis as typeof globalThis & { __SOLID_STORYBOOK_CHROMATIC__?: boolean }).__SOLID_STORYBOOK_CHROMATIC__
+);
 const THEME_PASSWORD = (globalThis as typeof globalThis & { __SOLID_STORYBOOK_THEME_PASSWORD__?: string })
   .__SOLID_STORYBOOK_THEME_PASSWORD__;
 
@@ -14,7 +17,7 @@ export function isProtectedTheme(themeName: string | undefined): boolean {
 }
 
 export function hasThemeAccess(themeName: string | undefined): boolean {
-  return !isProtectedTheme(themeName) || getCookie(ACCESS_COOKIE) === 'granted';
+  return CHROMATIC_BUILD || !isProtectedTheme(themeName) || getCookie(ACCESS_COOKIE) === 'granted';
 }
 
 export function storeThemeAccess(): void {
