@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 3.2.0
+
+### Minor Changes
+
+- Added `sd-file-selector` templates. _[`#3291`](https://github.com/solid-design-system/solid/pull/3291) [`61b6ccc`](https://github.com/solid-design-system/solid/commit/61b6ccca362ab6a8a31cb8ff107fa40bcd47237a) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 3.1.0
 
 ### Minor Changes
