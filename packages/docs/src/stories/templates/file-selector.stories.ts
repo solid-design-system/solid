@@ -66,7 +66,9 @@ export const DropAreaVariant = {
         </div>
         <div class="flex flex-col gap-4 md:flex-row md:justify-end">
           <sd-button variant="secondary" onclick="alert('Cancelled process')">Cancel</sd-button>
-          <sd-button type="submit">Submit documents</sd-button>
+          <sd-tooltip id="droparea-submit-tooltip" trigger="hover focus" content="Please select one or more files.">
+            <sd-button id="droparea-submit-button" type="submit" visually-disabled>Submit documents</sd-button>
+          </sd-tooltip>
         </div>
       </form>
     </section>
@@ -76,13 +78,18 @@ export const DropAreaVariant = {
         customElements.whenDefined('sd-progress-bar'),
         customElements.whenDefined('sd-button'),
         customElements.whenDefined('sd-icon'),
-        customElements.whenDefined('sd-divider')
+        customElements.whenDefined('sd-divider'),
+        customElements.whenDefined('sd-tooltip')
       ]);
 
       const MAX_FILE_SIZE = 3 * 1024 * 1024;
       const ALLOWED_FILE_TYPES = ['application/pdf', 'image/jpeg', 'image/png'];
+      const NO_FILES_MESSAGE = 'Please select one or more files.';
+      const INVALID_FILES_MESSAGE = 'One or more files have errors. Please remove them and try again.';
       const fileSelector = document.getElementById('droparea-file-selector');
       const fileList = document.getElementById('droparea-file-list');
+      const submitButton = document.getElementById('droparea-submit-button');
+      const submitTooltip = document.getElementById('droparea-submit-tooltip');
       let files = [];
 
       // preview-ignore:start
@@ -103,6 +110,16 @@ export const DropAreaVariant = {
         fileName.classList.add('flex-1', 'text-black');
       };
       // preview-ignore:end
+
+      const updateSubmitButtonState = () => {
+        const hasFiles = files.length > 0;
+        const hasInvalidFiles = fileList?.querySelector('li.invalid') !== null;
+        const isDisabled = !hasFiles || hasInvalidFiles;
+
+        submitButton.visuallyDisabled = isDisabled;
+        submitTooltip.disabled = !isDisabled;
+        submitTooltip.content = hasInvalidFiles ? INVALID_FILES_MESSAGE : NO_FILES_MESSAGE;
+      };
 
       fileSelector.addEventListener('sd-input', event => {
         fileList?.replaceChildren();
@@ -189,7 +206,8 @@ export const DropAreaVariant = {
           });
 
           removeButton.addEventListener('click', () => {
-            const fileIndex = files.indexOf(file);
+            files = files.filter(remainingFile => remainingFile !== file);
+
             const dataTransfer = new DataTransfer();
 
             files.forEach(remainingFile => {
@@ -204,6 +222,7 @@ export const DropAreaVariant = {
 
             lastDivider?.remove();
             fileList?.classList.toggle('hidden', files.length === 0);
+            updateSubmitButtonState();
           });
 
           if (errors.length > 0) listItem.classList.add('invalid');
@@ -216,14 +235,24 @@ export const DropAreaVariant = {
 
           fileList?.append(listItem);
         });
+
+        updateSubmitButtonState();
       });
 
       const form = document.getElementById('droparea-documents-form');
       form.onsubmit = event => {
         event.preventDefault();
+
+        if (submitButton.visuallyDisabled) {
+          return;
+        }
+
         if (form.checkValidity()) {
           alert('Drop area form submitted');
+          return;
         }
+
+        form.reportValidity();
       };
     </script>
   `
