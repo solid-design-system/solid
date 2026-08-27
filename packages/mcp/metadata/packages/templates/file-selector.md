@@ -149,6 +149,7 @@ version: 1.0.0
       removeButton.type = 'button';
       removeButton.classList.add('sd-interactive', 'sd-interactive--reset', 'shrink-0', 'flex', 'items-center');
       removeButton.title = 'Remove ' + file.name;
+      removeButton.setAttribute('aria-label', 'Remove ' + file.name);
 
       const trashIcon = document.createElement('sd-icon');
       trashIcon.setAttribute('name', 'system/trash');
@@ -201,8 +202,7 @@ version: 1.0.0
         errorMessage.setAttribute('role', 'alert');
 
         const errorIcon = document.createElement('sd-icon');
-        errorIcon.setAttribute('library', '_internal');
-        errorIcon.setAttribute('name', 'risk');
+        errorIcon.setAttribute('name', 'system/warning');
         errorIcon.setAttribute('color', 'currentColor');
         errorIcon.setAttribute('aria-hidden', 'true');
 
