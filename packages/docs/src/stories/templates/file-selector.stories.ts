@@ -58,7 +58,6 @@ export const DropAreaVariant = {
             drop-area
             multiple
             required
-            hide-value
             accept=".pdf,.jpg,.jpeg,.png"
             help-text="Maximum file size 3 MB. Supported: PDF, JPG, PNG."
             class="mt-6"
