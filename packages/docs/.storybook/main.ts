@@ -3,7 +3,9 @@ import { loadEnv } from 'vite';
 
 const environment = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
 const serializedThemePassword = JSON.stringify(environment.STORYBOOK_THEME_PASSWORD || '').replaceAll('<', '\\u003c');
-const themePasswordScript = `<script>window.__SOLID_STORYBOOK_THEME_PASSWORD__ = ${serializedThemePassword};</script>`;
+const chromaticAccessScript =
+  environment.STORYBOOK_CHROMATIC === 'true' ? 'document.cookie="solid-theme-access=granted; path=/";' : '';
+const themePasswordScript = `<script>window.__SOLID_STORYBOOK_THEME_PASSWORD__ = ${serializedThemePassword};${chromaticAccessScript}</script>`;
 
 export default {
   managerHead: head => `${head}${themePasswordScript}`,
