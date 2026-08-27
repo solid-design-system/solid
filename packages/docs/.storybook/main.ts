@@ -1,7 +1,10 @@
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { loadEnv } from 'vite';
 
-const environment = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
+const environment = {
+  ...loadEnv(process.env.NODE_ENV || 'development', process.cwd(), ''),
+  ...process.env
+};
 const serializedThemePassword = JSON.stringify(environment.STORYBOOK_THEME_PASSWORD || '').replaceAll('<', '\\u003c');
 const chromaticAccessScript =
   environment.STORYBOOK_CHROMATIC === 'true' ? 'document.cookie="solid-theme-access=granted; path=/";' : '';
