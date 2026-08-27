@@ -141,6 +141,7 @@ export const DropAreaVariant = {
           removeButton.type = 'button';
           removeButton.classList.add('sd-interactive', 'sd-interactive--reset', 'shrink-0', 'flex', 'items-center');
           removeButton.title = 'Remove ' + file.name;
+          removeButton.setAttribute('aria-label', 'Remove ' + file.name);
 
           const trashIcon = document.createElement('sd-icon');
           trashIcon.setAttribute('name', 'system/trash');
