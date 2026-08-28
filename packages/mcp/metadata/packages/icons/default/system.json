@@ -80,14 +80,14 @@
     "tags": ["Favoriten", "gespeichert", "gemerkt"]
   },
   {
-    "technicalId": "battery-full",
-    "displayNameDe": "Batterie voll\n",
-    "tags": ["voll", "Akku", "Ladestatus"]
-  },
-  {
     "technicalId": "flash-on",
     "displayNameDe": "Blitz an",
     "tags": ["Taschenlampe an", "Foto"]
+  },
+  {
+    "technicalId": "battery-full",
+    "displayNameDe": "Batterie voll\n",
+    "tags": ["voll", "Akku", "Ladestatus"]
   },
   {
     "technicalId": "sort-down",
@@ -315,14 +315,14 @@
     "tags": ["verstecken", "komprimieren", "Seitenleiste"]
   },
   {
-    "technicalId": "shopping-cart",
-    "displayNameDe": "Einkaufswagen",
-    "tags": ["Onlineshop", "Warenkorb", "Erwerb", "Einkauf"]
-  },
-  {
     "technicalId": "bug",
     "displayNameDe": "Fehler",
     "tags": ["Mangel", "Problem"]
+  },
+  {
+    "technicalId": "shopping-cart",
+    "displayNameDe": "Einkaufswagen",
+    "tags": ["Onlineshop", "Warenkorb", "Erwerb", "Einkauf"]
   },
   {
     "technicalId": "eraser",
@@ -615,24 +615,24 @@
     "tags": ["klicken", "auswählen"]
   },
   {
-    "technicalId": "file-read-out",
-    "displayNameDe": "Dokument vorlesen",
-    "tags": ["vorlesen", "Audio", "Lautstärke"]
-  },
-  {
     "technicalId": "layers",
     "displayNameDe": "Ebenen",
     "tags": ["gruppieren", "Stapel", "mehrere Folien erzeugen"]
   },
   {
-    "technicalId": "file-wai",
-    "displayNameDe": "Dokument wAI",
-    "tags": ["Dokument", "Datei", "wAI"]
+    "technicalId": "file-read-out",
+    "displayNameDe": "Dokument vorlesen",
+    "tags": ["vorlesen", "Audio", "Lautstärke"]
   },
   {
     "technicalId": "collapse-left",
     "displayNameDe": "einklappen links",
     "tags": ["komprimieren", "verstecken", "Seitenleiste"]
+  },
+  {
+    "technicalId": "file-wai",
+    "displayNameDe": "Dokument wAI",
+    "tags": ["Dokument", "Datei", "wAI"]
   },
   {
     "technicalId": "download",
@@ -845,14 +845,14 @@
     "tags": ["merken", "Markierung", "markiert", "Favoriten"]
   },
   {
-    "technicalId": "arrow-right",
-    "displayNameDe": "Pfeil rechts",
-    "tags": ["Pfeil", "vorwärts", "weiter"]
-  },
-  {
     "technicalId": "flash",
     "displayNameDe": "Blitz",
     "tags": ["Pfeil", "Fehler", "falsch"]
+  },
+  {
+    "technicalId": "arrow-right",
+    "displayNameDe": "Pfeil rechts",
+    "tags": ["Pfeil", "vorwärts", "weiter"]
   },
   {
     "technicalId": "arrow-top",
@@ -1045,14 +1045,14 @@
     "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
   },
   {
-    "technicalId": "e-mail-send",
-    "displayNameDe": "E-Mail abschicken",
-    "tags": ["Brief", "E-Mail", "Kommunikation"]
-  },
-  {
     "technicalId": "password",
     "displayNameDe": "Passwort",
     "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
+  },
+  {
+    "technicalId": "e-mail-send",
+    "displayNameDe": "E-Mail abschicken",
+    "tags": ["Brief", "E-Mail", "Kommunikation"]
   },
   {
     "technicalId": "e-mail-exclamation",

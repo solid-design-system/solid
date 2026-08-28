@@ -1214,13 +1214,13 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       ? 'disabled'
       : this.visuallyDisabled && !this.hasFocus
         ? 'visuallyDisabled'
-        : this.hasFocus && this.showInvalidStyle
+        : this.hasFocus && this.showInvalidStyle && !this.open
           ? 'activeInvalid'
-          : this.hasFocus && this.styleOnValid && this.showValidStyle
+          : this.hasFocus && !this.open && this.styleOnValid && this.showValidStyle
             ? 'activeValid'
             : this.hasFocus || this.open
               ? 'active'
-              : this.showInvalidStyle
+              : this.showInvalidStyle && !this.open
                 ? 'invalid'
                 : this.styleOnValid && this.showValidStyle
                   ? 'valid'
