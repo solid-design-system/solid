@@ -33,6 +33,8 @@ jobs:
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
       # 👇 Build storybook with pnpm
       - name: Build storybook
+        env:
+          STORYBOOK_CHROMATIC: true
         run: cd packages/docs && pnpm run build.chromatic
       # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
