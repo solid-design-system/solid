@@ -31,6 +31,8 @@ packages/tokens/themes
 # eslint-plugin
 packages/eslint-plugin/dist
 
+# CD Toolbox is a checked-in external site export; only its explicit build command may update its manifest.
+packages/mcp/metadata/packages/cd-toolbox
 
 packages/autocomplete/src
 .changeset/*.md

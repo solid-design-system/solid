@@ -56,8 +56,8 @@ export const tokenPackageDocsPath = join(currentDirname, '../../metadata/package
  */
 export const cdToolboxPath = join(currentDirname, '../../metadata/packages/cd-toolbox');
 
-/** Package-level docs for the cd-toolbox package */
-export const cdToolboxPackageDocsPath = join(currentDirname, '../../metadata/packages/cd-toolbox/docs');
+/** Generated searchable page manifest for the CD Toolbox site export. */
+export const cdToolboxManifestPath = join(cdToolboxPath, 'manifest.json');
 
 /** Root of all static AI-rule markdown files */
 export const staticPath = join(currentDirname, '../../metadata/static');

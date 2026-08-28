@@ -60,6 +60,7 @@ Add to `claude_desktop_config.json`:
 - **Icons**: Search icon libraries across keywords, category, and library
 - **Design Tokens**: Get design token information and guidance
 - **Version Info**: Check MCP server version and metadata
+- **CD Toolbox**: Search and retrieve Union Investment Corporate Design guidance for brand, print, image, motion, and channel use
 
 ## Available Tools
 
@@ -217,6 +218,30 @@ Add to `claude_desktop_config.json`:
 
 ---
 
+### 8. `cd-toolbox`
+
+**Search and retrieve pages from the Union Investment Corporate Design Toolbox.**
+
+**Behavior:**
+
+- **No arguments** → Lists top-level CD Toolbox sections
+- **`query` arg** (e.g. `"logo"` or `"barrierefreiheit"`) → Returns ranked page routes
+- **`path` arg** (e.g. `"grundlagen/Basiselemente/farbe"`) → Returns the full page
+
+**Parameters:**
+
+- `query` (string, optional): Brand-guidance search phrase
+- `path` (string, optional): A route returned by browsing or search
+
+For current Solid frontend APIs, markup, styles, and tokens, use `components`, `styles`, `tokens`, and `templates`. The CD Toolbox is authoritative for broader corporate-design and channel guidance.
+
+**Example prompts:**
+
+- "Search the CD Toolbox for logo guidance"
+- "Show the CD Toolbox page for `grundlagen/Basiselemente/farbe`"
+
+---
+
 ### MCP Caller Cheat Sheet
 
 Use these argument shapes for MCP tool calls:
@@ -244,9 +269,18 @@ Use these argument shapes for MCP tool calls:
 { "tool": "tokens", "arguments": { "doc": "installation" } }
 
 { "tool": "version", "arguments": {} }
+
+{ "tool": "cd-toolbox", "arguments": { "query": "logo" } }
+{ "tool": "cd-toolbox", "arguments": { "path": "grundlagen/Basiselemente/farbe" } }
 ```
 
 ## Developer Documentation
+
+### CD Toolbox Metadata
+
+The CD Toolbox is a checked-in external site export in `metadata/packages/cd-toolbox`. It is not changed by `pnpm build`, `build:metadata`, or the metadata formatting pass. Its `manifest.json` contains each route, title, summary, source URL, and most recent date found in its content.
+
+`pnpm test` verifies that each manifest entry has a readable source page. `pnpm run check:metadata` verifies that generated metadata, including the manifest, is committed. After intentionally updating the CD Toolbox export, run `pnpm run build:cd-toolbox` and commit the resulting manifest.
 
 ### Project Structure
 
@@ -337,6 +371,7 @@ pnpm build
 # Or separately:
 pnpm build:ts          # Compile TypeScript only
 pnpm build:metadata    # Generate metadata from source
+pnpm build:cd-toolbox  # Regenerate only the CD Toolbox manifest after an export update
 pnpm build:hash        # Generate integrity checksum
 ```
 
@@ -351,6 +386,8 @@ The `build:metadata` script currently runs builders in this sequence:
 5. **Icons** — Generates icon indexes by library/category
 6. **Package docs** — Converts package MDX docs to build-time markdown
 7. **Static files** — Copies static guidance content
+
+The CD Toolbox export is intentionally outside this sequence. Use `pnpm run build:cd-toolbox` only after deliberately updating its source export.
 
 ### Adding a New Tool
 

@@ -1,0 +1,951 @@
+{
+  "pages": [
+    {
+      "aliases": [],
+      "path": "",
+      "sourcePath": "index.md",
+      "sourceUrl": "https://cd.union-investment.de/",
+      "summary": "Entdecken Sie die vielfältigen Möglichkeiten unseres Corporate Designs.",
+      "title": "CD-Toolbox"
+    },
+    {
+      "aliases": [
+        "change history",
+        "changelog",
+        "release notes",
+        "updates"
+      ],
+      "lastChanged": "2025-11-28",
+      "path": "Aenderungshistorie",
+      "sourcePath": "Aenderungshistorie/index.md",
+      "sourceUrl": "https://cd.union-investment.de/Aenderungshistorie",
+      "summary": "- aus **UI-Grün** RGB 67-176-42 (#43B02A) wird **in Digitalmedien** **RGB 45-157-0 (#2D9D00)**",
+      "title": "Änderungshistorie"
+    },
+    {
+      "aliases": [
+        "applications",
+        "icon",
+        "iconography",
+        "icons",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/app-icons-favicons",
+      "sourcePath": "anwendungen/Digitalmedien/app-icons-favicons/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/app-icons-favicons",
+      "summary": "Die Gestaltung von App-Icons basiert auf dem charakteristischen Stil der [Content-Icons](/grundlagen/Basiselemente/iconbibliothek). Durch den Einsatz der Bildmarke im unteren Bereich lässt sich Union Investment als Absender für den Nutzer klar zuordnen.",
+      "title": "App-Icons und Favicons"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/beispiel-artikeluebersicht/artikeluebersicht",
+      "sourcePath": "anwendungen/Digitalmedien/beispiel-artikeluebersicht/artikeluebersicht/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/beispiel-artikeluebersicht/artikeluebersicht",
+      "summary": "Das ist eine Beispielseite für einen Artikel in der Artikelübersicht. Sie können Artikel als einzelne Seiten in Magnolia anlegen. Diese müssen unter einer übergeordneten Seite angelegt werden und können dann als ganze Liste ausgewählt werden.",
+      "title": "Beispiel Artikelübersicht"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/beispiel-artikeluebersicht/artikeluebersicht0",
+      "sourcePath": "anwendungen/Digitalmedien/beispiel-artikeluebersicht/artikeluebersicht0/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/beispiel-artikeluebersicht/artikeluebersicht0",
+      "summary": "Das ist eine Beispielseite für einen Artikel in der Artikelübersicht. Sie können Artikel als einzelne Seiten in Magnolia anlegen. Diese müssen unter einer übergeordneten Seite angelegt werden und können dann als ganze Liste ausgewählt werden.",
+      "title": "Beispiel Artikelübersicht"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/beispiel-artikeluebersicht/artikeluebersicht1",
+      "sourcePath": "anwendungen/Digitalmedien/beispiel-artikeluebersicht/artikeluebersicht1/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/beispiel-artikeluebersicht/artikeluebersicht1",
+      "summary": "Das ist eine Beispielseite für einen Artikel in der Artikelübersicht. Sie können Artikel als einzelne Seiten in Magnolia anlegen. Diese müssen unter einer übergeordneten Seite angelegt werden und können dann als ganze Liste ausgewählt werden.",
+      "title": "Beispiel Artikelübersicht"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/beispiel-artikeluebersicht/artikeluebersicht2",
+      "sourcePath": "anwendungen/Digitalmedien/beispiel-artikeluebersicht/artikeluebersicht2/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/beispiel-artikeluebersicht/artikeluebersicht2",
+      "summary": "Das ist eine Beispielseite für einen Artikel in der Artikelübersicht. Sie können Artikel als einzelne Seiten in Magnolia anlegen. Diese müssen unter einer übergeordneten Seite angelegt werden und können dann als ganze Liste ausgewählt werden.",
+      "title": "Beispiel Artikelübersicht"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/beispiel-artikeluebersicht/artikeluebersicht3",
+      "sourcePath": "anwendungen/Digitalmedien/beispiel-artikeluebersicht/artikeluebersicht3/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/beispiel-artikeluebersicht/artikeluebersicht3",
+      "summary": "Das ist eine Beispielseite für einen Artikel in der Artikelübersicht. Sie können Artikel als einzelne Seiten in Magnolia anlegen. Diese müssen unter einer übergeordneten Seite angelegt werden und können dann als ganze Liste ausgewählt werden.",
+      "title": "Beispiel Artikelübersicht"
+    },
+    {
+      "aliases": [
+        "applications",
+        "digital",
+        "email",
+        "newsletter",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/Digitale-Einladungen--Newsletter-und-Online-Banner",
+      "sourcePath": "anwendungen/Digitalmedien/Digitale-Einladungen--Newsletter-und-Online-Banner/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/Digitale-Einladungen--Newsletter-und-Online-Banner",
+      "summary": "Werbemittel wie digitale Einladungen, Newsletter und Online-Banner sind digitale Werkzeuge, die eingesetzt werden können, um gezielte Botschaften zu verbreiten und die Reichweite von Union Investment zu steigern.",
+      "title": "Digitale Einladungen, Newsletter und Online-Banner"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek",
+      "summary": "- [Akkordeon](/anwendungen/Digitalmedien/komponentenbibliothek/akkordeon)",
+      "title": "Komponentenbibliothek"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/akkordeon",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/akkordeon/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/akkordeon",
+      "summary": "Verwenden Sie ein Akkordeon, um umfangreiche Inhalte kompakt darzustellen (s. auch alternativ [Reiter-Gruppe](/anwendungen/Digitalmedien/komponentenbibliothek/reiter-gruppe) ). Ein Akkordeon besteht aus mehreren Akkordeon-Reitern, die durch Klick den zugehörigen Inhalt anzeigen. Der aktuell geöffnete Akkordeon-Reiter wird mit einer UI-grünen Überschrift ausgezeichnet. Ein Pfeilspitzen-Icon wechselt nach Klick ebenfalls von UI-Blau zu UI-Grün und wird horizontal gespiegelt. Akkordeons eignen sich vor allem dann, wenn:",
+      "title": "Akkordeon"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/artikeluebersicht",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/artikeluebersicht/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/artikeluebersicht",
+      "summary": "Mit der Komponente Artikelübersicht lassen sich zusammengehörige Artikel verlinken, sodass der Leser auf einen Blick alle Artikel einer Serie sieht und dann einen gewünschten Artikel auswählen kann. Die Übersicht der Artikel wird automatisiert gepflegt, nachdem die Artikelseiten unter einer Übersichtsseite angelegt wurden. Um die Artikel einzupflegen, die gezeigt werden sollen, muss nach Auswahl der Komponente Artikelübersicht die Übersichtsseite ausgewählt werden. Danach können Einstellungen zum Layout vorgenommen werden.",
+      "title": "Artikelübersicht"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/audioplayer",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/audioplayer/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/audioplayer",
+      "summary": "Diese Komponente wird verwendet, wenn eine Audiodatei im Inhaltsbereich wiedergegeben werden soll. Sie beinhaltet ein Play- bzw. Pause-Icon, die Abspielzeit und Dauer der Audiodatei sowie einen Lautstärkeregler als [Icon](/grundlagen/Basiselemente/iconbibliothek) .",
+      "title": "Audioplayer"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/auf-einen-blick",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/auf-einen-blick/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/auf-einen-blick",
+      "summary": "Durch diese Komponente kann eine Gruppe von Fakten kompakt dargestellt werden und besteht aus einem repräsentativen Content-Icon, einer Kennzahl und einem Beschreibungstext. Einzelne Fakten können wahlweise mit [Sprungmarken](/anwendungen/Digitalmedien/komponentenbibliothek/sprungmarke) oder [Infoboxen](/anwendungen/Digitalmedien/komponentenbibliothek/text-infobox) versehen werden.",
+      "title": "Auf einen Blick"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/aufzaehlung",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/aufzaehlung/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/aufzaehlung",
+      "summary": "Eine Aufzählung ist eine Liste an Stichpunkten, um Inhalte übersichtlich strukturiert darzustellen. Diese Liste kann mit Aufzählungszeichen (Bullets), sowie einer Nummerierung, Haken (Checkmarks) oder Content-Icons versehen werden. Die Aufzählung kann auf bis zu drei Spalten aufgeteilt werden und ist im Normalfall vertikal ausgerichtet, kann aber auch horizontal ausgerichtet werden.",
+      "title": "Aufzählung"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/b%C3%B6rsenindizes",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/b%C3%B6rsenindizes/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/b%C3%B6rsenindizes",
+      "summary": "Die Komponente Börsenindizes zeigt die aktuellen Kurse und Veränderungen des DAX und EURO STOXX 50 an. Die Kurse werden automatisch in regelmäßigen Abständen aktualisiert und bieten den Nutzern einen schnellen Zugriff auf wichtige Informationen. Die Komponente ist prominent im Privatkunden Auftritt von Union Investment platziert und wird automatisiert mit den Inhalten befüllt.",
+      "title": "Börsenindizes"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/banner",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/banner/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/banner",
+      "summary": "Die Komponente Banner ist eine Variante des Superteasers, welche statt in der Bühne direkt auf der Seite eingesetzt werden kann. Sie wird als ein Highlight-Teaser genutzt, um das Augenmerk der Nutzer auf besonders hervorzuhebende Inhalte oder Seiten zu lenken.",
+      "title": "Banner"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/container",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/container/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/container",
+      "summary": "Verwenden Sie Container, um Elemente einer Webseite hervorzuheben oder diese von anderen Teilen der Seite visuell abzugrenzen. Container können in verschiedenen Spaltenbreiten eingefügt und innerhalb eines Containers diverse Komponenten platziert werden (z. B. [Text/Media](/anwendungen/Digitalmedien/komponentenbibliothek/text-media) oder [Teaser](/anwendungen/Digitalmedien/komponentenbibliothek/teaser)). Stehen mehrere Container nebeneinander, so kann ihre Höhe gleichgeschaltet sein oder variieren. Als Farbe kann UI-Blau, UI-Blau100, Grau100, Weiß oder Weiß mit grauer Kontur (Grau, 1 px) eingesetzt werden.",
+      "title": "Container"
+    },
+    {
+      "aliases": [
+        "applications",
+        "assets",
+        "download",
+        "downloads",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/download-liste--dynamische-eintr-ge-",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/download-liste--dynamische-eintr-ge-/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/download-liste--dynamische-eintr-ge-",
+      "summary": "Mit der Komponente Download-Liste können mehrere zusammengehörige Downloads angezeigt werden. Sie kann manuell sowie automatisch gepflegt werden. Damit die Downloads automatisch angezeigt werden können, muss eine Liste mit den gewünschten Download-Dokumenten in Celum angelegt werden, welche dann mit Magnolia verknüpft ist und in der Komponente ausgewählt werden kann.",
+      "title": "Download-Liste"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/flashcard-gruppe--standard-stil-",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/flashcard-gruppe--standard-stil-/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/flashcard-gruppe--standard-stil-",
+      "summary": "Flashcards sind interaktive Inhaltselemente, die mit Content-Icon, Überschrift H3, Fließtext, sowie Link oder Button zu weiterführenden Inhalten befüllt werden können. Sie bestehen aus einer Vorder- und einer Rückseite und können vom Nutzer durch einen Klick auf die Karte umgedreht werden. Verwenden Sie diese Komponente, wenn Sie Inhalte knapp auf einzelnen Karten aufbereiten möchten. Für die Gestaltung des Hintergrunds stehen UI-Blau, UI-Blau100 und Bilder zur Verfügung (auf Bildern erscheint zur besseren Lesbarkeit ein transparenter weißer (75 %) oder grauschwarzer (75 %) Farbverlauf). Ein Schatten deutet bei Hover auf die Interaktivität hin. Flashcards können im 16:9 Format (über 6 Spalten) oder 3:4 Format (über 4 Spalten) eingesetzt werden. Im 16:9 Format können maximal 2 Flashcards und im 3:4 Format maximal 3 Flashcards in einer Reihe angeordnet werden. Inhalte können wahlweise in der oberen oder unteren Bildhälfte positioniert werden.",
+      "title": "Flashcard-Gruppe (Standard-Stil)"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/fondsauswahl",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/fondsauswahl/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/fondsauswahl",
+      "summary": "Die Fondsauswahl dient dazu, Websitebesuchern, begleitend zu den Informationen auf der Seite, passende Fonds aufzuzeigen, um eine bessere Entscheidungsgrundlage zu haben.",
+      "title": "Fondsauswahl"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/fussnoten-liste",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/fussnoten-liste/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/fussnoten-liste",
+      "summary": "Mit der Komponente Fußnoten-Liste lassen sich Verweise im Text als nummerierte oder auch nicht nummerierte Liste darstellen.",
+      "title": "Fußnoten-Liste"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/infinity",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/infinity/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/infinity",
+      "summary": "Mit der Infinity-Komponente lassen sich Inhalte auf einer Website besonders in Szene setzen.",
+      "title": "Infinity"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/interaktivekarte",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/interaktivekarte/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/interaktivekarte",
+      "summary": "Die Komponente ermöglicht es, komplexe räumliche oder thematische Zusammenhänge visuell darzustellen. Nutzer können über Markierungen (Points of Interest) auf einem Hintergrundbild gezielt Informationen abrufen und diese zusätzlich filtern oder in einer Liste anzeigen lassen.",
+      "title": "Interaktive Karte"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/kachelfilter",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/kachelfilter/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/kachelfilter",
+      "summary": "Mit dem Kachelfilter können Verlinkungen innerhalb der UI-Websites, sowie auf externe Websites oder Dateien thematisch geordnet werden. Die Nutzer können eine Kategorie wählen und passende Ergebnisse werden optisch hervorgehoben.",
+      "title": "Kachelfilter"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/karussell",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/karussell/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/karussell",
+      "summary": "Ein Karusell (auch als Slider bekannt) ermöglicht eine, optional rotierende, Teilansicht (sog. Folie) einer Gruppe von Elementen, z. B. mehreren [Teasern](/anwendungen/Digitalmedien/komponentenbibliothek/teaser) . Durch Klick auf die Sliderpfeile (durch Wischen auf mobilen Endgeräten) kann der Nutzer selbst die Inhalte dieser Gruppe rotieren.",
+      "title": "Karussell"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/kontakt",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/kontakt/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/kontakt",
+      "summary": "Verwenden Sie die Komponente Kontakt, um den Nutzern auf einen Blick eine Kontaktmöglichkeit zu Union Investment aufzuzeigen",
+      "title": "Kontakt"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/kontaktkanaele",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/kontaktkanaele/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/kontaktkanaele",
+      "summary": "Verwenden Sie Kontaktkanäle, um dem Nutzer auf einen Blick mehrere Kontaktmöglichkeiten zu Union Investment aufzuzeigen, aus welcher der Nutzer die für ihn passende Variante der Kontaktaufnahme wählen kann.",
+      "title": "Kontaktkanäle"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/link",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/link/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/link",
+      "summary": "Links erlauben das einfache Weiterleiten zu Inhalten auf anderen Seiten durch einen einzigen Klick und können mit und ohne [System-Icon](https://cd.union-investment.de/grundlagen/Basiselemente/iconbibliothek#systemIcons)  eingesetzt werden.",
+      "title": "Link"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/link-liste",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/link-liste/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/link-liste",
+      "summary": "Die Komponente Link-Liste wird genutzt, um ein Sammlung von Links darzustellen. Wenn nur ein Link angezeigt werden soll, wird die Nutzung der Komponente [Link](/anwendungen/Digitalmedien/komponentenbibliothek/link) empfohlen.",
+      "title": "Link-Liste"
+    },
+    {
+      "aliases": [
+        "applications",
+        "email",
+        "newsletter",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/newsletter-call-to-action",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/newsletter-call-to-action/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/newsletter-call-to-action",
+      "summary": "Mit dieser Komponente kann man den Nutzer dazu einladen seine Kontaktdaten zu hinterlassen, um sich für den Newsletter anzumelden. Die Komponente kann nicht ohne eine Überschrift und ohne einen Einleitungstext verwendet werden.",
+      "title": "Newsletter Call-to-Action"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/prozessvisualisierung",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/prozessvisualisierung/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/prozessvisualisierung",
+      "summary": "Diese Komponente wird verwendet, wenn ein Prozess für den Nutzer aufgezeigt werden soll. Die maximale Ausprägung der Komponente setzt sich aus einem Icon, einer Überschrift, einem Beschreibungstext und einem Link zusammen. Die Komponente ist vor allem dann sehr nützlich, wenn kompliziertere Vorgänge logisch und übersichtlich dargestellt werden sollen.",
+      "title": "Prozessvisualisierung"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/reiter-gruppe",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/reiter-gruppe/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/reiter-gruppe",
+      "summary": "Verwenden Sie eine Reiter-Gruppe, um verwandte Inhalte übersichtlich und strukturiert in einer Komponente zu präsentieren (s. auch alternativ [Akkordeon](/anwendungen/Digitalmedien/komponentenbibliothek/akkordeon)). Die Inhalte werden durch Reiter voneinander getrennt und können mit einem Klick ausgewählt werden. Der geöffnete Reiter wird mit einer UI-grünen Reiter-Überschrift hervorgehoben. Die Reiter-Gruppe eignet sich vor allem dann, wenn:",
+      "title": "Reiter-Gruppe"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/social-share-buttons",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/social-share-buttons/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/social-share-buttons",
+      "summary": "Social Share Buttons ermöglichen es dem Nutzer, interessante Seiten auf Social Media Plattformen zu teilen, z. B. Facebook, Twitter, LinkedIn, Xing oder WhatsApp. Die korrespondierenden Social Media Icons werden hierfür in der Regel im Footer der Seite platziert und auf einer Schaltfläche in Originalfarbe und mit dem offiziellen Bildzeichen der Social Media Plattform dargestellt. Mit einem Klick gelangt der Nutzer zur Anmeldung auf dem Kanal oder unmittelbar auf das ausgewählte Profil, sofern er bereits angemeldet ist.",
+      "title": "Social-Share-Buttons"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/sprungmarke",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/sprungmarke/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/sprungmarke",
+      "summary": "Sprungmarken können genutzt werden, um an bestimmte Stellen auf einer Seite zu springen. Sie können z.B. vor Überschriften eingesetzt werden, um zu verschiedenen Kapiteln auf der Seite zu springen, aber auch zur Verlinkung auf konkrete Inhalte der Seite.",
+      "title": "Sprungmarke"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/superteaser",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/superteaser/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/superteaser",
+      "summary": "Die Komponente Superteaser ist immer ganz oben auf der Seite verortet. Sie bildet den Einstieg in die folgenden Inhalte für die Nutzer. Haupsächlich besteht der Superteaser aus einem Bild, der Markenform und einer Überschrift für die Seite. Zusätzlich kann man auch Verlinkungen, einen Subtitel und einen Claim einfügen, sowie statt einem statischen Bild ein Bewegtbild verwenden. Der Superteaser kann sehr variabel gestaltet werden und unterscheidet sich daher in seiner Größe und seinem Aussehen. Je nach Seitentyp ist der Superteaser sehr präsent oder ganz minimalistisch.",
+      "title": "Superteaser"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/superzahl",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/superzahl/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/superzahl",
+      "summary": "Verwenden Sie Superzahlen, wenn Sie wichtige Kennzahlen im Inhaltsbereich hervorheben und dem Nutzer vermitteln möchten. Die Komponente besteht aus einer Überschrift (Fließtextgröße), einer Zahl, einer Unterschrift (Fließtextgröße) sowie einem beschreibenden Fließtext. Sie kann in verschiedenen Größen und an verschiedenen Positionen im Text eingefügt sowie mit einem farbigen  [Container](/anwendungen/Digitalmedien/komponentenbibliothek/container)  (UI-Blau, UI-Blau100, Grau100, Weiß oder Weiß mit grauer Kontur) hinterlegt werden. Bei mehreren Superzahlen nebeneinander ist deren Höhe gleichgeschaltet.",
+      "title": "Superzahl"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "lastChanged": "2022-05-18",
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/tabelle",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/tabelle/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/tabelle",
+      "summary": "Verwenden Sie Tabellen, um Inhalte in einem Raster logisch zu strukturieren und auf einen Blick vergleichbar zu machen. Tabellen werden häufig verwendet, um mehrere Produkte strukturiert gegenüberzustellen. Die Gestaltung von Tabellen orientiert sich an den  [Grafikelementen](/grundlagen/Grafikelemente) , als Farbe für Konturlinien wird jedoch Grau und als Hintergrundflächen die  [Container](/anwendungen/Digitalmedien/komponentenbibliothek/container)  verwendet. In Digitalmedien können Tabellen zusätzlich um eine Sortierfunktion ergänzt werden und besitzen ein eigenes Scrollverhalten.",
+      "title": "Tabelle"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/teaser",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/teaser/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/teaser",
+      "summary": "Verwenden Sie diese Komponente, um mit Hilfe eines Bildes und kurzen Textes auf einen Beitrag bzw. eine Seite hinzuweisen, diese zu verlinken und den Nutzer zum Weiterlesen zu animieren. Ein klassischer Teaser besteht aus den vier Elementen Bild/Video/Icon, Überschrift, Teaser-Text und Link/Button. In der maximalen Ausprägung können neben diesen Elementen außerdem noch Metainformationen gepflegt werden. Die Inhalte für den Teaser können entweder manuell gepflegt werden oder automatisch aus den Seiteneigenschaften der verlinkten Zielseite gespeist werden.",
+      "title": "Teaser"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/text-infobox",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/text-infobox/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/text-infobox",
+      "summary": "Die Komponente Text mit Infobox eignet sich, um die Inhalte im Text durch Zusatzinformationen zu unterstreichen oder zu belegen. Bei dieser Komponente kann eine Infobox links, rechts, oder unterhalb des Textes plaziert werden. Es wird empfohlen die Infobox durch eine sich vom Text unterscheidende Farbe hervorzuheben. Je nach Ausrichtung wird in der Infobox eine Pfeilspitze angedeutet, die vom Text zur Information deutet. Diese Komponente kann nur im 2/3-Layout verwendet werden.",
+      "title": "Text mit Infobox"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/text-media",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/text-media/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/text-media",
+      "summary": "Texte, Bilder und Videos lassen sich mit der Text/Media-Komponente einzeln oder auch in der Kombination Text und Bild bzw. Text und Video auf der Seite einbinden. Durch einzelne Textblöcke können dem Nutzer detaillierte Informationen zur Verfügung gestellt werden, sowie Kapitel durch Überschriften oder Einleitungstexte strukturiert werden.",
+      "title": "Text/Media"
+    },
+    {
+      "aliases": [
+        "applications",
+        "font",
+        "typeface",
+        "typography",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/ueberschrift--h1-",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/ueberschrift--h1-/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/ueberschrift--h1-",
+      "summary": "Die Komponente Überschrift (h1) ist als Hauptüberschrift der Seite zu verwenden. Sie sollte nur einmal verwendet werden, da sie den Titel der Seite beinhaltet. Weitere Kapitelüberschriften oder Einleitungstexte können durch die [Text/Media](/anwendungen/Digitalmedien/komponentenbibliothek/text-media) \\-Komponente hinzugefügt werden. Bei der Überschrift (h1) kann zusätzlich ein Titel für die Überschrift sowie ein Einleitungstext ergänzt werden.",
+      "title": "Überschrift (h1)"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/umgebungskarte",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/umgebungskarte/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/umgebungskarte",
+      "summary": "Die Komponente Umgebungskarte zeigt im Zentrum einen selbstgewählten Ausgangspunkt und umliegende, sogenannte Placetypes (durch Google definiert). So kann der Nutzer sich ansehen, welche zusammengehörige Orte, z.B. Banken, es um die Augangsposition zu finden gibt. Durch hinein- und hinauszoomen kann der Kartenausschnitt verändert werden.",
+      "title": "Umgebungskarte"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/wertsch%C3%B6pfungskette",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/wertsch%C3%B6pfungskette/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/wertsch%C3%B6pfungskette",
+      "summary": "Mit der Komponenten Wertschöpfungskette kann aufgezeigt werden, welche Stufen z.B. ein Produkt von Anfang bis Ende durchläuft, bis es im finalen Stadium angekommen ist. In der Komponente lassen sich die einzelnen Stufen benennen und es besteht die Möglichkeit einen Beschreibungstext hinzuzufügen. Außerdem lassen sich die Stufen durch passende Icons visualisieren.",
+      "title": "Wertschöpfungskette"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/komponentenbibliothek/zitat",
+      "sourcePath": "anwendungen/Digitalmedien/komponentenbibliothek/zitat/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/komponentenbibliothek/zitat",
+      "summary": "Verwenden Sie ein Zitat, wenn Sie eine bestimmte Aussage einer Person in einem Text hervorheben oder verstärken möchten. Ein Zitat besteht aus einem Zitattext (Schriftgröße 32 px), der von Anführungszeichen umrahmt wird, sowie dem Namen der zitierten Person. Optional kann ein Bild (Thumbnail), sowie die Funktion der Person gezeigt werden.",
+      "title": "Zitat"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/leitfaden_digitalmedien",
+      "sourcePath": "anwendungen/Digitalmedien/leitfaden_digitalmedien/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/leitfaden_digitalmedien",
+      "summary": "Egal ob für die Gestaltung von Web- oder Microsites, internen Applikationen oder mobilen Apps: Im Kapitel Digitalmedien der CD-Toolbox finden Sie hilfreiche Informationen, um einen konsistenten digitalen Markenauftritt von Union Investment zu gewährleisten.",
+      "title": "Leitfaden Digitalmedien"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/Social-Media",
+      "sourcePath": "anwendungen/Digitalmedien/Social-Media/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/Social-Media",
+      "summary": "Für die unterschiedlichen Social-Media-Kanäle gelten ebenfalls unsere Prinzipien. Sie werden für die spezifischen Anforderungen der Plattformen bei Bedarf angepasst. Die Herausforderungen bestehen hierbei in den oft kleinen Darstellungsgrößen sowie der Schnelllebigkeit der Inhalte.",
+      "title": "Social Media"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/solid-design-system",
+      "sourcePath": "anwendungen/Digitalmedien/solid-design-system/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/solid-design-system",
+      "summary": "Das Ziel des Design Systems ist es, digitale Produkte schnell auf die Straße bringen und ein solides Fundament für die digitale Zukunft von Union Investment zu bilden. Dazu wurde ein Set an konsistenten und anpassbaren Komponenten entwickelt, das Applikations-, Medien- und Geräte übergreifend verwendet wird. Dadurch wird nicht nur Wiedererkennbarkeit, sondern auch die Nutzerfreundlichkeit verbessert. Sowohl in der Umsetzung wie auch in der Kundenwahrnehmung. Gleichzeitig berücksichtigen die Solid Components die Richtlinien zur Barrierefreitheit nach [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/).",
+      "title": "Solid Design System"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/user_experience_prinzipien",
+      "sourcePath": "anwendungen/Digitalmedien/user_experience_prinzipien/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/user_experience_prinzipien",
+      "summary": "Eine gute User Experience unterstützt alle Nutzer unserer Digitalmedien dabei, Aufgaben intuitiv zu lösen und relevante Inhalte, Funktionen und Services mühelos zu nutzen. Grundlage dafür sind die folgenden sechs UX-Prinzipien, die sicherstellen, dass unsere digitalen Angebote klar, verständlich und für alle zugänglich gestaltet sind.",
+      "title": "User Experience Prinzipien"
+    },
+    {
+      "aliases": [
+        "applications",
+        "page templates",
+        "templates",
+        "use cases"
+      ],
+      "path": "anwendungen/Digitalmedien/vorlagen-seitentypen",
+      "sourcePath": "anwendungen/Digitalmedien/vorlagen-seitentypen/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Digitalmedien/vorlagen-seitentypen",
+      "summary": "Folgende Seitentypen stehen Ihnen als \"Blaupause\" für die Seitenerstellung zur Verfügung. Sie berücksichtigen zentrale Erfolgsfaktoren und definieren klare Seitenziele, Seitenaufbau und enthalten beispielhafte Inhalte.",
+      "title": "Vorlagen Seitentypen"
+    },
+    {
+      "aliases": [
+        "advertisements",
+        "advertising",
+        "applications",
+        "print",
+        "print media",
+        "use cases"
+      ],
+      "path": "anwendungen/Printmedien/Anzeigen_Plakate_Grossflaechige-Drucke",
+      "sourcePath": "anwendungen/Printmedien/Anzeigen_Plakate_Grossflaechige-Drucke/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Printmedien/Anzeigen_Plakate_Grossflaechige-Drucke",
+      "summary": "Anzeigen, Plakate und großflächige Drucke sind wichtige Medien, um die Öffentlichkeit auf Themen von Union Investment aufmerksam zu machen. Sie können ganz allgemein Vertrauen für die Marke schaffen, Aktionen bewerben oder auch einzelne Produkte oder Geschäftsbereiche in den Mittelpunkt rücken. Oft motivieren sie potenzielle Kunden zur Kontaktaufnahme. Die schnelle Erfassbarkeit relevanter Inhalte ist hierbei besonders wichtig.",
+      "title": "Anzeigen, Plakate großflächige Drucke"
+    },
+    {
+      "aliases": [
+        "accessibility",
+        "accessible design",
+        "applications",
+        "print",
+        "print media",
+        "use cases"
+      ],
+      "path": "anwendungen/Printmedien/barrierefreiheit-in-printmedien",
+      "sourcePath": "anwendungen/Printmedien/barrierefreiheit-in-printmedien/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Printmedien/barrierefreiheit-in-printmedien",
+      "summary": "Im Rahmen des Barrierefreiheitsstärkungsgesetzes (BFSG) wurden die Vorgaben für Digitalmedien angepasst, dies führte zu visuellen Veränderungen. Trotz fehlender gesetzlicher Vorgaben für Printmedien orientieren wir uns zukünftig so weit wie möglich an den folgenden grafischen Optimierungen der Digitalmedien.",
+      "title": "Barrierefreiheit in Printmedien"
+    },
+    {
+      "aliases": [
+        "applications",
+        "print",
+        "print media",
+        "use cases"
+      ],
+      "path": "anwendungen/Printmedien/Broschueren_Magazine_Flyer",
+      "sourcePath": "anwendungen/Printmedien/Broschueren_Magazine_Flyer/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Printmedien/Broschueren_Magazine_Flyer",
+      "summary": "Medien wie Broschüren, Magazine oder Flyer bieten unterschiedliche gestalterische Ausprägungen – je nachdem, ob es sich um werbliche Kommunikation oder um redaktionell aufbereitete Inhalte handelt.",
+      "title": "Broschüren, Magazine & Flyer"
+    },
+    {
+      "aliases": [
+        "applications",
+        "print",
+        "print media",
+        "use cases"
+      ],
+      "path": "anwendungen/Printmedien/Factsheets",
+      "sourcePath": "anwendungen/Printmedien/Factsheets/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Printmedien/Factsheets",
+      "summary": "Factsheets sind informative Dokumente, die einzelne Themen vertiefen und weiterführendes Wissen vermitteln. In der Regel werden sie als Einzelseiten angelegt und haben keine gesonderte Titelseite",
+      "title": "Factsheets"
+    },
+    {
+      "aliases": [
+        "applications",
+        "print",
+        "print media",
+        "use cases"
+      ],
+      "path": "anwendungen/Printmedien/Papier_Material0",
+      "sourcePath": "anwendungen/Printmedien/Papier_Material0/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Printmedien/Papier_Material0",
+      "summary": "Für den Druck von Broschüren, Magazinen, Plakaten und Flyern ist ein **mattes, hochweißes Bilderdruckpapier** vorgesehen.",
+      "title": "Papier & Material"
+    },
+    {
+      "aliases": [
+        "applications",
+        "motion",
+        "use cases",
+        "video"
+      ],
+      "path": "anwendungen/Weitere-Anwendungsbereiche/bewegtbild",
+      "sourcePath": "anwendungen/Weitere-Anwendungsbereiche/bewegtbild/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Weitere-Anwendungsbereiche/bewegtbild",
+      "summary": "Bewegtbildinhalte gewinnen zunehmend an Bedeutung. Ob im Fernsehen, auf der Website, in sozialen Netzwerken oder auf Videoplattformen – sie bieten die Möglichkeit, Informationen emotional und wirkungsvoll zu vermitteln. Inhalte von Union Investment können informieren, motivieren oder unterhalten. Dabei sollte die Marke stets klar als Absender erkennbar sein.",
+      "title": "Bewegtbild"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Weitere-Anwendungsbereiche/Objektvermarktung",
+      "sourcePath": "anwendungen/Weitere-Anwendungsbereiche/Objektvermarktung/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Weitere-Anwendungsbereiche/Objektvermarktung",
+      "summary": "Ziel des Objektmarketings ist die erfolgreiche Positionierung einer Immobilie am Markt. Dabei ist es in vielen Fällen unabdingbar, diese einzigartig und eigenständig darzustellen, um ihre Vorzüge, ihre eigene Identität und Unverwechselbarkeit gegenüber konkurrierenden Objekten herauszustellen und zu stärken. Gelingt dies, stärkt das nicht nur das Image der Immobilie, sondern auch das der Marke Union Investment als Eigentümerin der Immobilie. Es ist wichtig zu verstehen, dass die Immobilie eine eigene Marke, mit einem eigenen Markt und konkreten, eigenen Bedürfnissen verkörpert. Ihr Erfolg muss in der Objektvermarktung oberste Priorität haben. Die Marke Union Investment stellt ein wesentliches Qualitätsmerkmal der Immobilie dar.",
+      "title": "Objektvermarktung"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Weitere-Anwendungsbereiche/Property-marketing",
+      "sourcePath": "anwendungen/Weitere-Anwendungsbereiche/Property-marketing/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Weitere-Anwendungsbereiche/Property-marketing",
+      "summary": "The aim of property marketing is to successfully position a property on the market. In many cases, a unique and individual presentation is vital to highlight and reinforce its advantages, its own identity and distinctiveness in relation to competing properties. Successful property marketing not only strengthens the image of the property, but also that of the Union Investment brand as the owner or the property. It is important to understand that the property is its own brand with its own market and specific, independent needs. Its success must be the top priority in property marketing. The Union Investment brand is an important quality feature of the property.",
+      "title": "Property marketing"
+    },
+    {
+      "aliases": [
+        "applications",
+        "use cases"
+      ],
+      "path": "anwendungen/Weitere-Anwendungsbereiche/Veranstaltungen",
+      "sourcePath": "anwendungen/Weitere-Anwendungsbereiche/Veranstaltungen/index.md",
+      "sourceUrl": "https://cd.union-investment.de/anwendungen/Weitere-Anwendungsbereiche/Veranstaltungen",
+      "summary": "Veranstaltungen ermöglichen ein lebendiges Markenerlebnis mit vielen unterschiedlichen Kontaktpunkten. Die Einhaltung der CD-Prinzipien sorgen dabei für einen konsistenten Gesamteindruck.",
+      "title": "Veranstaltungen"
+    },
+    {
+      "aliases": [],
+      "path": "Bildertester",
+      "sourcePath": "Bildertester/index.md",
+      "sourceUrl": "https://cd.union-investment.de/Bildertester",
+      "summary": "Der Bildertester hilft Ihnen bei der optimalen Auswahl eines Bildes zur Darstellung in den häufig genutzten Viewports.",
+      "title": "Bildertester"
+    },
+    {
+      "aliases": [],
+      "path": "Datenschutz0",
+      "sourcePath": "Datenschutz0/index.md",
+      "sourceUrl": "https://cd.union-investment.de/Datenschutz0",
+      "summary": "Wir verstehen Datenschutz als kundenorientiertes Qualitätsmerkmal. Uns ist der Schutz Ihrer personenbezogenen Daten, vor allem in Bezug auf Wahrung des Persönlichkeitsrechts, sehr wichtig. Sofern Sie uns persönliche Daten mitteilen, werden wir diese mit banküblicher Sorgfalt und entsprechend der geltenden datenschutzrechtlichen Bestimmungen behandeln.",
+      "title": "Datenschutz"
+    },
+    {
+      "aliases": [
+        "assets",
+        "download",
+        "downloads"
+      ],
+      "path": "Downloads/Liste-Downloads",
+      "sourcePath": "Downloads/Liste-Downloads/index.md",
+      "sourceUrl": "https://cd.union-investment.de/Downloads/Liste-Downloads",
+      "summary": "Hier finden Sie alle Downloads auf einen Blick",
+      "title": "Liste Downloads"
+    },
+    {
+      "aliases": [
+        "image style",
+        "imagery",
+        "photography"
+      ],
+      "path": "grundlagen/Basiselemente/bildwelt",
+      "sourcePath": "grundlagen/Basiselemente/bildwelt/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Basiselemente/bildwelt",
+      "summary": "Bilder sind ein wesentliches Medium, um die Leistungen und Werte von Union Investment emotional zu vermitteln.",
+      "title": "Bildwelt"
+    },
+    {
+      "aliases": [],
+      "path": "grundlagen/Basiselemente/Einsatz_der_Basiselemente",
+      "sourcePath": "grundlagen/Basiselemente/Einsatz_der_Basiselemente/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Basiselemente/Einsatz_der_Basiselemente",
+      "summary": "Dem Corporate Design von Union Investment liegen fest definierte Gestaltungsbausteine zugrunde, die sogenannten Basiselemente. Sie geben die visuelle Gestalt aller Inhalte vor, die in der Kommunikation benötigt werden. Ihr konsistenter Einsatz dient der Markenprägung.",
+      "title": "Einsatz der Basiselemente"
+    },
+    {
+      "aliases": [
+        "brand colors",
+        "color",
+        "color palette",
+        "colour"
+      ],
+      "path": "grundlagen/Basiselemente/farbe",
+      "sourcePath": "grundlagen/Basiselemente/farbe/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Basiselemente/farbe",
+      "summary": "Für das Erscheinungsbild von Union Investment ist ein charakteristischer Farbklang prägend. Dieser entsteht durch das Zusammenspiel der Primärfarben UI-Blau und UI-Grün, wobei UI-Grün akzentuierend zum Einsatz kommt. Sekundärfarben ergänzen das Farbspektrum.",
+      "title": "Farbe"
+    },
+    {
+      "aliases": [
+        "backgrounds"
+      ],
+      "path": "grundlagen/Basiselemente/hintergruende",
+      "sourcePath": "grundlagen/Basiselemente/hintergruende/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Basiselemente/hintergruende",
+      "summary": "Hintergründe sind mehr als Fläche: Sie erzeugen Atmosphäre, lenken den Blick und geben Inhalten Raum, sich zu entfalten. Dieses Kapitel bietet einen Überblick über die vielfältigen Möglichkeiten der Hintergrundgestaltung.",
+      "title": "Hintergründe"
+    },
+    {
+      "aliases": [
+        "icon",
+        "iconography",
+        "icons"
+      ],
+      "path": "grundlagen/Basiselemente/iconbibliothek",
+      "sourcePath": "grundlagen/Basiselemente/iconbibliothek/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Basiselemente/iconbibliothek",
+      "summary": "Hier finden Sie eine Auflistung unserer Content- und System-Icons. Orientieren Sie sich bei deren Einsatz an dem [Iconstil](/grundlagen/Basiselemente/Iconstil).",
+      "title": "Iconbibliothek"
+    },
+    {
+      "aliases": [
+        "icon",
+        "iconography",
+        "icons"
+      ],
+      "path": "grundlagen/Basiselemente/Iconstil",
+      "sourcePath": "grundlagen/Basiselemente/Iconstil/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Basiselemente/Iconstil",
+      "summary": "Die Gestaltung der Icons greift die charakteristische Formensprache von Union Investment auf. Sie prägt so das Erscheinungsbild subtil und erzeugt einen konsistenten, vertrauenswürdigen Auftritt. Der Einsatz des Farbklangs aus UI-Blau und UI-Grün bei Content-Icons unterstützt diese Wahrnehmung zusätzlich.",
+      "title": "Iconstil"
+    },
+    {
+      "aliases": [
+        "brand mark",
+        "logo",
+        "logos"
+      ],
+      "path": "grundlagen/Basiselemente/Logo",
+      "sourcePath": "grundlagen/Basiselemente/Logo/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Basiselemente/Logo",
+      "summary": "Das Logo von Union Investment (UI-Logo) ist das zentrale visuelle Element der Marke und steht unverkennbar für ihre Werte und Leistungen. Es wird immer eingesetzt, um den Absender in der Kommunikation klar zu kennzeichnen.",
+      "title": "Logo"
+    },
+    {
+      "aliases": [
+        "brand form",
+        "brand shape"
+      ],
+      "path": "grundlagen/Basiselemente/Markenform",
+      "sourcePath": "grundlagen/Basiselemente/Markenform/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Basiselemente/Markenform",
+      "summary": "Die Markenform ist neben dem Logo das stärkste visuelle Element im Auftritt von Union Investment. Sie greift die Formensprache der Bildmarke auf und übersetzt diese in ein charakteristisches Zusammenspiel aus aufsteigenden Diagonalen und Rundungen. Neben ihrer formalen Funktion als markenprägendes Element kann die Markenform auch zur Gliederung oder Hervorhebung von Inhalten eingesetzt werden. Je nach Medium und Kommunikationsziel erscheint die Markenform statisch oder animiert.",
+      "title": "Markenform"
+    },
+    {
+      "aliases": [],
+      "path": "grundlagen/Basiselemente/markeninszenierung3d",
+      "sourcePath": "grundlagen/Basiselemente/markeninszenierung3d/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Basiselemente/markeninszenierung3d",
+      "summary": "Wenn die Marke Union Investment räumlich inszeniert werden soll, gibt es eine markenadäquate dreidimensionale Welt. Diese ist auf den Basiselementen des Corporate Designs aufgebaut.",
+      "title": "Markeninszenierung in 3D"
+    },
+    {
+      "aliases": [
+        "animated",
+        "animation",
+        "motion"
+      ],
+      "path": "grundlagen/Basiselemente/motion-prinzipien",
+      "sourcePath": "grundlagen/Basiselemente/motion-prinzipien/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Basiselemente/motion-prinzipien",
+      "summary": "Die Motion-Prinzipien von Union Investment sind essentiell, um eine markenadäquate Charakteristik von Animationen in allen digitalen Medien zu gewährleisten. Die Prinzipien geben vor, wie Animationen eingesetzt werden und sich verhalten.",
+      "title": "Motion-Prinzipien"
+    },
+    {
+      "aliases": [
+        "font",
+        "typeface",
+        "typography"
+      ],
+      "path": "grundlagen/Basiselemente/Schrift",
+      "sourcePath": "grundlagen/Basiselemente/Schrift/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Basiselemente/Schrift",
+      "summary": "Hausschrift von Union Investment ist die Neue Frutiger. Ihr Einsatz ist für die Wahrnehmung der Marke prägend. Weitere festgelegte Schriften können ergänzend eingesetzt werden. Dies ermöglicht eine größere Varianz und die bestmögliche Darstellung von Inhalten in unterschiedlichen Medien.",
+      "title": "Schrift"
+    },
+    {
+      "aliases": [
+        "audio",
+        "brand mark",
+        "logo",
+        "logos",
+        "sound",
+        "voice"
+      ],
+      "path": "grundlagen/Basiselemente/Soundlogo",
+      "sourcePath": "grundlagen/Basiselemente/Soundlogo/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Basiselemente/Soundlogo",
+      "summary": "Ein Markenauftritt umfasst mehr als nur visuelle Elemente: Mit Hilfe einer charakteristischen akustischen Kennung lässt sich die Wiedererkennbarkeit einer Marke auch in Medien gewährleisten, in denen der Einsatz von UI-Logo, Farbklang und Markenform nicht möglich ist. Dies umfasst das **Soundlogo,** die daraus abgeleitete **Markenmusik** sowie die **Markenstimme**.",
+      "title": "Markenklang & Stimme"
+    },
+    {
+      "aliases": [
+        "graphic elements",
+        "graphics"
+      ],
+      "path": "grundlagen/Grafikelemente/diagramme",
+      "sourcePath": "grundlagen/Grafikelemente/diagramme/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Grafikelemente/diagramme",
+      "summary": "Diagramme sind in ihrem Aufbau auf das Wesentliche reduziert. Sie zeichnen sich durch eine klare Formensprache aus geometrischen Grundformen aus. Die Markentypik entsteht vor allem durch den Einsatz der Primärfarben.",
+      "title": "Diagramme"
+    },
+    {
+      "aliases": [
+        "graphic elements",
+        "graphics",
+        "illustration",
+        "illustrations"
+      ],
+      "path": "grundlagen/Grafikelemente/illustrationsstil",
+      "sourcePath": "grundlagen/Grafikelemente/illustrationsstil/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Grafikelemente/illustrationsstil",
+      "summary": "Der Illustrationsstil von Union Investment ist reduziert, flächig und besteht aus einfachen Grundformen. Der prägnante Einsatz der Primärfarben macht den Illustrationsstil besonders markant. Mithilfe von Linien lassen sich Details darzustellen und Flächen gleicher Farbe voneinander unterscheiden.",
+      "title": "Illustrationsstil"
+    },
+    {
+      "aliases": [
+        "graphic elements",
+        "graphics"
+      ],
+      "path": "grundlagen/Grafikelemente/schaubilder",
+      "sourcePath": "grundlagen/Grafikelemente/schaubilder/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Grafikelemente/schaubilder",
+      "summary": "Die Stilistik der Schaubilder zeichnet sich durch einen reduzierten, flächigen Aufbau im UI-Farbklang aus. Einfache, geometrische Grundformen und der Verzicht auf zusätzliche Effekte sorgen für eine klare Kommunikation der Inhalte.",
+      "title": "Schaubilder"
+    },
+    {
+      "aliases": [
+        "graphic elements",
+        "graphics"
+      ],
+      "path": "grundlagen/Grafikelemente/signets-und-auszeichnungen",
+      "sourcePath": "grundlagen/Grafikelemente/signets-und-auszeichnungen/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Grafikelemente/signets-und-auszeichnungen",
+      "summary": "Beim Einsatz von internen Signets und externen Auszeichnungen ist darauf zu achten, dass sie in einem ausgewogenen Verhältnis zum Union Investment Logo stehen. Der eigentliche Absender des Mediums soll immer klar erkennbar bleiben.",
+      "title": "Signets und Auszeichnungen"
+    },
+    {
+      "aliases": [
+        "graphic elements",
+        "graphics"
+      ],
+      "path": "grundlagen/Grafikelemente/stoerer",
+      "sourcePath": "grundlagen/Grafikelemente/stoerer/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Grafikelemente/stoerer",
+      "summary": "Störer sind grafische Elemente, die auf besondere Inhalte oder spezielle Angebote hinweisen. Durch ihre Farbe und Platzierung heben sie sich von der übrigen Gestaltung ab und lenken so den Blick auf sich.",
+      "title": "Störer"
+    },
+    {
+      "aliases": [
+        "graphic elements",
+        "graphics"
+      ],
+      "path": "grundlagen/Grafikelemente/tabellen",
+      "sourcePath": "grundlagen/Grafikelemente/tabellen/index.md",
+      "sourceUrl": "https://cd.union-investment.de/grundlagen/Grafikelemente/tabellen",
+      "summary": "Der Tabellenaufbau vermittelt Klarheit und Übersichtlichkeit. Dies wird durch ein reduziertes Farbspektrum ebenso erreicht wie durch den Verzicht auf vertikale Trennlinien. Auch die seitlichen Tabellenränder bleiben offen.",
+      "title": "Tabellen"
+    },
+    {
+      "aliases": [],
+      "path": "Impressum",
+      "sourcePath": "Impressum/index.md",
+      "sourceUrl": "https://cd.union-investment.de/Impressum",
+      "summary": "E-Mail: [cd-team@union-investment.de](mailto:cd-team@union-investment.de)",
+      "title": "Impressum"
+    },
+    {
+      "aliases": [],
+      "path": "Infos_Marke_CD",
+      "sourcePath": "Infos_Marke_CD/index.md",
+      "sourceUrl": "https://cd.union-investment.de/Infos_Marke_CD",
+      "summary": "Worauf muss ich achten, wo finde ich Vorlagen und wer kann mir bei Fragen helfen? Diese Seite gibt dir nützliche Tipps zu unserer Marke und zu unserem Corporate Design (CD).",
+      "title": "Infos zu Marke und CD"
+    },
+    {
+      "aliases": [],
+      "path": "Nutzungsbestimmungen0",
+      "sourcePath": "Nutzungsbestimmungen0/index.md",
+      "sourceUrl": "https://cd.union-investment.de/Nutzungsbestimmungen0",
+      "summary": "Die Union Asset Management Holding AG (kurz „UMH“ genannt) stellt den externen Dienstleistern der Union Investment Gruppe die Nutzung ihrer Corporate Design-Toolbox (kurz „CD-Toolbox“ genannt) auf Basis dieser Nutzungsbestimmungen zur Verfügung. In der CD-Toolbox sind alle Informationen rund um das Erscheinungsbild von Union Investment an einem zentralen Ort gebündelt. Der Nutzer findet dort alle wichtigen Elemente des Corporate Designs vom Logo bis zu herunterladbaren Vorlagen (nachfolgend „UMH Elemente“ genannt). Diese UMH Elemente sind ausschließlich zu dem in diesen Nutzungsbestimmungen beschriebenen Zweck vom Nutzer zu verwenden. Um einen einheitlichen Auftritt der Union Investment Gruppe in der Praxis zu gewährleisten und damit den Markenauftritt von Union Investment zu stärken, ist es wichtig, dass die konkrete Gestaltung und Produktion aller Drucksachen und Maßnahmen in Abstimmung mit der Union Investment Gruppe erfolgt.",
+      "title": "Nutzungsbestimmungen"
+    },
+    {
+      "aliases": [],
+      "path": "Willkommen",
+      "sourcePath": "Willkommen/index.md",
+      "sourceUrl": "https://cd.union-investment.de/Willkommen",
+      "summary": "Wenn man in ein neues Unternehmen kommt, stellen sich viele Fragen – auch rund um die Marke und das Corporate Design (CD): Worauf muss ich achten, wo finde ich Vorlagen und wer kann mir bei Fragen helfen? Diese Seite gibt dir hierfür einige nützliche Tipps.",
+      "title": "Willkommen"
+    }
+  ]
+}
