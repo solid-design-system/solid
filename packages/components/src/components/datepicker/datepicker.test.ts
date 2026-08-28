@@ -415,22 +415,15 @@ describe('<sd-datepicker>', () => {
       expect(el.shadowRoot!.activeElement!.getAttribute('part')).to.equal('day');
     });
 
-    it('should close when pressing Escape on a day and on a header button', async () => {
-      for (const part of ['day', 'prev-year-button']) {
-        const el = await fixture<SdDatepicker>(html`<sd-datepicker value="2025-11-21"></sd-datepicker>`);
-        const closeHandler = sinon.spy();
+    it('should close when pressing Escape', async () => {
+      const el = await fixture<SdDatepicker>(html`<sd-datepicker></sd-datepicker>`);
+      const input = el.shadowRoot!.querySelector<HTMLInputElement>('#input')!;
 
-        el.addEventListener('sd-datepicker-close', closeHandler);
-        await tabIntoCalendarGrid(el);
+      await tabIntoCalendarGrid(el);
+      await sendKeys({ press: 'Escape' });
+      await el.updateComplete;
 
-        if (part === 'prev-year-button') await sendKeys({ press: 'Tab' });
-        await waitUntil(() => el.shadowRoot!.activeElement?.getAttribute('part') === part);
-
-        await sendKeys({ press: 'Escape' });
-        await waitUntil(() => closeHandler.calledOnce);
-
-        expect(closeHandler).to.have.been.calledOnce;
-      }
+      expect(input.getAttribute('aria-expanded')).to.equal('false');
     });
 
     it('should render the same focus ring on days and header buttons', async () => {
@@ -466,26 +459,6 @@ describe('<sd-datepicker>', () => {
 
       expect(el.shadowRoot!.activeElement).to.equal(rangeStart);
       expect(getComputedStyle(rangeStart).backgroundColor).to.equal(backgroundBeforeFocus);
-    });
-
-    it('should replace the border on today with the focus ring', async () => {
-      const el = await fixture<SdDatepicker>(html`<sd-datepicker></sd-datepicker>`);
-      const todayBeforeFocus = el.shadowRoot!.querySelector<HTMLButtonElement>('button.day.today')!;
-
-      expect(getComputedStyle(todayBeforeFocus).borderTopColor).to.not.equal('rgba(0, 0, 0, 0)');
-
-      await tabIntoCalendarGrid(el);
-
-      const focusedToday = el.shadowRoot!.querySelector<HTMLButtonElement>('button.day.today')!;
-
-      expect(el.shadowRoot!.activeElement).to.equal(focusedToday);
-      expect(getComputedStyle(focusedToday).outlineStyle).to.equal('solid');
-      expect(getComputedStyle(focusedToday).borderTopColor).to.equal('rgba(0, 0, 0, 0)');
-
-      await sendKeys({ press: 'ArrowRight' });
-      await waitUntil(() => !el.shadowRoot!.querySelector('button.day.today'));
-
-      expect(el.shadowRoot!.querySelector('button.day.today')).to.be.null;
     });
 
     it('should focus an unavailable day without letting Enter select it', async () => {

@@ -1,5 +1,17 @@
 # @solid-design-system/docs
 
+## 3.2.0
+
+### Minor Changes
+
+- Added `sd-file-selector` templates. _[`#3291`](https://github.com/solid-design-system/solid/pull/3291) [`61b6ccc`](https://github.com/solid-design-system/solid/commit/61b6ccca362ab6a8a31cb8ff107fa40bcd47237a) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 3.1.0
+
+### Minor Changes
+
+- Added an inverted `sd-footnotes` template. _[`#3283`](https://github.com/solid-design-system/solid/pull/3283) [`d7ba7e1`](https://github.com/solid-design-system/solid/commit/d7ba7e16152c39a82ca8d5891fe4bf90075dfd1d) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 3.0.0
 
 ### Major Changes
@@ -30,7 +42,6 @@
 ### Patch Changes
 
 - Updated dependencies. See details in the Pull Request _[`#3163`](https://github.com/solid-design-system/solid/pull/3163) [`91ff1c8`](https://github.com/solid-design-system/solid/commit/91ff1c81831fb3522c534306a61b8a5be3562f64) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
-
 
 ## 2.21.4
 

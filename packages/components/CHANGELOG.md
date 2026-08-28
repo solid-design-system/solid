@@ -1,5 +1,33 @@
 # @solid-design-system/components
 
+## 7.0.3
+
+### Patch Changes
+
+- Removed focus on the mousedown event for the `sd-carousel` dots variant. _[`#3289`](https://github.com/solid-design-system/solid/pull/3289) [`3be23ef`](https://github.com/solid-design-system/solid/commit/3be23ef6ec13f9c01c4d6da11427d38581703f05) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 7.0.2
+
+### Patch Changes
+
+- Fixed the border style of `sd-combobox` and `sd-datepicker` in valid and invalid states when the flyout is open for better consistency across components. _[`#3284`](https://github.com/solid-design-system/solid/pull/3284) [`8440250`](https://github.com/solid-design-system/solid/commit/8440250444eeeca15c6d0285a914cf48c2d4dfb9) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 7.0.1
+
+### Patch Changes
+
+- Fixes for keyboard focus in `sd-datepicker`: _[`#3225`](https://github.com/solid-design-system/solid/pull/3225) [`8d1a601`](https://github.com/solid-design-system/solid/commit/8d1a6013786402427b601074a932f4d0491d3a08) [@balco0110](https://github.com/balco0110)_
+
+  - Improved range start and end date focus states for better visual consistency.
+  - Improved calendar focus behavior by focusing today when no date or range is selected.
+  - Improved calendar keyboard navigation: Tab now moves focus from the input to the calendar and then to the navigation buttons, while Escape closes the calendar from any focused element.
+  - Improved calendar accessibility by allowing unavailable dates to receive focus and be announced as unavailable instead of being skipped.
+
+### 📈 Stats
+
+- Uncompressed: 633 KB (+1 KB / +0%)
+- Gzipped: 142 KB (unchanged)
+
 ## 7.0.0
 
 ### Major Changes
@@ -17,7 +45,6 @@
 ### Patch Changes
 
 - Removed the CDN installation instructions from the documentation and added a "CDN Hosting" page for self-hosting, as Solid Design System no longer provides a hosted CDN. _[`#3239`](https://github.com/solid-design-system/solid/pull/3239) [`c825a22`](https://github.com/solid-design-system/solid/commit/c825a22d9f6f984d3b6268fe30a7ea19be008f63) [@mariohamann](https://github.com/mariohamann)_
-
 
 ## 6.30.0
 

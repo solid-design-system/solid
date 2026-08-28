@@ -1984,9 +1984,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
         ? 'visuallyDisabled'
         : this.readonly
           ? 'readonly'
-          : this.hasFocus && this.showInvalidStyle
+          : this.hasFocus && this.showInvalidStyle && !this.open
             ? 'activeInvalid'
-            : this.hasFocus && this.styleOnValid && this.showValidStyle
+            : this.hasFocus && !this.open && this.styleOnValid && this.showValidStyle
               ? 'activeValid'
               : this.hasFocus || this.open
                 ? 'active'
