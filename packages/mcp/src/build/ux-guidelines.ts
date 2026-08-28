@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import { uxGuidelinesPath } from '../utilities/index.js';
 
-const REQUIRED_GUIDELINES = ['calculator.md', 'filter.md', 'navigation.md', 'ux_pattern_forms.md'];
+const REQUIRED_GUIDELINES = ['calculator.md', 'filter.md', 'forms.md', 'navigation.md'];
 
 /** Verify authored UX metadata survives the generated metadata build. */
 export const buildUxGuidelines = async (): Promise<void> => {

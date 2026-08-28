@@ -53,14 +53,15 @@ export const uxGuidelinesTool = (server: McpServer) => {
               type: 'text',
               text:
                 guidelines.length > 0
-                  ? `## Available UX Guidelines\n\n${guidelines.map(item => `- ${item.slug}`).join('\n')}`
+                  ? `## Available UX Guidelines\n\n- ${guidelines.map(item => item.slug).join('\n- ')}`
                   : 'No UX guidelines found. Build the MCP metadata before requesting a guideline.'
             }
           ]
         };
       }
 
-      const selectedGuideline = guidelines.find(item => item.slug.toLowerCase() === guideline.toLowerCase().trim());
+      const requestedSlug = guideline.toLowerCase().trim();
+      const selectedGuideline = guidelines.find(item => item.slug.toLowerCase() === requestedSlug);
       if (!selectedGuideline) {
         return {
           content: [

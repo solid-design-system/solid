@@ -1,8 +1,8 @@
 ---
 description: >
-  Use when a user needs information about the UX principles for building forms. This includes guidelines on creating intuitive, accessible, and engaging user experiences that align with the brand's values and enhance user satisfaction across all digital touchpoints.
-name: ux-pattern-forms
-title: UX Pattern Guide – Forms
+  Use when a user needs information about the UX principles for building forms. This includes guidelines on creating intuitive, accessible, and engaging user experiences that align with the brand's values and enhance user satisfaction across all digital touch points.
+name: forms
+title: Forms
 components:
   - sd-button
   - sd-checkbox
@@ -33,7 +33,7 @@ sd-tage. To allow users to scan and complete the form quickly, forms should:
 - Group related tasks under section titles to provide more context and make the interface easier to scan.
 - Keep in mind password managers and browser capabilities that populate data for users.
 - Disclose inputs progressively to avoid overwhelming the user.
-- If the majority of the fields are required, mark only the optional field labels with “(optional)”. The mandatory fields remain requiered, only the asterisk is omitted.
+- If the majority of the fields are required, mark only the optional field labels with “(optional)”. The mandatory fields remain required, only the asterisk is omitted.
 - If the majority of the fields are optional, mark only the required field labels with “*”.
 - The approach employed should remain uniform across your product.
 
@@ -96,18 +96,18 @@ When input is valid:
 
 ### Valid
 
-Style on Vaild: Show a valid input, if the requirements are matched.
+Style on Valid: Show a valid input, if the requirements are matched.
 
 ### Error
 
 - Helper text: Give information about what you need or where to find the information
-- Placerholder text: Give non-essential hints, examples, or format suggestions
-- Tooltip: If a more detailed information has to be given, tooltip can be used together with the helpertext.
+- Placeholder text: Give non-essential hints, examples, or format suggestions
+- Tooltip: If a more detailed information has to be given, tooltip can be used together with the helper text.
 - Error message: Describe in a solution-oriented, informative way how to fix the error. When an error occurs, the helper text is replaced with the error text for that field.
 
 ### Writing examples for Error Messages
 
 - Example for fields where a first name is needed: "Please enter your first name."
-- Example if a Client number isn't matching the requierd length: "Numbers are missing in your client number. Please check your input."
+- Example if a Client number isn't matching the required length: "Numbers are missing in your client number. Please check your input."
 - Example for fields where a date is needed in a specific format: "Please enter the expiration date in the format MM/YY."
 - Example if the username is wrong: "Please check your username and try again."

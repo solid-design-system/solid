@@ -37,8 +37,14 @@ describe('when using ux_guidelines tool', () => {
   });
 
   it('should return a selected metadata guideline', async () => {
-    const result = await registeredTools[0].handler({ guideline: 'filter' });
+    const result = await registeredTools[0].handler({ guideline: 'forms' });
     assert.strictEqual(result.content[0].type, 'text');
-    assert.ok(result.content[0].text.includes('# Pattern Guide: Filter'));
+    assert.ok(result.content[0].text.includes('# Pattern Guide: Forms'));
+  });
+
+  it('should reject the old forms guideline slug', async () => {
+    const result = await registeredTools[0].handler({ guideline: 'ux_pattern_forms' });
+    assert.strictEqual(result.content[0].type, 'text');
+    assert.ok(result.content[0].text.includes('No UX guideline found'));
   });
 });

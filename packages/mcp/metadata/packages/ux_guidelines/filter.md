@@ -1,6 +1,6 @@
 ---
 description: >
-  Use when a user needs information about the UX principles for building filter patterns. This includes guidelines on creating intuitive, accessible, and engaging user experiences that align with the brand's values and enhance user satisfaction across all digital touchpoints.
+  Use when a user needs information about the UX principles for building filter patterns. This includes guidelines on creating intuitive, accessible, and engaging user experiences that align with the brand's values and enhance user satisfaction across all digital touch points.
 name: filter
 title: Filter
 components:
@@ -49,7 +49,7 @@ In a single selection filter, only one attribute can be selected at a time. User
 
 Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples
 
-Allows to select one value from a list. This is the recomended single selection method for most filter use cases.
+Allows to select one value from a list. This is the recommended single selection method for most filter use cases.
 
 - Saves space and reduces visual noise.
 - Facilitates composing denser filter panels.
@@ -74,7 +74,7 @@ Use the components tool (with `component` + `story` args) to retrieve the HTML f
 
 Allows users to select exactly one option from a set of mutually exclusive items within a single category; one option is always preselected, and a valid selection is required.
 
-- Shows all available options upfront, allowing users to easly compare them.
+- Shows all available options upfront, allowing users to easily compare them.
 - Use radio groups as filters when an option must be preselected, otherwise use a select field.
 
 ### Single-Selection Filters
@@ -117,7 +117,7 @@ For filters there are different methods users can interact within an interface.
 - Filters apply instantly when users change a value. Use when:
   - User is only expected to select one filter.
   - Changes do not significantly impact loading time.
-- This is the expected behaviour for radio button groups, radio groups and tags.
+- This is the expected behavior for radio button groups, radio groups and tags.
 
 #### Apply Button Required
 

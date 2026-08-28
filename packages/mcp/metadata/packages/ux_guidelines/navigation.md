@@ -1,6 +1,6 @@
 ---
 description: >
-  Use when a user needs information about the UX principles for building navigation patterns. This includes guidelines on creating intuitive, accessible, and engaging user experiences that align with the brand's values and enhance user satisfaction across all digital touchpoints.
+  Use when a user needs information about the UX principles for building navigation patterns. This includes guidelines on creating intuitive, accessible, and engaging user experiences that align with the brand's values and enhance user satisfaction across all digital touch points.
 name: navigation
 title: Navigation
 components:
@@ -46,7 +46,7 @@ Top navigation menus, with horizontal organization, are ideal for landing pages 
 - Third level navigation: This level offers direct access to specific high-priority products, features, or subcategories within the second level.
 - Utility menu: Contains actions that are global and functional, not content-based sections of the site. Typically from right to left: global search, site switcher and language switcher (all icon only) and max. two further actions that are displayed with left icon and label (e.g. login).
 - Divider: Creates a visual reference to set elements or sections apart. Column width dividers separate second level nav items when they stack within a column; full width dividers separate mega menu sections.
-- Mega Menu section: When using a Mega Menu to divide content into distinct thematic sections, a Divider combined with a Subheadline is employed to create clear visual distinctions between these sections. The section headline serves as a brief title summarizing the content of the subsequent section.
+- Mega Menu section: When using a Mega Menu to divide content into distinct thematic sections, a Divider combined with a subheadline is employed to create clear visual distinctions between these sections. The section headline serves as a brief title summarizing the content of the subsequent section.
 
 #### Application Rules
 
@@ -55,7 +55,7 @@ Top navigation menus, with horizontal organization, are ideal for landing pages 
   - For 1 to 4 second level nav items use a single row
   - For 4 to 8 second level nav items add a second row separated by divider in column
   - For more than 8 second level nav items consider using a mega menu
-- Avoid mixing second level nav items with and without descripitions
+- Avoid mixing second level nav items with and without descriptions
 - When using a second row of second level nav, display max. 3 third level nav items each
 - If possible, display the same amount of third level nav items for each second level nav item to avoid chaotic column heights
 - Utility menu usually consists of:
@@ -76,7 +76,7 @@ Constant Visibility of Side Navigation: To maintain a clear and consistent struc
 - Divider: Creates a visual reference to set elements or sections apart.
 - Global Actions button group: Contains a set of max. 3 actions that are global and need to be visible on every site. This button group will stick to the bottom of the sidebar.
 - Back button: When on a second or third level page, the back button will allow a user to navigate back to first level categories.
-- Active first level category: When on a second or third level page, the actvive first level Category is Highlighted.
+- Active first level category: When on a second or third level page, the active first level Category is Highlighted.
 - Second level navigation with and without subsidiary third level: Second level items provide a more detailed breakdown of the main categories and are in relaxed position. Those items with a subsidiary second level will have a chevron (up when opened and down when closed) and opening these will act comparably to an accordion and reveal subsidiary third level items.
 - Third level navigation: This level offers direct access to specific high-priority products, features, or subcategories within the second level.
 - Utility navigation: Contains actions that are global and functional, not content-based sections of the site.
@@ -103,7 +103,7 @@ Top navigation menus, with horizontal organization, are ideal for landing pages 
 - Active first level category: When on a second level page, the active first level category is highlighted.
 - Second level navigation with or without description: This level provides a more detailed breakdown of the main categories. Description texts can optionally help users understand the content or purpose of each subcategory.
 - Third level navigation: This level offers direct access to specific high-priority products, features, or subcategories within the second level.
-- Mega Menu section: When using a Mega Menu to divide content into distinct thematic sections, a divider combined with a subheadline is employed to create clear visual distinctions between these sections. The section headline serves as a brief title summarizing the content of the subsequent section.
+- Mega Menu section: When using a Mega Menu to divide content into distinct thematic sections, a Divider combined with a subheadline is employed to create clear visual distinctions between these sections. The section headline serves as a brief title summarizing the content of the subsequent section.
 - Divider: Creates a visual reference to set elements or sections apart.
 - Utility menu: Contains actions that are global and functional, not content-based sections of the site. Typically those are: site switcher, language switcher and max. two further actions such as login
 
