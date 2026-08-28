@@ -17,7 +17,7 @@ export default {
  *
  * ### Text Styles
  *
- * Examples of the `sd-expandable` with different typography classes on the element itself:
+ * Examples of the expandable with different typography classes on the element itself:
  * - Leadtext (default)
  * - Paragraph
  */

@@ -2,7 +2,6 @@
 name: breadcrumb
 title: Breadcrumb
 components:
-  - sd-breacrumb
   - sd-breadcrumb
   - sd-breadcrumb-item
   - sd-button

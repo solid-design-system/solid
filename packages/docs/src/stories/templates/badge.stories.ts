@@ -15,7 +15,7 @@ export default {
 };
 
 /**
- * Examples of `sd-button` working with sd-badge: Example of how to combine buttons and icon buttons with badges to display notification counts or status indicators.
+ * Example of how to combine buttons and icon buttons with badges to display notification counts or status indicators.
  */
 export const ButtonWithBadge = {
   name: 'Button with badge',
@@ -86,7 +86,7 @@ export const ButtonWithBadge = {
 };
 
 /**
- * Examples of `sd-navigation-item` working with sd-badge: Example of how to attach a badge to a navigation item to surface unread counts or alerts directly in the header. The template shows a bell icon with an overflow count (+99) placed within a minimal navigation bar.
+ * Example of how to attach a badge to a navigation item to surface unread counts or alerts directly in the header. The template shows a bell icon with an overflow count (+99) placed within a minimal navigation bar.
  */
 
 export const NavigationItemWithBadge = {
@@ -128,7 +128,8 @@ export const NavigationItemWithBadge = {
 };
 
 /**
- * Code-only template. Example of how a badge count updates dynamically in response to user interaction. Clicking the Increment button increases the count on the bell icon, demonstrating how badges can reflect real-time state changes in code.
+ * __Code-only__:<br>
+ * Example of how a badge count updates dynamically in response to user interaction. Clicking the Increment button increases the count on the bell icon, demonstrating how badges can reflect real-time state changes in code.
  */
 
 export const InteractiveIncrement = {

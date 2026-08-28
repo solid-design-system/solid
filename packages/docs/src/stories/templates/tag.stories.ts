@@ -14,7 +14,7 @@ export default {
 };
 
 /**
- * Example of how to use a tag group as a category filter, showing the result count per option and highlighting the active selection. An "All" tag resets the filter.
+ * Example of how to use a tag group as a category filter, showing the result count per option and highlighting the active selection. An `All` tag resets the filter.
  */
 
 export const filterTagGroup = {
@@ -161,7 +161,7 @@ export const filterTagGroupRisk = {
 };
 
 /**
- * Example of how to display active filter selections as removable tags, each with an × button to deselect individually. A "Remove filters" action clears all active filters at once, giving users full control over their current filter state.
+ * Example of how to display active filter selections as removable tags, each with an × button to deselect individually. A `Remove filters` action clears all active filters at once, giving users full control over their current filter state.
  */
 
 export const removableFilterTagGroup = {
@@ -251,9 +251,9 @@ export const tagGroupLinks = {
 
 /**
  * Example of how the tag component adapts to three background surfaces. Use the appropriate variant to ensure the tag remains visually distinct from its surrounding container background.
- * - white
- * - neutral-100
- * - primary-100
+ * - `white`
+ * - `neutral-100`
+ * - `primary-100`
  */
 export const backgroundOptions = {
   name: 'Tag Background Options',

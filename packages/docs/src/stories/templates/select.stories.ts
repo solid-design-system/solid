@@ -16,12 +16,13 @@ export default {
 /**
  * Example of how to organize select options into labeled groups, making long lists easier to scan.
  *
- * - Label: Additionally a label can be shown for each option group.
- * - Divider: Use `sd-divider` to group option items visually.
- * - Accessibility hint: group labels will be neglected by most assistive devices.
+ * - label: additionally a label can be shown for each option group.
+ * - divider: use a divider to group option items visually.
+ *
+ * __Accessibility hint__: group labels will be neglected by most assistive devices.
  */
 export const Default = {
-  name: 'Grouping Options',
+  name: 'Select Grouping',
   render: () =>
     html`<div class="h-[500px] flex flex-wrap md:flex-nowrap gap-12">
       <sd-select

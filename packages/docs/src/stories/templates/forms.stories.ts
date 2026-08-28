@@ -14,7 +14,7 @@ export default {
 };
 
 /**
- * Use this template to provide login options. Use “optional” to mark non-required fields. The mandatory fields remain requiered, only the asterisk is omitted.
+ * Use this template to provide login options. Use `optional` to mark non-required fields. The mandatory fields remain requiered, only the asterisk is omitted.
  */
 
 export const LoginForm = {
@@ -158,7 +158,7 @@ export const ContactForm = {
 };
 
 /**
- * Use the attribute `visually-disabled` to visually disable form elements. Wrap the elements in a `sd-tooltip` to provide information on how to enable them.
+ * Use the attribute `visually-disabled` to visually disable form elements. Wrap the elements in a tooltip to provide information on how to enable them.
  *
  * **Accessibility Hint:** This approach is recommended for accessibility reasons. Disabling elements, will remove them from the tab order and screen readers will not announce them.
  */

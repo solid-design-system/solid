@@ -16,7 +16,7 @@ export default {
 /**
  * Example of how to use a teaser where the card itself is not clickable, but contains a button as the explicit call to action. Use this when a deliberate user action is preferred over an accidentally triggered navigation.
  *
- * Code-only: The teaser itself is not clickable, but links can be placed inside.
+ * __Code-only__: The teaser itself is not clickable, but links can be placed inside.
  *
  * ```html
  * <sd-teaser>

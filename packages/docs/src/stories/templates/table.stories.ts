@@ -4,9 +4,9 @@ import { html } from 'lit-html';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
- * The `sd-table-cell` component offers basic styling for table cells. It is designed to be used in conjunction with the sd-table component.
+ * The table-cell component offers basic styling for table cells. It is designed to be used in conjunction with the sd-table component.
 
- * These examples demonstrate the usage of “sd-table-cell” in various contexts. The examples are intended solely for illustrating how sd-table-cell can be used to style tables. The data generation and table sorting logic * * should not be used in production environments.
+ * These examples demonstrate the usage of table-cell in various contexts. The examples are intended solely for illustrating how table-cell can be used to style tables. The data generation and table sorting logic * * should not be used in production environments.
  */
 export default {
   tags: ['!dev', 'autodocs'],
@@ -1576,7 +1576,7 @@ export const multiSelectTable = {
 };
 /**
  *
- * These examples demonstrate the usage of sd-table-cell when the header is sticky and a shadow is displayed.
+ * These examples demonstrate the usage of table-cell when the header is sticky and a shadow is displayed.
  *
  * ```html
  * <table id="vertical-scrollable-table" class="sd-table block overflow-y-scroll">

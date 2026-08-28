@@ -13,14 +13,20 @@ export default {
   }
 };
 
-/**
+/** ### Accordion Group with Skeleton
  * Example of how to show a skeleton loading state inside an expanded accordion panel while its content is being fetched. Placeholder blocks replace the text and media elements, preventing layout shift once the real content loads.
  */
 
 export const Default = {
   name: 'Accordion Group with Skeleton',
   render: () =>
-    html`<div class="w-[800px]">
+    html`
+      <style>
+      #anchor--templates-skeleton--default .innerZoomElementWrapper {
+        min-height: 300px;
+      }
+    </style>
+  <div class="w-[800px]">
     <sd-accordion-group>
         <sd-accordion summary="Shareholder structure">
             <div class="flex flex-col gap-4 w-full">

@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 /**
- * Example of how to use an accordion group to organize related content sections under expandable headers. Each single accordion can contain rich content such as charts, image grids, or body text. The template demonstrates different background options including background options like white, neutral-100 or primary-100.
+ * Example of how to use an accordion group to organize related content sections under expandable headers. Each single accordion can contain rich content such as charts, image grids, or body text. The template demonstrates different background options including background options like `white`, `neutral-100` or `primary-100`.
  */
 
 export default {

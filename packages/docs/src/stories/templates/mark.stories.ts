@@ -42,6 +42,10 @@ export const HeadlineWithMark = {
     </div>`
 };
 
+/**
+ * Example of how to use the green accent mark within a display-style. Use this variant for hero sections or prominent page introductions where typographic impact is important.
+ */
+
 export const DisplayWithMark = {
   name: 'Display with Mark',
   render: () => html` <p class="sd-display"><mark class="sd-mark">Union Investment</mark> at a glance</p> `
