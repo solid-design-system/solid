@@ -39,7 +39,10 @@ export const uxGuidelinesTool = (server: McpServer) => {
       description:
         'Solid Design System UX pattern guidelines. Omit `guideline` to list available patterns, or pass a guideline slug such as "forms", "filter", "navigation", or "calculator" to retrieve it.',
       inputSchema: {
-        guideline: z.string().optional().describe('UX pattern slug. Omit to list available guidelines.')
+        guideline: z
+          .enum(['calculator', 'filter', 'forms', 'navigation'])
+          .optional()
+          .describe('UX pattern slug. Omit to list available guidelines.')
       },
       title: 'UX Guidelines'
     },

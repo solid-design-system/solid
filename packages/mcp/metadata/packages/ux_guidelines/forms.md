@@ -25,7 +25,7 @@ version: 1.0.0
 
 # Pattern Guide: Forms
 
-sd-tage. To allow users to scan and complete the form quickly, forms should:
+sd-tag. To allow users to scan and complete the form quickly, forms should:
 
 - Ask only for necessary information so as to respect the user’s privacy regulations.
 - Follow a logical, predictable order—e.g first name first, last name second.
