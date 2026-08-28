@@ -59,6 +59,7 @@ Add to `claude_desktop_config.json`:
 - **Templates**: List, filter by component/style, and retrieve template source code
 - **Icons**: Search icon libraries across keywords, category, and library
 - **Design Tokens**: Get design token information and guidance
+- **UX Guidelines**: Get UX, accessibility, responsive design, and validation guidance
 - **Version Info**: Check MCP server version and metadata
 
 ## Available Tools
