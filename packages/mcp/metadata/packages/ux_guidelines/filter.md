@@ -47,7 +47,7 @@ In a single selection filter, only one attribute can be selected at a time. User
 
 #### sd-select or sd-combobox
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples
+Use the components tool with `component` and `example` arguments to retrieve HTML examples.
 
 Allows to select one value from a list. This is the recommended single selection method for most filter use cases.
 
@@ -55,9 +55,9 @@ Allows to select one value from a list. This is the recommended single selection
 - Facilitates composing denser filter panels.
 - Easy for the users to quickly review the selected option.
 
-#### sd-radio-button-group
+#### sd-radio-group with sd-radio-button
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples
+Use the components tool with `component` and `example` arguments to retrieve HTML examples.
 
 Allows users to switch between mutually exclusive item groups, such as categories or view options.
 
@@ -70,14 +70,14 @@ Allows users to switch between mutually exclusive item groups, such as categorie
 
 #### sd-radio-group
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples
+Use the components tool with `component` and `example` arguments to retrieve HTML examples.
 
 Allows users to select exactly one option from a set of mutually exclusive items within a single category; one option is always preselected, and a valid selection is required.
 
 - Shows all available options upfront, allowing users to easily compare them.
 - Use radio groups as filters when an option must be preselected, otherwise use a select field.
 
-### Single-Selection Filters
+### Multi-Selection Filters
 
 In multi selection filters, multiple attributes are selectable by the user. Users can select multiple choices from a predefined group of values.
 
