@@ -7,7 +7,6 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { constants } from 'fs/promises';
 
 const { argTypes, parameters } = storybookDefaults('sd-flipcard');
 const { generateTemplate } = storybookTemplate('sd-flipcard');
