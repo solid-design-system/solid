@@ -75,6 +75,7 @@ describe('when creating the MCP server', () => {
     assert.ok(toolNames.includes('tokens'));
     assert.ok(toolNames.includes('icon-search'));
     assert.ok(toolNames.includes('version'));
+    assert.ok(toolNames.includes('ux_guidelines'));
   });
 
   it('should execute a real tool call through the MCP client', async () => {

@@ -32,7 +32,7 @@ version: 1.0.0
     <sd-checkbox value="3">Checkbox 3</sd-checkbox>
   </sd-checkbox-group>
   <div id="group-invalid-icon-message" class="flex items-center gap-2 mt-2 hidden">
-    <sd-icon id="invalid-icon" part="invalid-icon" class="text-error" library="_internal" name="risk"></sd-icon>
+    <sd-icon id="invalid-icon" part="invalid-icon" class="text-error" name="system/warning"></sd-icon>
     <div id="invalid-message" class="text-error text-left" part="invalid-message" aria-live="polite">
       Please fill in this field.
     </div>
