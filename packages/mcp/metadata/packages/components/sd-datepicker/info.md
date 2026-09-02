@@ -16,6 +16,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - component: sd-datepicker, example: disabled
 - component: sd-datepicker, example: visually-disabled
 - component: sd-datepicker, example: help-text
+- component: sd-datepicker, example: clerable
 - component: sd-datepicker, example: required
 - component: sd-datepicker, example: valid
 - component: sd-datepicker, example: invalid
@@ -56,6 +57,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.visuallyDisabled [attr: visually-disabled]: boolean, default=false — Makes the control non-interactive visually (like disabled) without disabling it functionally.
 - prop.styleOnValid [attr: style-on-valid]: boolean, default=false — When true, applies success styling for valid selections.
 - prop.readonly: boolean, default=false — Makes the input read-only (non-editable) when true.
+- prop.clearable: boolean, default=false — Adds a clear button when the datepicker is not empty.
 - prop.placement: 'top'|'bottom', default='bottom' — Preferred placement of the flyout relative to the input (top|bottom).
 - prop.placeholder: string, default='' — Placeholder text for the input when no date is selected.
 - prop.name: string, default='' — The name of the datepicker, submitted as a name/value pair with form data.
@@ -79,6 +81,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - event.sd-blur: Emitted when the datepicker is blurred.
 - event.sd-month-change: Emitted when the month is changed.
 - event.sd-month-year: Emitted when the year is changed.
+- event.sd-clear: Emitted when the clear button is activated.
 
 ### Slots
 
@@ -86,6 +89,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - slot.label: The label for the date input.
 - slot.help-text: The help text, displayed below the input.
 - slot.tooltip: The tooltip icon and content.
+- slot.clear-icon: An icon to use in lieu of the default clear icon.
 
 ### CSS Parts
 
@@ -106,6 +110,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - part.invalid-icon: The icon shown when the input is invalid.
 - part.valid-icon: The icon shown when the input is valid.
 - part.form-control-help-text: The help text, displayed below the input.
+- part.clear-button: The clear button.
 
 ## Guidelines
 
