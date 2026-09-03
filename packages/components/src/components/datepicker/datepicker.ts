@@ -246,7 +246,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   private tabbingIntoGrid = false;
 
   /** Internal flag used when clearing to keep the restored focus from opening the calendar. */
-  private clearing = true;
+  private clearing = false;
 
   /** Bump counter ensuring live region text updates are recognized. */
   private statusBumpCounter = 0;

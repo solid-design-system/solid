@@ -16,7 +16,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - component: sd-datepicker, example: disabled
 - component: sd-datepicker, example: visually-disabled
 - component: sd-datepicker, example: help-text
-- component: sd-datepicker, example: clerable
+- component: sd-datepicker, example: clearable
 - component: sd-datepicker, example: required
 - component: sd-datepicker, example: valid
 - component: sd-datepicker, example: invalid
