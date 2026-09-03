@@ -245,6 +245,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   /** Internal flag used when tabbing from header into grid to pick initial tabbable day. */
   private tabbingIntoGrid = false;
 
+  /** Internal flag used when clearing to keep the restored focus from opening the calendar. */
+  private clearing = true;
+
   /** Bump counter ensuring live region text updates are recognized. */
   private statusBumpCounter = 0;
 
@@ -908,7 +911,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     this.showValidStyle = false;
 
     this.input.setCustomValidity('');
+    this.clearing = true;
     this.input.focus({ preventScroll: true });
+    this.clearing = false;
 
     this.updateComplete.then(() => {
       this.input.value = '';
@@ -925,7 +930,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   private handleFocus() {
     this.hasFocus = true;
 
-    if (!this.open && !this.disabled && !this.visuallyDisabled && !this.readonly) {
+    if (!this.open && !this.clearing && !this.disabled && !this.visuallyDisabled && !this.readonly) {
       this.show();
     }
     this.emit('sd-focus');
