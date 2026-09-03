@@ -175,7 +175,7 @@ export const HelpText = {
 };
 
 /**
- * Add the `clearable` attribute to add a clear button when the datepicker has content.
+ * Use the `clearable` attribute to add a clear button that removes the datepicker value.
  */
 export const Clearable = {
   render: () =>
