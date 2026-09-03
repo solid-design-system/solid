@@ -172,7 +172,7 @@ export const Slots = {
             {
               type: 'template',
               name: 'style',
-              value: '<div style="margin-bottom: 40px;">%TEMPLATE%</div>'
+              value: `<div id="slot-${slot}" style="margin-bottom: 40px;">%TEMPLATE%</div>`
             },
             {
               type: 'attribute',
@@ -198,6 +198,20 @@ export const Slots = {
         });
       })}
     `;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    for (const slot of ['back', 'back-media']) {
+      const el = canvasElement.querySelector(`#slot-${slot} sd-flipcard`);
+
+      await waitUntil(() => el?.shadowRoot?.querySelector('.flip-card__side--front sd-button'));
+
+      el?.shadowRoot?.querySelector<HTMLElement>('.flip-card__side--front sd-button')!.click();
+    }
+
+    await new Promise(resolve => setTimeout(resolve));
+
+    canvasElement.querySelector('#slot-front')?.scrollIntoView();
   }
 };
 
