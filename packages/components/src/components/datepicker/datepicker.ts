@@ -32,11 +32,13 @@ import { isoDateConverter, viewMonthConverter, disabledDatesConverter } from './
  * @event sd-blur - Emitted when the datepicker is blurred.
  * @event sd-month-change - Emitted when the month is changed.
  * @event sd-month-year - Emitted when the year is changed.
+ * @event sd-clear - Emitted when the clear button is activated.
  *
  * @slot - The default slot.
  * @slot label - The label for the date input.
  * @slot help-text - The help text, displayed below the input.
  * @slot tooltip - The tooltip icon and content.
+ * @slot clear-icon - An icon to use in lieu of the default clear icon.
  *
  * @csspart datepicker - The component's base wrapper.
  * @csspart header - The header containing the month/year and navigation buttons.
@@ -55,6 +57,7 @@ import { isoDateConverter, viewMonthConverter, disabledDatesConverter } from './
  * @csspart invalid-icon - The icon shown when the input is invalid.
  * @csspart valid-icon - The icon shown when the input is valid.
  * @csspart form-control-help-text - The help text, displayed below the input.
+ * @csspart clear-button - The clear button.
  *
  * @cssproperty --sd-form-control-color-text - The text color for the datepicker.
  * @cssproperty --sd-form-control-border-radius - The border radius for the datepicker.
@@ -178,6 +181,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   /** Makes the input read-only (non-editable) when true. */
   @property({ type: Boolean, reflect: true }) readonly = false;
 
+  /** Adds a clear button when the datepicker is not empty. */
+  @property({ type: Boolean, reflect: true }) clearable = false;
+
   /** Preferred placement of the flyout relative to the input (top|bottom). */
   @property({ type: String, reflect: true }) placement: 'top' | 'bottom' = 'bottom';
 
@@ -238,6 +244,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
   /** Internal flag used when tabbing from header into grid to pick initial tabbable day. */
   private tabbingIntoGrid = false;
+
+  /** Internal flag used when clearing to keep the restored focus from opening the calendar. */
+  private clearing = false;
 
   /** Bump counter ensuring live region text updates are recognized. */
   private statusBumpCounter = 0;
@@ -884,6 +893,35 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     this.updateComplete.then(() => this.input?.focus({ preventScroll: true }));
   };
 
+  private preventLoosingFocus(event: MouseEvent) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+
+  private handleClearClick(event: MouseEvent) {
+    event.stopPropagation();
+    if (!this.inputValue) return;
+
+    this.value = null;
+    this.rangeStart = null;
+    this.rangeEnd = null;
+    this.previewEnd = null;
+    this.inputValue = '';
+    this.showInvalidStyle = false;
+    this.showValidStyle = false;
+
+    this.input.setCustomValidity('');
+    this.clearing = true;
+    this.input.focus({ preventScroll: true });
+    this.clearing = false;
+
+    this.updateComplete.then(() => {
+      this.input.value = '';
+      this.formControlController.updateValidity();
+      this.emit('sd-clear');
+    });
+  }
+
   private handleBlur() {
     this.hasFocus = false;
     this.emit('sd-blur');
@@ -892,7 +930,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   private handleFocus() {
     this.hasFocus = true;
 
-    if (!this.open && !this.disabled && !this.visuallyDisabled && !this.readonly) {
+    if (!this.open && !this.clearing && !this.disabled && !this.visuallyDisabled && !this.readonly) {
       this.show();
     }
     this.emit('sd-focus');
@@ -1967,6 +2005,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       (this.value !== null && String(this.value).length > 0) ||
       (this.range && this.rangeStart !== null) ||
       this.rangeEnd !== null;
+    const hasClearIcon = this.clearable && !this.readonly && !this.disabled && !this.visuallyDisabled;
     const isFloatingLabelActive =
       this.floatingLabel &&
       hasLabel &&
@@ -2159,6 +2198,31 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 @invalid=${this.handleInvalid}
               />
 
+              ${
+                hasClearIcon
+                  ? html`<button
+                      part="clear-button"
+                      class=${cx(
+                        'flex justify-center',
+                        iconMarginLeft,
+                        this.inputValue.length > 0 ? 'visible' : 'invisible'
+                      )}
+                      type="button"
+                      aria-label=${this.localize.term('clearEntry')}
+                      tabindex="-1"
+                      @mousedown=${this.preventLoosingFocus}
+                      @click=${this.handleClearClick}
+                    >
+                      <slot name="clear-icon">
+                        <sd-icon
+                          class=${cx('text-neutral-700', iconSize)}
+                          library="_internal"
+                          name="close-circle"
+                        ></sd-icon>
+                      </slot>
+                    </button>`
+                  : ''
+              }
               ${
                 this.showInvalidStyle
                   ? html`<sd-icon
