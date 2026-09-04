@@ -101,8 +101,8 @@ export const TeaserMediaWithLink = {
 
 /**
  * Example of how to make the entire teaser card a clickable link, turning the image, headline, and body text into a single tap/click target. Use this for article or content previews where the full card should navigate to the detail page. You can also use additional links to link realted secondary actions.
- * - Alignment: Teaser contents can be center aligned if desired.
- * - Paddings: Can be changed as desired.
+ * - alignment: Contents can be center aligned if desired.
+ * - paddings: Can be changed as desired.
  */
 export const TeaserMediaOverrides = {
   render: () =>

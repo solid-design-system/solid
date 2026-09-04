@@ -15,11 +15,11 @@ export default {
 
 /**
  *
- * ### Text Styles
+ * ### Expandable Text Styles
  *
  * Examples of the expandable with different typography classes on the element itself:
- * - Leadtext (default)
- * - Paragraph
+ * - leadtext (default)
+ * - paragraph
  */
 export const TextStyles = {
   render: () =>

@@ -2,6 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 /**
+ * ### Flipcard with Button
  * Example of how to use the flipcard component to reveal additional content on the back of a card.
  */
 export default {

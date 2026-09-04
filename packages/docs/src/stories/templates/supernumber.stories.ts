@@ -77,9 +77,8 @@ export const Inverted = {
 };
 
 /**
- * __Code-only__: <br>
  * Use the `countUp.js` to animate the number. <br>
- * Find more information in the [countUp.js documentation](https://github.com/inorganik/CountUp.js?tab=readme-ov-file#usage).
+ * __Hint__: Find more information in the [countUp.js documentation](https://github.com/inorganik/CountUp.js?tab=readme-ov-file#usage).
  */
 
 export const SupernumberAnimation = {
@@ -105,9 +104,8 @@ export const SupernumberAnimation = {
 };
 
 /**
- * __Code-only__: <br>
  * Use the prefix option of countUp.js to add a prefix to the supernumber. <br>
- * Open the `Show code` section to see the script.
+ * __Hint__: Open the `Show code` section to see the script.
  */
 export const SupernumberAnimationPrefix = {
   name: 'Supernumber Animation with Prefix',
@@ -140,9 +138,8 @@ export const SupernumberAnimationPrefix = {
 };
 
 /**
- * __Code-only__: <br>
  * Use the suffix option of countUp.js to add a suffix to the supernumber.<br>
- * Open the `Show code` section to see the script.
+ * __Hint__: Open the `Show code` section to see the script.
  */
 
 export const SupernumberAnimationSuffix = {
@@ -176,9 +173,9 @@ export const SupernumberAnimationSuffix = {
 };
 
 /**
- * __Code-only__:<br>
  * Use the `separator` and `decimal` options to format the supernumber according to your i18n needs.<br>
- * Find advanced options (eg: custom numerals) in the [countUp.js documentation](https://github.com/inorganik/CountUp.js?tab=readme-ov-file#usage).
+ *
+ * __Hint__: Find advanced options (eg: custom numerals) in the [countUp.js documentation](https://github.com/inorganik/CountUp.js?tab=readme-ov-file#usage).
  */
 
 export const SupernumberSeperatorDecimal = {

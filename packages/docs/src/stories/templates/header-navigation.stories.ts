@@ -1995,6 +1995,10 @@ export const SampleD01 = {
   }
 };
 
+/**
+ * Logo centered with a back arrow, no navigation - Web App header for subpages within web apps.
+ */
+
 export const SampleD02 = {
   name: 'Header Variant D-02',
   render: () => {

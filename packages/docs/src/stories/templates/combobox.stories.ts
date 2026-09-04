@@ -33,6 +33,7 @@ export default {
  * Example of how to use the combobox to filter a list of options as the user types. The dropdown displays matching results in real time, narrowing the visible options based on the current input.
  */
 export const SimpleSuggests = {
+  name: 'Combobox Simple Suggests',
   render: () => html`
     <div class="h-[260px] max-w-[400px]">
       <sd-combobox label="Funds"> ${createFondsOptionsHtml()} </sd-combobox>
@@ -46,6 +47,7 @@ export const SimpleSuggests = {
  __Code-only__: The filtered options shown in the list can be customized by passing a function to the getOption property. Your function can return a string of HTML, a Lit Template, or an HTMLElement. The getOption() function will be called for each option. The first argument is an element and the second argument is the query string. Remember that the options are rendered in a shadow root. To style them, you can use the style attribute in your template or you can add your own parts and target them with the ::part() selector. Note: Be sure you trust the content you are outputting! Passing unsanitized user input to getOption() can result in XSS vulnerabilities.
  */
 export const HighlightQuery = {
+  name: 'Combobox Highlight Query',
   render: () => {
     const optionRenderer = highlightOptionRenderer;
     return html`
@@ -118,6 +120,7 @@ export const MultipleHighlightQuery = {
  *  Label can be omitted for search input fields if a button (e.g., aria-label="Search") with a search icon is present.
  */
 export const GroupingQuery = {
+  name: 'Combobox Grouping Query',
   render: () => html`
     <div class="h-[260px] max-w-[400px]">
       <sd-combobox label="Group elements" value="g">

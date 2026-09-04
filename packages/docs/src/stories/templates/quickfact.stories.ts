@@ -56,9 +56,9 @@ export const QuickfactWithDescription = {
 };
 
 /**
- * This samples show how to group sd-quickfacts.
+ * This samples show how to group quickfacts.
  *
- * __Code-only__: Additional JavaScript is used to enable closing all other quickfacts when one is opened and to equalize the height of all summaries in a row. Open the `Show code` section to see the detailed implementation.
+ * Additional JavaScript is used to enable closing all other quickfacts when one is opened and to equalize the height of all summaries in a row. Open the `Show code` section to see the detailed implementation.
  *  */
 export const Grouping = {
   render: () =>

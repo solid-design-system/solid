@@ -18,7 +18,7 @@ export default {
  * Example of how to combine buttons and icon buttons with badges to display notification counts or status indicators.
  */
 export const ButtonWithBadge = {
-  name: 'Button with badge',
+  name: 'Button with Badge',
   render: () => html`
     <div class="flex flex-col">
       <section class="flex p-8 gap-10 items-center">
@@ -128,7 +128,6 @@ export const NavigationItemWithBadge = {
 };
 
 /**
- * __Code-only__:<br>
  * Example of how a badge count updates dynamically in response to user interaction. Clicking the Increment button increases the count on the bell icon, demonstrating how badges can reflect real-time state changes in code.
  */
 
