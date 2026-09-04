@@ -4,7 +4,6 @@ title: Drawer
 components:
   - sd-button
   - sd-drawer
-  - sd-header
   - sd-headline
   - sd-headline--size-lg
   - sd-hide

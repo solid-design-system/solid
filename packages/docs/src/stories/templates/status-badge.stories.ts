@@ -14,8 +14,9 @@ export default {
 };
 
 /**
+ * Example of how to use status badges with icons from the icon library to communicate availability or system states. Five semantic color variants are available, each paired with a representative label and icon.
  *
- * The icons used in this component, should be exclusively from the `sd-status-assets` [icon library](?path=/story/components-sd-icon-default--status-library).
+ * The icons used in this component, should be exclusively from the status-assets [icon library](https://solid-design-system.fe.union-investment.de/docs/?path=/story/components-sd-icon-libraries--status-library).
  */
 export const StatusBadgeWithCustomIcon = {
   name: 'Status Badge with Custom Icon',

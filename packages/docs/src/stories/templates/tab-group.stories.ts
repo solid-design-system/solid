@@ -14,8 +14,7 @@ export default {
 };
 
 /**
- * Example of a centered tab group.
- * To implement this sample, adjust the tabs CSS part as follows:
+ * Example of how to use a center-aligned tab group to switch between related content panels. Use this layout when the tab content is visually prominent and benefits from a centered composition.
  *
  * ```css
  * sd-tab-group::part(tabs) {
@@ -95,6 +94,10 @@ export const TabCentered = {
       </sd-tab-group>`
 };
 
+/**
+ * Example of how to add a badge to a tab label to surface unread or new item counts directly in the navigation. The active tab reveals a content list where individual items are marked with a "New" chip, combining two layers of status indication.
+ */
+
 export const TabWithBadge = {
   name: 'Tab Group with Badge',
   render: () =>
@@ -122,6 +125,10 @@ export const TabWithBadge = {
       </sd-tab-panel>
     </sd-tab-group>`
 };
+
+/**
+ * Example of how to combine icons, labels, and badges within tab items for a compact, information-dense navigation. Each tab uses an icon alongside its label, and a badge on the active tab indicates relevant items in that panel.
+ */
 
 export const TabWithIconBadge = {
   name: 'Tab Group with Icon and Badge',

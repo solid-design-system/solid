@@ -14,7 +14,8 @@ export default {
 };
 
 /**
- * ### List with Bolded Text
+ * ### Unordered List with Bolded Text
+ * Example of how to structure a multi-level unordered list with bold top-level items acting as category headings. Nested sub-items provide supporting detail beneath each heading, making the hierarchy clear at a glance.
  */
 export const ListWithBoldedText = {
   render: () =>

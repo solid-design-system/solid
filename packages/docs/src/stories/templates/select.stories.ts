@@ -14,12 +14,15 @@ export default {
 };
 
 /**
- * - Label: Additionally a label can be shown for each option group.
- * - Divider: Use `sd-divider` to group option items visually.
- * - Accessibility hint: group labels will be neglected by most assistive devices.
+ * Example of how to organize select options into labeled groups, making long lists easier to scan.
+ *
+ * - label: additionally a label can be shown for each option group.
+ * - divider: use a divider to group option items visually.
+ *
+ * __Accessibility hint__: group labels will be neglected by most assistive devices.
  */
 export const Default = {
-  name: 'Grouping Options',
+  name: 'Select Grouping',
   render: () =>
     html`<div class="h-[500px] flex flex-wrap md:flex-nowrap gap-12">
       <sd-select
@@ -57,6 +60,10 @@ export const Default = {
       </sd-select>
     </div>`
 };
+
+/**
+ * Example of how to combine a select dropdown with checkboxes to allow multiple selections within a grouped option list. The trigger label updates to reflect the number of currently selected items, giving users immediate feedback on their choices.
+ */
 
 export const SelectWithOptionAndCheckbox = {
   name: 'Select with Option and Checkbox',

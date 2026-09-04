@@ -15,6 +15,7 @@ export default {
 
 /**
  * ### Map Marker with Image
+ * Example of how to use a custom image as a map marker instead of the default pin icon. Use this variant when branded or contextual markers are needed to distinguish locations on a map.
  */
 export const MapMakerWithImages = {
   render: () =>

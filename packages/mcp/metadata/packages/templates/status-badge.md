@@ -10,7 +10,7 @@ components:
   - sd-headline
   - sd-headline--size-xl
   - sd-icon
-  - sd-icon-default--status-library
+  - sd-icon-libraries--status-library
   - sd-paragraph
   - sd-status-assets
   - sd-status-badge

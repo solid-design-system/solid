@@ -1,6 +1,10 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit';
 
+/**
+ * Example of how to use a range slider to let users explore scenarios by adjusting a variable — here a return rate between 0% and 6%. The selected value updates the displayed result in real time, making this pattern well suited for calculators and interactive financial tools.
+ */
+
 export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Range',

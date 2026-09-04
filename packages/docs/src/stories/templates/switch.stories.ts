@@ -15,6 +15,7 @@ export default {
 
 /**
  * ### Switch with Tooltip
+ * Example of how to pair a switch with a tooltip icon to provide additional context for a filter option. The info icon sits next to the switch label — useful when the toggle's effect or the number shown in brackets needs clarification.
  */
 export const Default = {
   name: 'Switch with Tooltip',

@@ -13,6 +13,10 @@ export default {
   }
 };
 
+/**
+ * Example of how to use the carousel component to display a sequence of images with simple forward and backward navigation. The current position is shown as a fraction (1 / 3), giving users a clear sense of how many slides remain.
+ */
+
 export const CarouselWithImages = {
   name: 'Carousel with Images',
   render: () => html`

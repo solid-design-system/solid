@@ -4,9 +4,9 @@ import { html } from 'lit-html';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
- * These examples demonstrate the usage of sd-table-cell in various contexts.
- * The examples are intended solely for illustrating how sd-table-cell can be used to style tables.
- * The data generation and table sorting logic should not be used in production environments.
+ * The table-cell component offers basic styling for table cells. It is designed to be used in conjunction with the sd-table component.
+ *
+ * These examples demonstrate the usage of table-cell in various contexts. The examples are intended solely for illustrating how table-cell can be used to style tables. The data generation and table sorting logic * * should not be used in production environments.
  *
  * **Accessibility Hint:** Whenever the table doesn't contain interactive elements,
  * wrap the table inside a scrollable region using `role="region"`, `tabindex="0"` and `aria-label`,
@@ -19,6 +19,10 @@ export default {
     chromatic: { disableSnapshot: true }
   }
 };
+
+/**
+ * Example of how to display tabular data in a clean, borderless layout with a header row. Use this as the default starting point for presenting structured data without additional visual complexity.
+ */
 
 export const simpleTable = {
   render: () => html`
@@ -284,6 +288,10 @@ export const simpleTable = {
     </script>
   `
 };
+
+/**
+ * Example of how to add vertical column dividers to a table to improve scanability across rows with many data points. Use this variant when columns need clearer visual separation.
+ */
 
 export const simpleTableVerticalDividers = {
   name: 'Simple Table with Vertical Dividers',
@@ -555,6 +563,10 @@ export const simpleTableVerticalDividers = {
   `
 };
 
+/**
+ * Example of how to use alternating row colors (striping) to help users track across wide tables. The subtle background difference on every other row reduces reading errors in data-dense layouts.
+ */
+
 export const simpleTableAlternatingColors = {
   name: 'Simple Table with Alternating Colors',
   render: () => html`
@@ -820,6 +832,10 @@ export const simpleTableAlternatingColors = {
     </script>
   `
 };
+
+/**
+ * Example of how to make table columns sortable by clicking the column header. An indicator arrow shows the current sort direction, allowing users to reorder rows by any column value.
+ */
 
 export const sortableTable = {
   render: () => {
@@ -1213,6 +1229,10 @@ export const sortableTable = {
   }
 };
 
+/**
+ * Example of how to add row-level checkboxes to a table to allow multi-selection. A select-all checkbox in the header toggles all rows at once, enabling bulk actions on the selected set.
+ */
+
 export const multiSelectTable = {
   render: () => html`
     <style>
@@ -1560,7 +1580,7 @@ export const multiSelectTable = {
 };
 /**
  *
- * These examples demonstrate the usage of sd-table-cell when the header is sticky and a shadow is displayed.
+ * These examples demonstrate the usage of table-cell when the header is sticky and a shadow is displayed.
  *
  * ```html
  * <table id="vertical-scrollable-table" class="sd-table block overflow-y-scroll">
@@ -1601,6 +1621,8 @@ export const multiSelectTable = {
  * ```
  *
  * ### Table with Fixed Top Header Row and Shadow
+ *
+ * Example of how to keep the column header row visible while scrolling vertically through a long table. A shadow below the header indicates that content is scrolling beneath it.
  */
 export const advancedTables = {
   render: () => {
@@ -1887,6 +1909,10 @@ export const advancedTables = {
     `;
   }
 };
+
+/**
+ * Example of how to pin a summary or totals row to the bottom of the table while the content above scrolls. A shadow above the fixed row signals the separation from scrolling content.
+ */
 
 export const TableFixedBottom = {
   name: 'Table with Fixed Bottom Header Row and Shadow',
@@ -2202,6 +2228,10 @@ export const TableFixedBottom = {
   }
 };
 
+/**
+ * Example of how to freeze the leftmost column so it remains visible when scrolling horizontally through wide tables. A shadow to the right of the fixed column indicates scrollable content beyond it.
+ */
+
 export const TableFixedLeft = {
   name: 'Table with Fixed Left Header Column and Shadow',
   render: () => {
@@ -2512,6 +2542,10 @@ export const TableFixedLeft = {
     `;
   }
 };
+
+/**
+ * Example of how to pin the rightmost column — typically containing row actions — while the rest of the table scrolls horizontally. A shadow to the left of the fixed column signals that content is scrolling beneath it.
+ */
 
 export const TableFixedRight = {
   name: 'Table with Fixed Right Header Column and Shadow',

@@ -17,6 +17,10 @@ export default {
   }
 };
 
+/**
+ * Example of how to apply the green accent mark to highlight a key word or phrase within a headline.
+ */
+
 export const HeadlineWithMark = {
   name: 'Headline with Mark',
   render: () =>
@@ -37,6 +41,10 @@ export const HeadlineWithMark = {
       </h4>
     </div>`
 };
+
+/**
+ * Example of how to use the green accent mark within a display-style. Use this variant for hero sections or prominent page introductions where typographic impact is important.
+ */
 
 export const DisplayWithMark = {
   name: 'Display with Mark',

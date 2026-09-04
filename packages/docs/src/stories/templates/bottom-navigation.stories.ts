@@ -1,6 +1,10 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
+/**
+ * Example of how to implement a fixed bottom navigation bar for mobile app-style layouts. The bar displays icon and label navigation items, with the active item highlighted, providing persistent primary navigation at the bottom of the viewport.
+ */
+
 export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Bottom Bar Navigation',
