@@ -187,7 +187,7 @@ export const Scrollable = {
 };
 
 /**
- *  __Code-only__: This shows ways to prevent closing dialog. This is useful for instances when data loss will occur. To keep the dialog open in such cases, cancel the `sd-request-close event`. When canceled, the dialog will remain open and pulse briefly to draw the user’s attention to it. Use `event.detail.source` to specify a closing trigger.
+ *  This shows ways to prevent closing dialog. This is useful for instances when data loss will occur. To keep the dialog open in such cases, cancel the `sd-request-close event`. When canceled, the dialog will remain open and pulse briefly to draw the user’s attention to it. Use `event.detail.source` to specify a closing trigger.
  */
 export const PreventClosing = {
   name: 'Prevent Closing',

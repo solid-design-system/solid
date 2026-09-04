@@ -5,8 +5,12 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
  * The table-cell component offers basic styling for table cells. It is designed to be used in conjunction with the sd-table component.
-
+ *
  * These examples demonstrate the usage of table-cell in various contexts. The examples are intended solely for illustrating how table-cell can be used to style tables. The data generation and table sorting logic * * should not be used in production environments.
+ *
+ * **Accessibility Hint:** Whenever the table doesn't contain interactive elements,
+ * wrap the table inside a scrollable region using `role="region"`, `tabindex="0"` and `aria-label`,
+ * to ensure it becomes accessible to keyboard only users.
  */
 export default {
   tags: ['!dev', 'autodocs'],

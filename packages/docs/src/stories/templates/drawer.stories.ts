@@ -28,7 +28,7 @@ export default {
  *
  * The interaction in drawer is the same as in header, providing a consistent user experience.
 
- * __Code-only__: When consuming a header please ensure that there are no margins applied on the left, right and bottom of the dropdown. The top margin of the dropdown should be kept otherwise the first navigation item is cutted.
+ * When consuming a header please ensure that there are no margins applied on the left, right and bottom of the dropdown. The top margin of the dropdown should be kept otherwise the first navigation item is cutted.
  */
 
 export const Default = {

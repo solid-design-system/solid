@@ -42,9 +42,9 @@ export const SimpleSuggests = {
 };
 
 /**
- Example of how to enhance combobox suggestions by bolding the portion of each option that matches the current query. This helps users quickly see why a result was returned and confirms the input is being recognized correctly. 
-
- __Code-only__: The filtered options shown in the list can be customized by passing a function to the getOption property. Your function can return a string of HTML, a Lit Template, or an HTMLElement. The getOption() function will be called for each option. The first argument is an element and the second argument is the query string. Remember that the options are rendered in a shadow root. To style them, you can use the style attribute in your template or you can add your own parts and target them with the ::part() selector. Note: Be sure you trust the content you are outputting! Passing unsanitized user input to getOption() can result in XSS vulnerabilities.
+ * Example of how to enhance combobox suggestions by bolding the portion of each option that matches the current query. This helps users quickly see why a result was returned and confirms the input is being recognized correctly.
+ *
+ * The filtered options shown in the list can be customized by passing a function to the getOption property. Your function can return a string of HTML, a Lit Template, or an HTMLElement. The getOption() function will be called for each option. The first argument is an element and the second argument is the query string. Remember that the options are rendered in a shadow root. To style them, you can use the style attribute in your template or you can add your own parts and target them with the ::part() selector. Note: Be sure you trust the content you are outputting! Passing unsanitized user input to getOption() can result in XSS vulnerabilities.
  */
 export const HighlightQuery = {
   name: 'Combobox Highlight Query',
