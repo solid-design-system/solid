@@ -1,4 +1,4 @@
-Add the `clearable` attribute to add a clear button when the datepicker has content.
+Use the `clearable` attribute to add a clear button that removes the datepicker value.
 
 ```html
 <div class="max-w-[370px] h-[500px]">

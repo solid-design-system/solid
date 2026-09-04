@@ -73,5 +73,5 @@
     "postversion": "pnpm build"
   },
   "type": "module",
-  "version": "7.0.3"
+  "version": "7.1.0"
 }
