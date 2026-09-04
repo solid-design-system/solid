@@ -800,7 +800,7 @@ export const Horizontal = {
 /**
  * Full horizontal navigation with hover mega-menus and utilities navigation on the right - for public marketing/institutional sites. Same use case as A-02; choice between them comes down to utilities navigation preference.<br>
  *
- * __Code-only__: aria-expanded and aria-controls must be set for accessibility purpose.
+ * aria-expanded and aria-controls must be set for accessibility purpose.
  */
 
 export const SampleA = {
