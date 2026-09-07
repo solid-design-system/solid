@@ -8,7 +8,7 @@ components:
 version: 1.0.0
 ---
 
-## Template: Grouping Options
+## Template: Select Grouping
 
 ```html
 <div class="h-[500px] flex flex-wrap md:flex-nowrap gap-12">

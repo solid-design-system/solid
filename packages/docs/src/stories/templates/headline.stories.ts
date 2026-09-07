@@ -13,6 +13,10 @@ export default {
   }
 };
 
+/**
+ * Example of how to build a clear typographic hierarchy using headline levels in descending order — from a large H1 page title down through H2 section headings and H3 sub-headings. Each level is visually distinct in size and weight, guiding the reader through the content while maintaining correct semantic structure for accessibility and SEO.
+ */
+
 export const SemanticHeadlineStructureExampleA = {
   name: 'Semantic Headline Structure – Example A',
   render: () =>
@@ -99,6 +103,10 @@ export const SemanticHeadlineStructureExampleA = {
       </sd-teaser>
     </div> `
 };
+
+/**
+ * Example of how to apply headline hierarchy within a mixed editorial layout combining a definition-style section header, image-and-text article cards, and body copy between groups. The heading levels structure the page semantically while the visual layout varies — demonstrating that typographic hierarchy and layout composition can be combined flexibly without breaking accessibility.
+ */
 
 export const SemanticHeadlineStructureExampleB = {
   name: 'Semantic Headline Structure – Example B',
