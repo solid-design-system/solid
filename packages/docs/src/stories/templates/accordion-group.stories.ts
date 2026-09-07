@@ -9,6 +9,10 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Accordion Group',
   parameters: {
+    relatedLinks: {
+      components: ['sd-accordion', 'sd-accordion-group'],
+      styles: ['sd-headline', 'sd-media', 'sd-paragraph', 'sd-prose']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

@@ -9,6 +9,10 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Flipcard',
   parameters: {
+    relatedLinks: {
+      components: ['sd-flipcard', 'sd-link'],
+      styles: ['sd-headline', 'sd-paragraph', 'sd-prose']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

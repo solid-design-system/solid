@@ -5,6 +5,9 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Select',
   parameters: {
+    relatedLinks: {
+      components: ['sd-divider', 'sd-option', 'sd-select']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

@@ -5,6 +5,10 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Expandable',
   parameters: {
+    relatedLinks: {
+      components: ['sd-expandable'],
+      styles: ['sd-leadtext', 'sd-prose']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

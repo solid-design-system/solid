@@ -5,6 +5,10 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Tag',
   parameters: {
+    relatedLinks: {
+      components: ['sd-button', 'sd-icon', 'sd-tag'],
+      styles: ['sd-paragraph']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

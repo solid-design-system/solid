@@ -5,6 +5,9 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Supernumber',
   parameters: {
+    relatedLinks: {
+      styles: ['sd-container', 'sd-display', 'sd-paragraph']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

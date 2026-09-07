@@ -5,6 +5,10 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Tab Group',
   parameters: {
+    relatedLinks: {
+      components: ['sd-badge', 'sd-icon', 'sd-tab', 'sd-tab-group', 'sd-tab-panel'],
+      styles: ['sd-copyright', 'sd-headline', 'sd-media', 'sd-paragraph']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

@@ -5,6 +5,20 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/File Selector',
   parameters: {
+    relatedLinks: {
+      components: [
+        'sd-button',
+        'sd-divider',
+        'sd-file-selector',
+        'sd-icon',
+        'sd-input',
+        'sd-option',
+        'sd-progress-bar',
+        'sd-select',
+        'sd-tooltip'
+      ],
+      styles: ['sd-headline', 'sd-interactive', 'sd-meta', 'sd-paragraph']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

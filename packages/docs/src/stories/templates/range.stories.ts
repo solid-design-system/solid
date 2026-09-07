@@ -9,6 +9,10 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Range',
   parameters: {
+    relatedLinks: {
+      components: ['sd-icon', 'sd-input', 'sd-notification', 'sd-range', 'sd-range-tick'],
+      styles: ['sd-container', 'sd-headline', 'sd-paragraph', 'sd-prose']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

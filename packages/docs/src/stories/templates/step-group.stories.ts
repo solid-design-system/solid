@@ -5,6 +5,10 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Step Group',
   parameters: {
+    relatedLinks: {
+      components: ['sd-icon', 'sd-step', 'sd-step-group'],
+      styles: ['sd-paragraph']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

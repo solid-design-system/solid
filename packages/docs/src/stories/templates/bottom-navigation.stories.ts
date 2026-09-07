@@ -9,6 +9,10 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Bottom Bar Navigation',
   parameters: {
+    relatedLinks: {
+      components: ['sd-header', 'sd-icon', 'sd-navigation-item', 'sd-teaser'],
+      styles: ['sd-headline', 'sd-interactive', 'sd-paragraph']
+    },
     chromatic: { disableSnapshot: true }
   }
 };

@@ -5,6 +5,10 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Dropdown',
   parameters: {
+    relatedLinks: {
+      components: ['sd-dropdown', 'sd-icon', 'sd-navigation-item'],
+      styles: ['sd-headline']
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3000-9863&t=JCsisVFNkWSlhSSN-4'

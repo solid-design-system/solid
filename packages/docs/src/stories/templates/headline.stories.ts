@@ -5,6 +5,10 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Headline',
   parameters: {
+    relatedLinks: {
+      components: ['sd-button', 'sd-icon', 'sd-teaser'],
+      styles: ['sd-headline', 'sd-leadtext', 'sd-paragraph', 'sd-prose']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

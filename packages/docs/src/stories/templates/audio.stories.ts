@@ -5,6 +5,10 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Audio',
   parameters: {
+    relatedLinks: {
+      components: ['sd-audio', 'sd-icon', 'sd-teaser'],
+      styles: ['sd-display']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

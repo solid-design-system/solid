@@ -5,6 +5,9 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Chip',
   parameters: {
+    relatedLinks: {
+      styles: ['sd-chip']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

@@ -21,6 +21,9 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Combobox',
   parameters: {
+    relatedLinks: {
+      components: ['sd-combobox', 'sd-optgroup', 'sd-option']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

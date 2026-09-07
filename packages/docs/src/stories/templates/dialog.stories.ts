@@ -5,6 +5,10 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Dialog',
   parameters: {
+    relatedLinks: {
+      components: ['sd-button', 'sd-dialog', 'sd-icon', 'sd-link', 'sd-scrollable'],
+      styles: ['sd-headline', 'sd-paragraph']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

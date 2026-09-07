@@ -13,6 +13,8 @@ import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
 import { initDeprecatedBadgeEnhancer } from '../scripts/storybook/deprecated-badge-enhancer.js';
 import { themes, allModes, DEFAULT_THEME } from './modes.js';
 import { hasThemeAccess, isProtectedTheme } from './theme-protection.ts';
+import { StoryPage } from '../src/StoryPage.jsx';
+import { StoryPageContainer } from '../src/StoryPageContainer.jsx';
 
 const theme = withThemeByClassName({
   defaultTheme: DEFAULT_THEME,
@@ -104,6 +106,10 @@ export const preview = {
     docs: {
       story: { inline: true },
       toc: true,
+      page: StoryPage,
+      // Adds the full-width "Utilized Components and Styles" footer on pages with parameters.relatedLinks;
+      // a no-op for every other page since it otherwise just renders the default docs container.
+      container: StoryPageContainer,
       // `@summary` JSDoc (already the single source of truth for the custom "Overview" page and
       // the mcp metadata) is used for the autodocs description too, instead of a separate hand-written
       // JSDoc comment above each story file's default export.

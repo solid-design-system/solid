@@ -5,6 +5,10 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Video',
   parameters: {
+    relatedLinks: {
+      components: ['sd-video'],
+      styles: ['sd-copyright', 'sd-media']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

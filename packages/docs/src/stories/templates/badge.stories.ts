@@ -6,6 +6,9 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Badge',
   parameters: {
+    relatedLinks: {
+      components: ['sd-badge', 'sd-button', 'sd-header', 'sd-icon', 'sd-navigation-item']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

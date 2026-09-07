@@ -5,6 +5,23 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Forms',
   parameters: {
+    relatedLinks: {
+      components: [
+        'sd-button',
+        'sd-checkbox',
+        'sd-checkbox-group',
+        'sd-icon',
+        'sd-input',
+        'sd-link',
+        'sd-option',
+        'sd-radio',
+        'sd-radio-group',
+        'sd-select',
+        'sd-textarea',
+        'sd-tooltip'
+      ],
+      styles: ['sd-container', 'sd-headline', 'sd-meta', 'sd-prose']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

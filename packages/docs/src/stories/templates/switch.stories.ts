@@ -5,6 +5,9 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Switch',
   parameters: {
+    relatedLinks: {
+      components: ['sd-option', 'sd-select', 'sd-switch', 'sd-tooltip']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

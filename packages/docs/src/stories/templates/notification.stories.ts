@@ -11,6 +11,10 @@ export default {
   title: 'Templates/Notification',
   tags: ['!dev', 'autodocs'],
   parameters: {
+    relatedLinks: {
+      components: ['sd-button', 'sd-link', 'sd-notification'],
+      styles: ['sd-paragraph']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

@@ -5,6 +5,10 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Pagination',
   parameters: {
+    relatedLinks: {
+      components: ['sd-icon'],
+      styles: ['sd-pagination']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

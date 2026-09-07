@@ -5,6 +5,9 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Datepicker',
   parameters: {
+    relatedLinks: {
+      components: ['sd-datepicker']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

@@ -11,6 +11,9 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Quote',
   parameters: {
+    relatedLinks: {
+      styles: ['sd-display', 'sd-paragraph']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

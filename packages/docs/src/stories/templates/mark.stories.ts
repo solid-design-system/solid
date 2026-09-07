@@ -9,6 +9,10 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Mark',
   parameters: {
+    relatedLinks: {
+      components: ['sd-icon'],
+      styles: ['sd-display', 'sd-headline', 'sd-mark']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

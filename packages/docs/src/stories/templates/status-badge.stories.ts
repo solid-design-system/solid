@@ -5,6 +5,10 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Status Badge',
   parameters: {
+    relatedLinks: {
+      components: ['sd-button', 'sd-icon'],
+      styles: ['sd-chip', 'sd-container', 'sd-headline', 'sd-paragraph', 'sd-status-badge']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

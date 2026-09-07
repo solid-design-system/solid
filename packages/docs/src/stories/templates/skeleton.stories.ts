@@ -5,6 +5,9 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Skeleton',
   parameters: {
+    relatedLinks: {
+      components: ['sd-accordion', 'sd-accordion-group', 'sd-skeleton']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

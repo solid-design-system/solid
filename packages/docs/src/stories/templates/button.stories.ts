@@ -5,6 +5,9 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Button',
   parameters: {
+    relatedLinks: {
+      components: ['sd-button', 'sd-icon', 'sd-textarea', 'sd-tooltip']
+    },
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
