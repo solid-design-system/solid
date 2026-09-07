@@ -1,6 +1,18 @@
 import tsconfigPaths from 'vite-tsconfig-paths';
+import { loadEnv } from 'vite';
+
+const environment = {
+  ...loadEnv(process.env.NODE_ENV || 'development', process.cwd(), ''),
+  ...process.env
+};
+const serializedThemePassword = JSON.stringify(environment.STORYBOOK_THEME_PASSWORD || '').replaceAll('<', '\\u003c');
+const chromaticAccessScript =
+  environment.STORYBOOK_CHROMATIC === 'true' ? 'document.cookie="solid-theme-access=granted; path=/";' : '';
+const themePasswordScript = `<script>window.__SOLID_STORYBOOK_THEME_PASSWORD__ = ${serializedThemePassword};${chromaticAccessScript}</script>`;
 
 export default {
+  managerHead: head => `${head}${themePasswordScript}`,
+  previewHead: head => `${head}${themePasswordScript}`,
   stories: [
     // General, Migration
     '../src/stories/docs/**/[^_]*.@(mdx|stories.*)',
@@ -72,6 +84,10 @@ export default {
   },
   async viteFinal(config) {
     if (!config.build) config.build = {}; // fallback if build is not defined
+    config.define = {
+      ...config.define,
+      'globalThis.__SOLID_STORYBOOK_CHROMATIC__': environment.STORYBOOK_CHROMATIC === 'true'
+    };
     config.build.target = 'esnext'; // to allow top level await
     // Vite 8 defaults to Lightning CSS for minification, which fails to parse some of our
     // generated Tailwind utility selectors. Fall back to the previous esbuild-based minifier.

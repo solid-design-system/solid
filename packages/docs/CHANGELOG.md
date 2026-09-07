@@ -1,5 +1,23 @@
 # @solid-design-system/docs
 
+## 3.3.3
+
+### Patch Changes
+
+- Changed the theme passwords to use Github Secrets. _[`#3285`](https://github.com/solid-design-system/solid/pull/3285) [`531ff5c`](https://github.com/solid-design-system/solid/commit/531ff5cef76b4f87b2cec3ebe837508be4870f93) [@martascorreia](https://github.com/martascorreia)_
+
+## 3.3.2
+
+### Patch Changes
+
+- Replaced `_internal` icon library usage with the `default` library in the templates. _[`#3300`](https://github.com/solid-design-system/solid/pull/3300) [`7c1976e`](https://github.com/solid-design-system/solid/commit/7c1976edc0ee225657dd2ce5bb4150c341c7921b) [@martascorreia](https://github.com/martascorreia)_
+
+## 3.3.1
+
+### Patch Changes
+
+- Updated titles and descriptions for the templates to optimize documentation. _[`#3299`](https://github.com/solid-design-system/solid/pull/3299) [`20d98a9`](https://github.com/solid-design-system/solid/commit/20d98a9446e4466a8cf1b4ca98e49ba51c84167d) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 3.3.0
 
 ### Minor Changes

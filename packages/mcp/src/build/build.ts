@@ -6,6 +6,7 @@ import { buildStaticFiles } from './static.js';
 import { buildTemplates } from './templates.js';
 import { buildTokens } from './tokens.js';
 import { buildStyles } from './styles.js';
+import { buildUxGuidelines } from './ux-guidelines.js';
 
 const spinner = ora({
   prefixText: 'MCP:',
@@ -21,6 +22,7 @@ const build = async () => {
   await buildTokens();
   await buildIcons();
   await buildPackageDocs();
+  await buildUxGuidelines();
 
   // Should be run last as we will copy files where we see fit and paths must exist
   await buildStaticFiles();
