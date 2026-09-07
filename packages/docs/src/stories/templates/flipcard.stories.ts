@@ -2,7 +2,8 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 /**
- * Example on how to use flipcard component.
+ * ### Flipcard with Button
+ * Example of how to use the flipcard component to reveal additional content on the back of a card.
  */
 export default {
   tags: ['!dev', 'autodocs'],

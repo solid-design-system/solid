@@ -16,7 +16,7 @@ export default {
 /**
  * ### Dropdown with Navigation Items
  *
- * This is an example of a dropdown.
+ * Example of how to use a dropdown to present a list of navigation options, such as a country selector in the header.
  */
 export const Default = {
   render: () => html`

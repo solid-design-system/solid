@@ -5,7 +5,6 @@ components:
   - sd-hide
   - sd-icon
   - sd-quickfact
-  - sd-quickfacts
   - sd-show
 version: 1.0.0
 ---

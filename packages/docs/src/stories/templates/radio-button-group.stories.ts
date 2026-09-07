@@ -13,6 +13,10 @@ export default {
   }
 };
 
+/**
+ * Example of how to use the radio button group as a segmented toggle for switching between two views. Each option combines an icon with a label, and the active selection is filled — shown here as a List/Map view switcher.
+ */
+
 export const Default = {
   render: () => html`
     <sd-radio-group name="radio-group" value="list">

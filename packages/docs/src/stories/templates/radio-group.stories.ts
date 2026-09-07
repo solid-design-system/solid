@@ -13,6 +13,10 @@ export default {
   }
 };
 
+/**
+ * Example of how to use a radio group for single-choice selection with a required field label. The selected option is highlighted in green, making the current state clearly visible at a glance.
+ */
+
 export const radioGroupWithHelpText = {
   name: 'Radio Group with Help text',
   render: () => html`
@@ -30,6 +34,10 @@ export const radioGroupWithHelpText = {
     </sd-radio-group>
   `
 };
+
+/**
+ * Example of how to display a radio group in an error state when the user submits without making a selection. All options are outlined in red to signal that a choice is required before proceeding.
+ */
 
 export const radioGroupWithErrorText = {
   name: 'Radio Group with Error text',
