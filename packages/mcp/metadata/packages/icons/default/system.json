@@ -30,14 +30,14 @@
     "tags": ["sonnig", "hell", "schönes Wetter"]
   },
   {
-    "technicalId": "settings",
-    "displayNameDe": "Einstellungen",
-    "tags": ["anpassen", "Bearbeitung", "Zahnrad"]
-  },
-  {
     "technicalId": "volume",
     "displayNameDe": "Lautstärke",
     "tags": ["Ton", "Pegel", "Geräuschpegel"]
+  },
+  {
+    "technicalId": "settings",
+    "displayNameDe": "Einstellungen",
+    "tags": ["anpassen", "Bearbeitung", "Zahnrad"]
   },
   {
     "technicalId": "hand",
@@ -845,14 +845,14 @@
     "tags": ["merken", "Markierung", "markiert", "Favoriten"]
   },
   {
-    "technicalId": "flash",
-    "displayNameDe": "Blitz",
-    "tags": ["Pfeil", "Fehler", "falsch"]
-  },
-  {
     "technicalId": "arrow-right",
     "displayNameDe": "Pfeil rechts",
     "tags": ["Pfeil", "vorwärts", "weiter"]
+  },
+  {
+    "technicalId": "flash",
+    "displayNameDe": "Blitz",
+    "tags": ["Pfeil", "Fehler", "falsch"]
   },
   {
     "technicalId": "arrow-top",

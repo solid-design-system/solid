@@ -119,6 +119,21 @@ export const Size = {
   }
 };
 
+export const Clearable = {
+  name: 'Clearable',
+  args: overrideArgs([{ type: 'attribute', name: 'clearable', value: true }]),
+  render: (args: any) => {
+    return html`
+      <div class="max-w-[250px]">
+        ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'value', value: '2026-01-01' }],
+          args
+        })}
+      </div>
+    `;
+  }
+};
+
 export const Required = {
   name: 'Required',
   render: (args: any) => {
@@ -296,6 +311,7 @@ export const Combination = generateScreenshotStory([
   Labels,
   FloatingLabel,
   Size,
+  Clearable,
   Required,
   Placeholder,
   Disabled,

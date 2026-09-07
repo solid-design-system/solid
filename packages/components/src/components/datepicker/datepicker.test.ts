@@ -3,6 +3,7 @@ import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
 import type SdDatepicker from './datepicker';
+import { clickOnElement } from '../../internal/test';
 
 describe('<sd-datepicker>', () => {
   it('should render a component', async () => {
@@ -52,6 +53,7 @@ describe('<sd-datepicker>', () => {
     expect(el.isDateDisabled).to.be.null;
     expect(el.min).to.be.undefined;
     expect(el.max).to.be.undefined;
+    expect(el.clearable).to.be.false;
   });
 
   it('should be disabled with the disabled attribute', async () => {
@@ -226,6 +228,23 @@ describe('<sd-datepicker>', () => {
   });
 
   describe('when the value changes', () => {
+    it('should emit sd-clear when the clear button is clicked', async () => {
+      const el = await fixture<SdDatepicker>(html` <sd-datepicker clearable value="2024-01-15"></sd-datepicker> `);
+      const clearHandler = sinon.spy();
+
+      el.addEventListener('sd-clear', clearHandler);
+
+      el.show();
+      await el.updateComplete;
+
+      const clearButton: HTMLButtonElement = el.shadowRoot!.querySelector('[part~="clear-button"]')!;
+
+      await clickOnElement(clearButton);
+      await el.updateComplete;
+
+      expect(clearHandler).to.have.been.called;
+    });
+
     it('should emit sd-change when value is changed programmatically', async () => {
       const el = await fixture<SdDatepicker>(html` <sd-datepicker></sd-datepicker> `);
       const changeHandler = sinon.spy();
