@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.2.0
+
+### Minor Changes
+
+- Added a new tool "UX Guidelines" to the MCP. It contains UX guidelines for the development of forms, navigation, filters and calculator. _[`#3300`](https://github.com/solid-design-system/solid/pull/3300) [`7c1976e`](https://github.com/solid-design-system/solid/commit/7c1976edc0ee225657dd2ce5bb4150c341c7921b) [@martascorreia](https://github.com/martascorreia)_
+
 ## 7.1.1
 
 ### Patch Changes
