@@ -30,14 +30,14 @@
     "tags": ["sonnig", "hell", "schönes Wetter"]
   },
   {
-    "technicalId": "volume",
-    "displayNameDe": "Lautstärke",
-    "tags": ["Ton", "Pegel", "Geräuschpegel"]
-  },
-  {
     "technicalId": "settings",
     "displayNameDe": "Einstellungen",
     "tags": ["anpassen", "Bearbeitung", "Zahnrad"]
+  },
+  {
+    "technicalId": "volume",
+    "displayNameDe": "Lautstärke",
+    "tags": ["Ton", "Pegel", "Geräuschpegel"]
   },
   {
     "technicalId": "hand",
@@ -1045,14 +1045,14 @@
     "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
   },
   {
-    "technicalId": "password",
-    "displayNameDe": "Passwort",
-    "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
-  },
-  {
     "technicalId": "e-mail-send",
     "displayNameDe": "E-Mail abschicken",
     "tags": ["Brief", "E-Mail", "Kommunikation"]
+  },
+  {
+    "technicalId": "password",
+    "displayNameDe": "Passwort",
+    "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
   },
   {
     "technicalId": "e-mail-exclamation",

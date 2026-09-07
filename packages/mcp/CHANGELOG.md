@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.1.1
+
+### Patch Changes
+
+- Updated titles and descriptions for the templates to optimize documentation. _[`#3299`](https://github.com/solid-design-system/solid/pull/3299) [`20d98a9`](https://github.com/solid-design-system/solid/commit/20d98a9446e4466a8cf1b4ca98e49ba51c84167d) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 7.1.0
 
 ## 7.0.3

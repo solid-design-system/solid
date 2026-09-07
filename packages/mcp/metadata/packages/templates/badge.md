@@ -10,7 +10,7 @@ components:
 version: 1.0.0
 ---
 
-## Template: Button with badge
+## Template: Button with Badge
 
 ```html
 <div class="flex flex-col">
