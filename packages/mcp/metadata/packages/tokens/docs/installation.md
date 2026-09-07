@@ -132,7 +132,7 @@ sans-serif;
 
 </sd-accordion>
 
-<sd-accordion summary="Example CSS for BBBank (CDN)">
+<sd-accordion summary="Example CSS for BBBank">
 ```css
 @font-face {
   font-family: 'BBBank Type TT';
@@ -323,14 +323,13 @@ This automatically makes all Solid Design System tokens available as Tailwind ut
 // tailwind.config.js
 
 export default {
-theme: {
-extend: {
-...solidTheme
-}
-}
+  theme: {
+    extend: {
+      ...solidTheme
+    }
+  }
 };
-
-````
+```
 
   </sd-tab-panel>
 </sd-tab-group>
@@ -350,7 +349,6 @@ However, if you manage an environment that still requires the use of these varia
 as fallback layer:
 
 ```js
-
 ```
 
 ## Minimum dependency requirement
@@ -358,3 +356,4 @@ as fallback layer:
 The installed `@solid-design-system/tokens` version must always be equal to or greater than the versions of the `@solid-design-system/components` and `@solid-design-system/styles` packages.
 
 For example, when using version `6.30.0` of components or styles, the minimum supported tokens version is `6.30.0`.
+````

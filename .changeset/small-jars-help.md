@@ -4,4 +4,4 @@
 '@solid-design-system/mcp': minor
 ---
 
-Removing Kidstarter theme from documentation.
+Removing `kid-starter` theme from documentation.
