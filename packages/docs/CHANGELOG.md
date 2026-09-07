@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 3.3.3
+
+### Patch Changes
+
+- Changed the theme passwords to use Github Secrets. _[`#3285`](https://github.com/solid-design-system/solid/pull/3285) [`531ff5c`](https://github.com/solid-design-system/solid/commit/531ff5cef76b4f87b2cec3ebe837508be4870f93) [@martascorreia](https://github.com/martascorreia)_
+
 ## 3.3.2
 
 ### Patch Changes
