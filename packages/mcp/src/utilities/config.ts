@@ -50,6 +50,9 @@ export const docsPackagePath = join(currentDirname, '../../metadata/packages/doc
 /** Package-level docs for the tokens package (Installation, Usage, etc.) */
 export const tokenPackageDocsPath = join(currentDirname, '../../metadata/packages/tokens/docs');
 
+/** Authored UX pattern guidance metadata */
+export const uxGuidelinesPath = join(currentDirname, '../../metadata/packages/ux_guidelines');
+
 /** Root of all static AI-rule markdown files */
 export const staticPath = join(currentDirname, '../../metadata/static');
 
