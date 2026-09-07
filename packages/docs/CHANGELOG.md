@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 3.3.2
+
+### Patch Changes
+
+- Replaced `_internal` icon library usage with the `default` library in the templates. _[`#3300`](https://github.com/solid-design-system/solid/pull/3300) [`7c1976e`](https://github.com/solid-design-system/solid/commit/7c1976edc0ee225657dd2ce5bb4150c341c7921b) [@martascorreia](https://github.com/martascorreia)_
+
 ## 3.3.1
 
 ### Patch Changes
