@@ -132,45 +132,6 @@ sans-serif;
 
 </sd-accordion>
 
-<sd-accordion summary="Example CSS for Kidstarter (CDN)">
-```css
-@font-face {
-  font-family: 'Bricolage Grotesque';
-  font-style: normal;
-  font-weight: 400;
-  src:
-    local('Bricolage Grotesque'),
-    url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400&display=swap') format('woff2');
-}
-
-@font-face {
-font-family: 'Bricolage Grotesque';
-font-style: normal;
-font-weight: 600;
-src:
-local('Bricolage Grotesque'),
-url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600&display=swap') format('woff2');
-}
-
-body {
-font-family:
-'Bricolage Grotesque',
-ui-sans-serif,
-system-ui,
--apple-system,
-BlinkMacSystemFont,
-'Segoe UI',
-Roboto,
-'Helvetica Neue',
-Arial,
-'Noto Sans',
-sans-serif;
-}
-
-````
-
-</sd-accordion>
-
 <sd-accordion summary="Example CSS for BBBank (CDN)">
 ```css
 @font-face {
@@ -389,7 +350,8 @@ However, if you manage an environment that still requires the use of these varia
 as fallback layer:
 
 ```js
-````
+
+```
 
 ## Minimum dependency requirement
 
