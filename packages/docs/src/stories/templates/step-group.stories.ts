@@ -125,6 +125,10 @@ export const NonInteractiveStepGroupWithIcon = {
   `
 };
 
+/**
+ * Example of step-group in extra small variant
+ */
+
 export const StepGroupForExtraSmallVariant = {
   name: 'Step Group for extra small variant',
   render: () => html`

@@ -8,7 +8,7 @@ components:
 version: 1.0.0
 ---
 
-## Template: Simple Suggests
+## Template: Combobox Simple Suggests
 
 ```html
 <div class="h-[260px] max-w-[400px]">
@@ -16,7 +16,7 @@ version: 1.0.0
 </div>
 ```
 
-## Template: Highlight Query
+## Template: Combobox Highlight Query
 
 ```html
 <div class="h-[260px] max-w-[400px]">
@@ -77,7 +77,7 @@ version: 1.0.0
 </script>
 ```
 
-## Template: Grouping Query
+## Template: Combobox Grouping Query
 
 ```html
 <div class="h-[260px] max-w-[400px]">

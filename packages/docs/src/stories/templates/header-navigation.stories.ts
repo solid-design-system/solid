@@ -797,13 +797,14 @@ export const Horizontal = {
   }
 };
 
-/** **Accessibility hint:** aria-expanded and aria-controls must be set for accessibility purpose.
+/**
+ * Full horizontal navigation with hover mega-menus and utilities navigation on the right - for public marketing/institutional sites. Same use case as A-02; choice between them comes down to utilities navigation preference.<br>
  *
- * When consuming sd-header please ensure that there are no margins applied on the left, right and bottom of the dropdown. The top margin of the dropdown should be kept otherwise the first navigation item is cutted.
+ * aria-expanded and aria-controls must be set for accessibility purpose.
  */
 
 export const SampleA = {
-  name: 'Header Sample A-01',
+  name: 'Header Variant A-01',
   render: () => {
     const currentTheme = getThemeAttributes();
 
@@ -955,8 +956,12 @@ export const SampleA = {
   }
 };
 
+/**
+ * Full horizontal navigation with utilities navigation on the right - for public marketing/institutional sites. Same use case as A-01; choice between them comes down to utilities navigation preference.
+ */
+
 export const SampleA02 = {
-  name: 'Header Sample A-02',
+  name: 'Header Variant A-02',
   render: () => {
     const currentTheme = getThemeAttributes();
 
@@ -1122,7 +1127,9 @@ export const SampleA02 = {
 };
 
 /**
- * Vertical Navigation - Desktop (open on click) and Mobile
+ * Vertical Navigation - Desktop (permanent) and Mobile (open on click)<br>
+ *
+ * Brand on the left and utilities navigation on the right, with main navigation in a left sidebar below the header - for logged-in client portals where users complete tasks rather than browse.
  */
 export const Vertical = {
   name: 'Header Variant A-02 (with overrides) with Header Navigation Template',
@@ -1423,6 +1430,10 @@ export const Vertical = {
   }
 };
 
+/**
+ * Horizontal navigation on the left, with the 2nd Sender tag top right and utilities navigation below it - for editorial or content-hub sub-brands sitting under the main brand.
+ */
+
 export const SampleB01 = {
   name: 'Header Variant B-01',
   render: () => {
@@ -1713,6 +1724,10 @@ export const SampleB02 = {
   }
 };
 
+/**
+ * Minimal right-aligned navigation with a 2nd Sender tag, no utilities navigation, no divider - for lightweight campaign or landing pages that shouldn't compete with the page content.
+ */
+
 export const SampleC01 = {
   name: 'Header Variant C-01',
   render: () => {
@@ -1935,8 +1950,12 @@ export const SampleC02 = {
   }
 };
 
+/**
+ * Logo only, centered, no navigation - Web App header for focused in-app screens.
+ */
+
 export const SampleD01 = {
-  name: 'Header Sample D-01',
+  name: 'Header Variant D-01',
   render: () => {
     const currentTheme = getThemeAttributes();
 
@@ -1976,8 +1995,12 @@ export const SampleD01 = {
   }
 };
 
+/**
+ * Logo centered with a back arrow, no navigation - Web App header for subpages within web apps.
+ */
+
 export const SampleD02 = {
-  name: 'Header Sample D-02',
+  name: 'Header Variant D-02',
   render: () => {
     const currentTheme = getThemeAttributes();
 
