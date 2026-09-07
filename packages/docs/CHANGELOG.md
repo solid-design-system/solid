@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 3.3.0
+
+### Minor Changes
+
+- Added `clearable` attribute for the `sd-datepicker`. _[`#3304`](https://github.com/solid-design-system/solid/pull/3304) [`2ae7b81`](https://github.com/solid-design-system/solid/commit/2ae7b81a3e5bd57e451f652a25984021faab8620) [@balco0110](https://github.com/balco0110)_
+
 ## 3.2.0
 
 ### Minor Changes
