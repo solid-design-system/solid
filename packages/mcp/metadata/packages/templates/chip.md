@@ -14,7 +14,7 @@ components:
 version: 1.0.0
 ---
 
-## Template: Background Options
+## Template: Chip Background Options
 
 ```html
 <div class="grid grid-col-1 sm:grid-cols-3 gap-px bg-neutral-400 border border-neutral-400">

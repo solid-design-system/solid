@@ -27,6 +27,10 @@ export default {
   ] as unknown
 };
 
+/**
+ * Example of how to build a simple context menu where each item is paired with a leading icon. Triggered by a three-dot icon button, the menu provides quick access to a small set of actions such as Share and Save.
+ */
+
 export const MenuWithIcons = {
   name: 'Menu with Icons',
   render: () =>
@@ -49,6 +53,10 @@ export const MenuWithIcons = {
       </sd-menu>
     </sd-dropdown>`
 };
+
+/**
+ * Example of how to combine icons and checkmarks in a menu to show both the action type and the current active state. The checkmark indicates the currently selected or enabled item.
+ */
 
 export const MenuWithCheckmarksAndIcons = {
   name: 'Menu with Checkmarks and Icons',
@@ -74,6 +82,10 @@ export const MenuWithCheckmarksAndIcons = {
     </sd-dropdown>
   `
 };
+
+/**
+ * Example of how to structure a complex menu with item groups, checkmarks for active selections, and submenus for nested options. Items that trigger a submenu are indicated by a trailing chevron, and a divider separates the grouped entries from the main list.
+ */
 
 export const MenuWithCheckmarks = {
   name: 'Menu with Checkmarks, Grouping and Submenu',

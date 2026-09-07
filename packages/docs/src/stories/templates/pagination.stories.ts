@@ -13,6 +13,10 @@ export default {
   }
 };
 
+/**
+ * Example of how to use numbered pagination to navigate through a large set of results. The current page is highlighted and truncation is used to collapse distant page ranges.
+ */
+
 export const Number = {
   name: 'Pagination Number',
   render: () => html`
@@ -253,6 +257,10 @@ export const NumberWithButtons = {
     </script>
   `
 };
+
+/**
+ * Example of how to use simple pagination for basic forward and backward navigation, showing the current page and total as a fraction.
+ */
 
 export const Simple = {
   name: 'Pagination Simple',
