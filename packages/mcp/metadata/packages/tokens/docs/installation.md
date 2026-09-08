@@ -132,46 +132,7 @@ sans-serif;
 
 </sd-accordion>
 
-<sd-accordion summary="Example CSS for Kidstarter (CDN)">
-```css
-@font-face {
-  font-family: 'Bricolage Grotesque';
-  font-style: normal;
-  font-weight: 400;
-  src:
-    local('Bricolage Grotesque'),
-    url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400&display=swap') format('woff2');
-}
-
-@font-face {
-font-family: 'Bricolage Grotesque';
-font-style: normal;
-font-weight: 600;
-src:
-local('Bricolage Grotesque'),
-url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600&display=swap') format('woff2');
-}
-
-body {
-font-family:
-'Bricolage Grotesque',
-ui-sans-serif,
-system-ui,
--apple-system,
-BlinkMacSystemFont,
-'Segoe UI',
-Roboto,
-'Helvetica Neue',
-Arial,
-'Noto Sans',
-sans-serif;
-}
-
-````
-
-</sd-accordion>
-
-<sd-accordion summary="Example CSS for BBBank (CDN)">
+<sd-accordion summary="Example CSS for BBBank">
 ```css
 @font-face {
   font-family: 'BBBank Type TT';
@@ -362,14 +323,13 @@ This automatically makes all Solid Design System tokens available as Tailwind ut
 // tailwind.config.js
 
 export default {
-theme: {
-extend: {
-...solidTheme
-}
-}
+  theme: {
+    extend: {
+      ...solidTheme
+    }
+  }
 };
-
-````
+```
 
   </sd-tab-panel>
 </sd-tab-group>
@@ -389,10 +349,11 @@ However, if you manage an environment that still requires the use of these varia
 as fallback layer:
 
 ```js
-````
+```
 
 ## Minimum dependency requirement
 
 The installed `@solid-design-system/tokens` version must always be equal to or greater than the versions of the `@solid-design-system/components` and `@solid-design-system/styles` packages.
 
 For example, when using version `6.30.0` of components or styles, the minimum supported tokens version is `6.30.0`.
+````
