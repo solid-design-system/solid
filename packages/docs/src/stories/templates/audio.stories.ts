@@ -6,8 +6,7 @@ export default {
   title: 'Templates/Audio',
   parameters: {
     relatedLinks: {
-      components: ['sd-audio', 'sd-icon', 'sd-teaser'],
-      styles: ['sd-display']
+      components: ['sd-audio', 'sd-teaser']
     },
     chromatic: { disableSnapshot: true },
     design: {

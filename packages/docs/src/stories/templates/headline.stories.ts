@@ -6,8 +6,7 @@ export default {
   title: 'Templates/Headline',
   parameters: {
     relatedLinks: {
-      components: ['sd-button', 'sd-icon', 'sd-teaser'],
-      styles: ['sd-headline', 'sd-leadtext', 'sd-paragraph', 'sd-prose']
+      styles: ['sd-headline']
     },
     chromatic: { disableSnapshot: true },
     design: {

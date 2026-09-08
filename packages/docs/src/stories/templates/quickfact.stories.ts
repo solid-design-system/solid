@@ -5,7 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   parameters: {
     relatedLinks: {
-      components: ['sd-icon', 'sd-quickfact']
+      components: ['sd-quickfact']
     },
     design: {
       type: 'figma',

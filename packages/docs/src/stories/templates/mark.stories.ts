@@ -10,8 +10,7 @@ export default {
   title: 'Templates/Mark',
   parameters: {
     relatedLinks: {
-      components: ['sd-icon'],
-      styles: ['sd-display', 'sd-headline', 'sd-mark']
+      styles: ['sd-display', 'sd-headline', 'sd-leadtext', 'sd-mark']
     },
     chromatic: { disableSnapshot: true },
     design: {

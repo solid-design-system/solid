@@ -10,8 +10,7 @@ export default {
   title: 'Templates/Bottom Bar Navigation',
   parameters: {
     relatedLinks: {
-      components: ['sd-header', 'sd-icon', 'sd-navigation-item', 'sd-teaser'],
-      styles: ['sd-headline', 'sd-interactive', 'sd-paragraph']
+      components: ['sd-navigation-item']
     },
     chromatic: { disableSnapshot: true }
   }

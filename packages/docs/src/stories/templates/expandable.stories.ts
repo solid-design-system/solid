@@ -6,8 +6,7 @@ export default {
   title: 'Templates/Expandable',
   parameters: {
     relatedLinks: {
-      components: ['sd-expandable'],
-      styles: ['sd-leadtext', 'sd-prose']
+      components: ['sd-expandable']
     },
     chromatic: { disableSnapshot: true },
     design: {

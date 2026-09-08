@@ -7,7 +7,7 @@ export default {
   parameters: {
     relatedLinks: {
       components: ['sd-video'],
-      styles: ['sd-copyright', 'sd-media']
+      styles: ['sd-copyright']
     },
     chromatic: { disableSnapshot: true },
     design: {

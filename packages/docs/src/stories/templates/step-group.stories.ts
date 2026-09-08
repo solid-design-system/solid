@@ -6,8 +6,7 @@ export default {
   title: 'Templates/Step Group',
   parameters: {
     relatedLinks: {
-      components: ['sd-icon', 'sd-step', 'sd-step-group'],
-      styles: ['sd-paragraph']
+      components: ['sd-step', 'sd-step-group']
     },
     chromatic: { disableSnapshot: true },
     design: {

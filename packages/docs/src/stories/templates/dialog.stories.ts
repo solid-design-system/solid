@@ -6,8 +6,7 @@ export default {
   title: 'Templates/Dialog',
   parameters: {
     relatedLinks: {
-      components: ['sd-button', 'sd-dialog', 'sd-icon', 'sd-link', 'sd-scrollable'],
-      styles: ['sd-headline', 'sd-paragraph']
+      components: ['sd-dialog']
     },
     chromatic: { disableSnapshot: true },
     design: {

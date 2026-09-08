@@ -6,18 +6,7 @@ export default {
   title: 'Templates/Tooltip',
   parameters: {
     relatedLinks: {
-      components: [
-        'sd-checkbox',
-        'sd-checkbox-group',
-        'sd-input',
-        'sd-option',
-        'sd-radio',
-        'sd-radio-group',
-        'sd-select',
-        'sd-textarea',
-        'sd-tooltip'
-      ],
-      styles: ['sd-headline', 'sd-paragraph']
+      components: ['sd-checkbox-group', 'sd-input', 'sd-radio-group', 'sd-select', 'sd-textarea', 'sd-tooltip']
     },
     chromatic: { disableSnapshot: true },
     design: {

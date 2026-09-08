@@ -6,8 +6,8 @@ export default {
   title: 'Templates/Dropdown',
   parameters: {
     relatedLinks: {
-      components: ['sd-dropdown', 'sd-icon', 'sd-navigation-item'],
-      styles: ['sd-headline']
+      components: ['sd-dropdown', 'sd-navigation-item'],
+      styles: ['sd-hidden-links']
     },
     design: {
       type: 'figma',

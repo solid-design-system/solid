@@ -22,7 +22,7 @@ export default {
   title: 'Templates/Combobox',
   parameters: {
     relatedLinks: {
-      components: ['sd-combobox', 'sd-optgroup', 'sd-option']
+      components: ['sd-combobox', 'sd-optgroup']
     },
     chromatic: { disableSnapshot: true },
     design: {

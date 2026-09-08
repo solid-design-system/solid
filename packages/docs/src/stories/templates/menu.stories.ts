@@ -6,7 +6,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   parameters: {
     relatedLinks: {
-      components: ['sd-button', 'sd-divider', 'sd-dropdown', 'sd-icon', 'sd-menu', 'sd-menu-item']
+      components: ['sd-menu', 'sd-menu-item']
     },
     chromatic: { disableSnapshot: true }
   },

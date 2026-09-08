@@ -6,8 +6,7 @@ export default {
   title: 'Templates/Tag',
   parameters: {
     relatedLinks: {
-      components: ['sd-button', 'sd-icon', 'sd-tag'],
-      styles: ['sd-paragraph']
+      components: ['sd-tag']
     },
     chromatic: { disableSnapshot: true },
     design: {

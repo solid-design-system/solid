@@ -6,7 +6,7 @@ export default {
   title: 'Templates/Select',
   parameters: {
     relatedLinks: {
-      components: ['sd-divider', 'sd-option', 'sd-select']
+      components: ['sd-checkbox-group', 'sd-option', 'sd-select']
     },
     chromatic: { disableSnapshot: true },
     design: {

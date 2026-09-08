@@ -7,17 +7,7 @@ export default {
   title: 'Templates/Breadcrumb',
   parameters: {
     relatedLinks: {
-      components: [
-        'sd-breadcrumb',
-        'sd-breadcrumb-item',
-        'sd-button',
-        'sd-drawer',
-        'sd-dropdown',
-        'sd-header',
-        'sd-icon',
-        'sd-navigation-item'
-      ],
-      styles: ['sd-headline', 'sd-interactive', 'sd-leadtext']
+      components: ['sd-breadcrumb', 'sd-breadcrumb-item', 'sd-header', 'sd-navigation-item']
     },
     chromatic: { disableSnapshot: true },
     design: {

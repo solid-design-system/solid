@@ -6,7 +6,6 @@ export default {
   title: 'Templates/Interactive',
   parameters: {
     relatedLinks: {
-      components: ['sd-icon'],
       styles: ['sd-interactive']
     },
     chromatic: { disableSnapshot: true },

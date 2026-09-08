@@ -6,8 +6,8 @@ export default {
   title: 'Templates/Status Badge',
   parameters: {
     relatedLinks: {
-      components: ['sd-button', 'sd-icon'],
-      styles: ['sd-chip', 'sd-container', 'sd-headline', 'sd-paragraph', 'sd-status-badge']
+      components: ['sd-icon'],
+      styles: ['sd-chip', 'sd-status-badge']
     },
     chromatic: { disableSnapshot: true },
     design: {

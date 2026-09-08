@@ -6,8 +6,8 @@ export default {
   title: 'Templates/Teaser Media',
   parameters: {
     relatedLinks: {
-      components: ['sd-button', 'sd-teaser-media'],
-      styles: ['sd-headline', 'sd-meta', 'sd-paragraph']
+      components: ['sd-teaser-media'],
+      styles: ['sd-copyright']
     },
     chromatic: { disableSnapshot: true },
     design: {

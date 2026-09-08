@@ -6,8 +6,7 @@ export default {
   title: 'Templates/Teaser',
   parameters: {
     relatedLinks: {
-      components: ['sd-button', 'sd-icon', 'sd-link', 'sd-teaser'],
-      styles: ['sd-chip', 'sd-headline', 'sd-meta', 'sd-paragraph']
+      components: ['sd-teaser']
     },
     chromatic: { disableSnapshot: true },
     design: {

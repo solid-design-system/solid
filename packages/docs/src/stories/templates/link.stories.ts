@@ -6,7 +6,8 @@ export default {
   title: 'Templates/Link',
   parameters: {
     relatedLinks: {
-      components: ['sd-icon', 'sd-link']
+      components: ['sd-link'],
+      styles: ['sd-list']
     },
     design: {
       type: 'figma',

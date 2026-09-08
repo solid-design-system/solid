@@ -6,18 +6,7 @@ export default {
   title: 'Templates/File Selector',
   parameters: {
     relatedLinks: {
-      components: [
-        'sd-button',
-        'sd-divider',
-        'sd-file-selector',
-        'sd-icon',
-        'sd-input',
-        'sd-option',
-        'sd-progress-bar',
-        'sd-select',
-        'sd-tooltip'
-      ],
-      styles: ['sd-headline', 'sd-interactive', 'sd-meta', 'sd-paragraph']
+      components: ['sd-file-selector']
     },
     chromatic: { disableSnapshot: true },
     design: {

@@ -6,8 +6,8 @@ export default {
   title: 'Templates/Brandshape',
   parameters: {
     relatedLinks: {
-      components: ['sd-brandshape', 'sd-button'],
-      styles: ['sd-copyright', 'sd-headline', 'sd-paragraph']
+      components: ['sd-brandshape'],
+      styles: ['sd-copyright']
     },
     design: {
       type: 'figma',

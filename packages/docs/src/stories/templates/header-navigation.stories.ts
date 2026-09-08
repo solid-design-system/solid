@@ -7,17 +7,7 @@ export default {
   title: 'Templates/Header Navigation',
   parameters: {
     relatedLinks: {
-      components: [
-        'sd-button',
-        'sd-divider',
-        'sd-drawer',
-        'sd-dropdown',
-        'sd-header',
-        'sd-icon',
-        'sd-navigation-item',
-        'sd-notification'
-      ],
-      styles: ['sd-headline', 'sd-interactive']
+      components: ['sd-drawer', 'sd-dropdown', 'sd-header']
     },
     chromatic: { disableSnapshot: true },
     design: {

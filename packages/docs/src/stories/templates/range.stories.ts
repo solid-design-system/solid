@@ -10,8 +10,7 @@ export default {
   title: 'Templates/Range',
   parameters: {
     relatedLinks: {
-      components: ['sd-icon', 'sd-input', 'sd-notification', 'sd-range', 'sd-range-tick'],
-      styles: ['sd-container', 'sd-headline', 'sd-paragraph', 'sd-prose']
+      components: ['sd-range', 'sd-range-tick']
     },
     chromatic: { disableSnapshot: true },
     design: {

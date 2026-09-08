@@ -10,8 +10,7 @@ export default {
   title: 'Templates/Accordion Group',
   parameters: {
     relatedLinks: {
-      components: ['sd-accordion', 'sd-accordion-group'],
-      styles: ['sd-headline', 'sd-media', 'sd-paragraph', 'sd-prose']
+      components: ['sd-accordion', 'sd-accordion-group']
     },
     chromatic: { disableSnapshot: true },
     design: {

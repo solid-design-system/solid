@@ -6,7 +6,7 @@ export default {
   title: 'Templates/Checkbox Group',
   parameters: {
     relatedLinks: {
-      components: ['sd-button', 'sd-checkbox', 'sd-checkbox-group', 'sd-icon']
+      components: ['sd-checkbox', 'sd-checkbox-group']
     },
     design: {
       type: 'figma',

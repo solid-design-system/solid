@@ -6,7 +6,7 @@ export default {
   title: 'Templates/Radio Button Group',
   parameters: {
     relatedLinks: {
-      components: ['sd-icon', 'sd-radio-button', 'sd-radio-group']
+      components: ['sd-radio-button', 'sd-radio-group']
     },
     chromatic: { disableSnapshot: true },
     design: {

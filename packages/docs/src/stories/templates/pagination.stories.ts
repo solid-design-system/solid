@@ -6,7 +6,6 @@ export default {
   title: 'Templates/Pagination',
   parameters: {
     relatedLinks: {
-      components: ['sd-icon'],
       styles: ['sd-pagination']
     },
     chromatic: { disableSnapshot: true },

@@ -6,7 +6,7 @@ export default {
   title: 'Templates/Button',
   parameters: {
     relatedLinks: {
-      components: ['sd-button', 'sd-icon', 'sd-textarea', 'sd-tooltip']
+      components: ['sd-button']
     },
     chromatic: { disableSnapshot: true },
     design: {

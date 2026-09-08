@@ -6,7 +6,7 @@ export default {
   title: 'Templates/Radio Group',
   parameters: {
     relatedLinks: {
-      components: ['sd-radio', 'sd-radio-group']
+      components: ['sd-radio-group']
     },
     chromatic: { disableSnapshot: true },
     design: {

@@ -6,7 +6,7 @@ export default {
   title: 'Templates/Skeleton',
   parameters: {
     relatedLinks: {
-      components: ['sd-accordion', 'sd-accordion-group', 'sd-skeleton']
+      components: ['sd-accordion-group', 'sd-accordion', 'sd-skeleton']
     },
     chromatic: { disableSnapshot: true },
     design: {

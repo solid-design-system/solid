@@ -12,8 +12,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   parameters: {
     relatedLinks: {
-      components: ['sd-button', 'sd-link', 'sd-notification'],
-      styles: ['sd-paragraph']
+      components: ['sd-notification']
     },
     chromatic: { disableSnapshot: true },
     design: {

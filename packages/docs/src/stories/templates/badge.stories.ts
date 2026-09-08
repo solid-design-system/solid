@@ -7,7 +7,8 @@ export default {
   title: 'Templates/Badge',
   parameters: {
     relatedLinks: {
-      components: ['sd-badge', 'sd-button', 'sd-header', 'sd-icon', 'sd-navigation-item']
+      components: ['sd-badge', 'sd-button', 'sd-navigation-item'],
+      styles: ['sd-status-badge']
     },
     chromatic: { disableSnapshot: true },
     design: {

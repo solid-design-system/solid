@@ -6,8 +6,8 @@ export default {
   title: 'Templates/Tab Group',
   parameters: {
     relatedLinks: {
-      components: ['sd-badge', 'sd-icon', 'sd-tab', 'sd-tab-group', 'sd-tab-panel'],
-      styles: ['sd-copyright', 'sd-headline', 'sd-media', 'sd-paragraph']
+      components: ['sd-badge', 'sd-tab-group', 'sd-tab-panel', 'sd-tab'],
+      styles: ['sd-chip']
     },
     chromatic: { disableSnapshot: true },
     design: {

@@ -17,8 +17,7 @@ export default {
   title: 'Templates/Table',
   parameters: {
     relatedLinks: {
-      components: ['sd-button', 'sd-checkbox', 'sd-icon', 'sd-link', 'sd-tooltip'],
-      styles: ['sd-interactive', 'sd-paragraph', 'sd-table', 'sd-table-cell']
+      styles: ['sd-table', 'sd-table-cell']
     },
     chromatic: { disableSnapshot: true }
   }

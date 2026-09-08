@@ -6,7 +6,7 @@ export default {
   title: 'Templates/Footnotes',
   parameters: {
     relatedLinks: {
-      styles: ['sd-container', 'sd-footnotes', 'sd-headline', 'sd-paragraph', 'sd-prose']
+      styles: ['sd-footnotes']
     },
     a11y: {
       config: {

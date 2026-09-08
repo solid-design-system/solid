@@ -6,8 +6,7 @@ export default {
   title: 'Templates/Drawer',
   parameters: {
     relatedLinks: {
-      components: ['sd-button', 'sd-drawer', 'sd-icon', 'sd-navigation-item'],
-      styles: ['sd-headline']
+      components: ['sd-drawer']
     },
     design: {
       type: 'figma',

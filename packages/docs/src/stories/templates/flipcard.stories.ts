@@ -10,8 +10,7 @@ export default {
   title: 'Templates/Flipcard',
   parameters: {
     relatedLinks: {
-      components: ['sd-flipcard', 'sd-link'],
-      styles: ['sd-headline', 'sd-paragraph', 'sd-prose']
+      components: ['sd-flipcard']
     },
     chromatic: { disableSnapshot: true },
     design: {
