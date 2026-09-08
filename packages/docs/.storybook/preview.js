@@ -1,5 +1,4 @@
 import './preview.css';
-import '../../tokens/themes/kid/kid.css';
 import '../../tokens/themes/bb/bb.css';
 import '../../tokens/themes/vb/vb.css';
 import '../../tokens/themes/sp/sp.css';
