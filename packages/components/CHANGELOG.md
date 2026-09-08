@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 7.3.0
+
+### Minor Changes
+
+- Removing `kid-starter` theme from documentation. _[`#3318`](https://github.com/solid-design-system/solid/pull/3318) [`6e0087f`](https://github.com/solid-design-system/solid/commit/6e0087fa75da5ff6d4220a1f4842894cc5eb46a6) [@martascorreia](https://github.com/martascorreia)_
+
 ## 7.2.0
 
 ## 7.1.1
