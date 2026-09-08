@@ -105,11 +105,20 @@ export default class SdTabGroup extends SolidElement {
 
       // Wait for tabs and tab panels to be registered
       whenAllDefined.then(() => {
+        const activateInitialTab = () => {
+          this.setAriaLabels();
+          this.setActiveTab(this.activeTab ?? this.tabs[0], { emitEvents: false });
+        };
+
+        if (this.tabGroup.getClientRects().length > 0) {
+          activateInitialTab();
+          return;
+        }
+
         // Set initial tab state when the tabs become visible
         const intersectionObserver = new IntersectionObserver((entries, observer) => {
           if (entries[0].intersectionRatio > 0) {
-            this.setAriaLabels();
-            this.setActiveTab(this.activeTab ?? this.tabs[0], { emitEvents: false });
+            activateInitialTab();
             observer.unobserve(entries[0].target);
           }
         });
