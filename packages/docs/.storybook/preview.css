@@ -39,14 +39,10 @@ div[data-radix-scroll-area-viewport]:focus-visible {
 }
 
 /* Right-side headline anchors */
-/* Sticky instead of `position: fixed` so a long TOC scrolls with (and stops at the end of) the docs
-   content, rather than painting over the footer that follows it. */
 .sbdocs.sbdocs-wrapper > aside > nav:has(.toc-wrapper) {
   @apply sticky top-0 bottom-auto h-screen;
 }
 
-/* Mirrors the addon-docs wrapper layout (content column, gap and TOC aside) so the docs footer
-   content lines up with the stories above it. */
 .sd-docs-footer {
   display: flex;
   flex-direction: row-reverse;
