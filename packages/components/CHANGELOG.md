@@ -1,5 +1,26 @@
 # @solid-design-system/components
 
+## 7.3.0
+
+### Minor Changes
+
+- Removing `kid-starter` theme from documentation. _[`#3318`](https://github.com/solid-design-system/solid/pull/3318) [`6e0087f`](https://github.com/solid-design-system/solid/commit/6e0087fa75da5ff6d4220a1f4842894cc5eb46a6) [@martascorreia](https://github.com/martascorreia)_
+
+## 7.2.0
+
+## 7.1.1
+
+## 7.1.0
+
+### Minor Changes
+
+- Added `clearable` attribute for the `sd-datepicker`. _[`#3304`](https://github.com/solid-design-system/solid/pull/3304) [`2ae7b81`](https://github.com/solid-design-system/solid/commit/2ae7b81a3e5bd57e451f652a25984021faab8620) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+
+- Uncompressed: 634 KB (+1 KB / +0%)
+- Gzipped: 143 KB (+1 KB / +1%)
+
 ## 7.0.3
 
 ### Patch Changes

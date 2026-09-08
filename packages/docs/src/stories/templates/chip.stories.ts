@@ -21,7 +21,7 @@ export default {
  * - `primary-high` on primary background
  * - `white` on image background
  */
-export const BackgroundOptions = {
+export const ChipBackgroundOptions = {
   render: () =>
     html`<div class="grid grid-col-1 sm:grid-cols-3 gap-px bg-neutral-400 border border-neutral-400">
         <div class="bg-white py-6 px-8 flex flex-col gap-2 items-start min-h-32">

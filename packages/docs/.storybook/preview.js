@@ -1,5 +1,4 @@
 import './preview.css';
-import '../../tokens/themes/kid/kid.css';
 import '../../tokens/themes/bb/bb.css';
 import '../../tokens/themes/vb/vb.css';
 import '../../tokens/themes/sp/sp.css';
@@ -12,6 +11,7 @@ import { storybookUtilities } from '../scripts/storybook/helper.js';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
 import { initDeprecatedBadgeEnhancer } from '../scripts/storybook/deprecated-badge-enhancer.js';
 import { themes, allModes, DEFAULT_THEME } from './modes.js';
+import { hasThemeAccess, isProtectedTheme } from './theme-protection.ts';
 
 const theme = withThemeByClassName({
   defaultTheme: DEFAULT_THEME,
@@ -26,8 +26,18 @@ const deprecatedBadgeDecorator = Story => {
   return Story();
 };
 
+const themeProtectionDecorator = (Story, context) => {
+  if (!isProtectedTheme(context.globals.theme) || hasThemeAccess(context.globals.theme)) {
+    return Story();
+  }
+
+  const message = document.createElement('p');
+  message.textContent = 'This theme is protected. Enter the password in the Storybook manager to view it.';
+  return message;
+};
+
 export const preview = {
-  decorators: [theme, deprecatedBadgeDecorator],
+  decorators: [theme, themeProtectionDecorator, deprecatedBadgeDecorator],
   parameters: {
     options: {
       storySort: (a, b) => {

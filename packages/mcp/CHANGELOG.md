@@ -1,5 +1,25 @@
 # Changelog
 
+## 7.3.0
+
+### Minor Changes
+
+- Removing `kid-starter` theme from documentation. _[`#3318`](https://github.com/solid-design-system/solid/pull/3318) [`6e0087f`](https://github.com/solid-design-system/solid/commit/6e0087fa75da5ff6d4220a1f4842894cc5eb46a6) [@martascorreia](https://github.com/martascorreia)_
+
+## 7.2.0
+
+### Minor Changes
+
+- Added a new tool "UX Guidelines" to the MCP. It contains UX guidelines for the development of forms, navigation, filters and calculator. _[`#3300`](https://github.com/solid-design-system/solid/pull/3300) [`7c1976e`](https://github.com/solid-design-system/solid/commit/7c1976edc0ee225657dd2ce5bb4150c341c7921b) [@martascorreia](https://github.com/martascorreia)_
+
+## 7.1.1
+
+### Patch Changes
+
+- Updated titles and descriptions for the templates to optimize documentation. _[`#3299`](https://github.com/solid-design-system/solid/pull/3299) [`20d98a9`](https://github.com/solid-design-system/solid/commit/20d98a9446e4466a8cf1b4ca98e49ba51c84167d) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 7.1.0
+
 ## 7.0.3
 
 ## 7.0.2

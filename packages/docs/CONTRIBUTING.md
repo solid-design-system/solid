@@ -55,6 +55,7 @@ All components have a documentation file in the `packages/docs/src/stories/packa
     - Custom width/padding/styles
     - Alignments
     - Required/Invalid (in case required and invalid exist they must be below each other)
+- **Templates:** When referring to a component inside of templates please use the component’s standard name, (eg. accordion) instead of (sd-accordion) and please dont use backticks (``).
 
 ### Screenshot tests
 

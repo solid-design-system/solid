@@ -845,14 +845,14 @@
     "tags": ["merken", "Markierung", "markiert", "Favoriten"]
   },
   {
-    "technicalId": "flash",
-    "displayNameDe": "Blitz",
-    "tags": ["Pfeil", "Fehler", "falsch"]
-  },
-  {
     "technicalId": "arrow-right",
     "displayNameDe": "Pfeil rechts",
     "tags": ["Pfeil", "vorwärts", "weiter"]
+  },
+  {
+    "technicalId": "flash",
+    "displayNameDe": "Blitz",
+    "tags": ["Pfeil", "Fehler", "falsch"]
   },
   {
     "technicalId": "arrow-top",
@@ -1045,14 +1045,14 @@
     "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
   },
   {
-    "technicalId": "password",
-    "displayNameDe": "Passwort",
-    "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
-  },
-  {
     "technicalId": "e-mail-send",
     "displayNameDe": "E-Mail abschicken",
     "tags": ["Brief", "E-Mail", "Kommunikation"]
+  },
+  {
+    "technicalId": "password",
+    "displayNameDe": "Passwort",
+    "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
   },
   {
     "technicalId": "e-mail-exclamation",

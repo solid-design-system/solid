@@ -12,6 +12,10 @@ export default {
   }
 };
 
+/**
+ * Examples of how to add a leading or trailing icon to a link. A standalone link with a home icon, alongside an inline usage within a paragraph, where an external link icon signals that the target opens outside the current site.
+ */
+
 export const Default = {
   name: 'Link with Icon',
   render: () =>
@@ -28,6 +32,10 @@ export const Default = {
         inside a paragraph.
       </p>`
 };
+
+/**
+ * Example of how to configure a text input for currency entry with an appropriate label. Use this pattern for straightforward monetary fields such as a savings amount, where no stepping controls are needed.
+ */
 
 export const LinkList = {
   render: () =>
@@ -66,6 +74,10 @@ export const LinkList = {
       </li>
     </ul>`
 };
+
+/**
+ * Example of how to use anchor links with a downward arrow icon to jump to sections within the same page. Displayed horizontally, this pattern works well as an in-page navigation aid at the top of long content pages.
+ */
 
 export const anchorLinkList = {
   render: () => html`

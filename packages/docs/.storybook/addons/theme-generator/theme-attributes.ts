@@ -49,10 +49,6 @@ export const fontConfig = {
 }`,
     fontFamily: `'GenosGFG'`
   },
-  bricolage: {
-    fontFaces: `@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&display=swap');`,
-    fontFamily: `'Bricolage Grotesque'`
-  },
   bbbank: {
     fontFaces: `@font-face {
   font-family: 'BBBank Type TT';
@@ -109,15 +105,6 @@ export const themeAttributes = {
     css: 'sp/sp.css',
     font: 'genos',
     cdnIconFolder: 'sp'
-  },
-
-  'sd-theme-kid': {
-    logoLg: 'images/logo-kidstarter-lg.svg',
-    logoSm: 'images/logo-kidstarter-sm.svg',
-    alt: 'Logo Kidstarter Homepage',
-    css: 'kid/kid.css',
-    font: 'bricolage',
-    cdnIconFolder: 'kidstarter'
   },
 
   'sd-theme-bb': {
