@@ -378,5 +378,12 @@ export const SampleWithLinks = {
 
 export const Combination = generateScreenshotStory(
   [Default, TabVariants, Scrollable, Parts, Mouseless, SampleCentered, SampleNoLine, SampleBold, SampleDeepLink],
-  { additionalChromaticOptions: { delay: 500 } }
+  {
+    additionalChromaticOptions: { delay: 900, pauseAnimationAtEnd: true },
+    afterRender: html`<style>
+      sd-tab-group::part(active-tab-indicator) {
+        transition: none !important;
+      }
+    </style>`
+  }
 );
