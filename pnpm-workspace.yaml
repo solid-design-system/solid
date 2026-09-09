@@ -6,3 +6,6 @@ packages:
   - '!**/test/**'
 
 minimumReleaseAge: 7200
+minimumReleaseAgeExclude:
+  # Renovate security update: svgo@4.1.0
+  - svgo@4.1.0
