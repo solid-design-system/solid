@@ -13,7 +13,7 @@ components:
 version: 1.0.0
 ---
 
-## Template: Default
+## Template: Dropdown With Navigation Items
 
 ```html
 <style>
