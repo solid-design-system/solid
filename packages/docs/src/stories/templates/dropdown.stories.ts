@@ -14,11 +14,10 @@ export default {
 };
 
 /**
- * ### Dropdown with Navigation Items
  *
  * Example of how to use a dropdown to present a list of navigation options, such as a country selector in the header.
  */
-export const Default = {
+export const DropdownWithNavigationItems = {
   render: () => html`
     <style>
       #anchor--templates-dropdown--default .innerZoomElementWrapper {
