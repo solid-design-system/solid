@@ -80,9 +80,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Autocomplete',
   parameters: {
-    relatedLinks: {
-      components: ['sd-input', 'sd-option']
-    },
+    relatedLinks: ['components/sd-input', 'components/sd-option'],
     docs: { story: { inline: false, height: '400px' } },
     design: {
       type: 'figma',

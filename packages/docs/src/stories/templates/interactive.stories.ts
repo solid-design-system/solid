@@ -5,9 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Interactive',
   parameters: {
-    relatedLinks: {
-      styles: ['sd-interactive']
-    },
+    relatedLinks: ['styles/sd-interactive'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

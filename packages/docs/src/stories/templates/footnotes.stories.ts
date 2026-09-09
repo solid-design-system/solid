@@ -5,9 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Footnotes',
   parameters: {
-    relatedLinks: {
-      styles: ['sd-footnotes']
-    },
+    relatedLinks: ['styles/sd-footnotes'],
     a11y: {
       config: {
         rules: [

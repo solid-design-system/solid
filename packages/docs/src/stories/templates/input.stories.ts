@@ -5,9 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Input',
   parameters: {
-    relatedLinks: {
-      components: ['sd-input']
-    },
+    relatedLinks: ['components/sd-input'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

@@ -5,9 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Headline',
   parameters: {
-    relatedLinks: {
-      styles: ['sd-headline']
-    },
+    relatedLinks: ['styles/sd-headline'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

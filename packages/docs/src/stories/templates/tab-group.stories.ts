@@ -5,10 +5,13 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Tab Group',
   parameters: {
-    relatedLinks: {
-      components: ['sd-badge', 'sd-tab-group', 'sd-tab-panel', 'sd-tab'],
-      styles: ['sd-chip']
-    },
+    relatedLinks: [
+      'components/sd-tab-group',
+      'components/sd-tab',
+      'components/sd-tab-panel',
+      'components/sd-badge',
+      'styles/sd-chip'
+    ],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

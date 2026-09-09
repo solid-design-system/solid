@@ -9,9 +9,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Mark',
   parameters: {
-    relatedLinks: {
-      styles: ['sd-display', 'sd-headline', 'sd-leadtext', 'sd-mark']
-    },
+    relatedLinks: ['styles/sd-mark', 'styles/sd-display', 'styles/sd-headline', 'styles/sd-leadtext'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

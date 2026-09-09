@@ -5,10 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Dropdown',
   parameters: {
-    relatedLinks: {
-      components: ['sd-dropdown', 'sd-navigation-item'],
-      styles: ['sd-hidden-links']
-    },
+    relatedLinks: ['components/sd-dropdown', 'components/sd-navigation-item', 'styles/sd-hidden-links'],
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3000-9863&t=JCsisVFNkWSlhSSN-4'

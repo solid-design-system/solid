@@ -5,10 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Teaser Media',
   parameters: {
-    relatedLinks: {
-      components: ['sd-teaser-media'],
-      styles: ['sd-copyright']
-    },
+    relatedLinks: ['components/sd-teaser-media', 'styles/sd-copyright'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

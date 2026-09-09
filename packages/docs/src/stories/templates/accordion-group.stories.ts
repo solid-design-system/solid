@@ -9,9 +9,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Accordion Group',
   parameters: {
-    relatedLinks: {
-      components: ['sd-accordion', 'sd-accordion-group']
-    },
+    relatedLinks: ['components/sd-accordion', 'components/sd-accordion-group'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

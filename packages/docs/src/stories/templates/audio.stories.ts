@@ -5,9 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Audio',
   parameters: {
-    relatedLinks: {
-      components: ['sd-audio', 'sd-teaser']
-    },
+    relatedLinks: ['components/sd-audio', 'components/sd-teaser'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

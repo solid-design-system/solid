@@ -5,9 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Radio Group',
   parameters: {
-    relatedLinks: {
-      components: ['sd-radio-group']
-    },
+    relatedLinks: ['components/sd-radio-group'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

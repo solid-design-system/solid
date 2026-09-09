@@ -5,9 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/List',
   parameters: {
-    relatedLinks: {
-      styles: ['sd-list']
-    },
+    relatedLinks: ['styles/sd-list'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

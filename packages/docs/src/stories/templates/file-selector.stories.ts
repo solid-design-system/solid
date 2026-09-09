@@ -5,9 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/File Selector',
   parameters: {
-    relatedLinks: {
-      components: ['sd-file-selector']
-    },
+    relatedLinks: ['components/sd-file-selector'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

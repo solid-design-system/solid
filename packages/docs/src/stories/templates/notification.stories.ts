@@ -11,9 +11,7 @@ export default {
   title: 'Templates/Notification',
   tags: ['!dev', 'autodocs'],
   parameters: {
-    relatedLinks: {
-      components: ['sd-notification']
-    },
+    relatedLinks: ['components/sd-notification'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

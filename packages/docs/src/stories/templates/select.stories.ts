@@ -5,9 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Select',
   parameters: {
-    relatedLinks: {
-      components: ['sd-checkbox-group', 'sd-option', 'sd-select']
-    },
+    relatedLinks: ['components/sd-select', 'components/sd-checkbox-group', 'components/sd-option'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

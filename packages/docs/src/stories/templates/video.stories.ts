@@ -5,10 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Video',
   parameters: {
-    relatedLinks: {
-      components: ['sd-video'],
-      styles: ['sd-copyright']
-    },
+    relatedLinks: ['components/sd-video', 'styles/sd-copyright'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

@@ -5,9 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Expandable',
   parameters: {
-    relatedLinks: {
-      components: ['sd-expandable']
-    },
+    relatedLinks: ['components/sd-expandable'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

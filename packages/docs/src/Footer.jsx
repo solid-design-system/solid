@@ -15,15 +15,13 @@ export const Footer = ({ context }) => {
     return null;
   }
   const relatedLinks = preparedMeta?.parameters?.relatedLinks;
-  const components = relatedLinks?.components ?? [];
-  const styles = relatedLinks?.styles ?? [];
+  if (!relatedLinks.length) return null;
 
-  if (!components.length && !styles.length) return null;
+  const items = relatedLinks.map(link => {
+    const [type, tag] = link.split('/');
 
-  const items = [
-    ...components.map(tag => ({ tag, href: `./?path=/docs/components-${tag}--docs` })),
-    ...styles.map(tag => ({ tag, href: `./?path=/docs/styles-${tag}--docs` }))
-  ].sort((a, b) => a.tag.localeCompare(b.tag));
+    return { tag, href: `./?path=/docs/${type}-${tag}--docs` };
+  });
 
   return (
     <div className="sb-unstyled bg-neutral-100 py-16">

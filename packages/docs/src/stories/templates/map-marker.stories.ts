@@ -5,9 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Map Marker',
   parameters: {
-    relatedLinks: {
-      components: ['sd-map-marker']
-    },
+    relatedLinks: ['components/sd-map-marker'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
