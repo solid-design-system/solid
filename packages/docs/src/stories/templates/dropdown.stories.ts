@@ -72,12 +72,9 @@ export const MenuWithIcons = {
     <div class="min-h-[300px]">
       <sd-dropdown id="dropdown-menu-items" distance="4" rounded open stay-open-on-select>
         <sd-button variant="secondary" slot="trigger">
-          <sd-icon name="system/more-functions" label="Icon only"></sd-icon>
+          <sd-icon name="system/more-functions" label="Select the actions"></sd-icon>
         </sd-button>
         <sd-menu>
-          <sd-button variant="secondary" slot="trigger">
-            <sd-icon name="system/more-functions" label="Icon only"></sd-icon>
-          </sd-button>
           <sd-menu-item>
             <sd-icon name="system/share" slot="icon-indent"></sd-icon>
             Share
