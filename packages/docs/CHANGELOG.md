@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 3.4.1
+
+### Patch Changes
+
+- Improved the `sd-flipcard` slots story for better visibility of the highlighted slots. _[`#3303`](https://github.com/solid-design-system/solid/pull/3303) [`ccbf895`](https://github.com/solid-design-system/solid/commit/ccbf895dc615ac15078a8d948a405441bf51574f) [@balco0110](https://github.com/balco0110)_
+
 ## 3.4.0
 
 ### Minor Changes
