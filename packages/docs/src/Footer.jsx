@@ -14,7 +14,7 @@ export const Footer = ({ context }) => {
   } catch {
     return null;
   }
-  const relatedLinks = preparedMeta?.parameters?.relatedLinks;
+  const relatedLinks = preparedMeta?.parameters?.relatedLinks ?? [];
   if (!relatedLinks.length) return null;
 
   const items = relatedLinks.map(link => {
