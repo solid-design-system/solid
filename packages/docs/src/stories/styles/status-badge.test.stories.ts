@@ -61,7 +61,8 @@ export const Variants = {
               'sd-status-badge--success',
               'sd-status-badge--warning',
               'sd-status-badge--error',
-              'sd-status-badge--info'
+              'sd-status-badge--info',
+              'sd-status-badge--neutral'
             ]
           }
         ]

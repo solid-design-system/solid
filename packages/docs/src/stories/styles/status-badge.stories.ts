@@ -44,6 +44,7 @@ export const Default = {
  * - `sd-status-badge--warning`
  * - `sd-status-badge--error`
  * - `sd-status-badge--info`
+ * - `sd-status-badge--neutral`
  */
 export const Variants = {
   render: () => {
@@ -63,6 +64,10 @@ export const Variants = {
       <div class="sd-status-badge sd-status-badge--info">
         <sd-icon name="status-info" library="sd-status-assets"></sd-icon>
         Status Info
+      </div>
+      <div class="sd-status-badge sd-status-badge--neutral">
+        <sd-icon name="status-minus" library="sd-status-assets"></sd-icon>
+        Inactive
       </div>
     </div>`;
   }
