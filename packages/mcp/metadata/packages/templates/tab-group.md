@@ -3,6 +3,7 @@ name: tab-group
 title: Tab Group
 components:
   - sd-badge
+  - sd-chip
   - sd-copyright
   - sd-headline
   - sd-headline--size-3xl

@@ -4,6 +4,7 @@ import { html } from 'lit-html';
 export default {
   tags: ['!dev', 'autodocs'],
   parameters: {
+    relatedLinks: ['components/sd-quickfact'],
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3649-9742&t=JCsisVFNkWSlhSSN-4'

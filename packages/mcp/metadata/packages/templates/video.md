@@ -2,6 +2,8 @@
 name: video
 title: Video
 components:
+  - sd-button
+  - sd-chip
   - sd-copyright
   - sd-copyright--placement-top
   - sd-media

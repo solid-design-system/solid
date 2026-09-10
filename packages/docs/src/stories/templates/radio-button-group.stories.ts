@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Radio Button Group',
   parameters: {
+    relatedLinks: ['components/sd-radio-button', 'components/sd-radio-group'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

@@ -6,6 +6,7 @@ components:
   - sd-dropdown
   - sd-headline
   - sd-headline--size-base
+  - sd-hidden-links
   - sd-icon
   - sd-menu
   - sd-menu-item

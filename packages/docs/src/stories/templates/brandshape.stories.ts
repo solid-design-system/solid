@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Brandshape',
   parameters: {
+    relatedLinks: ['components/sd-brandshape', 'styles/sd-copyright'],
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3121-11350&t=JCsisVFNkWSlhSSN-4'
