@@ -1,4 +1,3 @@
-import '../button/button';
 import '../icon/icon';
 import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
@@ -19,7 +18,7 @@ import SolidElement from '../../internal/solid-element';
  * @status stable
  * @since 1.9
  *
- * @dependency sd-button
+ * @dependency sd-icon
  *
  * @slot - The drawer's main content.
  * @slot header - The drawer's header, usually a title.
@@ -40,7 +39,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart panel - The drawer's panel (where the drawer and its content are rendered).
  * @csspart header - The drawer's header. This element wraps the title and the close-button.
  * @csspart title - The drawer's title.
- * @csspart close-button - The close button, an `<sd-button>`.
+ * @csspart close-button - The close button, a `<button>` styled with `sd-interactive`.
  * @csspart body - The drawer's body.
  * @csspart footer - The drawer's footer.
  *
@@ -117,8 +116,6 @@ export default class SdDrawer extends SolidElement {
 
   @watch('open', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
-    const closeButtonBase = this.closeButton.shadowRoot?.querySelector('[part="base"]');
-
     if (this.open) {
       // Show
       this.emit('sd-show');
@@ -147,8 +144,8 @@ export default class SdDrawer extends SolidElement {
       await animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options);
 
       //Update ARIA attributes to close button
-      closeButtonBase?.setAttribute('aria-controls', 'drawer');
-      closeButtonBase?.setAttribute('aria-expanded', 'true');
+      this.closeButton.setAttribute('aria-controls', 'drawer');
+      this.closeButton.setAttribute('aria-expanded', 'true');
 
       // Set initial focus
       requestAnimationFrame(() => {
@@ -189,7 +186,7 @@ export default class SdDrawer extends SolidElement {
       this.drawer.setAttribute('inert', '');
 
       //Add a11y attributes to close button
-      closeButtonBase?.setAttribute('aria-expanded', 'false');
+      this.closeButton.setAttribute('aria-expanded', 'false');
 
       this.emit('sd-after-hide');
     }
@@ -216,6 +213,9 @@ export default class SdDrawer extends SolidElement {
   }
 
   render() {
+    const closeButtonClasses =
+      'inline-flex items-center justify-center w-12 h-12 rounded-sm sd-interactive sd-interactive--variant-secondary';
+
     /* eslint-disable lit-a11y/click-events-have-key-events */
     return html`
       <dialog
@@ -249,25 +249,35 @@ export default class SdDrawer extends SolidElement {
                       <slot name="header" part="title" class="flex-auto text-xl m-0" id="title"> </slot>
                     </div>
                     <div class="shrink-0 flex flex-wrap justify-end gap-1 ms-4 absolute top-2 end-2">
-                      <sd-button
-                        variant="tertiary"
-                        size="lg"
+                      <button
+                        type="button"
                         part="close-button"
+                        class=${closeButtonClasses}
                         @click=${() => this.requestClose('close-button')}
                       >
-                        <sd-icon label=${this.localize.term('close')} name="close" library="_internal"></sd-icon>
-                      </sd-button>
+                        <sd-icon
+                          class="w-6 h-6"
+                          label=${this.localize.term('close')}
+                          name="close"
+                          library="_internal"
+                        ></sd-icon>
+                      </button>
                     </div>
                   </header>
                 `
-              : html` <sd-button
-                  variant="tertiary"
-                  size="lg"
+              : html` <button
+                  type="button"
                   part="close-button"
+                  class=${cx(closeButtonClasses, 'absolute top-2 end-2 z-10')}
                   @click=${() => this.requestClose('close-button')}
-                  class="absolute top-2 end-2 z-10"
-                  ><sd-icon label=${this.localize.term('close')} name="close" library="_internal"></sd-icon
-                ></sd-button>`
+                >
+                  <sd-icon
+                    class="w-6 h-6"
+                    label=${this.localize.term('close')}
+                    name="close"
+                    library="_internal"
+                  ></sd-icon>
+                </button>`
           }
           <div part="body" class="flex-auto block px-4 focus-visible:focus-outline !-outline-offset-2" tabindex="0">
             <slot></slot>

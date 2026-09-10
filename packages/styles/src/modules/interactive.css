@@ -7,9 +7,12 @@
  * @boolean sd-interactive--disabled Makes an element look disabled.
  * @boolean sd-interactive--inverted Inverts the colors of an element.
  * @boolean sd-interactive--reset Resets the default browser styles of e.g., a button.
- *
+ * 
+ * @variant { secondary } sd-interactive--variant-... The interactive color variant.
+ * 
  * @cssproperty --sd-interactive--active-color-text - The text color for interactive elements in active state.
  * @cssproperty --sd-interactive--default-color-text - The default text color for interactive elements.
+ * @cssproperty --sd-interactive--secondary-color-text - The text color for interactive elements in disabled state.
  * @cssproperty --sd-form-control--disabled-color-text - The text color for interactive elements in disabled state.
  */
 
@@ -24,6 +27,12 @@
 
   &:is(.sd-interactive) {
     @apply no-underline;
+  }
+
+  &--variant {
+    &-secondary {
+      @apply interactive--secondary-color-text hover:interactive--secondary-color-text active:interactive--secondary-color-text;
+    }
   }
 
   &--disabled,
