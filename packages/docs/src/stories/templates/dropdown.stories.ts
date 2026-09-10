@@ -18,6 +18,22 @@ export default {
  * Example of how to use a dropdown to present a list of navigation options, such as a country selector in the header.
  */
 export const DropdownWithNavigationItems = {
+  parameters: {
+    docs: {
+      story: {
+        autoplay: true
+      }
+    }
+  },
+
+  play: ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    customElements.whenDefined('sd-dropdown');
+    const dropdown = canvasElement.querySelector<HTMLElement & { containingElement: HTMLElement }>('#dropdown');
+
+    if (dropdown) {
+      dropdown.containingElement = canvasElement.ownerDocument.body;
+    }
+  },
   render: () => html`
     <style>
       #anchor--templates-dropdown--default .innerZoomElementWrapper {
@@ -41,12 +57,8 @@ export const DropdownWithNavigationItems = {
     </div>
 
     <script type="module">
-      await Promise.all([
-        customElements.whenDefined('sd-dropdown'),
-        customElements.whenDefined('sd-navigation-item')
-      ]).then(() => {
+      await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
         const dropdown = document.getElementById('dropdown');
-        dropdown.containingElement = document.body;
         const navigationItems = dropdown.querySelectorAll('sd-navigation-item[href]');
 
         const handleNavigationItemClick = e => {
@@ -68,6 +80,25 @@ export const DropdownWithNavigationItems = {
 
 export const MenuWithIcons = {
   name: 'Dropdown with Menu Items',
+  parameters: {
+    docs: {
+      story: {
+        autoplay: true
+      }
+    }
+  },
+
+  play: ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    customElements.whenDefined('sd-dropdown');
+    const dropdown = canvasElement.querySelector<HTMLElement & { containingElement: HTMLElement }>(
+      '#dropdown-menu-items'
+    );
+
+    if (dropdown) {
+      dropdown.containingElement = canvasElement.ownerDocument.body;
+    }
+  },
+
   render: () => html`
     <div class="min-h-[300px]">
       <sd-dropdown id="dropdown-menu-items" distance="4" rounded open stay-open-on-select>
@@ -90,12 +121,5 @@ export const MenuWithIcons = {
         </sd-menu>
       </sd-dropdown>
     </div>
-
-    <script type="module">
-      customElements.whenDefined('sd-dropdown').then(() => {
-        const dropdown = document.getElementById('dropdown-menu-items');
-        dropdown.containingElement = document.body;
-      });
-    </script>
   `
 };

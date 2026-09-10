@@ -38,22 +38,19 @@ version: 1.0.0
 </div>
 
 <script type="module">
-  await Promise.all([customElements.whenDefined('sd-dropdown'), customElements.whenDefined('sd-navigation-item')]).then(
-    () => {
-      const dropdown = document.getElementById('dropdown');
-      dropdown.containingElement = document.body;
-      const navigationItems = dropdown.querySelectorAll('sd-navigation-item[href]');
+  await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
+    const dropdown = document.getElementById('dropdown');
+    const navigationItems = dropdown.querySelectorAll('sd-navigation-item[href]');
 
-      const handleNavigationItemClick = e => {
-        navigationItems.forEach(item => item.removeAttribute('current'));
+    const handleNavigationItemClick = e => {
+      navigationItems.forEach(item => item.removeAttribute('current'));
 
-        const target = e.target.closest('sd-navigation-item');
-        target.setAttribute('current', '');
-      };
+      const target = e.target.closest('sd-navigation-item');
+      target.setAttribute('current', '');
+    };
 
-      navigationItems.forEach(item => item.addEventListener('click', handleNavigationItemClick));
-    }
-  );
+    navigationItems.forEach(item => item.addEventListener('click', handleNavigationItemClick));
+  });
 </script>
 ```
 
@@ -81,11 +78,4 @@ version: 1.0.0
     </sd-menu>
   </sd-dropdown>
 </div>
-
-<script type="module">
-  customElements.whenDefined('sd-dropdown').then(() => {
-    const dropdown = document.getElementById('dropdown-menu-items');
-    dropdown.containingElement = document.body;
-  });
-</script>
 ```
