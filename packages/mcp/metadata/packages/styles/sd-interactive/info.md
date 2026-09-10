@@ -8,6 +8,7 @@
 
 Use the styles tool (with `style` + `example` args) to retrieve the HTML for any of these examples:
 
+- sd-interactive/variants
 - sd-interactive/inverted
 - sd-interactive/disabled
 - sd-interactive/reset
