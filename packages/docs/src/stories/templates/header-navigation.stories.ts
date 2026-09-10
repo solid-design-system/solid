@@ -6,6 +6,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Header Navigation',
   parameters: {
+    relatedLinks: ['components/sd-header', 'components/sd-drawer', 'components/sd-dropdown'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

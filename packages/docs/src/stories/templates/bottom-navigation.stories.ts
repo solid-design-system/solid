@@ -9,6 +9,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Bottom Bar Navigation',
   parameters: {
+    relatedLinks: ['components/sd-navigation-item'],
     chromatic: { disableSnapshot: true }
   }
 };
