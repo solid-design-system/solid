@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 3.4.2
+
+### Patch Changes
+
+- Adding a footer to templates with the utilized components and styles. _[`#3319`](https://github.com/solid-design-system/solid/pull/3319) [`e08aef1`](https://github.com/solid-design-system/solid/commit/e08aef17a308a6a229aa64041c67f1d5e118d976) [@martascorreia](https://github.com/martascorreia)_
+
 ## 3.4.1
 
 ### Patch Changes

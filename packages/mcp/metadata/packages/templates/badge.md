@@ -7,6 +7,7 @@ components:
   - sd-header
   - sd-icon
   - sd-navigation-item
+  - sd-status-badge
 version: 1.0.0
 ---
 
