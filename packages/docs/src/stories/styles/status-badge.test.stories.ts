@@ -48,8 +48,8 @@ export const Default = {
   }
 };
 
-export const Variants = {
-  name: 'Variants',
+export const VariantSize = {
+  name: 'Variant & Size',
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -65,6 +65,13 @@ export const Variants = {
               'sd-status-badge--neutral'
             ]
           }
+        ],
+        x: [
+          {
+            type: 'attribute',
+            name: 'sd-status-badge--size',
+            values: ['sd-status-badge--size-lg', 'sd-status-badge--size-md', 'sd-status-badge--size-sm']
+          }
         ]
       },
       args
@@ -72,4 +79,4 @@ export const Variants = {
   }
 };
 
-export const Combination = generateScreenshotStory([Default, Variants]);
+export const Combination = generateScreenshotStory([Default, VariantSize]);

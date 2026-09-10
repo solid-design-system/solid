@@ -86,6 +86,23 @@ export const StatusBadgeWithCustomIcon = {
         <sd-icon name="status-questionmark" library="sd-status-assets"></sd-icon>
         Unknown
       </div>
+
+      <div class="sd-status-badge sd-status-badge--neutral">
+        <sd-icon name="status-minus" library="sd-status-assets"></sd-icon>
+        Not planned
+      </div>
+      <div class="sd-status-badge sd-status-badge--neutral">
+        <sd-icon name="status-minus" library="sd-status-assets"></sd-icon>
+        Archived
+      </div>
+      <div class="sd-status-badge sd-status-badge--neutral">
+        <sd-icon name="status-minus" library="sd-status-assets"></sd-icon>
+        Offline
+      </div>
+      <div class="sd-status-badge sd-status-badge--neutral">
+        <sd-icon name="status-minus" library="sd-status-assets"></sd-icon>
+        Inactive
+      </div>
     </div>
   `
 };
