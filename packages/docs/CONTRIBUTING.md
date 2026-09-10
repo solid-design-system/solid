@@ -18,7 +18,7 @@ Each component/utility/style/template contains both [docs](https://storybook.js.
 
 ## Local Storybook setup
 
-The docs package can include protected themes such as `BBBank`, `KidStarter`, `SP`, and `VB`. These themes require a password in local Storybook runs.
+The docs package can include protected themes such as `BBBank`,`SP`, and `VB`. These themes require a password in local Storybook runs.
 
 To enable them locally:
 
