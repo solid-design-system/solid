@@ -16,6 +16,17 @@ Each component/utility/style/template contains both [docs](https://storybook.js.
 
 ![image](https://github.com/solid-design-system/solid/assets/39494579/4121e031-b5a9-4b25-9784-310101945c4a)
 
+## Local Storybook setup
+
+The docs package can include protected themes such as `BBBank`, `KidStarter`, `SP`, and `VB`. These themes require a password in local Storybook runs.
+
+To enable them locally:
+
+1. Copy `packages/docs/.env.example` to `packages/docs/.env`.
+2. Set `STORYBOOK_THEME_PASSWORD` with a local password.
+
+This password is injected into Storybook and used to unlock the protected theme previews.
+
 ## Guidelines
 
 ### Component Documentation
