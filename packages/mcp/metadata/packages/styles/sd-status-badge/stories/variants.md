@@ -4,6 +4,7 @@ Use the `sd-status-badge--*` classes for alternative appearances:
 - `sd-status-badge--warning`
 - `sd-status-badge--error`
 - `sd-status-badge--info`
+- `sd-status-badge--neutral`
 
 ```html
 <div class="flex flex-col items-start gap-4">
@@ -22,6 +23,10 @@ Use the `sd-status-badge--*` classes for alternative appearances:
   <div class="sd-status-badge sd-status-badge--info">
     <sd-icon name="status-info" library="sd-status-assets"></sd-icon>
     Status Info
+  </div>
+  <div class="sd-status-badge sd-status-badge--neutral">
+    <sd-icon name="status-minus" library="sd-status-assets"></sd-icon>
+    Inactive
   </div>
 </div>
 ```
