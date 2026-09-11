@@ -1,4 +1,3 @@
-import '../button/button';
 import '../icon/icon';
 import { animateTo, shimKeyframesHeightAuto, stopAnimations } from '../../internal/animate.js';
 import { css, html } from 'lit';
@@ -44,7 +43,6 @@ loadStacks();
  * @status stable
  * @since 1.22.0
  *
- * @dependency sd-button
  * @dependency sd-icon
  *
  * @slot - The sd-notification's main content.
@@ -62,7 +60,7 @@ loadStacks();
  * @csspart message - The container that wraps the notifications's main content.
  * @csspart duration-indicator__elapsed - The current duration indicator.
  * @csspart duration-indicator__total - The total duration indicator.
- * @csspart close-button - The close button, an `<sd-icon-button>`.
+ * @csspart close-button - The close button, a `<button>` styled with `sd-interactive`.
  *
  * @animation notification.show - The animation to use when showing the sd-notification.
  * @animation notifiation.hide - The animation to use when hiding the sd-notification.
@@ -347,20 +345,20 @@ export default class SdNotification extends SolidElement {
             ${
               this.closable
                 ? html`
-                    <sd-button
-                      size="md"
-                      variant="tertiary"
+                    <button
+                      type="button"
                       part="close-button"
-                      class="ml-auto flex flex-[0_0_auto] items-stretch"
+                      class="ml-auto inline-flex flex-[0_0_auto] items-center justify-center w-10 h-10 rounded-sm sd-interactive sd-interactive--variant-secondary"
                       @click=${this.handleCloseClick}
                     >
                       <sd-icon
+                        class="w-5 h-5"
                         label=${this.localize.term('close')}
                         name="close"
                         library="_internal"
                         color="currentColor"
                       ></sd-icon>
-                    </sd-button>
+                    </button>
                   `
                 : ''
             }

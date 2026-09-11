@@ -154,9 +154,9 @@ export const Mouseless = {
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-dialog');
-    await waitUntil(() => el?.shadowRoot?.querySelector('sd-button'));
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
 
-    el?.shadowRoot?.querySelector<HTMLElement>('sd-button')!.focus();
+    el?.shadowRoot?.querySelector<HTMLElement>('button')!.focus();
   }
 };
 

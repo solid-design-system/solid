@@ -83,6 +83,35 @@ export const Default = {
 };
 
 /**
+ * Use the `sd-interactive--variant-secondary` class for alternative appearances.
+ */
+
+export const Variants = {
+  name: 'Variants',
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: [
+          {
+            type: 'attribute',
+            name: 'sd-interactive--variant-secondary',
+            values: [
+              { value: false, title: 'default' },
+              { value: true, title: 'secondary' }
+            ]
+          }
+        ]
+      },
+      options: {
+        templateContent: '<button class="%CLASSES%" title="Action name">%SLOT%</button>'
+      },
+      constants: { type: 'attribute', name: 'sd-interactive--reset', value: true },
+      args
+    });
+  }
+};
+
+/**
  * Use the `disabled` class to make an interactive element look disabled. This works as well when setting an `disabled` attribute on the element.
  */
 
@@ -199,4 +228,4 @@ export const Examples = {
   }
 };
 
-export const Combination = generateScreenshotStory([Default, Inverted, Disabled, Reset, Examples]);
+export const Combination = generateScreenshotStory([Default, Variants, Inverted, Disabled, Reset, Examples]);

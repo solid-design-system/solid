@@ -51,9 +51,9 @@
   --sd-breadcrumb__separator-color: var(--sd-color-neutral-400);
   --sd-button--cta--inverted--active-color-background: var(--sd-color-accent-700);
   --sd-button--cta--inverted--active-color-text: var(--sd-color-white);
-  --sd-button--cta--inverted--default-color-background: var(--sd-color-accent);
+  --sd-button--cta--inverted--default-color-background: var(--sd-color-accent-500);
   --sd-button--cta--inverted--default-color-text: var(--sd-color-white);
-  --sd-button--cta--inverted--hover-color-background: var(--sd-color-accent-500);
+  --sd-button--cta--inverted--hover-color-background: var(--sd-color-accent-550);
   --sd-button--cta--inverted--hover-color-text: var(--sd-color-white);
   --sd-button--inverted--disabled-color-background: var(--sd-color-neutral-600);
   --sd-button--inverted--disabled-color-border: var(--sd-color-neutral-600);
@@ -165,7 +165,7 @@
   --sd-color-accent-100: 182 223 170;
   --sd-color-accent-200: 142 208 130;
   --sd-color-accent-300: 108 194 84;
-  --sd-color-accent-400: 45 157 0;
+  --sd-color-accent-400: 37 136 14;
   --sd-color-accent-500: 37 136 14;
   --sd-color-accent-550: 54 123 40;
   --sd-color-accent-600: 49 111 36;
@@ -338,6 +338,7 @@
   --sd-informational-gradient--white-color-background: var(--sd-color-white);
   --sd-interactive--active-color-text: var(--sd-color-primary-800);
   --sd-interactive--default-color-text: var(--sd-color-primary);
+  --sd-interactive--secondary-color-text: var(--sd-color-primary);
   --sd-map-marker--cluster--default-color-background: var(--sd-color-primary);
   --sd-map-marker--cluster--hover-color-background: var(--sd-color-primary-500);
   --sd-map-marker--cluster-color-text: var(--sd-color-white);
