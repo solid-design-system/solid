@@ -12,6 +12,7 @@ After the MCP server is configured in your client, call tools with structured ar
 - `components`: list components, fetch component spec, fetch example, or fetch package docs.
 - `styles`: list styles, fetch style spec, fetch example, or fetch package docs.
 - `templates`: list templates, fetch one template, or filter by component/style.
+- `ux_guidelines`: list UX pattern guidelines or fetch one by `guideline`.
 - `icon-search`: keyword-based icon lookup across category/library options.
 - `tokens`: full token guidance, token search, or package docs.
 - `version`: server version and package metadata.
@@ -40,6 +41,9 @@ After the MCP server is configured in your client, call tools with structured ar
 { "tool": "templates", "arguments": { "template": "forms" } }
 { "tool": "templates", "arguments": { "component": "button" } }
 { "tool": "templates", "arguments": { "style": "chip" } }
+
+{ "tool": "ux_guidelines", "arguments": {} }
+{ "tool": "ux_guidelines", "arguments": { "guideline": "forms" } }
 
 { "tool": "icon-search", "arguments": { "keywords": ["download", "herunterladen"], "category": "all" } }
 
@@ -71,6 +75,13 @@ Start with the full list, open one complete template, then optionally filter by 
 3. Optionally use filters to narrow candidates before opening one template:
    - `templates` with `component` (e.g. component="sd-button")
    - `templates` with `style` (e.g. style="sd-chip")
+
+### Find UX guidelines
+
+Use `ux_guidelines` to discover or retrieve guidance for common UX patterns.
+
+1. Call `ux_guidelines` without arguments to list available guidelines
+2. Call `ux_guidelines` with a `guideline` slug such as `forms`, `filter`, `navigation`, or `calculator`
 
 ### Find icons
 
