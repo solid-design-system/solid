@@ -2,5 +2,4 @@
 '@solid-design-system/styles': minor
 ---
 
-Add `sd-status-badge` neutral variant;
-- Add `sd-status-badge` medium and small sizes.
+Added a neutral variant and medium and small sizes to sd-status-badge.
