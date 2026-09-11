@@ -1,7 +1,57 @@
 {
   "union-investment": {
-    "system": [],
-    "content": [],
-    "lastCheck": "9/10/2026"
+    "system": [
+      {
+        "date": "2026-07-31",
+        "icons": {
+          "added": [],
+          "removed": [],
+          "modified": [
+            {
+              "name": "ausklappen_links.svg",
+              "technicalId": "expand-right",
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1013585_ausklappen_links.svg",
+              "tags": ["Seitenleiste", "anzeigen"]
+            },
+            {
+              "name": "ausklappen_rechts.svg",
+              "technicalId": "collapse-left",
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1013580_ausklappen_rechts.svg",
+              "tags": ["Seitenleiste", "anzeigen"]
+            }
+          ]
+        }
+      }
+    ],
+    "content": [
+      {
+        "date": "2026-07-24",
+        "icons": {
+          "added": [
+            {
+              "name": "Leuchtturm_UI-Blau_UI-Gruen.svg",
+              "technicalId": "lighthouse",
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1063379_Leuchtturm_UI-Blau_UI-Gruen.svg",
+              "tags": ["Orientierung", "Sicherheit", "Zuverlässigkeit", "Altersvorsorge"]
+            },
+            {
+              "name": "Welle_UI-Blau_UI-Gruen.svg",
+              "technicalId": "wave",
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1063399_Welle_UI-Blau_UI-Gruen.svg",
+              "tags": ["Trend", "Tendenz", "Altersvorsorge"]
+            },
+            {
+              "name": "Wind_Blau_UI-Gruen.svg",
+              "technicalId": "wind",
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1063421_Wind_Blau_UI-Gruen.svg",
+              "tags": ["Wandel", "Altersvorsorge", "Veränderung"]
+            }
+          ],
+          "removed": [],
+          "modified": []
+        }
+      }
+    ],
+    "lastCheck": "9/11/2026"
   }
 }

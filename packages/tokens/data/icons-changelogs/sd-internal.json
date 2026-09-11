@@ -1,14 +1,396 @@
 {
   "bb": {
-    "internal": [],
-    "lastCheck": "9/10/2026"
+    "internal": [
+      {
+        "date": "2026-08-14",
+        "icons": {
+          "added": [
+            {
+              "name": "chevrons-small-left.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1073016_chevrons-small-left.svg",
+              "tags": []
+            },
+            {
+              "name": "chevrons-small-right.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1073018_chevrons-small-right.svg",
+              "tags": []
+            },
+            {
+              "name": "eye-open.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1073017_eye-open.svg",
+              "tags": []
+            }
+          ],
+          "removed": ["chevrons-sm-left.svg", "chevrons-sm-right.svg", "eye.svg"],
+          "modified": [
+            {
+              "name": "calendar.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071928_calendar.svg",
+              "tags": []
+            },
+            {
+              "name": "chevron-bottom.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052319_chevron-bottom.svg",
+              "tags": []
+            },
+            {
+              "name": "chevron-left.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071932_chevron-left.svg",
+              "tags": []
+            },
+            {
+              "name": "chevron-right.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052323_chevron-right.svg",
+              "tags": []
+            },
+            {
+              "name": "chevron-sm-left.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071930_chevron-sm-left.svg",
+              "tags": []
+            },
+            {
+              "name": "chevron-sm-right.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071933_chevron-sm-right.svg",
+              "tags": []
+            },
+            {
+              "name": "chevron-top.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071936_chevron-top.svg",
+              "tags": []
+            },
+            {
+              "name": "clock.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052328_clock.svg",
+              "tags": []
+            },
+            {
+              "name": "close-circle.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071940_close-circle.svg",
+              "tags": []
+            },
+            {
+              "name": "close.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052329_close.svg",
+              "tags": []
+            },
+            {
+              "name": "confirm-circle.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071939_confirm-circle.svg",
+              "tags": []
+            },
+            {
+              "name": "exclamation-circle.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071941_exclamation-circle.svg",
+              "tags": []
+            },
+            {
+              "name": "eye-crossed-out.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071943_eye-crossed-out.svg",
+              "tags": []
+            },
+            {
+              "name": "info-circle.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052336_info-circle.svg",
+              "tags": []
+            },
+            {
+              "name": "magnifying-glass.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071945_magnifying-glass.svg",
+              "tags": []
+            },
+            {
+              "name": "minus-circle.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052341_minus-circle.svg",
+              "tags": []
+            },
+            {
+              "name": "mute.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071947_mute.svg",
+              "tags": []
+            },
+            {
+              "name": "pause.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071948_pause.svg",
+              "tags": []
+            },
+            {
+              "name": "play.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071949_play.svg",
+              "tags": []
+            },
+            {
+              "name": "plus-circle.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052346_plus-circle.svg",
+              "tags": []
+            },
+            {
+              "name": "reload.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071950_reload.svg",
+              "tags": []
+            },
+            {
+              "name": "risk.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071952_risk.svg",
+              "tags": []
+            },
+            {
+              "name": "shopping-cart-crossed-out.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071953_shopping-cart-crossed-out.svg",
+              "tags": []
+            },
+            {
+              "name": "transcript.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052349_transcript.svg",
+              "tags": []
+            },
+            {
+              "name": "upload.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071955_upload.svg",
+              "tags": []
+            },
+            {
+              "name": "volume.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071956_volume.svg",
+              "tags": []
+            },
+            {
+              "name": "warning.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071957_warning.svg",
+              "tags": []
+            }
+          ]
+        }
+      }
+    ],
+    "lastCheck": "9/11/2026"
   },
   "sp": {
     "internal": [],
-    "lastCheck": "9/10/2026"
+    "lastCheck": "9/11/2026"
   },
   "vb": {
-    "internal": [],
-    "lastCheck": "9/10/2026"
+    "internal": [
+      {
+        "date": "2026-08-14",
+        "icons": {
+          "added": [
+            {
+              "name": "warning.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1073634_warning.svg",
+              "tags": []
+            }
+          ],
+          "removed": [],
+          "modified": [
+            {
+              "name": "calendar.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052451_calendar.svg",
+              "tags": []
+            },
+            {
+              "name": "chevron-bottom.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071958_chevron-bottom.svg",
+              "tags": []
+            },
+            {
+              "name": "chevron-left.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071959_chevron-left.svg",
+              "tags": []
+            },
+            {
+              "name": "chevron-right.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071989_chevron-right.svg",
+              "tags": []
+            },
+            {
+              "name": "chevron-sm-left.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071961_chevron-sm-left.svg",
+              "tags": []
+            },
+            {
+              "name": "chevron-sm-right.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071963_chevron-sm-right.svg",
+              "tags": []
+            },
+            {
+              "name": "chevron-top.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071993_chevron-top.svg",
+              "tags": []
+            },
+            {
+              "name": "chevrons-small-left.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1070145_chevrons-small-left.svg",
+              "tags": []
+            },
+            {
+              "name": "chevrons-small-right.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1070147_chevrons-small-right.svg",
+              "tags": []
+            },
+            {
+              "name": "clock.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052460_clock.svg",
+              "tags": []
+            },
+            {
+              "name": "close-circle.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071998_close-circle.svg",
+              "tags": []
+            },
+            {
+              "name": "close.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052461_close.svg",
+              "tags": []
+            },
+            {
+              "name": "confirm-circle.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052463_confirm-circle.svg",
+              "tags": []
+            },
+            {
+              "name": "exclamation-circle.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052466_exclamation-circle.svg",
+              "tags": []
+            },
+            {
+              "name": "eye-crossed-out.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1072004_eye-crossed-out.svg",
+              "tags": []
+            },
+            {
+              "name": "eye-open.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1070146_eye-open.svg",
+              "tags": []
+            },
+            {
+              "name": "info-circle.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052473_info-circle.svg",
+              "tags": []
+            },
+            {
+              "name": "magnifying-glass.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052476_magnifying-glass.svg",
+              "tags": []
+            },
+            {
+              "name": "minus-circle.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052478_minus-circle.svg",
+              "tags": []
+            },
+            {
+              "name": "mute.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1072007_mute.svg",
+              "tags": []
+            },
+            {
+              "name": "pause.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052481_pause.svg",
+              "tags": []
+            },
+            {
+              "name": "play.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1072009_play.svg",
+              "tags": []
+            },
+            {
+              "name": "plus-circle.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052485_plus-circle.svg",
+              "tags": []
+            },
+            {
+              "name": "reload.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1072011_reload.svg",
+              "tags": []
+            },
+            {
+              "name": "risk.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1071952_risk.svg",
+              "tags": []
+            },
+            {
+              "name": "shopping-cart-crossed-out.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052490_shopping-cart-crossed-out.svg",
+              "tags": []
+            },
+            {
+              "name": "transcript.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1052494_transcript.svg",
+              "tags": []
+            },
+            {
+              "name": "upload.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1072015_upload.svg",
+              "tags": []
+            },
+            {
+              "name": "volume.svg",
+              "technicalId": null,
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1072016_volume.svg",
+              "tags": []
+            }
+          ]
+        }
+      }
+    ],
+    "lastCheck": "9/11/2026"
   }
 }

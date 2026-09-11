@@ -164,7 +164,7 @@ const addIconMetadata = (iconName, metadata) => {
 const fetchChangelog = async (library, date, type) => {
   const formattedDate = formatDate(date);
   const celumLibrary = CELUM_THEME_MAPPING[library];
-  const url = `https://fe-celum-icons-prod.azureedge.net/_versioncontrol/${celumLibrary}/${type}/${celumLibrary}/${type}_Changelog-${formattedDate}.txt`;
+  const url = `https://celum-icons.fe.union-investment.de/_versioncontrol/${celumLibrary}/${type}/${celumLibrary}/${type}_Changelog-${formattedDate}.txt`;
 
   try {
     const response = await fetch(url);
