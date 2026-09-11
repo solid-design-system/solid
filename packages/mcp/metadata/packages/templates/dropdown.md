@@ -2,16 +2,19 @@
 name: dropdown
 title: Dropdown
 components:
+  - sd-button
   - sd-dropdown
   - sd-headline
   - sd-headline--size-base
   - sd-hidden-links
   - sd-icon
+  - sd-menu
+  - sd-menu-item
   - sd-navigation-item
 version: 1.0.0
 ---
 
-## Template: Default
+## Template: Dropdown With Navigation Items
 
 ```html
 <style>
@@ -50,4 +53,30 @@ version: 1.0.0
     navigationItems.forEach(item => item.addEventListener('click', handleNavigationItemClick));
   });
 </script>
+```
+
+## Template: Dropdown with Menu Items
+
+```html
+<div class="min-h-[300px]">
+  <sd-dropdown id="dropdown-menu-items" distance="4" rounded open stay-open-on-select>
+    <sd-button variant="secondary" slot="trigger">
+      <sd-icon name="system/more-functions" label="Select the actions"></sd-icon>
+    </sd-button>
+    <sd-menu>
+      <sd-menu-item>
+        <sd-icon name="system/share" slot="icon-indent"></sd-icon>
+        Share
+      </sd-menu-item>
+      <sd-menu-item>
+        <sd-icon name="system/download" slot="icon-indent"></sd-icon>
+        Download
+      </sd-menu-item>
+      <sd-menu-item>
+        <sd-icon name="system/trash" slot="icon-indent"></sd-icon>
+        Delete
+      </sd-menu-item>
+    </sd-menu>
+  </sd-dropdown>
+</div>
 ```
