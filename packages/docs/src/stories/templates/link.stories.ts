@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Link',
   parameters: {
+    relatedLinks: ['components/sd-link', 'styles/sd-list'],
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2636-24351&t=7RxABd1ABtGBguGB-4'

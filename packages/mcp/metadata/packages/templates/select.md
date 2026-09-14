@@ -2,6 +2,7 @@
 name: select
 title: Select
 components:
+  - sd-checkbox-group
   - sd-divider
   - sd-option
   - sd-select

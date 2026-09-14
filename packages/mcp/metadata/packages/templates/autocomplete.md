@@ -4,6 +4,7 @@ title: Autocomplete
 components:
   - sd-divider
   - sd-input
+  - sd-option
   - sd-popup
 version: 1.0.0
 ---

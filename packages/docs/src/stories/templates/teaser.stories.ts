@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Teaser',
   parameters: {
+    relatedLinks: ['components/sd-teaser'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

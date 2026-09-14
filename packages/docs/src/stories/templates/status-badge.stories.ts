@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Status Badge',
   parameters: {
+    relatedLinks: ['styles/sd-status-badge', 'styles/sd-chip'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

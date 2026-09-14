@@ -145,6 +145,8 @@ export const Slots = {
   render: (args: any) => {
     return html`
       ${['front', 'back', 'front-media', 'back-media'].map(slot => {
+        const isMediaSlot = slot === 'front-media' || slot === 'back-media';
+
         return generateTemplate({
           axis: {
             x: {
@@ -153,7 +155,13 @@ export const Slots = {
               title: 'slot=..',
               values: [
                 {
-                  value: `<div slot='${slot}' class="slot slot--border slot--background slot--inverted min-h-12 w-full h-full"></div>`,
+                  value: isMediaSlot
+                    ? `<div slot='${slot}' class="slot slot--border slot--background slot--text slot--inverted h-12 w-full">
+                        ${slot === 'front-media' ? 'Front media slot' : 'Back media slot'}
+                      </div>`
+                    : `<p slot='${slot}' class="slot slot--border slot--background slot--text h-12 w-full">
+                        ${slot === 'front' ? 'Front slot' : 'Back slot'}
+                      </p>`,
                   title: slot
                 }
               ]
@@ -164,32 +172,46 @@ export const Slots = {
             {
               type: 'template',
               name: 'style',
-              value: '<div style="margin-bottom: 40px;">%TEMPLATE%</div>'
+              value: `<div id="slot-${slot}" style="margin-bottom: 40px;">%TEMPLATE%</div>`
             },
             {
               type: 'attribute',
               name: 'front-variant',
-              value: 'gradient-dark'
+              value: isMediaSlot ? 'gradient-dark' : 'primary-100'
             },
             {
               type: 'attribute',
               name: 'back-variant',
-              value: 'gradient-dark'
+              value: isMediaSlot ? 'gradient-dark' : 'primary-100'
             },
             {
               type: 'slot',
               name: 'front',
-              value: `<p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>`
+              value: `<p slot="front" class="slot slot--border slot--text${slot === 'front-media' ? ' slot--background' : ''}${isMediaSlot ? ' slot--inverted' : ''} h-12 w-full">Front slot</p>`
             },
             {
               type: 'slot',
               name: 'back',
-              value: `<p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>`
+              value: `<p slot="back" class="slot slot--border slot--text${slot === 'back-media' ? ' slot--background' : ''}${isMediaSlot ? ' slot--inverted' : ''} h-12 w-full">Back slot</p>`
             }
           ]
         });
       })}
     `;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    for (const slot of ['back', 'back-media']) {
+      const el = canvasElement.querySelector(`#slot-${slot} sd-flipcard`);
+
+      await waitUntil(() => el?.shadowRoot?.querySelector('.flip-card__side--front sd-button'));
+
+      el?.shadowRoot?.querySelector<HTMLElement>('.flip-card__side--front sd-button')!.click();
+    }
+
+    await new Promise(resolve => setTimeout(resolve));
+
+    canvasElement.querySelector('#slot-front')?.scrollIntoView();
   }
 };
 

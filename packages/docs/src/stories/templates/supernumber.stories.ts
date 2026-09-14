@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Supernumber',
   parameters: {
+    relatedLinks: [],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

@@ -3,8 +3,7 @@ import type { IconLibrary } from './library';
 const themeMap: Record<string, string> = {
   vb: 'vb',
   bb: 'bbbank',
-  sp: 'sparda',
-  kid: 'kidstarter'
+  sp: 'sparda'
 };
 
 function getTheme(element?: HTMLElement) {

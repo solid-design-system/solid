@@ -142,8 +142,7 @@ export const MultiThemingLibrary = {
       disableSnapshot: true,
       modes: {
         'sd-theme-vb': { theme: 'VB' },
-        'sd-theme-bb': { theme: 'BBBank' },
-        'sd-theme-kid': { theme: 'KidStarter' }
+        'sd-theme-bb': { theme: 'BBBank' }
       }
     }
   },

@@ -5,8 +5,7 @@ export const themes = [
   { id: 'sd-theme-ui-dark', name: 'UI Dark' },
   { id: 'sd-theme-vb', name: 'VB' },
   { id: 'sd-theme-bb', name: 'BBBank' },
-  { id: 'sd-theme-sp', name: 'SP' },
-  { id: 'sd-theme-kid', name: 'KidStarter' }
+  { id: 'sd-theme-sp', name: 'SP' }
 ];
 
 export const allModes = {
@@ -24,8 +23,5 @@ export const allModes = {
   },
   'sd-theme-sp': {
     theme: 'SP'
-  },
-  'sd-theme-kid': {
-    theme: 'KidStarter'
   }
 };

@@ -5,6 +5,7 @@ export default {
   title: 'Templates/Menu',
   tags: ['!dev', 'autodocs'],
   parameters: {
+    relatedLinks: ['components/sd-menu', 'components/sd-menu-item'],
     chromatic: { disableSnapshot: true }
   },
   decorators: [

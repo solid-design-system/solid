@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Step Group',
   parameters: {
+    relatedLinks: ['components/sd-step-group', 'components/sd-step'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

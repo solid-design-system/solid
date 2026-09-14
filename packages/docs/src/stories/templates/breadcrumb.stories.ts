@@ -6,6 +6,12 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Breadcrumb',
   parameters: {
+    relatedLinks: [
+      'components/sd-breadcrumb',
+      'components/sd-breadcrumb-item',
+      'components/sd-header',
+      'components/sd-navigation-item'
+    ],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

@@ -5,6 +5,7 @@ components:
   - sd-dropdown
   - sd-headline
   - sd-headline--size-base
+  - sd-hidden-links
   - sd-icon
   - sd-navigation-item
 version: 1.0.0

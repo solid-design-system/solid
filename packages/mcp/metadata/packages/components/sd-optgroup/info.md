@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-optgroup>` — Used to group `sd-option`components within an `sd-combobox`.
+`<sd-optgroup>` — Used to group `sd-option` components within an `sd-combobox`.
 
 ## API
 
