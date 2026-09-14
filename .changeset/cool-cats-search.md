@@ -2,4 +2,4 @@
 '@solid-design-system/docs': minor
 ---
 
-Added new story in the dropdown template.
+Added a new 'Dropdown with Menu Items' story in the dropdown template.
