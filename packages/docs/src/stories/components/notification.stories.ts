@@ -185,7 +185,7 @@ export const DurationIndicator = {
  *
  * <h4 class="sd-headline sd-headline--size-lg">Toast placement top right</h4>
  *
- * Use the `data-notification-position` attribute with the value `top-right` to align the toast to the top right.
+ * Use the `toastStack` attribute with the value `top-right` to align the toast to the top right.
  *
  */
 export const ToastNotification = {
@@ -193,6 +193,7 @@ export const ToastNotification = {
   tags: ['skip-playwright'],
   render: (_args: Record<string, any>) => {
     return html`
+      <!-- preview-ignore:start -->
       <div class="flex gap-2">
         <sd-button
           variant="secondary"
@@ -225,8 +226,11 @@ export const ToastNotification = {
           >Error</sd-button
         >
       </div>
+      <!-- preview-ignore:end -->
       <script>
+        // preview-ignore:start
         var buttons = document.querySelectorAll('[data-notification-position="top-right"]');
+        // preview-ignore:end
 
         function notify(variant = 'info') {
           const notification = Object.assign(document.createElement('sd-notification'), {
@@ -241,11 +245,13 @@ export const ToastNotification = {
           return notification.toast();
         }
 
+        // preview-ignore:start
         buttons.forEach(button => {
           button.addEventListener('click', () => {
             notify(button.getAttribute('data-notification-type'));
           });
         });
+        // preview-ignore:end
       </script>
     `;
   }
@@ -254,13 +260,14 @@ export const ToastNotification = {
 /**
  * <h4 class="sd-headline sd-headline--size-lg">Toast placement bottom center</h4>
  *
- * Use the `data-notification-position` attribute with the value `bottom-center` to align the toast to the bottom center.
+ * Use the `toastStack` attribute with the value `bottom-center` to align the toast to the bottom center.
  */
 export const ToastBottomCenter = {
   name: 'Toast Bottom Center',
   tags: ['skip-playwright'],
   render: (_args: Record<string, any>) => {
     return html`
+      <!-- preview-ignore:start -->
       <div class="flex gap-2">
         <sd-button
           variant="secondary"
@@ -293,9 +300,12 @@ export const ToastBottomCenter = {
           >Error</sd-button
         >
       </div>
+      <!-- preview-ignore:end -->
 
       <script>
+        // preview-ignore:start
         var buttons = document.querySelectorAll('[data-notification-position="bottom-center"]');
+        // preview-ignore:end
 
         function notifyBottomCenter(variant = 'info') {
           const notification = Object.assign(document.createElement('sd-notification'), {
@@ -312,11 +322,13 @@ export const ToastBottomCenter = {
           return notification.toast();
         }
 
+        // preview-ignore:start
         buttons.forEach(button => {
           button.addEventListener('click', () => {
             notifyBottomCenter(button.getAttribute('data-notification-type'));
           });
         });
+        // preview-ignore:end
       </script>
     `;
   }
