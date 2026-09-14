@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 3.4.3
+
+### Patch Changes
+
+- Adding documentation for the new UX Guidelines tool of the MCP. _[`#3331`](https://github.com/solid-design-system/solid/pull/3331) [`9851c09`](https://github.com/solid-design-system/solid/commit/9851c09e9b67d8caca259007c462e3a36a49ea2a) [@martascorreia](https://github.com/martascorreia)_
+
 ## 3.4.2
 
 ### Patch Changes

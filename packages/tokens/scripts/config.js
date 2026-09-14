@@ -14,15 +14,3 @@ export const FIGMA_FETCHED_VARIABLES_PATH = `${FIGMA_VARIABLES_DIR}/variableToke
  * The output directory path where processed Figma variables will be written.
  */
 export const OUTPUT_DIR = `${FIGMA_VARIABLES_DIR}/output`;
-
-// FIGMA ICONS //
-
-/**
- * The directory path where Figma Icons are stored and processed.
- */
-export const FIGMA_ICONS_DIR = './src/figma-icons';
-
-/**
- * Figma page that contains all exportable icons.
- */
-export const FIGMA_ICONS_PAGE = 'Theming Icons and Assets';
