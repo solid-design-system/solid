@@ -47,7 +47,7 @@ export const Default = {
 /**
  * Use the `sd-interactive--*` classes for alternative appearances:
  *
- * - Primary is the default variant
+ * - primary is the default variant
  * - `sd-interactive--variant-secondary`: maintains the same visual appearance across different states
  */
 
