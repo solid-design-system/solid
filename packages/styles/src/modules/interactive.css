@@ -32,6 +32,10 @@
   &--variant {
     &-secondary {
       @apply interactive--secondary-color-text hover:interactive--secondary-color-text active:interactive--secondary-color-text;
+
+      &.sd-interactive--inverted {
+        @apply text-white hover:text-white active:text-white;
+      }
     }
   }
 
