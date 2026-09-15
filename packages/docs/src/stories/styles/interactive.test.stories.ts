@@ -166,16 +166,26 @@ export const Inverted = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: [{ type: 'attribute', name: 'sd-interactive--inverted', values: [false, true] }]
+        y: [
+          {
+            type: 'attribute',
+            name: 'sd-interactive--variant-secondary',
+            values: [false, true]
+          }
+        ]
       },
       options: {
         templateContent: '<button class="%CLASSES%" title="Action name">%SLOT%</button>',
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['transparent', 'rgba(var(--sd-color-background-primary))']
+          colors: ['rgba(var(--sd-color-background-primary))']
         }
       },
-      constants: { type: 'attribute', name: 'sd-interactive--inverted', value: true },
+      constants: {
+        type: 'attribute',
+        name: 'sd-interactive--inverted',
+        value: true
+      },
       args
     });
   }
