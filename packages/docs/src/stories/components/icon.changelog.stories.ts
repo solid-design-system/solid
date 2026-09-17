@@ -174,9 +174,12 @@ const renderLibraryAsync = async (library: keyof typeof LIBRARIES) => {
   const { themes, iconTypes } = LIBRARIES[library];
 
   if (!themes.includes(activeThemeKey)) {
+    const availableThemes =
+      library === 'default' ? ['UI Light', 'UI Dark'] : themes.map(themeKey => THEME_LABELS[themeKey] ?? themeKey);
+
     return html`<p class="text-sm text-neutral-500">
       No ${THEME_LABELS[activeThemeKey] ?? activeThemeKey} icons in the \`${library}\` library. Switch the theme in the
-      toolbar above to one of: ${themes.map(themeKey => THEME_LABELS[themeKey] ?? themeKey).join(', ')}.
+      toolbar above to one of: ${availableThemes.join(', ')}.
     </p>`;
   }
 
