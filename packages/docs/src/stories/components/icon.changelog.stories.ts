@@ -66,26 +66,32 @@ const darkThemePreviewStyles = html`
   </style>
 `;
 
-const renderIconRow = (icon: RawChangelogIcon) => html`
+const renderIconRow = (icon: RawChangelogIcon, iconType: string) => html`
   <tr class="border-b border-neutral-200 last:border-0">
     <td class="w-8 py-1">
       ${iconSvgUrl(icon) ? html`<img src=${iconSvgUrl(icon)!} alt="" class="sd-icon-changelog-preview w-5 h-5" />` : ''}
     </td>
     <td class="py-1 text-sm truncate">
-      <code>${iconTechnicalId(icon) ?? iconName(icon)}</code>
+      <code>${iconType}/${iconTechnicalId(icon) ?? iconName(icon)}</code>
     </td>
+    <td class="py-1 text-sm">${iconType}</td>
     <td class="py-1 text-sm truncate">${typeof icon === 'string' ? '' : icon.name}</td>
     <td class="w-20 py-1 text-right text-sm">
       ${
         iconSvgUrl(icon)
-          ? html`<a href=${iconSvgUrl(icon)!} download=${iconLabel(icon)} target="_blank" rel="noreferrer">Download</a>`
+          ? html`<sd-link href=${iconSvgUrl(icon)!} download=${iconLabel(icon)} target="_blank">Download</sd-link>`
           : ''
       }
     </td>
   </tr>
 `;
 
-const renderCategorySection = (label: string, variant: 'green' | 'red' | 'blue', icons: RawChangelogIcon[]) => {
+const renderCategorySection = (
+  label: string,
+  variant: 'green' | 'red' | 'blue',
+  icons: RawChangelogIcon[],
+  iconType: string
+) => {
   if (icons.length === 0) return '';
 
   return html`
@@ -95,6 +101,7 @@ const renderCategorySection = (label: string, variant: 'green' | 'red' | 'blue',
         <colgroup>
           <col class="w-8" />
           <col />
+          <col class="w-20" />
           <col />
           <col class="w-20" />
         </colgroup>
@@ -102,23 +109,26 @@ const renderCategorySection = (label: string, variant: 'green' | 'red' | 'blue',
           <tr class="text-left text-xs text-neutral-500">
             <th></th>
             <th class="font-normal">Icon</th>
+            <th class="font-normal">Type</th>
             <th class="font-normal">SVG</th>
             <th class="text-right font-normal">Get</th>
           </tr>
         </thead>
         <tbody>
-          ${icons.map(renderIconRow)}
+          ${icons.map(icon => renderIconRow(icon, iconType))}
         </tbody>
       </table>
     </div>
   `;
 };
 
-const renderEntry = (entry: ChangelogEntry, isLatest: boolean) => html`
+type TypedChangelogEntry = ChangelogEntry & { iconType: string };
+
+const renderEntry = (entry: TypedChangelogEntry, isLatest: boolean) => html`
   <sd-accordion summary=${entry.date} ?open=${isLatest}>
-    ${renderCategorySection('added', 'green', entry.icons.added)}
-    ${renderCategorySection('modified', 'blue', entry.icons.modified)}
-    ${renderCategorySection('removed', 'red', entry.icons.removed)}
+    ${renderCategorySection('added', 'green', entry.icons.added, entry.iconType)}
+    ${renderCategorySection('modified', 'blue', entry.icons.modified, entry.iconType)}
+    ${renderCategorySection('removed', 'red', entry.icons.removed, entry.iconType)}
   </sd-accordion>
 `;
 
@@ -130,7 +140,7 @@ const renderThemeColumnAsync = async (library: string, themeKey: string, iconTyp
     iconTypes.map(async type => {
       const committed = (themeData[type] as ChangelogEntry[]) ?? [];
       const fresh = await fetchRecentChangelogEntries(themeKey, type, lastCheck);
-      return mergeChangelogEntries(committed, fresh);
+      return mergeChangelogEntries(committed, fresh).map(entry => ({ ...entry, iconType: type }));
     })
   );
 
