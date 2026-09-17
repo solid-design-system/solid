@@ -6,3 +6,6 @@ packages:
   - '!**/test/**'
 
 minimumReleaseAge: 7200
+minimumReleaseAgeExclude:
+  # Renovate security update: vite@8.0.16
+  - vite@8.0.16
