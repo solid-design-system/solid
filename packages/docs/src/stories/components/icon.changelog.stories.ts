@@ -72,46 +72,41 @@ const renderIconRow = (icon: RawChangelogIcon, iconType: string) => html`
       ${iconSvgUrl(icon) ? html`<img src=${iconSvgUrl(icon)!} alt="" class="sd-icon-changelog-preview w-5 h-5" />` : ''}
     </td>
     <td class="py-1 text-sm truncate">
-      <code>${iconType}/${iconTechnicalId(icon) ?? iconName(icon)}</code>
+      <span class="text-sm font-mono font-normal">${iconType}/${iconTechnicalId(icon) ?? iconName(icon)}</span>
     </td>
     <td class="py-1 text-sm">${iconType}</td>
     <td class="py-1 text-sm truncate">${typeof icon === 'string' ? '' : icon.name}</td>
-    <td class="w-20 py-1 text-right text-sm">
+    <td class="py-1 text-right text-sm">
       ${
         iconSvgUrl(icon)
-          ? html`<sd-link href=${iconSvgUrl(icon)!} download=${iconLabel(icon)} target="_blank">Download</sd-link>`
+          ? html`<sd-link href=${iconSvgUrl(icon)!} download=${iconLabel(icon)} target="_blank">Download Icon</sd-link>`
           : ''
       }
     </td>
   </tr>
 `;
 
-const renderCategorySection = (
-  label: string,
-  variant: 'green' | 'red' | 'blue',
-  icons: RawChangelogIcon[],
-  iconType: string
-) => {
+const renderCategorySection = (label: string, icons: RawChangelogIcon[], iconType: string) => {
   if (icons.length === 0) return '';
 
   return html`
     <div class="mb-3 last:mb-0">
-      <sd-badge variant=${variant} class="mb-1">${label} (${icons.length})</sd-badge>
+      <h4 class="text-sm font-semibold mb-1">${label} (${icons.length})</h4>
       <table class="w-full table-fixed border-collapse">
         <colgroup>
           <col class="w-8" />
           <col />
           <col class="w-20" />
           <col />
-          <col class="w-20" />
+          <col class="w-32" />
         </colgroup>
         <thead>
           <tr class="text-left text-xs text-neutral-500">
             <th></th>
-            <th class="font-normal">Icon</th>
-            <th class="font-normal">Type</th>
-            <th class="font-normal">SVG</th>
-            <th class="text-right font-normal">Get</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -126,9 +121,9 @@ type TypedChangelogEntry = ChangelogEntry & { iconType: string };
 
 const renderEntry = (entry: TypedChangelogEntry, isLatest: boolean) => html`
   <sd-accordion summary=${entry.date} ?open=${isLatest}>
-    ${renderCategorySection('added', 'green', entry.icons.added, entry.iconType)}
-    ${renderCategorySection('modified', 'blue', entry.icons.modified, entry.iconType)}
-    ${renderCategorySection('removed', 'red', entry.icons.removed, entry.iconType)}
+    ${renderCategorySection('Added Icons', entry.icons.added, entry.iconType)}
+    ${renderCategorySection('Modified Icons', entry.icons.modified, entry.iconType)}
+    ${renderCategorySection('Removed Icons', entry.icons.removed, entry.iconType)}
   </sd-accordion>
 `;
 
@@ -153,7 +148,7 @@ const renderThemeColumnAsync = async (library: string, themeKey: string, iconTyp
     <div>
       ${darkThemePreviewStyles}
       <p class="text-sm mb-3">
-        The new icons are available either via the <strong>Download</strong> column on each log below or the link
+        The new icons are available either via the <strong>Download Icon</strong> column on each log below or the link
         <a href="https://cdn.dam.union-investment.de/original/" target="_blank" rel="noreferrer">
           https://cdn.dam.union-investment.de/original/
         </a>
