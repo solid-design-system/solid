@@ -6,3 +6,6 @@ packages:
   - '!**/test/**'
 
 minimumReleaseAge: 7200
+minimumReleaseAgeExclude:
+  # Renovate security update: pnpm@10.34.5
+  - pnpm@10.34.5

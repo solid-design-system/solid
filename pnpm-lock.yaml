@@ -1445,7 +1445,7 @@ packages:
     resolution: {integrity: sha512-fo+QhuU3qE/2TQMQmbVMqaQ6EWbMhi4ABWP+O4AM1NqPBuy0OrApV5LO6BrrgnhtAHS2NH6RrVk9OL181tTi8A==}
 
   '@mariohamann/tailwindcss-var@https://codeload.github.com/mariohamann/tailwindcss-var/tar.gz/671cedc8890c64d3a54173513f5cb9d6dea4aaf1':
-    resolution: {tarball: https://codeload.github.com/mariohamann/tailwindcss-var/tar.gz/671cedc8890c64d3a54173513f5cb9d6dea4aaf1}
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/mariohamann/tailwindcss-var/tar.gz/671cedc8890c64d3a54173513f5cb9d6dea4aaf1}
     version: 2.1.0
     peerDependencies:
       tailwindcss: '>=3.0.0 || >=3.0.0-alpha.1'
