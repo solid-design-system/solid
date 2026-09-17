@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 3.5.0
+
+### Minor Changes
+
+- Added a new 'Dropdown with Menu Items' story in the dropdown template. _[`#3322`](https://github.com/solid-design-system/solid/pull/3322) [`9b3f8a3`](https://github.com/solid-design-system/solid/commit/9b3f8a30fd7e613bfe9811d9e394e83d690e0339) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 3.4.3
 
 ### Patch Changes
