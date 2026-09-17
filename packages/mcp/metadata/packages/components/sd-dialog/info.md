@@ -35,7 +35,6 @@ Use the components tool by passing the args `component` and `example` for any of
 - slot.default: The dialog's main content.
 - slot.headline: The dialog's headline. Alternatively, you can use the `headline` attribute.
 - slot.footer: The dialog's footer, usually one or more buttons representing various options.
-- slot.close-button: The dialog's close button. Works best with `<sd-button>` and `<sd-icon>`.
 
 ### CSS Parts
 
@@ -44,7 +43,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - part.panel: The dialog's panel (where the dialog and its content are rendered).
 - part.header: The dialog's header. This element wraps the title and header actions.
 - part.title: The dialog's title.
-- part.close-button: The close button, an `<sd-button>`.
+- part.close-button: The close button, a `<button>` styled with `sd-interactive`.
 - part.body: The dialog's body.
 - part.footer: The dialog's footer.
 

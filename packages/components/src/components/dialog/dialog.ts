@@ -1,4 +1,3 @@
-import '../button/button';
 import '../icon/icon';
 import '../theme-listener/theme-listener';
 import { animateTo, stopAnimations } from '../../internal/animate';
@@ -20,14 +19,12 @@ import SolidElement from '../../internal/solid-element';
  * @status stable
  * @since 1.40.0
  *
- * @dependency sd-button
  * @dependency sd-icon
  * @dependency sd-theme-listener
  *
  * @slot - The dialog's main content.
  * @slot headline - The dialog's headline. Alternatively, you can use the `headline` attribute.
  * @slot footer - The dialog's footer, usually one or more buttons representing various options.
- * @slot close-button - The dialog's close button. Works best with `<sd-button>` and `<sd-icon>`.
  *
  * @event sd-show - Emitted when the dialog opens.
  * @event sd-after-show - Emitted after the dialog opens and all animations are complete.
@@ -45,7 +42,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart panel - The dialog's panel (where the dialog and its content are rendered).
  * @csspart header - The dialog's header. This element wraps the title and header actions.
  * @csspart title - The dialog's title.
- * @csspart close-button - The close button, an `<sd-button>`.
+ * @csspart close-button - The close button, a `<button>` styled with `sd-interactive`.
  * @csspart body - The dialog's body.
  * @csspart footer - The dialog's footer.
  *
@@ -271,22 +268,20 @@ export default class SdDialog extends SolidElement {
             ${
               !this.noCloseButton
                 ? html`
-                    <sd-button
+                    <button
                       part="close-button"
-                      variant="tertiary"
-                      exportparts="base:close-button__base"
-                      class=${cx('absolute top-2 right-2')}
-                      name="x-lg"
+                      class="absolute top-2 right-2 flex items-center justify-center w-12 h-12 rounded-sm sd-interactive sd-interactive--variant-secondary"
                       @click="${() => this.requestClose('close-button')}"
                       type="button"
                     >
                       <sd-icon
+                        class="w-6 h-6"
                         label=${this.localize.term('close')}
                         name="close"
                         library="_internal"
                         color="currentColor"
                       ></sd-icon>
-                    </sd-button>
+                    </button>
                   `
                 : ''
             }
