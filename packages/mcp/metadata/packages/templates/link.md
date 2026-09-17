@@ -4,6 +4,7 @@ title: Link
 components:
   - sd-icon
   - sd-link
+  - sd-list
 version: 1.0.0
 ---
 

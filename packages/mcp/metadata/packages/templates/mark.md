@@ -7,6 +7,7 @@ components:
   - sd-headline--size-3xl
   - sd-headline--size-xl
   - sd-icon
+  - sd-leadtext
   - sd-mark
 version: 1.0.0
 ---

@@ -5,6 +5,14 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Tooltip',
   parameters: {
+    relatedLinks: [
+      'components/sd-tooltip',
+      'components/sd-input',
+      'components/sd-select',
+      'components/sd-textarea',
+      'components/sd-radio-group',
+      'components/sd-checkbox-group'
+    ],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

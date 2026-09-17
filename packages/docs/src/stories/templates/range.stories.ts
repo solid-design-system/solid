@@ -9,6 +9,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Range',
   parameters: {
+    relatedLinks: ['components/sd-range', 'components/sd-range-tick'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

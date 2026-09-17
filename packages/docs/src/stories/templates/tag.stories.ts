@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Tag',
   parameters: {
+    relatedLinks: ['components/sd-tag'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

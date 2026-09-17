@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Dialog',
   parameters: {
+    relatedLinks: ['components/sd-dialog'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

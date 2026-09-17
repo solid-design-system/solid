@@ -16,6 +16,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Table',
   parameters: {
+    relatedLinks: ['styles/sd-table', 'styles/sd-table-cell'],
     chromatic: { disableSnapshot: true }
   }
 };

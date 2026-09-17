@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Checkbox Group',
   parameters: {
+    relatedLinks: ['components/sd-checkbox-group', 'components/sd-checkbox'],
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2642-24726&t=JCsisVFNkWSlhSSN-4'

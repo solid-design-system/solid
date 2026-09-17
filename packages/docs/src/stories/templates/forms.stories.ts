@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Forms',
   parameters: {
+    relatedLinks: ['components/sd-icon'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

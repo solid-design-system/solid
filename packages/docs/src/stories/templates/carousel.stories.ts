@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Carousel',
   parameters: {
+    relatedLinks: ['components/sd-carousel', 'components/sd-carousel-item'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

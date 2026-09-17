@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Status Badge',
   parameters: {
+    relatedLinks: ['styles/sd-status-badge', 'styles/sd-chip'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
@@ -84,6 +85,23 @@ export const StatusBadgeWithCustomIcon = {
       <div class="sd-status-badge sd-status-badge--info">
         <sd-icon name="status-questionmark" library="sd-status-assets"></sd-icon>
         Unknown
+      </div>
+
+      <div class="sd-status-badge sd-status-badge--neutral">
+        <sd-icon name="status-minus" library="sd-status-assets"></sd-icon>
+        Not planned
+      </div>
+      <div class="sd-status-badge sd-status-badge--neutral">
+        <sd-icon name="status-minus" library="sd-status-assets"></sd-icon>
+        Archived
+      </div>
+      <div class="sd-status-badge sd-status-badge--neutral">
+        <sd-icon name="status-minus" library="sd-status-assets"></sd-icon>
+        Offline
+      </div>
+      <div class="sd-status-badge sd-status-badge--neutral">
+        <sd-icon name="status-minus" library="sd-status-assets"></sd-icon>
+        Inactive
       </div>
     </div>
   `

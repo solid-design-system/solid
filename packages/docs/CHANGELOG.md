@@ -1,5 +1,34 @@
 # @solid-design-system/docs
 
+## 3.5.1
+
+### Patch Changes
+
+- Extend `sd-status-badge` style: _[`#3328`](https://github.com/solid-design-system/solid/pull/3328) [`78a0fbc`](https://github.com/solid-design-system/solid/commit/78a0fbc3772273812ac929cda3748438b857d1de) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add `sd-status-badge` neutral variant documentation;
+  - Add `sd-status-badge` size variants documentation;
+  - Extend `sd-status-badge with custom icon` with the `sd-status-badge` neutral variant;
+  - Update documentation to `sd-status-badge`, `sd-chip` and `sd-badge` to support when to use which of the 3 components.
+
+## 3.5.0
+
+### Minor Changes
+
+- Added a new 'Dropdown with Menu Items' story in the dropdown template. _[`#3322`](https://github.com/solid-design-system/solid/pull/3322) [`9b3f8a3`](https://github.com/solid-design-system/solid/commit/9b3f8a30fd7e613bfe9811d9e394e83d690e0339) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 3.4.3
+
+### Patch Changes
+
+- Adding documentation for the new UX Guidelines tool of the MCP. _[`#3331`](https://github.com/solid-design-system/solid/pull/3331) [`9851c09`](https://github.com/solid-design-system/solid/commit/9851c09e9b67d8caca259007c462e3a36a49ea2a) [@martascorreia](https://github.com/martascorreia)_
+
+## 3.4.2
+
+### Patch Changes
+
+- Adding a footer to templates with the utilized components and styles. _[`#3319`](https://github.com/solid-design-system/solid/pull/3319) [`e08aef1`](https://github.com/solid-design-system/solid/commit/e08aef17a308a6a229aa64041c67f1d5e118d976) [@martascorreia](https://github.com/martascorreia)_
+
 ## 3.4.1
 
 ### Patch Changes

@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Video',
   parameters: {
+    relatedLinks: ['components/sd-video', 'components/sd-button', 'components/sd-chip', 'styles/sd-copyright'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
