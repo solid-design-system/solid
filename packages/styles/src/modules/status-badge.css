@@ -4,7 +4,8 @@
  * @name sd-status-badge
  * @status stable
  * @since 1.0
- * @variant { sucess | warning | error | info } sd-status-badge--...
+ * @variant { success | warning | error | info | neutral } sd-status-badge--...
+ * @variant { md | sm } sd-status-badge--size-...
  * @cssproperty --sd-badge--green-color-background - background color for success status badge.
  * @cssproperty --sd-badge--red-color-background - background color for error status badge.
  */
@@ -13,7 +14,7 @@
   @apply inline-flex items-center;
 
   sd-icon {
-    @apply flex rounded-full h-3 w-3 !text-white mr-2 p-1;
+    @apply flex rounded-full h-3 w-3 text-white mr-2 p-1;
   }
 
   &--success {
@@ -37,6 +38,28 @@
   &--info {
     sd-icon {
       @apply bg-info;
+    }
+  }
+
+  &--neutral {
+    sd-icon {
+      @apply bg-neutral-600;
+    }
+  }
+
+  &--size {
+    &-md {
+      sd-icon {
+        @apply h-3 w-3 mr-2 p-0.5;
+      }
+      @apply marker-font-size;
+    }
+
+    &-sm {
+      sd-icon {
+        @apply h-1 w-1 mr-2 p-0.5 text-transparent!;
+      }
+      @apply marker-font-size;
     }
   }
 }
