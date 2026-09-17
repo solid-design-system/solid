@@ -6,6 +6,12 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Breadcrumb',
   parameters: {
+    relatedLinks: [
+      'components/sd-breadcrumb',
+      'components/sd-breadcrumb-item',
+      'components/sd-header',
+      'components/sd-navigation-item'
+    ],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
@@ -17,7 +23,7 @@ export default {
 /**
  * ### Breadcrumb with Header Navigation
  *
- * Example of sd-breacrumb working in sd-navigation-item:
+ * Example of how to combine a breadcrumb trail with the header navigation to help users understand their current location within the site hierarchy. The breadcrumb appears directly below the main navigation, showing the full path to the current page alongside a page title and intro text.
  */
 export const Default = {
   name: 'Breadcrumb with Header Navigation',

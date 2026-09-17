@@ -9,6 +9,7 @@
 Use the styles tool (with `style` + `example` args) to retrieve the HTML for any of these examples:
 
 - sd-status-badge/variants
+- sd-status-badge/sizes
 
 ## Guidelines
 
@@ -21,20 +22,28 @@ Use the styles tool (with `style` + `example` args) to retrieve the HTML for any
 
 ### Rules
 
-### Variants and Placement
+### Variants
 
-- Match the badge’s color and icon to the wording or message of the associated element so users instantly recognize the status (blue for info, green for success, red for error, yellow for warning).
-- Ensure the badge is clearly visible and doesn’t overlap critical content or interactive elements.
+Choose the variant based on what the status means, so users instantly recognize what's being communicated: success for positive outcomes, warning for issues needing attention, error for failed or destructive outcomes, info for neutral notifications, and neutral for inactive or default states.
+
+### Size
+
+Choose the size based on context density: lg for standalone or prominent indicators, md for denser layouts like tables and lists, and sm for very tight spaces such as data grids or inline text. Note: Only use size sm which comes without an icon if the label alone is unambiguous and statuses remain distinguishable in grayscale.
+
+### Placement
+
+Keep the badge clearly visible and avoid overlapping critical content or interactive elements.
 
 ### Background
 
-- Use light background options like white, neutral-100 or primary-100.
+Use light background options like white, neutral-100 or primary-100.
 
 ### Accessibility
 
-- We recommend to combine a badge with text to reinforce the message.
+- Never rely on color alone to show status – add a text label, or an icon if the label isn't self-explanatory (abbreviations, codes, multi-locale use).
+- Size sm: Only use size sm if the label alone is crystal clear, single-locale, and statuses stay distinguishable in grayscale. Otherwise, size up.
 - Integrate the status badge’s information into the accessible name or description of the related element to ensure that its meaning is programmatically connected to the item it describes.
-- Make sure that the badge icon is hidden from screen readers, as the information is already conveyed by the badge label.
+- Status badge icon with text – Make sure that the badge icon is hidden from screen readers, as the information is already conveyed by the status badge text.
 
 ### Related Templates
 

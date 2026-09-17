@@ -4,11 +4,14 @@ import { html } from 'lit-html';
 /**
  * **Accessibility Information:**
  * Use the `<blockquote>` HTML element for block quotes and the `<q>` HTML element for short inline quotes.
+ *
+ * Example of how to display a pull quote with an author avatar, name, and role. Three size variants are shown (4xl, 3xl, xl) to demonstrate how the component scales across different layout contexts and typographic hierarchies.
  */
 export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Quote',
   parameters: {
+    relatedLinks: [],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',

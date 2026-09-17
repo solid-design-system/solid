@@ -197,9 +197,6 @@ export const Samples = {
         div:not(:first-of-type).headline {
           margin-top: 72px;
         }
-        .sd-theme-kid .sd-mark {
-          color: currentColor;
-        }
       </style>
       <div class="story-wrapper">
         <div class="headline">sd-headline with sd-mark (no icon)</div>

@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Step Group',
   parameters: {
+    relatedLinks: ['components/sd-step-group', 'components/sd-step'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
@@ -124,6 +125,10 @@ export const NonInteractiveStepGroupWithIcon = {
     </sd-step-group>
   `
 };
+
+/**
+ * Example of step-group in extra small variant
+ */
 
 export const StepGroupForExtraSmallVariant = {
   name: 'Step Group for extra small variant',

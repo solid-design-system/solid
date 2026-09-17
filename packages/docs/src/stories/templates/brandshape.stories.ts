@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Brandshape',
   parameters: {
+    relatedLinks: ['components/sd-brandshape', 'styles/sd-copyright'],
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3121-11350&t=JCsisVFNkWSlhSSN-4'
@@ -14,7 +15,7 @@ export default {
 };
 
 /**
- * Example of a brandshape with the variant `border-primary`.
+ * Example of how to use the brandshape as a decorative container to frame editorial content. The template shows two variants: a light version with the brandshape as an outlined frame around a headline and body text, and a primary variant with 80% opacity overlaid on a full-bleed image with a call-to-action button.
  */
 export const Default = {
   name: 'Brandshape',

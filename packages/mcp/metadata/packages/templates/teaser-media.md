@@ -3,6 +3,7 @@ name: teaser-media
 title: Teaser Media
 components:
   - sd-button
+  - sd-copyright
   - sd-headline
   - sd-headline--inverted
   - sd-headline--size-lg

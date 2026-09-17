@@ -5,6 +5,14 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Tooltip',
   parameters: {
+    relatedLinks: [
+      'components/sd-tooltip',
+      'components/sd-input',
+      'components/sd-select',
+      'components/sd-textarea',
+      'components/sd-radio-group',
+      'components/sd-checkbox-group'
+    ],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
@@ -12,6 +20,10 @@ export default {
     }
   }
 };
+
+/**
+ * Example of how to attach a tooltip to an input label to clarify what the field expects.
+ */
 
 export const InputWithTooltip = {
   name: 'Input with Tooltip',
@@ -26,6 +38,10 @@ export const InputWithTooltip = {
     </sd-input>
   `
 };
+
+/**
+ * Example of how to add a tooltip to a select field label to give users guidance before they open the dropdown. Use this when the available options benefit from additional context.
+ */
 
 export const SelectWithTooltip = {
   name: 'Select with Tooltip',
@@ -47,6 +63,10 @@ export const SelectWithTooltip = {
   `
 };
 
+/**
+ * Example of how to attach a tooltip to a text area label to prompt users with guidance on what to write.
+ */
+
 export const TextAreaWithTooltip = {
   name: 'Textarea with Tooltip',
   render: () => html`
@@ -59,6 +79,10 @@ export const TextAreaWithTooltip = {
     </sd-textarea>
   `
 };
+
+/**
+ * Example of how to add a tooltip to a radio group label to help users choose between options. The tooltip explains the overall question without cluttering the individual radio labels.
+ */
 
 export const RadioGroupWithTooltip = {
   name: 'Radio Group with Tooltip',
@@ -74,6 +98,10 @@ export const RadioGroupWithTooltip = {
   `
 };
 
+/**
+ * Example of how to pair a tooltip with a checkbox group label to clarify what the selections apply to. Use this when the group label alone may not be sufficient to explain the consequences of each choice.
+ */
+
 export const CheckboxGroupWithTooltip = {
   name: 'Checkbox Group with Tooltip',
   render: () => html`
@@ -87,6 +115,10 @@ export const CheckboxGroupWithTooltip = {
     </sd-checkbox-group>
   `
 };
+
+/**
+ * Example of how to format tooltip content with a bold title and supporting description text. Use this when the tooltip needs to convey a label and a brief explanation as two distinct pieces of information.
+ */
 
 export const TooltipWithBoldedText = {
   name: 'Tooltip with Bolded Text',

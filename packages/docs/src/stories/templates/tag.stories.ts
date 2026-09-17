@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Tag',
   parameters: {
+    relatedLinks: ['components/sd-tag'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
@@ -12,6 +13,11 @@ export default {
     }
   }
 };
+
+/**
+ * Example of how to use a tag group as a category filter, showing the result count per option and highlighting the active selection. An `All` tag resets the filter.
+ */
+
 export const filterTagGroup = {
   render: () => html`
     <div>
@@ -40,6 +46,10 @@ export const filterTagGroup = {
     </script>
   `
 };
+
+/**
+ * Example of how to use star-rating tags as a filter for investment products ranked by Morningstar. Users can select a minimum rating tier, with the active selection filled.
+ */
 
 export const filterTagGroupMorningstarRating = {
   name: 'Filter Tag Group with Morningstar Rating',
@@ -98,6 +108,10 @@ export const filterTagGroupMorningstarRating = {
   `
 };
 
+/**
+ * Example of how to use color-coded tags to filter by risk level, with each tag carrying a colored indicator that maps to the corresponding risk category.
+ */
+
 export const filterTagGroupRisk = {
   name: 'Filter Tag Group with Risk',
   render: () => html`
@@ -147,6 +161,10 @@ export const filterTagGroupRisk = {
   `
 };
 
+/**
+ * Example of how to display active filter selections as removable tags, each with an × button to deselect individually. A `Remove filters` action clears all active filters at once, giving users full control over their current filter state.
+ */
+
 export const removableFilterTagGroup = {
   render: () => html`
     <div>
@@ -193,6 +211,10 @@ export const removableFilterTagGroup = {
   `
 };
 
+/**
+ * Example of how to use tags as navigational links to related topics. Arranged in a vertical stack, this pattern suits sidebar or article footer contexts where additional content discovery is offered.
+ */
+
 export const tagGroupLinks = {
   name: 'Tag Group with Links',
   render: () => html`
@@ -229,9 +251,10 @@ export const tagGroupLinks = {
 };
 
 /**
- * - white
- * - neutral-100
- * - primary-100
+ * Example of how the tag component adapts to three background surfaces. Use the appropriate variant to ensure the tag remains visually distinct from its surrounding container background.
+ * - `white`
+ * - `neutral-100`
+ * - `primary-100`
  */
 export const backgroundOptions = {
   name: 'Tag Background Options',

@@ -44,7 +44,7 @@ version: 1.0.0
 </script>
 ```
 
-## Template: Dialog with scrollable content
+## Template: Dialog with Scrolling
 
 ```html
 <style>

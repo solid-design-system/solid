@@ -58,6 +58,8 @@ export const cdToolboxPath = join(currentDirname, '../../metadata/packages/cd-to
 
 /** Generated searchable page manifest for the CD Toolbox site export. */
 export const cdToolboxManifestPath = join(cdToolboxPath, 'manifest.json');
+/** Authored UX pattern guidance metadata */
+export const uxGuidelinesPath = join(currentDirname, '../../metadata/packages/ux_guidelines');
 
 /** Root of all static AI-rule markdown files */
 export const staticPath = join(currentDirname, '../../metadata/static');

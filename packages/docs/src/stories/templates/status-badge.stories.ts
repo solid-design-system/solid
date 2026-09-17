@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Status Badge',
   parameters: {
+    relatedLinks: ['styles/sd-status-badge', 'styles/sd-chip'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
@@ -14,8 +15,9 @@ export default {
 };
 
 /**
+ * Example of how to use status badges with icons from the icon library to communicate availability or system states. Five semantic color variants are available, each paired with a representative label and icon.
  *
- * The icons used in this component, should be exclusively from the `sd-status-assets` [icon library](?path=/story/components-sd-icon-default--status-library).
+ * The icons used in this component, should be exclusively from the status-assets [icon library](https://solid-design-system.fe.union-investment.de/docs/?path=/story/components-sd-icon-libraries--status-library).
  */
 export const StatusBadgeWithCustomIcon = {
   name: 'Status Badge with Custom Icon',
@@ -83,6 +85,23 @@ export const StatusBadgeWithCustomIcon = {
       <div class="sd-status-badge sd-status-badge--info">
         <sd-icon name="status-questionmark" library="sd-status-assets"></sd-icon>
         Unknown
+      </div>
+
+      <div class="sd-status-badge sd-status-badge--neutral">
+        <sd-icon name="status-minus" library="sd-status-assets"></sd-icon>
+        Not planned
+      </div>
+      <div class="sd-status-badge sd-status-badge--neutral">
+        <sd-icon name="status-minus" library="sd-status-assets"></sd-icon>
+        Archived
+      </div>
+      <div class="sd-status-badge sd-status-badge--neutral">
+        <sd-icon name="status-minus" library="sd-status-assets"></sd-icon>
+        Offline
+      </div>
+      <div class="sd-status-badge sd-status-badge--neutral">
+        <sd-icon name="status-minus" library="sd-status-assets"></sd-icon>
+        Inactive
       </div>
     </div>
   `

@@ -580,14 +580,14 @@
     "tags": ["Kunstwerk", "Kunst"]
   },
   {
-    "technicalId": "office-chair",
-    "displayNameDe": "Bürostuhl",
-    "tags": ["Möbel", "Ausstattung", "Schreibtischstuhl", "Büro"]
-  },
-  {
     "technicalId": "heart",
     "displayNameDe": "Herz",
     "tags": ["Liebe", "glücklich"]
+  },
+  {
+    "technicalId": "office-chair",
+    "displayNameDe": "Bürostuhl",
+    "tags": ["Möbel", "Ausstattung", "Schreibtischstuhl", "Büro"]
   },
   {
     "technicalId": "office",

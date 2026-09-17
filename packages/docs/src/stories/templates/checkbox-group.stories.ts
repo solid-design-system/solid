@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Checkbox Group',
   parameters: {
+    relatedLinks: ['components/sd-checkbox-group', 'components/sd-checkbox'],
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2642-24726&t=JCsisVFNkWSlhSSN-4'
@@ -14,7 +15,7 @@ export default {
 };
 
 /**
- * Example of a checkbox group with a label and two checked checkboxes.
+ * Example of how to use a checkbox group with a parent `select all` checkbox to let users pick multiple options at once. The indeterminate state on the parent indicates a partial selection, as shown with two of three investment preferences checked.
  */
 
 export const Default = {
@@ -48,7 +49,7 @@ export const RequiredCheckboxGroup = {
         <sd-checkbox value="3">Checkbox 3</sd-checkbox>
       </sd-checkbox-group>
       <div id="group-invalid-icon-message" class="flex items-center gap-2 mt-2 hidden">
-        <sd-icon id="invalid-icon" part="invalid-icon" class="text-error" library="_internal" name="risk"></sd-icon>
+        <sd-icon id="invalid-icon" part="invalid-icon" class="text-error" name="system/warning"></sd-icon>
         <div id="invalid-message" class="text-error text-left" part="invalid-message" aria-live="polite">
           Please fill in this field.
         </div>

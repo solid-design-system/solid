@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Button',
   parameters: {
+    relatedLinks: ['components/sd-button'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
@@ -12,6 +13,10 @@ export default {
     }
   }
 };
+
+/**
+ * Example of how to arrange multiple buttons in a horizontal row to present related actions at the same level. Three variants are shown: a two-button confirmation pair, a mixed group with icon buttons and a primary action, and a toolbar-style group with an overflow menu for additional actions. Position the primary action on the right (in horizontal layout) when paired with a secondary option.
+ */
 
 export const ButtonGroupHorizontal = {
   render: () => html`
@@ -48,7 +53,7 @@ export const ButtonGroupHorizontal = {
 };
 
 /**
- * Primary action is stacked on top.
+ * Example of how to stack buttons vertically when horizontal space is limited. The primary action is placed on top, with the secondary action below, keeping the visual hierarchy clear in a compact layout.
  */
 export const ButtonGroupVertical = {
   name: 'Button Group Vertical displayed in two lines',
@@ -61,7 +66,7 @@ export const ButtonGroupVertical = {
 };
 
 /**
- * Primary action is stacked on top.
+ * Example of how to stack full-width buttons vertically to create a prominent action area. The primary action sits on top, followed by secondary and tertiary actions, making the group suitable for mobile layouts or focused conversion flows.
  */
 export const ButtonGroupVerticalFullWidth = {
   render: () => html`

@@ -5,6 +5,7 @@ export default {
   title: 'Templates/Media',
   tags: ['!dev', 'autodocs'],
   parameters: {
+    relatedLinks: ['styles/sd-media', 'styles/sd-copyright'],
     chromatic: { disableSnapshot: true }
   }
 };

@@ -5,6 +5,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Dialog',
   parameters: {
+    relatedLinks: ['components/sd-dialog'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
@@ -14,7 +15,7 @@ export default {
 };
 
 /**
- *
+ *Example of how to present a confirmation dialog with a horizontal button group on desktop and a stacked full-width button group on mobile. The primary action is visually prominent, while the secondary action provides a clear way to dismiss without proceeding.
  */
 export const Default = {
   name: 'Dialog with Button Group',
@@ -47,8 +48,12 @@ export const Default = {
   `
 };
 
+/**
+ * Example of how to handle long dialog content by making the body area scrollable while keeping the action buttons fixed at the bottom. Both desktop and mobile variants are shown, with the button group adapting from horizontal to stacked layout on smaller screens.
+ */
+
 export const Scrollable = {
-  name: 'Dialog with scrollable content',
+  name: 'Dialog with Scrolling',
   parameters: { docs: { story: { inline: false, height: '700px' } } },
   render: () => html`
     <style>
@@ -183,10 +188,7 @@ export const Scrollable = {
 };
 
 /**
- *  This shows ways to prevent closing `sd-dialog`. This is useful for instances when data loss will occur.
- *
- *  To keep the dialog open in such cases, cancel the `sd-request-close` event. When canceled, the dialog will remain open and pulse briefly to draw the user’s attention to it.
- *  Use `event.detail.source` to specify a closing trigger.
+ *  This shows ways to prevent closing dialog. This is useful for instances when data loss will occur. To keep the dialog open in such cases, cancel the `sd-request-close event`. When canceled, the dialog will remain open and pulse briefly to draw the user’s attention to it. Use `event.detail.source` to specify a closing trigger.
  */
 export const PreventClosing = {
   name: 'Prevent Closing',

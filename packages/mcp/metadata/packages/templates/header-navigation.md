@@ -773,7 +773,7 @@ version: 1.0.0
 </script>
 ```
 
-## Template: Header Sample A-01
+## Template: Header Variant A-01
 
 ```html
 <sd-header id="sample-a-header" fixed shadow>
@@ -920,7 +920,7 @@ version: 1.0.0
 </script>
 ```
 
-## Template: Header Sample A-02
+## Template: Header Variant A-02
 
 ```html
 <sd-header id="sample-a02-header" fixed shadow>
@@ -1850,7 +1850,7 @@ version: 1.0.0
 </script>
 ```
 
-## Template: Header Sample D-01
+## Template: Header Variant D-01
 
 ```html
 <sd-header id="sample-d-01-header">
@@ -1886,7 +1886,7 @@ version: 1.0.0
 </style>
 ```
 
-## Template: Header Sample D-02
+## Template: Header Variant D-02
 
 ```html
 <sd-header id="sample-d-02-header">

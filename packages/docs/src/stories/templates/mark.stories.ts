@@ -9,6 +9,7 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Mark',
   parameters: {
+    relatedLinks: ['styles/sd-mark', 'styles/sd-display', 'styles/sd-headline', 'styles/sd-leadtext'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
@@ -16,6 +17,10 @@ export default {
     }
   }
 };
+
+/**
+ * Example of how to apply the green accent mark to highlight a key word or phrase within a headline.
+ */
 
 export const HeadlineWithMark = {
   name: 'Headline with Mark',
@@ -37,6 +42,10 @@ export const HeadlineWithMark = {
       </h4>
     </div>`
 };
+
+/**
+ * Example of how to use the green accent mark within a display-style. Use this variant for hero sections or prominent page introductions where typographic impact is important.
+ */
 
 export const DisplayWithMark = {
   name: 'Display with Mark',

@@ -2,6 +2,7 @@
 
 import { addons } from 'storybook/manager-api';
 import solidTheme from './solid-theme';
+import { hasThemeAccess, isProtectedTheme, storeThemeAccess, verifyThemePassword } from './theme-protection';
 
 addons.setConfig({
   theme: solidTheme,
@@ -9,35 +10,6 @@ addons.setConfig({
     showRoots: true
   }
 });
-
-// Theme Protection System
-const PROTECTED_THEMES: Record<string, { id: string; password: string }> = {
-  BBBank: { id: 'sd-theme-bb', password: 'iGnJgoyi9vo1jMrUa29PmiRAdHgWQLL5LniY62wg' },
-  KidStarter: { id: 'sd-theme-kid', password: 'd7be651c2073ccb8a9897f1bc8bfa2cb7811f693' },
-  SP: { id: 'sd-theme-sp', password: 'TqfRmtMeWRDnEjREpXs3AWJ8NwJ9hM99JcC2K4Fy' },
-  VB: { id: 'sd-theme-vb', password: '381a5cca78c0e498082cf82a5e20c95f' }
-};
-
-// Utility: SHA-256 hash function
-async function sha256(message: string): Promise<string> {
-  const msgBuffer = new TextEncoder().encode(message);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-// Cookie utilities
-function getCookie(name: string): string | null {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop()!.split(';').shift() || null;
-  return null;
-}
-
-function setCookie(name: string, value: string, days = 365): void {
-  const expires = new Date(Date.now() + days * 864e5).toUTCString();
-  document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Strict`;
-}
 
 // Get current theme from URL
 function getCurrentTheme(): string | null {
@@ -50,47 +22,6 @@ function getCurrentTheme(): string | null {
 
   const themeName = decodeURIComponent(themeMatch[1].replace(/\+/g, ' '));
   return themeName;
-}
-
-// Check if theme is protected
-function isProtectedTheme(themeName: string): boolean {
-  return Object.keys(PROTECTED_THEMES).includes(themeName);
-}
-
-// Verify cookie for theme
-async function hasValidCookie(themeName: string): Promise<boolean> {
-  const themeConfig = PROTECTED_THEMES[themeName];
-  if (!themeConfig) return false;
-
-  const cookieName = `solid-theme-${themeConfig.id}`;
-  const storedHash = getCookie(cookieName);
-  if (!storedHash) return false;
-
-  // Expected hash: hash of the password (double hashed for storage)
-  const passwordHash = await sha256(themeConfig.password);
-  const doubleHash = await sha256(passwordHash);
-
-  return storedHash === doubleHash;
-}
-
-// Store valid theme access
-async function storeThemeAccess(themeName: string): Promise<void> {
-  const themeConfig = PROTECTED_THEMES[themeName];
-  if (!themeConfig) return;
-
-  const passwordHash = await sha256(themeConfig.password);
-  const doubleHash = await sha256(passwordHash);
-  const cookieName = `solid-theme-${themeConfig.id}`;
-
-  setCookie(cookieName, doubleHash);
-}
-
-// Verify password
-async function verifyPassword(themeName: string, password: string): Promise<boolean> {
-  const themeConfig = PROTECTED_THEMES[themeName];
-  if (!themeConfig) return false;
-
-  return password.trim() === themeConfig.password;
 }
 
 // Create protection dialog using native HTML dialog
@@ -134,7 +65,7 @@ function createProtectionDialog(): HTMLDialogElement {
 }
 
 // Show protection dialog
-async function showProtectionDialog(themeName: string): Promise<void> {
+async function showProtectionDialog(): Promise<void> {
   const dialog = createProtectionDialog();
   const input = document.getElementById('theme-password-input') as HTMLInputElement;
   const submitBtn = document.getElementById('theme-submit-btn') as HTMLButtonElement;
@@ -156,11 +87,10 @@ async function showProtectionDialog(themeName: string): Promise<void> {
     // Get the input fresh each time
     const inputEl = document.getElementById('theme-password-input') as HTMLInputElement;
     const password = inputEl?.value || '';
-    const isValid = await verifyPassword(themeName, password);
+    const isValid = verifyThemePassword(password);
 
     if (isValid) {
-      await storeThemeAccess(themeName);
-      dialog.close();
+      storeThemeAccess();
       if (errorDiv) errorDiv.classList.remove('show');
 
       // Clean up listeners
@@ -168,6 +98,8 @@ async function showProtectionDialog(themeName: string): Promise<void> {
       cancelBtn?.removeEventListener('click', handleCancel);
       input?.removeEventListener('keypress', handleKeyPress);
       dialog.removeEventListener('close', handleDialogClose);
+      dialog.close();
+      window.location.reload();
     } else {
       if (errorDiv) errorDiv.classList.add('show');
       inputEl?.select();
@@ -176,6 +108,11 @@ async function showProtectionDialog(themeName: string): Promise<void> {
 
   // Handle cancel
   const handleCancel = () => {
+    // Remove the close handler before closing to avoid recursively re-entering this handler.
+    submitBtn?.removeEventListener('click', handleSubmit);
+    cancelBtn?.removeEventListener('click', handleCancel);
+    input?.removeEventListener('keypress', handleKeyPress);
+    dialog.removeEventListener('close', handleDialogClose);
     dialog.close();
 
     // Navigate back to default theme
@@ -186,12 +123,6 @@ async function showProtectionDialog(themeName: string): Promise<void> {
       params.set('globals', newGlobals);
       window.location.search = params.toString();
     }
-
-    // Clean up listeners
-    submitBtn?.removeEventListener('click', handleSubmit);
-    cancelBtn?.removeEventListener('click', handleCancel);
-    input?.removeEventListener('keypress', handleKeyPress);
-    dialog.removeEventListener('close', handleDialogClose);
   };
 
   // Handle Enter key
@@ -220,10 +151,10 @@ async function checkThemeAccess(): Promise<void> {
     return; // Public theme or no theme, no protection needed
   }
 
-  const hasAccess = await hasValidCookie(currentTheme);
+  const hasAccess = hasThemeAccess(currentTheme);
 
   if (!hasAccess) {
-    await showProtectionDialog(currentTheme);
+    await showProtectionDialog();
   }
 }
 

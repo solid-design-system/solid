@@ -1,5 +1,4 @@
 import './preview.css';
-import '../../tokens/themes/kid/kid.css';
 import '../../tokens/themes/bb/bb.css';
 import '../../tokens/themes/vb/vb.css';
 import '../../tokens/themes/sp/sp.css';
@@ -12,6 +11,9 @@ import { storybookUtilities } from '../scripts/storybook/helper.js';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
 import { initDeprecatedBadgeEnhancer } from '../scripts/storybook/deprecated-badge-enhancer.js';
 import { themes, allModes, DEFAULT_THEME } from './modes.js';
+import { hasThemeAccess, isProtectedTheme } from './theme-protection.ts';
+import { StoryPage } from '../src/StoryPage.jsx';
+import { StoryPageContainer } from '../src/StoryPageContainer.jsx';
 
 const theme = withThemeByClassName({
   defaultTheme: DEFAULT_THEME,
@@ -26,8 +28,18 @@ const deprecatedBadgeDecorator = Story => {
   return Story();
 };
 
+const themeProtectionDecorator = (Story, context) => {
+  if (!isProtectedTheme(context.globals.theme) || hasThemeAccess(context.globals.theme)) {
+    return Story();
+  }
+
+  const message = document.createElement('p');
+  message.textContent = 'This theme is protected. Enter the password in the Storybook manager to view it.';
+  return message;
+};
+
 export const preview = {
-  decorators: [theme, deprecatedBadgeDecorator],
+  decorators: [theme, themeProtectionDecorator, deprecatedBadgeDecorator],
   parameters: {
     options: {
       storySort: (a, b) => {
@@ -93,6 +105,8 @@ export const preview = {
     docs: {
       story: { inline: true },
       toc: true,
+      page: StoryPage,
+      container: StoryPageContainer,
       // `@summary` JSDoc (already the single source of truth for the custom "Overview" page and
       // the mcp metadata) is used for the autodocs description too, instead of a separate hand-written
       // JSDoc comment above each story file's default export.

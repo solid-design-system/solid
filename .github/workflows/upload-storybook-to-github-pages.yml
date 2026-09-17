@@ -49,6 +49,8 @@ jobs:
         run: pnpm i
 
       - name: Build storybook
+        env:
+          STORYBOOK_THEME_PASSWORD: ${{ secrets.STORYBOOK_THEME_PASSWORD }}
         run: cd packages/docs && pnpm run build
 
       - name: Prepare deployment directory
