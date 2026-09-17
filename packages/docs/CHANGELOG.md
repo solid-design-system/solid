@@ -1,5 +1,16 @@
 # @solid-design-system/docs
 
+## 3.5.1
+
+### Patch Changes
+
+- Extend `sd-status-badge` style: _[`#3328`](https://github.com/solid-design-system/solid/pull/3328) [`78a0fbc`](https://github.com/solid-design-system/solid/commit/78a0fbc3772273812ac929cda3748438b857d1de) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add `sd-status-badge` neutral variant documentation;
+  - Add `sd-status-badge` size variants documentation;
+  - Extend `sd-status-badge with custom icon` with the `sd-status-badge` neutral variant;
+  - Update documentation to `sd-status-badge`, `sd-chip` and `sd-badge` to support when to use which of the 3 components.
+
 ## 3.5.0
 
 ### Minor Changes
