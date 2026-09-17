@@ -258,12 +258,11 @@ export const ToastNotification = {
 };
 
 /**
- * <h4 class="sd-headline sd-headline--size-lg">Toast placement bottom center</h4>
  *
  * Use the `toastStack` attribute with the value `bottom-center` to align the toast to the bottom center.
  */
 export const ToastBottomCenter = {
-  name: 'Toast Bottom Center',
+  name: 'Toast placement bottom center',
   tags: ['skip-playwright'],
   render: (_args: Record<string, any>) => {
     return html`
