@@ -25,6 +25,10 @@ const iconLabel = icon => (typeof icon === 'string' ? icon : icon.name);
 const iconTechnicalId = icon => (typeof icon === 'string' ? null : icon.technicalId);
 const iconSvgUrl = icon => (typeof icon === 'string' ? null : icon.urlSvg);
 const iconName = icon => iconLabel(icon).replace(/\.svg$/i, '');
+const iconSvgFileName = icon => {
+  const url = iconSvgUrl(icon);
+  return url ? url.split('/').pop() : iconLabel(icon);
+};
 
 const darkThemePreviewStyles = html`<style>
   html[data-sd-theme='sd-theme-ui-dark'] .sd-icon-changelog-preview {
@@ -40,8 +44,7 @@ const renderIconRow = (icon, iconType) =>
     <td class="py-1 text-sm truncate">
       <span class="text-sm font-mono font-normal">${iconType}/${iconTechnicalId(icon) ?? iconName(icon)}</span>
     </td>
-    <td class="py-1 text-sm">${iconType}</td>
-    <td class="py-1 text-sm truncate">${typeof icon === 'string' ? '' : icon.name}</td>
+    <td class="py-1 text-sm truncate">${iconSvgFileName(icon)}</td>
     <td class="py-1 text-right text-sm">
       ${iconSvgUrl(icon) ? html`<sd-link href=${iconSvgUrl(icon)} download=${iconLabel(icon)} target="_blank">Download Icon</sd-link>` : ''}
     </td>
@@ -55,13 +58,11 @@ const renderCategorySection = (label, icons, iconType) => {
       <colgroup>
         <col class="w-8" />
         <col />
-        <col class="w-20" />
         <col />
         <col class="w-32" />
       </colgroup>
       <thead>
         <tr>
-          <th></th>
           <th></th>
           <th></th>
           <th></th>
