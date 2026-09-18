@@ -193,7 +193,6 @@ export const ToastNotification = {
   tags: ['skip-playwright'],
   render: (_args: Record<string, any>) => {
     return html`
-      <!-- preview-ignore:start -->
       <div class="flex gap-2">
         <sd-button
           variant="secondary"
@@ -226,7 +225,6 @@ export const ToastNotification = {
           >Error</sd-button
         >
       </div>
-      <!-- preview-ignore:end -->
       <script>
         // preview-ignore:start
         var buttons = document.querySelectorAll('[data-notification-position="top-right"]');
@@ -266,7 +264,6 @@ export const ToastBottomCenter = {
   tags: ['skip-playwright'],
   render: (_args: Record<string, any>) => {
     return html`
-      <!-- preview-ignore:start -->
       <div class="flex gap-2">
         <sd-button
           variant="secondary"
@@ -299,7 +296,6 @@ export const ToastBottomCenter = {
           >Error</sd-button
         >
       </div>
-      <!-- preview-ignore:end -->
 
       <script>
         // preview-ignore:start
