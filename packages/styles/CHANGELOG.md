@@ -1,5 +1,13 @@
 # @solid-design-system/styles
 
+## 7.4.1
+
+## 7.4.0
+
+### Minor Changes
+
+- Added a neutral variant and medium and small sizes to sd-status-badge. _[`#3328`](https://github.com/solid-design-system/solid/pull/3328) [`78a0fbc`](https://github.com/solid-design-system/solid/commit/78a0fbc3772273812ac929cda3748438b857d1de) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 7.3.0
 
 ## 7.2.0
