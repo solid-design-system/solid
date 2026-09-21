@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 7.4.1
+
+### Patch Changes
+
+- Fixed sd-change not being triggered in `sd-datepicker`. _[`#3338`](https://github.com/solid-design-system/solid/pull/3338) [`347cb00`](https://github.com/solid-design-system/solid/commit/347cb00b5341c986d0a73984cd1b385afc8aa23f) [@balco0110](https://github.com/balco0110)_
+
 ## 7.4.0
 
 ## 7.3.0
