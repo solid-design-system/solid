@@ -8,7 +8,7 @@
  * @boolean sd-paragraph--inverted Inverts the paragraph text.
  */
 .sd-paragraph,
-.sd-prose p {
+:where(.sd-prose) p {
   @apply text-base font-normal leading-normal text-black;
 
   &--size-sm {
