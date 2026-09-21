@@ -294,10 +294,7 @@ const renderLibraryAsync = async library => {
       return mergeChangelogEntries(committed, fresh).map(entry => ({ ...entry, iconType: type }));
     })
   );
-  const entries = entriesByType
-    .flat()
-    .sort((a, b) => b.date.localeCompare(a.date))
-    .slice(0, 20);
+  const entries = entriesByType.flat().sort((a, b) => b.date.localeCompare(a.date));
   return html`<div>
     ${darkThemePreviewStyles}
     <div
