@@ -1178,13 +1178,22 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       return;
     }
 
-    const parsed = this.parseInputText(this.inputValue);
-    if (!parsed.valid) {
-      this.inputValue = this.formatInputValue();
-      this.showInvalidStyle = !!this.inputValue && !this.value && !this.rangeStart;
-    } else {
-      this.applyParsedInput(parsed);
+    const attempted = this.inputValue;
+    const parsed = this.parseInputText(attempted);
+
+    this.applyParsedInput(parsed);
+
+    if (this.showInvalidStyle) {
+      this.emit('sd-change', {
+        detail: {
+          value: this.value,
+          rangeStart: this.rangeStart,
+          rangeEnd: this.rangeEnd,
+          inputValue: attempted
+        }
+      });
     }
+
     this.handleBlur();
   };
 
