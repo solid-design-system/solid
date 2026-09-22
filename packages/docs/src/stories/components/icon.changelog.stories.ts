@@ -2,7 +2,7 @@ import {
   defaultLibrary as DefaultLibrary,
   multiThemingLibrary as MultiTheming,
   internalLibrary as Internal
-} from './icon.changelog.logic';
+} from './icon.changelog';
 
 export default {
   title: 'Components/sd-icon/Changelog',

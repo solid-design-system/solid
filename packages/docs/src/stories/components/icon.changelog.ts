@@ -31,6 +31,7 @@ const iconSvgFileName = icon => {
   const url = iconSvgUrl(icon);
   return url ? url.split('/').pop() : iconLabel(icon);
 };
+const iconDownloadFileName = icon => iconSvgFileName(icon).replace(/^\d+_/, '');
 
 const formatLastCheckDate = date => (date ? new Intl.DateTimeFormat('de-DE').format(new Date(date)) : 'never');
 
@@ -83,7 +84,7 @@ const updateSelectedDownloadButton = () => {
   if (!button) return;
 
   const count = selectedIcons.size;
-  button.textContent = `Download selected (${count})`;
+  button.textContent = `Download Icons (${count})`;
   button.disabled = count === 0;
   syncSelectionUi();
 };
@@ -100,13 +101,13 @@ const syncDateSelectionState = (group, icons) => {
   }
 };
 
-const toggleIconSelection = (icon, checked, dateGroup, groupIcons) => {
+const toggleIconSelection = (icon, checked, dateGroup, groupIcons, date, iconType) => {
   const url = iconSvgUrl(icon);
   if (!url) return;
 
   const key = selectionKey(dateGroup, url);
   if (checked) {
-    selectedIcons.set(key, url);
+    selectedIcons.set(key, { url, category: dateGroup.split('::').pop(), date, iconType });
   } else {
     selectedIcons.delete(key);
   }
@@ -129,13 +130,13 @@ const getDateSelectionState = (icons, dateGroup) => {
   };
 };
 
-const toggleDateSelection = (icons, checked, dateGroup) => {
+const toggleDateSelection = (icons, checked, dateGroup, category, date, iconType) => {
   const urls = [...new Set(icons.map(icon => iconSvgUrl(icon)).filter(Boolean))];
 
   if (!urls.length) return;
 
   if (checked) {
-    urls.forEach(url => selectedIcons.set(selectionKey(dateGroup, url), url));
+    urls.forEach(url => selectedIcons.set(selectionKey(dateGroup, url), { url, category, date, iconType }));
     if (dateGroup) selectedDateGroups.add(dateGroup);
   } else {
     urls.forEach(url => selectedIcons.delete(selectionKey(dateGroup, url)));
@@ -166,11 +167,16 @@ const downloadFile = async (url, filename) => {
 const downloadSelectedIcons = async () => {
   if (selectedIcons.size === 0) return;
 
-  const selectedUrls = [...new Set(selectedIcons.values())];
+  const selectedFiles = [
+    ...new Map(
+      [...selectedIcons.values()]
+        .filter(({ category }) => ['added', 'modified'].includes(category))
+        .map(file => [file.url, file])
+    ).values()
+  ];
 
-  for (const url of selectedUrls) {
-    const filename = decodeURIComponent(url.split('/').pop() ?? 'icon.svg');
-    await downloadFile(url, filename);
+  for (const { url } of selectedFiles) {
+    await downloadFile(url, decodeURIComponent(url.split('/').pop() ?? 'icon.svg').replace(/^\d+_/, ''));
   }
 };
 
@@ -179,85 +185,116 @@ const darkThemePreviewStyles = html`<style>
   html[data-sd-theme='sd-theme-ui-dark'] .sd-icon-changelog-preview {
     filter: brightness(0) invert(1);
   }
+
+  .sd-icon-changelog sd-accordion::part(content__slot) {
+    padding-block: 0.5rem;
+  }
+
+  .sd-icon-changelog table {
+    width: calc(100% + 2rem);
+    margin-inline: -1rem;
+  }
+
+  .sd-icon-changelog th,
+  .sd-icon-changelog td {
+    padding-inline: 1rem;
+  }
 </style>`;
 
 // Accordion: single icon row
-const renderIconRow = (icon, iconType, dateGroup, groupIcons) => {
+const renderIconRow = (icon, iconType, dateGroup, groupIcons, date) => {
   const identifier = `${iconType}/${iconTechnicalId(icon) ?? iconName(icon)}`;
+  const isRemoved = dateGroup.endsWith('::removed');
 
   return html` <tr class="border-b border-neutral-400 last:border-0">
-    <td class="w-7 py-2.5">
-      <sd-checkbox
-        size="sm"
-        aria-label="Select ${identifier}"
-        data-icon-url=${iconSvgUrl(icon) ?? ''}
-        data-date-group=${dateGroup}
-        ?checked=${selectedIcons.has(selectionKey(dateGroup, iconSvgUrl(icon)))}
-        @sd-change=${event => toggleIconSelection(icon, event.target.checked, dateGroup, groupIcons)}
-      ></sd-checkbox>
-    </td>
-    <td class="w-8 py-2.5">
-      ${iconSvgUrl(icon) ? html`<img src=${iconSvgUrl(icon)} alt="" class="sd-icon-changelog-preview w-5 h-5" />` : ''}
-    </td>
+    ${
+      isRemoved
+        ? ''
+        : html`<td class="w-7 py-2.5">
+            <sd-checkbox
+              size="sm"
+              aria-label="Select ${identifier}"
+              data-icon-url=${iconSvgUrl(icon) ?? ''}
+              data-date-group=${dateGroup}
+              ?checked=${selectedIcons.has(selectionKey(dateGroup, iconSvgUrl(icon)))}
+              @sd-change=${event => toggleIconSelection(icon, event.target.checked, dateGroup, groupIcons, date, iconType)}
+            ></sd-checkbox>
+          </td>`
+    }
+    ${
+      isRemoved
+        ? ''
+        : html`<td class="w-8 py-2.5">
+            ${iconSvgUrl(icon) ? html`<img src=${iconSvgUrl(icon)} alt="" class="sd-icon-changelog-preview w-5 h-5" />` : ''}
+          </td>`
+    }
     <td class="py-2.5 text-sm truncate">
       <span class="text-sm font-mono font-normal">${identifier}</span>
     </td>
-    <td class="py-2.5 text-sm truncate">${iconSvgFileName(icon)}</td>
-    <td class="py-2.5 pr-2 text-right text-sm">
-      ${
-        iconSvgUrl(icon)
-          ? html`<sd-tooltip content="Download Icon" trigger="hover focus" close-trigger="hover focus escape">
-              <button
-                class="sd-interactive sd-interactive--reset inline-flex text-primary"
-                aria-label="Download ${identifier}"
-                @click=${() => downloadFile(iconSvgUrl(icon), iconSvgFileName(icon))}
-              >
-                <sd-icon class="w-5 h-5" name="system/download"></sd-icon>
-              </button>
-            </sd-tooltip>`
-          : ''
-      }
-    </td>
+    ${
+      isRemoved
+        ? ''
+        : html`<td class="py-2.5 text-sm truncate">${iconSvgFileName(icon)}</td>
+            <td class="py-2.5 pr-2 text-right text-sm">
+              ${
+                iconSvgUrl(icon)
+                  ? html`<sd-tooltip content="Download Icon" trigger="hover focus" close-trigger="hover focus escape">
+                      <button
+                        class="sd-interactive sd-interactive--reset inline-flex text-primary"
+                        aria-label="Download ${identifier}"
+                        @click=${() => downloadFile(iconSvgUrl(icon), iconDownloadFileName(icon))}
+                      >
+                        <sd-icon class="w-5 h-5" name="system/download"></sd-icon>
+                      </button>
+                    </sd-tooltip>`
+                  : ''
+              }
+            </td>`
+    }
   </tr>`;
 };
 
 // Accordion: categories (Added/Modified/Removed)
-const renderCategorySection = (label, icons, iconType, dateGroup, categoryKey) => {
+const renderCategorySection = (label, icons, iconType, dateGroup, categoryKey, date) => {
   if (icons.length === 0) return '';
 
   const categoryGroupKey = `${dateGroup}::${categoryKey}`;
+  const isRemoved = categoryKey === 'removed';
   const { checked: allSelected, indeterminate: partiallySelected } = getDateSelectionState(icons, categoryGroupKey);
 
   return html`<div class="mb-3 last:mb-0">
     <table class="w-full table-fixed border-collapse" aria-label=${label}>
       <colgroup>
-        <col class="w-7" />
-        <col class="w-8" />
+        ${isRemoved ? '' : html`<col class="w-7" />`} ${isRemoved ? '' : html`<col class="w-8" />`}
         <col />
-        <col />
-        <col class="w-32" />
+        ${isRemoved ? '' : html`<col />`} ${isRemoved ? '' : html`<col class="w-32" />`}
       </colgroup>
       <thead>
         <tr>
-          <th class="pb-2" scope="col">
-            <sd-checkbox
-              size="sm"
-              aria-label="Select all ${label}"
-              data-date-group=${categoryGroupKey}
-              ?checked=${allSelected}
-              ?indeterminate=${partiallySelected}
-              @sd-change=${event => toggleDateSelection(icons, event.target.checked, categoryGroupKey)}
-            >
-              <span class="sr-only">Select all ${label}</span>
-            </sd-checkbox>
-          </th>
-          <th colspan="4" class="pb-2 text-left" scope="col">
+          ${
+            isRemoved
+              ? ''
+              : html`<th class="pb-2" scope="col">
+                  <sd-checkbox
+                    size="sm"
+                    aria-label="Select all ${label}"
+                    data-date-group=${categoryGroupKey}
+                    ?checked=${allSelected}
+                    ?indeterminate=${partiallySelected}
+                    @sd-change=${event =>
+                      toggleDateSelection(icons, event.target.checked, categoryGroupKey, categoryKey, date, iconType)}
+                  >
+                    <span class="sr-only">Select all ${label}</span>
+                  </sd-checkbox>
+                </th>`
+          }
+          <th colspan=${isRemoved ? 1 : 4} class="pb-2 text-left" scope="col">
             <span class="text-sm font-semibold">${label} (${icons.length})</span>
           </th>
         </tr>
       </thead>
       <tbody>
-        ${icons.map(icon => renderIconRow(icon, iconType, categoryGroupKey, icons))}
+        ${icons.map(icon => renderIconRow(icon, iconType, categoryGroupKey, icons, date))}
       </tbody>
     </table>
   </div>`;
@@ -269,9 +306,9 @@ const renderEntry = (entry, isLatest, entryIndex) => {
 
   return html`<sd-accordion ?open=${isLatest}>
     <h2 slot="summary" class="text-base font-normal">${entry.date}</h2>
-    ${renderCategorySection('Added Icons', entry.icons.added, entry.iconType, dateGroupKey, 'added')}
-    ${renderCategorySection('Modified Icons', entry.icons.modified, entry.iconType, dateGroupKey, 'modified')}
-    ${renderCategorySection('Removed Icons', entry.icons.removed, entry.iconType, dateGroupKey, 'removed')}
+    ${renderCategorySection('Added Icons', entry.icons.added, entry.iconType, dateGroupKey, 'added', entry.date)}
+    ${renderCategorySection('Modified Icons', entry.icons.modified, entry.iconType, dateGroupKey, 'modified', entry.date)}
+    ${renderCategorySection('Removed Icons', entry.icons.removed, entry.iconType, dateGroupKey, 'removed', entry.date)}
   </sd-accordion>`;
 };
 
@@ -297,7 +334,7 @@ const renderLibraryAsync = async library => {
     })
   );
   const entries = entriesByType.flat().sort((a, b) => b.date.localeCompare(a.date));
-  return html`<div>
+  return html`<div class="sd-icon-changelog">
     ${darkThemePreviewStyles}
     <div
       class="${document.documentElement.dataset.sdTheme === 'sd-theme-ui-dark' ? 'sd-theme-ui-light text-black' : ''}"
@@ -305,9 +342,9 @@ const renderLibraryAsync = async library => {
       <p class="text-sm mb-3">
         The new icons are available to download on each log below or the link
         <sd-link href="https://cdn.dam.union-investment.de/original/" target="_blank"
-          >https://cdn.dam.union-investment.de/original/</sd-link
+          >https://cdn.dam.union-investment.de/original/{icon_filename.svg}</sd-link
         >
-        followed by the filename at the end of the SVG URL (e.g. <code>1013585_upload.svg</code>).
+        where <i>icon_filename.svg</i> is the icon's SVG filename (e.g. <code>1013585_upload.svg</code>).
       </p>
       <div class="mb-4 flex items-end justify-between gap-3">
         <p class="text-sm mb-0 font-bold">Last automated fetch: ${formatLastCheckDate(themeData.lastCheck)}</p>
@@ -318,7 +355,6 @@ const renderLibraryAsync = async library => {
           ?disabled=${selectedIcons.size === 0}
           @click=${downloadSelectedIcons}
         >
-          <sd-icon name="system/download" slot="icon-left"></sd-icon>
           Download Icons (${selectedIcons.size})
         </sd-button>
       </div>
