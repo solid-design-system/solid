@@ -32,6 +32,8 @@ const iconSvgFileName = icon => {
   return url ? url.split('/').pop() : iconLabel(icon);
 };
 
+const formatLastCheckDate = date => (date ? new Intl.DateTimeFormat('de-DE').format(new Date(date)) : 'never');
+
 // Selection state
 const selectedIcons = new Map();
 const selectedDateGroups = new Set();
@@ -308,7 +310,7 @@ const renderLibraryAsync = async library => {
         followed by the filename at the end of the SVG URL (e.g. <code>1013585_upload.svg</code>).
       </p>
       <div class="mb-4 flex items-end justify-between gap-3">
-        <p class="text-sm mb-0 font-bold">Last automated fetch: ${themeData.lastCheck ?? 'never'}</p>
+        <p class="text-sm mb-0 font-bold">Last automated fetch: ${formatLastCheckDate(themeData.lastCheck)}</p>
         <sd-button
           id="icon-changelog-download-selected-button"
           variant="primary"
