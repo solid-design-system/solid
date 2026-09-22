@@ -348,7 +348,7 @@ export default class SdNotification extends SolidElement {
                     <button
                       type="button"
                       part="close-button"
-                      class="ml-auto inline-flex flex-[0_0_auto] items-center justify-center w-10 h-10 rounded-sm sd-interactive sd-interactive--variant-secondary"
+                      class="ml-auto inline-flex flex-[0_0_auto] items-center justify-center w-10 h-10 rounded-sm sd-interactive"
                       @click=${this.handleCloseClick}
                     >
                       <sd-icon

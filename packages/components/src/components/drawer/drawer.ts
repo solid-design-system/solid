@@ -213,8 +213,7 @@ export default class SdDrawer extends SolidElement {
   }
 
   render() {
-    const closeButtonClasses =
-      'inline-flex items-center justify-center w-12 h-12 rounded-sm sd-interactive sd-interactive--variant-secondary';
+    const closeButtonClasses = 'inline-flex items-center justify-center w-12 h-12 rounded-sm sd-interactive';
 
     /* eslint-disable lit-a11y/click-events-have-key-events */
     return html`

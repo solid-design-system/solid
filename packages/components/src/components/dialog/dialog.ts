@@ -270,7 +270,7 @@ export default class SdDialog extends SolidElement {
                 ? html`
                     <button
                       part="close-button"
-                      class="absolute top-2 right-2 flex items-center justify-center w-12 h-12 rounded-sm sd-interactive sd-interactive--variant-secondary"
+                      class="absolute top-2 right-2 flex items-center justify-center w-12 h-12 rounded-sm sd-interactive"
                       @click="${() => this.requestClose('close-button')}"
                       type="button"
                     >
