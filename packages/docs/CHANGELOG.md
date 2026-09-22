@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 3.5.2
+
+### Patch Changes
+
+- Fixed menu template dropdowns closing on clicks outside the dropdown component. _[`#3336`](https://github.com/solid-design-system/solid/pull/3336) [`ef80e48`](https://github.com/solid-design-system/solid/commit/ef80e48dafeb614ab84be2caf586f39b06c037b3) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 3.5.1
 
 ### Patch Changes
