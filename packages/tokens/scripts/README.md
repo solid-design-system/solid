@@ -154,3 +154,5 @@ pnpm fetch:icons-celum
 ```
 
 Theme metadata (CDN folder, display label) lives in `packages/docs/.storybook/addons/theme-generator/theme-attributes.ts`; icon library membership lives in `packages/docs/scripts/celum/icon-libraries.ts`. Both are shared with `packages/docs/scripts/celum/celum-changelog.ts`. To register a new theme, add it to `theme-attributes.ts` instead of editing the script directly.
+
+**Automation:** the `Fetch Celum icon changelogs` GitHub workflow (`.github/workflows/fetch-celum-changelogs.yml`) runs this script every Monday and opens a PR with the updated JSON files.
