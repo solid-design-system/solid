@@ -2,6 +2,8 @@
 
 Scripts for fetching and managing icon changelogs from Celum for all Solid Design System icon libraries.
 
+Theme metadata (CDN folder, display label) lives in `packages/docs/.storybook/addons/theme-generator/theme-attributes.ts`; icon library membership lives in `packages/docs/.storybook/addons/theme-generator/icon-libraries.ts`. Both are shared with `packages/docs/scripts/changelog/celum-changelog-client.ts`. To register a new theme, add it to `theme-attributes.ts` instead of editing this script directly.
+
 ## Scripts
 
 ### `fetch-icons-celum.mjs`
@@ -77,38 +79,24 @@ Changelog data is stored in `data/icons-changelogs/{library}.json`, organized by
 
 ## Celum API Endpoints
 
-The script uses `{date}` in `YYYY-M-D` format, for example `2026-9-10`. The Union Investment endpoints are already used by the communications repository; all other endpoints are new requests.
+The script uses `{date}` in `YYYY-M-D` format, for example `2026-9-10`.
 
-| Source folder    | Icon type | Metadata endpoint                                                          | Changelog endpoint                                                                                                                  | Status                         |
-| ---------------- | --------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| union-investment | content   | `https://celum-icons.fe.union-investment.de/union-investment/content.json` | `https://celum-icons.fe.union-investment.de/_versioncontrol/union-investment/content/union-investment/content_Changelog-{date}.txt` | Already used by communications |
-| union-investment | system    | `https://celum-icons.fe.union-investment.de/union-investment/system.json`  | `https://celum-icons.fe.union-investment.de/_versioncontrol/union-investment/system/union-investment/system_Changelog-{date}.txt`   | Already used by communications |
-| bbbank           | content   | `https://celum-icons.fe.union-investment.de/bbbank/content.json`           | `https://celum-icons.fe.union-investment.de/_versioncontrol/bbbank/content/bbbank/content_Changelog-{date}.txt`                     | New request                    |
-| bbbank           | system    | `https://celum-icons.fe.union-investment.de/bbbank/system.json`            | `https://celum-icons.fe.union-investment.de/_versioncontrol/bbbank/system/bbbank/system_Changelog-{date}.txt`                       | New request                    |
-| bbbank           | internal  | `https://celum-icons.fe.union-investment.de/bbbank/internal.json`          | `https://celum-icons.fe.union-investment.de/_versioncontrol/bbbank/internal/bbbank/internal_Changelog-{date}.txt`                   | New request                    |
-| sp               | content   | `https://celum-icons.fe.union-investment.de/sp/content.json`               | `https://celum-icons.fe.union-investment.de/_versioncontrol/sp/content/sp/content_Changelog-{date}.txt`                             | New request                    |
-| sp               | system    | `https://celum-icons.fe.union-investment.de/sp/system.json`                | `https://celum-icons.fe.union-investment.de/_versioncontrol/sp/system/sp/system_Changelog-{date}.txt`                               | New request                    |
-| sp               | internal  | `https://celum-icons.fe.union-investment.de/sp/internal.json`              | `https://celum-icons.fe.union-investment.de/_versioncontrol/sp/internal/sp/internal_Changelog-{date}.txt`                           | New request                    |
-| vb               | content   | `https://celum-icons.fe.union-investment.de/vb/content.json`               | `https://celum-icons.fe.union-investment.de/_versioncontrol/vb/content/vb/content_Changelog-{date}.txt`                             | New request                    |
-| vb               | system    | `https://celum-icons.fe.union-investment.de/vb/system.json`                | `https://celum-icons.fe.union-investment.de/_versioncontrol/vb/system/vb/system_Changelog-{date}.txt`                               | New request                    |
-| vb               | internal  | `https://celum-icons.fe.union-investment.de/vb/internal.json`              | `https://celum-icons.fe.union-investment.de/_versioncontrol/vb/internal/vb/internal_Changelog-{date}.txt`                           | New request                    |
-
-## Environment
-
-No environment variables are required. All Celum endpoints are public.
+| Source folder    | Icon type | Metadata endpoint                                                          | Changelog endpoint                                                                                                                  | Status                            |
+| ---------------- | --------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
+| union-investment | content   | `https://celum-icons.fe.union-investment.de/union-investment/content.json` | `https://celum-icons.fe.union-investment.de/_versioncontrol/union-investment/content/union-investment/content_Changelog-{date}.txt` | Used by tokens and communications |
+| union-investment | system    | `https://celum-icons.fe.union-investment.de/union-investment/system.json`  | `https://celum-icons.fe.union-investment.de/_versioncontrol/union-investment/system/union-investment/system_Changelog-{date}.txt`   | Used by tokens and communications |
+| bbbank           | content   | `https://celum-icons.fe.union-investment.de/bbbank/content.json`           | `https://celum-icons.fe.union-investment.de/_versioncontrol/bbbank/content/bbbank/content_Changelog-{date}.txt`                     | Used by tokens                    |
+| bbbank           | system    | `https://celum-icons.fe.union-investment.de/bbbank/system.json`            | `https://celum-icons.fe.union-investment.de/_versioncontrol/bbbank/system/bbbank/system_Changelog-{date}.txt`                       | Used by tokens                    |
+| bbbank           | internal  | `https://celum-icons.fe.union-investment.de/bbbank/internal.json`          | `https://celum-icons.fe.union-investment.de/_versioncontrol/bbbank/internal/bbbank/internal_Changelog-{date}.txt`                   | Used by tokens                    |
+| sp               | content   | `https://celum-icons.fe.union-investment.de/sp/content.json`               | `https://celum-icons.fe.union-investment.de/_versioncontrol/sp/content/sp/content_Changelog-{date}.txt`                             | Used by tokens                    |
+| sp               | system    | `https://celum-icons.fe.union-investment.de/sp/system.json`                | `https://celum-icons.fe.union-investment.de/_versioncontrol/sp/system/sp/system_Changelog-{date}.txt`                               | Used by tokens                    |
+| sp               | internal  | `https://celum-icons.fe.union-investment.de/sp/internal.json`              | `https://celum-icons.fe.union-investment.de/_versioncontrol/sp/internal/sp/internal_Changelog-{date}.txt`                           | Used by tokens                    |
+| vb               | content   | `https://celum-icons.fe.union-investment.de/vb/content.json`               | `https://celum-icons.fe.union-investment.de/_versioncontrol/vb/content/vb/content_Changelog-{date}.txt`                             | Used by tokens                    |
+| vb               | system    | `https://celum-icons.fe.union-investment.de/vb/system.json`                | `https://celum-icons.fe.union-investment.de/_versioncontrol/vb/system/vb/system_Changelog-{date}.txt`                               | Used by tokens                    |
+| vb               | internal  | `https://celum-icons.fe.union-investment.de/vb/internal.json`              | `https://celum-icons.fe.union-investment.de/_versioncontrol/vb/internal/vb/internal_Changelog-{date}.txt`                           | Used by tokens                    |
 
 ## Notes
 
 - **default.json**: Tracks changes to union-investment icons only
 - **sd-multi-theming.json**: Tracks `system` and `content` changes for union-investment, bb, sp, and vb themes
-- **sd-internal.json**: Tracks `internal` changes for bb, sp, and vb (union-investment icons are hardcoded, not from Celum)
-
-## Integration
-
-To integrate with CI/CD, add to your build process:
-
-```bash
-pnpm fetch:icons-celum
-```
-
-This will keep the icon changelog data fresh before each deployment.
+- **sd-internal.json**: Tracks `internal` changes for bb, sp, and vb

@@ -1,12 +1,3 @@
-/**
- * Client-side counterpart to `packages/tokens/scripts/celum/fetch-icons-celum.mjs`.
- *
- * The committed JSON files under `packages/tokens/data/icons-changelogs/` are only refreshed by a
- * scheduled workflow, so at Storybook runtime we fetch any days since each theme's `lastCheck`
- * directly from the Celum CDN and merge them in – this keeps the "Changelog" story up to date
- * without re-fetching everything on every docs build.
- */
-
 export type ChangelogIcon = {
   name: string;
   technicalId: string | null;
@@ -31,18 +22,13 @@ export type ThemeChangelogData = {
 };
 export type LibraryChangelogData = Record<string, ThemeChangelogData>;
 
-export const LIBRARIES: Record<string, { themes: string[]; iconTypes: string[] }> = {
-  default: { themes: ['union-investment'], iconTypes: ['content', 'system'] },
-  'sd-multi-theming': { themes: ['union-investment', 'bb', 'sp', 'vb'], iconTypes: ['content', 'system'] },
-  'sd-internal': { themes: ['bb', 'sp', 'vb'], iconTypes: ['internal'] }
-};
-
-export const CELUM_THEME_MAPPING: Record<string, string> = {
-  'union-investment': 'union-investment',
-  bb: 'bbbank',
-  sp: 'sp',
-  vb: 'vb'
-};
+export {
+  CDN_FOLDER_TO_THEME_KEY,
+  CELUM_THEME_MAPPING,
+  THEME_LABELS
+} from '../../.storybook/addons/theme-generator/theme-attributes';
+export { LIBRARIES } from './icon-libraries';
+import { CELUM_THEME_MAPPING } from '../../.storybook/addons/theme-generator/theme-attributes';
 
 const WEEKDAYS_TO_FETCH = [1, 2, 3, 4, 5];
 
@@ -145,7 +131,7 @@ const enrichEntry = async (celumTheme: string, type: string, entry: ChangelogEnt
 const isEmptyEntry = (entry: ChangelogEntry) =>
   entry.icons.added.length === 0 && entry.icons.removed.length === 0 && entry.icons.modified.length === 0;
 
-/** Fetches changelog entries published after `sinceDate` (exclusive), up to and including today. */
+// Fetches changelog entries published after `sinceDate` (exclusive), up to and including today
 export const fetchRecentChangelogEntries = async (
   themeKey: string,
   type: string,
@@ -176,7 +162,7 @@ export const fetchRecentChangelogEntries = async (
   return entries;
 };
 
-/** Merges committed (build-time) entries with freshly fetched ones, de-duped by date and sorted newest first. */
+// Merges committed (build-time) entries with freshly fetched ones, de-duped by date and sorted newest first
 export const mergeChangelogEntries = (
   committed: ChangelogEntry[] = [],
   fresh: ChangelogEntry[] = []

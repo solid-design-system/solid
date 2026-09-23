@@ -1,35 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { CELUM_THEME_MAPPING } from '../../../docs/.storybook/addons/theme-generator/theme-attributes.ts';
+import { LIBRARIES } from '../../../docs/scripts/changelog/icon-libraries.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Icon libraries, their supported themes, and the Celum icon categories they use.
-const LIBRARIES = {
-  default: {
-    themes: ['union-investment'],
-    iconTypes: ['content', 'system']
-  },
-  'sd-multi-theming': {
-    themes: ['union-investment', 'bb', 'sp', 'vb'],
-    iconTypes: ['content', 'system']
-  },
-  'sd-internal': {
-    themes: ['bb', 'sp', 'vb'],
-    iconTypes: ['internal']
-  }
-};
-
 const WEEKDAYS_TO_FETCH = [1, 2, 3, 4, 5]; // Monday to Friday
-
-// Map Solid theme names to the CDN icon folder configured for each theme.
-const CELUM_THEME_MAPPING = {
-  'union-investment': 'union-investment',
-  bb: 'bbbank',
-  sp: 'sp',
-  vb: 'vb'
-};
 
 const getChangelogsFilePath = libraryType =>
   path.resolve(path.join(__dirname, `../../data/icons-changelogs/${libraryType}.json`));

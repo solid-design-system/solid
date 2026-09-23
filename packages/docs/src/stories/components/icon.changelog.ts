@@ -5,17 +5,17 @@ import { html } from 'lit';
 import { until } from 'lit/directives/until.js';
 import { getThemeAttributes } from '../../../.storybook/addons/theme-generator/theme-attributes';
 import {
+  CDN_FOLDER_TO_THEME_KEY,
   fetchRecentChangelogEntries,
   LIBRARIES,
-  mergeChangelogEntries
+  mergeChangelogEntries,
+  THEME_LABELS
 } from '../../../scripts/changelog/celum-changelog-client';
 import defaultChangelogData from '../../../../tokens/data/icons-changelogs/default.json';
 import multiThemingChangelogData from '../../../../tokens/data/icons-changelogs/sd-multi-theming.json';
 import internalChangelogData from '../../../../tokens/data/icons-changelogs/sd-internal.json';
 
 // Theme + library lookups
-const THEME_LABELS = { 'union-investment': 'Union Investment', bb: 'BBBank', sp: 'SP', vb: 'VB' };
-const CDN_FOLDER_TO_THEME_KEY = { 'union-investment': 'union-investment', vb: 'vb', sp: 'sp', bbbank: 'bb' };
 const LIBRARY_DATA = {
   default: defaultChangelogData,
   'sd-multi-theming': multiThemingChangelogData,

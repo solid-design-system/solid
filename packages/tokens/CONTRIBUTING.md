@@ -37,12 +37,17 @@ To register a new theme in Storybook:
 1. For UI icons, define the icon SVGs as CSS custom properties in `library.internal.ts`.
 2. For non-UI icons, add the icons to the CELUM CDN at https://celum-icons.fe.union-investment.de/internal.json.
 
-#### Adding system and content icons
+#### Adding multi-theming system and content icons
 
 1. Add the icons to the CELUM CDN at https://celum-icons.fe.union-investment.de/`<your-theme-folder>`/system.json for system icons and https://celum-icons.fe.union-investment.de/`<your-theme-folder>`/content.json for content icons.
 2. Add the CDN folder name to `themeMap` in `library.multi-theming.ts` using the same key that references the theme throughout the project.
 3. Update `icon.libraries.multi-theming.stories` by adding the new theme to both the **Content** and **System** modes.
 4. Add a new example section for the theme in the **Multi-theming Library** story.
+
+#### Adding a new theme in CELUM icon changelogs
+
+1. Add the theme's entry to `themeAttributes` in `theme-attributes.ts`, including its `cdnIconFolder`, `iconThemeKey`, `iconThemeLabel`, and which `iconLibraries` (`default`, `sd-multi-theming`, `sd-internal`) it participates in.
+2. Run `pnpm fetch:icons-celum` in `packages/tokens` to seed `data/icons-changelogs/{library}.json` with the new theme's data.
 
 #### Adding font families
 
