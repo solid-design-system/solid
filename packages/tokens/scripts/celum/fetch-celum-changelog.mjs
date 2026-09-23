@@ -217,7 +217,7 @@ const shouldFetchDay = date => {
 };
 
 const fetchIconsForTheme = async (libraryType, theme, iconTypes) => {
-  console.info(`  🔗 Fetching changelogs for ${theme}...`);
+  console.info(`  Fetching changelogs for ${theme}...`);
 
   try {
     const filePath = getChangelogsFilePath(libraryType);
@@ -246,7 +246,7 @@ const fetchIconsForTheme = async (libraryType, theme, iconTypes) => {
     // eslint-disable-next-line no-unmodified-loop-condition -- currentDate and today are mutated in place via Date setters
     while (currentDate <= today) {
       if (shouldFetchDay(currentDate)) {
-        console.info(`    📅 ${formatDate(currentDate, true)}`);
+        console.info(`    ${formatDate(currentDate, true)}`);
 
         for (const type of iconTypes) {
           const changelog = await fetchChangelog(theme, currentDate, type);
@@ -255,7 +255,7 @@ const fetchIconsForTheme = async (libraryType, theme, iconTypes) => {
             const newIcons = getNewIcons([changelog]);
 
             if (newIcons.length > 0) {
-              console.info(`      ✅ ${newIcons.length} icons (${type})`);
+              console.info(`      ${newIcons.length} icons (${type})`);
 
               const metadata = await fetchNewIconsMetadata(theme, type, newIcons);
               const enrichedChangelog = updateChangelogWithMetadata(changelog, metadata);
@@ -280,15 +280,15 @@ const fetchIconsForTheme = async (libraryType, theme, iconTypes) => {
       fs.writeFileSync(filePath, JSON.stringify(libraryData, null, 2), 'utf-8');
       setLastCheckDate(libraryType, theme, today);
     } else {
-      console.info(`      ℹ️  No new changelogs`);
+      console.info(`      No new changelogs`);
     }
   } catch (error) {
-    console.error(`    ❌ Error: ${error.message}`);
+    console.error(` Error: ${error.message}`);
   }
 };
 
 const fetchIconsForLibrary = async (libraryType, { themes, iconTypes }) => {
-  console.info(`\n📦 ${libraryType}`);
+  console.info(`\n ${libraryType}`);
 
   for (const theme of themes) {
     await fetchIconsForTheme(libraryType, theme, iconTypes);
@@ -296,13 +296,13 @@ const fetchIconsForLibrary = async (libraryType, { themes, iconTypes }) => {
 };
 
 const main = async () => {
-  console.info('🚀 Starting icon changelog fetch for all libraries...');
+  console.info('Starting icon changelog fetch for all libraries...');
 
   for (const [libraryType, library] of Object.entries(LIBRARIES)) {
     await fetchIconsForLibrary(libraryType, library);
   }
 
-  console.info('\n✅ Icon changelog fetch completed!');
+  console.info('\n Icon changelog fetch completed!');
 };
 
 main().catch(error => {
