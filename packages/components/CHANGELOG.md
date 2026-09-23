@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 7.4.2
+
+### Patch Changes
+
+- Fixed `sd-combobox` and `sd-select` to use small tags when floating labels are enabled. _[`#3337`](https://github.com/solid-design-system/solid/pull/3337) [`ed960f9`](https://github.com/solid-design-system/solid/commit/ed960f9dc9358668d2e2ec57636c032953d18b53) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 7.4.1
 
 ### Patch Changes
