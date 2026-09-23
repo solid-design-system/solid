@@ -143,7 +143,7 @@ The celum/fetch-celum-changelog.mjs:
 1. Checks the last fetch date stored in each icon library's data file (per theme)
 2. Fetches new changelogs from Celum for each missing date
 3. Parses added/modified/removed icon sections
-4. Saves updated changelogs to `data/icons-changelogs/{library}.json`
+4. Saves updated changelogs to `data/celum-changelogs/{library}.json`
 5. Updates the last check date per theme
 
 **Usage:**

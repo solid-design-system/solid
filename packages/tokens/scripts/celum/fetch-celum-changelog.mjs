@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 const WEEKDAYS_TO_FETCH = [1, 2, 3, 4, 5]; // Monday to Friday
 
 const getChangelogsFilePath = libraryType =>
-  path.resolve(path.join(__dirname, `../../data/icons-changelogs/${libraryType}.json`));
+  path.resolve(path.join(__dirname, `../../data/celum-changelogs/${libraryType}.json`));
 
 const getLastCheckDate = (libraryType, theme) => {
   try {

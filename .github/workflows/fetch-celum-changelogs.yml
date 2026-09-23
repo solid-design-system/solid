@@ -36,7 +36,7 @@ jobs:
         with:
           commit-message: "chore: update Celum icon changelogs"
           title: "chore: update Celum icon changelogs"
-          body: Automated weekly update of the committed Celum icon changelog data (`packages/tokens/data/icons-changelogs/*.json`).
+          body: Automated weekly update of the committed Celum icon changelog data (`packages/tokens/data/celum-changelogs/*.json`).
           branch: chore/celum-icon-changelogs
           delete-branch: true
-          add-paths: packages/tokens/data/icons-changelogs/*.json
+          add-paths: packages/tokens/data/celum-changelogs/*.json

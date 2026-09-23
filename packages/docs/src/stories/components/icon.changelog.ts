@@ -11,9 +11,9 @@ import {
   mergeChangelogEntries,
   THEME_LABELS
 } from '../../../scripts/celum/celum-changelog';
-import defaultChangelogData from '../../../../tokens/data/icons-changelogs/default.json';
-import multiThemingChangelogData from '../../../../tokens/data/icons-changelogs/sd-multi-theming.json';
-import internalChangelogData from '../../../../tokens/data/icons-changelogs/sd-internal.json';
+import defaultChangelogData from '../../../../tokens/data/celum-changelogs/default.json';
+import multiThemingChangelogData from '../../../../tokens/data/celum-changelogs/sd-multi-theming.json';
+import internalChangelogData from '../../../../tokens/data/celum-changelogs/sd-internal.json';
 
 // Theme + library lookups
 const LIBRARY_DATA = {

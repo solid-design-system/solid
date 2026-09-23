@@ -47,7 +47,7 @@ To register a new theme in Storybook:
 #### Adding a new theme in CELUM icon changelogs
 
 1. Add the theme's entry to `themeAttributes` in `theme-attributes.ts`, including its `cdnIconFolder`, `iconThemeKey`, `iconThemeLabel`, and which `iconLibraries` (`default`, `sd-multi-theming`, `sd-internal`) it participates in.
-2. Run `pnpm fetch:icons-celum` in `packages/tokens` to seed `data/icons-changelogs/{library}.json` with the new theme's data.
+2. Run `pnpm fetch:icons-celum` in `packages/tokens` to seed `data/celum-changelogs/{library}.json` with the new theme's data.
 
 #### Adding font families
 
