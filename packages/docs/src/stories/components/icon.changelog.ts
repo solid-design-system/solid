@@ -10,7 +10,7 @@ import {
   LIBRARIES,
   mergeChangelogEntries,
   THEME_LABELS
-} from '../../../scripts/changelog/celum-changelog-client';
+} from '../../../scripts/celum/celum-changelog';
 import defaultChangelogData from '../../../../tokens/data/icons-changelogs/default.json';
 import multiThemingChangelogData from '../../../../tokens/data/icons-changelogs/sd-multi-theming.json';
 import internalChangelogData from '../../../../tokens/data/icons-changelogs/sd-internal.json';

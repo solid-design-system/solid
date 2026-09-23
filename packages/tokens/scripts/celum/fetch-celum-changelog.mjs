@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { CELUM_THEME_MAPPING } from '../../../docs/.storybook/addons/theme-generator/theme-attributes.ts';
-import { LIBRARIES } from '../../../docs/scripts/changelog/icon-libraries.ts';
+import { LIBRARIES } from '../../../docs/scripts/celum/icon-libraries.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

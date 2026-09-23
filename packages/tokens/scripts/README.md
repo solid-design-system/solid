@@ -138,7 +138,7 @@ After the build completes, the output structure includes:
 
 ## Celum Icon Changelog Script
 
-The celum/fetch-icons-celum.mjs:
+The celum/fetch-celum-changelog.mjs:
 
 1. Checks the last fetch date stored in each icon library's data file (per theme)
 2. Fetches new changelogs from Celum for each missing date
@@ -153,4 +153,4 @@ cd packages/tokens
 pnpm fetch:icons-celum
 ```
 
-Theme metadata (CDN folder, display label) lives in `packages/docs/.storybook/addons/theme-generator/theme-attributes.ts`; icon library membership lives in `packages/docs/.storybook/addons/theme-generator/icon-libraries.ts`. Both are shared with `packages/docs/scripts/changelog/celum-changelog-client.ts`. To register a new theme, add it to `theme-attributes.ts` instead of editing the script directly.
+Theme metadata (CDN folder, display label) lives in `packages/docs/.storybook/addons/theme-generator/theme-attributes.ts`; icon library membership lives in `packages/docs/scripts/celum/icon-libraries.ts`. Both are shared with `packages/docs/scripts/celum/celum-changelog.ts`. To register a new theme, add it to `theme-attributes.ts` instead of editing the script directly.
