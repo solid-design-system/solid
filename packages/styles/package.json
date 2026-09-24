@@ -1,6 +1,6 @@
 {
   "name": "@solid-design-system/styles",
-  "version": "7.4.2",
+  "version": "7.4.3",
   "author": {
     "name": "Union Investment"
   },
@@ -48,18 +48,18 @@
   "devDependencies": {
     "@solid-design-system/versioning": "workspace:^",
     "@tailwindcss/postcss": "^4.3.2",
-    "autoprefixer": "^10.5.2",
+    "autoprefixer": "^10.6.1",
     "command-line-args": "^6.0.2",
-    "cssnano": "^8.0.2",
+    "cssnano": "^9.0.4",
     "del": "^8.0.1",
-    "globby": "^16.2.1",
+    "globby": "^16.2.4",
     "ora": "^9.4.1",
     "picocolors": "^1.1.1",
     "plop": "^4.0.5",
-    "postcss": "^8.5.17",
-    "postcss-cli": "^11.0.1",
-    "postcss-nested": "^7.0.2",
-    "prettier": "^3.9.5",
+    "postcss": "^8.5.28",
+    "postcss-cli": "^12.0.0",
+    "postcss-nested": "^8.0.1",
+    "prettier": "^3.9.7",
     "tailwindcss": "^4.3.2"
   }
 }
