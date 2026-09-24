@@ -12,7 +12,7 @@
  * 
  * @cssproperty --sd-interactive--active-color-text - The text color for interactive elements in active state.
  * @cssproperty --sd-interactive--default-color-text - The default text color for interactive elements.
- * @cssproperty --sd-interactive--secondary-color-text - The text color for interactive elements in disabled state.
+ * @cssproperty --sd-interactive--secondary-color-text - The text color for interactive elements using the secondary variant.
  * @cssproperty --sd-form-control--disabled-color-text - The text color for interactive elements in disabled state.
  */
 
