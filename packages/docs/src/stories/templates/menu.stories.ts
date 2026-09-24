@@ -34,8 +34,20 @@ export default {
 
 export const MenuWithIcons = {
   name: 'Menu with Icons',
+  parameters: {
+    docs: { story: { autoplay: true } }
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    await customElements.whenDefined('sd-dropdown');
+
+    const dropdown = canvasElement.querySelector<HTMLElement & { containingElement: HTMLElement }>('#menu-with-icons');
+
+    if (dropdown) {
+      dropdown.containingElement = canvasElement.ownerDocument.body;
+    }
+  },
   render: () =>
-    html` <sd-dropdown distance="4" rounded open stay-open-on-select>
+    html` <sd-dropdown id="menu-with-icons" distance="4" rounded open stay-open-on-select>
       <sd-button variant="secondary" slot="trigger">
         <sd-icon name="system/more-functions" label="Icon only"></sd-icon>
       </sd-button>
@@ -61,8 +73,22 @@ export const MenuWithIcons = {
 
 export const MenuWithCheckmarksAndIcons = {
   name: 'Menu with Checkmarks and Icons',
+  parameters: {
+    docs: { story: { autoplay: true } }
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    await customElements.whenDefined('sd-dropdown');
+
+    const dropdown = canvasElement.querySelector<HTMLElement & { containingElement: HTMLElement }>(
+      '#menu-with-checkmarks'
+    );
+
+    if (dropdown) {
+      dropdown.containingElement = canvasElement.ownerDocument.body;
+    }
+  },
   render: () => html`
-    <sd-dropdown distance="4" rounded open stay-open-on-select>
+    <sd-dropdown id="menu-with-checkmarks" distance="4" rounded open stay-open-on-select>
       <sd-button variant="secondary" slot="trigger">
         <sd-icon name="system/more-functions" label="Icon only"></sd-icon>
       </sd-button>
