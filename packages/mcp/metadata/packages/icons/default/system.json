@@ -315,14 +315,14 @@
     "tags": ["verstecken", "komprimieren", "Seitenleiste"]
   },
   {
-    "technicalId": "shopping-cart",
-    "displayNameDe": "Einkaufswagen",
-    "tags": ["Onlineshop", "Warenkorb", "Erwerb", "Einkauf"]
-  },
-  {
     "technicalId": "bug",
     "displayNameDe": "Fehler",
     "tags": ["Mangel", "Problem"]
+  },
+  {
+    "technicalId": "shopping-cart",
+    "displayNameDe": "Einkaufswagen",
+    "tags": ["Onlineshop", "Warenkorb", "Erwerb", "Einkauf"]
   },
   {
     "technicalId": "eraser",
@@ -615,14 +615,14 @@
     "tags": ["klicken", "auswählen"]
   },
   {
-    "technicalId": "file-read-out",
-    "displayNameDe": "Dokument vorlesen",
-    "tags": ["vorlesen", "Audio", "Lautstärke"]
-  },
-  {
     "technicalId": "layers",
     "displayNameDe": "Ebenen",
     "tags": ["gruppieren", "Stapel", "mehrere Folien erzeugen"]
+  },
+  {
+    "technicalId": "file-read-out",
+    "displayNameDe": "Dokument vorlesen",
+    "tags": ["vorlesen", "Audio", "Lautstärke"]
   },
   {
     "technicalId": "collapse-left",
