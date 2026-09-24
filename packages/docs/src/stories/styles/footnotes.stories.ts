@@ -32,9 +32,9 @@ export default {
       type: 'slot',
       name: 'default',
       value: `
-        <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
-        <li>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
-        <li>Dolore magna aliq erat, sed diam voluptua.</li>
+        <li><a href="#" class="sd-footnotes--marker"></a>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+        <li><a href="#" class="sd-footnotes--marker"></a>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
+        <li><a href="#" class="sd-footnotes--marker"></a>Dolore magna aliq erat, sed diam voluptua.</li>
       `
     }
   ]),
@@ -71,9 +71,9 @@ export const Variants = {
   render: () => html`
     <div class="flex flex-col gap-12">
       <ol class="sd-footnotes">
-        <li>Lorem ipsum dolor sit amet.</li>
-        <li>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
-        <li>Dolore magna aliq erat, sed diam voluptua.</li>
+        <li><a href="#" class="sd-footnotes--marker"></a>Lorem ipsum dolor sit amet.</li>
+        <li><a href="#" class="sd-footnotes--marker"></a>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
+        <li><a href="#" class="sd-footnotes--marker"></a>Dolore magna aliq erat, sed diam voluptua.</li>
       </ol>
       <ul class="sd-footnotes">
         <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
