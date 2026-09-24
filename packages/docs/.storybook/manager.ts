@@ -39,10 +39,7 @@ function createProtectionDialog(): HTMLDialogElement {
     </div>
     <div class="dialog-body">
       <p class="dialog-text">
-        This theme is protected. Please enter the password to continue.
-      </p>
-      <p class="dialog-text">
-        Contact the Solid Design System Team in MS Teams to get access to the theme password.
+        This theme is password-protected. Please enter the password to continue. To obtain the password, contact the Solid Design System Team on MS Teams.
       </p>
       <div class="input-group">
         <label for="theme-password-input">Password</label>
