@@ -70,6 +70,10 @@
   color: rgba(var(--sd-interactive--default-color-text, 0 53 142));
 }
 
+@utility interactive--secondary-color-text {
+  color: rgba(var(--sd-interactive--secondary-color-text, 0 53 142));
+}
+
 @utility marker-font-size {
  font-size: var(--sd-marker-font-size, 0.875rem);
 }
@@ -239,7 +243,7 @@
 }
 
 @utility sd-button--cta--inverted--default-color-background {
-  background-color: rgba(var(--sd-button--cta--inverted--default-color-background, 45 157 0));
+  background-color: rgba(var(--sd-button--cta--inverted--default-color-background, 37 136 14));
 }
 
 @utility sd-button--cta--inverted--default-color-text {
@@ -247,7 +251,7 @@
 }
 
 @utility sd-button--cta--inverted--hover-color-background {
-  background-color: rgba(var(--sd-button--cta--inverted--hover-color-background, 37 136 14));
+  background-color: rgba(var(--sd-button--cta--inverted--hover-color-background, 54 123 40));
 }
 
 @utility sd-button--cta--inverted--hover-color-text {
