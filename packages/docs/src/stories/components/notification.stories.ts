@@ -180,12 +180,12 @@ export const DurationIndicator = {
  * ```
  *
  * __Hints:__
- * - It requires the use of the `toast` method to work. Click on the `Show code` button to see the JavaScript code responsible for generating the toast notification.
+ * - It requires the use of the `toast` method to work.
  * - Click on one of the buttons below to see the corresponding toast notification.
  *
  * <h4 class="sd-headline sd-headline--size-lg">Toast placement top right</h4>
  *
- * Use the `data-notification-position` attribute with the value `top-right` to align the toast to the top right.
+ * Use the `toastStack` attribute with the value `top-right` to align the toast to the top right.
  *
  */
 export const ToastNotification = {
@@ -194,40 +194,12 @@ export const ToastNotification = {
   render: (_args: Record<string, any>) => {
     return html`
       <div class="flex gap-2">
-        <sd-button
-          variant="secondary"
-          data-notification-type="info"
-          data-notification-position="top-right"
-          class="w-24"
-        >
-          Info
-        </sd-button>
-        <sd-button
-          variant="secondary"
-          data-notification-type="success"
-          data-notification-position="top-right"
-          class="w-24"
-        >
-          Success
-        </sd-button>
-        <sd-button
-          variant="secondary"
-          data-notification-type="warning"
-          data-notification-position="top-right"
-          class="w-24"
-          >Warning</sd-button
-        >
-        <sd-button
-          variant="secondary"
-          data-notification-type="error"
-          data-notification-position="top-right"
-          class="w-24"
-          >Error</sd-button
-        >
+        <sd-button variant="secondary" class="w-24" onclick="notify('info')"> Info </sd-button>
+        <sd-button variant="secondary" class="w-24" onclick="notify('success')"> Success </sd-button>
+        <sd-button variant="secondary" class="w-24" onclick="notify('warning')">Warning</sd-button>
+        <sd-button variant="secondary" class="w-24" onclick="notify('error')">Error</sd-button>
       </div>
       <script>
-        var buttons = document.querySelectorAll('[data-notification-position="top-right"]');
-
         function notify(variant = 'info') {
           const notification = Object.assign(document.createElement('sd-notification'), {
             closable: true,
@@ -240,63 +212,28 @@ export const ToastNotification = {
           document.body.append(notification);
           return notification.toast();
         }
-
-        buttons.forEach(button => {
-          button.addEventListener('click', () => {
-            notify(button.getAttribute('data-notification-type'));
-          });
-        });
       </script>
     `;
   }
 };
 
 /**
- * <h4 class="sd-headline sd-headline--size-lg">Toast placement bottom center</h4>
  *
- * Use the `data-notification-position` attribute with the value `bottom-center` to align the toast to the bottom center.
+ * Use the `toastStack` attribute with the value `bottom-center` to align the toast to the bottom center.
  */
 export const ToastBottomCenter = {
-  name: 'Toast Bottom Center',
+  name: 'Toast placement bottom center',
   tags: ['skip-playwright'],
   render: (_args: Record<string, any>) => {
     return html`
       <div class="flex gap-2">
-        <sd-button
-          variant="secondary"
-          data-notification-type="info"
-          data-notification-position="bottom-center"
-          class="w-24"
-        >
-          Info
-        </sd-button>
-        <sd-button
-          variant="secondary"
-          data-notification-type="success"
-          data-notification-position="bottom-center"
-          class="w-24"
-        >
-          Success
-        </sd-button>
-        <sd-button
-          variant="secondary"
-          data-notification-type="warning"
-          data-notification-position="bottom-center"
-          class="w-24"
-          >Warning</sd-button
-        >
-        <sd-button
-          variant="secondary"
-          data-notification-type="error"
-          data-notification-position="bottom-center"
-          class="w-24"
-          >Error</sd-button
-        >
+        <sd-button variant="secondary" class="w-24" onclick="notifyBottomCenter('info')"> Info </sd-button>
+        <sd-button variant="secondary" class="w-24" onclick="notifyBottomCenter('success')"> Success </sd-button>
+        <sd-button variant="secondary" class="w-24" onclick="notifyBottomCenter('warning')">Warning</sd-button>
+        <sd-button variant="secondary" class="w-24" onclick="notifyBottomCenter('error')">Error</sd-button>
       </div>
 
       <script>
-        var buttons = document.querySelectorAll('[data-notification-position="bottom-center"]');
-
         function notifyBottomCenter(variant = 'info') {
           const notification = Object.assign(document.createElement('sd-notification'), {
             closable: true,
@@ -311,12 +248,6 @@ export const ToastBottomCenter = {
           document.body.append(notification);
           return notification.toast();
         }
-
-        buttons.forEach(button => {
-          button.addEventListener('click', () => {
-            notifyBottomCenter(button.getAttribute('data-notification-type'));
-          });
-        });
       </script>
     `;
   }
