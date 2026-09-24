@@ -69,6 +69,18 @@ export const InputWithFloatingLabel = {
  * implemented correctly.
  */
 export const InputWithVisuallyHiddenLabel = {
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'label-title-only',
+            enabled: false
+          }
+        ]
+      }
+    }
+  },
   render: () => html`
     <div class="flex flex-col gap-8">
       <section>

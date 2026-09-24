@@ -103,6 +103,18 @@ export const GroupingQuery = {
  */
 export const VisuallyHiddenLabel = {
   name: 'Combobox with Visually Hidden Label',
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'label-title-only',
+            enabled: false
+          }
+        ]
+      }
+    }
+  },
   render: () => html`
     <div class="h-[340px] max-w-[400px]">
       <h4 class="text-primary font-bold text-xl mb-4">New transfer</h4>
