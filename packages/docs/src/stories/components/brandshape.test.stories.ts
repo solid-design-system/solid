@@ -107,14 +107,13 @@ export const Variants = {
         y: {
           type: 'attribute',
           name: 'variant',
-          values: ['neutral-100', 'primary', 'white', 'border-primary', 'border-white', 'image']
+          values: ['primary', 'white', 'border-primary', 'border-white', 'image']
         }
       },
       options: {
         templateBackgrounds: {
           alternate: 'y',
           colors: [
-            'rgba(var(--sd-color-background-white))',
             'rgba(var(--sd-color-background-white))',
             'rgba(var(--sd-color-background-primary))',
             'rgba(var(--sd-color-background-white))',
