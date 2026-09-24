@@ -44,7 +44,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - part.panel: The drawer's panel (where the drawer and its content are rendered).
 - part.header: The drawer's header. This element wraps the title and the close-button.
 - part.title: The drawer's title.
-- part.close-button: The close button, an `<sd-button>`.
+- part.close-button: The close button, a `<button>` styled with `sd-interactive`.
 - part.body: The drawer's body.
 - part.footer: The drawer's footer.
 - part.overlay: The overlay that covers the screen behind the drawer.
