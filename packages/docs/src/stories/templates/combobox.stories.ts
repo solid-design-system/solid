@@ -96,10 +96,8 @@ export const GroupingQuery = {
 };
 
 /**
- * In this use case, the heading, supporting question, search icon, and placeholder work together to reinforce the
- * field's purpose visually — but WCAG 2.2 compliance itself rests on the hidden label being implemented correctly.
- * To meet minimum compliance, pass the label through the `label` slot and hide it with the `sr-only` class. An
- * `aria-label` on `<sd-combobox>` is not forwarded to the inner input and therefore provides no accessible name.
+ * In this use case, the heading, supporting question, search icon, and placeholder work together to reinforce the field's purpose visually – but WCAG 2.2 compliance itself rests on the hidden label being implemented correctly.
+ * To meet minimum compliance, the input needs a visually hidden label set up as follows: use aria-label="Search recipients" directly on the input.
  */
 export const VisuallyHiddenLabel = {
   name: 'Combobox with Visually Hidden Label',
