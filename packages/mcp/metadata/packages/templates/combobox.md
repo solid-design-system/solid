@@ -37,56 +37,31 @@ version: 1.0.0
 </script>
 ```
 
-## Template: Multiple Highlight Query
-
-```html
-<div class="h-[260px] max-w-[400px]">
-  <sd-combobox label="Funds" class="multiple-highlight-combobox"> ${createFondsOptionsHtml()} </sd-combobox>
-</div>
-<script type="module">
-  const combobox = document.querySelector('.multiple-highlight-combobox');
-
-  const multipleHighlightRender = (option, query) => {
-    if (!query) {
-      return option;
-    }
-
-    const clonedOption = option.cloneNode(true);
-
-    clonedOption.selected = option.selected;
-
-    const optionLabel = clonedOption.getTextLabel();
-    const queryRegex = new RegExp(query, 'gi');
-
-    const mark = document.createElement('mark');
-
-    const exchangedText = optionLabel.replace(queryRegex, match => {
-      mark.textContent = match;
-      return mark.outerHTML;
-    });
-
-    const indexLabel = clonedOption.innerHTML.indexOf(optionLabel);
-    const previousContent = clonedOption.innerHTML.slice(0, indexLabel);
-    const followingContent = clonedOption.innerHTML.slice(indexLabel + optionLabel.length);
-
-    clonedOption.innerHTML = previousContent.concat(exchangedText, followingContent);
-    return clonedOption;
-  };
-
-  combobox.getOption = multipleHighlightRender;
-</script>
-```
-
 ## Template: Combobox Grouping Query
 
 ```html
 <div class="h-[260px] max-w-[400px]">
-  <sd-combobox label="Group elements" value="g">
+  <sd-combobox label="Group elements" type="search" value="g">
     <sd-optgroup label="Funds"> ${createFondsOptionsHtml()} </sd-optgroup>
     <sd-optgroup label="Search Suggestions">
       <sd-option value="uniabsoluterertrag">UniAbsoluterErtrag</sd-option>
       <sd-option value="uniasia">UniAsia</sd-option>
     </sd-optgroup>
+  </sd-combobox>
+</div>
+```
+
+## Template: Combobox with Visually Hidden Label
+
+```html
+<div class="h-[340px] max-w-[400px]">
+  <h4 class="text-primary font-bold text-xl mb-4">New transfer</h4>
+
+  <p class="text-sm mb-4">Who do you want to send money to?</p>
+
+  <sd-combobox type="search" placeholder="Please select">
+    <span slot="label" class="sr-only">Search recipients</span>
+    ${createFondsOptionsHtml()}
   </sd-combobox>
 </div>
 ```
