@@ -338,6 +338,7 @@
   --sd-informational-gradient--white-color-background: var(--sd-color-white);
   --sd-interactive--active-color-text: var(--sd-color-info);
   --sd-interactive--default-color-text: var(--sd-color-info);
+  --sd-interactive--secondary-color-text: var(--sd-color-info);
   --sd-map-marker--cluster--default-color-background: var(--sd-color-info);
   --sd-map-marker--cluster--hover-color-background: var(--sd-color-primary-700);
   --sd-map-marker--cluster-color-text: var(--sd-color-white);
