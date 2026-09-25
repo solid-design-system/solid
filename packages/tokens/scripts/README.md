@@ -133,3 +133,26 @@ After the build completes, the output structure includes:
   - **dist/themes/\*\*/\*.css** - All the generated themes.
 - `cdn/` - Mnified files for production
   - **dist/themes/\*\*/\*.css** - All the generated themes.
+
+---
+
+## Celum Icon Changelog Script
+
+The celum/fetch-celum-changelog.mjs:
+
+1. Checks the last fetch date stored in each icon library's data file (per theme)
+2. Fetches new changelogs from Celum for each missing date
+3. Parses added/modified/removed icon sections
+4. Saves updated changelogs to `data/celum-changelogs/{library}.json`
+5. Updates the last check date per theme
+
+**Usage:**
+
+```bash
+cd packages/tokens
+pnpm fetch:icons-celum
+```
+
+Theme metadata (CDN folder, display label) lives in `packages/docs/.storybook/addons/theme-generator/theme-attributes.ts`; icon library membership lives in `packages/docs/scripts/celum/icon-libraries.ts`. Both are shared with `packages/docs/scripts/celum/celum-changelog.ts`. To register a new theme, add it to `theme-attributes.ts` instead of editing the script directly.
+
+**Automation:** the `Fetch Celum icon changelogs` GitHub workflow (`.github/workflows/fetch-celum-changelogs.yml`) runs this script every Monday and opens a PR with the updated JSON files.
