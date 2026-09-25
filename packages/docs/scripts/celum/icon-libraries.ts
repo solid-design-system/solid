@@ -1,4 +1,4 @@
-import { iconThemes } from '../../.storybook/addons/theme-generator/theme-attributes';
+import { iconThemes } from '../../.storybook/addons/theme-generator/theme-attributes.ts';
 
 // Icon categories fetched per Celum-tracked icon library (same for every theme within a library).
 export const LIBRARY_ICON_TYPES: Record<string, string[]> = {
