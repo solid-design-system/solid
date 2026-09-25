@@ -225,7 +225,13 @@ const renderIconRow = (icon, iconType, dateGroup, groupIcons, date) => {
       isRemoved
         ? ''
         : html`<td class="w-8 py-2.5">
-            ${iconSvgUrl(icon) ? html`<img src=${iconSvgUrl(icon)} alt="" class="sd-icon-changelog-preview w-5 h-5" />` : ''}
+            ${
+              iconSvgUrl(icon)
+                ? html`<div class="w-5 h-5">
+                    <img src=${iconSvgUrl(icon)} alt="" class="sd-icon-changelog-preview w-full h-full" />
+                  </div>`
+                : ''
+            }
           </td>`
     }
     <td class="py-2.5 text-sm truncate">
