@@ -361,7 +361,7 @@ When developing in isolation (e.g. Storybook, local dev server), no Theme Host i
 Example for Storybook's `preview.js`:
 
 ```js
-
+import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
 ```
 
 ## Optional: Standalone fallback

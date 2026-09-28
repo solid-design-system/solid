@@ -142,12 +142,22 @@ Once your bundler is configured, you'll be able to import Solid components and u
   <sd-tab slot="nav" panel="versioned">Versioned</sd-tab>
   <sd-tab-panel name="unversioned">
   ```js
+import '@solid-design-system/components/dist/solid-components.css';
+import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
+import '@solid-design-system/components/dist/components/button/button.js';
+import '@solid-design-system/components/dist/components/icon/icon.js';
+import '@solid-design-system/components/dist/components/input/input.js';
 // <sd-button>, <sd-icon> and <sd-input> are ready to use!
 ```
 
   </sd-tab-panel>
   <sd-tab-panel name="versioned">
   ```js
+import '@solid-design-system/components/dist-versioned/solid-components.css';
+import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
+import '@solid-design-system/components/dist-versioned/components/button/button.js';
+import '@solid-design-system/components/dist-versioned/components/icon/icon.js';
+import '@solid-design-system/components/dist-versioned/components/input/input.js';
 // <sd-button>, <sd-icon> and <sd-input> are ready to use!
 ```
 

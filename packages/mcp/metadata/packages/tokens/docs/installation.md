@@ -26,7 +26,7 @@ npm install @solid-design-system/tokens
 Load at least one theme via NPM import. This only needs to be done **once per document**. Every component and embedded consumer on the page will automatically inherit the theme.
 
 ```js
-
+import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
 ```
 
 ## Next steps
@@ -321,6 +321,7 @@ This automatically makes all Solid Design System tokens available as Tailwind ut
   <sd-tab-panel name="tw3">
 ```js
 // tailwind.config.js
+import solidTheme from '@solid-design-system/tokens/dist/tailwind.json';
 
 export default {
   theme: {
@@ -349,6 +350,7 @@ However, if you manage an environment that still requires the use of these varia
 as fallback layer:
 
 ```js
+import '@solid-design-system/tokens/dist/legacy-variables.css';
 ```
 
 ## Minimum dependency requirement
