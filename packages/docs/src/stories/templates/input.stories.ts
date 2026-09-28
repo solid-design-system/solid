@@ -9,7 +9,7 @@ export default {
     chromatic: { disableSnapshot: true },
     docs: {
       toc: {
-        ignoreSelector: '.docs-story *, .skip-toc, #search-input, #input-in-a-clear-context'
+        ignoreSelector: '.docs-story *, .skip-toc, #input-in-a-clear-context'
       }
     },
     design: {
@@ -74,7 +74,7 @@ export const InputWithFloatingLabel = {
  *
  * In these use cases, the surrounding elements work together to reinforce the field's purpose visually – but WCAG 2.2 compliance itself rests on the hidden label being implemented correctly.
  *
- * ### Search Input
+ *  **Search Input**
  *
  * This example relies visually on the heading, search icon, and placeholder to communicate purpose, and the hidden label "Search transactions" for accessibility.
  */
@@ -98,6 +98,13 @@ export const InputWithVisuallyHiddenLabel = {
 export const InputInClearContext = {
   name: 'Input in a clear context',
   render: () => html`
+    <style>
+      #input-in-a-clear-context {
+        font-size: 14px;
+        line-height: 24px;
+      }
+    </style>
+
     <div class="sd-container sd-container--variant-primary-100 px-4 py-16 lg:px-10 lg:py-24">
       <div class="flex flex-col gap-16 lg:flex-row lg:items-center">
         <div class="flex flex-col items-start gap-4 lg:flex-1 lg:flex-row">
