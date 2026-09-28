@@ -1,6 +1,6 @@
 # Installation
 
-Solid Styles is installed via npm. For environments without a bundler, see [CDN Hosting](?path=/docs/docs-general-cdn-hosting--docs).
+Solid Styles is installed via npm. For environments without a bundler, see [CDN Hosting](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-cdn-hosting--docs).
 
 <sd-notification variant="info" open id="versioning-info">
   The `components`, `styles`, and `tokens` packages now always share the same version. We use fixed versioning to keep
@@ -12,7 +12,7 @@ Solid Styles is installed via npm. For environments without a bundler, see [CDN 
 
 ### Theme
 
-Solid Styles come without any theme or font by default. Ensure to follow the installation guidelines from [@solid-design-system/tokens](?path=/docs/packages-tokens-installation--docs) to include a fitting theme in your project.
+Solid Styles come without any theme or font by default. Ensure to follow the installation guidelines from [@solid-design-system/tokens](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-installation--docs) to include a fitting theme in your project.
 
 ### Versioned vs. unversioned styles
 
@@ -110,4 +110,4 @@ tbd.
 
 The package ships both `cdn/` and `dist/` artifacts. The `/cdn` files are already minified. The `/dist` files can be more easily patched and are better suited for bundlers.
 
-Use `/dist` with a bundler (recommended). Use `/cdn` only when hosting on your own CDN without build tooling — see [CDN Hosting](?path=/docs/general-cdn-hosting--docs).
+Use `/dist` with a bundler (recommended). Use `/cdn` only when hosting on your own CDN without build tooling — see [CDN Hosting](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/general-cdn-hosting--docs).

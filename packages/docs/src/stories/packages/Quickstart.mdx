@@ -7,6 +7,8 @@ import '../../../../components/src/solid-components';
 
 This guide will help you get started on adding Solid Design System (SDS) to your project.
 
+The commands in this guide use npm. If an existing project uses another package manager, use that package manager consistently.
+
 ## Packages, Theming, and MCP
 
 There is no single package that every project must install. Choose packages based on the Solid features your project requires.
@@ -15,18 +17,18 @@ There is no single package that every project must install. Choose packages base
 
 - [`@solid-design-system/components`](?path=/docs/packages-components--docs): Component library consisting of reusable web components.
 - [`@solid-design-system/styles`](?path=/docs/packages-styles--docs): Smaller component library, built solely with CSS.
-- [`@solid-design-system/tokens`](?path=/docs/packages-tokens--docs): Design tokens (variables) and themes for consistent theming.
+- [`@solid-design-system/tokens`](?path=/docs/packages-tokens--docs): Design tokens (variables) and themes, install when your project provides a theme or uses token utilities.
 
-Most applications that use Solid components and styles and provide their own theme install all three packages.
+Most applications that use Solid Design System components and styles, and provide their own theme, install all three packages.
 The `components`, `styles`, and `tokens` packages always share the same version.
 Install or update them together when you use more than one.
 
 ### Additional packages
 
 - [`@solid-design-system/placeholders`](?path=/docs/packages-placeholders--docs): Placeholder text and license-free media.
-- [`@solid-design-system/theming`](?path=/docs/packages-theming--docs): Color calculation utility for building themes (for existing Solid themes, use the `tokens` package).
-- [`@solid-design-system/mcp`](?path=/docs/packages-mcp--docs): Model Context Protocol that provides coding agents access to current Solid guidance and metadata.
-- [`@solid-design-system/eslint-plugin`](?path=/docs/packages-eslint-plugin--docs): Adds Solid-specific lint rules.
+- [`@solid-design-system/theming`](?path=/docs/packages-theming--docs): Color calculation tool for building custom themes (for existing SDS themes, use the `tokens` package).
+- [`@solid-design-system/mcp`](?path=/docs/packages-mcp--docs): Model Context Protocol that provides coding agents access to current SDS guidance and metadata.
+- [`@solid-design-system/eslint-plugin`](?path=/docs/packages-eslint-plugin--docs): Adds SDS-specific lint rules.
 
 Please check the installation documentation for [Components Installation](?path=/docs/packages-components-installation--docs),
 [Styles Installation](?path=/docs/packages-styles-installation--docs),
@@ -43,7 +45,9 @@ Before installing SDS, determine whether your project is a Theme Host or a Theme
 
 A standalone application usually fulfills both roles: it loads the theme as the Theme Host and uses its tokens as a Theme Consumer.
 
-Solid Design System does not ship fonts. The Theme Host must load the fonts required by its brand, either from its approved CDN or by self-hosting them. See [Tokens Installation](?path=/docs/packages-tokens-installation--docs) for detailed theming guidance and [font setup and brand examples](?path=/docs/packages-tokens-installation--docs&anchor=fonts).
+Theme Hosts must install `tokens` and load one theme. Theme Consumers must not load theme CSS and should install `tokens` only when they use its token utilities or other package assets.
+
+Solid Design System does not ship fonts. The Theme Host must load the fonts required by its brand, either from its approved CDN or by self-hosting them. Confirm the required brand and theme before choosing a font source. See [Tokens Installation](?path=/docs/packages-tokens-installation--docs) for detailed theming guidance and [font setup and brand examples](?path=/docs/packages-tokens-installation--docs&anchor=fonts).
 
 ### Model Context Protocol (MCP)
 
@@ -68,6 +72,8 @@ npm install --save-dev @solid-design-system/mcp
   }
 }
 ```
+
+3. In VS Code, run **MCP: List Servers** from the Command Palette, select `solid`, and start it if needed. Confirm trust if prompted. In Chat, open **Configure Tools** and verify that the Solid tools are available.
 
 See [MCP Installation](?path=/docs/packages-mcp-installation--docs) for Claude Desktop and GitLab Duo options.
 
@@ -103,7 +109,7 @@ Import the CSS in your global stylesheet. Theme Consumers must omit the theme im
 
 #### 4. Use Solid Design System
 
-You can now use Solid Design System components and styles
+You can now use Solid Design System components and styles:
 
 ```html
 <div class="sd-prose">
@@ -114,7 +120,7 @@ You can now use Solid Design System components and styles
 
 ### Create a Vue project with Vite and Solid Design System
 
-The following setup creates a Vue and TypeScript application with Tailwind CSS v4 and Solid Design System.
+The following setup creates a Vue and TypeScript application with Tailwind CSS v4 and Solid Design System. It requires [Node.js 20.19+ or 22.12+](https://vite.dev/guide/#scaffolding-your-first-vite-project).
 
 #### 1. Create the project
 
@@ -192,4 +198,10 @@ Start the development server:
 
 ```bash
 npm run dev
+```
+
+Before considering the setup complete, verify the production build:
+
+```bash
+npm run build
 ```

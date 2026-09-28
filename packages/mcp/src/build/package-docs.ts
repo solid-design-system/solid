@@ -11,6 +11,7 @@ import {
 } from '../utilities/index.js';
 
 const SKIP = new Set(['changelog', 'contributing', 'migration', 'index', '_rolesinfo']);
+const DOCS_BASE_URL = 'https://solid-design-system.fe.union-investment.de/docs/';
 
 /** Absolute path to the docs stories/packages directory */
 const DOCS_PACKAGES_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../../docs/src/stories/packages');
@@ -34,6 +35,8 @@ const cleanMdx = (raw: string): string =>
   stripMdxImports(raw)
     // Remove <Meta .../>  (single or multi-line)
     .replace(/<Meta\s[^>]*\/>/gs, '')
+    // Make Storybook links usable outside the documentation site
+    .replace(/(\(|href=["'])\?path=/g, `$1${DOCS_BASE_URL}?path=`)
     // Remove html:preview fences → plain html
     .replace(/```html:preview/g, '```html')
     // Remove any remaining JSX-style self-closing tags from storybook

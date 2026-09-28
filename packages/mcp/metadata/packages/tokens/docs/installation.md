@@ -244,7 +244,7 @@ top: -0.5em;
 
 ````
 
-That's it — your page is now themed. Head over to the <sd-link href="?path=/docs/packages-tokens-usage--docs">Usage page</sd-link> to learn how to switch themes, customize tokens, and create your own theme.
+That's it — your page is now themed. Head over to the <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-usage--docs">Usage page</sd-link> to learn how to switch themes, customize tokens, and create your own theme.
 
 </sd-accordion>
 
@@ -335,7 +335,7 @@ export default {
   </sd-tab-panel>
 </sd-tab-group>
 
-That's it — you're ready to build. Head over to the <sd-link href="?path=/docs/packages-tokens-usage--docs">Usage page</sd-link> to learn about local development, standalone fallbacks, and versioning coordination.
+That's it — you're ready to build. Head over to the <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-usage--docs">Usage page</sd-link> to learn about local development, standalone fallbacks, and versioning coordination.
 
   </sd-tab-panel>
 </sd-tab-group>
