@@ -1,4 +1,6 @@
-<sd-notification variant="info" open class="mb-4">Please notice that this component is only available for themes UI Light and UI Dark</sd-notification>
+<sd-notification variant="info" open>Please notice that this component is only available for themes UI Light and UI Dark</sd-notification>
+<br />
+<sd-notification variant="warning" open>The <b>neutral-100</b> variant is deprecated and will be removed in the next breaking release. Please migrate to another available variant.</sd-notification>
 /
 export default {
 title: 'Components/sd-brandshape',
@@ -55,7 +57,6 @@ return generateTemplate({ args });
 Use the`variant` attribute to set the color variant:
 
 - `primary` (default): Used on light backgrounds
-- `neutral-100`
 - `border-primary`: Used on light backgrounds
   <br>Change the fill color to match the background color
 - `image`: Used to show an image without additional content
@@ -66,10 +67,6 @@ Use the`variant` attribute to set the color variant:
 <div class="space-y-5">
   <sd-brandshape variant="primary">
     <div class="slot slot--border slot--text slot--inverted h-8 w-full">Default slot</div>
-  </sd-brandshape>
-
-  <sd-brandshape variant="neutral-100">
-    <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
   </sd-brandshape>
 
   <sd-brandshape variant="border-primary">
