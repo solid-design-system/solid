@@ -54,15 +54,15 @@ This is needed so that all selected properties are displayed in the DOM. This is
 
 ### Icons inside components
 
-We don't rely on external CDNs for icons that are part of components. Instead, we include them in the component library.
+Icons needed by components are bundled for the base themes; brand themes can use the corresponding icons from the CDN.
 
-- Include any icons necessary for development in `components/icon/library.system.ts`.
+- Include any icons necessary for development in `components/icon/library.internal.ts`.
 - Before doing so, [compress them and remove fills](https://jakearchibald.github.io/svgomg/) for consistency and ease of styling.
   1. Paste the content of your svg file (or upload it)
   2. Check all the boxes on the right panel except: "Show original" and "Remove xmlns".
   3. Adjust the precision toggle while making sure the icon does not become distorted (precision 1 and 2 usually work well)
   4. Click the copy button to copy the optimized svg content
-- You can then use `sd-icon` by specifying `library=“system”` and setting `name=“your-key”`. Remember to add a `label` for accessibility if needed.
+- You can then use `sd-icon` by specifying `library="_internal"` and setting `name="your-key"`. Remember to add a `label` for accessibility if needed.
 
 ### Adapting a Shoelace Component
 

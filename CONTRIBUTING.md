@@ -36,6 +36,11 @@
     - [Standard Release from Main Branch](#standard-release-from-main-branch)
     - [Feature Branch Deployment](#feature-branch-deployment)
     - [Docs Deployment](#docs-deployment)
+  - [Icons](#icons)
+    - [Icon Sets](#icon-sets)
+    - [Color vs. Artwork](#color-vs-artwork)
+    - [Delivery \& Maintenance](#delivery--maintenance)
+    - [Figma Export Pipeline](#figma-export-pipeline)
   - [SOLID Design Principles in Software Development](#solid-design-principles-in-software-development)
 
 ## Get Started
@@ -395,6 +400,67 @@ Workflow:
 ### Docs Deployment
 
 To perform a documentation-only deployment, add a changeset that includes the `docs` package. See the `Note` under [Standard Release from Main Branch](#standard-release-from-main-branch) for more details.
+
+## Icons
+
+### Icon Sets
+
+`<sd-icon>` selects an icon library with its `library` attribute (`default` when omitted). These are the built-in libraries:
+
+| Library                          | Purpose                                                                                                                                                                                                                              | Source                                                                           | Maintained by                                                  | Multi-Theming                                                                  |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `default`                        | General-purpose Union Investment `system/*` (interface) and `content/*` (illustrative) icons.                                                                                                                                        | Icon CDN, Union Investment folder.                                               | 🔴 Brand/Design team (via CELUM)                               | 🔴 No — always renders Union Investment artwork.                               |
+| `_internal`                      | Small set of icons needed by Solid components, such as chevrons, close and clock. Not intended as the public icon catalog.                                                                                                           | Bundled with the components for UI themes; icon CDN `internal/*` for VB, BB, SP. | 🟢 Solid team                                                  | 🟢 Yes — switches artwork for VB, BB and SP; UI themes use the bundled shapes. |
+| `sd-status-assets`               | Small, fixed set of status symbols (check, exclamation, close, info, clock, minus, questionmark) for the `status-badge` style; also reused as the checkmark/indeterminate glyph inside `checkbox`, `menu-item`, `option` and `step`. | Bundled with the components.                                                     | 🟢 Solid team                                                  | 🔴 No — identical artwork in every theme (see color note below).               |
+| `sd-multi-theming` (public beta) | Curated, cross-brand `system/*` and `content/*` icons for applications using multiple themes.                                                                                                                                        | Icon CDN, theme-specific folder.                                                 | 🟡 Solid team (pipeline) + Brand/Design team (assets in CELUM) | 🟢 Yes — switches artwork based on `--sd-theme`.                               |
+
+- `system/*` and `content/*` are icon name prefixes within the `default` and `sd-multi-theming` libraries, not separate libraries.
+- Applications can register their own libraries with `registerIconLibrary()` or supply an SVG URL through `src`.
+
+### Color vs. Artwork
+
+- The `color` property (`currentColor`, `primary`, `white`) controls an icon's color independently of which SVG is loaded.
+- Most libraries' mutators rewrite fixed fills/strokes to `currentColor` or an accent token, so icons can pick up the theme's color even when their artwork doesn't change.
+- `sd-status-assets` only changes this way: the same shapes render everywhere, colored via `currentColor`.
+- Only `_internal` and `sd-multi-theming` actually swap the SVG per theme.
+- A `--sd-icon--<name>` override always takes precedence over `_internal`'s theme lookup.
+
+### Delivery & Maintenance
+
+- `_internal` and `sd-status-assets` ship bundled with the components; the browser fetches `default`, `sd-multi-theming`, and branded `_internal` icons from the [icon CDN](https://celum-icons.fe.union-investment.de/) at runtime.
+- The Brand/Design team maintains theme-specific icons in CELUM; an automated pipeline exports them to the CDN every Friday.
+- A manual design review decides which icons make it into the multi-theming set, based on availability across all supported brands.
+
+### Figma Export Pipeline
+
+- All Solid icons live in a single Figma file, with a variant per theme (UI, VB, BB, SP, ...) for icons whose artwork changes between themes.
+- A `pnpm fetch:figma` script in the components package — mirroring `packages/tokens/scripts/figma/fetch-variables.js` — runs [`figma-export-assets`](https://github.com/mariohamann/figma-export-assets) locally or via a GitHub Action, authenticated with the same `FIGMA_TOKEN` repo secret already used for tokens.
+- The script runs two export configs against that file: one writes straight into the `_internal` and `sd-status-assets` source folders; the other writes into `.gitignored` folders matching CELUM's own structure.
+- The `_internal`/`sd-status-assets` export commits straight into the components package
+- For the CELUM-shaped export (`default`, `sd-multi-theming`), a maintainer uploads the output to CELUM manually, which then feeds into the regular CELUM export/release described above.
+
+```mermaid
+flowchart TD
+    A["Figma file<br/>(one variant per theme)"]
+
+    subgraph Repo["Inside this repo"]
+        direction TB
+        B["pnpm fetch:figma<br/>(scripts/figma/fetch-icons.js)"]
+        C["Write _internal &amp; sd-status-assets files"] --> D["Commit directly into<br/>the components package"]
+        E["Write CELUM-shaped folders"]
+    end
+
+    subgraph External["Outside this repo"]
+        direction TB
+        F["Upload to CELUM manually"] --> G["Run CELUM export pipeline<br/>(weekly)"]
+        G --> H["Serve from icon CDN"]
+    end
+
+    A --> B
+    B --> C
+    B --> E
+    E --> F
+```
 
 ## SOLID Design Principles in Software Development
 
