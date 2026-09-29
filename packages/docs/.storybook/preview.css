@@ -98,7 +98,7 @@ div[data-radix-scroll-area-viewport]:focus-visible {
 }
 
 /* Tables */
-.sbdocs .sbdocs-content table:not(.sd-table) {
+.sbdocs .sbdocs-content table:not(.sd-table):not(:where(.sd-prose table)) {
   tr,
   td {
     @apply border-neutral-400;
