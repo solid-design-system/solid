@@ -2,7 +2,7 @@ import React from 'react';
 import { Markdown } from '@storybook/addon-docs/blocks';
 
 export const ChangelogFormatter = ({ children }) => {
-  const formattedChildren = children.replace(/@solid-design-system\/[^/]+-v/g, '');
+  const formattedChildren = children.replace(/^# @solid-design-system\/[^/\n]+-v(?=\d)/gm, '# ');
 
   return (
     <>
