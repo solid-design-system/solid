@@ -8,6 +8,34 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const WEEKDAYS_TO_FETCH = [1, 2, 3, 4, 5]; // Monday to Friday
+const BACKFILL_REQUEST_CONCURRENCY = 10;
+
+const getRequestedStartDate = () => {
+  const fromIndex = process.argv.indexOf('--from');
+  const argument = process.argv.find(value => value.startsWith('--from='));
+  const value = fromIndex >= 0 ? process.argv[fromIndex + 1] : argument?.slice('--from='.length);
+
+  if (fromIndex >= 0 && !value) {
+    throw new Error('Missing --from date. Use --from YYYY-MM-DD.');
+  }
+
+  if (!value) {
+    return null;
+  }
+
+  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) {
+    throw new Error('Invalid --from date. Use YYYY-MM-DD.');
+  }
+
+  const [, year, month, day] = match;
+  const date = new Date(Number(year), Number(month) - 1, Number(day));
+  if (date.getFullYear() !== Number(year) || date.getMonth() !== Number(month) - 1 || date.getDate() !== Number(day)) {
+    throw new Error('Invalid --from date. Use a valid calendar date in YYYY-MM-DD format.');
+  }
+
+  return date;
+};
 
 const getChangelogsFilePath = libraryType =>
   path.resolve(path.join(__dirname, `../../data/celum-changelogs/${libraryType}.json`));
@@ -216,7 +244,7 @@ const shouldFetchDay = date => {
   return WEEKDAYS_TO_FETCH.includes(date.getDay());
 };
 
-const fetchIconsForTheme = async (libraryType, theme, iconTypes) => {
+const fetchIconsForTheme = async (libraryType, theme, iconTypes, requestedStartDate) => {
   console.info(`  Fetching changelogs for ${theme}...`);
 
   try {
@@ -237,40 +265,65 @@ const fetchIconsForTheme = async (libraryType, theme, iconTypes) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    const currentDate = new Date(lastCheck);
-    currentDate.setDate(currentDate.getDate() + 1);
+    const currentDate = requestedStartDate ? new Date(requestedStartDate) : new Date(lastCheck);
+    if (!requestedStartDate) {
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
     currentDate.setHours(0, 0, 0, 0);
 
     let fetchedAny = false;
+    const datesToFetch = [];
 
-    // eslint-disable-next-line no-unmodified-loop-condition -- currentDate and today are mutated in place via Date setters
+    // eslint-disable-next-line no-unmodified-loop-condition -- currentDate is mutated in place via Date setters
     while (currentDate <= today) {
       if (shouldFetchDay(currentDate)) {
-        console.info(`    ${formatDate(currentDate, true)}`);
-
-        for (const type of iconTypes) {
-          const changelog = await fetchChangelog(theme, currentDate, type);
-
-          if (changelog) {
-            const newIcons = getNewIcons([changelog]);
-
-            if (newIcons.length > 0) {
-              console.info(`      ${newIcons.length} icons (${type})`);
-
-              const metadata = await fetchNewIconsMetadata(theme, type, newIcons);
-              const enrichedChangelog = updateChangelogWithMetadata(changelog, metadata);
-
-              if (!themeData[type]) {
-                themeData[type] = [];
-              }
-              themeData[type].push(enrichedChangelog);
-              fetchedAny = true;
-            }
-          }
-        }
+        datesToFetch.push(new Date(currentDate));
       }
 
       currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    const dateBatchSize = requestedStartDate
+      ? Math.max(1, Math.floor(BACKFILL_REQUEST_CONCURRENCY / iconTypes.length))
+      : 1;
+    for (let offset = 0; offset < datesToFetch.length; offset += dateBatchSize) {
+      const dateBatch = datesToFetch.slice(offset, offset + dateBatchSize);
+      const batchResults = await Promise.all(
+        dateBatch.map(async date => ({
+          date,
+          changelogs: await Promise.all(iconTypes.map(type => fetchChangelog(theme, date, type)))
+        }))
+      );
+
+      for (const { date, changelogs } of batchResults) {
+        console.info(`    ${formatDate(date, true)}`);
+
+        for (let index = 0; index < iconTypes.length; index += 1) {
+          const type = iconTypes[index];
+          const changelog = changelogs[index];
+          if (!changelog || !Object.values(changelog.icons).some(icons => icons.length > 0)) {
+            continue;
+          }
+
+          if (!themeData[type]) {
+            themeData[type] = [];
+          }
+          if (themeData[type].some(existingChangelog => existingChangelog.date === changelog.date)) {
+            continue;
+          }
+
+          const newIcons = getNewIcons([changelog]);
+          if (newIcons.length > 0) {
+            console.info(`      ${newIcons.length} icons (${type})`);
+          }
+
+          const metadata = await fetchNewIconsMetadata(theme, type, newIcons);
+          const enrichedChangelog = updateChangelogWithMetadata(changelog, metadata);
+          themeData[type].push(enrichedChangelog);
+          themeData[type].sort((left, right) => left.date.localeCompare(right.date));
+          fetchedAny = true;
+        }
+      }
     }
 
     if (fetchedAny || today > lastCheck) {
@@ -287,19 +340,24 @@ const fetchIconsForTheme = async (libraryType, theme, iconTypes) => {
   }
 };
 
-const fetchIconsForLibrary = async (libraryType, { themes, iconTypes }) => {
+const fetchIconsForLibrary = async (libraryType, { themes, iconTypes }, requestedStartDate) => {
   console.info(`\n ${libraryType}`);
 
   for (const theme of themes) {
-    await fetchIconsForTheme(libraryType, theme, iconTypes);
+    await fetchIconsForTheme(libraryType, theme, iconTypes, requestedStartDate);
   }
 };
 
 const main = async () => {
-  console.info('Starting icon changelog fetch for all libraries...');
+  const requestedStartDate = getRequestedStartDate();
+  console.info(
+    requestedStartDate
+      ? `Starting icon changelog backfill from ${formatDate(requestedStartDate, true)}...`
+      : 'Starting icon changelog fetch for all libraries...'
+  );
 
   for (const [libraryType, library] of Object.entries(LIBRARIES)) {
-    await fetchIconsForLibrary(libraryType, library);
+    await fetchIconsForLibrary(libraryType, library, requestedStartDate);
   }
 
   console.info('\n Icon changelog fetch completed!');

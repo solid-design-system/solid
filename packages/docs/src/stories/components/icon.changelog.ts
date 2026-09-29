@@ -1,8 +1,9 @@
 // Shared renderers for the three MDX changelog pages.
 // @ts-nocheck
 import '../../../../components/src/solid-components';
-import { html } from 'lit';
+import { html, render } from 'lit';
 import { until } from 'lit/directives/until.js';
+import { ref } from 'lit/directives/ref.js';
 import { getThemeAttributes } from '../../../.storybook/addons/theme-generator/theme-attributes';
 import {
   CDN_FOLDER_TO_THEME_KEY,
@@ -40,7 +41,7 @@ const selectedIcons = new Map();
 const selectedDateGroups = new Set();
 const selectedThemeKey = { current: null };
 
-const selectionKey = (dateGroup, url) => `${dateGroup}||${url}`;
+const selectionKey = (dateGroup, url, iconType) => `${dateGroup}||${iconType}||${url}`;
 const resetSelectionForTheme = currentThemeKey => {
   if (!currentThemeKey || currentThemeKey === selectedThemeKey.current) return;
   selectedThemeKey.current = currentThemeKey;
@@ -62,18 +63,21 @@ const syncSelectionUi = () => {
   rowCheckboxes.forEach(checkbox => {
     const url = checkbox.dataset.iconUrl;
     const group = checkbox.dataset.dateGroup;
-    applyCheckboxState(checkbox, !!url && selectedIcons.has(selectionKey(group, url)));
+    const iconType = checkbox.dataset.iconType;
+    applyCheckboxState(checkbox, !!url && selectedIcons.has(selectionKey(group, url, iconType)));
   });
 
   // Exclude row checkboxes, which also carry data-date-group for grouping purposes.
   const dateCheckboxes = document.querySelectorAll('sd-checkbox[data-date-group]:not([data-icon-url])');
   dateCheckboxes.forEach(checkbox => {
     const group = checkbox.dataset.dateGroup;
-    const groupUrls = [...document.querySelectorAll(`sd-checkbox[data-icon-url][data-date-group="${group}"]`)].map(
-      item => item.dataset.iconUrl
+    const groupIcons = [...document.querySelectorAll(`sd-checkbox[data-icon-url][data-date-group="${group}"]`)].map(
+      item => ({ url: item.dataset.iconUrl, iconType: item.dataset.iconType })
     );
-    const selectedCount = groupUrls.filter(url => selectedIcons.has(selectionKey(group, url))).length;
-    const isFullySelected = groupUrls.length > 0 && selectedCount === groupUrls.length;
+    const selectedCount = groupIcons.filter(({ url, iconType }) =>
+      selectedIcons.has(selectionKey(group, url, iconType))
+    ).length;
+    const isFullySelected = groupIcons.length > 0 && selectedCount === groupIcons.length;
     const isPartiallySelected = selectedCount > 0 && !isFullySelected;
     applyCheckboxState(checkbox, isFullySelected || selectedDateGroups.has(group), isPartiallySelected);
   });
@@ -90,10 +94,17 @@ const updateSelectedDownloadButton = () => {
 };
 
 const syncDateSelectionState = (group, icons) => {
-  const urls = [...new Set((icons ?? []).map(icon => iconSvgUrl(icon)).filter(Boolean))];
-  if (!group || !urls.length) return;
+  const keys = new Set(
+    (icons ?? [])
+      .map(({ icon, iconType }) => {
+        const url = iconSvgUrl(icon);
+        return url ? selectionKey(group, url, iconType) : null;
+      })
+      .filter(Boolean)
+  );
+  if (!group || !keys.size) return;
 
-  const isFullySelected = urls.every(url => selectedIcons.has(selectionKey(group, url)));
+  const isFullySelected = [...keys].every(key => selectedIcons.has(key));
   if (isFullySelected) {
     selectedDateGroups.add(group);
   } else {
@@ -105,7 +116,7 @@ const toggleIconSelection = (icon, checked, dateGroup, groupIcons, date, iconTyp
   const url = iconSvgUrl(icon);
   if (!url) return;
 
-  const key = selectionKey(dateGroup, url);
+  const key = selectionKey(dateGroup, url, iconType);
   if (checked) {
     selectedIcons.set(key, { url, category: dateGroup.split('::').pop(), date, iconType });
   } else {
@@ -120,26 +131,37 @@ const toggleIconSelection = (icon, checked, dateGroup, groupIcons, date, iconTyp
 };
 
 const getDateSelectionState = (icons, dateGroup) => {
-  const urls = icons.map(icon => iconSvgUrl(icon)).filter(Boolean);
-  if (!urls.length) return { checked: false, indeterminate: false };
+  const keys = icons
+    .map(({ icon, iconType }) => {
+      const url = iconSvgUrl(icon);
+      return url ? selectionKey(dateGroup, url, iconType) : null;
+    })
+    .filter(Boolean);
+  if (!keys.length) return { checked: false, indeterminate: false };
 
-  const selectedCount = urls.filter(url => selectedIcons.has(selectionKey(dateGroup, url))).length;
+  const selectedCount = keys.filter(key => selectedIcons.has(key)).length;
   return {
-    checked: selectedCount === urls.length,
-    indeterminate: selectedCount > 0 && selectedCount < urls.length
+    checked: selectedCount === keys.length,
+    indeterminate: selectedCount > 0 && selectedCount < keys.length
   };
 };
 
-const toggleDateSelection = (icons, checked, dateGroup, category, date, iconType) => {
-  const urls = [...new Set(icons.map(icon => iconSvgUrl(icon)).filter(Boolean))];
+const toggleDateSelection = (icons, checked, dateGroup, category, date) => {
+  const iconsByKey = new Map();
+  icons.forEach(({ icon, iconType }) => {
+    const url = iconSvgUrl(icon);
+    if (url) {
+      iconsByKey.set(selectionKey(dateGroup, url, iconType), { url, iconType });
+    }
+  });
 
-  if (!urls.length) return;
+  if (!iconsByKey.size) return;
 
   if (checked) {
-    urls.forEach(url => selectedIcons.set(selectionKey(dateGroup, url), { url, category, date, iconType }));
+    iconsByKey.forEach(({ url, iconType }, key) => selectedIcons.set(key, { url, category, date, iconType }));
     if (dateGroup) selectedDateGroups.add(dateGroup);
   } else {
-    urls.forEach(url => selectedIcons.delete(selectionKey(dateGroup, url)));
+    iconsByKey.forEach((_, key) => selectedIcons.delete(key));
     if (dateGroup) selectedDateGroups.delete(dateGroup);
   }
 
@@ -215,8 +237,9 @@ const renderIconRow = (icon, iconType, dateGroup, groupIcons, date) => {
               size="sm"
               aria-label="Select ${identifier}"
               data-icon-url=${iconSvgUrl(icon) ?? ''}
+              data-icon-type=${iconType}
               data-date-group=${dateGroup}
-              ?checked=${selectedIcons.has(selectionKey(dateGroup, iconSvgUrl(icon)))}
+              ?checked=${selectedIcons.has(selectionKey(dateGroup, iconSvgUrl(icon), iconType))}
               @sd-change=${event => toggleIconSelection(icon, event.target.checked, dateGroup, groupIcons, date, iconType)}
             ></sd-checkbox>
           </td>`
@@ -228,7 +251,13 @@ const renderIconRow = (icon, iconType, dateGroup, groupIcons, date) => {
             ${
               iconSvgUrl(icon)
                 ? html`<div class="w-5 h-5">
-                    <img src=${iconSvgUrl(icon)} alt="" class="sd-icon-changelog-preview w-full h-full" />
+                    <img
+                      src=${iconSvgUrl(icon)}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      class="sd-icon-changelog-preview w-full h-full"
+                    />
                   </div>`
                 : ''
             }
@@ -261,7 +290,7 @@ const renderIconRow = (icon, iconType, dateGroup, groupIcons, date) => {
 };
 
 // Accordion: categories (Added/Modified/Removed)
-const renderCategorySection = (label, icons, iconType, dateGroup, categoryKey, date) => {
+const renderCategorySection = (label, icons, dateGroup, categoryKey, date) => {
   if (icons.length === 0) return '';
 
   const categoryGroupKey = `${dateGroup}::${categoryKey}`;
@@ -288,7 +317,7 @@ const renderCategorySection = (label, icons, iconType, dateGroup, categoryKey, d
                     ?checked=${allSelected}
                     ?indeterminate=${partiallySelected}
                     @sd-change=${event =>
-                      toggleDateSelection(icons, event.target.checked, categoryGroupKey, categoryKey, date, iconType)}
+                      toggleDateSelection(icons, event.target.checked, categoryGroupKey, categoryKey, date)}
                   >
                     <span class="sr-only">Select all ${label}</span>
                   </sd-checkbox>
@@ -300,21 +329,36 @@ const renderCategorySection = (label, icons, iconType, dateGroup, categoryKey, d
         </tr>
       </thead>
       <tbody>
-        ${icons.map(icon => renderIconRow(icon, iconType, categoryGroupKey, icons, date))}
+        ${icons.map(({ icon, iconType }) => renderIconRow(icon, iconType, categoryGroupKey, icons, date))}
       </tbody>
     </table>
   </div>`;
 };
 
-// Accordion: date entry
-const renderEntry = (entry, isLatest, entryIndex) => {
-  const dateGroupKey = `${entryIndex}:${entry.date}::${entry.iconType}`;
+const renderEntryContents = (entry, container) => {
+  if (!container || container.dataset.rendered) return;
 
-  return html`<sd-accordion ?open=${isLatest}>
+  container.dataset.rendered = 'true';
+  const dateGroupKey = entry.date;
+
+  render(
+    html`
+      ${renderCategorySection('Added Icons', entry.icons.added, dateGroupKey, 'added', entry.date)}
+      ${renderCategorySection('Modified Icons', entry.icons.modified, dateGroupKey, 'modified', entry.date)}
+      ${renderCategorySection('Removed Icons', entry.icons.removed, dateGroupKey, 'removed', entry.date)}
+    `,
+    container
+  );
+};
+
+// Accordion: date entry
+const renderEntry = (entry, isLatest) => {
+  return html`<sd-accordion
+    ?open=${isLatest}
+    @sd-show=${event => renderEntryContents(entry, event.currentTarget.querySelector('[data-entry-content]'))}
+  >
     <h2 slot="summary" class="text-base font-normal">${entry.date}</h2>
-    ${renderCategorySection('Added Icons', entry.icons.added, entry.iconType, dateGroupKey, 'added', entry.date)}
-    ${renderCategorySection('Modified Icons', entry.icons.modified, entry.iconType, dateGroupKey, 'modified', entry.date)}
-    ${renderCategorySection('Removed Icons', entry.icons.removed, entry.iconType, dateGroupKey, 'removed', entry.date)}
+    <div data-entry-content ${ref(element => isLatest && renderEntryContents(entry, element))}></div>
   </sd-accordion>`;
 };
 
@@ -339,7 +383,16 @@ const renderLibraryAsync = async library => {
       return mergeChangelogEntries(committed, fresh).map(entry => ({ ...entry, iconType: type }));
     })
   );
-  const entries = entriesByType.flat().sort((a, b) => b.date.localeCompare(a.date));
+  const entriesByDate = new Map();
+  entriesByType.flat().forEach(({ date, icons, iconType }) => {
+    if (!entriesByDate.has(date)) {
+      entriesByDate.set(date, { date, icons: { added: [], modified: [], removed: [] } });
+    }
+    Object.entries(icons).forEach(([category, categoryIcons]) => {
+      entriesByDate.get(date).icons[category].push(...categoryIcons.map(icon => ({ icon, iconType })));
+    });
+  });
+  const entries = Array.from(entriesByDate.values()).sort((a, b) => b.date.localeCompare(a.date));
   return html`<div class="sd-icon-changelog">
     ${darkThemePreviewStyles}
     <div
@@ -370,9 +423,7 @@ const renderLibraryAsync = async library => {
       ${
         entries.length === 0
           ? html`<p class="text-sm text-neutral-500">No changes found.</p>`
-          : html`<sd-accordion-group
-              >${entries.map((entry, index) => renderEntry(entry, index === 0, index))}</sd-accordion-group
-            >`
+          : html`<sd-accordion-group>${entries.map(entry => renderEntry(entry, false))}</sd-accordion-group>`
       }
     </div>
   </div>`;
