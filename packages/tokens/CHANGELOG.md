@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 7.5.0
+
+### Minor Changes
+
+- Added `sd-interactive--variant-secondary` to `sd-interactive`. Updated the sd-dialog, sd-drawer and sd-notification to use this variable. _[`#3327`](https://github.com/solid-design-system/solid/pull/3327) [`59d6c7d`](https://github.com/solid-design-system/solid/commit/59d6c7de9af1384a8f11200503b50f1c6b8f2a33) [@balco0110](https://github.com/balco0110)_
+
 ## 7.4.3
 
 ### Patch Changes

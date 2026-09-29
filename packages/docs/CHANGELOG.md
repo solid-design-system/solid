@@ -1,5 +1,18 @@
 # @solid-design-system/docs
 
+## 3.6.0
+
+### Minor Changes
+
+- Added `sd-interactive--variant-secondary` to `sd-interactive`. Updated the sd-dialog, sd-drawer and sd-notification to use this variable. _[`#3327`](https://github.com/solid-design-system/solid/pull/3327) [`59d6c7d`](https://github.com/solid-design-system/solid/commit/59d6c7de9af1384a8f11200503b50f1c6b8f2a33) [@balco0110](https://github.com/balco0110)_
+- Extended the `sd-input` and `sd-combobox` templates. _[`#3359`](https://github.com/solid-design-system/solid/pull/3359) [`eab6f59`](https://github.com/solid-design-system/solid/commit/eab6f59dce76dc023825b7c790afeba02367e461) [@balco0110](https://github.com/balco0110)_
+
+### Patch Changes
+
+- Removed unnecessary style classes from the `sd-prose` docs. _[`#3350`](https://github.com/solid-design-system/solid/pull/3350) [`28c3a43`](https://github.com/solid-design-system/solid/commit/28c3a43788236e36923935a307836b0e2ee9e681) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+- Updated the `sd-notification` documentation. _[`#3335`](https://github.com/solid-design-system/solid/pull/3335) [`e847576`](https://github.com/solid-design-system/solid/commit/e847576c3fe0af1e88c172e5b3a912396554314a) [@balco0110](https://github.com/balco0110)_
+- Removed the `neutral-100` variant of `sd-brandshape` from the documentation. _[`#3362`](https://github.com/solid-design-system/solid/pull/3362) [`d189c50`](https://github.com/solid-design-system/solid/commit/d189c503a1b8024267782dee88a5a8ee0c9d48c7) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 3.5.2
 
 ### Patch Changes
