@@ -103,7 +103,7 @@ import '@solid-design-system/components/dist/solid-components.js';
 
 #### 3. Import the styling
 
-Import the CSS in your global stylesheet. This Union Investment example uses the `ui-light` theme and Frutiger Neue fonts from the CDN. Replace `latest` in the font URLs with the approved, pinned resource version for your project. For other themes and font setups, see [Fonts and brand examples](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-installation--docs&anchor=fonts). Theme Consumers must omit theme CSS. For older-version requirements, see the [Older versions accordion](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-quickstart--docs&anchor=older-versions).
+Import the CSS in your global stylesheet. This example uses the `ui-light` theme and Frutiger Neue fonts from the CDN. Replace `latest` in the font URLs with the approved version for your project. For other themes and font setups, see [Fonts and brand examples](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-installation--docs&anchor=fonts).
 
 ```css
 @import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
@@ -141,6 +141,8 @@ body {
     sans-serif;
 }
 ```
+
+For older-version, see the [Older versions requirements](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-quickstart--docs&anchor=older-versions).
 
 #### 4. Use Solid Design System
 
