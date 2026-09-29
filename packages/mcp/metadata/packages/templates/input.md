@@ -13,7 +13,7 @@ components:
 version: 1.0.0
 ---
 
-## Template: Input With Currency
+## Template: Input with Currency
 
 ```html
 <div class="max-w-[300px]">
@@ -23,7 +23,7 @@ version: 1.0.0
 </div>
 ```
 
-## Template: Input With Currency Stepper
+## Template: Input with Currency Stepper
 
 ```html
 <div class="max-w-[300px]">
@@ -42,7 +42,7 @@ version: 1.0.0
 </script>
 ```
 
-## Template: Input With Floating Label
+## Template: Input with Floating Label
 
 ```html
 <div class="max-w-[300px]">
@@ -50,56 +50,43 @@ version: 1.0.0
 </div>
 ```
 
-## Template: Input With Visually Hidden Label
+## Template: Input with Visually Hidden Label
 
 ```html
-<div class="flex flex-col gap-8">
-  <section>
-    <h3 class="text-base font-bold mb-4">Search input</h3>
+<h4 class="text-primary font-bold text-xl mb-4">Transactions</h4>
 
-    <p class="text-sm mb-8 max-w-[620px]">
-      This example relies visually on the heading, search icon, and placeholder to communicate purpose, and the hidden
-      label “Search transactions” for accessibility.
-    </p>
+<div class="max-w-[520px]">
+  <sd-input type="search" placeholder="Search by merchant, amount, or reference">
+    <span slot="label" class="sr-only">Search transactions</span>
+  </sd-input>
+</div>
+```
 
-    <h4 class="text-primary font-bold text-xl mb-4">Transactions</h4>
+## Template: Input in a clear context
 
-    <div class="max-w-[520px]">
-      <sd-input type="search" placeholder="Search by merchant, amount, or reference">
-        <span slot="label" class="sr-only">Search transactions</span>
+```html
+<style>
+  #input-in-a-clear-context {
+    font-size: 14px;
+    line-height: 24px;
+  }
+</style>
+
+<div class="sd-container sd-container--variant-primary-100 px-4 py-16 lg:px-10 lg:py-24">
+  <div class="flex flex-col gap-16 lg:flex-row lg:items-center">
+    <div class="flex flex-col items-start gap-4 lg:flex-1 lg:flex-row">
+      <sd-icon name="content/newsletter" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
+
+      <h4 class="sd-headline sd-headline--size-3xl">More Solid. More perks. Don't miss out and subscribe today!</h4>
+    </div>
+
+    <div class="flex w-full flex-col items-start gap-4 lg:flex-1">
+      <sd-input class="w-full" type="email" placeholder="Email address">
+        <span slot="label" class="sr-only">Email address</span>
       </sd-input>
+
+      <sd-button variant="cta" size="sm">Subscribe to newsletter</sd-button>
     </div>
-  </section>
-
-  <section>
-    <h3 class="text-base font-bold mb-4">Input in a clear context</h3>
-
-    <p class="text-sm mb-8 max-w-[620px]">
-      This example relies visually on the surrounding subscription content to communicate purpose and the hidden label
-      “Email address” for accessibility.
-    </p>
-
-    <div class="flex flex-col gap-4">
-      <div class="sd-container sd-container--variant-primary-100">
-        <div class="flex flex-col gap-16 lg:flex-row lg:items-center">
-          <div class="flex flex-col items-start gap-4 lg:flex-1 lg:flex-row">
-            <sd-icon name="content/newsletter" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
-
-            <h4 class="sd-headline sd-headline--size-3xl">
-              More Solid. More perks. Don't miss out and subscribe today!
-            </h4>
-          </div>
-
-          <div class="flex w-full flex-col items-start gap-4 lg:flex-1">
-            <sd-input class="w-full" type="email" placeholder="Email address">
-              <span slot="label" class="sr-only">Email address</span>
-            </sd-input>
-
-            <sd-button variant="cta" size="sm">Subscribe to newsletter</sd-button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
 </div>
 ```

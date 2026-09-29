@@ -315,14 +315,14 @@
     "tags": ["verstecken", "komprimieren", "Seitenleiste"]
   },
   {
-    "technicalId": "bug",
-    "displayNameDe": "Fehler",
-    "tags": ["Mangel", "Problem"]
-  },
-  {
     "technicalId": "shopping-cart",
     "displayNameDe": "Einkaufswagen",
     "tags": ["Onlineshop", "Warenkorb", "Erwerb", "Einkauf"]
+  },
+  {
+    "technicalId": "bug",
+    "displayNameDe": "Fehler",
+    "tags": ["Mangel", "Problem"]
   },
   {
     "technicalId": "eraser",
@@ -615,24 +615,24 @@
     "tags": ["klicken", "auswählen"]
   },
   {
-    "technicalId": "layers",
-    "displayNameDe": "Ebenen",
-    "tags": ["gruppieren", "Stapel", "mehrere Folien erzeugen"]
-  },
-  {
     "technicalId": "file-read-out",
     "displayNameDe": "Dokument vorlesen",
     "tags": ["vorlesen", "Audio", "Lautstärke"]
   },
   {
-    "technicalId": "collapse-left",
-    "displayNameDe": "einklappen links",
-    "tags": ["komprimieren", "verstecken", "Seitenleiste"]
+    "technicalId": "layers",
+    "displayNameDe": "Ebenen",
+    "tags": ["gruppieren", "Stapel", "mehrere Folien erzeugen"]
   },
   {
     "technicalId": "file-wai",
     "displayNameDe": "Dokument wAI",
     "tags": ["Dokument", "Datei", "wAI"]
+  },
+  {
+    "technicalId": "collapse-left",
+    "displayNameDe": "einklappen links",
+    "tags": ["komprimieren", "verstecken", "Seitenleiste"]
   },
   {
     "technicalId": "download",
@@ -1045,14 +1045,14 @@
     "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
   },
   {
-    "technicalId": "password",
-    "displayNameDe": "Passwort",
-    "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
-  },
-  {
     "technicalId": "e-mail-send",
     "displayNameDe": "E-Mail abschicken",
     "tags": ["Brief", "E-Mail", "Kommunikation"]
+  },
+  {
+    "technicalId": "password",
+    "displayNameDe": "Passwort",
+    "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
   },
   {
     "technicalId": "e-mail-exclamation",
