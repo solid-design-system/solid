@@ -19,7 +19,6 @@ There is no single package that every project must install. Choose packages base
 - [`@solid-design-system/styles`](?path=/docs/packages-styles--docs): Smaller component library, built solely with CSS.
 - [`@solid-design-system/tokens`](?path=/docs/packages-tokens--docs): Design tokens (variables) and themes, install when your project uses token utilities, Tailwind utilities, or an explicit/custom theme.
 
-For components and styles v7 or later, or v4 or earlier, a project can use the built-in `ui-light` fallback without importing a theme. Projects using versions v5 through v6 must install `tokens` and import `ui-light.css`. Install `tokens` for v7 or later when the project uses token utilities, Tailwind utilities, or an explicit/custom theme.
 The `components`, `styles`, and `tokens` packages always share the same version.
 Install or update them together when you use more than one.
 
@@ -43,9 +42,19 @@ Before installing SDS, determine whether your project is a Theme Host or a Theme
 - **Theme Host:** Owns the page or document and may load one explicit theme for the whole page. Every component and embedded application inherits it automatically.
 - **Theme Consumer:** Is a widget, microfrontend, or application embedded in a host page. It inherits the host's theme and must not load another theme.
 
-A standalone application usually fulfills both roles: it may load an explicit theme as the Theme Host and uses its tokens as a Theme Consumer. With component and style versions v7 or later, or v4 or earlier, it can instead use the built-in `ui-light` fallback. Versions v5 through v6 must import `ui-light.css`.
+A standalone application usually fulfills both roles: it owns the page as a Theme Host and uses SDS components and tokens as a Theme Consumer. Current components and styles provide a built-in `ui-light` fallback, so a theme import is only needed when you want an explicit or custom theme. Load that theme once as the Theme Host; all components and embedded applications on the page inherit it. Embedded Theme Consumers must not load theme CSS. Install `tokens` when you use its token utilities or other package assets.
 
-Theme Hosts need to install `tokens` and load a theme when they use token utilities or an explicit/custom theme. Components and styles v7 or later, or v4 or earlier, provide built-in fallback values defaulting to `ui-light`; versions v5 through v6 must import `ui-light.css`. Theme Consumers must not load theme CSS and should install `tokens` only when they use its token utilities or other package assets.
+<sd-accordion id="older-versions" summary="Older versions">
+  For component and style versions v5 through v6, load a theme of your choice as the default. If you import a theme from npm, install `@solid-design-system/tokens` and add that theme's CSS to your global stylesheet. If you serve the theme CSS from another location, you do not need to install `tokens`.
+
+For example, to use the `ui-light` theme:
+
+```css
+@import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
+```
+
+Versions v4 or earlier can use the built-in `ui-light` fallback without importing a theme.
+</sd-accordion>
 
 Solid Design System does not ship fonts. The Theme Host must load the fonts required by its brand, either from its approved CDN or by self-hosting them. Confirm the required brand and theme before choosing a font source. See [Tokens Installation](?path=/docs/packages-tokens-installation--docs) for detailed theming guidance and [font setup and brand examples](?path=/docs/packages-tokens-installation--docs&anchor=fonts).
 
@@ -83,7 +92,7 @@ See [MCP Installation](?path=/docs/packages-mcp-installation--docs) for Claude D
 
 #### 1. Install the packages
 
-Install the packages you need. In this example, the project uses components and styles. The `tokens` package is included when the project uses token utilities, Tailwind utilities, or an explicit/custom theme:
+Install the packages used in this Union Investment example. The `tokens` package provides the explicit theme CSS imported below, as well as token utilities:
 
 ```bash
 npm install @solid-design-system/components @solid-design-system/styles @solid-design-system/tokens
@@ -99,12 +108,46 @@ import '@solid-design-system/components/dist/solid-components.js';
 
 #### 3. Import the styling
 
-Import the CSS in your global stylesheet. For component and style versions v7 or later, or v4 or earlier, the `ui-light` theme import is optional because of the built-in fallback. For versions v5 through v6, include the `ui-light.css` import. Theme Consumers must omit the theme import.
+Import the CSS in your global stylesheet. This example uses the `ui-light` theme and Frutiger Neue fonts from the CDN. Replace `latest` in the font URLs with the approved version for your project. For other themes and font setups, see [Fonts and brand examples](?path=/docs/packages-tokens-installation--docs&anchor=fonts).
 
 ```css
+@import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
 @import '@solid-design-system/styles/dist/solid-styles.css';
 @import '@solid-design-system/components/dist/solid-components.css';
+
+@font-face {
+  font-family: 'Frutiger Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-Bk.woff2')
+    format('woff2');
+}
+
+@font-face {
+  font-family: 'Frutiger Neue';
+  font-style: italic;
+  font-weight: 400;
+  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-BkIt.woff2')
+    format('woff2');
+}
+
+body {
+  font-family:
+    'Frutiger Neue',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans',
+    sans-serif;
+}
 ```
+
+For older-version, see the [Older versions requirements](?path=/docs/packages-quickstart--docs&anchor=older-versions).
 
 #### 4. Use Solid Design System
 
