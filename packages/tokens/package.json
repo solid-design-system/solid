@@ -14,6 +14,7 @@
     "postversion": "pnpm build",
     "fetch:figma": "node ./scripts/figma/fetch-variables.js && pnpm build",
     "fetch:icons-celum": "node ./scripts/celum/fetch-celum-changelog.mjs",
+    "fetch:icons-celum:from": "node ./scripts/celum/fetch-celum-changelog.mjs --from",
     "analyze:variables": "node scripts/analyze-variables.mjs"
   },
   "files": [
