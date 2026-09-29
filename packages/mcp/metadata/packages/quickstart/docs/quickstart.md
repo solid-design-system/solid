@@ -10,20 +10,20 @@ There is no single package that every project must install. Choose packages base
 
 ### Application packages
 
-- [`@solid-design-system/components`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components--docs): Install when you use reusable Solid web components.
-- [`@solid-design-system/styles`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-styles--docs): Install when you use Solid components built solely with CSS.
-- [`@solid-design-system/tokens`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens--docs): Install when your project provides a theme or uses Solid design token utilities, including Tailwind utilities.
+- [`@solid-design-system/components`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components--docs): Component library consisting of reusable web components.
+- [`@solid-design-system/styles`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-styles--docs): Smaller component library, built solely with CSS.
+- [`@solid-design-system/tokens`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens--docs): Design tokens (variables) and themes, install when your project uses token utilities, Tailwind utilities, or an explicit/custom theme.
 
-Most applications that use Solid Design System components and styles, and provide their own theme, install all three packages.
+For components and styles v7 or later, or v4 or earlier, a project can use the built-in `ui-light` fallback without importing a theme. Projects using versions v5 through v6 must install `tokens` and import `ui-light.css`. Install `tokens` for v7 or later when the project uses token utilities, Tailwind utilities, or an explicit/custom theme.
 The `components`, `styles`, and `tokens` packages always share the same version.
 Install or update them together when you use more than one.
 
 ### Additional packages
 
-- [`@solid-design-system/placeholders`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-placeholders--docs): Install when prototypes, examples, or tests need placeholder text and license-free media.
-- [`@solid-design-system/theming`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-theming--docs): Install only when building custom themes with its color calculation utility. To use an existing Solid theme, install `tokens` instead.
-- [`@solid-design-system/mcp`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-mcp--docs): Install as a development dependency when coding agents need current Solid guidance and metadata.
-- [`@solid-design-system/eslint-plugin`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-eslint-plugin--docs): Install as a development dependency when you want Solid-specific lint rules.
+- [`@solid-design-system/placeholders`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-placeholders--docs): Placeholder text and license-free media.
+- [`@solid-design-system/theming`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-theming--docs): Color calculation tool for building custom themes (for existing SDS themes, use the `tokens` package).
+- [`@solid-design-system/mcp`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-mcp--docs): Model Context Protocol that provides coding agents access to current SDS guidance and metadata.
+- [`@solid-design-system/eslint-plugin`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-eslint-plugin--docs): Adds SDS-specific lint rules.
 
 Please check the installation documentation for [Components Installation](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components-installation--docs),
 [Styles Installation](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-styles-installation--docs),
@@ -35,14 +35,14 @@ for more details on prerequisites, multi-theming, versioning, setup, and usage.
 
 Before installing SDS, determine whether your project is a Theme Host or a Theme Consumer:
 
-- **Theme Host:** Owns the page or document and loads one theme for the whole page. Every component and embedded application inherits it automatically.
+- **Theme Host:** Owns the page or document and may load one explicit theme for the whole page. Every component and embedded application inherits it automatically.
 - **Theme Consumer:** Is a widget, microfrontend, or application embedded in a host page. It inherits the host's theme and must not load another theme.
 
-A standalone application usually fulfills both roles: it loads the theme as the Theme Host and uses its tokens as a Theme Consumer.
+A standalone application usually fulfills both roles: it may load an explicit theme as the Theme Host and uses its tokens as a Theme Consumer. With component and style versions v7 or later, or v4 or earlier, it can instead use the built-in `ui-light` fallback. Versions v5 through v6 must import `ui-light.css`.
 
-Theme Hosts must install `tokens` and load one theme. Theme Consumers must not load theme CSS and should install `tokens` only when they use its token utilities or other package assets.
+Theme Hosts need to install `tokens` and load a theme when they use token utilities or an explicit/custom theme. Components and styles v7 or later, or v4 or earlier, provide built-in fallback values defaulting to `ui-light`; versions v5 through v6 must import `ui-light.css`. Theme Consumers must not load theme CSS and should install `tokens` only when they use its token utilities or other package assets.
 
-Solid Design System does not ship fonts. The Theme Host must load the fonts required by its brand, either from its approved CDN or by self-hosting them. Confirm the required brand and theme before choosing a font source; do not guess. See [Tokens Installation](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-installation--docs) for detailed theming guidance and [font setup and brand examples](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-installation--docs&anchor=fonts).
+Solid Design System does not ship fonts. The Theme Host must load the fonts required by its brand, either from its approved CDN or by self-hosting them. Confirm the required brand and theme before choosing a font source. See [Tokens Installation](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-installation--docs) for detailed theming guidance and [font setup and brand examples](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-installation--docs&anchor=fonts).
 
 ### Model Context Protocol (MCP)
 
@@ -78,7 +78,7 @@ See [MCP Installation](https://solid-design-system.fe.union-investment.de/docs/?
 
 #### 1. Install the packages
 
-Install the packages you need. In this example, the project uses components and styles and is the Theme Host:
+Install the packages you need. In this example, the project uses components and styles. The `tokens` package is included when the project uses token utilities, Tailwind utilities, or an explicit/custom theme:
 
 ```bash
 npm install @solid-design-system/components @solid-design-system/styles @solid-design-system/tokens
@@ -94,10 +94,9 @@ import '@solid-design-system/components/dist/solid-components.js';
 
 #### 3. Import the styling
 
-Import the CSS in your global stylesheet. Theme Consumers must omit the theme import.
+Import the CSS in your global stylesheet. For component and style versions v7 or later, or v4 or earlier, the `ui-light` theme import is optional because of the built-in fallback. For versions v5 through v6, include the `ui-light.css` import. Theme Consumers must omit the theme import.
 
 ```css
-@import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
 @import '@solid-design-system/styles/dist/solid-styles.css';
 @import '@solid-design-system/components/dist/solid-components.css';
 ```
@@ -159,12 +158,11 @@ Replace `src/style.css` with:
 ```css
 @import 'tailwindcss';
 @import '@solid-design-system/tokens/dist/themes/tailwind.css';
-@import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
 @import '@solid-design-system/styles/dist/solid-styles.css';
 @import '@solid-design-system/components/dist/solid-components.css';
 ```
 
-The `tailwind.css` import exposes Solid tokens as Tailwind utilities. The `ui-light.css` import makes this application the Theme Host.
+The `tailwind.css` import exposes Solid tokens as Tailwind utilities. For component and style versions v7 or later, or v4 or earlier, the `ui-light.css` import is optional because those packages include built-in fallback values defaulting to `ui-light`. Versions v5 through v6 must include the `ui-light.css` import.
 
 #### 4. Register the components
 

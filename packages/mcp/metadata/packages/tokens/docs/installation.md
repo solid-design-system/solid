@@ -21,9 +21,9 @@ This page guides you through installing and setting up the `@solid-design-system
 npm install @solid-design-system/tokens
 ```
 
-## Import a theme
+## Optional: import an explicit theme
 
-Load at least one theme via NPM import. This only needs to be done **once per document**. Every component and embedded consumer on the page will automatically inherit the theme.
+For component and style versions v7 or later, or v4 or earlier, importing a theme is optional because built-in fallback values default to `ui-light`. Versions v5 through v6 must import a theme, such as `ui-light.css`. Import a different theme when you need an explicit or custom theme. This only needs to be done **once per document**. Every component and embedded consumer on the page will automatically inherit the theme.
 
 ```js
 import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';

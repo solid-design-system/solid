@@ -12,7 +12,7 @@ Solid Components is installed via npm. For environments without a bundler, see [
 
 ### Theme
 
-Solid Components come without any theme or font by default. Ensure to follow the installation guidelines from [@solid-design-system/tokens](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-installation--docs) to include a fitting theme in your project.
+Solid Components v7 or later, or v4 or earlier, include built-in fallback values defaulting to the `ui-light` theme, so importing a theme is not required for the default appearance. For versions v5 through v6, install `@solid-design-system/tokens` and import `ui-light.css`. Install and configure [@solid-design-system/tokens](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-installation--docs) when you use token utilities or need an explicit/custom theme. Solid does not provide fonts, please include the fonts required by your brand separately.
 
 ## Versioned vs. unversioned components
 
