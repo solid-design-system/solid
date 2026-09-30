@@ -16,6 +16,7 @@ export default {
 
 /**
  * ### Input with Currency Stepper
+ * Example of how to use a numeric input with a stepper control for currency values, formatted to two decimal places. This variant suits cases where users may want to increment or decrement the amount in precise steps rather than typing freely.
  */
 export const InputWithCurrencyStepper = {
   render: () =>
