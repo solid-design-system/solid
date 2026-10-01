@@ -5,13 +5,7 @@ import { html, render } from 'lit';
 import { until } from 'lit/directives/until.js';
 import { ref } from 'lit/directives/ref.js';
 import { getThemeAttributes } from '../../../.storybook/addons/theme-generator/theme-attributes';
-import {
-  CDN_FOLDER_TO_THEME_KEY,
-  fetchRecentChangelogEntries,
-  LIBRARIES,
-  mergeChangelogEntries,
-  THEME_LABELS
-} from '../../../scripts/celum/celum-changelog';
+import { CDN_FOLDER_TO_THEME_KEY, LIBRARIES, THEME_LABELS } from '../../../scripts/celum/celum-changelog';
 import defaultChangelogData from '../../../../tokens/data/celum-changelogs/default.json';
 import multiThemingChangelogData from '../../../../tokens/data/celum-changelogs/sd-multi-theming.json';
 import internalChangelogData from '../../../../tokens/data/celum-changelogs/sd-internal.json';
@@ -376,13 +370,7 @@ const renderLibraryAsync = async library => {
     </p>`;
   }
   const themeData = LIBRARY_DATA[library]?.[activeThemeKey] ?? {};
-  const entriesByType = await Promise.all(
-    iconTypes.map(async type => {
-      const committed = themeData[type] ?? [];
-      const fresh = await fetchRecentChangelogEntries(activeThemeKey, type, themeData.lastCheck);
-      return mergeChangelogEntries(committed, fresh).map(entry => ({ ...entry, iconType: type }));
-    })
-  );
+  const entriesByType = iconTypes.map(type => (themeData[type] ?? []).map(entry => ({ ...entry, iconType: type })));
   const entriesByDate = new Map();
   entriesByType.flat().forEach(({ date, icons, iconType }) => {
     if (!entriesByDate.has(date)) {
@@ -423,7 +411,9 @@ const renderLibraryAsync = async library => {
       ${
         entries.length === 0
           ? html`<p class="text-sm text-neutral-500">No changes found.</p>`
-          : html`<sd-accordion-group>${entries.map(entry => renderEntry(entry, false))}</sd-accordion-group>`
+          : html`<sd-accordion-group
+              >${entries.map((entry, index) => renderEntry(entry, index === 0))}</sd-accordion-group
+            >`
       }
     </div>
   </div>`;
