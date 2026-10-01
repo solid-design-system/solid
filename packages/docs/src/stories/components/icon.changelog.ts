@@ -1,6 +1,7 @@
 // Shared renderers for the three MDX changelog pages.
 // @ts-nocheck
 import '../../../../components/src/solid-components';
+import { downloadZip } from 'client-zip';
 import { html, render } from 'lit';
 import { until } from 'lit/directives/until.js';
 import { ref } from 'lit/directives/ref.js';
@@ -34,8 +35,11 @@ const formatLastCheckDate = date => (date ? new Intl.DateTimeFormat('de-DE').for
 const selectedIcons = new Map();
 const selectedDateGroups = new Set();
 const selectedThemeKey = { current: null };
+const selectedDownloadContext = { library: '', theme: '' };
 
 const selectionKey = (dateGroup, url, iconType) => `${dateGroup}||${iconType}||${url}`;
+const getDownloadIconName = icon => iconTechnicalId(icon) ?? iconName(icon);
+const getZipPathPart = value => value.replace(/[^a-zA-Z0-9._-]/g, '_');
 const resetSelectionForTheme = currentThemeKey => {
   if (!currentThemeKey || currentThemeKey === selectedThemeKey.current) return;
   selectedThemeKey.current = currentThemeKey;
@@ -112,7 +116,13 @@ const toggleIconSelection = (icon, checked, dateGroup, groupIcons, date, iconTyp
 
   const key = selectionKey(dateGroup, url, iconType);
   if (checked) {
-    selectedIcons.set(key, { url, category: dateGroup.split('::').pop(), date, iconType });
+    selectedIcons.set(key, {
+      url,
+      name: getDownloadIconName(icon),
+      category: dateGroup.split('::').pop(),
+      date,
+      iconType
+    });
   } else {
     selectedIcons.delete(key);
   }
@@ -152,7 +162,16 @@ const toggleDateSelection = (icons, checked, dateGroup, category, date) => {
   if (!iconsByKey.size) return;
 
   if (checked) {
-    iconsByKey.forEach(({ url, iconType }, key) => selectedIcons.set(key, { url, category, date, iconType }));
+    iconsByKey.forEach(({ url, iconType }, key) => {
+      const selectedIcon = icons.find(iconData => iconData.iconType === iconType && iconSvgUrl(iconData.icon) === url);
+      selectedIcons.set(key, {
+        url,
+        name: getDownloadIconName(selectedIcon.icon),
+        category,
+        date,
+        iconType
+      });
+    });
     if (dateGroup) selectedDateGroups.add(dateGroup);
   } else {
     iconsByKey.forEach((_, key) => selectedIcons.delete(key));
@@ -191,9 +210,25 @@ const downloadSelectedIcons = async () => {
     ).values()
   ];
 
-  for (const { url } of selectedFiles) {
-    await downloadFile(url, decodeURIComponent(url.split('/').pop() ?? 'icon.svg').replace(/^\d+_/, ''));
-  }
+  const files = await Promise.all(
+    selectedFiles.map(async ({ url, name, iconType, category, date }) => {
+      const response = await fetch(url);
+      if (!response.ok) return null;
+
+      const zipPath = [date, iconType, category, `${getZipPathPart(name)}.svg`].map(getZipPathPart).join('/');
+      return { input: response, name: zipPath };
+    })
+  );
+  const archive = downloadZip(files.filter(Boolean));
+  const objectUrl = URL.createObjectURL(await archive.blob());
+  const anchor = document.createElement('a');
+  anchor.href = objectUrl;
+  anchor.download = `icons-${getZipPathPart(selectedDownloadContext.library)}-${getZipPathPart(selectedDownloadContext.theme)}.zip`;
+  anchor.style.display = 'none';
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  URL.revokeObjectURL(objectUrl);
 };
 
 // Turns icons white for ui-dark theme
@@ -359,6 +394,8 @@ const renderEntry = (entry, isLatest) => {
 // Fetches changelog entries for the active theme
 const renderLibraryAsync = async library => {
   const activeThemeKey = CDN_FOLDER_TO_THEME_KEY[getThemeAttributes().cdnIconFolder ?? 'union-investment'];
+  selectedDownloadContext.library = library;
+  selectedDownloadContext.theme = activeThemeKey;
   resetSelectionForTheme(`${library}:${activeThemeKey}:${document.documentElement.dataset.sdTheme}`);
   const { themes, iconTypes } = LIBRARIES[library];
   if (!themes.includes(activeThemeKey)) {
