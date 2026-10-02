@@ -625,14 +625,14 @@
     "tags": ["gruppieren", "Stapel", "mehrere Folien erzeugen"]
   },
   {
-    "technicalId": "collapse-left",
-    "displayNameDe": "einklappen links",
-    "tags": ["komprimieren", "verstecken", "Seitenleiste"]
-  },
-  {
     "technicalId": "file-wai",
     "displayNameDe": "Dokument wAI",
     "tags": ["Dokument", "Datei", "wAI"]
+  },
+  {
+    "technicalId": "collapse-left",
+    "displayNameDe": "einklappen links",
+    "tags": ["komprimieren", "verstecken", "Seitenleiste"]
   },
   {
     "technicalId": "download",
@@ -1045,14 +1045,14 @@
     "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
   },
   {
-    "technicalId": "password",
-    "displayNameDe": "Passwort",
-    "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
-  },
-  {
     "technicalId": "e-mail-send",
     "displayNameDe": "E-Mail abschicken",
     "tags": ["Brief", "E-Mail", "Kommunikation"]
+  },
+  {
+    "technicalId": "password",
+    "displayNameDe": "Passwort",
+    "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
   },
   {
     "technicalId": "e-mail-exclamation",

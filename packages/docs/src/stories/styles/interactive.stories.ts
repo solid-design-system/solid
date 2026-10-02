@@ -45,14 +45,38 @@ export const Default = {
 };
 
 /**
+ * Use the `sd-interactive--*` classes for alternative appearances:
+ *
+ * - primary is the default variant
+ * - `sd-interactive--variant-secondary`: maintains the same visual appearance across different states
+ */
+
+export const Variants = {
+  render: () => html`
+    <div class="flex flex-row gap-8">
+      <button class="sd-interactive sd-interactive sd-interactive--reset" title="Action name">Primary</button>
+      <button class="sd-interactive sd-interactive--variant-secondary sd-interactive--reset" title="Action name">
+        Secondary
+      </button>
+    </div>
+  `
+};
+
+/**
  * Use the `sd-interactive--inverted` class when displayed on primary background.
  */
 
 export const Inverted = {
   render: () => html`
-    <div class="bg-primary p-4">
+    <div class="bg-primary p-4 flex flex-row gap-8">
       <button class="sd-interactive sd-interactive--inverted sd-interactive--reset" title="Action name">
-        Inverted
+        Inverted primary
+      </button>
+      <button
+        class="sd-interactive sd-interactive--variant-secondary sd-interactive--inverted sd-interactive--reset"
+        title="Action name"
+      >
+        Inverted secondary
       </button>
     </div>
   `

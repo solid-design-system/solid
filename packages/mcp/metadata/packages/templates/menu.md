@@ -14,7 +14,7 @@ version: 1.0.0
 ## Template: Menu with Icons
 
 ```html
-<sd-dropdown distance="4" rounded open stay-open-on-select>
+<sd-dropdown id="menu-with-icons" distance="4" rounded open stay-open-on-select>
   <sd-button variant="secondary" slot="trigger">
     <sd-icon name="system/more-functions" label="Icon only"></sd-icon>
   </sd-button>
@@ -37,7 +37,7 @@ version: 1.0.0
 ## Template: Menu with Checkmarks and Icons
 
 ```html
-<sd-dropdown distance="4" rounded open stay-open-on-select>
+<sd-dropdown id="menu-with-checkmarks" distance="4" rounded open stay-open-on-select>
   <sd-button variant="secondary" slot="trigger">
     <sd-icon name="system/more-functions" label="Icon only"></sd-icon>
   </sd-button>

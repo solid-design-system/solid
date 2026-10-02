@@ -1,5 +1,21 @@
 # Changelog
 
+## 7.5.0
+
+### Patch Changes
+
+- Removed the `neutral-100` variant of `sd-brandshape` from the documentation. _[`#3362`](https://github.com/solid-design-system/solid/pull/3362) [`d189c50`](https://github.com/solid-design-system/solid/commit/d189c503a1b8024267782dee88a5a8ee0c9d48c7) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 7.4.3
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull request. _[`#3352`](https://github.com/solid-design-system/solid/pull/3352) [`ae74189`](https://github.com/solid-design-system/solid/commit/ae7418912567d35f031b0540d0b12d8ef942cbd6) [@balco0110](https://github.com/balco0110)_
+
+## 7.4.2
+
+## 7.4.1
+
 ## 7.4.0
 
 ### Patch Changes

@@ -584,6 +584,36 @@ describe('<sd-datepicker>', () => {
       expect(input.getAttribute('aria-invalid')).to.equal('true');
     });
 
+    it('should emit sd-change when a manually entered date is outside min and max', async () => {
+      const el = await fixture<SdDatepicker>(
+        html`<sd-datepicker value="2025-12-16" min="2025-12-10" max="2025-12-20"></sd-datepicker>`
+      );
+
+      await el.updateComplete;
+
+      const changeHandler = sinon.spy();
+      el.addEventListener('sd-change', changeHandler);
+
+      const input = el.shadowRoot!.querySelector<HTMLInputElement>('#input')!;
+      input.focus();
+      input.value = '25.12.2025';
+      input.dispatchEvent(new InputEvent('input', { bubbles: true, composed: true }));
+      input.dispatchEvent(new FocusEvent('blur', { bubbles: true, composed: true }));
+
+      await el.updateComplete;
+
+      expect(changeHandler).to.have.been.calledOnce;
+      const event = changeHandler.firstCall.args[0] as CustomEvent;
+      expect(event.detail).to.deep.equal({
+        value: '2025-12-16',
+        rangeStart: null,
+        rangeEnd: null,
+        inputValue: '25.12.2025'
+      });
+
+      expect(el.value).to.equal('2025-12-16');
+    });
+
     it('should respect min and max when set programmatically as Date objects', async () => {
       const el = await fixture<SdDatepicker>(html`<sd-datepicker value="2025-12-10"></sd-datepicker>`);
 

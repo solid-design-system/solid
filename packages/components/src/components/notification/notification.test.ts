@@ -4,7 +4,6 @@ import { clickOnElement, moveMouseOnElement } from '../../internal/test.js';
 import { resetMouse, sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
 
-import type SdButton from '../button/button.js';
 import type SdNotification from './notification.js';
 
 const getIconSlot = (notification: SdNotification): HTMLElement => {
@@ -61,8 +60,8 @@ const expectShowAndAfterShowToBeEmittedInCorrectOrder = async (
   expectNotificationToBeVisible(notification);
 };
 
-const getCloseButton = (notification: SdNotification): SdButton | null | undefined =>
-  notification.shadowRoot?.querySelector<SdButton>('[part="close-button"]');
+const getCloseButton = (notification: SdNotification): HTMLButtonElement | null | undefined =>
+  notification.shadowRoot?.querySelector<HTMLButtonElement>('[part="close-button"]');
 
 describe('<sd-notification>', () => {
   let clock: sinon.SinonFakeTimers | null = null;

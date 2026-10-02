@@ -1,5 +1,33 @@
 # @solid-design-system/components
 
+## 7.5.0
+
+### Minor Changes
+
+- Added `sd-interactive--variant-secondary` to `sd-interactive`. Updated the sd-dialog, sd-drawer and sd-notification to use this variable. _[`#3327`](https://github.com/solid-design-system/solid/pull/3327) [`59d6c7d`](https://github.com/solid-design-system/solid/commit/59d6c7de9af1384a8f11200503b50f1c6b8f2a33) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+* Uncompressed: 635 KB (+1 KB / +0%)
+* Gzipped: 143 KB (unchanged)
+
+## 7.4.3
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull request. _[`#3352`](https://github.com/solid-design-system/solid/pull/3352) [`ae74189`](https://github.com/solid-design-system/solid/commit/ae7418912567d35f031b0540d0b12d8ef942cbd6) [@balco0110](https://github.com/balco0110)_
+
+## 7.4.2
+
+### Patch Changes
+
+- Fixed `sd-combobox` and `sd-select` to use small tags when floating labels are enabled. _[`#3337`](https://github.com/solid-design-system/solid/pull/3337) [`ed960f9`](https://github.com/solid-design-system/solid/commit/ed960f9dc9358668d2e2ec57636c032953d18b53) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 7.4.1
+
+### Patch Changes
+
+- Fixed sd-change not being triggered in `sd-datepicker`. _[`#3338`](https://github.com/solid-design-system/solid/pull/3338) [`347cb00`](https://github.com/solid-design-system/solid/commit/347cb00b5341c986d0a73984cd1b385afc8aa23f) [@balco0110](https://github.com/balco0110)_
+
 ## 7.4.0
 
 ## 7.3.0

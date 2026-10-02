@@ -222,7 +222,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               content:tag__content,
               removable-indicator:tag__removable-indicator,
             "
-        size=${this.size === 'sm' ? 'sm' : 'lg'}
+        size=${this.floatingLabel || this.size === 'sm' ? 'sm' : 'lg'}
         removable
         @keydown=${(event: KeyboardEvent) => this.handleTagKeyDown(event, option)}
         @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event, option)}
@@ -718,7 +718,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               content:tag__content,
               removable-indicator:tag__removable-indicator,
             "
-            size=${this.size === 'sm' ? 'sm' : 'lg'}
+            size=${this.floatingLabel || this.size === 'sm' ? 'sm' : 'lg'}
             removable
             @keydown=${(event: KeyboardEvent) => this.handleTagMaxOptionsKeyDown(event)}
             @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event)}

@@ -1,6 +1,6 @@
 {
   "name": "@solid-design-system/tokens",
-  "version": "7.4.0",
+  "version": "7.5.0",
   "description": "Solid Design System: Tokens",
   "publishConfig": {
     "access": "public",
@@ -13,6 +13,8 @@
     "verify": "pnpm build && echo '✅ Build verified'",
     "postversion": "pnpm build",
     "fetch:figma": "node ./scripts/figma/fetch-variables.js && pnpm build",
+    "fetch:icons-celum": "node ./scripts/celum/fetch-celum-changelog.mjs",
+    "fetch:icons-celum:from": "node ./scripts/celum/fetch-celum-changelog.mjs --from",
     "analyze:variables": "node scripts/analyze-variables.mjs"
   },
   "files": [
@@ -41,14 +43,14 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@figma-export/types": "^6.4.0",
-    "@figma/rest-api-spec": "^0.41.0",
+    "@figma-export/types": "^6.4.1",
+    "@figma/rest-api-spec": "^0.42.0",
     "@tamtamchik/json-deep-sort": "^1.5.0",
     "@tokens-studio/sd-transforms": "^2.0.3",
     "dotenv": "^17.4.2",
     "ora": "^9.4.1",
     "picocolors": "^1.1.1",
-    "style-dictionary": "^5.5.0",
+    "style-dictionary": "^5.5.3",
     "tailwindcss": "^4.3.2",
     "tailwindcss-export-config": "^4.1.0"
   },
