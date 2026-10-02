@@ -1,0 +1,42 @@
+name: Fetch Celum icon changelogs
+
+on:
+  schedule:
+    # Mondays at 06:00 UTC, timed with Celum's weekly icon update.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  fetch-celum-changelogs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24.14.1
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v5
+
+      - name: Install dependencies
+        run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
+
+      - name: Fetch Celum icon changelogs
+        run: cd packages/tokens && pnpm fetch:icons-celum
+
+      - name: Open pull request with changes
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore: update Celum icon changelogs"
+          title: "chore: update Celum icon changelogs"
+          body: Automated weekly update of the committed Celum icon changelog data (`packages/tokens/data/celum-changelogs/*.json`).
+          branch: chore/celum-icon-changelogs
+          delete-branch: true
+          add-paths: packages/tokens/data/celum-changelogs/*.json
