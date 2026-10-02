@@ -5,13 +5,6 @@ export const withThemeByClassName = options => {
     const isDocs = !!document.querySelector('.docs-story');
     const parentSelector = isDocs ? '.docs-story' : '.sb-show-main';
 
-    const decorator = _withThemeByClassName({
-      ...options,
-      parentSelector
-    });
-
-    const result = decorator(Story, context);
-
     const theme = options.themes[context.globals.theme];
 
     document.documentElement.dataset.sdTheme = theme;
@@ -26,6 +19,9 @@ export const withThemeByClassName = options => {
       el.classList.add(theme);
     });
 
-    return result;
+    return _withThemeByClassName({
+      ...options,
+      parentSelector
+    })(Story, context);
   };
 };
