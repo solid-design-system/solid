@@ -21,12 +21,12 @@ This page guides you through installing and setting up the `@solid-design-system
 npm install @solid-design-system/tokens
 ```
 
-## Import a theme
+## Optional: import an explicit theme
 
-Load at least one theme via NPM import. This only needs to be done **once per document**. Every component and embedded consumer on the page will automatically inherit the theme.
+For component and style versions v7 or later, or v4 or earlier, importing a theme is optional because built-in fallback values default to `ui-light`. Versions v5 through v6 must import a theme, such as `ui-light.css`. Import a different theme when you need an explicit or custom theme. This only needs to be done **once per document**. Every component and embedded consumer on the page will automatically inherit the theme.
 
 ```js
-
+import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
 ```
 
 ## Next steps
@@ -244,7 +244,7 @@ top: -0.5em;
 
 ````
 
-That's it — your page is now themed. Head over to the <sd-link href="?path=/docs/packages-tokens-usage--docs">Usage page</sd-link> to learn how to switch themes, customize tokens, and create your own theme.
+That's it — your page is now themed. Head over to the <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-usage--docs">Usage page</sd-link> to learn how to switch themes, customize tokens, and create your own theme.
 
 </sd-accordion>
 
@@ -321,6 +321,7 @@ This automatically makes all Solid Design System tokens available as Tailwind ut
   <sd-tab-panel name="tw3">
 ```js
 // tailwind.config.js
+import solidTheme from '@solid-design-system/tokens/dist/tailwind.json';
 
 export default {
   theme: {
@@ -334,7 +335,7 @@ export default {
   </sd-tab-panel>
 </sd-tab-group>
 
-That's it — you're ready to build. Head over to the <sd-link href="?path=/docs/packages-tokens-usage--docs">Usage page</sd-link> to learn about local development, standalone fallbacks, and versioning coordination.
+That's it — you're ready to build. Head over to the <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-usage--docs">Usage page</sd-link> to learn about local development, standalone fallbacks, and versioning coordination.
 
   </sd-tab-panel>
 </sd-tab-group>
@@ -349,6 +350,7 @@ However, if you manage an environment that still requires the use of these varia
 as fallback layer:
 
 ```js
+import '@solid-design-system/tokens/dist/legacy-variables.css';
 ```
 
 ## Minimum dependency requirement
