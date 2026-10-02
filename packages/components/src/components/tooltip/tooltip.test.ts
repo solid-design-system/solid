@@ -4,6 +4,10 @@ import sinon from 'sinon';
 import type SdPopup from '../popup/popup';
 import type SdTooltip from './tooltip';
 
+/** Waits for the animations that are still running on the tooltip, so that tests can check its final state. */
+const runningAnimationsFinished = (popup: SdPopup) =>
+  Promise.all(popup.popup.getAnimations().map(animation => animation.finished));
+
 describe('<sd-tooltip>', () => {
   it('should be visible with the open attribute', async () => {
     const el = await fixture<SdTooltip>(html`
@@ -357,5 +361,144 @@ describe('<sd-tooltip>', () => {
     document.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
     await waitUntil(() => !body.hidden);
     expect(body.hidden).to.be.false;
+  });
+
+  it('should stay visible when it is reopened while the hide animation is still running', async () => {
+    const el = await fixture<SdTooltip>(html`
+      <sd-tooltip content="This is a tooltip" open>
+        <sd-button>Hover Me</sd-button>
+      </sd-tooltip>
+    `);
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
+    const popup = el.shadowRoot!.querySelector<SdPopup>('sd-popup')!;
+    const afterShowHandler = sinon.spy();
+    const afterHideHandler = sinon.spy();
+
+    el.addEventListener('sd-after-show', afterShowHandler);
+    el.addEventListener('sd-after-hide', afterHideHandler);
+
+    // start hiding, then reopen before the hide animation has finished
+    el.open = false;
+    await el.updateComplete;
+    el.open = true;
+    await el.updateComplete;
+
+    await waitUntil(() => afterShowHandler.calledOnce);
+    await runningAnimationsFinished(popup);
+
+    expect(el.open).to.be.true;
+    expect(body.hidden).to.be.false;
+    expect(popup.active).to.be.true;
+    expect(afterShowHandler.callCount).to.equal(1);
+    expect(afterHideHandler.callCount).to.equal(0);
+  });
+
+  it('should stay hidden when it is closed while the show animation is still running', async () => {
+    const el = await fixture<SdTooltip>(html`
+      <sd-tooltip content="This is a tooltip">
+        <sd-button>Hover Me</sd-button>
+      </sd-tooltip>
+    `);
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
+    const popup = el.shadowRoot!.querySelector<SdPopup>('sd-popup')!;
+    const afterShowHandler = sinon.spy();
+    const afterHideHandler = sinon.spy();
+
+    el.addEventListener('sd-after-show', afterShowHandler);
+    el.addEventListener('sd-after-hide', afterHideHandler);
+
+    // start showing, then close before the show animation has finished
+    el.open = true;
+    await el.updateComplete;
+    el.open = false;
+    await el.updateComplete;
+
+    await waitUntil(() => afterHideHandler.calledOnce);
+    await runningAnimationsFinished(popup);
+
+    expect(el.open).to.be.false;
+    expect(body.hidden).to.be.true;
+    expect(popup.active).to.be.false;
+    expect(afterHideHandler.callCount).to.equal(1);
+    expect(afterShowHandler.callCount).to.equal(0);
+  });
+
+  it('should end hidden and emit sd-after-hide only once when it is closed, reopened and closed again in quick succession', async () => {
+    const el = await fixture<SdTooltip>(html`
+      <sd-tooltip content="This is a tooltip" open>
+        <sd-button>Hover Me</sd-button>
+      </sd-tooltip>
+    `);
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
+    const popup = el.shadowRoot!.querySelector<SdPopup>('sd-popup')!;
+    const afterShowHandler = sinon.spy();
+    const afterHideHandler = sinon.spy();
+
+    el.addEventListener('sd-after-show', afterShowHandler);
+    el.addEventListener('sd-after-hide', afterHideHandler);
+
+    el.open = false;
+    await el.updateComplete;
+    el.open = true;
+    await el.updateComplete;
+    el.open = false;
+    await el.updateComplete;
+
+    await waitUntil(() => afterHideHandler.called);
+    await runningAnimationsFinished(popup);
+
+    expect(el.open).to.be.false;
+    expect(body.hidden).to.be.true;
+    expect(popup.active).to.be.false;
+    expect(afterHideHandler.callCount).to.equal(1);
+    expect(afterShowHandler.callCount).to.equal(0);
+  });
+
+  it('should resolve hide() when it is reopened while the hide animation is still running', async () => {
+    const el = await fixture<SdTooltip>(html`
+      <sd-tooltip content="This is a tooltip" open>
+        <sd-button>Hover Me</sd-button>
+      </sd-tooltip>
+    `);
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
+
+    const hidePromise = el.hide();
+    await el.updateComplete;
+    const showPromise = el.show();
+
+    // both resolve once the tooltip has settled, otherwise this test times out
+    await Promise.all([hidePromise, showPromise]);
+
+    expect(el.open).to.be.true;
+    expect(body.hidden).to.be.false;
+  });
+
+  it('should stay hidden when it is opened while disabled and the hide animation is still running', async () => {
+    const el = await fixture<SdTooltip>(html`
+      <sd-tooltip content="This is a tooltip" open>
+        <sd-button>Hover Me</sd-button>
+      </sd-tooltip>
+    `);
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
+    const popup = el.shadowRoot!.querySelector<SdPopup>('sd-popup')!;
+    const afterShowHandler = sinon.spy();
+    const afterHideHandler = sinon.spy();
+
+    el.addEventListener('sd-after-show', afterShowHandler);
+    el.addEventListener('sd-after-hide', afterHideHandler);
+
+    // disabling hides the tooltip, opening it afterwards must not interrupt that
+    el.disabled = true;
+    await el.updateComplete;
+    el.open = true;
+    await el.updateComplete;
+
+    await waitUntil(() => afterHideHandler.called);
+    await runningAnimationsFinished(popup);
+
+    expect(body.hidden).to.be.true;
+    expect(popup.active).to.be.false;
+    expect(afterHideHandler.callCount).to.equal(1);
+    expect(afterShowHandler.callCount).to.equal(0);
   });
 });
