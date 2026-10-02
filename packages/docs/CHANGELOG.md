@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 3.7.0
+
+### Minor Changes
+
+- Added changelog pages for each icon library to track, display and download changes made to icons stored in Celum. _[`#3346`](https://github.com/solid-design-system/solid/pull/3346) [`b34079d`](https://github.com/solid-design-system/solid/commit/b34079d7ced69eb155a77b81dd2146ea5418ad2b) [@martascorreia](https://github.com/martascorreia)_
+
 ## 3.6.1
 
 ### Patch Changes
