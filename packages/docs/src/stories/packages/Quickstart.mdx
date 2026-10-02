@@ -20,7 +20,7 @@ There is no single package that every project must install. Choose packages base
 - [`@solid-design-system/tokens`](?path=/docs/packages-tokens--docs): Design tokens (variables) and themes, install when your project uses token utilities, Tailwind utilities, or an explicit/custom theme.
 - [`@solid-design-system/mcp`](?path=/docs/packages-mcp--docs): Model Context Protocol that provides coding agents access to current SDS guidance and metadata.
 
-The `components`, `styles`, and `tokens` packages always share the same version.
+The `components`, `styles`, `tokens`, and `mcp` packages always share the same version.
 Install or update them together when you use more than one.
 
 Please check the installation documentation for [Components Installation](?path=/docs/packages-components-installation--docs),
@@ -160,27 +160,36 @@ You can now use Solid Design System components and styles:
 </div>
 ```
 
-### Create a Vue project with Vite and Solid Design System
+### Example Prompt: Solid inside a Vue project
 
 The following instructions create the initial setup for a Vue and TypeScript application with Tailwind CSS v4 and our Solid Design System.
 It requires [Node.js 20.19+ or 22.12+](https://vite.dev/guide/#scaffolding-your-first-vite-project).
 It uses Union Investment default theming, like the `ui-light` theme and font styles.
-Please replace any `latest` references with the approved versions for your project.
+If you use different technology (e. g. React or Svelte), just adapt the prompt to your needs.
 
-Copy and run this complete setup in a terminal:
+Copy this prompt into a coding agent with access to your project files and terminal:
 
-```bash
-: '1. Create the Vue and TypeScript project without interactive prompts.'
+```text
+Create a Vue 3 and TypeScript application with Vite, Tailwind CSS v4, and Solid Design System.
+If you are inside an existing project, inspect it and preserve unrelated work instead of overwriting it. Use npm and confirm Node.js is version 20.19+ or 22.12+ before starting.
+
+If you are not inside an existing project, ask for a name and run a script like the following:
+\`\`\`bash
 npm create vite@latest solid-app -- --template vue-ts --no-interactive
 cd solid-app
+\`\`\`
 
-: '2. Install the SDS packages and Tailwind CSS v4.'
+
+\`\`\`bash
 npm install
 npm install @solid-design-system/components @solid-design-system/styles @solid-design-system/tokens
-npm install --save-dev tailwindcss @tailwindcss/vite
+npm install --save-dev @solid-design-system/mcp tailwindcss @tailwindcss/vite
+\`\`\`
 
-: '3. Configure Vue to recognize SDS custom elements and enable Tailwind CSS.'
-cat > vite.config.ts <<'EOF'
+
+Configure Vite to use the Vue and Tailwind plugins. Configure Vue's template compiler to recognize tags beginning with `sd-` as custom elements.
+
+\`\`\`js
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import tailwindcss from '@tailwindcss/vite';
@@ -197,10 +206,26 @@ export default defineConfig({
     tailwindcss()
   ]
 });
-EOF
+\`\`\`
 
-: '4. Import the SDS styles and define the app fonts.'
-cat > src/style.css <<'EOF'
+
+Configure the Solid MCP server to the project that it fits the used agent, e. g. for VS Code Copilot by adding:
+
+\`\`\`json
+{
+  "servers": {
+    "solid": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@solid-design-system/mcp"]
+    }
+  }
+}
+\`\`\`
+
+Adapt the global stylesheet like the following:
+
+\`\`\`css
 @import 'tailwindcss';
 @import '@solid-design-system/tokens/dist/themes/tailwind.css';
 @import '@solid-design-system/styles/dist/solid-styles.css';
@@ -236,31 +261,36 @@ body {
     'Noto Sans',
     sans-serif;
 }
-EOF
+\`\`\`
 
-: '5. Register SDS components and mount the Vue app.'
-cat > src/main.ts <<'EOF'
+
+Adapt the Vue entry point as the following:
+\`\`\`js
 import '@solid-design-system/components/dist/solid-components.js';
 import { createApp } from 'vue';
 import App from './App.vue';
 import './style.css';
 
 createApp(App).mount('#app');
-EOF
+\`\`\`
 
-: '6. Add a page that uses an SDS button.'
-cat > src/App.vue <<'EOF'
+Add a welcome page:
+
+\`\`\`js
 <template>
   <main class="sd-prose p-6">
     <h1>Welcome to Solid Design System!</h1>
     <sd-button variant="primary">Click me!</sd-button>
   </main>
 </template>
-EOF
+\`\`\`
 
-: '7. Verify the production build, then start the development server.'
-npm run build
+
+Build the project (\`npm run build\`) and fix any errors. Then start the development server if your environment supports it:
+
+\`\`\`bash
 npm run dev
-```
+\`\`\`
 
-The `isCustomElement` option tells Vue to treat `sd-*` elements as web components. The `tailwind.css` import exposes Solid tokens as Tailwind utilities.
+Tell me that I may need to trust and start the `solid` MCP server in VS Code/Claude Code/Other Agent using the MCP commands after the setup is complete.
+```
