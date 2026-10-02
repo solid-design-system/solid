@@ -6,29 +6,29 @@ The commands in this guide use npm. If an existing project uses another package 
 
 ## Packages, Theming, and MCP
 
-There is no single package that every project must install. Choose packages based on the Solid features your project requires.
+### Packages
 
-### Application packages
+There is no single package that every project must install. Choose packages based on the Solid features your project requires.
 
 - [`@solid-design-system/components`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components--docs): Component library consisting of reusable web components.
 - [`@solid-design-system/styles`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-styles--docs): Smaller component library, built solely with CSS.
 - [`@solid-design-system/tokens`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens--docs): Design tokens (variables) and themes, install when your project uses token utilities, Tailwind utilities, or an explicit/custom theme.
+- [`@solid-design-system/mcp`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-mcp--docs): Model Context Protocol that provides coding agents access to current SDS guidance and metadata.
 
 The `components`, `styles`, and `tokens` packages always share the same version.
 Install or update them together when you use more than one.
-
-### Additional packages
-
-- [`@solid-design-system/placeholders`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-placeholders--docs): Placeholder text and license-free media.
-- [`@solid-design-system/theming`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-theming--docs): Color calculation tool for building custom themes (for existing SDS themes, use the `tokens` package).
-- [`@solid-design-system/mcp`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-mcp--docs): Model Context Protocol that provides coding agents access to current SDS guidance and metadata.
-- [`@solid-design-system/eslint-plugin`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-eslint-plugin--docs): Adds SDS-specific lint rules.
 
 Please check the installation documentation for [Components Installation](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components-installation--docs),
 [Styles Installation](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-styles-installation--docs),
 [Tokens Installation](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-installation--docs),
 and the [MCP Installation](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-mcp-installation--docs)
 for more details on prerequisites, multi-theming, versioning, setup, and usage.
+
+#### Additional packages
+
+- [`@solid-design-system/placeholders`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-placeholders--docs): Placeholder text and license-free media.
+- [`@solid-design-system/theming`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-theming--docs): Color calculation tool for building custom themes (for existing SDS themes, use the `tokens` package).
+- [`@solid-design-system/eslint-plugin`](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-eslint-plugin--docs): Adds SDS-specific lint rules.
 
 ### Theming
 
@@ -157,23 +157,22 @@ You can now use Solid Design System components and styles:
 
 ### Create a Vue project with Vite and Solid Design System
 
-The following setup creates a Vue and TypeScript application with Tailwind CSS v4 and Solid Design System. It requires [Node.js 20.19+ or 22.12+](https://vite.dev/guide/#scaffolding-your-first-vite-project).
+The following setup creates a Vue and TypeScript application with Tailwind CSS v4 and Solid Design System. It requires [Node.js 20.19+ or 22.12+](https://vite.dev/guide/#scaffolding-your-first-vite-project). The font example uses Frutiger Neue from the Union Investment CDN; replace `latest` in the font URLs with the approved version for your project.
 
-#### 1. Create the project
+Copy and run this complete setup in a terminal:
 
 ```bash
-npm create vite@latest solid-app -- --template vue-ts
+: '1. Create the Vue and TypeScript project without interactive prompts.'
+npm create vite@latest solid-app -- --template vue-ts --no-interactive
 cd solid-app
+
+: '2. Install the SDS packages and Tailwind CSS v4.'
 npm install
 npm install @solid-design-system/components @solid-design-system/styles @solid-design-system/tokens
 npm install --save-dev tailwindcss @tailwindcss/vite
-```
 
-#### 2. Configure Vite
-
-Replace `vite.config.ts` with:
-
-```ts
+: '3. Configure Vue to recognize SDS custom elements and enable Tailwind CSS.'
+cat > vite.config.ts <<'EOF'
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import tailwindcss from '@tailwindcss/vite';
@@ -190,54 +189,70 @@ export default defineConfig({
     tailwindcss()
   ]
 });
-```
+EOF
 
-The `isCustomElement` option tells Vue to treat `sd-*` elements as web components.
-
-#### 3. Add the global styles
-
-Replace `src/style.css` with:
-
-```css
+: '4. Import the SDS styles and define the app fonts.'
+cat > src/style.css <<'EOF'
 @import 'tailwindcss';
 @import '@solid-design-system/tokens/dist/themes/tailwind.css';
 @import '@solid-design-system/styles/dist/solid-styles.css';
 @import '@solid-design-system/components/dist/solid-components.css';
-```
 
-The `tailwind.css` import exposes Solid tokens as Tailwind utilities. For component and style versions v7 or later, or v4 or earlier, the `ui-light.css` import is optional because those packages include built-in fallback values defaulting to `ui-light`. Versions v5 through v6 must include the `ui-light.css` import.
+@font-face {
+  font-family: 'Frutiger Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-Bk.woff2')
+    format('woff2');
+}
 
-#### 4. Register the components
+@font-face {
+  font-family: 'Frutiger Neue';
+  font-style: italic;
+  font-weight: 400;
+  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-BkIt.woff2')
+    format('woff2');
+}
 
-Add the component runtime to `src/main.ts`, before mounting the app:
+body {
+  font-family:
+    'Frutiger Neue',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans',
+    sans-serif;
+}
+EOF
 
-```ts
+: '5. Register SDS components and mount the Vue app.'
+cat > src/main.ts <<'EOF'
 import '@solid-design-system/components/dist/solid-components.js';
-```
+import { createApp } from 'vue';
+import App from './App.vue';
+import './style.css';
 
-Keep Vite's existing `import './style.css';` in the same file.
+createApp(App).mount('#app');
+EOF
 
-#### 5. Use Solid Design System
-
-Replace `src/App.vue` with:
-
-```vue
+: '6. Add a page that uses an SDS button.'
+cat > src/App.vue <<'EOF'
 <template>
   <main class="sd-prose p-6">
     <h1>Welcome to Solid Design System!</h1>
     <sd-button variant="primary">Click me!</sd-button>
   </main>
 </template>
-```
+EOF
 
-Start the development server:
-
-```bash
+: '7. Verify the production build, then start the development server.'
+npm run build
 npm run dev
 ```
 
-Before considering the setup complete, verify the production build:
-
-```bash
-npm run build
-```
+The `isCustomElement` option tells Vue to treat `sd-*` elements as web components. The `tailwind.css` import exposes Solid tokens as Tailwind utilities.
