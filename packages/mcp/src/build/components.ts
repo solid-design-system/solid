@@ -10,6 +10,11 @@ type Manifest = Module[];
 
 /** Absolute path to the docs stories/components directory */
 const DOCS_COMPONENTS_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../../docs/src/stories/components');
+const NON_COMPONENT_DOC_NAMES = new Set([
+  'icon.changelog.default',
+  'icon.changelog.internal',
+  'icon.changelog.multi-theming'
+]);
 
 interface MdxExtract {
   docs: string | null;
@@ -265,7 +270,10 @@ const extractSummaryFromDocs = (docs: string | null): string => {
 
 const getComponentNames = async (): Promise<string[]> => {
   const files = await fs.readdir(DOCS_COMPONENTS_DIR);
-  const mdxNames = files.filter(file => file.endsWith('.mdx')).map(file => basename(file, '.mdx'));
+  const mdxNames = files
+    .filter(file => file.endsWith('.mdx'))
+    .map(file => basename(file, '.mdx'))
+    .filter(name => !NON_COMPONENT_DOC_NAMES.has(name));
   const storyNames = files
     .filter(file => /^[a-z0-9-]+\.stories\.ts$/.test(file))
     .map(file => basename(file, '.stories.ts'));
