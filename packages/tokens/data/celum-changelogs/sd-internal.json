@@ -24,7 +24,11 @@
               "tags": []
             }
           ],
-          "removed": ["chevrons-sm-left.svg", "chevrons-sm-right.svg", "eye.svg"],
+          "removed": [
+            "chevrons-sm-left.svg",
+            "chevrons-sm-right.svg",
+            "eye.svg"
+          ],
           "modified": [
             {
               "name": "calendar.svg",
@@ -192,11 +196,11 @@
         }
       }
     ],
-    "lastCheck": "9/29/2026"
+    "lastCheck": "10/5/2026"
   },
   "sp": {
     "internal": [],
-    "lastCheck": "9/29/2026"
+    "lastCheck": "10/5/2026"
   },
   "vb": {
     "internal": [
@@ -391,6 +395,6 @@
         }
       }
     ],
-    "lastCheck": "9/29/2026"
+    "lastCheck": "10/5/2026"
   }
 }
