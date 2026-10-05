@@ -12,11 +12,23 @@ import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright
 import VitePluginGetTailwindTheme from './scripts/vite-plugin-get-tailwind-theme';
 import VitePluginLitTailwind from './scripts/vite-plugin-lit-tailwind.js';
 import VitePluginSolidStyles from './scripts/vite-plugin-solid-styles/index.js';
+import { stripPromptOnlyBlocks } from '../../scripts/mdx-prompt-blocks.mjs';
 
 // https://vitejs.dev/config/
 export default () => {
   return {
     plugins: [
+      {
+        name: 'docs-prompt-blocks',
+        enforce: 'pre',
+        transform: {
+          order: 'pre',
+          handler(code, id) {
+            if (!id.endsWith('.mdx')) return null;
+            return { code: stripPromptOnlyBlocks(code, id), map: null };
+          }
+        }
+      },
       VitePluginFetchIconsFromCdn(),
       VitePluginLitTailwind({
         include: [

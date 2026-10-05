@@ -3,6 +3,7 @@ import { mkdirSync } from 'node:fs';
 import { dirname, join, basename, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import ora from 'ora';
+import { stripPromptOnlyBlocks } from '../../../../scripts/mdx-prompt-blocks.mjs';
 import {
   componentPackageDocsPath,
   quickstartPackageDocsPath,
@@ -31,8 +32,9 @@ const stripMdxImports = (raw: string): string => {
     .join('\n');
 };
 
-const cleanMdx = (raw: string): string =>
-  stripMdxImports(raw)
+const cleanMdx = (raw: string, filename: string): string =>
+  stripMdxImports(stripPromptOnlyBlocks(raw, filename))
+    .replace(/<sd-tab-group data-agent-prompts="true">[\s\S]*?<\/sd-tab-group>/g, '')
     // Remove <Meta .../>  (single or multi-line)
     .replace(/<Meta\s[^>]*\/>/gs, '')
     // Make Storybook links usable outside the documentation site
@@ -65,8 +67,9 @@ const buildDocsForPackage = async (sourceDir: string, outputDir: string, label: 
 
   await Promise.all(
     mdxFiles.map(async file => {
-      const raw = await fs.readFile(join(sourceDir, file), 'utf-8');
-      const cleaned = cleanMdx(raw);
+      const sourceFile = join(sourceDir, file);
+      const raw = await fs.readFile(sourceFile, 'utf-8');
+      const cleaned = cleanMdx(raw, sourceFile);
       const slug = basename(file, '.mdx').toLowerCase().replace(/\s+/g, '-');
       await fs.writeFile(join(outputDir, `${slug}.md`), cleaned, 'utf-8');
     })
@@ -81,9 +84,13 @@ const buildSingleDoc = async (sourceFile: string, outputFile: string, label: str
   try {
     const raw = await fs.readFile(sourceFile, 'utf-8');
     mkdirSync(dirname(outputFile), { recursive: true });
-    await fs.writeFile(outputFile, cleanMdx(raw), 'utf-8');
+    await fs.writeFile(outputFile, cleanMdx(raw, sourceFile), 'utf-8');
     spinner.succeed(`${label}: written to ${outputFile}`);
-  } catch {
+  } catch (error) {
+    if (!(error instanceof Error && 'code' in error && error.code === 'ENOENT')) {
+      spinner.fail(`${label}: failed to build`);
+      throw error;
+    }
     spinner.warn(`${label} source file not found: ${sourceFile}`);
   }
 };

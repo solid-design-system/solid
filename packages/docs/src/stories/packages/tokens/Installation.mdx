@@ -45,6 +45,8 @@ Depending on the theme, make sure the following page-level concerns are covered.
 
 Solid doesn't provide **any fonts** — you have to include them yourself, either via a CDN (recommended) or by self-hosting the font files. Reach out to your brand department if you want to self-host.
 
+The examples below match the font faces loaded in Storybook: regular and bold for all font families, plus italic and bold italic for Frutiger Neue. Storybook does not load italic faces for Genos GFG or BBBank Type TT.
+
 <sd-accordion summary="Example CSS for Union Investment (CDN)">
 
 Please make sure to change `latest` to a concrete package version you want to use.
@@ -63,6 +65,24 @@ Please make sure to change `latest` to a concrete package version you want to us
   font-style: italic;
   font-weight: 400;
   src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-BkIt.woff2')
+    format('woff2');
+}
+
+@font-face {
+  font-family: 'Frutiger Neue';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-Bd.woff2')
+    format('woff2');
+}
+
+@font-face {
+  font-family: 'Frutiger Neue';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-BdIt.woff2')
     format('woff2');
 }
 
@@ -93,6 +113,13 @@ body {
   src: url('https://markenwelt.wegfrei-portal.de/fonts/GenosGFG-Regular.woff2') format('woff2');
 }
 
+@font-face {
+font-family: 'GenosGFG';
+font-style: normal;
+font-weight: 700;
+src: url('https://markenwelt.wegfrei-portal.de/fonts/GenosGFG-Bold.woff2') format('woff2');
+}
+
 body {
 font-family:
 'GenosGFG',
@@ -121,6 +148,13 @@ sans-serif;
   src: url('https://markenwelt.wegfrei-portal.de/fonts/GenosGFG-Regular.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'GenosGFG';
+  font-style: normal;
+  font-weight: 700;
+  src: url('https://markenwelt.wegfrei-portal.de/fonts/GenosGFG-Bold.woff2') format('woff2');
+}
+
 body {
 font-family:
 'GenosGFG',
@@ -146,7 +180,16 @@ sans-serif;
   font-family: 'BBBank Type TT';
   font-style: normal;
   font-weight: 400;
-  src: url('/path/to/font.woff2') format('woff2');
+  font-display: swap;
+  src: url('/fonts/bbbank/BBBankTypeTT-Regular.woff2') format('woff2');
+}
+
+@font-face {
+font-family: 'BBBank Type TT';
+font-style: normal;
+font-weight: 700;
+font-display: swap;
+src: url('/fonts/bbbank/BBBankTypeTT-Bold.woff2') format('woff2');
 }
 
 body {
@@ -167,7 +210,7 @@ sans-serif;
 ````
 
 <sd-notification open>
-Replace  with the path where you saved the font. We are not allowed to share it, please reach out to the provider directly to request it; for more information, visit: <sd-link href="https://marken-portal.bbbank.de/schrift/">BBBank Marken Portal</sd-link>
+Replace the font URLs with the paths where you saved the regular and bold fonts. We are not allowed to share them, please reach out to the provider directly to request them; for more information, visit: <sd-link href="https://marken-portal.bbbank.de/schrift/">BBBank Marken Portal</sd-link>
 </sd-notification>
 </sd-accordion>
 

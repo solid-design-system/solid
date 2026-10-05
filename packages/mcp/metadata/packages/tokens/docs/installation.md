@@ -58,6 +58,14 @@ Please make sure to change `latest` to a concrete package version you want to us
     format('woff2');
 }
 
+@font-face {
+  font-family: 'Frutiger Neue';
+  font-style: italic;
+  font-weight: 400;
+  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-BkIt.woff2')
+    format('woff2');
+}
+
 body {
   font-family:
     'Frutiger Neue',

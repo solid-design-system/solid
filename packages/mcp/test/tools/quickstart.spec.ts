@@ -42,4 +42,14 @@ describe('when using quickstart tool', () => {
     assert.strictEqual(result.content[0].type, 'text');
     assert.ok(result.content[0].text.length > 20);
   });
+
+  it('should keep shared setup without framework prompts or their selector', async () => {
+    const result = await registeredTools[0].handler({ doc: 'Quickstart' });
+    const text = result.content[0].text;
+    assert.match(text, /npm install @solid-design-system\/components/);
+    assert.match(text, /import '@solid-design-system\/components\/dist\/solid-components.js'/);
+    assert.match(text, /@solid-design-system\/tokens\/dist\/themes\/ui-light\/ui-light.css/);
+    assert.doesNotMatch(text, /Create a (Vue|React|Svelte)|npm create vite|isCustomElement|@tailwindcss\/vite|prompt:/);
+    assert.doesNotMatch(text, /<Source|<Meta|<sd-tab|addon-docs|mdx-prompt-blocks|\?raw/);
+  });
 });
