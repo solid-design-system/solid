@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 3.7.1
+
+### Patch Changes
+
+- Updated descriptions for `file-selector`, `input`, `status-badge` & the `supernumber` templates. _[`#3377`](https://github.com/solid-design-system/solid/pull/3377) [`d401ab9`](https://github.com/solid-design-system/solid/commit/d401ab98a54f31678331728329eeaec6012d54d5) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 3.7.0
 
 ### Minor Changes

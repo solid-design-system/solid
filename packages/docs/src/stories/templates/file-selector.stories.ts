@@ -13,6 +13,9 @@ export default {
     }
   }
 };
+/**
+ * Example of how to use the default file selector within a form to let users upload a single document. Combined with a select field for document type, this pattern suits identity verification or structured upload flows where the file type needs to be specified before uploading.
+ */
 
 export const DefaultVariant = {
   name: 'File Selector with Default variant',
@@ -38,6 +41,10 @@ export const DefaultVariant = {
     </section>
   `
 };
+
+/**
+ * Example of how to use the drop area file selector to allow multiple file uploads via drag-and-drop or file browser. Uploaded files are listed below the drop zone with progress indicators, delete buttons, and inline error messages for files that exceed the size limit.
+ */
 
 export const DropAreaVariant = {
   name: 'File Selector with Drop Area variant',
