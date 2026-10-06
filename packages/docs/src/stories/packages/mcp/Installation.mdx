@@ -20,21 +20,21 @@ npx @solid-design-system/mcp
 
 ### VS Code
 
-Add the MCP server to your VS Code settings:
+Add the MCP server to `.vscode/mcp.json` in your repository:
 
 ```json
 {
-  "mcp": {
-    "servers": {
-      "solid": {
-        "type": "stdio",
-        "command": "npx",
-        "args": ["@solid-design-system/mcp"]
-      }
+  "servers": {
+    "solid": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@solid-design-system/mcp"]
     }
   }
 }
 ```
+
+In VS Code, run **MCP: List Servers** from the Command Palette, select `solid`, and start it if needed. Confirm trust if prompted. In Chat, open **Configure Tools** and verify that the Solid tools are available.
 
 ### Claude Desktop
 

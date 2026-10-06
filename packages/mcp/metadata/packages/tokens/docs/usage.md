@@ -1,6 +1,6 @@
 # Usage
 
-This page covers advanced usage patterns for `@solid-design-system/tokens`. Make sure you've completed the <sd-link href="?path=/docs/packages-tokens-installation--docs">Installation</sd-link> first.
+This page covers advanced usage patterns for `@solid-design-system/tokens`. Make sure you've completed the <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-installation--docs">Installation</sd-link> first.
 
 <sd-tab-group>
   {/* prettier-ignore */}
@@ -266,7 +266,7 @@ section on loading `legacy-variables.css`.
 
 As a Theme Consumer, you use design tokens (CSS variables, SCSS variables, or Tailwind utilities) to style your custom components. The theme — and therefore the resolved values of these tokens — is provided by the Theme Host.
 
-For setup instructions per format (CSS, SCSS, Tailwind), see the <sd-link href="?path=/docs/packages-tokens-installation--docs">Installation page</sd-link>.
+For setup instructions per format (CSS, SCSS, Tailwind), see the <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-installation--docs">Installation page</sd-link>.
 
 ### Key principles
 
@@ -361,7 +361,7 @@ When developing in isolation (e.g. Storybook, local dev server), no Theme Host i
 Example for Storybook's `preview.js`:
 
 ```js
-
+import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
 ```
 
 ## Optional: Standalone fallback

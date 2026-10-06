@@ -3,6 +3,7 @@ import { mkdirSync } from 'node:fs';
 import { dirname, join, basename, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import ora from 'ora';
+import { stripPromptOnlyBlocks } from '../../../../scripts/mdx-prompt-blocks.mjs';
 import {
   componentPackageDocsPath,
   quickstartPackageDocsPath,
@@ -11,6 +12,7 @@ import {
 } from '../utilities/index.js';
 
 const SKIP = new Set(['changelog', 'contributing', 'migration', 'index', '_rolesinfo']);
+const DOCS_BASE_URL = 'https://solid-design-system.fe.union-investment.de/docs/';
 
 /** Absolute path to the docs stories/packages directory */
 const DOCS_PACKAGES_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../../docs/src/stories/packages');
@@ -18,12 +20,25 @@ const DOCS_PACKAGES_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../.
 /**
  * Strip Storybook-specific syntax from MDX, returning plain Markdown.
  */
-const cleanMdx = (raw: string): string =>
-  raw
-    // Remove import lines
-    .replace(/^import\s+.*\n/gm, '')
+const stripMdxImports = (raw: string): string => {
+  let insideCodeFence = false;
+
+  return raw
+    .split('\n')
+    .filter(line => {
+      if (line.trimStart().startsWith('```')) insideCodeFence = !insideCodeFence;
+      return insideCodeFence || !line.startsWith('import ');
+    })
+    .join('\n');
+};
+
+const cleanMdx = (raw: string, filename: string): string =>
+  stripMdxImports(stripPromptOnlyBlocks(raw, filename))
+    .replace(/<sd-tab-group data-agent-prompts="true">[\s\S]*?<\/sd-tab-group>/g, '')
     // Remove <Meta .../>  (single or multi-line)
     .replace(/<Meta\s[^>]*\/>/gs, '')
+    // Make Storybook links usable outside the documentation site
+    .replace(/(\(|href=["'])\?path=/g, `$1${DOCS_BASE_URL}?path=`)
     // Remove html:preview fences → plain html
     .replace(/```html:preview/g, '```html')
     // Remove any remaining JSX-style self-closing tags from storybook
@@ -52,8 +67,9 @@ const buildDocsForPackage = async (sourceDir: string, outputDir: string, label: 
 
   await Promise.all(
     mdxFiles.map(async file => {
-      const raw = await fs.readFile(join(sourceDir, file), 'utf-8');
-      const cleaned = cleanMdx(raw);
+      const sourceFile = join(sourceDir, file);
+      const raw = await fs.readFile(sourceFile, 'utf-8');
+      const cleaned = cleanMdx(raw, sourceFile);
       const slug = basename(file, '.mdx').toLowerCase().replace(/\s+/g, '-');
       await fs.writeFile(join(outputDir, `${slug}.md`), cleaned, 'utf-8');
     })
@@ -68,9 +84,13 @@ const buildSingleDoc = async (sourceFile: string, outputFile: string, label: str
   try {
     const raw = await fs.readFile(sourceFile, 'utf-8');
     mkdirSync(dirname(outputFile), { recursive: true });
-    await fs.writeFile(outputFile, cleanMdx(raw), 'utf-8');
+    await fs.writeFile(outputFile, cleanMdx(raw, sourceFile), 'utf-8');
     spinner.succeed(`${label}: written to ${outputFile}`);
-  } catch {
+  } catch (error) {
+    if (!(error instanceof Error && 'code' in error && error.code === 'ENOENT')) {
+      spinner.fail(`${label}: failed to build`);
+      throw error;
+    }
     spinner.warn(`${label} source file not found: ${sourceFile}`);
   }
 };
