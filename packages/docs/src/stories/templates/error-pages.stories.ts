@@ -47,6 +47,28 @@ export const PageNotFound = {
 };
 
 /**
+ * Example of a 404 error page using an illustration instead of a content icon.
+ */
+export const PageNotFoundIllustration = {
+  name: '404 – Page Not Found with Illustration',
+  render: () => html`
+    <div class="border border-neutral-500 p-12">
+      <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+        <img src="./placeholders/images/illustrations/error-related-empty.svg" alt="" class="h-[200px] w-[200px]" />
+        <div class="flex flex-col items-center gap-4">
+          <p class="sd-display text-primary">404</p>
+          <h1 class="sd-headline sd-headline--size-3xl">Page not found</h1>
+        </div>
+        <p class="sd-leadtext sd-leadtext--size-lg max-w-[480px]">
+          The page you’re looking for doesn’t exist or may have been moved. Check the URL or head back to the homepage.
+        </p>
+        <sd-button>Go to homepage</sd-button>
+      </div>
+    </div>
+  `
+};
+
+/**
  * Example of a 403 error page for when a user tries to access a resource they don't have permission for.
  */
 export const AccessDenied = {
@@ -55,6 +77,33 @@ export const AccessDenied = {
     <div class="border border-neutral-500 p-12">
       <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
         <sd-icon name="content/fingerprint" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
+        <div class="flex flex-col items-center gap-4">
+          <p class="sd-display text-primary">403</p>
+          <h1 class="sd-headline sd-headline--size-3xl">Access denied</h1>
+        </div>
+        <p class="sd-leadtext sd-leadtext--size-lg max-w-[480px]">
+          You don’t have permission to view this page. If you think this is a mistake, contact your administrator or go
+          back to the homepage.
+        </p>
+        <sd-button>Go to homepage</sd-button>
+      </div>
+    </div>
+  `
+};
+
+/**
+ * Example of a 403 error page using an illustration instead of a content icon.
+ */
+export const AccessDeniedIllustration = {
+  name: '403 – Access Denied with Illustration',
+  render: () => html`
+    <div class="border border-neutral-500 p-12">
+      <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+        <img
+          src="./placeholders/images/illustrations/permission-restricted-empty.svg"
+          alt=""
+          class="h-[200px] w-[200px]"
+        />
         <div class="flex flex-col items-center gap-4">
           <p class="sd-display text-primary">403</p>
           <h1 class="sd-headline sd-headline--size-3xl">Access denied</h1>
