@@ -3,7 +3,6 @@ name: empty-states
 title: Empty States
 components:
   - sd-button
-  - sd-display
   - sd-headline
   - sd-headline--size-3xl
   - sd-icon
@@ -20,7 +19,7 @@ version: 1.0.0
   <p class="sd-paragraph text-lg max-w-[480px]">
     Everything you add will appear here. Create your first entry to get started.
   </p>
-  <sd-button>Go to homepage</sd-button>
+  <sd-button>Create first entry</sd-button>
 </div>
 ```
 
@@ -33,7 +32,7 @@ version: 1.0.0
   <p class="sd-paragraph text-lg max-w-[480px]">
     Everything you add will appear here. Create your first entry to get started.
   </p>
-  <sd-button>Go to homepage</sd-button>
+  <sd-button>Create first entry</sd-button>
 </div>
 ```
 

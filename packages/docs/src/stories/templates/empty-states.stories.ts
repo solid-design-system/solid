@@ -11,7 +11,6 @@ export default {
   parameters: {
     relatedLinks: [
       { link: 'components/sd-icon', label: 'sd-icon (content)' },
-      { link: 'styles/sd-display', label: 'sd-display' },
       { link: 'styles/sd-headline', label: 'sd-headline' },
       { link: 'styles/sd-paragraph', label: 'sd-paragraph' },
       { link: 'components/sd-button', label: 'sd-button' }
@@ -36,7 +35,7 @@ export const FirstTimeUse = {
       <p class="sd-paragraph text-lg max-w-[480px]">
         Everything you add will appear here. Create your first entry to get started.
       </p>
-      <sd-button>Go to homepage</sd-button>
+      <sd-button>Create first entry</sd-button>
     </div>
   `
 };
@@ -53,7 +52,7 @@ export const FirstTimeUseIllustration = {
       <p class="sd-paragraph text-lg max-w-[480px]">
         Everything you add will appear here. Create your first entry to get started.
       </p>
-      <sd-button>Go to homepage</sd-button>
+      <sd-button>Create first entry</sd-button>
     </div>
   `
 };
