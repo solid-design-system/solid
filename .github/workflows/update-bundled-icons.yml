@@ -1,0 +1,73 @@
+name: Update Bundled Icons
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: bundled-icons-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: github.ref_type == 'branch'
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+    steps:
+      - uses: actions/checkout@v6
+      - name: Configure git safe directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24.14.1
+      - uses: pnpm/action-setup@v5
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Test exporter
+        run: pnpm --dir packages/components test:figma
+      - name: Update bundled icons from Figma
+        run: pnpm --dir packages/components fetch:figma --target=bundled
+        env:
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+      - name: Verify bundled components
+        run: |
+          pnpm --dir packages/components ts.verify
+          pnpm --dir packages/components test.single.ci icon
+      - name: Prepare changeset for bundled icons
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('node:fs/promises');
+            const { execFileSync } = require('node:child_process');
+            const allowed = [
+              'packages/components/src/components/icon/library.internal.ts',
+              'packages/components/src/components/icon/library.status.ts'
+            ];
+            const changed = execFileSync('git', ['diff', '--name-only', '--', ...allowed], { encoding: 'utf8' });
+            if (!changed.trim()) {
+              await core.summary.addRaw('Bundled icons are unchanged. No update is needed.').write();
+              return;
+            }
+            await fs.writeFile('.changeset/figma-icons-sync.md',
+              "---\n'@solid-design-system/components': patch\n---\n\nUpdated bundled component and status icons from the Figma asset library.\n");
+      - name: Create or update review PR for bundled icons
+        uses: peter-evans/create-pull-request@v8
+        with:
+          add-paths: |
+            packages/components/src/components/icon/library.internal.ts
+            packages/components/src/components/icon/library.status.ts
+            .changeset/figma-icons-sync.md
+          branch: automation/bundled-icons/${{ github.ref_name }}
+          base: ${{ github.ref_name }}
+          delete-branch: true
+          draft: true
+          commit-message: "fix: update bundled Figma icons"
+          title: "fix: update bundled Figma icons"
+          body: |
+            Updates only bundled internal and status icons. Exporter tests, component typecheck and icon browser tests passed in the update workflow. Review the icons before merging.
+
+            This workflow does not export CELUM upload files. Use the separate Download CELUM Icons (ZIP) workflow for that. Workflows may not run automatically for PRs created with GITHUB_TOKEN.

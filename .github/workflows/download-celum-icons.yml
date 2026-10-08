@@ -1,0 +1,47 @@
+name: Download CELUM Icons (ZIP)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: celum-icons-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24.14.1
+      - uses: pnpm/action-setup@v5
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 'true'
+      - name: Test exporter
+        run: pnpm --dir packages/components test:figma
+      - name: Download current CELUM icons from Figma
+        run: pnpm --dir packages/components fetch:figma --target=celum
+        env:
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+      - name: Verify tracked files remain unchanged
+        run: git diff --exit-code
+      - name: Downloadable CELUM ZIP
+        id: zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: solid-celum-icons
+          path: packages/components/.figma-icons-celum/celum/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
+      - name: Show ZIP download
+        env:
+          ARTIFACT_URL: ${{ steps.zip.outputs.artifact-url }}
+        run: |
+          printf '## CELUM Icons\n\n[Download the ZIP](%s)\n\nContains the current vb, bbbank and sparda folders and export report. Upload these icons to CELUM manually. No repository files were changed and no PR was created.\n' "$ARTIFACT_URL" >> "$GITHUB_STEP_SUMMARY"
