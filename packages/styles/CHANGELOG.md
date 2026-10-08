@@ -1,5 +1,15 @@
 # @solid-design-system/styles
 
+## 7.5.0
+
+### Minor Changes
+
+- Added `sd-interactive--variant-secondary` to `sd-interactive`. Updated the sd-dialog, sd-drawer and sd-notification to use this variable. _[`#3327`](https://github.com/solid-design-system/solid/pull/3327) [`59d6c7d`](https://github.com/solid-design-system/solid/commit/59d6c7de9af1384a8f11200503b50f1c6b8f2a33) [@balco0110](https://github.com/balco0110)_
+
+### Patch Changes
+
+- Removed unnecessary style classes from the `sd-prose` docs. _[`#3350`](https://github.com/solid-design-system/solid/pull/3350) [`28c3a43`](https://github.com/solid-design-system/solid/commit/28c3a43788236e36923935a307836b0e2ee9e681) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 7.4.3
 
 ### Patch Changes
