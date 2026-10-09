@@ -17,10 +17,15 @@ export const Footer = ({ context }) => {
   const relatedLinks = preparedMeta?.parameters?.relatedLinks ?? [];
   if (!relatedLinks.length) return null;
 
-  const items = relatedLinks.map(link => {
+  // Entries are either 'type/tag' strings or { link: 'type/tag', label } objects with an exact display label
+  const items = relatedLinks.map(entry => {
+    const link = typeof entry === 'string' ? entry : entry.link;
     const [type, tag] = link.split('/');
 
-    return { tag, href: `./?path=/docs/${type}-${tag}--docs` };
+    return {
+      label: typeof entry === 'string' ? toTitle(tag) : entry.label,
+      href: `./?path=/docs/${type}-${tag}--docs`
+    };
   });
 
   return (
@@ -31,7 +36,7 @@ export const Footer = ({ context }) => {
           <ul className="m-0 flex list-none flex-col gap-4 p-0 pt-4">
             {items.map(item => (
               <li key={item.href}>
-                <sd-link href={item.href}>{toTitle(item.tag)}</sd-link>
+                <sd-link href={item.href}>{item.label}</sd-link>
               </li>
             ))}
           </ul>
