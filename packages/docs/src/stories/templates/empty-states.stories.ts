@@ -29,7 +29,7 @@ export default {
 export const FirstTimeUse = {
   name: 'First-Time Use',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/waving" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
       <h2 class="sd-headline sd-headline--size-3xl">Get started</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
@@ -46,7 +46,7 @@ export const FirstTimeUse = {
 export const FirstTimeUseIllustration = {
   name: 'First-Time Use with Illustration',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <img src="./placeholders/images/illustrations/first-time-use.svg" alt="" class="h-[200px] w-[200px]" />
       <h2 class="sd-headline sd-headline--size-3xl">Get started</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
@@ -63,7 +63,7 @@ export const FirstTimeUseIllustration = {
 export const NoResults = {
   name: 'No Results',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/magnifying-glass-question-mark" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
       <h2 class="sd-headline sd-headline--size-3xl">No results found</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
@@ -79,7 +79,7 @@ export const NoResults = {
 export const NoResultsIllustration = {
   name: 'No Results with Illustration',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <img src="./placeholders/images/illustrations/no-search-results.svg" alt="" class="h-[200px] w-[200px]" />
       <h2 class="sd-headline sd-headline--size-3xl">No results found</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
@@ -95,7 +95,7 @@ export const NoResultsIllustration = {
 export const FilteredToZero = {
   name: 'Filtered to Zero',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/magnifying-glass-question-mark" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
       <h2 class="sd-headline sd-headline--size-3xl">No matches for your filters</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
@@ -111,7 +111,7 @@ export const FilteredToZero = {
 export const FilteredToZeroIllustration = {
   name: 'Filtered to Zero with Illustration',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <img src="./placeholders/images/illustrations/filtered-to-zero.svg" alt="" class="h-[200px] w-[200px]" />
       <h2 class="sd-headline sd-headline--size-3xl">No matches for your filters</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
@@ -127,7 +127,7 @@ export const FilteredToZeroIllustration = {
 export const ErrorRelatedEmpty = {
   name: 'Error-Related Empty',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/triangle-exclamation-mark" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
       <h2 class="sd-headline sd-headline--size-3xl">Something went wrong</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
@@ -144,7 +144,7 @@ export const ErrorRelatedEmpty = {
 export const ErrorRelatedEmptyIllustration = {
   name: 'Error-Related Empty with Illustration',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <img src="./placeholders/images/illustrations/error-related-empty.svg" alt="" class="h-[200px] w-[200px]" />
       <h2 class="sd-headline sd-headline--size-3xl">Something went wrong</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
@@ -161,7 +161,7 @@ export const ErrorRelatedEmptyIllustration = {
 export const PermissionRestrictedEmpty = {
   name: 'Permission-Restricted Empty',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/fingerprint" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
       <h2 class="sd-headline sd-headline--size-3xl">You don't have access to this page</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
@@ -179,7 +179,7 @@ export const PermissionRestrictedEmpty = {
 export const PermissionRestrictedEmptyIllustration = {
   name: 'Permission-Restricted Empty with Illustration',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <img
         src="./placeholders/images/illustrations/permission-restricted-empty.svg"
         alt=""
@@ -201,7 +201,7 @@ export const PermissionRestrictedEmptyIllustration = {
 export const LoadingToEmpty = {
   name: 'Loading-to-Empty',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/triangle-exclamation-mark" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
       <h2 class="sd-headline sd-headline--size-3xl">No items to show right now</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
@@ -218,7 +218,7 @@ export const LoadingToEmpty = {
 export const LoadingToEmptyIllustration = {
   name: 'Loading-to-Empty with Illustration',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <img src="./placeholders/images/illustrations/error-related-empty.svg" alt="" class="h-[200px] w-[200px]" />
       <h2 class="sd-headline sd-headline--size-3xl">No items to show right now</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
