@@ -30,7 +30,7 @@ export default {
 export const PageNotFound = {
   name: '404 – Page Not Found',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/magnifying-glass-question-mark" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
       <div class="flex flex-col items-center gap-4">
         <p class="sd-display text-primary">404</p>
@@ -50,7 +50,7 @@ export const PageNotFound = {
 export const PageNotFoundIllustration = {
   name: '404 – Page Not Found with Illustration',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <img src="./placeholders/images/illustrations/error-related-empty.svg" alt="" class="h-[200px] w-[200px]" />
       <div class="flex flex-col items-center gap-4">
         <p class="sd-display text-primary">404</p>
@@ -70,7 +70,7 @@ export const PageNotFoundIllustration = {
 export const AccessDenied = {
   name: '403 – Access Denied',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/fingerprint" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
       <div class="flex flex-col items-center gap-4">
         <p class="sd-display text-primary">403</p>
@@ -91,7 +91,7 @@ export const AccessDenied = {
 export const AccessDeniedIllustration = {
   name: '403 – Access Denied with Illustration',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <img
         src="./placeholders/images/illustrations/permission-restricted-empty.svg"
         alt=""
@@ -116,7 +116,7 @@ export const AccessDeniedIllustration = {
 export const ServerError = {
   name: '500 – Server Error',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/server" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
       <div class="flex flex-col items-center gap-4">
         <p class="sd-display text-primary">500</p>
@@ -137,7 +137,7 @@ export const ServerError = {
 export const Maintenance = {
   name: 'Maintenance',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/cloud" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
       <h1 class="sd-headline sd-headline--size-3xl">We’ll be right back</h1>
       <p class="sd-paragraph text-lg max-w-[480px]">
@@ -154,7 +154,7 @@ export const Maintenance = {
 export const SessionExpired = {
   name: 'Session Expired',
   render: () => html`
-    <div class="flex flex-col items-center gap-6 px-12 py-24 text-center">
+    <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/hourglass" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
       <h1 class="sd-headline sd-headline--size-3xl">Your session has expired</h1>
       <p class="sd-paragraph text-lg max-w-[480px]">
