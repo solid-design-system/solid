@@ -27,7 +27,7 @@ version: 1.0.0
 </div>
 ```
 
-## Template: 404 – Page Not Found with Illustration
+## Template:
 
 ```html
 <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
@@ -60,7 +60,7 @@ version: 1.0.0
 </div>
 ```
 
-## Template: 403 – Access Denied with Illustration
+## Template:
 
 ```html
 <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
