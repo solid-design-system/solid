@@ -10,18 +10,31 @@ export default {
   title: 'Templates/Error Pages',
   parameters: {
     relatedLinks: [
-      { link: 'components/sd-icon', label: 'sd-icon (content)' },
-      { link: 'styles/sd-display', label: 'sd-display' },
-      { link: 'styles/sd-headline', label: 'sd-headline' },
-      { link: 'styles/sd-paragraph', label: 'sd-paragraph' },
-      { link: 'components/sd-button', label: 'sd-button' }
+      { link: 'components/sd-icon', label: 'Icon (content)' },
+      { link: 'styles/sd-display', label: 'Display' },
+      { link: 'styles/sd-headline', label: 'Headline' },
+      { link: 'styles/sd-paragraph', label: 'Paragraph' },
+      { link: 'components/sd-button', label: 'Button' }
     ],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=24925-87817'
     }
-  }
+  },
+  decorators: [
+    (story: any) =>
+      html`<style>
+          .docs-story {
+            padding: 0;
+          }
+
+          #storybook-docs .innerZoomElementWrapper > * {
+            border: 0 !important;
+          }
+        </style>
+        ${story()}`
+  ] as unknown
 };
 
 /**
@@ -34,7 +47,7 @@ export const PageNotFound = {
       <sd-icon name="content/magnifying-glass-question-mark" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
       <div class="flex flex-col items-center gap-4">
         <p class="sd-display text-primary">404</p>
-        <h1 class="sd-headline sd-headline--size-3xl">Page not found</h1>
+        <h1 class="sd-headline sd-headline--size-3xl text-black!">Page not found</h1>
       </div>
       <p class="sd-paragraph text-lg max-w-[480px]">
         The page you’re looking for doesn’t exist or may have been moved. Check the URL or head back to the homepage.
@@ -54,7 +67,7 @@ export const PageNotFoundIllustration = {
       <img src="./placeholders/images/illustrations/error-related-empty.svg" alt="" class="h-[200px] w-[200px]" />
       <div class="flex flex-col items-center gap-4">
         <p class="sd-display text-primary">404</p>
-        <h1 class="sd-headline sd-headline--size-3xl">Page not found</h1>
+        <h1 class="sd-headline sd-headline--size-3xl text-black!">Page not found</h1>
       </div>
       <p class="sd-paragraph text-lg max-w-[480px]">
         The page you’re looking for doesn’t exist or may have been moved. Check the URL or head back to the homepage.
@@ -74,7 +87,7 @@ export const AccessDenied = {
       <sd-icon name="content/fingerprint" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
       <div class="flex flex-col items-center gap-4">
         <p class="sd-display text-primary">403</p>
-        <h1 class="sd-headline sd-headline--size-3xl">Access denied</h1>
+        <h1 class="sd-headline sd-headline--size-3xl text-black!">Access denied</h1>
       </div>
       <p class="sd-paragraph text-lg max-w-[480px]">
         You don’t have permission to view this page. If you think this is a mistake, contact your administrator or go
@@ -99,7 +112,7 @@ export const AccessDeniedIllustration = {
       />
       <div class="flex flex-col items-center gap-4">
         <p class="sd-display text-primary">403</p>
-        <h1 class="sd-headline sd-headline--size-3xl">Access denied</h1>
+        <h1 class="sd-headline sd-headline--size-3xl text-black!">Access denied</h1>
       </div>
       <p class="sd-paragraph text-lg max-w-[480px]">
         You don’t have permission to view this page. If you think this is a mistake, contact your administrator or go
@@ -120,7 +133,7 @@ export const ServerError = {
       <sd-icon name="content/server" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
       <div class="flex flex-col items-center gap-4">
         <p class="sd-display text-primary">500</p>
-        <h1 class="sd-headline sd-headline--size-3xl">Something went wrong</h1>
+        <h1 class="sd-headline sd-headline--size-3xl text-black!">Something went wrong</h1>
       </div>
       <p class="sd-paragraph text-lg max-w-[480px]">
         An unexpected error occurred on our end. Please try again in a moment, or come back later if the problem
@@ -139,7 +152,7 @@ export const Maintenance = {
   render: () => html`
     <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/cloud" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
-      <h1 class="sd-headline sd-headline--size-3xl">We’ll be right back</h1>
+      <h1 class="sd-headline sd-headline--size-3xl text-black!">We’ll be right back</h1>
       <p class="sd-paragraph text-lg max-w-[480px]">
         This service is temporarily unavailable while we perform scheduled maintenance. Please check back shortly.
       </p>
@@ -156,7 +169,7 @@ export const SessionExpired = {
   render: () => html`
     <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/hourglass" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
-      <h1 class="sd-headline sd-headline--size-3xl">Your session has expired</h1>
+      <h1 class="sd-headline sd-headline--size-3xl text-black!">Your session has expired</h1>
       <p class="sd-paragraph text-lg max-w-[480px]">
         For your security, you’ve been logged out after a period of inactivity. Please sign in again to continue.
       </p>
