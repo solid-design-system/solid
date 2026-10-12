@@ -2,4 +2,4 @@
 '@solid-design-system/placeholders': minor
 ---
 
-Added `error-related-empty` and `permission-restricted-empty` illustrations (SVG).
+Added the `error-related-empty`, `filtered-to-zero`, `first-time-use`, `no-search-results` and `permission-restricted-empty` SVG illustrations.
