@@ -116,12 +116,7 @@ export const Activation = {
  * Use the `centered` attribute to center the tabs within the tab group. The separation line extends on both sides of the tabs. Available for the `default` and `container` variants.
  */
 export const Centered = {
-  render: () => html`
-    <div class="flex flex-col gap-12">
-      <sd-tab-group centered>${unsafeHTML(generateTabsAndPanels(1, 3))}</sd-tab-group>
-      <sd-tab-group centered>${unsafeHTML(generateTabsAndPanels(1, 3, 'container'))}</sd-tab-group>
-    </div>
-  `
+  render: () => html`<sd-tab-group centered>${unsafeHTML(generateTabsAndPanels(1, 3))}</sd-tab-group>`
 };
 
 /**
