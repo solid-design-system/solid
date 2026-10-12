@@ -1,10 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
-/**
- * Examples of full-page error and status messages. Each page combines a content icon, an optional error code, a short headline, a supporting description and a single call to action that helps users recover.
- */
-
 export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Error Pages',
@@ -38,7 +34,7 @@ export default {
 };
 
 /**
- * Example of a 404 error page for when a user navigates to a URL that doesn't exist.
+ * Example of a 404 error page for when a user navigates to a URL that doesn't exist. Use a content icon or an illustration.
  */
 export const PageNotFound = {
   name: '404 – Page Not Found',
@@ -57,11 +53,8 @@ export const PageNotFound = {
   `
 };
 
-/**
- * Example of a 404 error page using an illustration instead of a content icon.
- */
 export const PageNotFoundIllustration = {
-  name: '404 – Page Not Found with Illustration',
+  name: ' ',
   render: () => html`
     <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <img src="./placeholders/images/illustrations/error-related-empty.svg" alt="" class="h-[200px] w-[200px]" />
@@ -78,7 +71,7 @@ export const PageNotFoundIllustration = {
 };
 
 /**
- * Example of a 403 error page for when a user tries to access a resource they don't have permission for.
+ * Example of a 403 error page for when a user tries to access a resource they don't have permission for. Use a content icon or an illustration.
  */
 export const AccessDenied = {
   name: '403 – Access Denied',
@@ -98,11 +91,8 @@ export const AccessDenied = {
   `
 };
 
-/**
- * Example of a 403 error page using an illustration instead of a content icon.
- */
 export const AccessDeniedIllustration = {
-  name: '403 – Access Denied with Illustration',
+  name: ' ',
   render: () => html`
     <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <img
