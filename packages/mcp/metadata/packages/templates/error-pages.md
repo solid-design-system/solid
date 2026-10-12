@@ -31,7 +31,7 @@ version: 1.0.0
 
 ```html
 <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
-  <img src="./placeholders/images/illustrations/page-not-found.svg" alt="" class="h-[200px] w-[200px]" />
+  <img src="./placeholders/images/illustrations/error-related-empty.svg" alt="" class="h-[200px] w-[200px]" />
   <div class="flex flex-col items-center gap-4">
     <p class="sd-display text-primary">404</p>
     <h1 class="sd-headline sd-headline--size-3xl text-black!">Page not found</h1>
