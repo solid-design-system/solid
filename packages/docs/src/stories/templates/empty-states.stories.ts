@@ -1,37 +1,41 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
-/**
- * Examples of empty states shown when a section, search, filter or list has no content to display. Each state combines a content icon or an illustration, a short headline, a supporting description and, where useful, a single call to action.
- */
-
 export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Empty States',
   parameters: {
-    relatedLinks: [
-      { link: 'components/sd-icon', label: 'sd-icon (content)' },
-      { link: 'styles/sd-headline', label: 'sd-headline' },
-      { link: 'styles/sd-paragraph', label: 'sd-paragraph' },
-      { link: 'components/sd-button', label: 'sd-button' }
-    ],
+    relatedLinks: ['components/sd-icon', 'styles/sd-headline', 'styles/sd-paragraph', 'components/sd-button'],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=25200-80'
     }
-  }
+  },
+  decorators: [
+    (story: any) =>
+      html`<style>
+          .docs-story {
+            padding: 0;
+          }
+
+          #storybook-docs .innerZoomElementWrapper > * {
+            border: 0 !important;
+          }
+        </style>
+        ${story()}`
+  ] as unknown
 };
 
 /**
  * Shown when a user opens a section for the first time and nothing has been created yet. A welcome message and a primary action guide them to their first entry.
  */
 export const FirstTimeUse = {
-  name: 'First-Time Use',
+  name: 'First-Time Use (Onboarding Empty)',
   render: () => html`
     <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/waving" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
-      <h2 class="sd-headline sd-headline--size-3xl">Get started</h2>
+      <h2 class="sd-headline sd-headline--size-3xl text-black!">Get started</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
         Everything you add will appear here. Create your first entry to get started.
       </p>
@@ -40,15 +44,12 @@ export const FirstTimeUse = {
   `
 };
 
-/**
- * First-time use empty state with an illustration instead of a content icon.
- */
 export const FirstTimeUseIllustration = {
-  name: 'First-Time Use with Illustration',
+  name: ' ',
   render: () => html`
     <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <img src="./placeholders/images/illustrations/first-time-use.svg" alt="" class="h-[200px] w-[200px]" />
-      <h2 class="sd-headline sd-headline--size-3xl">Get started</h2>
+      <h2 class="sd-headline sd-headline--size-3xl text-black!">Get started</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
         Everything you add will appear here. Create your first entry to get started.
       </p>
@@ -58,14 +59,14 @@ export const FirstTimeUseIllustration = {
 };
 
 /**
- * Shown when a search returns no matches. Suggests trying a different keyword or checking for typos.
+ * Shown when a search returns no matches. Suggests trying a different keyword or checking for typos. Use a content icon or an illustration.
  */
 export const NoResults = {
   name: 'No Results',
   render: () => html`
     <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/magnifying-glass-question-mark" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
-      <h2 class="sd-headline sd-headline--size-3xl">No results found</h2>
+      <h2 class="sd-headline sd-headline--size-3xl text-black!">No results found</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
         We couldn't find anything matching your search. Try a different keyword or check for typos.
       </p>
@@ -73,15 +74,12 @@ export const NoResults = {
   `
 };
 
-/**
- * No results empty state with an illustration instead of a content icon.
- */
 export const NoResultsIllustration = {
-  name: 'No Results with Illustration',
+  name: ' ',
   render: () => html`
     <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <img src="./placeholders/images/illustrations/no-search-results.svg" alt="" class="h-[200px] w-[200px]" />
-      <h2 class="sd-headline sd-headline--size-3xl">No results found</h2>
+      <h2 class="sd-headline sd-headline--size-3xl text-black!">No results found</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
         We couldn't find anything matching your search. Try a different keyword or check for typos.
       </p>
@@ -90,14 +88,14 @@ export const NoResultsIllustration = {
 };
 
 /**
- * Shown when the active filters return no results. Makes clear that data exists and encourages adjusting the filters.
+ * Shown when the active filters return no results. Makes clear that data exists and encourages adjusting the filters. Use a content icon or an illustration.
  */
 export const FilteredToZero = {
   name: 'Filtered to Zero',
   render: () => html`
     <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/magnifying-glass-question-mark" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
-      <h2 class="sd-headline sd-headline--size-3xl">No matches for your filters</h2>
+      <h2 class="sd-headline sd-headline--size-3xl text-black!">No matches for your filters</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
         Your current filter combination doesn't return any results. Try removing or adjusting a filter.
       </p>
@@ -105,15 +103,12 @@ export const FilteredToZero = {
   `
 };
 
-/**
- * Filtered to zero empty state with an illustration instead of a content icon.
- */
 export const FilteredToZeroIllustration = {
-  name: 'Filtered to Zero with Illustration',
+  name: ' ',
   render: () => html`
     <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <img src="./placeholders/images/illustrations/filtered-to-zero.svg" alt="" class="h-[200px] w-[200px]" />
-      <h2 class="sd-headline sd-headline--size-3xl">No matches for your filters</h2>
+      <h2 class="sd-headline sd-headline--size-3xl text-black!">No matches for your filters</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
         Your current filter combination doesn't return any results. Try removing or adjusting a filter.
       </p>
@@ -122,14 +117,14 @@ export const FilteredToZeroIllustration = {
 };
 
 /**
- * Shown when content can't be loaded because of a technical error. Offers a retry action and points to support.
+ * Shown when content can't be loaded because of a technical error. Offers a retry action and points to support. Use a content icon or an illustration.
  */
 export const ErrorRelatedEmpty = {
   name: 'Error-Related Empty',
   render: () => html`
     <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/triangle-exclamation-mark" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
-      <h2 class="sd-headline sd-headline--size-3xl">Something went wrong</h2>
+      <h2 class="sd-headline sd-headline--size-3xl text-black!">Something went wrong</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
         We're having trouble loading this data right now. Please try again. If the problem continues, contact support.
       </p>
@@ -138,15 +133,12 @@ export const ErrorRelatedEmpty = {
   `
 };
 
-/**
- * Error-related empty state with an illustration instead of a content icon.
- */
 export const ErrorRelatedEmptyIllustration = {
-  name: 'Error-Related Empty with Illustration',
+  name: ' ',
   render: () => html`
     <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <img src="./placeholders/images/illustrations/error-related-empty.svg" alt="" class="h-[200px] w-[200px]" />
-      <h2 class="sd-headline sd-headline--size-3xl">Something went wrong</h2>
+      <h2 class="sd-headline sd-headline--size-3xl text-black!">Something went wrong</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
         We're having trouble loading this data right now. Please try again. If the problem continues, contact support.
       </p>
@@ -156,14 +148,14 @@ export const ErrorRelatedEmptyIllustration = {
 };
 
 /**
- * Shown when a user lacks the permissions to view content. Names the administrator as contact and offers a way back to the homepage.
+ * Shown when a user lacks the permissions to view content. Names the administrator as contact and offers a way back to the homepage. Use a content icon or an illustration.
  */
 export const PermissionRestrictedEmpty = {
   name: 'Permission-Restricted Empty',
   render: () => html`
     <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/fingerprint" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
-      <h2 class="sd-headline sd-headline--size-3xl">You don't have access to this page</h2>
+      <h2 class="sd-headline sd-headline--size-3xl text-black!">You don't have access to this page</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
         You're missing the permissions needed to view this content. Contact your administrator if you think this is a
         mistake.
@@ -173,11 +165,8 @@ export const PermissionRestrictedEmpty = {
   `
 };
 
-/**
- * Permission-restricted empty state with an illustration instead of a content icon.
- */
 export const PermissionRestrictedEmptyIllustration = {
-  name: 'Permission-Restricted Empty with Illustration',
+  name: ' ',
   render: () => html`
     <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <img
@@ -185,7 +174,7 @@ export const PermissionRestrictedEmptyIllustration = {
         alt=""
         class="h-[200px] w-[200px]"
       />
-      <h2 class="sd-headline sd-headline--size-3xl">You don't have access to this page</h2>
+      <h2 class="sd-headline sd-headline--size-3xl text-black!">You don't have access to this page</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
         You're missing the permissions needed to view this content. Contact your administrator if you think this is a
         mistake.
@@ -196,14 +185,14 @@ export const PermissionRestrictedEmptyIllustration = {
 };
 
 /**
- * Shown when loading has finished but no items are available. Offers a way to refresh or check back later.
+ * Shown when loading has finished but no items are available. Offers a way to refresh or check back later. Use a content icon or an illustration.
  */
 export const LoadingToEmpty = {
   name: 'Loading-to-Empty',
   render: () => html`
     <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <sd-icon name="content/triangle-exclamation-mark" color="primary" class="h-24 w-24 shrink-0"></sd-icon>
-      <h2 class="sd-headline sd-headline--size-3xl">No items to show right now</h2>
+      <h2 class="sd-headline sd-headline--size-3xl text-black!">No items to show right now</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
         We checked and there's nothing here at the moment. Refresh to check again, or check back later.
       </p>
@@ -212,15 +201,12 @@ export const LoadingToEmpty = {
   `
 };
 
-/**
- * Loading-to-empty state with an illustration instead of a content icon.
- */
 export const LoadingToEmptyIllustration = {
-  name: 'Loading-to-Empty with Illustration',
+  name: ' ',
   render: () => html`
     <div class="flex flex-col items-center gap-6 px-4 py-12 sm:px-12 sm:py-24 text-center">
       <img src="./placeholders/images/illustrations/error-related-empty.svg" alt="" class="h-[200px] w-[200px]" />
-      <h2 class="sd-headline sd-headline--size-3xl">No items to show right now</h2>
+      <h2 class="sd-headline sd-headline--size-3xl text-black!">No items to show right now</h2>
       <p class="sd-paragraph text-lg max-w-[480px]">
         We checked and there's nothing here at the moment. Refresh to check again, or check back later.
       </p>
