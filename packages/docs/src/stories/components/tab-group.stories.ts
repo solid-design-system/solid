@@ -1,5 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 const { argTypes, parameters } = storybookDefaults('sd-tab-group');
 const { overrideArgs } = storybookHelpers('sd-tab-group');
@@ -108,6 +109,18 @@ export const Activation = {
         <div>Manual provident nisi doloremque soluta inventore.</div>
       </sd-tab-panel>
     </sd-tab-group>
+  `
+};
+
+/**
+ * Use the `centered` attribute to center the tabs within the tab group. The separation line extends on both sides of the tabs. Available for the `default` and `container` variants.
+ */
+export const Centered = {
+  render: () => html`
+    <div class="flex flex-col gap-12">
+      <sd-tab-group centered>${unsafeHTML(generateTabsAndPanels(1, 3))}</sd-tab-group>
+      <sd-tab-group centered>${unsafeHTML(generateTabsAndPanels(1, 3, 'container'))}</sd-tab-group>
+    </div>
   `
 };
 
