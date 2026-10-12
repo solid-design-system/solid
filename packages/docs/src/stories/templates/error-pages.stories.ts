@@ -10,11 +10,11 @@ export default {
   title: 'Templates/Error Pages',
   parameters: {
     relatedLinks: [
-      { link: 'components/sd-icon', label: 'Icon (content)' },
-      { link: 'styles/sd-display', label: 'Display' },
-      { link: 'styles/sd-headline', label: 'Headline' },
-      { link: 'styles/sd-paragraph', label: 'Paragraph' },
-      { link: 'components/sd-button', label: 'Button' }
+      'components/sd-icon',
+      'styles/sd-display',
+      'styles/sd-headline',
+      'styles/sd-paragraph',
+      'components/sd-button'
     ],
     chromatic: { disableSnapshot: true },
     design: {
