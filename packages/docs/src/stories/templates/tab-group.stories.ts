@@ -91,6 +91,59 @@ export const TabCentered = {
 };
 
 /**
+ * Example of how to use a centered container tab group with icons on mobile screens. Keep it to two tabs with short labels so both fit on small screens without scrolling.
+ */
+export const TabCenteredMobile = {
+  name: 'Tab Group Center Aligned for Mobile',
+  render: () => html`
+    <div class="max-w-[375px]">
+      <sd-tab-group activation centered>
+        <sd-tab slot="nav" panel="tab-1" variant="container">
+          <sd-icon slot="left" name="system/calendar"></sd-icon>
+          Savings plans
+        </sd-tab>
+        <sd-tab-panel name="tab-1">
+          <h3 class="sd-headline sd-headline--size-3xl">Savings plans</h3>
+          <p class="sd-paragraph sd-paragraph--size-sm mt-4">Invest regularly and adjust your plans at any time.</p>
+          <div class="mt-4">
+            <div class="flex items-center justify-between">
+              <h4 class="sd-headline sd-headline--size-lg">UniGlobal</h4>
+              <span class="sd-chip sd-chip--size-sm">Active</span>
+            </div>
+            <p class="sd-paragraph sd-paragraph--size-sm mt-4">100 EUR monthly · next on 15.10.2026</p>
+            <sd-link href="#" size="sm">Edit plan</sd-link>
+            <sd-divider class="my-6"></sd-divider>
+            <div class="flex items-center justify-between">
+              <h4 class="sd-headline sd-headline--size-lg">UniRak</h4>
+              <span class="sd-chip sd-chip--size-sm">Paused</span>
+            </div>
+            <p class="sd-paragraph sd-paragraph--size-sm mt-4">50 EUR monthly · paused since 01.09.2026</p>
+            <sd-link href="#" size="sm">Resume plan</sd-link>
+            <sd-divider class="mt-6"></sd-divider>
+          </div>
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-2" variant="container">
+          <sd-icon slot="left" name="system/star-filled"></sd-icon>
+          Favourites
+        </sd-tab>
+        <sd-tab-panel name="tab-2">
+          <h3 class="sd-headline sd-headline--size-3xl">Favourites</h3>
+          <p class="sd-paragraph sd-paragraph--size-sm mt-4">Keep track of the funds you are interested in.</p>
+          <div class="mt-4">
+            <div class="flex items-center justify-between">
+              <h4 class="sd-headline sd-headline--size-lg">UniEuroRenta</h4>
+            </div>
+            <p class="sd-paragraph sd-paragraph--size-sm mt-4">Bond fund · added on 03.08.2026</p>
+            <sd-link href="#" size="sm">View fund</sd-link>
+            <sd-divider class="mt-6"></sd-divider>
+          </div>
+        </sd-tab-panel>
+      </sd-tab-group>
+    </div>
+  `
+};
+
+/**
  * Example of how to add a badge to a tab label to surface unread or new item counts directly in the navigation. The active tab reveals a content list where individual items are marked with a "New" chip, combining two layers of status indication.
  */
 
