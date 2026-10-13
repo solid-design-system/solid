@@ -31,9 +31,6 @@ jobs:
       - name: Fetch Celum icon changelogs
         run: cd packages/tokens && pnpm fetch:icons-celum
 
-      - name: Format Celum icon changelogs
-        run: pnpm exec prettier --write "packages/tokens/data/celum-changelogs/*.json"
-
       - name: Open pull request with changes
         uses: peter-evans/create-pull-request@v7
         with:

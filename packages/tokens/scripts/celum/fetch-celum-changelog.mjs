@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { execFileSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import { CELUM_THEME_MAPPING } from '../../../docs/.storybook/addons/theme-generator/theme-attributes.ts';
 import { LIBRARIES } from '../../../docs/scripts/celum/icon-libraries.ts';
@@ -359,6 +360,11 @@ const main = async () => {
   for (const [libraryType, library] of Object.entries(LIBRARIES)) {
     await fetchIconsForLibrary(libraryType, library, requestedStartDate);
   }
+
+  execFileSync('pnpm', ['exec', 'prettier', '--write', 'data/celum-changelogs/*.json'], {
+    cwd: path.resolve(__dirname, '../..'),
+    stdio: 'inherit'
+  });
 
   console.info('\n Icon changelog fetch completed!');
 };
