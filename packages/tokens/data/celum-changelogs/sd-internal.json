@@ -24,11 +24,7 @@
               "tags": []
             }
           ],
-          "removed": [
-            "chevrons-sm-left.svg",
-            "chevrons-sm-right.svg",
-            "eye.svg"
-          ],
+          "removed": ["chevrons-sm-left.svg", "chevrons-sm-right.svg", "eye.svg"],
           "modified": [
             {
               "name": "calendar.svg",
