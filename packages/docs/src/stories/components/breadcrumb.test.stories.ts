@@ -96,7 +96,16 @@ export const PreflightReset = {
           border: 0 solid;
         }
       </style>
-      ${generateTemplate({ args })}
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'attribute',
+            name: 'label',
+            value: 'Preflight reset breadcrumbs'
+          }
+        ]
+      })}
     </div>`;
   }
 };
