@@ -85,6 +85,11 @@
     "tags": ["Zeit", "Uhrzeit", "Termin"]
   },
   {
+    "technicalId": "christmas-tree",
+    "displayNameDe": "Weihnachtsbaum",
+    "tags": ["Weihnachten", "Fest", "Baum"]
+  },
+  {
     "technicalId": "circle-plus",
     "displayNameDe": "Kreis Plus",
     "tags": ["addieren", "berechnen", "Kreuz", "Rechenzeichen"]
@@ -580,14 +585,14 @@
     "tags": ["Kunstwerk", "Kunst"]
   },
   {
-    "technicalId": "office-chair",
-    "displayNameDe": "Bürostuhl",
-    "tags": ["Möbel", "Ausstattung", "Schreibtischstuhl", "Büro"]
-  },
-  {
     "technicalId": "heart",
     "displayNameDe": "Herz",
     "tags": ["Liebe", "glücklich"]
+  },
+  {
+    "technicalId": "office-chair",
+    "displayNameDe": "Bürostuhl",
+    "tags": ["Möbel", "Ausstattung", "Schreibtischstuhl", "Büro"]
   },
   {
     "technicalId": "office",
@@ -668,6 +673,11 @@
     "technicalId": "train",
     "displayNameDe": "Zug",
     "tags": ["Bahn", "Anreise", "Dienstreise", "Reisen"]
+  },
+  {
+    "technicalId": "family-children",
+    "displayNameDe": "Familie Kinder",
+    "tags": ["Kinder", "Familie", "Eltern"]
   },
   {
     "technicalId": "certificate",
@@ -870,6 +880,11 @@
     "tags": ["Ton", "Lautsprecher", "Geräusch", "Box"]
   },
   {
+    "technicalId": "family-child-girl",
+    "displayNameDe": "Familie Kind Mädchen",
+    "tags": ["Mädchen", "Familie", "Eltern"]
+  },
+  {
     "technicalId": "truck-euro",
     "displayNameDe": "Laster Euro",
     "tags": ["Immobilienvermögen Logistik", "Fahrzeug", "Währung", "Logistik"]
@@ -935,14 +950,14 @@
     "tags": ["Kurs", "Fonds", "Aktienmärkte", "Aktien"]
   },
   {
-    "technicalId": "woman",
-    "displayNameDe": "Frau",
-    "tags": ["Profil", "Mitarbeiterin", "Person"]
-  },
-  {
     "technicalId": "quotation-marks",
     "displayNameDe": "Anführungszeichen",
     "tags": ["Kommunikation", "Zitat", "Zitatzeichen"]
+  },
+  {
+    "technicalId": "woman",
+    "displayNameDe": "Frau",
+    "tags": ["Profil", "Mitarbeiterin", "Person"]
   },
   {
     "technicalId": "skyscraper-magnifying-glass",
@@ -1435,14 +1450,14 @@
     "tags": ["Musik", "Rhythmus"]
   },
   {
-    "technicalId": "face-happy",
-    "displayNameDe": "Gesicht glücklich",
-    "tags": ["positiv", "zufrieden", "happy"]
-  },
-  {
     "technicalId": "flag-position",
     "displayNameDe": "Fahne Position",
     "tags": ["Etappe"]
+  },
+  {
+    "technicalId": "face-happy",
+    "displayNameDe": "Gesicht glücklich",
+    "tags": ["positiv", "zufrieden", "happy"]
   },
   {
     "technicalId": "hands-baton",
@@ -1463,6 +1478,11 @@
     "technicalId": "business",
     "displayNameDe": "Geschäft",
     "tags": ["verkaufen", "Angebote", "kaufen", "Produkt"]
+  },
+  {
+    "technicalId": "family-child-boy",
+    "displayNameDe": "Familie Kind Junge",
+    "tags": ["Eltern", "Junge", "Familie"]
   },
   {
     "technicalId": "face-sad",

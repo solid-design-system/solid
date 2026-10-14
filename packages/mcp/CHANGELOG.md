@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.5.1
+
+### Patch Changes
+
+- Improved the Quickstart guidance for user and agent readability, focusing on package selection, theming, project setup, and MCP configuration. _[`#3373`](https://github.com/solid-design-system/solid/pull/3373) [`e8d0ec5`](https://github.com/solid-design-system/solid/commit/e8d0ec545c8d07850265351b32ad62844798241c) [@martascorreia](https://github.com/martascorreia)_
+
 ## 7.5.0
 
 ### Patch Changes
