@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 3.8.0
+
+### Minor Changes
+
+- Added error page templates (404, 403, 500, maintenance and session expired). _[`#3394`](https://github.com/solid-design-system/solid/pull/3394) [`053bcf6`](https://github.com/solid-design-system/solid/commit/053bcf6c31b9b6feccc00408d6a03eee038b8002) [@coraliefeil](https://github.com/coraliefeil)_
+
 ## 3.7.1
 
 ### Patch Changes

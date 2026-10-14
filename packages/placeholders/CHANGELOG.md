@@ -1,5 +1,11 @@
 # @solid-design-system/placeholders
 
+## 3.1.0
+
+### Minor Changes
+
+- Added `error-related-empty` and `permission-restricted-empty` illustrations (SVG). _[`#3394`](https://github.com/solid-design-system/solid/pull/3394) [`053bcf6`](https://github.com/solid-design-system/solid/commit/053bcf6c31b9b6feccc00408d6a03eee038b8002) [@coraliefeil](https://github.com/coraliefeil)_
+
 ## 3.0.3
 
 ### Patch Changes
