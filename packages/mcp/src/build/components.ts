@@ -10,6 +10,7 @@ type Manifest = Module[];
 
 /** Absolute path to the docs stories/components directory */
 const DOCS_COMPONENTS_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../../docs/src/stories/components');
+const DOCS_BASE_URL = 'https://solid-design-system.fe.union-investment.de/docs/';
 const NON_COMPONENT_DOC_NAMES = new Set([
   'icon.changelog.default',
   'icon.changelog.internal',
@@ -21,6 +22,7 @@ interface MdxExtract {
 }
 
 const normalizeMdxTemplateEscapes = (text: string): string => text.replace(/\\`/g, '`');
+const makeStorybookLinksAbsolute = (text: string): string => text.replace(/\]\(\?path=/g, `](${DOCS_BASE_URL}?path=`);
 
 const extractMdxContent = async (mdxPath: string): Promise<MdxExtract> => {
   try {
@@ -39,7 +41,7 @@ const extractMdxContent = async (mdxPath: string): Promise<MdxExtract> => {
     let docs = full.replace(/####\s+Related (?:Components|Templates)\n+((?:.*\n)*?)(?=\n####|\n###|$)/g, '');
     docs = docs.replace(/^\[.*?\]\(\.\/?path=.*?\)\n?/gm, '');
     docs = docs.replace(/\nVisit <sd-link[\s\S]*$/, '');
-    docs = normalizeMdxTemplateEscapes(docs.trim());
+    docs = makeStorybookLinksAbsolute(normalizeMdxTemplateEscapes(docs.trim()));
 
     return { docs: docs || null };
   } catch {
@@ -141,7 +143,7 @@ const extractStories = async (storiesPath: string): Promise<Example[]> => {
     const html = dedent(rawHtml);
     if (!html) continue;
 
-    stories.push({ slug: toKebab(exportName), description, html });
+    stories.push({ slug: toKebab(exportName), description: makeStorybookLinksAbsolute(description), html });
   }
 
   return stories;

@@ -12,9 +12,10 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "test": "pnpm --workspace-concurrency=1 --recursive test",
+    "test": "pnpm test:prompts && pnpm --workspace-concurrency=1 --recursive test",
+    "test:prompts": "node --test scripts/mdx-prompt-blocks.test.mjs",
     "prepare": "node .husky/install.mjs",
-    "verify": "pnpm format.verify && pnpm lint.verify && pnpm --recursive --if-present --workspace-concurrency=1 verify",
+    "verify": "pnpm test:prompts && pnpm format.verify && pnpm lint.verify && pnpm --recursive --if-present --workspace-concurrency=1 verify",
     "fix": "pnpm lint.fix && pnpm format.fix",
     "lint.fix": "cd packages/eslint-plugin && pnpm build && cd ../.. && eslint packages --max-warnings 0 --fix",
     "lint.verify": "cd packages/eslint-plugin && pnpm build && cd ../.. && eslint packages --max-warnings 0 && echo '✅ Linting verified'",
