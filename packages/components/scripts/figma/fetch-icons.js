@@ -162,7 +162,9 @@ export function optimizeSvg(source, { bundled = false, status = false } = {}) {
               currentColor: bundled ? (status ? true : /^(#00358e|#000(?:000)?|black)$/i) : false,
               shorthex: false,
               shortname: false
-            }
+            },
+            // Figma exports circles as cubic curves; bundled icons keep them as arcs so they rasterize like the previous hand-optimized SVGs.
+            ...(bundled ? { convertPathData: { makeArcs: { threshold: 5, tolerance: 0.5 } } } : {})
           }
         }
       },
