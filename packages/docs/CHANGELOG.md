@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 3.9.0
+
+### Minor Changes
+
+- Added empty state templates (first-time use, no results, filtered to zero, error-related, permission-restricted and loading-to-empty). _[`#3395`](https://github.com/solid-design-system/solid/pull/3395) [`15cfb9d`](https://github.com/solid-design-system/solid/commit/15cfb9d7020113f78a2d0009e9bd0794cdc21cd5) [@coraliefeil](https://github.com/coraliefeil)_
+
 ## 3.8.0
 
 ### Minor Changes

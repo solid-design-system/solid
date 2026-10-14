@@ -890,14 +890,14 @@
     "tags": ["Filterfunktion", "deaktiviert"]
   },
   {
-    "technicalId": "arrow-bottom",
-    "displayNameDe": "Pfeil unten",
-    "tags": ["fallend", "Anzeige", "Pfeil"]
-  },
-  {
     "technicalId": "filter-filled",
     "displayNameDe": "Filter voll",
     "tags": ["Filter", "Filterfunktion", "aktiviert"]
+  },
+  {
+    "technicalId": "arrow-bottom",
+    "displayNameDe": "Pfeil unten",
+    "tags": ["fallend", "Anzeige", "Pfeil"]
   },
   {
     "technicalId": "question",
@@ -910,14 +910,14 @@
     "tags": ["Pfeilspitze", "Klammer", "rückwärts"]
   },
   {
-    "technicalId": "chevron-top",
-    "displayNameDe": "Pfeilspitze oben",
-    "tags": ["steigend", "Pfeilspitze", "Anzeige"]
-  },
-  {
     "technicalId": "question-circle",
     "displayNameDe": "Fragezeichen Kreis",
     "tags": ["Satzzeichen", "FAQ", "Symbol"]
+  },
+  {
+    "technicalId": "chevron-top",
+    "displayNameDe": "Pfeilspitze oben",
+    "tags": ["steigend", "Pfeilspitze", "Anzeige"]
   },
   {
     "technicalId": "chevron-bottom",
@@ -1045,14 +1045,14 @@
     "tags": ["Nachricht", "Kommunikation", "schreiben", "Umschlag"]
   },
   {
-    "technicalId": "e-mail-send",
-    "displayNameDe": "E-Mail abschicken",
-    "tags": ["Brief", "E-Mail", "Kommunikation"]
-  },
-  {
     "technicalId": "reply",
     "displayNameDe": "antworten",
     "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
+  },
+  {
+    "technicalId": "e-mail-send",
+    "displayNameDe": "E-Mail abschicken",
+    "tags": ["Brief", "E-Mail", "Kommunikation"]
   },
   {
     "technicalId": "password",
