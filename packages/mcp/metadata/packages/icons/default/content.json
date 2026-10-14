@@ -1105,14 +1105,14 @@
     "tags": ["QuickAccess", "Frucht"]
   },
   {
-    "technicalId": "cloud-bars",
-    "displayNameDe": "Wolke Balken",
-    "tags": ["Wolke", "Balken", "UnionCloudPlattform"]
-  },
-  {
     "technicalId": "shopping-cart",
     "displayNameDe": "Einkaufswagen",
     "tags": ["Einkauf", "Onlineshop", "Erwerb", "Warenkorb"]
+  },
+  {
+    "technicalId": "cloud-bars",
+    "displayNameDe": "Wolke Balken",
+    "tags": ["Wolke", "Balken", "UnionCloudPlattform"]
   },
   {
     "technicalId": "screen-chart",
@@ -1165,6 +1165,11 @@
     "tags": ["Warnung", "Achtung", "Vorsicht"]
   },
   {
+    "technicalId": "pause",
+    "displayNameDe": "Pause",
+    "tags": ["unterbrechen", "Wiedergabesteuerung", "anhalten", "Steuerung"]
+  },
+  {
     "technicalId": "circles-concentric",
     "displayNameDe": "Kreise konzentrisch",
     "tags": ["Satellit", "Planeten"]
@@ -1173,6 +1178,16 @@
     "technicalId": "otter",
     "displayNameDe": "Otter",
     "tags": ["UniKidStarter", "Frühstart-Rente", "JuniorDepot", "Kinder"]
+  },
+  {
+    "technicalId": "mill-pepper",
+    "displayNameDe": "Mühle Pfeffer",
+    "tags": ["Gewürze", "Essen"]
+  },
+  {
+    "technicalId": "mill-salt",
+    "displayNameDe": "Mühle Salz",
+    "tags": ["Gewürze", "Essen"]
   },
   {
     "technicalId": "world-globe",
