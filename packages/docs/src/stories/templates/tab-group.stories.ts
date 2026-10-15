@@ -94,7 +94,7 @@ export const TabCentered = {
  * Example of how to use a centered container tab group with icons on mobile screens. Keep it to two tabs with short labels so both fit on small screens without scrolling.
  */
 export const TabCenteredMobile = {
-  name: 'Tab Group Center Aligned for Mobile',
+  name: 'Tab Group Mobile with Icons',
   render: () => html`
     <div class="max-w-[375px]">
       <sd-tab-group activation centered>
@@ -124,10 +124,10 @@ export const TabCenteredMobile = {
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-2" variant="container">
           <sd-icon slot="left" name="system/star-filled"></sd-icon>
-          Favourites
+          Favorites
         </sd-tab>
         <sd-tab-panel name="tab-2">
-          <h3 class="sd-headline sd-headline--size-3xl">Favourites</h3>
+          <h3 class="sd-headline sd-headline--size-3xl">Favorites</h3>
           <p class="sd-paragraph sd-paragraph--size-sm mt-4">Keep track of the funds you are interested in.</p>
           <div class="mt-4">
             <div class="flex items-center justify-between">
