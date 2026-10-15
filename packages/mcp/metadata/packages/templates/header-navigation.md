@@ -66,7 +66,11 @@ version: 1.0.0
 <sd-header id="horizontal" fixed shadow>
   <div class="flex justify-between items-center my-0 lg:my-3">
     <a class="inline-flex sd-interactive" href="#">
-      <img class="h-8 md:h-12 lg:h-14 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.alt}" />
+      <img
+        class="h-8 md:h-12 lg:h-14 w-auto object-contain"
+        src="${currentTheme.logoLg}"
+        alt="${currentTheme.logoAlt}"
+      />
     </a>
 
     <sd-navigation-item id="open-menu-navigation" class="flex lg:hidden">
@@ -780,7 +784,11 @@ version: 1.0.0
   <div class="flex justify-between items-center">
     <!-- top-left-area start !-->
     <a class="flex flex-shrink" href="#">
-      <img class="h-8 md:h-12 lg:h-14 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.alt}" />
+      <img
+        class="h-8 md:h-12 lg:h-14 w-auto object-contain"
+        src="${currentTheme.logoLg}"
+        alt="${currentTheme.logoAlt}"
+      />
     </a>
     <!-- top-left-area end !-->
     <!-- top-right-area start !-->
@@ -927,7 +935,11 @@ version: 1.0.0
   <div class="flex justify-between items-center">
     <!-- top-left-area start !-->
     <a class="flex flex-shrink" href="#">
-      <img class="h-8 md:h-12 lg:h-14 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.alt}" />
+      <img
+        class="h-8 md:h-12 lg:h-14 w-auto object-contain"
+        src="${currentTheme.logoLg}"
+        alt="${currentTheme.logoAlt}"
+      />
     </a>
     <!-- top-left-area end !-->
     <!-- top-right-area start !-->
@@ -1097,7 +1109,7 @@ version: 1.0.0
   <sd-header id="vertical" fixed shadow class="col-span-2">
     <div class="flex justify-between items-center">
       <a class="inline-flex sd-interactive" href="#">
-        <img class="h-8 md:h-12 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.alt}" />
+        <img class="h-8 md:h-12 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.logoAlt}" />
       </a>
 
       <sd-navigation-item id="open-menu-navigation-vertical" class="lg:hidden">
@@ -1378,7 +1390,11 @@ version: 1.0.0
     <!-- top-left-area: logo + 2nd sender -->
     <div class="flex items-center lg:justify-between lg:w-full">
       <a class="flex flex-shrink" href="#">
-        <img class="h-8 md:h-12 lg:h-14 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.alt}" />
+        <img
+          class="h-8 md:h-12 lg:h-14 w-auto object-contain"
+          src="${currentTheme.logoLg}"
+          alt="${currentTheme.logoAlt}"
+        />
       </a>
       <sd-divider orientation="vertical" class="lg:hidden h-8 md:h-12 lg:h-14 mx-4"></sd-divider>
       <div class="flex px-2 py-4 items-center justify-center bg-neutral-100 text-primary text-sm">2nd Sender</div>
@@ -1515,7 +1531,11 @@ version: 1.0.0
       <div class="flex px-2 py-4 items-center justify-center bg-neutral-100 text-primary text-sm">2nd Sender</div>
       <sd-divider orientation="vertical" class="lg:hidden h-8 md:h-12 lg:h-14 mx-4"></sd-divider>
       <a class="flex flex-shrink" href="#">
-        <img class="h-8 md:h-12 lg:h-14 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.alt}" />
+        <img
+          class="h-8 md:h-12 lg:h-14 w-auto object-contain"
+          src="${currentTheme.logoLg}"
+          alt="${currentTheme.logoAlt}"
+        />
       </a>
     </div>
     <div class="flex lg:hidden">
@@ -1647,7 +1667,7 @@ version: 1.0.0
   <div class="flex justify-between items-center">
     <div class="flex items-center w-fit">
       <a class="flex flex-shrink" href="#">
-        <img class="h-8 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.alt}" />
+        <img class="h-8 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.logoAlt}" />
       </a>
       <sd-divider orientation="vertical" class="h-8 mx-4"></sd-divider>
       <div class="flex px-2 py-4 items-center justify-center bg-neutral-100 text-primary text-sm">2nd Sender</div>
@@ -1754,7 +1774,7 @@ version: 1.0.0
       <div class="flex px-2 py-4 items-center justify-center bg-neutral-100 text-primary text-sm">2nd Sender</div>
       <sd-divider orientation="vertical" class="h-8 mx-4"></sd-divider>
       <a class="flex flex-shrink" href="#">
-        <img class="h-8 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.alt}" />
+        <img class="h-8 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.logoAlt}" />
       </a>
     </div>
     <div class="hidden md:flex items-center justify-end w-fit">
@@ -1856,7 +1876,7 @@ version: 1.0.0
 <sd-header id="sample-d-01-header">
   <div class="flex justify-center items-center">
     <a class="flex flex-shrink" href="#">
-      <img class="h-8 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.alt}" />
+      <img class="h-8 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.logoAlt}" />
     </a>
   </div>
 </sd-header>
@@ -1897,7 +1917,7 @@ version: 1.0.0
       </sd-navigation-item>
     </div>
     <a class="flex justify-center flex-shrink" href="#">
-      <img class="h-8 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.alt}" />
+      <img class="h-8 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.logoAlt}" />
     </a>
   </div>
 </sd-header>

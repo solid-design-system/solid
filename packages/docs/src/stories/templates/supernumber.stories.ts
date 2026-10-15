@@ -63,6 +63,10 @@ export const OverlineSublineDescription = {
   `
 };
 
+/**
+ * Example of the supernumber pattern on a dark blue background for use in inverted sections.
+ */
+
 export const Inverted = {
   name: 'Supernumber Inverted with Overline, Subline and Description',
   render: () => html`

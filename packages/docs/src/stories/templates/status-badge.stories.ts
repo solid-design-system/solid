@@ -107,6 +107,10 @@ export const StatusBadgeWithCustomIcon = {
   `
 };
 
+/**
+ * Example of how to combine a status badge and a chip within a user profile card. The status badge next to the name indicates the person's current availability, while the chip below signals their authorization level — together providing a concise overview of both status and permissions at a glance.
+ */
+
 export const StatusBadgeWithChip = {
   name: 'Status Badge with Chip',
   render: () => html`

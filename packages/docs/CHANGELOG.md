@@ -1,5 +1,35 @@
 # @solid-design-system/docs
 
+## 3.9.0
+
+### Minor Changes
+
+- Added empty state templates (first-time use, no results, filtered to zero, error-related, permission-restricted and loading-to-empty). _[`#3395`](https://github.com/solid-design-system/solid/pull/3395) [`15cfb9d`](https://github.com/solid-design-system/solid/commit/15cfb9d7020113f78a2d0009e9bd0794cdc21cd5) [@coraliefeil](https://github.com/coraliefeil)_
+
+## 3.8.0
+
+### Minor Changes
+
+- Added error page templates (404, 403, 500, maintenance and session expired). _[`#3394`](https://github.com/solid-design-system/solid/pull/3394) [`053bcf6`](https://github.com/solid-design-system/solid/commit/053bcf6c31b9b6feccc00408d6a03eee038b8002) [@coraliefeil](https://github.com/coraliefeil)_
+
+## 3.7.1
+
+### Patch Changes
+
+- Updated descriptions for `file-selector`, `input`, `status-badge` & the `supernumber` templates. _[`#3377`](https://github.com/solid-design-system/solid/pull/3377) [`d401ab9`](https://github.com/solid-design-system/solid/commit/d401ab98a54f31678331728329eeaec6012d54d5) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 3.7.0
+
+### Minor Changes
+
+- Added changelog pages for each icon library to track, display and download changes made to icons stored in Celum. _[`#3346`](https://github.com/solid-design-system/solid/pull/3346) [`b34079d`](https://github.com/solid-design-system/solid/commit/b34079d7ced69eb155a77b81dd2146ea5418ad2b) [@martascorreia](https://github.com/martascorreia)_
+
+## 3.6.1
+
+### Patch Changes
+
+- Fixed the ordered `sd-footnotes` examples to use anchor markers with the existing primary link color. _[`#3360`](https://github.com/solid-design-system/solid/pull/3360) [`dfdb08b`](https://github.com/solid-design-system/solid/commit/dfdb08be3c9e9037ff33b5e1de799dfbd0f288a4) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 3.6.0
 
 ### Minor Changes

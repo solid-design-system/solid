@@ -2,7 +2,7 @@
 Icons can be used to indicate an action or to represent content.
 **Related templates**:
 
-- [Tab Group with Icon and Badge](?path=/docs/templates-tab-group--docs#tab%20group%20with%20icon%20and%20badge)
+- [Tab Group with Icon and Badge](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/templates-tab-group--docs#tab%20group%20with%20icon%20and%20badge)
   /
   export default {
   title: 'Components/sd-icon',
@@ -19,8 +19,8 @@ Icons can be used to indicate an action or to represent content.
   };
   /**
   Use the `name` attribute to change the icon. Checkout these lists of Union Investment's icons for available names:
-- [Content Icons](?path=/story/components-sd-icon-default--library-default-content)
-- [System Icons](?path=/story/components-sd-icon-default--library-default-system)
+- [Content Icons](https://solid-design-system.fe.union-investment.de/docs/?path=/story/components-sd-icon-default--library-default-content)
+- [System Icons](https://solid-design-system.fe.union-investment.de/docs/?path=/story/components-sd-icon-default--library-default-system)
 
 ```html
 <div class="flex flex-col gap-12">
