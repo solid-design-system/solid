@@ -46,6 +46,10 @@ jobs:
       - name: Install dependencies
         run: pnpm i
 
+      - name: Verify formatting
+        if: matrix.package == 'packages/tokens'
+        run: pnpm format.verify
+
       - name: Verify package
         run: |
           echo "Running pnpm verify in ${{ matrix.package }}"
