@@ -41,6 +41,7 @@
     - [Icon Colors and Variants](#icon-colors-and-variants)
     - [Delivery \& Maintenance](#delivery--maintenance)
     - [Figma Export Pipeline](#figma-export-pipeline)
+    - [Icon GitHub Actions](#icon-github-actions)
   - [SOLID Design Principles in Software Development](#solid-design-principles-in-software-development)
 
 ## Get Started
@@ -423,19 +424,28 @@ Icon colors can follow a theme without changing the icons themselves. Only `_int
 ### Delivery & Maintenance
 
 - The Brand/Design team owns UI icons. The Solid team owns theme icons (VB, BB, SP), bundled component/status icons and the export tooling.
-- The icon CDN and the CELUM-to-CDN pipeline are outside the Solid team's responsibility. After manual upload to CELUM, an external automated pipeline publishes the icons once per week.
-- Review new multi-theming icons with design and ensure variants exist for every supported brand before including them.
+- Review new multi-theming icons with design and provide variants for every supported brand.
+- CELUM uploads are manual. The external CELUM-to-CDN pipeline publishes once per week; neither it nor the icon CDN is the Solid team's responsibility.
 
 ### Figma Export Pipeline
 
 Maintain icons in the [Theming Icon Asset Library](https://www.figma.com/design/hXMcJwfG2u2K6jy7kjtrd2/Solid-DS-%E2%80%93-Theming-Icon-Asset-Library?node-id=0-1): [system icons](https://www.figma.com/design/hXMcJwfG2u2K6jy7kjtrd2?node-id=7403-584), [content icons](https://www.figma.com/design/hXMcJwfG2u2K6jy7kjtrd2?node-id=7428-230) and [status assets](https://www.figma.com/design/hXMcJwfG2u2K6jy7kjtrd2?node-id=9860-164).
 
-Choose the manual GitHub Action for your task:
+Figma workflows require the `FIGMA_TOKEN` repository Actions secret. See the [components contribution guide](./packages/components/CONTRIBUTING.md#icons-inside-components) for adding internal icons and local exports.
 
-- **Update Bundled Icons:** run on the branch to update, then review the generated PR and its changeset. Check icons in light/dark themes and their component contexts before merging. This action does not create a CELUM ZIP.
-- **Download CELUM Icons (ZIP):** download `solid-celum-icons` from the run summary or artifacts, inspect the icons and report, then upload the theme folders to CELUM manually. This action never changes source or creates a PR. The ZIP expires after 14 days and excludes the public UI catalog (`default`).
+### Icon GitHub Actions
 
-Keep `FIGMA_TOKEN` configured as a repository Actions secret. Never commit tokens, downloaded SVGs or CELUM ZIPs. See the [components contribution guide](./packages/components/CONTRIBUTING.md#icons-inside-components) for adding internal icons and local export commands.
+Open a workflow and choose **Run workflow**. Changelog sync also runs daily at 06:00 UTC.
+
+| Audience / Direction                 | Workflow                                                                                                                                                  | Next Step                                                                                                                                           |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Developers: Figma to code            | [Icons: Figma to Bundled Icons (PR)](https://github.com/solid-design-system/solid/actions/workflows/update-bundled-icons.yml)                             | Review the PR, changeset and light/dark icons, then merge. No ZIP.                                                                                  |
+| CELUM maintainers: Figma to CELUM    | [Icons: Figma Export for CELUM (ZIP)](https://github.com/solid-design-system/solid/actions/workflows/download-celum-icons.yml)                            | Download `solid-celum-icons`, review the report and upload to CELUM. Excludes `default`; no source changes or PR.                                   |
+| Design + Development: CELUM to Figma | [Icons: CELUM Changes for MCP, Storybook and Figma (PR + ZIP)](https://github.com/solid-design-system/solid/actions/workflows/fetch-celum-changelogs.yml) | Review together, use the PR's ZIP to update Figma icons and variants, then jointly verify before merging. Never merge first and update Figma later. |
+
+- **ZIPs:** require GitHub sign-in, expire after 14 days and never update Figma or CELUM automatically. Never commit tokens, downloaded SVGs or ZIPs.
+- **Changelog PR:** its ZIP refreshes with all still-unmerged changes, latest SVG once per icon. Check `report.json` for removals/unavailable downloads. Date-only checks create no PR. Rerun from the base branch (normally `main`) to refresh the download.
+- **Documentation:** merging the changelog PR updates Storybook's history in the next deployment. MCP's `icon-search` catalog refreshes separately from the CDN during its next build/release.
 
 ## SOLID Design Principles in Software Development
 

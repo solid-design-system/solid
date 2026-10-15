@@ -56,9 +56,19 @@ This is needed so that all selected properties are displayed in the DOM. This is
 
 Maintain component icons in the [Figma Theming Icon Asset Library](https://www.figma.com/design/hXMcJwfG2u2K6jy7kjtrd2?node-id=0-1). UI internal icons and status assets are bundled; VB, BB and SP internal icons are published through CELUM.
 
-#### Update Bundled Icons
+Choose the direction: **designers use the CELUM changelog PR's ZIP to update Figma**; **CELUM maintainers use the Figma export ZIP to update CELUM**. Neither ZIP applies updates automatically.
 
-1. Run **Update Bundled Icons** on the branch to update. If icons changed, the action opens or updates a draft PR with a patch changeset; it does not create a CELUM ZIP.
+#### Icons: CELUM Changes for MCP, Storybook and Figma (PR + ZIP)
+
+1. Open the PR from [Icons: CELUM Changes for MCP, Storybook and Figma (PR + ZIP)](https://github.com/solid-design-system/solid/actions/workflows/fetch-celum-changelogs.yml), which checks daily at 06:00 UTC. For a manual check, run it on the base branch, not the automation PR branch.
+2. Download the ZIP linked in the PR. Review its added/modified icons and `report.json`, including removed icons and unavailable downloads.
+3. Design and Development review the changes together. Update the matching Figma icons and brand variants, keeping component names consistent, then jointly verify before merging. Development must not merge independently or postpone Figma updates to a follow-up.
+
+The ZIP includes the latest SVG for every still-unmerged added/modified icon, not historical versions. Later workflow runs refresh the PR's link; downloads expire after 14 days.
+
+#### Icons: Figma to Bundled Icons (PR)
+
+1. Run **Icons: Figma to Bundled Icons (PR)** on the branch to update. If icons changed, the action opens or updates a draft PR with a patch changeset; it does not create a CELUM upload ZIP.
 2. Review icons in UI light/dark themes and in the components that use them.
 3. Check the changeset and required PR checks before merging. If checks did not start automatically for the bot-created PR, arrange verification before merging.
 
@@ -68,14 +78,16 @@ Repository setup: configure the `FIGMA_TOKEN` Actions secret and allow Actions t
 
 1. Add an icon only when a component needs it, and provide UI, VB, BB and SP variants in Figma.
 2. Add its runtime name to `internalNames` in `scripts/figma/config.js`. If the Figma name differs, add an entry to `figmaInternalToCode` with the Figma name as key and runtime name as value. All config maps follow this direction. Request review for allowlist changes.
-3. Run **Update Bundled Icons** and **Download CELUM Icons (ZIP)** to deliver the bundled and theme variants separately.
+3. Run **Icons: Figma to Bundled Icons (PR)** and **Icons: Figma Export for CELUM (ZIP)** to deliver the bundled and theme variants separately.
 
 Use `sd-icon` with `library="_internal"` and the approved name. Add an accessible `label` when needed.
 
-#### Download CELUM Icons (ZIP)
+#### Icons: Figma Export for CELUM (ZIP)
 
-1. Run **Download CELUM Icons (ZIP)**. This action never changes component source or creates a PR.
-2. Use **Download the ZIP** in the run summary, or download the `solid-celum-icons` artifact within 14 days.
+For CELUM maintainers publishing approved Figma icons, not for designers importing CELUM changes into Figma.
+
+1. Run **Icons: Figma Export for CELUM (ZIP)** to get icons from Figma for CELUM upload. This action never changes component source or creates a PR.
+2. Use **Download Figma icons for CELUM (ZIP)** in the run summary, or download the `solid-celum-icons` artifact within 14 days.
 3. Review the icons and `report.json`, then upload the `vb`, `bbbank` and `sparda` folders to CELUM manually.
 
 The ZIP excludes the public UI catalog (`default`) and bundled UI/status icons. Public icon collections missing VB, BB or SP variants are skipped automatically; warnings and `report.json` list the missing themes. Complete those variants in Figma and rerun the download to include them. Missing required internal icons stop the export.

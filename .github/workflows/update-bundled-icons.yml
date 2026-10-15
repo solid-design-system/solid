@@ -1,4 +1,4 @@
-name: Update Bundled Icons
+name: "Icons: Figma to Bundled Icons (PR)"
 
 on:
   workflow_dispatch:
@@ -70,4 +70,4 @@ jobs:
           body: |
             Updates only bundled internal and status icons. Exporter tests, component typecheck and icon browser tests passed in the update workflow. Review the icons before merging.
 
-            This workflow does not export CELUM upload files. Use the separate Download CELUM Icons (ZIP) workflow for that. Workflows may not run automatically for PRs created with GITHUB_TOKEN.
+            This workflow does not export CELUM upload files. Use the separate Icons: Figma Export for CELUM (ZIP) workflow for that. Workflows may not run automatically for PRs created with GITHUB_TOKEN.

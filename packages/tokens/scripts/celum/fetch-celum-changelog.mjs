@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { execFileSync } from 'child_process';
+import { fileURLToPath, pathToFileURL } from 'url';
 import { CELUM_THEME_MAPPING } from '../../../docs/.storybook/addons/theme-generator/theme-attributes.ts';
 import { LIBRARIES } from '../../../docs/scripts/celum/icon-libraries.ts';
 
@@ -244,7 +245,7 @@ const shouldFetchDay = date => {
   return WEEKDAYS_TO_FETCH.includes(date.getDay());
 };
 
-const fetchIconsForTheme = async (libraryType, theme, iconTypes, requestedStartDate) => {
+export const fetchIconsForTheme = async (libraryType, theme, iconTypes, requestedStartDate) => {
   console.info(`  Fetching changelogs for ${theme}...`);
 
   try {
@@ -326,7 +327,7 @@ const fetchIconsForTheme = async (libraryType, theme, iconTypes, requestedStartD
       }
     }
 
-    if (fetchedAny || today > lastCheck) {
+    if (fetchedAny) {
       libraryData[theme] = themeData;
       const dir = path.dirname(filePath);
       fs.mkdirSync(dir, { recursive: true });
@@ -360,10 +361,17 @@ const main = async () => {
     await fetchIconsForLibrary(libraryType, library, requestedStartDate);
   }
 
+  execFileSync('pnpm', ['exec', 'prettier', '--write', 'data/celum-changelogs/*.json'], {
+    cwd: path.resolve(__dirname, '../..'),
+    stdio: 'inherit'
+  });
+
   console.info('\n Icon changelog fetch completed!');
 };
 
-main().catch(error => {
-  console.error('Fatal error:', error);
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
+  main().catch(error => {
+    console.error('Fatal error:', error);
+    process.exit(1);
+  });
+}
