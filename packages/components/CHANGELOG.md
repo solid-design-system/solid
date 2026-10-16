@@ -1,5 +1,17 @@
 # @solid-design-system/components
 
+## 7.5.2
+
+### Patch Changes
+
+- Fix(sd-breadcrumb): keep separator spacing when a CSS reset is applied _[`#3406`](https://github.com/solid-design-system/solid/pull/3406) [`442288d`](https://github.com/solid-design-system/solid/commit/442288d93722aeb41b8bc417fab1ff95b57226de) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  The spacing around the breadcrumb separators is now created with flex gaps instead of margins on `::slotted()` pseudo-elements. Outer CSS resets such as Tailwind v4 Preflight take precedence over margins on slotted content, which made the separators collapse. Consuming apps can now ship their own reset without losing the breadcrumb spacing.
+
+### 📈 Stats
+* Uncompressed: 636 KB (+1 KB / +0%)
+* Gzipped: 143 KB (unchanged)
+
 ## 7.5.1
 
 ## 7.5.0
