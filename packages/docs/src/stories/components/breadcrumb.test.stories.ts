@@ -78,4 +78,36 @@ export const Mobile = {
   }
 };
 
-export const Combination = generateScreenshotStory([Default, Truncated]);
+/**
+ * Separators must keep their spacing when the surrounding page ships a CSS reset.
+ * The scoped rules below mirror the parts of Tailwind Preflight that reset pseudo-elements.
+ */
+export const PreflightReset = {
+  name: 'Preflight Reset',
+  render: (args: any) => {
+    return html`<div class="preflight-reset">
+      <style>
+        .preflight-reset *,
+        .preflight-reset ::before,
+        .preflight-reset ::after {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          border: 0 solid;
+        }
+      </style>
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'attribute',
+            name: 'label',
+            value: 'Preflight reset breadcrumbs'
+          }
+        ]
+      })}
+    </div>`;
+  }
+};
+
+export const Combination = generateScreenshotStory([Default, Truncated, PreflightReset]);
