@@ -54,15 +54,61 @@ This is needed so that all selected properties are displayed in the DOM. This is
 
 ### Icons inside components
 
-We don't rely on external CDNs for icons that are part of components. Instead, we include them in the component library.
+Maintain component icons in the [Figma Theming Icon Asset Library](https://www.figma.com/design/hXMcJwfG2u2K6jy7kjtrd2?node-id=0-1). UI internal icons and status assets are bundled; VB, BB and SP internal icons are published through CELUM.
 
-- Include any icons necessary for development in `components/icon/library.system.ts`.
-- Before doing so, [compress them and remove fills](https://jakearchibald.github.io/svgomg/) for consistency and ease of styling.
-  1. Paste the content of your svg file (or upload it)
-  2. Check all the boxes on the right panel except: "Show original" and "Remove xmlns".
-  3. Adjust the precision toggle while making sure the icon does not become distorted (precision 1 and 2 usually work well)
-  4. Click the copy button to copy the optimized svg content
-- You can then use `sd-icon` by specifying `library=“system”` and setting `name=“your-key”`. Remember to add a `label` for accessibility if needed.
+Choose the direction: **designers use the CELUM changelog PR's ZIP to update Figma**; **CELUM maintainers use the Figma export ZIP to update CELUM**. Neither ZIP applies updates automatically.
+
+#### Icons: CELUM Changes for MCP, Storybook and Figma (PR + ZIP)
+
+1. Open the PR from [Icons: CELUM Changes for MCP, Storybook and Figma (PR + ZIP)](https://github.com/solid-design-system/solid/actions/workflows/fetch-celum-changelogs.yml), which checks daily at 06:00 UTC. For a manual check, run it on the base branch, not the automation PR branch.
+2. Download the ZIP linked in the PR. Review its added/modified icons and `report.json`, including removed icons and unavailable downloads.
+3. Design and Development review the changes together. Update the matching Figma icons and brand variants, keeping component names consistent, then jointly verify before merging. Development must not merge independently or postpone Figma updates to a follow-up.
+
+The ZIP includes the latest SVG for every still-unmerged added/modified icon, not historical versions. Later workflow runs refresh the PR's link; downloads expire after 14 days.
+
+#### Icons: Figma to Bundled Icons (PR)
+
+1. Run **Icons: Figma to Bundled Icons (PR)** on the branch to update. If icons changed, the action opens or updates a draft PR with a patch changeset; it does not create a CELUM upload ZIP.
+2. Review icons in UI light/dark themes and in the components that use them.
+3. Check the changeset and required PR checks before merging. If checks did not start automatically for the bot-created PR, arrange verification before merging.
+
+Repository setup: configure the `FIGMA_TOKEN` Actions secret and allow Actions to create pull requests.
+
+#### Add an Internal Icon
+
+1. Add an icon only when a component needs it, and provide UI, VB, BB and SP variants in Figma.
+2. Add its runtime name to `internalNames` in `scripts/figma/config.js`. If the Figma name differs, add an entry to `figmaInternalToCode` with the Figma name as key and runtime name as value. All config maps follow this direction. Request review for allowlist changes.
+3. Run **Icons: Figma to Bundled Icons (PR)** and **Icons: Figma Export for CELUM (ZIP)** to deliver the bundled and theme variants separately.
+
+Use `sd-icon` with `library="_internal"` and the approved name. Add an accessible `label` when needed.
+
+#### Icons: Figma Export for CELUM (ZIP)
+
+For CELUM maintainers publishing approved Figma icons, not for designers importing CELUM changes into Figma.
+
+1. Run **Icons: Figma Export for CELUM (ZIP)** to get icons from Figma for CELUM upload. This action never changes component source or creates a PR.
+2. Use **Download Figma icons for CELUM (ZIP)** in the run summary, or download the `solid-celum-icons` artifact within 14 days.
+3. Review the icons and `report.json`, then upload the `vb`, `bbbank` and `sparda` folders to CELUM manually.
+
+The ZIP excludes the public UI catalog (`default`) and bundled UI/status icons. Public icon collections missing VB, BB or SP variants are skipped automatically; warnings and `report.json` list the missing themes. Complete those variants in Figma and rerun the download to include them. Missing required internal icons stop the export.
+
+Downloading the ZIP does not publish to the CDN. The external CELUM pipeline publishes once per week and is outside the Solid team's responsibility.
+
+#### Local Export
+
+Set `FIGMA_TOKEN` in the ignored `packages/components/.env`, using `.env.example` as a reference. The token needs file access and `file_content:read`; keep it out of commits and logs. Use the repository's Node.js and pnpm versions.
+
+Run from the repository root:
+
+```sh
+pnpm --dir packages/components fetch:figma --target=bundled --dry-run
+pnpm --dir packages/components fetch:figma --target=bundled
+pnpm --dir packages/components fetch:figma --target=celum
+```
+
+Bundled export updates the source libraries; CELUM export writes only to `packages/components/.figma-icons-celum/celum/`. Never commit downloaded SVGs or ZIPs. For local bundled changes, add a patch changeset and run `pnpm verify` before submitting a PR.
+
+If export fails, resolve the missing Figma variants reported in the log, check token access for `401`/`403`, or retry later for `429` and temporary server errors.
 
 ### Adapting a Shoelace Component
 

@@ -13,6 +13,7 @@
 # Components
 packages/components/cdn
 packages/components/cdn-versioned
+packages/components/.figma-icons*
 # Styles
 packages/styles/cdn
 packages/styles/cdn-versioned
