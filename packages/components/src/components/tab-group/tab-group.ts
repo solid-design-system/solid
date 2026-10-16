@@ -71,6 +71,9 @@ export default class SdTabGroup extends SolidElement {
    */
   @property({ type: String, reflect: true }) activation: 'auto' | 'manual' = 'auto';
 
+  /** Centers the tabs within the tab group, with the separation line extending on both sides. */
+  @property({ type: Boolean, reflect: true }) centered = false;
+
   connectedCallback() {
     const whenAllDefined = Promise.all([
       customElements.whenDefined('sd-tab'),
@@ -128,6 +131,10 @@ export default class SdTabGroup extends SolidElement {
   }
 
   updated(changedProperties: Map<string | number | symbol, unknown>) {
+    if (changedProperties.has('centered')) {
+      this.repositionIndicator();
+    }
+
     const oldValue = changedProperties.get('canScroll');
     if (!oldValue && this.canScroll) {
       this.handleScroll();
@@ -355,7 +362,7 @@ export default class SdTabGroup extends SolidElement {
 
     const tabRect = currentTab.getBoundingClientRect();
     const containerRect = tabsContainer.getBoundingClientRect();
-    const isCentered = getComputedStyle(tabsContainer).justifyContent === 'center';
+    const isCentered = this.centered || getComputedStyle(tabsContainer).justifyContent === 'center';
 
     const containerCenter = containerRect.left + containerRect.width / 2;
     const tabCenter = tabRect.left + tabRect.width / 2;
@@ -414,7 +421,11 @@ export default class SdTabGroup extends SolidElement {
           }
 
           <div part="scroll-container" class="flex overflow-x-auto focus-visible:focus-outline !outline-offset-0">
-            <div part="tabs" class=${cx('flex flex-auto relative flex-row')} role="tablist">
+            <div
+              part="tabs"
+              class=${cx('flex flex-auto relative flex-row', this.centered && 'justify-center')}
+              role="tablist"
+            >
               ${
                 this.activeTab?.variant !== 'container'
                   ? html` <div
