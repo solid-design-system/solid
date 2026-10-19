@@ -15,7 +15,7 @@
     "tags": ["unzufrieden", "mangelhaft", "nicht ausreichend"]
   },
   {
-    "technicalId": "thumbs-up",
+    "technicalId": "thumb-up",
     "displayNameDe": "Daumen hoch",
     "tags": ["akzeptieren", "geprüft", "positiv"]
   },
@@ -83,6 +83,11 @@
     "technicalId": "clock-angular",
     "displayNameDe": "Uhr eckig",
     "tags": ["Zeit", "Uhrzeit", "Termin"]
+  },
+  {
+    "technicalId": "christmas-tree",
+    "displayNameDe": "Weihnachtsbaum",
+    "tags": ["Weihnachten", "Fest", "Baum"]
   },
   {
     "technicalId": "circle-plus",
@@ -205,7 +210,7 @@
     "tags": ["Karte", "vorstellen", "moderieren", "Moderationskarte"]
   },
   {
-    "technicalId": "calendar-stock",
+    "technicalId": "calendar-security",
     "displayNameDe": "Kalender Wertpapier",
     "tags": ["Anlage", "Dokument", "Datum", "Termin"]
   },
@@ -300,14 +305,14 @@
     "tags": ["Meeting", "Bildung", "Schulungspräsentation", "Vorstellung"]
   },
   {
+    "technicalId": "hurdles",
+    "displayNameDe": "Hürdenläufer",
+    "tags": ["Schwierigkeiten überwinden", "Probleme bewältigen", "Herausforderungen meistern"]
+  },
+  {
     "technicalId": "percentage-rate",
     "displayNameDe": "Prozent Rate",
     "tags": ["voraussichtliche Partizipationsrate", "Prozent", "Beteiligung"]
-  },
-  {
-    "technicalId": "hurdler",
-    "displayNameDe": "Hürdenläufer",
-    "tags": ["Schwierigkeiten überwinden", "Probleme bewältigen", "Herausforderungen meistern"]
   },
   {
     "technicalId": "percentage-sign",
@@ -370,7 +375,7 @@
     "tags": ["Notizen", "Klebezettel", "Haftnotiz"]
   },
   {
-    "technicalId": "bell-number",
+    "technicalId": "bell-notification",
     "displayNameDe": "Glocke Zahl",
     "tags": ["Push-Nachrichten", "UDO App"]
   },
@@ -405,7 +410,7 @@
     "tags": ["Lupe", "Dokument", "Information", "Suche"]
   },
   {
-    "technicalId": "arrows-directions",
+    "technicalId": "arrows-direction",
     "displayNameDe": "Pfeile Richtung",
     "tags": ["Pfeile", "Flexibilität", "Richtungen", "Alternativen"]
   },
@@ -470,17 +475,17 @@
     "tags": ["Uhr", "Zeitanzeige", "Zeitdruck"]
   },
   {
-    "technicalId": "people-speech-bubble",
-    "displayNameDe": "Personen Sprechblase",
-    "tags": ["Bildung", "Konversation", "Lehrgespräch", "Kontakt"]
-  },
-  {
     "technicalId": "electricity",
     "displayNameDe": "Strom\n",
     "tags": ["Batterie", "Steckdose", "Anschluss", "Stecker"]
   },
   {
-    "technicalId": "thumbs-neutral",
+    "technicalId": "people-speech-bubble",
+    "displayNameDe": "Personen Sprechblase",
+    "tags": ["Bildung", "Konversation", "Lehrgespräch", "Kontakt"]
+  },
+  {
+    "technicalId": "thumb-neutral",
     "displayNameDe": "Daumen neutral",
     "tags": ["verbesserungswürdig", "verbesserungsfähig", "mittelmäßig"]
   },
@@ -580,14 +585,14 @@
     "tags": ["Kunstwerk", "Kunst"]
   },
   {
+    "technicalId": "hearts",
+    "displayNameDe": "Herzen",
+    "tags": ["Liebe", "glücklich"]
+  },
+  {
     "technicalId": "office-chair",
     "displayNameDe": "Bürostuhl",
     "tags": ["Möbel", "Ausstattung", "Schreibtischstuhl", "Büro"]
-  },
-  {
-    "technicalId": "heart",
-    "displayNameDe": "Herz",
-    "tags": ["Liebe", "glücklich"]
   },
   {
     "technicalId": "office",
@@ -665,9 +670,19 @@
     "tags": ["Terrasse", "Sommer", "Sonne"]
   },
   {
+    "technicalId": "face-wink",
+    "displayNameDe": "Gesicht",
+    "tags": ["zwinkern", "Gesicht", "zuzwinkern"]
+  },
+  {
     "technicalId": "train",
     "displayNameDe": "Zug",
     "tags": ["Bahn", "Anreise", "Dienstreise", "Reisen"]
+  },
+  {
+    "technicalId": "family-children",
+    "displayNameDe": "Familie Kinder",
+    "tags": ["Kinder", "Familie", "Eltern"]
   },
   {
     "technicalId": "certificate",
@@ -690,7 +705,7 @@
     "tags": ["Stopp", "Rot", "Verkehrszeichen", "Grün"]
   },
   {
-    "technicalId": "circle-info",
+    "technicalId": "circle-information",
     "displayNameDe": "Kreis Information",
     "tags": ["Wissen", "wichtig", "Info"]
   },
@@ -715,14 +730,14 @@
     "tags": ["Zahnrad", "Prozess", "Ablauf", "Abfolge"]
   },
   {
-    "technicalId": "magazine",
-    "displayNameDe": "Magazin",
-    "tags": ["Zeitschrift", "Zeitung", "Illustrierte"]
-  },
-  {
     "technicalId": "rocket-cloud",
     "displayNameDe": "Rakete Wolke",
     "tags": ["Rakete", "Journey2Cloud", "Wolke"]
+  },
+  {
+    "technicalId": "magazine",
+    "displayNameDe": "Magazin",
+    "tags": ["Zeitschrift", "Zeitung", "Illustrierte"]
   },
   {
     "technicalId": "toothbrushes",
@@ -740,7 +755,7 @@
     "tags": ["Wahl", "Zettelbox", "Wahlen", "wählen"]
   },
   {
-    "technicalId": "cubes",
+    "technicalId": "cube",
     "displayNameDe": "Würfel",
     "tags": ["Trainingsprogramme", "Buchstaben", "Alphabet", "Bauklotz"]
   },
@@ -845,7 +860,7 @@
     "tags": ["Mensa", "Kantine", "Gemüse", "Ernährung", "Obst"]
   },
   {
-    "technicalId": "stock",
+    "technicalId": "security",
     "displayNameDe": "Wertpapier",
     "tags": ["beglaubigt", "Anteilsschein", "Wertpapiere", "Dokument"]
   },
@@ -868,6 +883,11 @@
     "technicalId": "volume",
     "displayNameDe": "Lautstärke",
     "tags": ["Ton", "Lautsprecher", "Geräusch", "Box"]
+  },
+  {
+    "technicalId": "family-child-girl",
+    "displayNameDe": "Familie Kind Mädchen",
+    "tags": ["Mädchen", "Familie", "Eltern"]
   },
   {
     "technicalId": "truck-euro",
@@ -900,7 +920,7 @@
     "tags": ["Halle", "Scheune", "Landwirtschaft", "Lager"]
   },
   {
-    "technicalId": "share-price-binocluars",
+    "technicalId": "share-price-binoculars",
     "displayNameDe": "Kurs Fernglas",
     "tags": ["beobachten", "Entwicklung", "Kursverlauf"]
   },
@@ -935,14 +955,14 @@
     "tags": ["Kurs", "Fonds", "Aktienmärkte", "Aktien"]
   },
   {
+    "technicalId": "quote",
+    "displayNameDe": "Anführungszeichen",
+    "tags": ["Kommunikation", "Zitat", "Zitatzeichen"]
+  },
+  {
     "technicalId": "woman",
     "displayNameDe": "Frau",
     "tags": ["Profil", "Mitarbeiterin", "Person"]
-  },
-  {
-    "technicalId": "quotation-marks",
-    "displayNameDe": "Anführungszeichen",
-    "tags": ["Kommunikation", "Zitat", "Zitatzeichen"]
   },
   {
     "technicalId": "skyscraper-magnifying-glass",
@@ -1065,14 +1085,14 @@
     "tags": ["Ortung", "erfassen", "erkunden"]
   },
   {
-    "technicalId": "cow",
-    "displayNameDe": "Kuh",
-    "tags": ["UniQ"]
-  },
-  {
     "technicalId": "electric-car",
     "displayNameDe": "Elektroauto",
     "tags": ["Strom", "Kraftfahrzeug", "Verkehr", "Auto"]
+  },
+  {
+    "technicalId": "cow",
+    "displayNameDe": "Kuh",
+    "tags": ["UniQ"]
   },
   {
     "technicalId": "elbphilharmonie",
@@ -1090,7 +1110,7 @@
     "tags": ["QuickAccess", "Frucht"]
   },
   {
-    "technicalId": "cloud-bars",
+    "technicalId": "cloud-beams",
     "displayNameDe": "Wolke Balken",
     "tags": ["Wolke", "Balken", "UnionCloudPlattform"]
   },
@@ -1100,7 +1120,7 @@
     "tags": ["Einkauf", "Onlineshop", "Erwerb", "Warenkorb"]
   },
   {
-    "technicalId": "screen-chart",
+    "technicalId": "graphics-screen",
     "displayNameDe": "Bildschirm Grafik",
     "tags": ["Data Business Warehouse", "Bildschirm", "Grafik"]
   },
@@ -1150,6 +1170,11 @@
     "tags": ["Warnung", "Achtung", "Vorsicht"]
   },
   {
+    "technicalId": "pause",
+    "displayNameDe": "Pause",
+    "tags": ["unterbrechen", "Wiedergabesteuerung", "anhalten", "Steuerung"]
+  },
+  {
     "technicalId": "circles-concentric",
     "displayNameDe": "Kreise konzentrisch",
     "tags": ["Satellit", "Planeten"]
@@ -1160,7 +1185,17 @@
     "tags": ["UniKidStarter", "Frühstart-Rente", "JuniorDepot", "Kinder"]
   },
   {
-    "technicalId": "world-globe",
+    "technicalId": "mill-pepper",
+    "displayNameDe": "Mühle Pfeffer",
+    "tags": ["Gewürze", "Essen"]
+  },
+  {
+    "technicalId": "mill-salt",
+    "displayNameDe": "Mühle Salz",
+    "tags": ["Gewürze", "Essen"]
+  },
+  {
+    "technicalId": "globe",
     "displayNameDe": "Weltkugel",
     "tags": ["Welt", "Globus", "Erde"]
   },
@@ -1170,7 +1205,7 @@
     "tags": ["Kompass", "Schild", "Richtung"]
   },
   {
-    "technicalId": "world-globe-percent",
+    "technicalId": "globe-percentage",
     "displayNameDe": "Weltkugel Prozent",
     "tags": ["Anteil am Immobilienvermögen", "Globus", "Prozent", "Anteil"]
   },
@@ -1185,7 +1220,7 @@
     "tags": ["Wandel", "Altersvorsorge", "Veränderung"]
   },
   {
-    "technicalId": "commen-ground",
+    "technicalId": "intersection",
     "displayNameDe": "Schnittmenge",
     "tags": ["Übereinstimmung", "Gemeinsamkeit", "Überschneidung"]
   },
@@ -1245,7 +1280,7 @@
     "tags": ["Fall", "Anteilsverkauf", "Senkung", "diagonal"]
   },
   {
-    "technicalId": "protective-shield-lock",
+    "technicalId": "shield-lock",
     "displayNameDe": "Schutzschild Schloss",
     "tags": ["Schild", "Security Services", "Schutz", "Schloss"]
   },
@@ -1315,6 +1350,11 @@
     "tags": ["Kopfhörer", "telefonieren"]
   },
   {
+    "technicalId": "heart-hand",
+    "displayNameDe": "Herz Hand",
+    "tags": ["Geste", "koreanisches Herz", "Handgeste"]
+  },
+  {
     "technicalId": "mobile-phone-square-scan",
     "displayNameDe": "Mobiltelefon Quadrat Scan",
     "tags": ["Augmented Reality", "Technologie", "erweiterte Realität", "virtuell"]
@@ -1335,14 +1375,14 @@
     "tags": ["Eile", "Notfall", "Deadline", "Uhr", "dringend"]
   },
   {
-    "technicalId": "checkbox",
-    "displayNameDe": "Checkbox",
-    "tags": ["fertig", "erledigt", "Haken", "abhaken"]
-  },
-  {
     "technicalId": "yen",
     "displayNameDe": "Yen",
     "tags": ["Japan", "Geld", "Symbol", "Währung"]
+  },
+  {
+    "technicalId": "checkbox",
+    "displayNameDe": "Checkbox",
+    "tags": ["fertig", "erledigt", "Haken", "abhaken"]
   },
   {
     "technicalId": "badge",
@@ -1445,7 +1485,7 @@
     "tags": ["Etappe"]
   },
   {
-    "technicalId": "hands-baton",
+    "technicalId": "handover",
     "displayNameDe": "Hände Staffelstab",
     "tags": ["Wechsel", "Übergabe"]
   },
@@ -1463,6 +1503,11 @@
     "technicalId": "business",
     "displayNameDe": "Geschäft",
     "tags": ["verkaufen", "Angebote", "kaufen", "Produkt"]
+  },
+  {
+    "technicalId": "family-child-boy",
+    "displayNameDe": "Familie Kind Junge",
+    "tags": ["Eltern", "Junge", "Familie"]
   },
   {
     "technicalId": "face-sad",
@@ -1555,14 +1600,14 @@
     "tags": ["Papierblock", "Vorstellung", "Notizen"]
   },
   {
-    "technicalId": "beaver",
-    "displayNameDe": "Biber",
-    "tags": ["Gemeinschaftssinn", "kreative Gestaltungskraft", "Fleiß"]
-  },
-  {
     "technicalId": "airplane",
     "displayNameDe": "Flugzeug",
     "tags": ["Reisen", "Anreise", "Transport", "Dienstreise"]
+  },
+  {
+    "technicalId": "beaver",
+    "displayNameDe": "Biber",
+    "tags": ["Gemeinschaftssinn", "kreative Gestaltungskraft", "Fleiß"]
   },
   {
     "technicalId": "flipchart",
@@ -1630,7 +1675,7 @@
     "tags": ["Bekleidung", "Jeans", "Kleidung"]
   },
   {
-    "technicalId": "skyscraper-world-globe",
+    "technicalId": "skyscraper-globe",
     "displayNameDe": "Hochhaus Weltkugel",
     "tags": ["Hochhaus", "Anteil Immobilien weltweit", "Globus", "Gebäude"]
   },
@@ -1725,7 +1770,7 @@
     "tags": ["Partnerschaft", "Unterlagen", "Partnerarbeit"]
   },
   {
-    "technicalId": "petrol-pump",
+    "technicalId": "fuel-pump",
     "displayNameDe": "Zapfsäule",
     "tags": ["Sprit", "Tankstelle", "Diesel", "Benzin"]
   },
@@ -1735,7 +1780,7 @@
     "tags": ["strukturierte Partnerarbeit", "Struktur", "Dokument", "Partner"]
   },
   {
-    "technicalId": "organizational-chart",
+    "technicalId": "organization-chart",
     "displayNameDe": "Organigramm",
     "tags": ["Struktur", "Hierachien", "Organisation", "Position"]
   },
@@ -1745,7 +1790,7 @@
     "tags": ["Repräsentant", "Hausmeinungsverantwortliche", "Meinung", "Kommunikation"]
   },
   {
-    "technicalId": "flowchart",
+    "technicalId": "flow-chart",
     "displayNameDe": "Flussdiagramm",
     "tags": ["Ablauf", "Prozess", "Projekt"]
   },
@@ -1780,7 +1825,7 @@
     "tags": ["Maschine", "Apparat", "Bot"]
   },
   {
-    "technicalId": "fuel-tap",
+    "technicalId": "fuel-nozzle",
     "displayNameDe": "Zapfhahn",
     "tags": ["Benzin", "Diesel", "tanken"]
   },
@@ -1865,7 +1910,7 @@
     "tags": ["Bedingungen", "Anspruch", "Recht"]
   },
   {
-    "technicalId": "buttons-tap",
+    "technicalId": "tap-buttons",
     "displayNameDe": "Schaltflächen tippen",
     "tags": ["antippen", "wählen", "UI-Portal"]
   },
@@ -1965,14 +2010,14 @@
     "tags": ["Laptop", "Screen", "Person"]
   },
   {
-    "technicalId": "folder-book-leaned",
-    "displayNameDe": "Ordnerbuch angelehnt",
-    "tags": ["Akten", "Ordnerbuch", "Bildung", "Ordner"]
-  },
-  {
     "technicalId": "skier",
     "displayNameDe": "Skifahrer",
     "tags": ["Talfahrt", "Piste", "Kurs", "Urlaub"]
+  },
+  {
+    "technicalId": "folder-book-leaned",
+    "displayNameDe": "Ordnerbuch angelehnt",
+    "tags": ["Akten", "Ordnerbuch", "Bildung", "Ordner"]
   },
   {
     "technicalId": "screen",
@@ -2015,7 +2060,7 @@
     "tags": ["Schwankung", "wechselhaft", "definierter Schwankungsbereich"]
   },
   {
-    "technicalId": "magnifying-glass-curve",
+    "technicalId": "magnifier-line-chart",
     "displayNameDe": "Lupe Kurve",
     "tags": ["Energiemonitoring", "Verbrauch", "Energie"]
   },
@@ -2075,7 +2120,7 @@
     "tags": ["Währung", "Schutzschild", "Sicherheit", "Euro"]
   },
   {
-    "technicalId": "share-price-negativ-person",
+    "technicalId": "share-price-negative-person",
     "displayNameDe": "Kurs Chart negativ Person",
     "tags": ["Kursverlust", "Verlust", "Person"]
   },
@@ -2190,7 +2235,7 @@
     "tags": ["Zeitfrist", "Laufzeitende"]
   },
   {
-    "technicalId": "dumbbell-weigth",
+    "technicalId": "dumbbell-weight",
     "displayNameDe": "Hantel Gewicht",
     "tags": ["Gewicht", "Kraft", "Sport"]
   },
@@ -2230,7 +2275,7 @@
     "tags": ["Gruppenspiele", "Theater", "Show", "Unterhaltung"]
   },
   {
-    "technicalId": "plot-world-globe",
+    "technicalId": "plot-globe",
     "displayNameDe": "Grundstück Weltkugel",
     "tags": ["Grundstück", "weltweit", "Fläche"]
   },
@@ -2245,14 +2290,14 @@
     "tags": ["Immobilien", "Fläche", "Mietfläche", "mieten"]
   },
   {
-    "technicalId": "arrows-compare",
-    "displayNameDe": "Pfeile Vergleich",
-    "tags": ["vergleichen", "gegenüberstellen", "wechseln", "tauschen"]
-  },
-  {
     "technicalId": "plot-size",
     "displayNameDe": "Grundstück Größe",
     "tags": ["Grundstücksgröße", "Grundstück", "Immobilien", "Fläche"]
+  },
+  {
+    "technicalId": "compare-arrows",
+    "displayNameDe": "Pfeile Vergleich",
+    "tags": ["vergleichen", "gegenüberstellen", "wechseln", "tauschen"]
   },
   {
     "technicalId": "grandmother",
@@ -2275,17 +2320,17 @@
     "tags": ["Rente", "Vorsorge", "sparen"]
   },
   {
-    "technicalId": "berries",
-    "displayNameDe": "Beeren",
-    "tags": ["Früchte", "Ernte", "Gewinn"]
-  },
-  {
     "technicalId": "light-bulb",
     "displayNameDe": "Glühbirne",
     "tags": ["Idee", "Wissen", "eigene Ideen", "Licht"]
   },
   {
-    "technicalId": "globe",
+    "technicalId": "berries",
+    "displayNameDe": "Beeren",
+    "tags": ["Früchte", "Ernte", "Gewinn"]
+  },
+  {
+    "technicalId": "desk-globe",
     "displayNameDe": "Globus",
     "tags": ["Kugel", "global", "Welt"]
   },

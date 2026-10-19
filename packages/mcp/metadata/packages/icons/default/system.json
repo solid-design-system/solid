@@ -71,7 +71,7 @@
   },
   {
     "technicalId": "flash-off",
-    "displayNameDe": "Blitz aus",
+    "displayNameDe": "Blitzlicht aus",
     "tags": ["Foto", "Taschenlampe aus"]
   },
   {
@@ -80,19 +80,19 @@
     "tags": ["Favoriten", "gespeichert", "gemerkt"]
   },
   {
+    "technicalId": "sort-down",
+    "displayNameDe": "sortieren absteigend",
+    "tags": ["absteigend", "Pfeil nach unten", "Dreieck"]
+  },
+  {
     "technicalId": "flash-on",
-    "displayNameDe": "Blitz an",
+    "displayNameDe": "Blitzlicht an",
     "tags": ["Taschenlampe an", "Foto"]
   },
   {
     "technicalId": "battery-full",
     "displayNameDe": "Batterie voll\n",
     "tags": ["voll", "Akku", "Ladestatus"]
-  },
-  {
-    "technicalId": "sort-down",
-    "displayNameDe": "sortieren absteigend",
-    "tags": ["absteigend", "Pfeil nach unten", "Dreieck"]
   },
   {
     "technicalId": "magnifying-glass",
@@ -105,7 +105,7 @@
     "tags": ["Akku", "halbvoll", "Ladestatus"]
   },
   {
-    "technicalId": "calender-add",
+    "technicalId": "calender-plus",
     "displayNameDe": "Kalender hinzufügen",
     "tags": ["abonnieren", "planen", "erstellen"]
   },
@@ -180,14 +180,14 @@
     "tags": ["Verzeichnis", "Dokumente", "Dateien"]
   },
   {
+    "technicalId": "play",
+    "displayNameDe": "abspielen",
+    "tags": ["Dreieck", "Play", "aktivieren"]
+  },
+  {
     "technicalId": "leaf",
     "displayNameDe": "Blatt",
     "tags": ["nachhaltig", "Natur", "Nachhaltigkeit"]
-  },
-  {
-    "technicalId": "start",
-    "displayNameDe": "Start",
-    "tags": ["Dreieck", "Play", "aktivieren"]
   },
   {
     "technicalId": "grid-cards",
@@ -315,14 +315,14 @@
     "tags": ["verstecken", "komprimieren", "Seitenleiste"]
   },
   {
-    "technicalId": "shopping-cart",
-    "displayNameDe": "Einkaufswagen",
-    "tags": ["Onlineshop", "Warenkorb", "Erwerb", "Einkauf"]
-  },
-  {
     "technicalId": "bug",
     "displayNameDe": "Fehler",
     "tags": ["Mangel", "Problem"]
+  },
+  {
+    "technicalId": "shopping-cart",
+    "displayNameDe": "Einkaufswagen",
+    "tags": ["Onlineshop", "Warenkorb", "Erwerb", "Einkauf"]
   },
   {
     "technicalId": "eraser",
@@ -465,18 +465,18 @@
     "tags": ["Sad", "unzufrieden", "enttäuscht", "mangelhaft"]
   },
   {
-    "technicalId": "expand-up",
+    "technicalId": "expand-top",
     "displayNameDe": "ausklappen oben",
-    "tags": ["Seitenleiste", "anzeigen"]
-  },
-  {
-    "technicalId": "collapse-left",
-    "displayNameDe": "ausklappen links",
     "tags": ["Seitenleiste", "anzeigen"]
   },
   {
     "technicalId": "expand-right",
     "displayNameDe": "ausklappen rechts",
+    "tags": ["Seitenleiste", "anzeigen"]
+  },
+  {
+    "technicalId": "expand-left",
+    "displayNameDe": "ausklappen links",
     "tags": ["Seitenleiste", "anzeigen"]
   },
   {
@@ -530,6 +530,11 @@
     "tags": ["Arbeitsbereich", "Arbeitsfläche"]
   },
   {
+    "technicalId": "history",
+    "displayNameDe": "Verlauf",
+    "tags": ["Browserverlauf", "Webhistorie", "Suchverlauf", "Internetverlauf"]
+  },
+  {
     "technicalId": "chevrons-small-right",
     "displayNameDe": "Pfeilspitzen klein rechts",
     "tags": []
@@ -570,7 +575,7 @@
     "tags": ["Passwort ausblenden", "Passwort verstecken"]
   },
   {
-    "technicalId": "file-move-",
+    "technicalId": "file-move",
     "displayNameDe": "Dokument verschieben",
     "tags": ["Ordner", "verschieben", "Dokument", "Bericht"]
   },
@@ -600,7 +605,7 @@
     "tags": ["löschen", "Favorit"]
   },
   {
-    "technicalId": "flashlight",
+    "technicalId": "flash",
     "displayNameDe": "Blitzlicht",
     "tags": ["Schnelligkeit", "Blitz", "schnelle Aktion"]
   },
@@ -615,24 +620,24 @@
     "tags": ["klicken", "auswählen"]
   },
   {
-    "technicalId": "file-read-out",
-    "displayNameDe": "Dokument vorlesen",
-    "tags": ["vorlesen", "Audio", "Lautstärke"]
-  },
-  {
     "technicalId": "layers",
     "displayNameDe": "Ebenen",
     "tags": ["gruppieren", "Stapel", "mehrere Folien erzeugen"]
   },
   {
-    "technicalId": "file-wai",
-    "displayNameDe": "Dokument wAI",
-    "tags": ["Dokument", "Datei", "wAI"]
+    "technicalId": "file-read-out",
+    "displayNameDe": "Dokument vorlesen",
+    "tags": ["vorlesen", "Audio", "Lautstärke"]
   },
   {
     "technicalId": "collapse-left",
     "displayNameDe": "einklappen links",
     "tags": ["komprimieren", "verstecken", "Seitenleiste"]
+  },
+  {
+    "technicalId": "file-wai",
+    "displayNameDe": "Dokument wAI",
+    "tags": ["Dokument", "Datei", "wAI"]
   },
   {
     "technicalId": "download",
@@ -845,14 +850,14 @@
     "tags": ["merken", "Markierung", "markiert", "Favoriten"]
   },
   {
+    "technicalId": "lightning",
+    "displayNameDe": "Blitz",
+    "tags": ["Pfeil", "Fehler", "falsch"]
+  },
+  {
     "technicalId": "arrow-right",
     "displayNameDe": "Pfeil rechts",
     "tags": ["Pfeil", "vorwärts", "weiter"]
-  },
-  {
-    "technicalId": "flash",
-    "displayNameDe": "Blitz",
-    "tags": ["Pfeil", "Fehler", "falsch"]
   },
   {
     "technicalId": "arrow-top",
@@ -890,7 +895,7 @@
     "tags": ["fallend", "Anzeige", "Pfeil"]
   },
   {
-    "technicalId": "filter-filled",
+    "technicalId": "filter-full",
     "displayNameDe": "Filter voll",
     "tags": ["Filter", "Filterfunktion", "aktiviert"]
   },
@@ -975,14 +980,14 @@
     "tags": ["Qualität", "Rating", "Bewertung", "bewertet"]
   },
   {
-    "technicalId": "paper-clip",
-    "displayNameDe": "Büroklammer",
-    "tags": ["Klammer", "Büro", "anhängen", "hinzufügen"]
-  },
-  {
     "technicalId": "pen",
     "displayNameDe": "Stift",
     "tags": ["schreiben", "unterschreiben", "zeichnen", "Text"]
+  },
+  {
+    "technicalId": "paper-clip",
+    "displayNameDe": "Büroklammer",
+    "tags": ["Klammer", "Büro", "anhängen", "hinzufügen"]
   },
   {
     "technicalId": "warning",
@@ -995,24 +1000,24 @@
     "tags": ["Wolke", "schlechtes Wetter", "Regen"]
   },
   {
-    "technicalId": "play",
-    "displayNameDe": "abspielen",
-    "tags": ["Datei abspielen", "Beginn", "Pfeil"]
-  },
-  {
     "technicalId": "stop",
     "displayNameDe": "Stopp",
     "tags": ["anhalten", "pausieren", "Quadrat"]
   },
   {
-    "technicalId": "alarm",
-    "displayNameDe": "Alarm",
-    "tags": ["Uhr", "Deadline", "dringend", "Notfall"]
+    "technicalId": "play-circle",
+    "displayNameDe": "abspielen Kreis",
+    "tags": ["Datei abspielen", "Beginn", "Pfeil"]
   },
   {
     "technicalId": "mute",
     "displayNameDe": "stummschalten",
     "tags": ["Ton aus", "lautlos"]
+  },
+  {
+    "technicalId": "alarm",
+    "displayNameDe": "Alarm",
+    "tags": ["Uhr", "Deadline", "dringend", "Notfall"]
   },
   {
     "technicalId": "refresh",
@@ -1040,14 +1045,14 @@
     "tags": ["Nachricht", "Kommunikation", "schreiben", "Umschlag"]
   },
   {
-    "technicalId": "reply",
-    "displayNameDe": "antworten",
-    "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
-  },
-  {
     "technicalId": "e-mail-send",
     "displayNameDe": "E-Mail abschicken",
     "tags": ["Brief", "E-Mail", "Kommunikation"]
+  },
+  {
+    "technicalId": "reply",
+    "displayNameDe": "antworten",
+    "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
   },
   {
     "technicalId": "password",

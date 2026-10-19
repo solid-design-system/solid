@@ -1,9 +1,8 @@
-name: Fetch Celum icon changelogs
+name: "Icons: CELUM Changes for MCP, Storybook and Figma (PR + ZIP)"
 
 on:
   schedule:
-    # Mondays at 06:00 UTC, timed with Celum's weekly icon update.
-    - cron: "0 6 * * 1"
+    - cron: "0 6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -28,15 +27,45 @@ jobs:
       - name: Install dependencies
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
 
-      - name: Fetch Celum icon changelogs
+      - name: Test Celum changelog updates
+        run: pnpm --dir packages/tokens test:icons-celum
+
+      - name: Fetch icon changelogs from CELUM
         run: cd packages/tokens && pnpm fetch:icons-celum
+
+      - name: Download added and modified icons from CELUM
+        run: pnpm --dir packages/tokens download:icons-celum-changes
+
+      - name: ZIP of changed CELUM icons
+        id: icons-zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: solid-celum-icon-changes
+          path: ${{ runner.temp }}/solid-celum-icon-changes/
+          if-no-files-found: ignore
+          retention-days: 14
 
       - name: Open pull request with changes
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: "chore: update Celum icon changelogs"
           title: "chore: update Celum icon changelogs"
-          body: Automated weekly update of the committed Celum icon changelog data (`packages/tokens/data/celum-changelogs/*.json`).
+          body: |
+            Scheduled or manually triggered update of CELUM icon changelogs. A PR is created only when icon changes are found, not for check-date updates alone.
+
+            ## Design and Development: Complete Together Before Merging
+
+            **Do not merge this as a changelog-only update.** Design and Development must review and process these changes together. Update the matching icons and brand variants in the [Figma icon library](https://www.figma.com/design/hXMcJwfG2u2K6jy7kjtrd2?node-id=0-1) as part of this PR, before merging. Development must not merge independently or defer the Figma updates to a follow-up, otherwise Figma and the published CELUM icons will be out of sync.
+
+            - [ ] Design and Development have jointly reviewed all added, modified and removed icons in the current PR, including report.json and any unavailable downloads.
+            - [ ] Design has updated the matching Figma icons and affected brand variants, including handling removed icons and preserving component names.
+            - [ ] Design and Development have confirmed that Figma matches the CELUM changes in this PR. Recheck this checklist if the PR receives further icon updates before merging.
+
+            ## Icons for the Figma Update
+
+            [Download added/modified icons from CELUM (ZIP)](${{ steps.icons-zip.outputs.artifact-url }})
+
+            The ZIP contains the current SVGs for added/modified icons in this PR, grouped by library/theme/type, plus report.json. Removed icons and unavailable downloads are listed in the report. The download requires GitHub sign-in and expires after 14 days; rerun the workflow to refresh it. No ZIP or SVG files are committed.
           branch: chore/celum-icon-changelogs
           delete-branch: true
           add-paths: packages/tokens/data/celum-changelogs/*.json

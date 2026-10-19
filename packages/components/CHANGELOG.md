@@ -1,5 +1,31 @@
 # @solid-design-system/components
 
+## 7.5.3
+
+### Patch Changes
+
+- Updated bundled component and status icons from the Figma asset library. _[`#3396`](https://github.com/solid-design-system/solid/pull/3396) [`fb8b6e6`](https://github.com/solid-design-system/solid/commit/fb8b6e6d937b5115a27b6b57275091084a115c35) [@mariohamann](https://github.com/mariohamann)_
+- Updated bundled component and status icons from the Figma asset library. _[`#3396`](https://github.com/solid-design-system/solid/pull/3396) [`fb8b6e6`](https://github.com/solid-design-system/solid/commit/fb8b6e6d937b5115a27b6b57275091084a115c35) [@mariohamann](https://github.com/mariohamann)_
+
+### 📈 Stats
+* Uncompressed: 638 KB (+2 KB / +0%)
+* Gzipped: 144 KB (+1 KB / +1%)
+
+## 7.5.2
+
+### Patch Changes
+
+- Fix(sd-breadcrumb): keep separator spacing when a CSS reset is applied _[`#3406`](https://github.com/solid-design-system/solid/pull/3406) [`442288d`](https://github.com/solid-design-system/solid/commit/442288d93722aeb41b8bc417fab1ff95b57226de) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  The spacing around the breadcrumb separators is now created with flex gaps instead of margins on `::slotted()` pseudo-elements. Outer CSS resets such as Tailwind v4 Preflight take precedence over margins on slotted content, which made the separators collapse. Consuming apps can now ship their own reset without losing the breadcrumb spacing.
+
+### 📈 Stats
+
+- Uncompressed: 636 KB (+1 KB / +0%)
+- Gzipped: 143 KB (unchanged)
+
+## 7.5.1
+
 ## 7.5.0
 
 ### Minor Changes
@@ -7,8 +33,9 @@
 - Added `sd-interactive--variant-secondary` to `sd-interactive`. Updated the sd-dialog, sd-drawer and sd-notification to use this variable. _[`#3327`](https://github.com/solid-design-system/solid/pull/3327) [`59d6c7d`](https://github.com/solid-design-system/solid/commit/59d6c7de9af1384a8f11200503b50f1c6b8f2a33) [@balco0110](https://github.com/balco0110)_
 
 ### 📈 Stats
-* Uncompressed: 635 KB (+1 KB / +0%)
-* Gzipped: 143 KB (unchanged)
+
+- Uncompressed: 635 KB (+1 KB / +0%)
+- Gzipped: 143 KB (unchanged)
 
 ## 7.4.3
 

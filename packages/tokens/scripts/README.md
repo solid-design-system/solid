@@ -144,7 +144,7 @@ The celum/fetch-celum-changelog.mjs:
 2. Fetches new changelogs from Celum for each missing date
 3. Parses added/modified/removed icon sections
 4. Saves updated changelogs to `data/celum-changelogs/{library}.json`
-5. Updates the last check date per theme
+5. Updates the last check date only when new icon entries are saved; otherwise leaves the files unchanged
 
 **Usage:**
 
@@ -153,8 +153,12 @@ cd packages/tokens
 pnpm fetch:icons-celum
 ```
 
-To backfill from an inclusive date, run `pnpm fetch:icons-celum:from YYYY-MM-DD` from `packages/tokens`. Replace the date with the desired start date; the fetch scans weekdays through today, skips dates already stored, and updates the last-check date.
+To backfill from an inclusive date, run `pnpm fetch:icons-celum:from YYYY-MM-DD` from `packages/tokens`. Replace the date with the desired start date; the fetch scans weekdays through today and skips entries already stored. The last-check date advances only when new icon entries are saved.
 
 Theme metadata (CDN folder, display label) lives in `packages/docs/.storybook/addons/theme-generator/theme-attributes.ts`; icon library membership lives in `packages/docs/scripts/celum/icon-libraries.ts`. Both are shared with `packages/docs/scripts/celum/celum-changelog.ts`. To register a new theme, add it to `theme-attributes.ts` instead of editing the script directly.
 
-**Automation:** the `Fetch Celum icon changelogs` GitHub workflow (`.github/workflows/fetch-celum-changelogs.yml`) runs this script every Monday and opens a PR with the updated JSON files.
+**Automation:** the `Icons: CELUM Changes for MCP, Storybook and Figma (PR + ZIP)` GitHub workflow (`.github/workflows/fetch-celum-changelogs.yml`) runs daily at 06:00 UTC. To check sooner, open it in GitHub Actions and choose **Run workflow**. A PR is created or updated only for new added, modified or removed icon entries, not for check-date updates alone.
+
+**For Design and Development together:** download the ZIP linked in the PR, review `report.json` for removals and unavailable downloads, and update the matching Figma icons and variants. Both disciplines must verify the Figma updates before merging; Development must not merge first or leave Figma changes for a follow-up. This ZIP goes **from CELUM to Figma**; it is not the Figma export ZIP used by CELUM maintainers.
+
+Each run refreshes the PR's link and includes all still-unmerged changes relative to the base branch, grouped by library, theme and icon type. It contains the latest SVG once per icon, not historical versions. Downloads require GitHub sign-in and expire after 14 days; rerun the workflow on the base branch to refresh them. SVGs and ZIPs are not committed. For a local download after fetching changelogs, run `pnpm download:icons-celum-changes` in `packages/tokens`.

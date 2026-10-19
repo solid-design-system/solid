@@ -1,5 +1,11 @@
 # @solid-design-system/styles
 
+## 7.5.3
+
+## 7.5.2
+
+## 7.5.1
+
 ## 7.5.0
 
 ### Minor Changes

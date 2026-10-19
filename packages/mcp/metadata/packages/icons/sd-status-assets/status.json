@@ -5,8 +5,8 @@
     "tags": []
   },
   {
-    "technicalId": "status-exclamation",
-    "displayNameDe": "Exclamation",
+    "technicalId": "status-clock",
+    "displayNameDe": "Clock",
     "tags": []
   },
   {
@@ -15,13 +15,13 @@
     "tags": []
   },
   {
-    "technicalId": "status-info",
-    "displayNameDe": "Info",
+    "technicalId": "status-exclamation",
+    "displayNameDe": "Exclamation",
     "tags": []
   },
   {
-    "technicalId": "status-clock",
-    "displayNameDe": "Clock",
+    "technicalId": "status-info",
+    "displayNameDe": "Info",
     "tags": []
   },
   {

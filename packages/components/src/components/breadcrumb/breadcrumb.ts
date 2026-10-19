@@ -35,6 +35,8 @@ export default class SdBreadcrumb extends SolidElement {
 
   @query('[part="truncated"]') truncated: HTMLElement;
 
+  @query('[part="list"]') list: HTMLElement;
+
   @query('[part="truncated-dropdown"]') dropdown: HTMLElement;
 
   @query('slot') defaultSlot: HTMLSlotElement;
@@ -73,8 +75,11 @@ export default class SdBreadcrumb extends SolidElement {
     this.isTruncated = false;
     let sum = 0;
 
+    // Separator spacing lives in the list's gap, which is not part of the items' bounding boxes.
+    const gap = parseFloat(getComputedStyle(this.list).columnGap) || 0;
+
     for (const [index, item] of Array.from(this.items).reverse().entries()) {
-      const width = parseFloat(`${item.dataset.size ?? item.getBoundingClientRect().width}`);
+      const width = parseFloat(`${item.dataset.size ?? item.getBoundingClientRect().width}`) + (index === 0 ? 0 : gap);
       item.hidden = false;
 
       if (this.isTruncated) {
@@ -143,7 +148,7 @@ export default class SdBreadcrumb extends SolidElement {
         <ol part="truncated-dropdown" class="flex flex-col gap-4 px-2 py-3 min-w-40"></ol>
       </sd-dropdown>
 
-      <ol part="list" class="flex items-center">
+      <ol part="list" class="flex items-center gap-2">
         <slot @slotchange=${this.handleSlotChange}></slot>
       </ol>
     </nav>`;
@@ -159,7 +164,17 @@ export default class SdBreadcrumb extends SolidElement {
 
       sd-dropdown::after,
       ::slotted(sd-breadcrumb-item:not(:last-of-type))::after {
-        @apply content-[''] hidden lg:inline-block w-1 h-1 mx-2 rounded-full sd-breadcrumb__separator-color;
+        @apply content-[''] hidden lg:inline-block w-1 h-1 rounded-full sd-breadcrumb__separator-color;
+      }
+
+      /* Gap instead of a separator margin: outer CSS resets such as Tailwind Preflight win over margins on ::slotted() pseudo-elements. */
+      ::slotted(sd-breadcrumb-item) {
+        @apply gap-2;
+      }
+
+      /* Rendered inside the shadow root, so outer resets cannot reach this margin. */
+      sd-dropdown::after {
+        @apply mx-2;
       }
 
       ::slotted(sd-breadcrumb-item:nth-last-child(2)) {
