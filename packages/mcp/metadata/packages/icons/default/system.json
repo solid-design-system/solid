@@ -71,7 +71,7 @@
   },
   {
     "technicalId": "flash-off",
-    "displayNameDe": "Blitz aus",
+    "displayNameDe": "Blitzlicht aus",
     "tags": ["Foto", "Taschenlampe aus"]
   },
   {
@@ -86,7 +86,7 @@
   },
   {
     "technicalId": "flash-on",
-    "displayNameDe": "Blitz an",
+    "displayNameDe": "Blitzlicht an",
     "tags": ["Taschenlampe an", "Foto"]
   },
   {
@@ -105,7 +105,7 @@
     "tags": ["Akku", "halbvoll", "Ladestatus"]
   },
   {
-    "technicalId": "calender-add",
+    "technicalId": "calender-plus",
     "displayNameDe": "Kalender hinzufügen",
     "tags": ["abonnieren", "planen", "erstellen"]
   },
@@ -180,8 +180,8 @@
     "tags": ["Verzeichnis", "Dokumente", "Dateien"]
   },
   {
-    "technicalId": "start",
-    "displayNameDe": "Start",
+    "technicalId": "play",
+    "displayNameDe": "abspielen",
     "tags": ["Dreieck", "Play", "aktivieren"]
   },
   {
@@ -465,18 +465,18 @@
     "tags": ["Sad", "unzufrieden", "enttäuscht", "mangelhaft"]
   },
   {
-    "technicalId": "expand-up",
+    "technicalId": "expand-top",
     "displayNameDe": "ausklappen oben",
-    "tags": ["Seitenleiste", "anzeigen"]
-  },
-  {
-    "technicalId": "collapse-left",
-    "displayNameDe": "ausklappen links",
     "tags": ["Seitenleiste", "anzeigen"]
   },
   {
     "technicalId": "expand-right",
     "displayNameDe": "ausklappen rechts",
+    "tags": ["Seitenleiste", "anzeigen"]
+  },
+  {
+    "technicalId": "expand-left",
+    "displayNameDe": "ausklappen links",
     "tags": ["Seitenleiste", "anzeigen"]
   },
   {
@@ -575,7 +575,7 @@
     "tags": ["Passwort ausblenden", "Passwort verstecken"]
   },
   {
-    "technicalId": "file-move-",
+    "technicalId": "file-move",
     "displayNameDe": "Dokument verschieben",
     "tags": ["Ordner", "verschieben", "Dokument", "Bericht"]
   },
@@ -605,7 +605,7 @@
     "tags": ["löschen", "Favorit"]
   },
   {
-    "technicalId": "flashlight",
+    "technicalId": "flash",
     "displayNameDe": "Blitzlicht",
     "tags": ["Schnelligkeit", "Blitz", "schnelle Aktion"]
   },
@@ -850,7 +850,7 @@
     "tags": ["merken", "Markierung", "markiert", "Favoriten"]
   },
   {
-    "technicalId": "flash",
+    "technicalId": "lightning",
     "displayNameDe": "Blitz",
     "tags": ["Pfeil", "Fehler", "falsch"]
   },
@@ -890,14 +890,14 @@
     "tags": ["Filterfunktion", "deaktiviert"]
   },
   {
-    "technicalId": "filter-filled",
-    "displayNameDe": "Filter voll",
-    "tags": ["Filter", "Filterfunktion", "aktiviert"]
-  },
-  {
     "technicalId": "arrow-bottom",
     "displayNameDe": "Pfeil unten",
     "tags": ["fallend", "Anzeige", "Pfeil"]
+  },
+  {
+    "technicalId": "filter-full",
+    "displayNameDe": "Filter voll",
+    "tags": ["Filter", "Filterfunktion", "aktiviert"]
   },
   {
     "technicalId": "question",
@@ -910,14 +910,14 @@
     "tags": ["Pfeilspitze", "Klammer", "rückwärts"]
   },
   {
-    "technicalId": "question-circle",
-    "displayNameDe": "Fragezeichen Kreis",
-    "tags": ["Satzzeichen", "FAQ", "Symbol"]
-  },
-  {
     "technicalId": "chevron-top",
     "displayNameDe": "Pfeilspitze oben",
     "tags": ["steigend", "Pfeilspitze", "Anzeige"]
+  },
+  {
+    "technicalId": "question-circle",
+    "displayNameDe": "Fragezeichen Kreis",
+    "tags": ["Satzzeichen", "FAQ", "Symbol"]
   },
   {
     "technicalId": "chevron-bottom",
@@ -1005,8 +1005,8 @@
     "tags": ["anhalten", "pausieren", "Quadrat"]
   },
   {
-    "technicalId": "play",
-    "displayNameDe": "abspielen",
+    "technicalId": "play-circle",
+    "displayNameDe": "abspielen Kreis",
     "tags": ["Datei abspielen", "Beginn", "Pfeil"]
   },
   {
@@ -1045,14 +1045,14 @@
     "tags": ["Nachricht", "Kommunikation", "schreiben", "Umschlag"]
   },
   {
-    "technicalId": "reply",
-    "displayNameDe": "antworten",
-    "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
-  },
-  {
     "technicalId": "e-mail-send",
     "displayNameDe": "E-Mail abschicken",
     "tags": ["Brief", "E-Mail", "Kommunikation"]
+  },
+  {
+    "technicalId": "reply",
+    "displayNameDe": "antworten",
+    "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
   },
   {
     "technicalId": "password",
@@ -1090,14 +1090,14 @@
     "tags": ["hervorheben", "malen", "farbig", "wichtig"]
   },
   {
-    "technicalId": "e-mail-forward",
-    "displayNameDe": "E-Mail weiterleiten",
-    "tags": ["Pfeil", "weiterleiten", "Brief"]
-  },
-  {
     "technicalId": "arrow-top-left",
     "displayNameDe": "Pfeil links oben",
     "tags": ["zurück", "oben", "rückwärts"]
+  },
+  {
+    "technicalId": "e-mail-forward",
+    "displayNameDe": "E-Mail weiterleiten",
+    "tags": ["Pfeil", "weiterleiten", "Brief"]
   },
   {
     "technicalId": "external-link",
