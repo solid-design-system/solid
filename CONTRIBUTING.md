@@ -36,6 +36,12 @@
     - [Standard Release from Main Branch](#standard-release-from-main-branch)
     - [Feature Branch Deployment](#feature-branch-deployment)
     - [Docs Deployment](#docs-deployment)
+  - [Icons](#icons)
+    - [Icon Sets](#icon-sets)
+    - [Icon Colors and Variants](#icon-colors-and-variants)
+    - [Delivery \& Maintenance](#delivery--maintenance)
+    - [Figma Export Pipeline](#figma-export-pipeline)
+    - [Icon GitHub Actions](#icon-github-actions)
   - [SOLID Design Principles in Software Development](#solid-design-principles-in-software-development)
 
 ## Get Started
@@ -395,6 +401,51 @@ Workflow:
 ### Docs Deployment
 
 To perform a documentation-only deployment, add a changeset that includes the `docs` package. See the `Note` under [Standard Release from Main Branch](#standard-release-from-main-branch) for more details.
+
+## Icons
+
+### Icon Sets
+
+`<sd-icon>` selects an icon library with its `library` attribute (`default` when omitted). These are the built-in libraries:
+
+| Library                          | Use                                     | Maintained by     | Delivery                           | Theme-specific icons | MCP `icon-search` |
+| -------------------------------- | --------------------------------------- | ----------------- | ---------------------------------- | -------------------- | ----------------- |
+| `default`                        | Public UI system/content icons          | Brand/Design team | Icon CDN                           | No                   | Yes               |
+| `_internal`                      | Icons required by components            | Solid team        | Bundled for UI; CDN for VB, BB, SP | Yes                  | No                |
+| `sd-status-assets`               | Status symbols and component checkmarks | Solid team        | Bundled                            | No                   | Yes               |
+| `sd-multi-theming` (public beta) | Public cross-brand system/content icons | Solid team        | Icon CDN                           | Yes                  | Yes               |
+
+- `system/*` and `content/*` are icon name prefixes within the `default` and `sd-multi-theming` libraries, not separate libraries.
+
+### Icon Colors and Variants
+
+Icon colors can follow a theme without changing the icons themselves. Only `_internal` and `sd-multi-theming` select theme-specific icons; `sd-status-assets` stays identical across themes.
+
+### Delivery & Maintenance
+
+- The Brand/Design team owns UI icons. The Solid team owns theme icons (VB, BB, SP), bundled component/status icons and the export tooling.
+- Review new multi-theming icons with design and provide variants for every supported brand.
+- CELUM uploads are manual. The external CELUM-to-CDN pipeline publishes once per week; neither it nor the icon CDN is the Solid team's responsibility.
+
+### Figma Export Pipeline
+
+Maintain icons in the [Theming Icon Asset Library](https://www.figma.com/design/hXMcJwfG2u2K6jy7kjtrd2/Solid-DS-%E2%80%93-Theming-Icon-Asset-Library?node-id=0-1): [system icons](https://www.figma.com/design/hXMcJwfG2u2K6jy7kjtrd2?node-id=7403-584), [content icons](https://www.figma.com/design/hXMcJwfG2u2K6jy7kjtrd2?node-id=7428-230) and [status assets](https://www.figma.com/design/hXMcJwfG2u2K6jy7kjtrd2?node-id=9860-164).
+
+Figma workflows require the `FIGMA_TOKEN` repository Actions secret. See the [components contribution guide](./packages/components/CONTRIBUTING.md#icons-inside-components) for adding internal icons and local exports.
+
+### Icon GitHub Actions
+
+Open a workflow and choose **Run workflow**. Changelog sync also runs daily at 06:00 UTC.
+
+| Audience / Direction                 | Workflow                                                                                                                                                  | Next Step                                                                                                                                           |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Developers: Figma to code            | [Icons: Figma to Bundled Icons (PR)](https://github.com/solid-design-system/solid/actions/workflows/update-bundled-icons.yml)                             | Review the PR, changeset and light/dark icons, then merge. No ZIP.                                                                                  |
+| CELUM maintainers: Figma to CELUM    | [Icons: Figma Export for CELUM (ZIP)](https://github.com/solid-design-system/solid/actions/workflows/download-celum-icons.yml)                            | Download `solid-celum-icons`, review the report and upload to CELUM. Excludes `default`; no source changes or PR.                                   |
+| Design + Development: CELUM to Figma | [Icons: CELUM Changes for MCP, Storybook and Figma (PR + ZIP)](https://github.com/solid-design-system/solid/actions/workflows/fetch-celum-changelogs.yml) | Review together, use the PR's ZIP to update Figma icons and variants, then jointly verify before merging. Never merge first and update Figma later. |
+
+- **ZIPs:** require GitHub sign-in, expire after 14 days and never update Figma or CELUM automatically. Never commit tokens, downloaded SVGs or ZIPs.
+- **Changelog PR:** its ZIP refreshes with all still-unmerged changes, latest SVG once per icon. Check `report.json` for removals/unavailable downloads. Date-only checks create no PR. Rerun from the base branch (normally `main`) to refresh the download.
+- **Documentation:** merging the changelog PR updates Storybook's history in the next deployment. MCP's `icon-search` catalog refreshes separately from the CDN during its next build/release.
 
 ## SOLID Design Principles in Software Development
 

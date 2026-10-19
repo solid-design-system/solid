@@ -2,6 +2,8 @@
 import { elementUpdated, expect, fixture, html, oneEvent } from '@open-wc/testing';
 import { registerIconLibrary } from '../../../dist/solid-components';
 import type SdIcon from './icon';
+import internalLibrary, { icons as internalIcons } from './library.internal';
+import statusLibrary, { icons as statusIcons } from './library.status';
 
 const testLibraryIcons = {
   'test-icon1': `
@@ -85,6 +87,54 @@ describe('<sd-icon>', () => {
       expect(el.getAttribute('role')).to.be.null;
       expect(el.getAttribute('aria-label')).to.be.null;
       expect(el.getAttribute('aria-hidden')).to.equal('true');
+    });
+  });
+
+  describe('bundled Figma icons', () => {
+    it('keeps internal base icons, branded paths and CSS override precedence', async () => {
+      const element = await fixture<HTMLDivElement>(html`<div style="--sd-theme: ui-light"></div>`);
+      const base = internalLibrary.resolver('risk', element);
+      expect(base).to.match(/^data:image\/svg\+xml,/);
+      expect(decodeURIComponent(base.split(',').slice(1).join(','))).to.include('viewBox');
+      for (const [theme, folder] of [
+        ['vb', 'vb'],
+        ['bb', 'bbbank'],
+        ['sp', 'sparda']
+      ]) {
+        element.style.setProperty('--sd-theme', theme);
+        expect(internalLibrary.resolver('risk', element)).to.equal(
+          `https://celum-icons.fe.union-investment.de/${folder}/internal/risk.svg`
+        );
+      }
+      element.style.setProperty(
+        '--sd-icon--risk',
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"></svg>'
+      );
+      expect(internalLibrary.resolver('risk', element)).to.match(/^data:image\/svg\+xml,/);
+      expect(Object.keys(internalIcons)).to.have.length(28);
+    });
+
+    it('renders every status asset with currentColor in light and dark themes', async () => {
+      expect(Object.keys(statusIcons)).to.have.length(7);
+      for (const theme of ['ui-light', 'ui-dark']) {
+        for (const name of Object.keys(statusIcons)) {
+          const element = await fixture<SdIcon>(
+            html`<sd-icon
+              library="sd-status-assets"
+              style=${`--sd-theme: ${theme}; color: rgb(180, 30, 70)`}
+            ></sd-icon>`
+          );
+          const loaded = oneEvent(element, 'sd-load');
+          element.name = name;
+          await loaded;
+          await elementUpdated(element);
+          const svg = element.shadowRoot!.querySelector('svg')!;
+          expect(svg).to.exist;
+          expect(svg.querySelector('path')?.getAttribute('fill')).to.equal('currentColor');
+          expect(getComputedStyle(svg.querySelector('path')!).fill).to.equal('rgb(180, 30, 70)');
+          expect(statusLibrary.resolver(name)).to.match(/^data:image\/svg\+xml,/);
+        }
+      }
     });
   });
 

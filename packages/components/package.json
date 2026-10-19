@@ -60,10 +60,12 @@
     "directory": "packages/components"
   },
   "scripts": {
+    "fetch:figma": "node scripts/figma/fetch-icons.js",
+    "test:figma": "node --test scripts/figma/fetch-icons.test.js",
     "build": "node scripts/build.js",
     "build.tailwind": "node scripts/build-tailwind-configuration.js",
     "watch": "pnpm build --watch",
-    "verify": "pnpm build && echo '✅ Build verified' && pnpm ts.verify && pnpm test.verify && echo '✅ Test verified'",
+    "verify": "pnpm test:figma && pnpm build && echo '✅ Build verified' && pnpm ts.verify && pnpm test.verify && echo '✅ Test verified'",
     "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
     "plop": "plop --plopfile scripts/plop/plopfile.js",
     "test": "pnpm build --lite && web-test-runner --group default",
@@ -110,6 +112,7 @@
     "esbuild": "^0.28.2",
     "esbuild-plugin-replace": "^2.0.0",
     "esbuild-plugin-tailwindcss": "^2.2.0",
+    "figma-export-assets": "^2.1.0",
     "globby": "^16.2.4",
     "gzip-size": "^7.0.0",
     "jsonata": "^2.2.2",
@@ -126,6 +129,7 @@
     "prettier": "^3.9.7",
     "recursive-copy": "^2.0.14",
     "sinon": "^22.1.0",
+    "svgo": "^4.1.0",
     "tailwindcss": "^4.3.2",
     "typescript": "5.8.3",
     "user-agent-data-types": "^0.4.3"
