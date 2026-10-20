@@ -71,7 +71,7 @@ export default class SdTabGroup extends SolidElement {
    */
   @property({ type: String, reflect: true }) activation: 'auto' | 'manual' = 'auto';
 
-  /** Centers the tabs within the tab group, with the separation line extending on both sides. */
+  /** Centers the tabs within the tab group. */
   @property({ type: Boolean, reflect: true }) centered = false;
 
   connectedCallback() {

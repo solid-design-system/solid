@@ -37,9 +37,8 @@ export const TabCentered = {
           />
         </figure>
         <p class="sd-paragraph mt-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
-          dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique. Facilisis
-          commodo integer hendrerit tortor.
+          Diversity in education brings different perspectives into our teams. We value varied academic and professional
+          paths, and we support continuous learning for everyone at Union Investment.
         </p>
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-2">Age diversity</sd-tab>
@@ -52,9 +51,8 @@ export const TabCentered = {
           />
         </figure>
         <p class="sd-paragraph mt-4">
-          Vivamus mattis mauris nec vulputate facilisis. Nulla facilisi. Pellentesque consectetur mi eget tristique
-          vestibulum. Nunc porta urna sit amet magna congue feugiat. Quisque commodo arcu ex, eget mollis magna porta
-          eu. Aliquam at turpis dolor. Quisque ut neque laoreet, cursus tellus non, venenatis elit.
+          Planning for the future starts with the people who matter most. Union Investment helps you build long-term
+          security for your family, one step at a time.
         </p>
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-3">Education</sd-tab>
@@ -67,24 +65,8 @@ export const TabCentered = {
           />
         </figure>
         <p class="sd-paragraph mt-4">
-          Sed dignissim ipsum vel ultricies interdum. Quisque posuere felis sit amet fringilla tristique. Donec velit
-          ex, viverra id lorem hendrerit, congue gravida justo. Fusce ultricies tellus arcu, nec suscipit metus sagittis
-          sed. Vestibulum lacinia enim eu tellus auctor, quis pulvinar felis varius.
-        </p>
-      </sd-tab-panel>
-      <sd-tab slot="nav" panel="tab-4">Background</sd-tab>
-      <sd-tab-panel name="tab-4">
-        <figure class="sd-media sd-copyright" style="--copyright: '© Photo by Austin Distel on Unsplash';">
-          <img
-            src="./placeholders/images/collaboration.jpg"
-            alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
-            class="aspect-video object-cover"
-          />
-        </figure>
-        <p class="sd-paragraph mt-4">
-          Maecenas aliquet nibh nec tempor ultrices. Donec mattis sapien sed elit tincidunt, quis feugiat risus
-          facilisis. Cras rutrum venenatis dui, in sollicitudin nulla vestibulum nec. Maecenas sed imperdiet sapien, non
-          lacinia ex. Etiam rhoncus ullamcorper sem, eu euismod ipsum volutpat non.
+          Education fuels innovation and promotes balanced decision-making. Additionally, it facilitates knowledge
+          transfer and helps break down silos within the organization.
         </p>
       </sd-tab-panel>
     </sd-tab-group>`

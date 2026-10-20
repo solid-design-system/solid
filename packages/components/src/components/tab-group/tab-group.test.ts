@@ -69,6 +69,21 @@ describe('<sd-tab-group>', () => {
     expect(tabGroup).to.be.visible;
   });
 
+  it('centers the tabs when centered is enabled', async () => {
+    const tabGroup = await fixture<SdTabGroup>(html`
+      <sd-tab-group centered>
+        <sd-tab slot="nav" panel="general">General</sd-tab>
+        <sd-tab-panel name="general">This is the general tab panel.</sd-tab-panel>
+      </sd-tab-group>
+    `);
+
+    await tabGroup.updateComplete;
+
+    const tabs = tabGroup.shadowRoot!.querySelector('[part="tabs"]');
+    expect(tabGroup).to.have.attribute('centered');
+    expect(tabs).to.have.class('justify-center');
+  });
+
   it('is accessible', async () => {
     const tabGroup = await fixture<SdTabGroup>(html`
       <sd-tab-group>
