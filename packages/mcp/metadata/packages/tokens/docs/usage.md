@@ -300,7 +300,7 @@ Use primitive tokens when no semantic token exists for your use case, or when yo
 
 .my-element {
 background-color: rgba($sd-color-primary);
-color: rgba($sd-color-white);
+  color: rgba($sd-color-white);
 }
 
 ````
@@ -336,7 +336,7 @@ Prefer semantic tokens over primitive tokens in your custom components. This ens
 
 .my-element {
 background-color: rgba($sd-color-background-primary-100);
-color: rgba($sd-color-text-black);
+  color: rgba($sd-color-text-black);
 }
 
 ````
