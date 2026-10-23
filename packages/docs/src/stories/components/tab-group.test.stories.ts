@@ -113,6 +113,28 @@ export const Scrollable = {
   }
 };
 
+export const Centered = {
+  name: 'Centered',
+  render: (args: any) => {
+    return html`
+      ${generateTemplate({
+        constants: [{ type: 'attribute', name: 'centered', value: true }],
+        axis: {
+          y: {
+            type: 'slot',
+            name: 'default',
+            values: [
+              { title: 'default', value: generateTabsAndPanels(1, 5) },
+              { title: 'container', value: generateTabsAndPanels(1, 5, 'container') }
+            ]
+          }
+        },
+        args
+      })}
+    `;
+  }
+};
+
 export const Parts = {
   name: 'Parts',
   parameters: {
@@ -177,48 +199,6 @@ export const Mouseless = {
     await waitUntil(() => el?.shadowRoot?.querySelector('button'));
     // We have to catch the event as otherwise Storybook will break
     await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
-  }
-};
-
-export const SampleCentered = {
-  name: 'Sample: Centered',
-  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
-  render: () => {
-    return html`
-      <style>
-        sd-tab-group::part(tabs) {
-          justify-content: center;
-        }
-      </style>
-      <div class="p-4 my-6 bg-neutral-200 text-left font-bold text-sm w-full box-border">Default Variant</div>
-      <sd-tab-group>
-        <sd-tab slot="nav" panel="tab-1">Tab 1</sd-tab>
-        <sd-tab slot="nav" panel="tab-2">Tab 2</sd-tab>
-        <sd-tab slot="nav" panel="tab-3" disabled>Tab 3</sd-tab>
-        <sd-tab slot="nav" panel="tab-4">Tab 4</sd-tab>
-        <sd-tab slot="nav" panel="tab-5">Tab 5</sd-tab>
-        <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
-        <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
-        <sd-tab-panel name="tab-3"><div class="slot slot--text slot--border">Tab panel 3</div></sd-tab-panel>
-        <sd-tab-panel name="tab-4"><div class="slot slot--text slot--border">Tab panel 4</div></sd-tab-panel>
-        <sd-tab-panel name="tab-5"><div class="slot slot--text slot--border">Tab panel 5</div></sd-tab-panel>
-      </sd-tab-group>
-
-      <div class="p-4 mb-6 bg-neutral-200 text-left font-bold text-sm w-full box-border">Container Variant</div>
-
-      <sd-tab-group>
-        <sd-tab slot="nav" variant="container" panel="tab-1">Tab 1</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-2">Tab 2</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-3" disabled>Tab 3</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-4">Tab 4</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-5">Tab 5</sd-tab>
-        <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
-        <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
-        <sd-tab-panel name="tab-3"><div class="slot slot--text slot--border">Tab panel 3</div></sd-tab-panel>
-        <sd-tab-panel name="tab-4"><div class="slot slot--text slot--border">Tab panel 4</div></sd-tab-panel>
-        <sd-tab-panel name="tab-5"><div class="slot slot--text slot--border">Tab panel 5</div></sd-tab-panel>
-      </sd-tab-group>
-    `;
   }
 };
 
@@ -377,7 +357,7 @@ export const SampleWithLinks = {
 };
 
 export const Combination = generateScreenshotStory(
-  [Default, TabVariants, Scrollable, Parts, Mouseless, SampleCentered, SampleNoLine, SampleBold, SampleDeepLink],
+  [Default, TabVariants, Scrollable, Parts, Mouseless, Centered, SampleNoLine, SampleBold, SampleDeepLink],
   {
     additionalChromaticOptions: { delay: 900, pauseAnimationAtEnd: true },
     afterRender: html`<style>
