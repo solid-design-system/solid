@@ -1,5 +1,14 @@
 # @solid-design-system/docs
 
+## 3.10.0
+
+### Minor Changes
+
+- Added `centered` property to `sd-tab-group` to center the tabs within the tab group. _[`#3400`](https://github.com/solid-design-system/solid/pull/3400) [`0824505`](https://github.com/solid-design-system/solid/commit/0824505774384ed04ff22110b3834098fd99a8af) [@MartaPintoTeixeira](https://github.com/MartaPintoTeixeira)_
+
+  - Added `Tab Group Mobile with Icons` template.
+  - Updated `Tab center` template to use the new property.
+
 ## 3.9.0
 
 ### Minor Changes

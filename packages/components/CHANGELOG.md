@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 7.6.0
+
+### Minor Changes
+
+- Added `centered` property to `sd-tab-group` to center the tabs within the tab group. _[`#3400`](https://github.com/solid-design-system/solid/pull/3400) [`0824505`](https://github.com/solid-design-system/solid/commit/0824505774384ed04ff22110b3834098fd99a8af) [@MartaPintoTeixeira](https://github.com/MartaPintoTeixeira)_
+
 ## 7.5.3
 
 ### Patch Changes
@@ -8,8 +14,9 @@
 - Updated bundled component and status icons from the Figma asset library. _[`#3396`](https://github.com/solid-design-system/solid/pull/3396) [`fb8b6e6`](https://github.com/solid-design-system/solid/commit/fb8b6e6d937b5115a27b6b57275091084a115c35) [@mariohamann](https://github.com/mariohamann)_
 
 ### 📈 Stats
-* Uncompressed: 638 KB (+2 KB / +0%)
-* Gzipped: 144 KB (+1 KB / +1%)
+
+- Uncompressed: 638 KB (+2 KB / +0%)
+- Gzipped: 144 KB (+1 KB / +1%)
 
 ## 7.5.2
 
