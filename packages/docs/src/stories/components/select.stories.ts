@@ -368,7 +368,8 @@ export const Multiple = {
 /**
  * Use the `useTags` attribute to display selected options as tags using the `sd-tag` component.
  *
- * __Hint:__ It requires the `multiple` attribute to be set.
+ * __Hint:__ It requires the `multiple` attribute to be set.<br />
+ * __Hint:__ The “floating-label” variant should always be combined with “sm” tags.
  */
 export const useTags = {
   render: () => html`
@@ -389,7 +390,8 @@ export const useTags = {
  *
  * __Hint:__ It requires the `multiple` and `useTags` attributes to be set.<br />
  * Once the maximum number of options is reached, the selection will display a message indicating how many additional options have been selected.<br />
- * To remove the limit, set the attribute to `0`.
+ * To remove the limit, set the attribute to `0`.<br />
+ * __Hint:__ The “floating-label” variant should always be combined with “sm” tags.
  */
 export const MaxOptionsVisible = {
   render: () => html`
