@@ -439,6 +439,7 @@ export const Search = {
  * To inform your users about their selected options tags are displayed.
  * Use Backspace to remove the last selected option.
  * Use `--tag-max-width` to set the maximum width of the tags and to show an ellipsis, e.g. `<sd-combobox style="--tag-max-width: 40px">`. The default value is `15ch`.
+ * The `floating-label` variant should always be combined with `sm` tags.
  *
  * __Hint:__ If you really don't want to show tags, you can hide them with CSS via `::part(tags)`.
  */
@@ -466,6 +467,7 @@ export const Multiple = {
 
 /**
  * Use the `max-options-visible` attribute to define the maximum number of selected options that will be visible.
+ * The `floating-label` variant should always be combined with `sm` tags.
  *
  * __Hint:__ It requires the `multiple` and `useTags` attributes to be set.<br />
  * Once the maximum number of options is reached, the selection will display a message indicating how many additional options have been selected.<br />
