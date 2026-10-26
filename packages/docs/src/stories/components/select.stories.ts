@@ -348,7 +348,8 @@ export const Clearable = {
 
 /**
  * Use the `multiple` attribute to allow multiple options to be selected.
- * Use `--tag-max-width` to set the maximum width of the tags and to show an ellipsis, e.g. `<sd-select style="--tag-max-width: 40px">`. The default value is `15ch`
+ * Use `--tag-max-width` to set the maximum width of the tags and to show an ellipsis, e.g. `<sd-select style="--tag-max-width: 40px">`. The default value is `15ch`.
+ * The “floating-label” variant should always be combined with “sm” tags.
  */
 
 export const Multiple = {
