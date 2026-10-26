@@ -390,8 +390,7 @@ export const useTags = {
  * The “floating-label” variant should always be combined with “sm” tags.
  *
  * __Hint:__ It requires the `multiple` and `useTags` attributes to be set.<br />
- * Once the maximum number of options is reached, the selection will display a message indicating how many additional options have been selected.<br />
- * To remove the limit, set the attribute to `0`.
+ * Once the maximum number of options is reached, the selection will display a message indicating how many additional options have been selected. To remove the limit, set the attribute to `0`.
  */
 export const MaxOptionsVisible = {
   render: () => html`
