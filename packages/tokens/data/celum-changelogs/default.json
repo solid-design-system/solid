@@ -2386,6 +2386,21 @@
             }
           ]
         }
+      },
+      {
+        "date": "2026-10-16",
+        "icons": {
+          "added": [
+            {
+              "name": "KI.svg",
+              "technicalId": "ai",
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1103781_KI.svg",
+              "tags": ["KI", "AI", "generative KI"]
+            }
+          ],
+          "removed": [],
+          "modified": []
+        }
       }
     ],
     "content": [
@@ -16976,8 +16991,50 @@
             }
           ]
         }
+      },
+      {
+        "date": "2026-10-13",
+        "icons": {
+          "added": [
+            {
+              "name": "Muehle_Pfeffer_UI-Blau_UI-Gruen.svg",
+              "technicalId": "mill-pepper",
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1102633_Muehle_Pfeffer_UI-Blau_UI-Gruen.svg",
+              "tags": ["Gewürze", "Essen"]
+            },
+            {
+              "name": "Muehle_Salz_UI-Blau_UI-Gruen.svg",
+              "technicalId": "mill-salt",
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1102637_Muehle_Salz_UI-Blau_UI-Gruen.svg",
+              "tags": ["Gewürze", "Essen"]
+            },
+            {
+              "name": "Pause_UI-Blau_UI-Gruen.svg",
+              "technicalId": "pause",
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1102641_Pause_UI-Blau_UI-Gruen.svg",
+              "tags": ["unterbrechen", "Wiedergabesteuerung", "anhalten", "Steuerung"]
+            }
+          ],
+          "removed": [],
+          "modified": []
+        }
+      },
+      {
+        "date": "2026-10-16",
+        "icons": {
+          "added": [],
+          "removed": [],
+          "modified": [
+            {
+              "name": "Herz_Hand_UI-Blau_UI-Gruen.svg",
+              "technicalId": "heart-hand",
+              "urlSvg": "https://cdn.dam.union-investment.de/original/1103050_Herz_Hand_UI-Blau_UI-Gruen.svg",
+              "tags": ["Geste", "koreanisches Herz", "Handgeste"]
+            }
+          ]
+        }
       }
     ],
-    "lastCheck": "9/29/2026"
+    "lastCheck": "10/31/2026"
   }
 }
