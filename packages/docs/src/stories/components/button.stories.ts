@@ -39,7 +39,7 @@ export const Default = {
 export const Variants = {
   render: () => {
     return html`
-      <div class="flex gap-12">
+      <div class="flex flex-col md:flex-row gap-12">
         <sd-button variant="primary">Primary</sd-button>
         <sd-button variant="secondary">Secondary</sd-button>
         <sd-button variant="tertiary">Tertiary</sd-button>
@@ -59,7 +59,7 @@ export const Variants = {
 export const Size = {
   render: () => {
     return html`
-      <div class="flex gap-12">
+      <div class="flex flex-col md:flex-row gap-12">
         <sd-button size="lg">Large</sd-button>
         <sd-button size="md">Medium</sd-button>
         <sd-button size="sm">Small</sd-button>
@@ -77,7 +77,7 @@ export const Size = {
 export const AsLink = {
   name: 'As link',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-col md:flex-row gap-12">
       <sd-button
         href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
         >Link</sd-button
@@ -94,7 +94,7 @@ export const AsLink = {
 export const Loading = {
   render: () => {
     return html`
-      <div class="flex gap-12">
+      <div class="flex flex-col md:flex-row gap-12">
         <sd-button variant="primary" loading>Loading</sd-button>
         <sd-button variant="secondary" loading>Loading</sd-button>
         <sd-button variant="tertiary" loading>Loading</sd-button>
@@ -111,7 +111,7 @@ export const Loading = {
 export const Disabled = {
   render: () => {
     return html`
-      <div class="flex gap-12">
+      <div class="flex flex-col md:flex-row gap-12">
         <sd-button variant="primary" disabled>Disabled</sd-button>
         <sd-button variant="secondary" disabled>Disabled</sd-button>
         <sd-button variant="tertiary" disabled>Disabled</sd-button>
@@ -131,7 +131,7 @@ export const Disabled = {
 export const VisuallyDisabled = {
   render: () => {
     return html`
-      <div class="flex gap-12 h-[100px] mt-12">
+      <div class="flex flex-col md:flex-row gap-12 h-[100px] mt-12">
         <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm" placement="top">
           <sd-button variant="primary" visually-disabled>Visually disabled</sd-button>
         </sd-tooltip>
@@ -159,7 +159,7 @@ export const VisuallyDisabled = {
 export const Inverted = {
   render: () => {
     return html`
-      <div class="flex gap-12 p-12 bg-primary">
+      <div class="flex flex-col md:flex-row gap-12 p-12 bg-primary">
         <sd-button variant="primary" inverted>Inverted</sd-button>
         <sd-button variant="secondary" inverted>Inverted</sd-button>
         <sd-button variant="tertiary" inverted>Inverted</sd-button>
@@ -178,7 +178,7 @@ export const Inverted = {
 export const Icon = {
   render: () => {
     return html`
-      <div class="flex gap-12">
+      <div class="flex flex-wrap gap-12">
         <sd-button>Icon left<sd-icon name="system/image" slot="icon-left"></sd-icon></sd-button>
         <sd-button>Icon right<sd-icon name="system/image" slot="icon-right"></sd-icon></sd-button>
         <sd-button title="icon only"><sd-icon name="system/image" label="Icon only"></sd-icon></sd-button>
