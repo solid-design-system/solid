@@ -73,7 +73,7 @@ export const Size = {
 export const Orientation = {
   name: 'Orientation',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-col md:flex-row gap-12">
       <sd-checkbox-group orientation="vertical" label="Group label">
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
