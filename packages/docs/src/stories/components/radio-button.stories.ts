@@ -49,7 +49,7 @@ export const Default = {
 export const Size = {
   name: 'Size',
   render: () => html`
-    <div class="flex flex-col gap-12">
+    <div class="flex flex-wrap gap-12">
       <sd-radio-group value="1" size="lg">
         <sd-radio-button value="1">
           <sd-icon name="system/image" slot="icon"></sd-icon>
@@ -105,7 +105,7 @@ export const Size = {
 export const Checked = {
   name: 'Checked',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-wrap gap-12">
       <sd-radio-group value="1">
         <sd-radio-button value="1">
           <sd-icon name="system/image" slot="icon"></sd-icon>
@@ -131,7 +131,7 @@ export const Checked = {
 export const Label = {
   name: 'Label',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-wrap gap-12">
       <sd-radio-group value="1">
         <sd-radio-button value="1">
           <div>Label</div>
@@ -156,7 +156,7 @@ export const Label = {
 export const Icon = {
   name: 'Icon',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-wrap gap-12">
       <sd-radio-group value="1">
         <sd-radio-button value="1">
           <sd-icon label="landscape" name="system/image" slot="icon"></sd-icon>
