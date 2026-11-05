@@ -56,6 +56,8 @@
   - [Placeholders](./?path=/docs/packages-placeholders-contributing--docs)
   - [Docs](./?path=/docs/packages-docs-contributing--docs)
 
+- For repository work with Claude Code, GitHub Copilot, or Codex, see the [maintainer skills](.agents/skills/README.md). These optional workflows reuse the package guides and existing scripts; they do not replace contributor review or required checks.
+
 ## What We Do for Our Users
 
 ### We Provide Flexibility
