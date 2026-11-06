@@ -73,7 +73,7 @@ test('requires nonempty Vue and shared blocks when composing a prompt', () => {
 });
 
 test('Quickstart keeps each framework setup only in its composed prompt', () => {
-  const source = readFileSync(new URL('../packages/docs/src/stories/packages/Quickstart.mdx', import.meta.url), 'utf8');
+  const source = readFileSync(new URL('../../src/stories/packages/Quickstart.mdx', import.meta.url), 'utf8');
   const visible = stripPromptOnlyBlocks(source);
   const setups = [
     { framework: 'vue', title: 'Create a Vue 3', template: 'vue-ts', plugin: "import vue from '@vitejs/plugin-vue'" },
