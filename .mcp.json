@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "solid-design-system": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["./packages/mcp/dist/bin/start.js"],
+      "tools": ["*"]
+    }
+  }
+}
