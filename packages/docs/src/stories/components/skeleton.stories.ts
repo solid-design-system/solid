@@ -26,7 +26,7 @@ export default {
 export const Default = {
   render: (args: any) => {
     return html`
-      <div class="w-[392px]">
+      <div class="w-full max-w-[392px]">
         <div class="flex flex-col gap-4 w-full">
           ${generateTemplate({
             args,

@@ -63,7 +63,7 @@ export const Default = {
 export const Orientation = {
   name: 'Orientation',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-wrap gap-12">
       <sd-scrollable orientation="horizontal">
         <div class="flex h-40 items-start w-max p-4 gap-1">
           <sd-tag size="lg">Tag 1</sd-tag>

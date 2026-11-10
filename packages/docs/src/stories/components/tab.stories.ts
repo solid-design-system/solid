@@ -52,7 +52,7 @@ export const Default = {
 
 export const Variant = {
   render: () => html`
-    <div class="grid grid-cols-2 gap-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
       <sd-tab-group>
         <sd-tab slot="nav" panel="tab-1" variant="default">Default 1</sd-tab>
         <sd-tab-panel name="tab-1">
@@ -95,7 +95,7 @@ export const Variant = {
  */
 export const Active = {
   render: () => html`
-    <div class="grid grid-cols-2 gap-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
       <sd-tab-group activation="auto" id="active">
         <sd-tab slot="nav" panel="tab-1" variant="default">Default 1</sd-tab>
         <sd-tab-panel name="tab-1">

@@ -42,7 +42,7 @@ export const Default = {
 export const Size = {
   name: 'Size',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-wrap gap-12">
       <sd-link href="https://solid-design-system.fe.union-investment.de/docs/">Inherit</sd-link>
       <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" size="lg">Large</sd-link>
       <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" size="sm">Small</sd-link>
@@ -59,7 +59,7 @@ export const Size = {
 export const AsLink = {
   name: 'As link',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-wrap gap-12">
       <sd-link
         href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
         >Link</sd-link
@@ -76,7 +76,7 @@ export const AsLink = {
 export const Icon = {
   name: 'Icon',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-wrap gap-12">
       <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" standalone>
         <sd-icon name="system/image" slot="icon-left"></sd-icon>
         Icon left
@@ -97,7 +97,7 @@ export const Icon = {
 export const Standalone = {
   name: 'Standalone',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-wrap gap-12">
       <div class="sd-prose">
         <ul>
           <li>

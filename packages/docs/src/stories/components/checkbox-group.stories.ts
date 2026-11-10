@@ -48,7 +48,7 @@ export const Default = {
 export const Size = {
   name: 'Size',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-wrap gap-12">
       <sd-checkbox-group size="lg" label="Group label">
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
