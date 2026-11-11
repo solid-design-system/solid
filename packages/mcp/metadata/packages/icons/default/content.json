@@ -671,7 +671,7 @@
   },
   {
     "technicalId": "face-wink",
-    "displayNameDe": "Gesicht",
+    "displayNameDe": "Gesicht zwinkern",
     "tags": ["zwinkern", "Gesicht", "zuzwinkern"]
   },
   {
@@ -1440,6 +1440,16 @@
     "tags": ["England", "Großbritannien", "London"]
   },
   {
+    "technicalId": "paddle",
+    "displayNameDe": "Paddle",
+    "tags": ["Paddle", "Tennis", "Sport"]
+  },
+  {
+    "technicalId": "paddle",
+    "displayNameDe": "Paddle",
+    "tags": ["Sport", "Tennis", "Paddle"]
+  },
+  {
     "technicalId": "weight-euro-arrow-left",
     "displayNameDe": "Gewicht Euro Pfeil links",
     "tags": ["verkaufen", "Durchschnitt", "Geld", "durchschnittliches Ankaufsvolumen"]
@@ -1521,7 +1531,7 @@
   },
   {
     "technicalId": "lighthouse",
-    "displayNameDe": "Leutturm",
+    "displayNameDe": "Leuchtturm",
     "tags": ["Orientierung", "Sicherheit", "Zuverlässigkeit", "Altersvorsorge"]
   },
   {

@@ -80,11 +80,6 @@
     "tags": ["Favoriten", "gespeichert", "gemerkt"]
   },
   {
-    "technicalId": "sort-down",
-    "displayNameDe": "sortieren absteigend",
-    "tags": ["absteigend", "Pfeil nach unten", "Dreieck"]
-  },
-  {
     "technicalId": "flash-on",
     "displayNameDe": "Blitzlicht an",
     "tags": ["Taschenlampe an", "Foto"]
@@ -93,6 +88,11 @@
     "technicalId": "battery-full",
     "displayNameDe": "Batterie voll\n",
     "tags": ["voll", "Akku", "Ladestatus"]
+  },
+  {
+    "technicalId": "sort-down",
+    "displayNameDe": "sortieren absteigend",
+    "tags": ["absteigend", "Pfeil nach unten", "Dreieck"]
   },
   {
     "technicalId": "magnifying-glass",
@@ -105,7 +105,7 @@
     "tags": ["Akku", "halbvoll", "Ladestatus"]
   },
   {
-    "technicalId": "calender-plus",
+    "technicalId": "calendar-plus",
     "displayNameDe": "Kalender hinzufügen",
     "tags": ["abonnieren", "planen", "erstellen"]
   },
@@ -180,14 +180,14 @@
     "tags": ["Verzeichnis", "Dokumente", "Dateien"]
   },
   {
-    "technicalId": "play",
-    "displayNameDe": "abspielen",
-    "tags": ["Dreieck", "Play", "aktivieren"]
-  },
-  {
     "technicalId": "leaf",
     "displayNameDe": "Blatt",
     "tags": ["nachhaltig", "Natur", "Nachhaltigkeit"]
+  },
+  {
+    "technicalId": "play",
+    "displayNameDe": "abspielen",
+    "tags": ["Dreieck", "Play", "aktivieren"]
   },
   {
     "technicalId": "grid-cards",
@@ -430,6 +430,11 @@
     "tags": ["Briefkasten", "runterladen", "Nachricht"]
   },
   {
+    "technicalId": "ai",
+    "displayNameDe": "KI",
+    "tags": ["KI", "AI", "generative KI"]
+  },
+  {
     "technicalId": "user",
     "displayNameDe": "Nutzer",
     "tags": ["anmelden", "Login", "Account", "Profil"]
@@ -571,7 +576,7 @@
   },
   {
     "technicalId": "eye-crossed-out",
-    "displayNameDe": "Auge offen",
+    "displayNameDe": "Auge durchgestrichen",
     "tags": ["Passwort ausblenden", "Passwort verstecken"]
   },
   {
@@ -890,14 +895,14 @@
     "tags": ["Filterfunktion", "deaktiviert"]
   },
   {
-    "technicalId": "arrow-bottom",
-    "displayNameDe": "Pfeil unten",
-    "tags": ["fallend", "Anzeige", "Pfeil"]
-  },
-  {
     "technicalId": "filter-full",
     "displayNameDe": "Filter voll",
     "tags": ["Filter", "Filterfunktion", "aktiviert"]
+  },
+  {
+    "technicalId": "arrow-bottom",
+    "displayNameDe": "Pfeil unten",
+    "tags": ["fallend", "Anzeige", "Pfeil"]
   },
   {
     "technicalId": "question",
@@ -980,14 +985,14 @@
     "tags": ["Qualität", "Rating", "Bewertung", "bewertet"]
   },
   {
-    "technicalId": "pen",
-    "displayNameDe": "Stift",
-    "tags": ["schreiben", "unterschreiben", "zeichnen", "Text"]
-  },
-  {
     "technicalId": "paper-clip",
     "displayNameDe": "Büroklammer",
     "tags": ["Klammer", "Büro", "anhängen", "hinzufügen"]
+  },
+  {
+    "technicalId": "pen",
+    "displayNameDe": "Stift",
+    "tags": ["schreiben", "unterschreiben", "zeichnen", "Text"]
   },
   {
     "technicalId": "warning",
@@ -1000,24 +1005,24 @@
     "tags": ["Wolke", "schlechtes Wetter", "Regen"]
   },
   {
-    "technicalId": "stop",
-    "displayNameDe": "Stopp",
-    "tags": ["anhalten", "pausieren", "Quadrat"]
-  },
-  {
     "technicalId": "play-circle",
     "displayNameDe": "abspielen Kreis",
     "tags": ["Datei abspielen", "Beginn", "Pfeil"]
   },
   {
-    "technicalId": "mute",
-    "displayNameDe": "stummschalten",
-    "tags": ["Ton aus", "lautlos"]
+    "technicalId": "stop",
+    "displayNameDe": "Stopp",
+    "tags": ["anhalten", "pausieren", "Quadrat"]
   },
   {
     "technicalId": "alarm",
     "displayNameDe": "Alarm",
     "tags": ["Uhr", "Deadline", "dringend", "Notfall"]
+  },
+  {
+    "technicalId": "mute",
+    "displayNameDe": "stummschalten",
+    "tags": ["Ton aus", "lautlos"]
   },
   {
     "technicalId": "refresh",
@@ -1045,14 +1050,14 @@
     "tags": ["Nachricht", "Kommunikation", "schreiben", "Umschlag"]
   },
   {
-    "technicalId": "e-mail-send",
-    "displayNameDe": "E-Mail abschicken",
-    "tags": ["Brief", "E-Mail", "Kommunikation"]
-  },
-  {
     "technicalId": "reply",
     "displayNameDe": "antworten",
     "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
+  },
+  {
+    "technicalId": "e-mail-send",
+    "displayNameDe": "E-Mail abschicken",
+    "tags": ["Brief", "E-Mail", "Kommunikation"]
   },
   {
     "technicalId": "password",
@@ -1090,14 +1095,14 @@
     "tags": ["hervorheben", "malen", "farbig", "wichtig"]
   },
   {
-    "technicalId": "arrow-top-left",
-    "displayNameDe": "Pfeil links oben",
-    "tags": ["zurück", "oben", "rückwärts"]
-  },
-  {
     "technicalId": "e-mail-forward",
     "displayNameDe": "E-Mail weiterleiten",
     "tags": ["Pfeil", "weiterleiten", "Brief"]
+  },
+  {
+    "technicalId": "arrow-top-left",
+    "displayNameDe": "Pfeil links oben",
+    "tags": ["zurück", "oben", "rückwärts"]
   },
   {
     "technicalId": "external-link",
