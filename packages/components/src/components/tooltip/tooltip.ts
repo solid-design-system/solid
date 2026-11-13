@@ -51,6 +51,9 @@ export default class SdTooltip extends SolidElement {
 
   private interactionType: 'keyboard' | 'mouse' | undefined;
 
+  // Identifies the latest show/hide transition, so that one that got superseded while it was animating can bail out
+  private currentTransition = 0;
+
   public localize = new LocalizeController(this);
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'content');
 
@@ -243,22 +246,28 @@ export default class SdTooltip extends SolidElement {
         return;
       }
       // Show
+      const transition = ++this.currentTransition;
       this.emit('sd-show');
 
-      await stopAnimations(this.body);
+      await stopAnimations(this.popup.popup);
+      if (transition !== this.currentTransition) return;
       this.body.hidden = false;
       this.popup.active = true;
       const { keyframes, options } = getAnimation(this, 'tooltip.show', { dir: this.localize.dir() });
       await animateTo(this.popup.popup, keyframes, options);
+      if (transition !== this.currentTransition) return;
 
       this.emit('sd-after-show');
     } else {
       // Hide
+      const transition = ++this.currentTransition;
       this.emit('sd-hide');
 
-      await stopAnimations(this.body);
+      await stopAnimations(this.popup.popup);
+      if (transition !== this.currentTransition) return;
       const { keyframes, options } = getAnimation(this, 'tooltip.hide', { dir: this.localize.dir() });
       await animateTo(this.popup.popup, keyframes, options);
+      if (transition !== this.currentTransition) return;
       this.popup.active = false;
       this.body.hidden = true;
 
@@ -281,13 +290,18 @@ export default class SdTooltip extends SolidElement {
     }
   }
 
+  // A superseded show/hide does not emit its `sd-after-*` event, so wait for the one that ends the latest transition
+  private waitForTransitionEnd() {
+    return Promise.race([waitForEvent(this, 'sd-after-show'), waitForEvent(this, 'sd-after-hide')]);
+  }
+
   /** Shows the tooltip. */
   async show() {
     if (this.open) {
       return undefined;
     }
     this.open = true;
-    return waitForEvent(this, 'sd-after-show');
+    return this.waitForTransitionEnd();
   }
 
   /** Hides the tooltip */
@@ -304,7 +318,7 @@ export default class SdTooltip extends SolidElement {
       this.blur();
     }
 
-    return waitForEvent(this, 'sd-after-hide');
+    return this.waitForTransitionEnd();
   }
 
   render() {
