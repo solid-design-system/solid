@@ -54,7 +54,7 @@ export const Default = {
  */
 export const Variants = {
   render: () =>
-    html` <div class="flex">
+    html` <div class="flex-wrap md:flex">
       <div class="sd-copyright flex-1" style="--copyright: '© Union Investment 2025';">
         <div class="sd-container sd-container--variant-primary h-full"></div>
       </div>
@@ -71,7 +71,7 @@ export const Variants = {
  */
 export const NoShadow = {
   render: () =>
-    html` <div class="flex">
+    html` <div class="flex-wrap md:flex">
       <div class="sd-copyright sd-copyright--no-shadow flex-1" style="--copyright: '© Union Investment 2025';">
         <div class="px-12 py-8 bg-primary h-full"></div>
       </div>
@@ -89,7 +89,7 @@ export const NoShadow = {
  */
 export const Orientation = {
   render: () =>
-    html`<div class="grid grid-cols-2 gap-4">
+    html`<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div class="sd-copyright max-w-xl" style="--copyright: '© Union Investment 2025';">
         <img src="./placeholders/images/generic.jpg" alt="" class="aspect-video object-cover" />
       </div>
@@ -117,7 +117,7 @@ export const Placement = {
           z-index: 10;
         }
       </style>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="sd-copyright max-w-xl" style="--copyright: '© Union Investment 2025';">
           <img src="./placeholders/images/generic.jpg" alt="" class="aspect-video object-cover h-full" />
         </div>

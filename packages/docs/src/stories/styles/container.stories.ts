@@ -43,7 +43,7 @@ export const Default = {
 
 export const Variants = {
   render: () =>
-    html`<div class="grid grid-cols-2 gap-4">
+    html`<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div class="sd-container">
         <div class="slot slot--border slot--text h-12">Default slot</div>
       </div>
@@ -105,7 +105,7 @@ export const CustomPadding = {
 
 export const TrianglePosition = {
   render: () =>
-    html`<div class="grid grid-cols-2 gap-4">
+    html`<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div class="sd-container sd-container--variant-primary sd-container--triangle-top">
         <div class="slot slot--border slot--text slot--inverted h-12">Default slot</div>
       </div>
@@ -135,7 +135,7 @@ export const TrianglePosition = {
 
 export const TriangleBorder = {
   render: () =>
-    html`<div class="grid grid-cols-2 gap-4">
+    html`<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div class="sd-container sd-container--variant-border-neutral-400 sd-container--triangle-top-border">
         <div class="slot slot--border slot--text h-12">Default slot</div>
       </div>

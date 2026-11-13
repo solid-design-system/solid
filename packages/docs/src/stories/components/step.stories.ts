@@ -70,7 +70,7 @@ export const Default = {
 export const Size = {
   name: 'Size',
   render: () => html`
-    <div class="flex gap-12 w-min-content">
+    <div class="flex flex-wrap gap-12 w-min-content">
       <sd-step size="lg">
         <span slot="label">Large</span>
       </sd-step>
@@ -94,7 +94,7 @@ export const Size = {
 export const Orientation = {
   name: 'Orientation',
   render: () => html`
-    <div class="flex gap-24 w-min">
+    <div class="flex flex-wrap gap-24 w-min">
       <sd-step orientation="horizontal">
         <span slot="label">Horizontal</span>
       </sd-step>

@@ -53,7 +53,7 @@ export const Default = {
 
 export const Variants = {
   render: () => html`
-    <div class="flex flex-row gap-8">
+    <div class="flex flex-wrap gap-8">
       <button class="sd-interactive sd-interactive sd-interactive--reset" title="Action name">Primary</button>
       <button class="sd-interactive sd-interactive--variant-secondary sd-interactive--reset" title="Action name">
         Secondary
@@ -68,7 +68,7 @@ export const Variants = {
 
 export const Inverted = {
   render: () => html`
-    <div class="bg-primary p-4 flex flex-row gap-8">
+    <div class="bg-primary p-4 flex flex-wrap gap-8">
       <button class="sd-interactive sd-interactive--inverted sd-interactive--reset" title="Action name">
         Inverted primary
       </button>
@@ -135,7 +135,7 @@ export const Reset = {
         background-color: rgb(204, 204, 204);
       }
     </style>
-    <div class="flex flex-row gap-8">
+    <div class="flex flex-wrap gap-8">
       <button class="sd-interactive" title="Action name">Default</button>
       <button class="sd-interactive sd-interactive--reset" title="Action name">Reset</button>
     </div>

@@ -64,7 +64,7 @@ export const Default = {
 
 export const Size = {
   render: () =>
-    html` <div class="flex flex-row gap-4 h-[260px]">
+    html` <div class="flex flex-wrap gap-4 h-[260px]">
       <sd-select label="Large" placeholder="Please select" placement="bottom" max-options-visible="3">
         <sd-option value="option-1" size="lg">option 1</sd-option>
         <sd-option value="option-2" size="lg">option 2</sd-option>
@@ -112,7 +112,7 @@ export const Checkbox = {
 
 export const Selected = {
   render: () =>
-    html`<div class="flex flex-row gap-12 h-[260px]">
+    html`<div class="flex flex-wrap gap-12 h-[260px]">
       <sd-select
         label="Selected option"
         placeholder="Please select"
@@ -145,7 +145,7 @@ export const Selected = {
 
 export const Disabled = {
   render: () =>
-    html`<div class="flex flex-row gap-12 h-[260px]">
+    html`<div class="flex flex-wrap gap-12 h-[260px]">
       <sd-select label="Disabled options" placeholder="Please select" placement="bottom" max-options-visible="3">
         <sd-option value="option-1" disabled>option 1</sd-option>
         <sd-option value="option-2" disabled>option 2</sd-option>
