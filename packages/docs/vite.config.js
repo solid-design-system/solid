@@ -12,7 +12,7 @@ import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright
 import VitePluginGetTailwindTheme from './scripts/vite-plugin-get-tailwind-theme';
 import VitePluginLitTailwind from './scripts/vite-plugin-lit-tailwind.js';
 import VitePluginSolidStyles from './scripts/vite-plugin-solid-styles/index.js';
-import { stripPromptOnlyBlocks } from '../../scripts/mdx-prompt-blocks.mjs';
+import { stripPromptOnlyBlocks } from './scripts/storybook/mdx-prompt-blocks.mjs';
 
 // https://vitejs.dev/config/
 export default () => {

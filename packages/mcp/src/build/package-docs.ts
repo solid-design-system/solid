@@ -3,7 +3,7 @@ import { mkdirSync } from 'node:fs';
 import { dirname, join, basename, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import ora from 'ora';
-import { stripPromptOnlyBlocks } from '../../../../scripts/mdx-prompt-blocks.mjs';
+import { stripPromptOnlyBlocks } from '../../../docs/scripts/storybook/mdx-prompt-blocks.mjs';
 import {
   componentPackageDocsPath,
   quickstartPackageDocsPath,
