@@ -5,57 +5,169 @@ export default {
   tags: ['!dev', 'autodocs'],
   title: 'Templates/Forms',
   parameters: {
-    relatedLinks: ['components/sd-icon'],
+    relatedLinks: [
+      'components/sd-input',
+      'components/sd-select',
+      'components/sd-textarea',
+      'components/sd-datepicker',
+      'components/sd-checkbox-group',
+      'components/sd-radio-group',
+      'components/sd-button',
+      'components/sd-link',
+      'components/sd-tooltip',
+      'styles/sd-container',
+      'styles/sd-headline',
+      'styles/sd-meta',
+      'styles/sd-paragraph'
+    ],
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3060-14503&t=LHCyCYMjDV22qemZ-4'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Solid-DS-%E2%80%93-Component-Docs?node-id=2314-31839'
     }
   }
 };
 
 /**
- * Use this template to provide login options. Use `optional` to mark non-required fields. The mandatory fields remain requiered, only the asterisk is omitted.
+ * Use this template to provide login options. Use "optional" to mark non-required fields. The mandatory fields remain required, only the asterisk is omitted.
  */
-
 export const LoginForm = {
   render: () => html`
     <style>
-      #login-form sd-button::part(icon-left) {
-        display: flex;
-        justify-content: flex-end;
+      #forms-template-login :is(sd-input, sd-select, sd-textarea, sd-datepicker)::part(form-control-label)::after,
+      #forms-template-login sd-checkbox::part(label)::after {
+        content: none;
       }
     </style>
-    <section class="sd-container">
-      <form id="login-form">
-        <h3 class="sd-headline sd-headline--size-3xl mb-8">Login for UnionFondsOnline users</h3>
-        <sd-input type="number" inputmode="numeric" label="Access number" class="mb-4" required></sd-input>
+    <section class="sd-container max-w-[790px]">
+      <form id="forms-template-login" class="flex flex-col gap-4">
+        <h3 class="sd-headline sd-headline--size-3xl mb-4">Login for UnionFondsOnline users</h3>
         <sd-input
+          type="email"
+          inputmode="email"
+          label="Email"
+          name="email"
+          autocomplete="username"
           required
+          data-error-message="Please enter your email address, for example name@example.com."
+        ></sd-input>
+        <sd-input
           type="password"
           label="Password"
-          class="mb-4"
+          name="password"
           autocomplete="current-password"
           password-toggle
+          required
+          data-error-message="Please enter your password."
         ></sd-input>
-        <sd-checkbox>Stay logged in on this computer</sd-checkbox>
-        <div class="justify-between md:items-center md:flex-row mt-8 flex flex-col">
-          <sd-link href="javascript:void(0)" class="mb-4 md:mb-0">Forgot password</sd-link>
-          <sd-button type="submit">
-            Login
+        <sd-checkbox class="max-w-full" name="stayLoggedIn">Stay logged in on this computer (optional)</sd-checkbox>
+        <div class="flex flex-col gap-6 mt-4 md:flex-row md:items-center md:justify-between">
+          <sd-link href="javascript:void(0)">Forgot password</sd-link>
+          <sd-button type="submit" class="w-full md:w-auto">
             <sd-icon name="system/lock-locked" slot="icon-left"></sd-icon>
+            Login
           </sd-button>
         </div>
       </form>
     </section>
     <script type="module">
-      const loginForm = document.getElementById('login-form');
-      loginForm.onsubmit = event => {
-        event.preventDefault();
-        if (loginForm.checkValidity()) {
-          alert('Login form submitted');
-        }
+      await customElements.whenDefined('sd-input');
+
+      const loginForm = document.getElementById('forms-template-login');
+
+      // Replaces the generic browser message with the field-specific text from data-error-message
+      const syncErrorMessage = async field => {
+        await field.updateComplete;
+        field.setCustomValidity('');
+        if (!field.validity.valid) field.setCustomValidity(field.dataset.errorMessage);
+        // Re-renders so the shown error state matches the new validity right away
+        field.requestUpdate();
       };
+      const fieldsWithMessage = Array.from(loginForm.querySelectorAll('[data-error-message]'));
+      const syncAllErrorMessages = () => Promise.all(fieldsWithMessage.map(syncErrorMessage));
+      syncAllErrorMessages();
+      ['sd-input', 'sd-change'].forEach(type =>
+        loginForm.addEventListener(type, event => {
+          if (event.target.dataset?.errorMessage) syncErrorMessage(event.target);
+        })
+      );
+      loginForm.addEventListener('reset', () => setTimeout(syncAllErrorMessages));
+
+      loginForm.addEventListener('submit', event => {
+        event.preventDefault();
+        alert('Login form submitted');
+      });
+    </script>
+  `
+};
+
+/**
+ * Use this template to provide reset password options. Use "optional" to mark non-required fields. The mandatory fields remain required, only the asterisk is omitted.
+ */
+export const ResetPasswordForm = {
+  render: () => html`
+    <style>
+      #forms-template-reset-password
+        :is(sd-input, sd-select, sd-textarea, sd-datepicker)::part(form-control-label)::after {
+        content: none;
+      }
+    </style>
+    <section class="sd-container max-w-[790px]">
+      <form id="forms-template-reset-password" class="flex flex-col gap-6">
+        <h3 class="sd-headline sd-headline--size-3xl">Reset password</h3>
+        <div class="flex flex-col gap-4">
+          <p class="sd-paragraph">
+            Enter the e-mail address you used to register and click on “Reset password”. We will then send you an e-mail
+            with a link that you can use to create a new password. If you do not receive an e-mail, your user account is
+            blocked.
+          </p>
+          <p class="sd-paragraph">
+            You can unblock your access using the form
+            <sd-link href="javascript:void(0)">Request to unblock your online access</sd-link>.
+          </p>
+        </div>
+        <sd-input
+          type="email"
+          inputmode="email"
+          label="Email"
+          name="email"
+          autocomplete="email"
+          required
+          data-error-message="Please enter your email address, for example name@example.com."
+        ></sd-input>
+        <div class="flex flex-col gap-4 md:flex-row md:justify-end">
+          <sd-button type="submit" class="md:order-2">Reset password</sd-button>
+          <sd-button type="reset" variant="secondary" class="md:order-1">Cancel</sd-button>
+        </div>
+      </form>
+    </section>
+    <script type="module">
+      await customElements.whenDefined('sd-input');
+
+      const resetPasswordForm = document.getElementById('forms-template-reset-password');
+
+      // Replaces the generic browser message with the field-specific text from data-error-message
+      const syncErrorMessage = async field => {
+        await field.updateComplete;
+        field.setCustomValidity('');
+        if (!field.validity.valid) field.setCustomValidity(field.dataset.errorMessage);
+        // Re-renders so the shown error state matches the new validity right away
+        field.requestUpdate();
+      };
+      const fieldsWithMessage = Array.from(resetPasswordForm.querySelectorAll('[data-error-message]'));
+      const syncAllErrorMessages = () => Promise.all(fieldsWithMessage.map(syncErrorMessage));
+      syncAllErrorMessages();
+      ['sd-input', 'sd-change'].forEach(type =>
+        resetPasswordForm.addEventListener(type, event => {
+          if (event.target.dataset?.errorMessage) syncErrorMessage(event.target);
+        })
+      );
+      resetPasswordForm.addEventListener('reset', () => setTimeout(syncAllErrorMessages));
+
+      resetPasswordForm.addEventListener('submit', event => {
+        event.preventDefault();
+        alert('Reset password form submitted');
+      });
     </script>
   `
 };
@@ -63,197 +175,346 @@ export const LoginForm = {
 /**
  * Only mark the optional fields if most of the fields are mandatory.
  */
-
 export const ContactForm = {
   render: () => html`
-    <form class="sd-prose sd-prose--full-width" id="contact-form">
+    <style>
+      #forms-template-contact
+        :is(sd-input, sd-select, sd-textarea, sd-datepicker, sd-radio-group, sd-checkbox-group)::part(
+          form-control-label
+        )::after,
+      #forms-template-contact sd-checkbox::part(label)::after {
+        content: none;
+      }
+    </style>
+    <form id="forms-template-contact" class="flex flex-col gap-8 max-w-[640px]">
       <h3 class="sd-headline sd-headline--size-4xl">Contact</h3>
-      <sd-radio-group id="inquiry-radio-group" orientation="horizontal" value="general-inquiry">
-        <sd-radio name="inquiryType" value="general-inquiry">General inquiry</sd-radio>
-        <sd-radio name="inquiryType" value="regarding">Regarding</sd-radio>
-      </sd-radio-group>
-      <sd-input
-        type="text"
-        inputmode="text"
-        id="regarding-input"
-        class="hidden"
-        aria-label="Regarding"
-        name="regardingInput"
-        spellcheck
-      ></sd-input>
-      <div class="flex flex-col gap-6">
-        <sd-select label="Salutation" placeholder="Please Select" name="salutation" required>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-4">
+        <sd-radio-group
+          label="Type"
+          name="inquiryType"
+          value="general-inquiry"
+          orientation="horizontal"
+          class="md:col-span-2"
+          required
+        >
+          <sd-radio value="general-inquiry">General inquiry</sd-radio>
+          <sd-radio value="regarding-depot">Regarding depot</sd-radio>
+        </sd-radio-group>
+        <sd-select
+          label="Salutation"
+          placeholder="Please select"
+          name="salutation"
+          class="md:col-span-2"
+          required
+          data-error-message="Please select a salutation."
+        >
           <sd-option value="ms">Ms.</sd-option>
-          <sd-option value="mrs">Mrs.</sd-option>
-          <sd-option value="miss">Miss</sd-option>
+          <sd-option value="mr">Mr.</sd-option>
           <sd-option value="mx">Mx.</sd-option>
         </sd-select>
-        <div class="gap-6 flex flex-col md:flex-row">
-          <sd-input
-            name="firstName"
-            type="text"
-            inputmode="text"
-            label="First name"
-            autocomplete="given-name"
-          ></sd-input>
-          <sd-input
-            name="lastName"
-            type="text"
-            inputmode="text"
-            label="Last name"
+        <sd-input
+          type="text"
+          label="First name (optional)"
+          name="firstName"
+          autocomplete="given-name"
+          class="md:col-start-1"
+        ></sd-input>
+        <sd-input
+          type="text"
+          label="Last name"
+          name="lastName"
+          autocomplete="family-name"
+          required
+          data-error-message="Please enter your last name."
+        ></sd-input>
+        <sd-input
+          type="email"
+          inputmode="email"
+          label="Email"
+          name="email"
+          autocomplete="email"
+          class="md:col-start-1"
+          required
+          data-error-message="Please enter your email address, for example name@example.com."
+        ></sd-input>
+        <sd-textarea
+          label="Message"
+          name="message"
+          rows="4"
+          class="md:col-span-2"
+          spellcheck
+          required
+          data-error-message="Please enter your message."
+        ></sd-textarea>
+        <sd-checkbox-group label="Terms & conditions" class="md:col-span-2">
+          <sd-checkbox
+            class="max-w-full"
+            name="privacyPolicy"
+            value="accepted"
             required
-            autocomplete="family-name"
-          ></sd-input>
-        </div>
-        <sd-input name="email" type="email" inputmode="email" label="Email" required autocomplete="email"></sd-input>
-        <sd-textarea name="news" label="News" rows="4" spellcheck></sd-textarea>
-        <sd-checkbox-group>
-          <sd-checkbox value="privacy_policy" required>
+            data-error-message="Please accept the Privacy Policy to continue."
+          >
             I accept the <sd-link href="javascript:void(0)">Privacy Policy</sd-link>.
           </sd-checkbox>
-          <sd-checkbox value="marketing_emails">I would like to receive marketing emails.</sd-checkbox>
+          <sd-checkbox class="max-w-full" name="marketingEmails" value="accepted">
+            I would like to receive marketing emails. (optional)
+          </sd-checkbox>
         </sd-checkbox-group>
-        <span class="sd-meta sd-meta--size-sm">* Required fields</span>
       </div>
       <div class="flex flex-col gap-4 md:flex-row md:justify-end">
-        <sd-button class="md:order-2" type="submit">Send</sd-button>
-        <sd-button variant="secondary" class="md:order-1" onclick="alert('Cancelled process')">Cancel</sd-button>
+        <sd-button type="submit" class="md:order-2">Submit registration</sd-button>
+        <sd-button type="reset" variant="secondary" class="md:order-1">Cancel</sd-button>
       </div>
     </form>
     <script type="module">
       await Promise.all([
-        customElements.whenDefined('sd-button'),
-        customElements.whenDefined('sd-checkbox'),
-        customElements.whenDefined('sd-textarea'),
-        customElements.whenDefined('sd-radio'),
-        customElements.whenDefined('sd-radio-group'),
         customElements.whenDefined('sd-input'),
-        customElements.whenDefined('sd-select')
-      ]).then(() => {
-        const form = document.getElementById('contact-form');
-        form.onsubmit = event => {
-          event.preventDefault(); // Prevent the default form submission
-          const formData = new FormData(form);
+        customElements.whenDefined('sd-select'),
+        customElements.whenDefined('sd-textarea'),
+        customElements.whenDefined('sd-checkbox'),
+        customElements.whenDefined('sd-radio-group')
+      ]);
 
-          // Collect form values to display in the alert
-          let formValues = ['Results:'];
-          for (let [key, value] of formData.entries()) {
-            formValues.push(key + ': ' + value);
-          }
-          alert(formValues.join('\\n'));
-        };
-      });
+      const contactForm = document.getElementById('forms-template-contact');
 
-      const radioGroup = document.getElementById('inquiry-radio-group');
-      const regardingInput = document.getElementById('regarding-input');
-      radioGroup.addEventListener('sd-change', event => {
-        const value = event.target.value;
-        if (value === 'regarding') {
-          regardingInput.classList.remove('hidden');
-        } else {
-          regardingInput.classList.add('hidden');
+      // Replaces the generic browser message with the field-specific text from data-error-message
+      const syncErrorMessage = async field => {
+        await field.updateComplete;
+        field.setCustomValidity('');
+        if (!field.validity.valid) field.setCustomValidity(field.dataset.errorMessage);
+        // Re-renders so the shown error state matches the new validity right away
+        field.requestUpdate();
+      };
+      const fieldsWithMessage = Array.from(contactForm.querySelectorAll('[data-error-message]'));
+      const syncAllErrorMessages = () => Promise.all(fieldsWithMessage.map(syncErrorMessage));
+      syncAllErrorMessages();
+      ['sd-input', 'sd-change'].forEach(type =>
+        contactForm.addEventListener(type, event => {
+          if (event.target.dataset?.errorMessage) syncErrorMessage(event.target);
+        })
+      );
+      contactForm.addEventListener('reset', () => setTimeout(syncAllErrorMessages));
+
+      contactForm.addEventListener('submit', event => {
+        event.preventDefault();
+        const formValues = ['Results:'];
+        for (const [key, value] of new FormData(contactForm).entries()) {
+          formValues.push(key + ': ' + value);
         }
+        alert(formValues.join('\\n'));
       });
     </script>
   `
 };
 
 /**
- * Use the attribute `visually-disabled` to visually disable form elements. Wrap the elements in a tooltip to provide information on how to enable them.
- *
- * **Accessibility Hint:** This approach is recommended for accessibility reasons. Disabling elements, will remove them from the tab order and screen readers will not announce them.
+ * Only mark the required fields if most of the fields are optional. Add the hint "Fields marked with * are required." above the form so screen reader users know the meaning of the asterisk.
  */
-export const FormWithVisuallyDisabledElements = {
+export const PersonalInformationForm = {
   render: () => html`
-    <form class="sd-prose sd-prose--full-width" id="accessible-form">
-      <h3 class="sd-headline sd-headline--size-4xl">Contact</h3>
-      <div class="flex flex-col gap-6">
-        <sd-input name="firstName" type="text" inputmode="text" label="Name" class="name-input"></sd-input>
-        <sd-textarea name="message" label="Message" rows="4" spellcheck></sd-textarea>
-        <sd-checkbox-group>
-          <sd-checkbox value="privacy_policy" class="policy-checkbox mb-2" required>
-            I accept the <sd-link href="javascript:void(0)">Privacy Policy</sd-link>.
-          </sd-checkbox>
-          <sd-tooltip
-            content="Accept Policy Privacy to enable field"
-            trigger="hover focus"
-            size="sm"
-            class="checkbox-tooltip"
-          >
-            <sd-checkbox value="marketing_emails" class="marketing-checkbox" visually-disabled
-              >I would like to receive marketing emails.</sd-checkbox
-            >
-          </sd-tooltip>
-        </sd-checkbox-group>
-        <span class="sd-meta sd-meta--size-sm">* Required fields</span>
+    <form id="forms-template-personal-information" class="flex flex-col gap-8 max-w-[640px]">
+      <div class="flex flex-col gap-4">
+        <h3 class="sd-headline sd-headline--size-4xl">Personal Information</h3>
+        <p class="sd-meta sd-meta--size-sm">Fields marked with * are required.</p>
+      </div>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-4">
+        <sd-select
+          label="Salutation"
+          placeholder="Please select"
+          name="salutation"
+          required
+          data-error-message="Please select a salutation."
+        >
+          <sd-option value="ms">Ms.</sd-option>
+          <sd-option value="mr">Mr.</sd-option>
+          <sd-option value="mx">Mx.</sd-option>
+        </sd-select>
+        <sd-select
+          label="Academic title"
+          placeholder="Select academic title"
+          name="academicTitle"
+          class="md:col-start-1"
+        >
+          <sd-option value="dr">Dr.</sd-option>
+          <sd-option value="prof">Prof.</sd-option>
+          <sd-option value="prof-dr">Prof. Dr.</sd-option>
+        </sd-select>
+        <sd-select label="Title of nobility" placeholder="Select title of nobility" name="titleOfNobility">
+          <sd-option value="baron">Baron</sd-option>
+          <sd-option value="baroness">Baroness</sd-option>
+          <sd-option value="count">Count</sd-option>
+          <sd-option value="countess">Countess</sd-option>
+        </sd-select>
+        <sd-input
+          type="text"
+          label="First name"
+          name="firstName"
+          autocomplete="given-name"
+          class="md:col-start-1"
+          required
+          data-error-message="Please enter your first name."
+        ></sd-input>
+        <sd-input
+          type="text"
+          label="Last name"
+          name="lastName"
+          autocomplete="family-name"
+          class="md:col-start-1"
+          required
+          data-error-message="Please enter your last name."
+        ></sd-input>
+        <sd-datepicker label="Date of birth" name="dateOfBirth" class="md:col-span-2"></sd-datepicker>
+        <sd-select label="Nationality" placeholder="Select nationality" name="nationality" class="md:col-span-2">
+          <sd-option value="de">German</sd-option>
+          <sd-option value="at">Austrian</sd-option>
+          <sd-option value="ch">Swiss</sd-option>
+          <sd-option value="other">Other</sd-option>
+        </sd-select>
+        <sd-input type="text" label="Position" name="position" autocomplete="organization-title"></sd-input>
       </div>
       <div class="flex flex-col gap-4 md:flex-row md:justify-end">
-        <sd-tooltip
-          content="Fill in all fields to enable button"
-          trigger="hover focus"
-          size="sm"
-          class="button-tooltip"
-        >
-          <sd-button class="md:order-2 submit-button" type="submit" visually-disabled>Send</sd-button>
-        </sd-tooltip>
-        <sd-button variant="secondary" class="md:order-1" onclick="alert('Cancelled process')">Cancel</sd-button>
+        <sd-button type="submit" class="md:order-2">Save</sd-button>
+        <sd-button type="reset" variant="secondary" class="md:order-1">Cancel</sd-button>
       </div>
     </form>
     <script type="module">
       await Promise.all([
-        customElements.whenDefined('sd-button'),
-        customElements.whenDefined('sd-checkbox'),
+        customElements.whenDefined('sd-input'),
+        customElements.whenDefined('sd-select'),
+        customElements.whenDefined('sd-datepicker')
+      ]);
+
+      const personalInformationForm = document.getElementById('forms-template-personal-information');
+
+      // Replaces the generic browser message with the field-specific text from data-error-message
+      const syncErrorMessage = async field => {
+        await field.updateComplete;
+        field.setCustomValidity('');
+        if (!field.validity.valid) field.setCustomValidity(field.dataset.errorMessage);
+        // Re-renders so the shown error state matches the new validity right away
+        field.requestUpdate();
+      };
+      const fieldsWithMessage = Array.from(personalInformationForm.querySelectorAll('[data-error-message]'));
+      const syncAllErrorMessages = () => Promise.all(fieldsWithMessage.map(syncErrorMessage));
+      syncAllErrorMessages();
+      ['sd-input', 'sd-change'].forEach(type =>
+        personalInformationForm.addEventListener(type, event => {
+          if (event.target.dataset?.errorMessage) syncErrorMessage(event.target);
+        })
+      );
+      personalInformationForm.addEventListener('reset', () => setTimeout(syncAllErrorMessages));
+
+      personalInformationForm.addEventListener('submit', event => {
+        event.preventDefault();
+        const formValues = ['Results:'];
+        for (const [key, value] of new FormData(personalInformationForm).entries()) {
+          formValues.push(key + ': ' + value);
+        }
+        alert(formValues.join('\\n'));
+      });
+    </script>
+  `
+};
+
+/**
+ * Use the attribute "visually-disabled" to visually disable form elements. Wrap the elements in a tooltip to provide information on how to enable them.
+ *
+ * **Accessibility Hint:** This approach is recommended for accessibility reasons. Disabling elements will remove them from the tab order and screen readers will not announce them.
+ */
+export const FormWithVisuallyDisabledElements = {
+  render: () => html`
+    <style>
+      #forms-template-visually-disabled :is(sd-input, sd-textarea, sd-checkbox-group)::part(form-control-label)::after,
+      #forms-template-visually-disabled sd-checkbox::part(label)::after {
+        content: none;
+      }
+    </style>
+    <form id="forms-template-visually-disabled" class="flex flex-col gap-8 max-w-[640px]">
+      <h3 class="sd-headline sd-headline--size-4xl">Contact</h3>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-4">
+        <sd-input
+          type="text"
+          label="Name"
+          name="name"
+          autocomplete="name"
+          required
+          data-error-message="Please enter your name."
+        ></sd-input>
+        <sd-textarea
+          label="Message"
+          name="message"
+          rows="4"
+          class="md:col-span-2"
+          spellcheck
+          required
+          data-error-message="Please enter your message."
+        ></sd-textarea>
+        <sd-checkbox-group label="Terms & conditions" class="md:col-span-2">
+          <sd-checkbox
+            class="max-w-full"
+            name="privacyPolicy"
+            value="accepted"
+            required
+            data-error-message="Please accept the Privacy Policy to continue."
+          >
+            I accept the <sd-link href="javascript:void(0)">Privacy Policy</sd-link>.
+          </sd-checkbox>
+          <sd-checkbox class="max-w-full" name="marketingEmails" value="accepted">
+            I would like to receive marketing emails. (optional)
+          </sd-checkbox>
+        </sd-checkbox-group>
+      </div>
+      <div class="flex flex-col gap-4 md:flex-row md:justify-end">
+        <sd-tooltip
+          content="Fill in all fields to enable the button."
+          trigger="hover focus"
+          size="sm"
+          class="md:order-2"
+        >
+          <sd-button type="submit" class="w-full" visually-disabled>Send</sd-button>
+        </sd-tooltip>
+        <sd-button type="reset" variant="secondary" class="md:order-1">Cancel</sd-button>
+      </div>
+    </form>
+    <script type="module">
+      await Promise.all([
+        customElements.whenDefined('sd-input'),
         customElements.whenDefined('sd-textarea'),
-        customElements.whenDefined('sd-input')
-      ]).then(() => {
-        const form = document.getElementById('accessible-form');
-        form.onsubmit = event => {
-          event.preventDefault();
-          alert('Form submitted');
-        };
-      });
+        customElements.whenDefined('sd-checkbox'),
+        customElements.whenDefined('sd-button')
+      ]);
 
-      const form = document.getElementById('accessible-form');
-      const nameInput = form.querySelector('.name-input');
-      const emailInput = form.querySelector('.email-input');
-      const policyCheckbox = form.querySelector('.policy-checkbox');
-      const marketingCheckbox = form.querySelector('.marketing-checkbox');
-      const submitButton = form.querySelector('.submit-button');
-      const checkboxTooltip = form.querySelector('.checkbox-tooltip');
-      const buttonTooltip = form.querySelector('.button-tooltip');
+      const visuallyDisabledForm = document.getElementById('forms-template-visually-disabled');
+      const tooltip = visuallyDisabledForm.querySelector('sd-tooltip');
+      const submitButton = visuallyDisabledForm.querySelector('sd-button[type="submit"]');
 
-      nameInput.addEventListener('input', () => {
-        if (nameInput.value) {
-          emailInput.removeAttribute('visually-disabled');
-        }
-      });
+      // Replaces the generic browser message with the field-specific text from data-error-message
+      const syncErrorMessage = async field => {
+        await field.updateComplete;
+        field.setCustomValidity('');
+        if (!field.validity.valid) field.setCustomValidity(field.dataset.errorMessage);
+        // Re-renders so the shown error state matches the new validity right away
+        field.requestUpdate();
+      };
+      const fieldsWithMessage = Array.from(visuallyDisabledForm.querySelectorAll('[data-error-message]'));
+      const syncAllErrorMessages = () => Promise.all(fieldsWithMessage.map(syncErrorMessage));
+      syncAllErrorMessages();
 
-      policyCheckbox.addEventListener('sd-change', event => {
-        if (policyCheckbox.checked) {
-          if (checkboxTooltip && checkboxTooltip.parentNode) {
-            while (checkboxTooltip.firstChild) {
-              checkboxTooltip.parentNode.insertBefore(checkboxTooltip.firstChild, checkboxTooltip);
-            }
-            checkboxTooltip.parentNode.removeChild(checkboxTooltip);
-          }
+      // Re-checks after every change so the button also gets disabled again when a field is cleared
+      const updateSubmitState = async () => {
+        await syncAllErrorMessages();
+        const isValid = fieldsWithMessage.every(field => field.validity.valid);
+        submitButton.toggleAttribute('visually-disabled', !isValid);
+        tooltip.disabled = isValid;
+      };
 
-          marketingCheckbox.removeAttribute('visually-disabled');
-        }
-      });
+      visuallyDisabledForm.addEventListener('sd-input', updateSubmitState);
+      visuallyDisabledForm.addEventListener('sd-change', updateSubmitState);
+      visuallyDisabledForm.addEventListener('reset', () => setTimeout(updateSubmitState));
 
-      form.addEventListener('input', () => {
-        const requiredFields = form.querySelectorAll('[required]');
-        const isValid = Array.from(requiredFields).every(field => field.value && field.checkValidity());
-        if (isValid) {
-          if (buttonTooltip && buttonTooltip.parentNode) {
-            while (buttonTooltip.firstChild) {
-              buttonTooltip.parentNode.insertBefore(buttonTooltip.firstChild, buttonTooltip);
-            }
-            buttonTooltip.parentNode.removeChild(buttonTooltip);
-          }
-
-          submitButton.removeAttribute('visually-disabled');
-        }
+      visuallyDisabledForm.addEventListener('submit', event => {
+        event.preventDefault();
+        alert('Form submitted');
       });
     </script>
   `
