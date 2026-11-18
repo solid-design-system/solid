@@ -50,12 +50,22 @@ export const content = `
 - Do not disable all choices in a group; if a selection is not applicable, consider hiding the group instead.
 - Use only when users need to select one option; for multiple selections, use checkboxes instead.
 
+#### Validation and Error Messages
+
+- Validate on submit by default to avoid overwhelming users with premature feedback.
+- Write solution-oriented error messages that explain what is required and how to fix it, e.g., “Please select a contact type.” instead of “Invalid input.”
+- When an error occurs, the error text replaces the help text.
+- Set field-specific error messages with “setCustomValidity” instead of the generic browser messages. See [Form Controls](./?path=/docs/packages-components-form-controls--docs) for details.
+- If most fields of a form are required, mark only the optional fields with “(optional)” and hide the asterisk; the fields remain required. If most fields are optional, mark only the required fields with <code>\*</code> and add the hint “Fields marked with <code>\*</code> are required.” above the form.
+- See [Forms](./?path=/docs/templates-forms--docs) for examples.
+
 #### Background
 
 - Use with light background options such as white, neutral-100, or primary-100.
 
 ### Accessibility Information
 
+- Describe errors in text, not by color alone, and avoid references based on sensory characteristics (e.g., “the red field”).
 - Ensure that the group label is short and concise as it may be read out when users enter the group.
 - Ensure radios are easily tappable on touch devices.
 - Use the "visually disabled" attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
