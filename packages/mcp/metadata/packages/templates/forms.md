@@ -441,8 +441,8 @@ version: 1.0.0
     </sd-checkbox-group>
   </div>
   <div class="flex flex-col gap-4 md:flex-row md:justify-end">
-    <sd-tooltip content="Fill in all fields to enable the button." trigger="hover focus" size="sm" class="md:order-2">
-      <sd-button type="submit" class="w-full" visually-disabled>Send</sd-button>
+    <sd-tooltip content="Fill in all fields to enable the button." trigger="hover focus" size="sm">
+      <sd-button type="submit" class="md:order-2" visually-disabled>Send</sd-button>
     </sd-tooltip>
     <sd-button type="reset" variant="secondary" class="md:order-1">Cancel</sd-button>
   </div>
