@@ -58,10 +58,20 @@ export const content = `
 - Refrain from using checkboxes for mutually exclusive choices.
 - Don’t use checkboxes for binary actions that take immediate effect; use a switch instead.
 
+#### Validation and Error Messages
+
+- Validate on submit by default to avoid overwhelming users with premature feedback.
+- Write solution-oriented error messages that explain what is required and how to fix it, e.g., “Please select at least one topic.” instead of “Invalid input.”
+- When an error occurs, the error text replaces the help text.
+- Set field-specific error messages with “setCustomValidity” instead of the generic browser messages. See [Form Controls](./?path=/docs/packages-components-form-controls--docs) for details.
+- If most fields of a form are required, mark only the optional fields with “(optional)” and hide the asterisk; the fields remain required. If most fields are optional, mark only the required fields with <code>\*</code> and add the hint “Fields marked with <code>\*</code> are required.” above the form.
+- See [Forms](./?path=/docs/templates-forms--docs) for examples.
+
 ### Accessibility Information
 
+- Describe errors in text, not by color alone, and avoid references based on sensory characteristics (e.g., “the red field”).
 - Ensure that the group label is short and concise as it may be read out with every option or when users enter the group.
-- An error-text with a warning icon should be placed underneath an invalid checkbox or, if used in a group, underneath the checkbox group. Error messages should always provide hints for solutions.
+- An error-text with a warning icon should be placed underneath an invalid checkbox or, if used in a group, underneath the checkbox group.
 - Use an asterisk with a blank before ( \*) at the end of its label when designing a mandatory checkbox.
 
 Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=38262-58412&t=1qhfYXrbNhSCYCzZ-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
