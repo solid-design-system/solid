@@ -136,6 +136,25 @@ describe('<sd-dialog>', () => {
       expect(keyframes[0]).to.deep.equal({ opacity: 0, transform: 'translate(-50%, 100%)' });
       expect(keyframes[1]).to.deep.equal({ opacity: 1, transform: 'translate(0, 0)' });
     });
+
+    it('should not render a theme listener', async () => {
+      const el = await fixture<SdDialog>(html`<sd-dialog>Lorem ipsum</sd-dialog>`);
+      expect(el.shadowRoot!.querySelector('sd-theme-listener')).not.to.exist;
+    });
+
+    it('should use the theme that is active when the animation runs', async () => {
+      const wrapper = await fixture<HTMLElement>(html`
+        <div style="--sd-theme: 'bb'">
+          <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+        </div>
+      `);
+      const el = wrapper.querySelector<SdDialog>('sd-dialog')!;
+      wrapper.style.setProperty('--sd-theme', `'ui-light'`);
+
+      const keyframes = await getPanelShowKeyframes(el);
+
+      expect(keyframes[0]).to.deep.equal({ opacity: 0, transform: 'translate(-50%, 100%)' });
+    });
   });
 
   it('should emit sd-hide and sd-after-hide when calling hide()', async () => {

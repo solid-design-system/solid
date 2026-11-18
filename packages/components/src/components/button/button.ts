@@ -1,5 +1,4 @@
 import '../loader/loader';
-import '../theme-listener/theme-listener';
 import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { FormControlController, validValidityState } from '../../internal/form';
@@ -7,6 +6,7 @@ import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { property, query, queryAssignedElements, state } from 'lit/decorators.js';
+import { readTheme } from '../../internal/theme-observer';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -20,7 +20,6 @@ import type { SolidFormControl } from '../../internal/solid-element';
  *
  * @dependency sd-icon
  * @dependency sd-loader
- * @dependency sd-theme-listener
  *
  * @event sd-blur - Emitted when the button loses focus.
  * @event sd-focus - Emitted when the button gains focus.
@@ -129,7 +128,12 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   /** @internal */
   @state() protected invalid = false;
 
-  @state() private hasUiMotion = false;
+  /**
+   * Whether the UI motion (ui-light / ui-dark) should be used. Defaults to `true` as UI themes are the default.
+   * The theme is only checked lazily when an interaction starts (see `handleInteractionStart`),
+   * as reading computed styles or observing the theme for every button is expensive when rendering many buttons.
+   */
+  @state() private hasUiMotion = true;
 
   /**
    * The `title` attribute specifies extra information about an element most often as a default browser tooltip text when the mouse moves over the element.
@@ -221,23 +225,19 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     return '';
   }
 
-  connectedCallback(): void {
-    super.connectedCallback();
-    this.updateMotionTheme();
-  }
-
   firstUpdated() {
     if (this.isButton()) {
       this.formControlController.updateValidity();
     }
   }
 
-  protected onThemeChange(): void {
+  /** Checks the theme right before a hover / active / focus animation can run. */
+  private handleInteractionStart() {
     this.updateMotionTheme();
   }
 
   private updateMotionTheme(): void {
-    const theme = getComputedStyle(this).getPropertyValue('--sd-theme').trim().replace(/['"]/g, '');
+    const theme = readTheme(this);
     this.hasUiMotion = theme === '' || theme === 'ui-light' || theme === 'ui-dark';
   }
 
@@ -246,6 +246,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   }
 
   private handleFocus() {
+    this.handleInteractionStart();
     this.emit('sd-focus');
   }
 
@@ -401,7 +402,6 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
     return html`
-      <sd-theme-listener></sd-theme-listener>
       <${tag}
       part="base"
       class=${cx(
@@ -496,6 +496,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         tabindex=${this.disabled ? '-1' : '0'}
         @blur=${this.handleBlur}
         @focus=${this.handleFocus}
+        @pointerenter=${this.handleInteractionStart}
         @invalid=${this.isButton() ? this.handleInvalid : null}
         @click=${this.handleClick}
       >

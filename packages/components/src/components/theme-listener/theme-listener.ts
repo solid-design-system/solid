@@ -1,6 +1,6 @@
 import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
-import { ThemeObserver } from '../../internal/theme-observer';
+import { observeTheme, readTheme } from '../../internal/theme-observer';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -13,7 +13,7 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-theme-listener')
 export default class SdThemeListener extends SolidElement {
-  private themeObserver?: ThemeObserver;
+  private stopListening?: () => void;
 
   protected handleThemeChange(theme: string): void {
     this.emit('sd-theme-change', { detail: { theme }, bubbles: true });
@@ -22,14 +22,15 @@ export default class SdThemeListener extends SolidElement {
   connectedCallback(): void {
     super.connectedCallback();
 
-    this.themeObserver = new ThemeObserver(this, this.handleThemeChange.bind(this));
-    this.themeObserver.connect();
+    // The listener is an explicit utility, so it reads its theme right away to report changes from the first frame on.
+    this.stopListening = observeTheme(this, this.handleThemeChange.bind(this), readTheme(this));
   }
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
 
-    this.themeObserver?.disconnect();
+    this.stopListening?.();
+    this.stopListening = undefined;
   }
 
   static styles = [

@@ -1,5 +1,4 @@
 import '../icon/icon';
-import '../theme-listener/theme-listener';
 import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
@@ -9,6 +8,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
+import { readTheme } from '../../internal/theme-observer';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -20,7 +20,6 @@ import SolidElement from '../../internal/solid-element';
  * @since 1.40.0
  *
  * @dependency sd-icon
- * @dependency sd-theme-listener
  *
  * @slot - The dialog's main content.
  * @slot headline - The dialog's headline. Alternatively, you can use the `headline` attribute.
@@ -82,11 +81,6 @@ export default class SdDialog extends SolidElement {
    */
   @property({ attribute: 'no-close-button', type: Boolean, reflect: true }) noCloseButton = false;
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.updateMotionTheme();
-  }
-
   firstUpdated() {
     this.dialog.addEventListener('cancel', (event: Event) => {
       event.preventDefault();
@@ -98,12 +92,9 @@ export default class SdDialog extends SolidElement {
     }
   }
 
-  protected onThemeChange(): void {
-    this.updateMotionTheme();
-  }
-
+  /** Checks the theme right before an animation runs, instead of observing it for every dialog on the page. */
   private updateMotionTheme(): void {
-    const theme = getComputedStyle(this).getPropertyValue('--sd-theme').trim().replace(/['"]/g, '');
+    const theme = readTheme(this);
     this.hasUiMotion = theme === '' || theme === 'ui-light' || theme === 'ui-dark';
   }
 
@@ -118,6 +109,7 @@ export default class SdDialog extends SolidElement {
     });
 
     if (sdRequestClose.defaultPrevented) {
+      this.updateMotionTheme();
       const animation = getAnimation(this, this.hasUiMotion ? 'dialog.denyClose' : 'dialog.denyCloseSimple', {
         dir: this.localize.dir()
       });
@@ -130,6 +122,8 @@ export default class SdDialog extends SolidElement {
 
   @watch('open', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
+    this.updateMotionTheme();
+
     if (this.open) {
       // Show
       this.emit('sd-show');
@@ -237,7 +231,6 @@ export default class SdDialog extends SolidElement {
   render() {
     /* eslint-disable lit-a11y/click-events-have-key-events */
     return html`
-      <sd-theme-listener></sd-theme-listener>
       <dialog
         part="base"
         class=${cx(

@@ -1,5 +1,6 @@
 import { cssVar, parseDuration } from './animate';
 import { LitElement, unsafeCSS } from 'lit';
+import { observeTheme } from './theme-observer';
 import { property } from 'lit/decorators.js';
 
 const css = unsafeCSS;
@@ -15,20 +16,26 @@ export default class SolidElement extends LitElement {
   /** The element's language. */
   @property() lang: string;
 
-  protected onThemeChange?(e: CustomEvent<{ theme: string }>): void;
+  /**
+   * Implement to be notified when the resolved `--sd-theme` of this element changes.
+   * All components share one page-wide observer (see `internal/theme-observer.ts`), so this is cheap.
+   */
+  protected onThemeChange?(theme: string): void;
+
+  private unobserveTheme?: () => void;
 
   connectedCallback(): void {
     super.connectedCallback();
 
     if (!this.onThemeChange) return;
-    this.renderRoot.addEventListener('sd-theme-change', this.onThemeChange.bind(this));
+    this.unobserveTheme = observeTheme(this, theme => this.onThemeChange?.(theme));
   }
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
 
-    if (!this.onThemeChange) return;
-    this.renderRoot.removeEventListener('sd-theme-change', this.onThemeChange.bind(this));
+    this.unobserveTheme?.();
+    this.unobserveTheme = undefined;
   }
 
   static styles = [
