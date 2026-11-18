@@ -115,6 +115,41 @@ describe('theme-observer', () => {
     }
   });
 
+  it('supports multiple and nested themes on the same page', async () => {
+    const page = await fixture<HTMLElement>(html`
+      <div>
+        <div id="area-a" style="--sd-theme: 'ui-light'"><span id="a"></span></div>
+        <div id="area-b" style="--sd-theme: 'vb'"><span id="b"></span></div>
+        <div style="--sd-theme: 'bb'">
+          <div id="area-c" style="--sd-theme: 'ui-dark'"><span id="c"></span></div>
+          <span id="d"></span>
+        </div>
+      </div>
+    `);
+    const get = (id: string) => page.querySelector<HTMLElement>(`#${id}`)!;
+    const callbacks = Object.fromEntries(['a', 'b', 'c', 'd'].map(id => [id, sinon.spy()]));
+    const unsubscribers = Object.entries(callbacks).map(([id, callback]) => observeTheme(get(id), callback));
+    await nextFrame();
+    await nextFrame();
+
+    // Every element resolves its own theme
+    expect(['a', 'b', 'c', 'd'].map(id => readTheme(get(id)))).to.deep.equal(['ui-light', 'vb', 'ui-dark', 'bb']);
+
+    // Changing one area only notifies the elements inside it
+    get('area-b').style.setProperty('--sd-theme', `'sp'`);
+    await waitUntil(() => callbacks.b.calledOnce);
+    get('area-c').style.setProperty('--sd-theme', `'ui-light'`);
+    await waitUntil(() => callbacks.c.calledOnce);
+    await nextFrame();
+    await nextFrame();
+
+    expect(callbacks.a).not.to.have.been.called;
+    expect(callbacks.b).to.have.been.calledOnceWith('sp');
+    expect(callbacks.c).to.have.been.calledOnceWith('ui-light');
+    expect(callbacks.d).not.to.have.been.called;
+    unsubscribers.forEach(fn => fn());
+  });
+
   it('notifies every subscriber of a change', async () => {
     const wrapper = await fixture<HTMLElement>(html`<div style="--sd-theme: 'ui-light'"></div>`);
     const callback = sinon.spy();

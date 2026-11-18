@@ -157,6 +157,24 @@ describe('<sd-button>', () => {
       expect(getComputedStyle(motionWrapper).display).to.equal('block');
     });
 
+    it('should use the theme of its own area when several themes are on the page', async () => {
+      const page = await fixture<HTMLElement>(html`
+        <div>
+          <div class="sd-theme-ui-light"><sd-button id="ui">UI</sd-button></div>
+          <div style="--sd-theme: 'vb'"><sd-button id="vb">VB</sd-button></div>
+        </div>
+      `);
+      const ui = page.querySelector<SdButton>('#ui')!;
+      const vb = page.querySelector<SdButton>('#vb')!;
+      await hover(ui);
+      await hover(vb);
+
+      const display = (el: SdButton) =>
+        getComputedStyle(el.shadowRoot!.querySelector<HTMLElement>('[part~="motion-wrapper"]')!).display;
+      expect(display(ui)).to.equal('block');
+      expect(display(vb)).to.equal('none');
+    });
+
     it('should pick up a theme change on the next interaction', async () => {
       const wrapper = await fixture<HTMLElement>(html`
         <div style="--sd-theme: 'bb'">
