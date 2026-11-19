@@ -1,7 +1,6 @@
-Use the `size` attribute to change the size (`md` equals `lg` but added for consistency reason on input elements):
+Use the `size` attribute to change the size:
 
-- `lg` (default)
-- `md`
+- `lg` - `md` (default)
 - `sm`
 
 ```html

@@ -1,6 +1,6 @@
 Use the `size` attribute to change the size of the input radio. This attribute affects the font-size within the element, while the element itself remains the same size:
 
-- `lg` (default)
+- `lg` - `md` (default)
 - `sm`
 
 ```html
