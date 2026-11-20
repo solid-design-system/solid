@@ -31,6 +31,11 @@ export class TypographyTokenProcessor extends BaseTokenProcessor {
         Regular: '400',
         Semibold: '600',
         Bold: '700'
+      },
+      PSD: {
+        Regular: '400',
+        Semibold: '600',
+        Bold: '700'
       }
     };
   }
