@@ -15,7 +15,7 @@ Use the components tool by passing the args `component` and `example` for any of
 
 ### Key Properties
 
-- prop.variant: 'primary-100'|'primary'|'primary-800'|'white'|'neutral-100'|'gradient-dark'|'gradient-light', default='white' — Variant of the teaser
+- prop.variant: 'white'|'primary-100'|'primary'|'primary-800'|'neutral-100'|'gradient-dark'|'gradient-light', default='white' — Variant of the teaser
 - prop.open: boolean, default=false — Controls whether the expandable content is visible
 - prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
 - prop.lang: string — The element's language.

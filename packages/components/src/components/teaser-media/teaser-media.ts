@@ -41,7 +41,7 @@ import SolidElement from '../../internal/solid-element';
 export default class SdTeaserMedia extends SolidElement {
   /** Variant of the teaser */
   @property({ type: String, reflect: true }) variant:
-    'primary-100' | 'primary' | 'primary-800' | 'white' | 'neutral-100' | 'gradient-dark' | 'gradient-light' = 'white';
+    'white' | 'primary-100' | 'primary' | 'primary-800' | 'neutral-100' | 'gradient-dark' | 'gradient-light' = 'white';
 
   /** Controls whether the expandable content is visible */
   @property({ type: Boolean, reflect: true }) open = false;

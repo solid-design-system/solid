@@ -1,20 +1,20 @@
 Use the `variant` attribute to set the color variant for front or back:
 
-- `primary-100`
 - `primary` (default)
+- `primary-100`
 - `primary-800`
 - `gradient-light`
 - `gradient-dark`
 
 ```html
 <div class="grid grid-cols-2 gap-8">
-  <sd-flipcard flip-direction="horizontal" front-variant="primary-100" back-variant="primary-100">
-    <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-    <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-  </sd-flipcard>
   <sd-flipcard flip-direction="horizontal" front-variant="primary" back-variant="primary">
     <p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>
     <p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>
+  </sd-flipcard>
+  <sd-flipcard flip-direction="horizontal" front-variant="primary-100" back-variant="primary-100">
+    <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
+    <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
   </sd-flipcard>
   <sd-flipcard flip-direction="horizontal" front-variant="primary-800" back-variant="primary-800">
     <p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>

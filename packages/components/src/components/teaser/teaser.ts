@@ -37,7 +37,7 @@ import type { PropertyValues } from 'lit';
 export default class SdTeaser extends SolidElement {
   /** Variant of the teaser */
   @property({ type: String, reflect: true }) variant:
-    'primary-100' | 'primary' | 'primary-800' | 'white' | 'white border-neutral-400' | 'neutral-100' = 'white';
+    'white' | 'primary-100' | 'primary' | 'primary-800' | 'white border-neutral-400' | 'neutral-100' = 'white';
 
   /** Breakpoint where the teaser switches from `vertical` to `horizontal`. `0` is always `horizontal`, `9999` is always `vertical`. */
   @property({ reflect: true, type: Number }) breakpoint = 448;

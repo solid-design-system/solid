@@ -61,11 +61,11 @@ export default class SdFlipcard extends SolidElement {
 
   /** Determines the variant of the front face of the flipcard. */
   @property({ type: String, reflect: true, attribute: 'front-variant' })
-  frontVariant: 'primary-100' | 'primary' | 'primary-800' | 'gradient-light' | 'gradient-dark' = 'primary';
+  frontVariant: 'primary' | 'primary-100' | 'primary-800' | 'gradient-light' | 'gradient-dark' = 'primary';
 
   /** Determines the variant of the back face of the flipcard. */
   @property({ type: String, reflect: true, attribute: 'back-variant' })
-  backVariant: 'primary-100' | 'primary' | 'primary-800' | 'gradient-light' | 'gradient-dark' = 'primary';
+  backVariant: 'primary' | 'primary-100' | 'primary-800' | 'gradient-light' | 'gradient-dark' = 'primary';
 
   @state() activeSide: 'front' | 'back' = 'front';
 

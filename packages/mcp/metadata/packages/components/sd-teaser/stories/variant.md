@@ -1,14 +1,18 @@
 Use the `variant` attribute to use the appropriate teaser for your context:
 
+- `white` (default)
 - `primary-100`
 - `primary`
 - `primary-800`
-- `white` (default)
 - `white border-neutral-400`
 - `neutral-100`
 
 ```html
 <div class="grid grid-cols-2 gap-12">
+  <sd-teaser variant="white" inset>
+    <h3 slot="headline">Teaser with white background</h3>
+    <p class="sd-paragraph">Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.</p>
+  </sd-teaser>
   <sd-teaser variant="primary-100" inset>
     <h3 slot="headline">Teaser with primary-100 background</h3>
     <p class="sd-paragraph">Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.</p>
@@ -24,10 +28,6 @@ Use the `variant` attribute to use the appropriate teaser for your context:
     <p class="sd-paragraph sd-paragraph--inverted">
       Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.
     </p>
-  </sd-teaser>
-  <sd-teaser variant="white" inset>
-    <h3 slot="headline">Teaser with white background</h3>
-    <p class="sd-paragraph">Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.</p>
   </sd-teaser>
   <sd-teaser variant="white border-neutral-400">
     <h3 slot="headline">Teaser with white background and border neutral-400</h3>
