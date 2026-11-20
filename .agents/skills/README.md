@@ -14,6 +14,7 @@ These skills support work **inside this repository**, not application setup for 
 | [create-changeset](./create-changeset/SKILL.md)           | Assess release impact and write consumer-facing changesets                                             |
 | [validate-pr-readiness](./validate-pr-readiness/SKILL.md) | Review the actual diff and verification evidence before submission                                     |
 | [icon-maintenance](./icon-maintenance/SKILL.md)           | Select and use the existing CELUM/Figma scripts and workflows                                          |
+| [theme-development](./theme-development/SKILL.md)         | Add or complete a brand theme across tokens, Storybook, fonts, logos, icons, and docs                  |
 
 ## Discovery and Use
 
@@ -38,6 +39,8 @@ Reviewed the [19 internal drafts at revision 40d83ab](https://github.com/solid-d
 | `write-migration-guide`, `create-changeset`, `validate-pr-readiness`                                   | Retained and corrected against current migration formats, fixed release groups, working-tree changes, and actual CI gates                                                            |
 | `check-issue-dor`, `check-issue-questions`, `get-github-issue-by-number`, `get-project-items-by-query` | Excluded: issue/project-refinement workflows are not code authoring and would add project/tool coupling                                                                              |
 | Attached icon-update workflow                                                                          | Replaced by a small routing skill grounded in the local CELUM/Figma automation; no archive scripts, FigCli dependency, rename-message workflow, or parallel export pipeline imported |
+
+`theme-development` was added afterwards, from registering the PSD theme, rather than from those drafts. It defers to the [tokens contribution guide](../../packages/tokens/CONTRIBUTING.md#updatingcreating-themes) and routes icon, component, story, and release work to the skills above.
 
 These repository-local skills are versioned with Git. There is no separate npm/MCP distribution, independent skill version, or consumer-agent startup configuration in this change.
 
@@ -65,6 +68,8 @@ When changing a skill, use fresh sessions in the intended clients to check expli
 | Prepare Figma icons for CELUM                    | Select the export ZIP path, not the bundled-library PR; no automatic upload                                                              |
 | Bring CELUM changes into Figma                   | Use the current changelog PR/ZIP and require joint Design/Development review                                                             |
 | Validate skills without credentials              | Run offline integrity checks; do not fetch Figma or dispatch Actions                                                                     |
+| Add a new brand theme before Figma has its mode  | Agree identifiers, scaffold a labelled placeholder only on request, register Storybook, and list missing logos/icons/font                |
+| Add theme icons that CELUM has not published yet | Keep `iconLibraries: []` and report the missing CELUM folder; do not register `themeMap` or dispatch icon workflows                      |
 
 Never dispatch a write-capable workflow, modify Figma, publish icons, commit, push, or merge merely to smoke-test a skill. Record client/version and actual outcomes when running client checks; do not present a passing structural test as verified three-client behavior.
 
@@ -77,5 +82,7 @@ Checked on 2026-10-30:
 | Claude Code 2.1.201 | Fresh nonpersistent, plan-mode `/icon-maintenance` invocation with only the Skill tool enabled correctly distinguished all three workflow outputs and human handoffs; no scripts or external writes executed |
 | GitHub Copilot      | Alias/resource integrity checked; fresh-client invocation and automatic selection not exercised                                                                                                              |
 | Native Codex        | Canonical layout checked; CLI unavailable locally, so runtime discovery/invocation not exercised                                                                                                             |
+
+`theme-development` has passed only the structural checks; no fresh-client invocation has been recorded for it yet.
 
 This is a routing smoke test, not a live export, proof of automatic selection, or evaluation of every workflow's generated code.

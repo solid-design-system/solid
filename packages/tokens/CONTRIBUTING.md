@@ -31,6 +31,12 @@ To register a new theme in Storybook:
 
 1. Add the theme to both `themes` and `allModes` in `.storybook/modes`.
 2. Import the theme in `.storybook/preview.js`.
+3. Add the theme's font-family rule to `.storybook/preview-head.html` (see [Adding font families](#adding-font-families)).
+4. For partner themes that must not be public, add the Storybook theme name to `PROTECTED_THEMES` in `.storybook/theme-protection.ts`.
+5. Add the theme class (`.sd-theme-<your-theme>`) to the selector list in `themes/legacy-variables.css`.
+6. Add the theme's Figma mode to `fontWeightMap` in `scripts/tailwind/token-processors/typography.js`.
+
+The token build only writes themes that exist as Figma modes. `pnpm fetch:figma` empties `src/figma-variables/` before fetching; if the request fails, restore it with `git checkout -- src/figma-variables`.
 
 #### Adding internal icons
 

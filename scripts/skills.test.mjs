@@ -14,6 +14,7 @@ const skillNames = [
   'icon-maintenance',
   'storybook-authoring',
   'style-development',
+  'theme-development',
   'validate-pr-readiness',
   'write-migration-guide'
 ];
