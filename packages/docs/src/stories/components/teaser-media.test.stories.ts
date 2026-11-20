@@ -75,7 +75,7 @@ export const Variant = {
             .map(([, slot]) => slot)
             .join('\n');
 
-          const inverted = ['primary', 'gradient-dark'].includes(attributes.variant as string);
+          const inverted = ['primary', 'primary-800', 'gradient-dark'].includes(attributes.variant as string);
 
           return `
             <sd-teaser-media ${attrs}>

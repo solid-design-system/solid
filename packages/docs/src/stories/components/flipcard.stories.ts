@@ -53,6 +53,7 @@ export const Default = {
  *
  * - `primary` (default)
  * - `primary-100`
+ * - `primary-800`
  * - `gradient-light`
  * - `gradient-dark`
  */
@@ -66,6 +67,10 @@ export const Variants = {
       <sd-flipcard flip-direction="horizontal" front-variant="primary-100" back-variant="primary-100">
         <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
         <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+      </sd-flipcard>
+      <sd-flipcard flip-direction="horizontal" front-variant="primary-800" back-variant="primary-800">
+        <p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>
       </sd-flipcard>
       <sd-flipcard flip-direction="horizontal" front-variant="gradient-light" back-variant="gradient-light">
         <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>

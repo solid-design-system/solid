@@ -40,6 +40,7 @@ import SolidElement from '../../internal/solid-element';
  *
  * @cssproperty --name - Description of the flipcard.
  * @cssproperty --height - Use this property to set the height of the flipcard.
+ * @cssproperty --sd-flipcard--primary-800-color-background - The background color of the flipcard when the `primary-800` variant is used.
  * @cssproperty --sd-informational-gradient--primary-800-color-background - The color used in the gradient of the flipcard when the `gradient-dark` variant is used. By default, it uses the `--sd-color-primary-800` color.
  */
 
@@ -60,11 +61,11 @@ export default class SdFlipcard extends SolidElement {
 
   /** Determines the variant of the front face of the flipcard. */
   @property({ type: String, reflect: true, attribute: 'front-variant' })
-  frontVariant: 'primary' | 'primary-100' | 'gradient-light' | 'gradient-dark' = 'primary';
+  frontVariant: 'primary' | 'primary-100' | 'primary-800' | 'gradient-light' | 'gradient-dark' = 'primary';
 
   /** Determines the variant of the back face of the flipcard. */
   @property({ type: String, reflect: true, attribute: 'back-variant' })
-  backVariant: 'primary' | 'primary-100' | 'gradient-light' | 'gradient-dark' = 'primary';
+  backVariant: 'primary' | 'primary-100' | 'primary-800' | 'gradient-light' | 'gradient-dark' = 'primary';
 
   @state() activeSide: 'front' | 'back' = 'front';
 
@@ -128,6 +129,7 @@ export default class SdFlipcard extends SolidElement {
             'absolute top-0 left-0 w-full h-full justify-end text-left',
             this.frontVariant === 'primary' && 'bg-primary',
             this.frontVariant === 'primary-100' && 'bg-primary-100',
+            this.frontVariant === 'primary-800' && 'sd-flipcard--primary-800-color-background',
             this.placement === 'top' ? 'flex-col' : 'flex-col-reverse',
             this.flipDirection === 'vertical' && 'vertical'
           )}
@@ -136,7 +138,7 @@ export default class SdFlipcard extends SolidElement {
             part="media-front"
             class=${cx(
               'absolute h-full w-full -z-20',
-              (this.frontVariant === 'primary' || this.frontVariant === 'primary-100') && 'hidden'
+              ['primary', 'primary-100', 'primary-800'].includes(this.frontVariant) && 'hidden'
             )}
           >
             <slot name="media-front"></slot>
@@ -149,6 +151,7 @@ export default class SdFlipcard extends SolidElement {
               {
                 primary: 'text-white',
                 'primary-100': 'text-black',
+                'primary-800': 'text-white',
                 'gradient-light': 'text-black',
                 'gradient-dark': 'text-white'
               }[this.frontVariant]
@@ -160,6 +163,7 @@ export default class SdFlipcard extends SolidElement {
                 {
                   primary: '',
                   'primary-100': '',
+                  'primary-800': '',
                   'gradient-light':
                     this.placement === 'top'
                       ? 'bg-gradient-to-b from-white/75 to-white/60'
@@ -181,6 +185,7 @@ export default class SdFlipcard extends SolidElement {
               {
                 primary: 'mb-auto',
                 'primary-100': 'mb-auto',
+                'primary-800': 'mb-auto',
                 'gradient-light':
                   this.placement === 'top'
                     ? 'bg-gradient-to-b from-white/60 to-white/0 mb-auto'
@@ -199,6 +204,7 @@ export default class SdFlipcard extends SolidElement {
               {
                 primary: 'tertiary',
                 'primary-100': 'tertiary',
+                'primary-800': 'tertiary',
                 'gradient-light': 'primary',
                 'gradient-dark': 'primary'
               }[this.frontVariant]
@@ -207,6 +213,7 @@ export default class SdFlipcard extends SolidElement {
               {
                 primary: true,
                 'primary-100': false,
+                'primary-800': true,
                 'gradient-light': true,
                 'gradient-dark': true
               }[this.frontVariant]
@@ -230,6 +237,7 @@ export default class SdFlipcard extends SolidElement {
             'absolute top-0 left-0 w-full h-full justify-end text-left',
             this.backVariant === 'primary' && 'bg-primary',
             this.backVariant === 'primary-100' && 'bg-primary-100',
+            this.backVariant === 'primary-800' && 'sd-flipcard--primary-800-color-background',
             this.placement === 'top' ? 'flex-col' : 'flex-col-reverse',
             this.flipDirection === 'vertical' && 'vertical'
           )}
@@ -238,7 +246,7 @@ export default class SdFlipcard extends SolidElement {
             part="media-back"
             class=${cx(
               'absolute h-full w-full -z-20',
-              (this.backVariant === 'primary' || this.backVariant === 'primary-100') && 'hidden'
+              ['primary', 'primary-100', 'primary-800'].includes(this.backVariant) && 'hidden'
             )}
           >
             <slot name="media-back"></slot>
@@ -251,12 +259,14 @@ export default class SdFlipcard extends SolidElement {
               {
                 primary: 'text-white',
                 'primary-100': 'text-black',
+                'primary-800': 'text-white',
                 'gradient-light': 'text-black',
                 'gradient-dark': 'text-white'
               }[this.backVariant],
               {
                 primary: '',
                 'primary-100': '',
+                'primary-800': '',
                 'gradient-light':
                   this.placement === 'top'
                     ? 'bg-gradient-to-b from-white/75 to-white/60'
@@ -278,6 +288,7 @@ export default class SdFlipcard extends SolidElement {
               {
                 primary: 'mb-auto',
                 'primary-100': 'mb-auto',
+                'primary-800': 'mb-auto',
                 'gradient-light':
                   this.placement === 'top'
                     ? 'bg-gradient-to-b from-white/60 to-white/0 mb-auto'
@@ -296,6 +307,7 @@ export default class SdFlipcard extends SolidElement {
               {
                 primary: 'tertiary',
                 'primary-100': 'tertiary',
+                'primary-800': 'tertiary',
                 'gradient-light': 'primary',
                 'gradient-dark': 'primary'
               }[this.backVariant]
@@ -304,6 +316,7 @@ export default class SdFlipcard extends SolidElement {
               {
                 primary: true,
                 'primary-100': false,
+                'primary-800': true,
                 'gradient-light': true,
                 'gradient-dark': true
               }[this.backVariant]

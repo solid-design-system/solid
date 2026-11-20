@@ -5220,6 +5220,22 @@
             "type": "color",
             "value": "{ui-light.utilities.color.primary.default}"
           }
+        },
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(5, 21, 48, 0.80)"
+            }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(5, 21, 48, 0.90)"
+              }
+            }
+          }
         }
       },
       "sd-teaser": {
@@ -5250,6 +5266,14 @@
         "border-radius": {
           "type": "float",
           "value": "0"
+        },
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.800}"
+            }
+          }
         }
       },
       "sd-carousel": {
@@ -5659,6 +5683,16 @@
                 "type": "color",
                 "value": "{ui-light.utilities.color.accent.default}"
               }
+            }
+          }
+        }
+      },
+      "sd-flipcard": {
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.800}"
             }
           }
         }
@@ -8941,6 +8975,22 @@
             "type": "color",
             "value": "{ui-dark.utilities.color.white.default}"
           }
+        },
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(0, 53, 142, 0.80)"
+            }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(0, 53, 142, 0.90)"
+              }
+            }
+          }
         }
       },
       "sd-teaser": {
@@ -8971,6 +9021,14 @@
         "border-radius": {
           "type": "float",
           "value": "0"
+        },
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.600}"
+            }
+          }
         }
       },
       "sd-carousel": {
@@ -9380,6 +9438,16 @@
                 "type": "color",
                 "value": "{ui-dark.utilities.color.accent.default}"
               }
+            }
+          }
+        }
+      },
+      "sd-flipcard": {
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.600}"
             }
           }
         }
@@ -12662,6 +12730,22 @@
             "type": "color",
             "value": "{vb.utilities.color.neutral.600}"
           }
+        },
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(0, 45, 103, 0.80)"
+            }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(0, 45, 103, 0.90)"
+              }
+            }
+          }
         }
       },
       "sd-teaser": {
@@ -12692,6 +12776,14 @@
         "border-radius": {
           "type": "float",
           "value": "0"
+        },
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{vb.utilities.color.primary.800}"
+            }
+          }
         }
       },
       "sd-carousel": {
@@ -13101,6 +13193,16 @@
                 "type": "color",
                 "value": "{vb.utilities.color.white.default}"
               }
+            }
+          }
+        }
+      },
+      "sd-flipcard": {
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{vb.utilities.color.primary.800}"
             }
           }
         }
@@ -16383,6 +16485,22 @@
             "type": "color",
             "value": "{sp.utilities.color.neutral.600}"
           }
+        },
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(0, 90, 170, 0.90)"
+            }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(0, 90, 170, 0.95)"
+              }
+            }
+          }
         }
       },
       "sd-teaser": {
@@ -16413,6 +16531,14 @@
         "border-radius": {
           "type": "float",
           "value": "0"
+        },
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            }
+          }
         }
       },
       "sd-carousel": {
@@ -16822,6 +16948,16 @@
                 "type": "color",
                 "value": "{sp.utilities.color.white.default}"
               }
+            }
+          }
+        }
+      },
+      "sd-flipcard": {
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
             }
           }
         }
@@ -20104,6 +20240,22 @@
             "type": "color",
             "value": "{bb.utilities.color.primary.default}"
           }
+        },
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(0, 92, 169, 0.90)"
+            }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(0, 92, 169, 0.95)"
+              }
+            }
+          }
         }
       },
       "sd-teaser": {
@@ -20134,6 +20286,14 @@
         "border-radius": {
           "type": "float",
           "value": "0"
+        },
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{bb.utilities.color.primary.default}"
+            }
+          }
         }
       },
       "sd-carousel": {
@@ -20543,6 +20703,16 @@
                 "type": "color",
                 "value": "{bb.utilities.color.white.default}"
               }
+            }
+          }
+        }
+      },
+      "sd-flipcard": {
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{bb.utilities.color.primary.default}"
             }
           }
         }

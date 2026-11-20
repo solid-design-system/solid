@@ -78,7 +78,7 @@ export const VariantAndInset = {
             .map(([, slot]) => slot)
             .join('\n');
 
-          const inverted = ['primary'].includes(attributes.variant as string);
+          const inverted = ['primary', 'primary-800'].includes(attributes.variant as string);
 
           return `
             <sd-teaser ${attrs}>
