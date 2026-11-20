@@ -15,6 +15,15 @@ describe('<sd-teaser-media>', () => {
     expect(el.variant).to.equal('neutral-100');
   });
 
+  it('renders the primary-800 variant with the matching overlay and inverted text', async () => {
+    const el = await fixture<SdTeaserMedia>(html`<sd-teaser-media variant="primary-800"></sd-teaser-media>`);
+    const overlay = el.shadowRoot!.querySelector('.sd-teaser-media--primary-800-color-background');
+
+    expect(el.variant).to.equal('primary-800');
+    expect(overlay).to.exist;
+    expect(overlay!.classList.contains('text-white')).to.be.true;
+  });
+
   it('renders slots correctly', async () => {
     const el = await fixture<SdTeaserMedia>(html`
       <sd-teaser-media>

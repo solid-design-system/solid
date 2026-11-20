@@ -311,6 +311,7 @@
   --sd-duration-medium: 300ms;
   --sd-duration-slow: 500ms;
   --sd-duration-x-slow: 750ms;
+  --sd-flipcard--primary-800-color-background: var(--sd-color-info);
   --sd-font-primary: 'BBBank Type TT';
   --sd-font-weight-bold: 600;
   --sd-font-weight-normal: 400;
@@ -491,11 +492,14 @@
   --sd-teaser--neutral-100-color-background: var(--sd-color-neutral-100);
   --sd-teaser--neutral-400-color-border: var(--sd-color-neutral-400);
   --sd-teaser--primary-100-color-background: var(--sd-color-primary-100);
+  --sd-teaser--primary-800-color-background: var(--sd-color-info);
   --sd-teaser-border-radius: 0;
   --sd-teaser-media--neutral-100--hover-color-background: 235 242 248 / 0.9;
   --sd-teaser-media--neutral-100-color-background: 235 242 248 / 0.8;
   --sd-teaser-media--primary-100--hover-color-background: 235 242 248 / 0.9;
   --sd-teaser-media--primary-100-color-background: 235 242 248 / 0.8;
+  --sd-teaser-media--primary-800--hover-color-background: 0 92 169 / 0.95;
+  --sd-teaser-media--primary-800-color-background: 0 92 169 / 0.9;
   --sd-teaser-media--white--hover-color-background: 255 255 255 / 0.9;
   --sd-teaser-media--white-color-background: 255 255 255 / 0.8;
   --sd-teaser-media-color-icon-fill: var(--sd-color-info);
