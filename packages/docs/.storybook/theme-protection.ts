@@ -1,4 +1,4 @@
-const PROTECTED_THEMES = new Set(['BBBank', 'KidStarter', 'SP', 'VB']);
+const PROTECTED_THEMES = new Set(['BBBank', 'KidStarter', 'PSD', 'SP', 'VB']);
 const ACCESS_COOKIE = 'solid-theme-access';
 const CHROMATIC_BUILD = Boolean(
   (globalThis as typeof globalThis & { __SOLID_STORYBOOK_CHROMATIC__?: boolean }).__SOLID_STORYBOOK_CHROMATIC__

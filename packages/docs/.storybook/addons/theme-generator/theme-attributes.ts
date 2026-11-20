@@ -136,6 +136,20 @@ export const themeAttributes = {
     iconThemeKey: 'bb',
     iconThemeLabel: 'BBBank',
     iconLibraries: ['sd-multi-theming', 'sd-internal']
+  },
+
+  'sd-theme-psd': {
+    logoLg: 'images/logo-psd-lg.svg',
+    logoMd: 'images/logo-psd-md.svg',
+    logoSm: 'images/logo-psd-sm.svg',
+    logoAlt: 'Logo PSD Bank Homepage',
+    css: 'psd/psd.css',
+    font: 'genos',
+    cdnIconFolder: 'psd',
+    iconThemeKey: 'psd',
+    iconThemeLabel: 'PSD',
+    // TODO: PSD icons are not on the CELUM CDN yet – add 'sd-multi-theming' / 'sd-internal' once they are.
+    iconLibraries: []
   }
 };
 
