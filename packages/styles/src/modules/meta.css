@@ -8,6 +8,8 @@
  * @boolean sd-meta--inverted Inverts the meta element.
  * @boolean sd-meta--pipe Adds a pipe right from the meta element.
  * @boolean sd-meta--light Makes sd-meta light.
+ *
+ * @cssproperty --sd-meta--light--inverted-color-text - The text color for the `light` variant when inverted.
  */
 
 .sd-meta {
@@ -25,7 +27,7 @@
     @apply text-white;
 
     &.sd-meta--light {
-      @apply text-primary-400;
+      @apply sd-meta--light--inverted-color-text;
     }
   }
 

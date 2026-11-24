@@ -34,7 +34,7 @@ export const Default = {
  * Use the `sd-meta--*` classes for alternative appearances:
  *
  * - Black is the default color
- * - `sd-meta--light`: Neutral-700
+ * - `sd-meta--light`
  */
 
 export const Variants = {
@@ -63,8 +63,8 @@ export const Size = {
 /**
  * Use the `sd-meta--inverted` class when displayed on primary background.
  *
- * - White is the default
- * - `sd-meta--light`: Primary-400
+ * - White is the default color
+ * - `sd-meta--light`
  */
 export const Inverted = {
   render: () =>

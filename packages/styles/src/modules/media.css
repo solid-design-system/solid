@@ -5,6 +5,8 @@
  * @status stable
  * @since 2.5.0
  * @boolean sd-media--inverted Inverts the figcaption text.
+ *
+ * @cssproperty --sd-media--description--inverted-color-text - The figcaption text color for the `inverted` variant.
  */
 
 .sd-prose figure,
@@ -19,6 +21,6 @@ figure.sd-media {
 .sd-prose--inverted figure,
 figure.sd-media--inverted {
   figcaption {
-    @apply text-primary-400;
+    @apply sd-media--description--inverted-color-text;
   }
 }
