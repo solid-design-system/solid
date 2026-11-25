@@ -66,6 +66,16 @@ export default class SdIcon extends SolidElement {
     this.setIcon();
   }
 
+  /** Only these libraries resolve their URL based on the theme (see `getUrl()`). */
+  protected observesTheme(): boolean {
+    return this.library === '_internal' || this.library === 'sd-multi-theming';
+  }
+
+  @watch('library')
+  handleLibraryChange() {
+    this.updateThemeObservation();
+  }
+
   private getUrl() {
     const library = getIconLibrary(this.library);
     if (this.name && library) {

@@ -18,24 +18,35 @@ export default class SolidElement extends LitElement {
 
   /**
    * Implement to be notified when the resolved `--sd-theme` of this element changes.
-   * All components share one page-wide observer (see `internal/theme-observer.ts`), so this is cheap.
+   * Each element is observed with one shared `style-observer` (see `internal/theme-observer.ts`).
    */
   protected onThemeChange?(theme: string): void;
 
+  protected observesTheme(): boolean {
+    return !!this.onThemeChange;
+  }
+
   private unobserveTheme?: () => void;
+
+  protected updateThemeObservation(): void {
+    const shouldObserve = this.isConnected && this.observesTheme();
+
+    if (shouldObserve && !this.unobserveTheme) {
+      this.unobserveTheme = observeTheme(this, theme => this.onThemeChange?.(theme));
+    } else if (!shouldObserve && this.unobserveTheme) {
+      this.unobserveTheme();
+      this.unobserveTheme = undefined;
+    }
+  }
 
   connectedCallback(): void {
     super.connectedCallback();
-
-    if (!this.onThemeChange) return;
-    this.unobserveTheme = observeTheme(this, theme => this.onThemeChange?.(theme));
+    this.updateThemeObservation();
   }
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
-
-    this.unobserveTheme?.();
-    this.unobserveTheme = undefined;
+    this.updateThemeObservation();
   }
 
   static styles = [

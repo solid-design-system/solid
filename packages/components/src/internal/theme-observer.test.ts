@@ -7,7 +7,7 @@ const setup = async (template = html`<div style="--sd-theme: 'ui-light'"><span><
   const target = wrapper.querySelector('span')!;
   const callback = sinon.spy();
   const unobserve = observeTheme(target, callback);
-  // The baseline is read in the next frame
+  // Elements are observed in the next frame
   await nextFrame();
   await nextFrame();
   return { wrapper, target, callback, unobserve };
@@ -148,6 +148,52 @@ describe('theme-observer', () => {
     expect(callbacks.c).to.have.been.calledOnceWith('ui-light');
     expect(callbacks.d).not.to.have.been.called;
     unsubscribers.forEach(fn => fn());
+  });
+
+  it('reports a different theme after the element was moved to another area', async () => {
+    const page = await fixture<HTMLElement>(html`
+      <div>
+        <div id="from" style="--sd-theme: 'ui-light'"><span></span></div>
+        <div id="to" style="--sd-theme: 'vb'"></div>
+      </div>
+    `);
+    const target = page.querySelector('span')!;
+    const callback = sinon.spy();
+    let stop = observeTheme(target, callback);
+    await nextFrame();
+    await nextFrame();
+
+    // Like a component's disconnectedCallback/connectedCallback
+    stop();
+    page.querySelector('#to')!.appendChild(target);
+    stop = observeTheme(target, callback);
+    await waitUntil(() => callback.calledOnce);
+
+    expect(callback).to.have.been.calledOnceWith('vb');
+    stop();
+  });
+
+  it('observes shadow hosts through a probe inside their shadow root', async () => {
+    const wrapper = await fixture<HTMLElement>(html`<div style="--sd-theme: 'ui-light'"><div></div></div>`);
+    const host = wrapper.querySelector('div')!;
+    const shadow = host.attachShadow({ mode: 'open' });
+    shadow.innerHTML = '<p>content</p>';
+    const callback = sinon.spy();
+    const stop = observeTheme(host, callback);
+    await nextFrame();
+    await nextFrame();
+
+    const probe = shadow.querySelector('span')!;
+    expect(probe).to.exist;
+    expect(probe.getBoundingClientRect().width).to.equal(0);
+    expect(probe.getBoundingClientRect().height).to.equal(0);
+
+    wrapper.style.setProperty('--sd-theme', `'vb'`);
+    await waitUntil(() => callback.calledOnce);
+    expect(callback).to.have.been.calledOnceWith('vb');
+
+    stop();
+    expect(shadow.querySelector('span')).not.to.exist;
   });
 
   it('notifies every subscriber of a change', async () => {

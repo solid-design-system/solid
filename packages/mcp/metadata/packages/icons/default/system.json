@@ -895,14 +895,14 @@
     "tags": ["Filterfunktion", "deaktiviert"]
   },
   {
-    "technicalId": "filter-full",
-    "displayNameDe": "Filter voll",
-    "tags": ["Filter", "Filterfunktion", "aktiviert"]
-  },
-  {
     "technicalId": "arrow-bottom",
     "displayNameDe": "Pfeil unten",
     "tags": ["fallend", "Anzeige", "Pfeil"]
+  },
+  {
+    "technicalId": "filter-full",
+    "displayNameDe": "Filter voll",
+    "tags": ["Filter", "Filterfunktion", "aktiviert"]
   },
   {
     "technicalId": "question",
@@ -1055,14 +1055,14 @@
     "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
   },
   {
-    "technicalId": "e-mail-send",
-    "displayNameDe": "E-Mail abschicken",
-    "tags": ["Brief", "E-Mail", "Kommunikation"]
-  },
-  {
     "technicalId": "password",
     "displayNameDe": "Passwort",
     "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
+  },
+  {
+    "technicalId": "e-mail-send",
+    "displayNameDe": "E-Mail abschicken",
+    "tags": ["Brief", "E-Mail", "Kommunikation"]
   },
   {
     "technicalId": "e-mail-exclamation",
@@ -1095,14 +1095,14 @@
     "tags": ["hervorheben", "malen", "farbig", "wichtig"]
   },
   {
-    "technicalId": "e-mail-forward",
-    "displayNameDe": "E-Mail weiterleiten",
-    "tags": ["Pfeil", "weiterleiten", "Brief"]
-  },
-  {
     "technicalId": "arrow-top-left",
     "displayNameDe": "Pfeil links oben",
     "tags": ["zurück", "oben", "rückwärts"]
+  },
+  {
+    "technicalId": "e-mail-forward",
+    "displayNameDe": "E-Mail weiterleiten",
+    "tags": ["Pfeil", "weiterleiten", "Brief"]
   },
   {
     "technicalId": "external-link",
