@@ -8,7 +8,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
-import { readTheme } from '../../internal/theme-observer';
+import { isUiTheme, readTheme } from '../../internal/theme-observer';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -94,8 +94,7 @@ export default class SdDialog extends SolidElement {
 
   /** Checks the theme right before an animation runs, instead of observing it for every dialog on the page. */
   private updateMotionTheme(): void {
-    const theme = readTheme(this);
-    this.hasUiMotion = theme === '' || theme === 'ui-light' || theme === 'ui-dark';
+    this.hasUiMotion = isUiTheme(readTheme(this));
   }
 
   private get prefersReducedMotion() {

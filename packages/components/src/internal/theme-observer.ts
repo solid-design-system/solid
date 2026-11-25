@@ -53,6 +53,11 @@ export function readTheme(element: Element): string {
   return cleanTheme(getComputedStyle(element).getPropertyValue(PROPERTY));
 }
 
+/** Whether a theme uses the UI motion. An empty theme is the default UI theme. */
+export function isUiTheme(theme: string): boolean {
+  return theme === '' || theme === 'ui-light' || theme === 'ui-dark';
+}
+
 function notify(element: Element, theme: string, previous: string | undefined) {
   knownThemes.set(element, theme);
   if (theme && theme !== previous) subscriptions.get(element)?.callback(theme);
