@@ -193,7 +193,7 @@ export const ToastNotification = {
   tags: ['skip-playwright'],
   render: (_args: Record<string, any>) => {
     return html`
-      <div class="flex gap-2">
+      <div class="flex flex-wrap gap-2">
         <sd-button variant="secondary" class="w-24" onclick="notify('info')"> Info </sd-button>
         <sd-button variant="secondary" class="w-24" onclick="notify('success')"> Success </sd-button>
         <sd-button variant="secondary" class="w-24" onclick="notify('warning')">Warning</sd-button>
@@ -226,7 +226,7 @@ export const ToastBottomCenter = {
   tags: ['skip-playwright'],
   render: (_args: Record<string, any>) => {
     return html`
-      <div class="flex gap-2">
+      <div class="flex flex-wrap gap-2">
         <sd-button variant="secondary" class="w-24" onclick="notifyBottomCenter('info')"> Info </sd-button>
         <sd-button variant="secondary" class="w-24" onclick="notifyBottomCenter('success')"> Success </sd-button>
         <sd-button variant="secondary" class="w-24" onclick="notifyBottomCenter('warning')">Warning</sd-button>

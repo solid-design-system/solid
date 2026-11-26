@@ -52,7 +52,7 @@ export const Default = {
 
 export const Variants = {
   render: () =>
-    html`<div class="grid grid-cols-3 gap-12">
+    html`<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
       <ul class="sd-list">
         <li>Unordered list</li>
         <li>Unordered list</li>
@@ -85,7 +85,7 @@ export const Variants = {
  */
 export const Levels = {
   render: () =>
-    html`<div class="grid grid-cols-2 gap-12">
+    html`<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
       <ul class="sd-list">
         <li>
           Unordered list level 1
@@ -150,7 +150,7 @@ export const Levels = {
  */
 export const Orientation = {
   render: () =>
-    html`<div class="flex flex-row justify-around items-center">
+    html`<div class="flex flex-col md:flex-row justify-around items-center">
       <ul class="sd-list--icon sd-list">
         <li>
           <sd-icon name="content/image"></sd-icon>

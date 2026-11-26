@@ -37,7 +37,7 @@ export const Default = {
 export const Size = {
   name: 'Size',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-wrap gap-12">
       <sd-checkbox size="lg">Large</sd-checkbox>
       <sd-checkbox size="md">Medium</sd-checkbox>
       <sd-checkbox size="sm">Small</sd-checkbox>

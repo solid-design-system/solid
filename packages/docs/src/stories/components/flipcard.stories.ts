@@ -58,7 +58,7 @@ export const Default = {
  */
 export const Variants = {
   render: () =>
-    html` <div class="grid grid-cols-2 gap-8">
+    html` <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <sd-flipcard flip-direction="horizontal" front-variant="primary" back-variant="primary">
         <p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>
         <p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>
@@ -139,7 +139,7 @@ export const AspectRatios = {
  */
 export const Placement = {
   render: () =>
-    html` <div class="grid grid-cols-2 gap-8">
+    html` <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <sd-flipcard flip-direction="horizontal" placement="top">
         <p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>
         <p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>
@@ -159,7 +159,7 @@ export const Placement = {
 
 export const flipDirection = {
   render: () =>
-    html`<div class="grid grid-cols-2 gap-8">
+    html`<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <sd-flipcard flip-direction="horizontal">
         <p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>
         <p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>

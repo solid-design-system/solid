@@ -68,7 +68,7 @@ export const Default = {
 
 export const Variant = {
   render: () => html`
-    <div class="grid grid-cols-2 gap-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
       <sd-teaser variant="white" inset>
         <h3 slot="headline">Teaser with white background</h3>
         <p class="sd-paragraph">

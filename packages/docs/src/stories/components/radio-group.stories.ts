@@ -49,7 +49,7 @@ export const Default = {
 export const Size = {
   name: 'Size',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-wrap gap-12">
       <sd-radio-group name="large-radio-group" size="lg" value="1" label="Group label">
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
@@ -89,7 +89,7 @@ export const Label = {
 export const Orientation = {
   name: 'Orientation',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-wrap gap-12">
       <sd-radio-group name="radio-group" orientation="vertical" value="1" label="Group label">
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>

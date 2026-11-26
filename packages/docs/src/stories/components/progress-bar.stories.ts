@@ -26,7 +26,7 @@ export default {
 };
 
 export const Default = {
-  render: (args: any) => html`<div class="w-[300px]">${generateTemplate({ args })}</div>`
+  render: (args: any) => html`<div class="max-w-[300px]">${generateTemplate({ args })}</div>`
 };
 
 /**

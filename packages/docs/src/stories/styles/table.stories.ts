@@ -22,7 +22,7 @@ export default {
 };
 
 const table = `
-  <div class="flex gap-12">
+  <div class="flex flex-wrap gap-12">
     <table class="border-separate border">
       <thead>
         <tr>

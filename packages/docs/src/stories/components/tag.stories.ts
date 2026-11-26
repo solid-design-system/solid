@@ -35,7 +35,7 @@ export const Default = {
 
 export const Size = {
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-wrap gap-12">
       <sd-tag size="lg">Large</sd-tag>
       <sd-tag size="sm">Small</sd-tag>
     </div>
@@ -105,7 +105,7 @@ export const Removable = {
 export const AsLink = {
   name: 'As link',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-wrap gap-12">
       <sd-tag href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
         >Link</sd-tag
       ><sd-tag href="https://union-investment.com" target="_blank">New window</sd-tag

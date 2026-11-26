@@ -50,7 +50,7 @@ export const Default = {
     }
   },
   render: (args: unknown) => html`
-    <div class="h-[260px] w-[400px]">
+    <div class="h-[260px] w-full w-[400px]">
       <sd-combobox label="Label">
         ${generateTemplate({ args })}
         <sd-optgroup>
@@ -65,7 +65,7 @@ export const Default = {
 export const Disabled = {
   name: 'Disabled',
   render: () => html`
-    <div class="h-[260px] w-[400px]">
+    <div class="h-[260px] w-full w-[400px]">
       <sd-combobox label="Label">
         <sd-optgroup label="Section 1" disabled>
           <sd-option value="1">Option</sd-option>

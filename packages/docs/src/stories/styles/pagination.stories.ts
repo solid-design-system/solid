@@ -111,7 +111,7 @@ export const Default = {
  */
 export const Variants = {
   render: () => html`
-    <div class="flex gap-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
       <nav class="sd-pagination" aria-label="Default variant pagination">
         <ul>
           <li>

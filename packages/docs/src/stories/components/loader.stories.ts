@@ -36,7 +36,7 @@ export const Default = {
  */
 export const Variants = {
   render: () => html`
-    <div class="flex items-center gap-12">
+    <div class="flex flex-wrap items-center gap-12">
       <div class="inline-flex text-xl text-neutral-500">
         <sd-loader color="currentColor"></sd-loader>
       </div>
@@ -55,7 +55,7 @@ export const Variants = {
  */
 export const Size = {
   render: () =>
-    html` <div class="flex gap-12 items-center">
+    html` <div class="flex flex-wrap gap-12 items-center">
       <div style="font-size: 4rem">
         <sd-loader color="primary"></sd-loader>
       </div>

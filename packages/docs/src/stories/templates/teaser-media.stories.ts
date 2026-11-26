@@ -141,8 +141,8 @@ export const TeaserMediaExpandable = {
         text-align: center;
       }
     </style>
-    <div class="flex flex-row gap-2 media-overrides">
-      <sd-teaser-media variant="gradient-dark" class="media-overrides">
+    <div class="flex flex-col md:flex-row gap-2 media-overrides">
+      <sd-teaser-media variant="gradient-dark" class="media-overrides w-full max-w-64">
         <h3 slot="headline">Retirement planning</h3>
         <img
           slot="media"
@@ -156,7 +156,7 @@ export const TeaserMediaExpandable = {
           </p>
         </div>
       </sd-teaser-media>
-      <sd-teaser-media variant="gradient-dark" class="media-overrides">
+      <sd-teaser-media variant="gradient-dark" class="media-overrides w-full max-w-64">
         <h3 slot="headline">Save</h3>
         <img
           slot="media"
@@ -170,7 +170,7 @@ export const TeaserMediaExpandable = {
           </p>
         </div>
       </sd-teaser-media>
-      <sd-teaser-media variant="gradient-dark" class="media-overrides">
+      <sd-teaser-media variant="gradient-dark" class="media-overrides w-full max-w-64">
         <h3 slot="headline">Invest</h3>
         <img
           slot="media"

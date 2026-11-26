@@ -36,7 +36,7 @@ export const Default = {
  */
 export const Variant = {
   render: () => html`
-    <div class="flex items-center gap-12">
+    <div class="flex flex-wrap items-center gap-12">
       <sd-map-marker>
         <span class="sr-only">Pinned Location</span>
       </sd-map-marker>
@@ -61,7 +61,7 @@ export const Variant = {
  */
 export const State = {
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-wrap gap-12">
       <div class="flex flex-col space-y-5">
         <sd-map-marker state="default">
           <span class="sr-only">Pinned location with default state</span>
@@ -132,7 +132,7 @@ export const Animated = {
 export const Slot = {
   render: () => html`
     <sd-map-marker variant="place" class="slot-example">
-      <span class="slot slot--border h-8 w-8 -mt-2"></span>
+      <span class="slot slot--border h-8 w-8 -mt-2"></span> p
       <div class="sr-only">Pinned Place with slot</div>
     </sd-map-marker>
   `
@@ -143,7 +143,7 @@ export const Slot = {
  */
 export const NotInteractive = {
   render: () => html`
-    <div class="flex items-center gap-12">
+    <div class="flex flex-wrap items-center gap-12">
       <sd-map-marker not-interactive></sd-map-marker>
       <sd-map-marker variant="place" not-interactive>
         <sd-icon name="content/image"></sd-icon>

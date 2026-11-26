@@ -60,7 +60,7 @@ export const Default = {
 
 export const Variant = {
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex flex-wrap gap-12">
       <sd-carousel variant="number">
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 1</div>

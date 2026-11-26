@@ -39,7 +39,7 @@ export const Default = {
  */
 export const Color = {
   render: () =>
-    html`<div class="flex gap-12 items-center">
+    html`<div class="flex flex-wrap gap-12 items-center">
       <div class="sd-chip sd-chip--color-primary">primary</div>
       <div class="sd-chip sd-chip--color-neutral">neutral</div>
       <div class="sd-chip sd-chip--color-white">white</div>
@@ -57,7 +57,7 @@ export const Color = {
  */
 export const Shade = {
   render: () =>
-    html`<div class="flex gap-12 items-center">
+    html`<div class="flex flex-wrap gap-12 items-center">
       <div class="sd-chip sd-chip--shade-subtle">subtle</div>
       <div class="sd-chip sd-chip--shade-low">low</div>
       <div class="sd-chip sd-chip--shade-medium">medium</div>
@@ -71,7 +71,7 @@ export const Shade = {
  */
 export const Size = {
   render: () =>
-    html`<div class="flex gap-12 items-center">
+    html`<div class="flex flex-wrap gap-12 items-center">
       <div class="sd-chip">sm</div>
       <div class="sd-chip sd-chip--size-lg">lg</div>
     </div>`
@@ -82,7 +82,7 @@ export const Size = {
  */
 export const Outlined = {
   render: () =>
-    html`<div class="flex gap-12 items-center">
+    html`<div class="flex flex-wrap gap-12 items-center">
       <div class="sd-chip">filled</div>
       <div class="sd-chip sd-chip--outline">outlined</div>
     </div>`
@@ -93,7 +93,7 @@ export const Outlined = {
  */
 export const Sharp = {
   render: () =>
-    html`<div class="flex gap-12 items-center">
+    html`<div class="flex flex-wrap gap-12 items-center">
       <div class="sd-chip">rounded</div>
       <div class="sd-chip sd-chip--sharp">sharp</div>
     </div>`
