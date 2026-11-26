@@ -101,17 +101,43 @@ describe('<sd-button>', () => {
   });
 
   describe('when themes change', () => {
-    it('should use the simple motion for non-UI themes', async () => {
+    const hover = async (el: SdButton) => {
+      el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!.dispatchEvent(new PointerEvent('pointerenter'));
+      await el.updateComplete;
+    };
+
+    it('should not render a theme listener per button', async () => {
+      const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
+      expect(el.shadowRoot!.querySelector('sd-theme-listener')).not.to.exist;
+    });
+
+    it('should use the simple motion for non-UI themes once interacted with', async () => {
       const wrapper = await fixture<HTMLElement>(html`
         <div style="--sd-theme: 'bb'">
           <sd-button>Default Slot</sd-button>
         </div>
       `);
       const el = wrapper.querySelector<SdButton>('sd-button')!;
+      await hover(el);
+
       const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
       const motionWrapper = el.shadowRoot!.querySelector<HTMLElement>('[part~="motion-wrapper"]')!;
 
       expect(getComputedStyle(base).transitionProperty).to.contain('box-shadow');
+      expect(getComputedStyle(motionWrapper).display).to.equal('none');
+    });
+
+    it('should check the theme on focus', async () => {
+      const wrapper = await fixture<HTMLElement>(html`
+        <div style="--sd-theme: 'bb'">
+          <sd-button>Default Slot</sd-button>
+        </div>
+      `);
+      const el = wrapper.querySelector<SdButton>('sd-button')!;
+      el.focus();
+      await el.updateComplete;
+
+      const motionWrapper = el.shadowRoot!.querySelector<HTMLElement>('[part~="motion-wrapper"]')!;
       expect(getComputedStyle(motionWrapper).display).to.equal('none');
     });
 
@@ -122,12 +148,48 @@ describe('<sd-button>', () => {
         </div>
       `);
       const el = wrapper.querySelector<SdButton>('sd-button')!;
+      await hover(el);
 
       const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
       const motionWrapper = el.shadowRoot!.querySelector<HTMLElement>('[part~="motion-wrapper"]')!;
 
       expect(getComputedStyle(base).transitionProperty).not.to.contain('box-shadow');
       expect(getComputedStyle(motionWrapper).display).to.equal('block');
+    });
+
+    it('should use the theme of its own area when several themes are on the page', async () => {
+      const page = await fixture<HTMLElement>(html`
+        <div>
+          <div class="sd-theme-ui-light"><sd-button id="ui">UI</sd-button></div>
+          <div style="--sd-theme: 'vb'"><sd-button id="vb">VB</sd-button></div>
+        </div>
+      `);
+      const ui = page.querySelector<SdButton>('#ui')!;
+      const vb = page.querySelector<SdButton>('#vb')!;
+      await hover(ui);
+      await hover(vb);
+
+      const display = (el: SdButton) =>
+        getComputedStyle(el.shadowRoot!.querySelector<HTMLElement>('[part~="motion-wrapper"]')!).display;
+      expect(display(ui)).to.equal('block');
+      expect(display(vb)).to.equal('none');
+    });
+
+    it('should pick up a theme change on the next interaction', async () => {
+      const wrapper = await fixture<HTMLElement>(html`
+        <div style="--sd-theme: 'bb'">
+          <sd-button>Default Slot</sd-button>
+        </div>
+      `);
+      const el = wrapper.querySelector<SdButton>('sd-button')!;
+      const motionWrapper = () => el.shadowRoot!.querySelector<HTMLElement>('[part~="motion-wrapper"]')!;
+
+      await hover(el);
+      expect(getComputedStyle(motionWrapper()).display).to.equal('none');
+
+      wrapper.style.setProperty('--sd-theme', `'ui-light'`);
+      await hover(el);
+      expect(getComputedStyle(motionWrapper()).display).to.equal('block');
     });
   });
 

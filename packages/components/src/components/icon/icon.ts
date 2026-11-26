@@ -9,6 +9,8 @@ import SolidElement from '../../internal/solid-element';
 
 let parser: DOMParser;
 
+const THEMED_LIBRARIES = ['_internal', 'sd-multi-theming'];
+
 /**
  * @summary Used to display icons.
  * @status stable
@@ -66,10 +68,20 @@ export default class SdIcon extends SolidElement {
     this.setIcon();
   }
 
+  /** Only themed libraries resolve their URL based on the theme (see `getUrl()`). */
+  protected observesTheme(): boolean {
+    return THEMED_LIBRARIES.includes(this.library);
+  }
+
+  @watch('library')
+  handleLibraryChange() {
+    this.updateThemeObservation();
+  }
+
   private getUrl() {
     const library = getIconLibrary(this.library);
     if (this.name && library) {
-      if (library.name === '_internal' || library.name === 'sd-multi-theming') {
+      if (THEMED_LIBRARIES.includes(library.name)) {
         return library.resolver(this.name, this);
       }
 
@@ -135,7 +147,7 @@ export default class SdIcon extends SolidElement {
   }
 
   render() {
-    return html`<sd-theme-listener></sd-theme-listener> ${unsafeSVG(this.svg)} `;
+    return html`${unsafeSVG(this.svg)}`;
   }
 
   static styles = [

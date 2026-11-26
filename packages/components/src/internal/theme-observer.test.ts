@@ -1,0 +1,216 @@
+import { expect, fixture, html, nextFrame, waitUntil } from '@open-wc/testing';
+import { observeTheme, readTheme } from './theme-observer';
+import sinon from 'sinon';
+
+const setup = async (template = html`<div style="--sd-theme: 'ui-light'"><span></span></div>`) => {
+  const wrapper = await fixture<HTMLElement>(template);
+  const target = wrapper.querySelector('span')!;
+  const callback = sinon.spy();
+  const unobserve = observeTheme(target, callback);
+  // Elements are observed in the next frame
+  await nextFrame();
+  await nextFrame();
+  return { wrapper, target, callback, unobserve };
+};
+
+describe('theme-observer', () => {
+  let unobserve: (() => void) | undefined;
+
+  afterEach(() => {
+    unobserve?.();
+    unobserve = undefined;
+  });
+
+  it('reads the theme without quotes', async () => {
+    const el = await fixture<HTMLElement>(html`<div style="--sd-theme: 'vb'"></div>`);
+    expect(readTheme(el)).to.equal('vb');
+  });
+
+  it('reports inline --sd-theme changes on an ancestor', async () => {
+    const result = await setup();
+    unobserve = result.unobserve;
+
+    result.wrapper.style.setProperty('--sd-theme', `'bb'`);
+    await waitUntil(() => result.callback.calledOnce);
+
+    expect(result.callback).to.have.been.calledOnceWith('bb');
+  });
+
+  it('reports theme class changes on an ancestor', async () => {
+    const result = await setup(html`
+      <div>
+        <style>
+          .sd-theme-test-a {
+            --sd-theme: 'a';
+          }
+          .sd-theme-test-b {
+            --sd-theme: 'b';
+          }
+        </style>
+        <div class="sd-theme-test-a"><span></span></div>
+      </div>
+    `);
+    unobserve = result.unobserve;
+
+    result.target.parentElement!.className = 'sd-theme-test-b';
+    await waitUntil(() => result.callback.calledOnce);
+
+    expect(result.callback).to.have.been.calledOnceWith('b');
+  });
+
+  it('reports theme changes on wrappers inside a shadow root', async () => {
+    const host = await fixture<HTMLElement>(html`<div></div>`);
+    const shadow = host.attachShadow({ mode: 'open' });
+    shadow.innerHTML = `<div style="--sd-theme: 'ui-light'"><span></span></div>`;
+    const wrapper = shadow.querySelector('div')!;
+    const callback = sinon.spy();
+    unobserve = observeTheme(shadow.querySelector('span')!, callback);
+    await nextFrame();
+    await nextFrame();
+
+    wrapper.style.setProperty('--sd-theme', `'ui-dark'`);
+    await waitUntil(() => callback.calledOnce);
+
+    expect(callback).to.have.been.calledOnceWith('ui-dark');
+  });
+
+  it('ignores unrelated mutations and unchanged themes', async () => {
+    const result = await setup();
+    unobserve = result.unobserve;
+
+    result.wrapper.className = 'something-else';
+    result.wrapper.style.setProperty('color', 'red');
+    // Theme related mutation that keeps the same resolved theme
+    result.wrapper.style.setProperty('--sd-theme', `'ui-light'`);
+    await nextFrame();
+    await nextFrame();
+
+    expect(result.callback).not.to.have.been.called;
+  });
+
+  it('stops reporting after unsubscribing', async () => {
+    const result = await setup();
+    result.unobserve();
+
+    result.wrapper.style.setProperty('--sd-theme', `'bb'`);
+    await nextFrame();
+    await nextFrame();
+
+    expect(result.callback).not.to.have.been.called;
+  });
+
+  it('reports themes changed by stylesheets added to the head', async () => {
+    const result = await setup(html`<div class="theme-observer-test"><span></span></div>`);
+    unobserve = result.unobserve;
+
+    const style = document.createElement('style');
+    style.textContent = `.theme-observer-test { --sd-theme: 'from-stylesheet'; }`;
+    document.head.appendChild(style);
+
+    try {
+      await waitUntil(() => result.callback.calledOnce);
+      expect(result.callback).to.have.been.calledOnceWith('from-stylesheet');
+    } finally {
+      style.remove();
+    }
+  });
+
+  it('supports multiple and nested themes on the same page', async () => {
+    const page = await fixture<HTMLElement>(html`
+      <div>
+        <div id="area-a" style="--sd-theme: 'ui-light'"><span id="a"></span></div>
+        <div id="area-b" style="--sd-theme: 'vb'"><span id="b"></span></div>
+        <div style="--sd-theme: 'bb'">
+          <div id="area-c" style="--sd-theme: 'ui-dark'"><span id="c"></span></div>
+          <span id="d"></span>
+        </div>
+      </div>
+    `);
+    const get = (id: string) => page.querySelector<HTMLElement>(`#${id}`)!;
+    const callbacks = Object.fromEntries(['a', 'b', 'c', 'd'].map(id => [id, sinon.spy()]));
+    const unsubscribers = Object.entries(callbacks).map(([id, callback]) => observeTheme(get(id), callback));
+    await nextFrame();
+    await nextFrame();
+
+    // Every element resolves its own theme
+    expect(['a', 'b', 'c', 'd'].map(id => readTheme(get(id)))).to.deep.equal(['ui-light', 'vb', 'ui-dark', 'bb']);
+
+    // Changing one area only notifies the elements inside it
+    get('area-b').style.setProperty('--sd-theme', `'sp'`);
+    await waitUntil(() => callbacks.b.calledOnce);
+    get('area-c').style.setProperty('--sd-theme', `'ui-light'`);
+    await waitUntil(() => callbacks.c.calledOnce);
+    await nextFrame();
+    await nextFrame();
+
+    expect(callbacks.a).not.to.have.been.called;
+    expect(callbacks.b).to.have.been.calledOnceWith('sp');
+    expect(callbacks.c).to.have.been.calledOnceWith('ui-light');
+    expect(callbacks.d).not.to.have.been.called;
+    unsubscribers.forEach(fn => fn());
+  });
+
+  it('reports a different theme after the element was moved to another area', async () => {
+    const page = await fixture<HTMLElement>(html`
+      <div>
+        <div id="from" style="--sd-theme: 'ui-light'"><span></span></div>
+        <div id="to" style="--sd-theme: 'vb'"></div>
+      </div>
+    `);
+    const target = page.querySelector('span')!;
+    const callback = sinon.spy();
+    let stop = observeTheme(target, callback);
+    await nextFrame();
+    await nextFrame();
+
+    // Like a component's disconnectedCallback/connectedCallback
+    stop();
+    page.querySelector('#to')!.appendChild(target);
+    stop = observeTheme(target, callback);
+    await waitUntil(() => callback.calledOnce);
+
+    expect(callback).to.have.been.calledOnceWith('vb');
+    stop();
+  });
+
+  it('observes shadow hosts through a probe inside their shadow root', async () => {
+    const wrapper = await fixture<HTMLElement>(html`<div style="--sd-theme: 'ui-light'"><div></div></div>`);
+    const host = wrapper.querySelector('div')!;
+    const shadow = host.attachShadow({ mode: 'open' });
+    shadow.innerHTML = '<p>content</p>';
+    const callback = sinon.spy();
+    const stop = observeTheme(host, callback);
+    await nextFrame();
+    await nextFrame();
+
+    const probe = shadow.querySelector('span')!;
+    expect(probe).to.exist;
+    expect(probe.getBoundingClientRect().width).to.equal(0);
+    expect(probe.getBoundingClientRect().height).to.equal(0);
+
+    wrapper.style.setProperty('--sd-theme', `'vb'`);
+    await waitUntil(() => callback.calledOnce);
+    expect(callback).to.have.been.calledOnceWith('vb');
+
+    stop();
+    expect(shadow.querySelector('span')).not.to.exist;
+  });
+
+  it('notifies every subscriber of a change', async () => {
+    const wrapper = await fixture<HTMLElement>(html`<div style="--sd-theme: 'ui-light'"></div>`);
+    const callback = sinon.spy();
+    const unsubscribers = Array.from({ length: 200 }, () => {
+      const el = document.createElement('span');
+      wrapper.appendChild(el);
+      return observeTheme(el, callback);
+    });
+    await nextFrame();
+    await nextFrame();
+
+    wrapper.style.setProperty('--sd-theme', `'vb'`);
+    await waitUntil(() => callback.callCount === 200);
+
+    expect(callback.alwaysCalledWith('vb')).to.be.true;
+    unsubscribers.forEach(fn => fn());
+  });
+});

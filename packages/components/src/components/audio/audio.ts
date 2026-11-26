@@ -313,7 +313,7 @@ export default class SdAudio extends SolidElement {
     return null;
   }
 
-  onThemeChange(): void {
+  protected onThemeChange(): void {
     this.clear();
     setTimeout(this.initAnimation.bind(this), this.token('--sd-duration-fast', 150));
   }
@@ -539,7 +539,6 @@ export default class SdAudio extends SolidElement {
         }
         ${!this.hideTimestamps && (!this.animated || !this.reversedLayout) ? renderTimestamps : null}
       </div>
-      <sd-theme-listener></sd-theme-listener>
     `;
   }
 

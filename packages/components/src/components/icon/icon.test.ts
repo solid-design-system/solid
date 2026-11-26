@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { elementUpdated, expect, fixture, html, oneEvent } from '@open-wc/testing';
+import { elementUpdated, expect, fixture, html, nextFrame, oneEvent, waitUntil } from '@open-wc/testing';
+import sinon from 'sinon';
 import { registerIconLibrary } from '../../../dist/solid-components';
 import type SdIcon from './icon';
 import internalLibrary, { icons as internalIcons } from './library.internal';
@@ -236,6 +237,57 @@ describe('<sd-icon>', () => {
 
       expect(el.shadowRoot?.querySelector('svg')).to.be.null;
       expect(ev).to.exist;
+    });
+  });
+
+  describe('when the theme changes', () => {
+    it('should not render a theme listener', async () => {
+      const el = await fixture<SdIcon>(html`<sd-icon library="test-library" name="test-icon1"></sd-icon>`);
+      expect(el.shadowRoot!.querySelector('sd-theme-listener')).not.to.exist;
+    });
+
+    it('should reload icons whose library depends on the theme', async () => {
+      // Stubbed on the prototype, so the multi-theming icon never requests the CDN
+      const SdIconClass = customElements.get('sd-icon') as typeof SdIcon;
+      const setIcon = sinon.stub(SdIconClass.prototype, 'setIcon');
+
+      try {
+        const wrapper = await fixture<HTMLElement>(html`
+          <div style="--sd-theme: 'ui-light'">
+            <sd-icon library="sd-multi-theming" name="system/home"></sd-icon>
+          </div>
+        `);
+        const el = wrapper.querySelector<SdIcon>('sd-icon')!;
+        // The shared theme observer starts observing in the next frame
+        await nextFrame();
+        await nextFrame();
+        setIcon.resetHistory();
+
+        wrapper.style.setProperty('--sd-theme', `'vb'`);
+        await waitUntil(() => setIcon.calledOn(el));
+
+        expect(setIcon).to.have.been.calledOnce;
+      } finally {
+        setIcon.restore();
+      }
+    });
+
+    it('should not observe the theme for libraries that do not depend on it', async () => {
+      const wrapper = await fixture<HTMLElement>(html`
+        <div style="--sd-theme: 'ui-light'">
+          <sd-icon library="test-library" name="test-icon1"></sd-icon>
+        </div>
+      `);
+      const el = wrapper.querySelector<SdIcon>('sd-icon')!;
+      await nextFrame();
+      await nextFrame();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const setIcon = sinon.spy(el as any, 'setIcon');
+
+      wrapper.style.setProperty('--sd-theme', `'vb'`);
+      await new Promise(resolve => setTimeout(resolve, 200));
+
+      expect(setIcon).not.to.have.been.called;
     });
   });
 });
