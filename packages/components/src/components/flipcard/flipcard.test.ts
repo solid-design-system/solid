@@ -18,6 +18,17 @@ describe('<sd-flipcard>', () => {
     expect(el.placement).to.equal('top');
   });
 
+  it('renders the primary-800 variant on front and back with the matching background', async () => {
+    const el = await fixture<SdFlipcard>(
+      html`<sd-flipcard front-variant="primary-800" back-variant="primary-800"></sd-flipcard>`
+    );
+
+    expect(el.frontVariant).to.equal('primary-800');
+    expect(el.backVariant).to.equal('primary-800');
+    expect(el.front.classList.contains('sd-flipcard--primary-800-color-background')).to.be.true;
+    expect(el.back.classList.contains('sd-flipcard--primary-800-color-background')).to.be.true;
+  });
+
   describe('when a flip is triggered', () => {
     it('should emit sd-flip-front and sd-flip-back', async () => {
       const el = await fixture<SdFlipcard>(html`<sd-flipcard></sd-flipcard>`);

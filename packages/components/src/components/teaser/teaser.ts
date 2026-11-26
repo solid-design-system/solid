@@ -29,6 +29,7 @@ import type { PropertyValues } from 'lit';
  * @cssproperty --sd-teaser--neutral-100-color-background - The background color for neutral‑100 teasers.
  * @cssproperty --sd-teaser--neutral-400-color-border - The border color for neutral‑400 teasers.
  * @cssproperty --sd-teaser--primary-100-color-background - The background color for primary‑100 teasers.
+ * @cssproperty --sd-teaser--primary-800-color-background - The background color for primary‑800 teasers.
  * @cssproperty --sd-teaser-border-radius - The border radius for teasers.
  */
 
@@ -36,7 +37,7 @@ import type { PropertyValues } from 'lit';
 export default class SdTeaser extends SolidElement {
   /** Variant of the teaser */
   @property({ type: String, reflect: true }) variant:
-    'white' | 'white border-neutral-400' | 'neutral-100' | 'primary' | 'primary-100' = 'white';
+    'white' | 'primary-100' | 'primary' | 'primary-800' | 'white border-neutral-400' | 'neutral-100' = 'white';
 
   /** Breakpoint where the teaser switches from `vertical` to `horizontal`. `0` is always `horizontal`, `9999` is always `vertical`. */
   @property({ reflect: true, type: Number }) breakpoint = 448;
@@ -105,7 +106,8 @@ export default class SdTeaser extends SolidElement {
             'white border-neutral-400': 'bg-white border sd-teaser--neutral-400-color-border',
             'neutral-100': 'sd-teaser--neutral-100-color-background',
             primary: 'bg-primary text-white',
-            'primary-100': 'sd-teaser--primary-100-color-background'
+            'primary-100': 'sd-teaser--primary-100-color-background',
+            'primary-800': 'sd-teaser--primary-800-color-background text-white'
           }[this.variant],
           this._orientation === 'vertical' && 'flex-col',
           this._orientation === 'horizontal' && 'flex-row gap-8',
@@ -131,7 +133,7 @@ export default class SdTeaser extends SolidElement {
           <div class="flex flex-col-reverse">
             <div
               part="headline"
-              class=${cx('text-lg font-bold m-0', this.variant === 'primary' ? 'text-white' : 'text-black')}
+              class=${cx('text-lg font-bold m-0', ['primary', 'primary-800'].includes(this.variant) ? 'text-white' : 'text-black')}
             >
               <slot name="headline"
                 >Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)</slot

@@ -750,6 +750,10 @@
   background-color: rgba(var(--sd-dropdown-color-background, 255 255 255));
 }
 
+@utility sd-flipcard--primary-800-color-background {
+  background-color: rgba(var(--sd-flipcard--primary-800-color-background, 5 21 48));
+}
+
 @utility sd-footnotes--target--inverted-color-background {
   background-color: rgba(var(--sd-footnotes--target--inverted-color-background, 5 21 48));
 }
@@ -1114,6 +1118,10 @@
   background-color: rgba(var(--sd-teaser--primary-100-color-background, 236 240 249));
 }
 
+@utility sd-teaser--primary-800-color-background {
+  background-color: rgba(var(--sd-teaser--primary-800-color-background, 5 21 48));
+}
+
 @utility sd-teaser-border-radius {
  border-radius: var(--sd-teaser-border-radius, 0);
 }
@@ -1132,6 +1140,14 @@
 
 @utility sd-teaser-media--primary-100-color-background {
   background-color: rgba(var(--sd-teaser-media--primary-100-color-background, 236 240 249 / 0.8));
+}
+
+@utility sd-teaser-media--primary-800--hover-color-background {
+  background-color: rgba(var(--sd-teaser-media--primary-800--hover-color-background, 5 21 48 / 0.9));
+}
+
+@utility sd-teaser-media--primary-800-color-background {
+  background-color: rgba(var(--sd-teaser-media--primary-800-color-background, 5 21 48 / 0.8));
 }
 
 @utility sd-teaser-media--white--hover-color-background {

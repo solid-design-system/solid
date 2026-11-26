@@ -21,6 +21,16 @@ describe('<sd-teaser>', () => {
     expect(el.inset).to.equal(true);
   });
 
+  it('renders the primary-800 variant with the matching background and inverted text', async () => {
+    const el = await fixture<SdTeaser>(html`<sd-teaser variant="primary-800" breakpoint="9999"></sd-teaser>`);
+    const base = el.shadowRoot!.querySelector('[part="base"]')!;
+
+    expect(el.variant).to.equal('primary-800');
+    expect(base.classList.contains('sd-teaser--primary-800-color-background')).to.be.true;
+    expect(base.classList.contains('text-white')).to.be.true;
+    expect(el.shadowRoot!.querySelector('[part="headline"]')!.classList.contains('text-white')).to.be.true;
+  });
+
   it('renders slots correctly', async () => {
     const el = await fixture<SdTeaser>(html`
       <sd-teaser>

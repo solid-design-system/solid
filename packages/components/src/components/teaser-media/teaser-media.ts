@@ -32,6 +32,8 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-teaser-media--neutral-100-color-background - The default background color for neutral‑100 teaser media.
  * @cssproperty --sd-teaser-media--primary-100--hover-color-background - The background color for primary‑100 teaser media in hover state.
  * @cssproperty --sd-teaser-media--primary-100-color-background - The default background color for primary‑100 teaser media.
+ * @cssproperty --sd-teaser-media--primary-800--hover-color-background - The background color for primary‑800 teaser media in hover state.
+ * @cssproperty --sd-teaser-media--primary-800-color-background - The default background color for primary‑800 teaser media.
  * @cssproperty --sd-teaser-media-color-icon-fill - The default color for the icon in the toggle button.
  */
 
@@ -39,7 +41,7 @@ import SolidElement from '../../internal/solid-element';
 export default class SdTeaserMedia extends SolidElement {
   /** Variant of the teaser */
   @property({ type: String, reflect: true }) variant:
-    'white' | 'neutral-100' | 'primary' | 'primary-100' | 'gradient-light' | 'gradient-dark' = 'white';
+    'white' | 'primary-100' | 'primary' | 'primary-800' | 'neutral-100' | 'gradient-dark' | 'gradient-light' = 'white';
 
   /** Controls whether the expandable content is visible */
   @property({ type: Boolean, reflect: true }) open = false;
@@ -78,7 +80,9 @@ export default class SdTeaserMedia extends SolidElement {
               this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/60 to-primary-800/0'
             )}
           ></div>
-          <div class=${cx('relative', ['primary', 'gradient-dark'].includes(this.variant) && 'text-white')}>
+          <div
+            class=${cx('relative', ['primary', 'primary-800', 'gradient-dark'].includes(this.variant) && 'text-white')}
+          >
             <div
               class=${cx(
                 'absolute inset-0 pointer-events-none',
@@ -90,6 +94,8 @@ export default class SdTeaserMedia extends SolidElement {
                   primary: 'bg-primary/80 text-white group-hover:bg-primary/90',
                   'primary-100':
                     'sd-teaser-media--primary-100-color-background group-hover:sd-teaser-media--primary-100--hover-color-background',
+                  'primary-800':
+                    'sd-teaser-media--primary-800-color-background text-white group-hover:sd-teaser-media--primary-800--hover-color-background',
                   'gradient-light': 'bg-gradient-to-t from-white/75 to-white/60',
                   'gradient-dark': 'bg-gradient-to-t from-primary-800/75 to-primary-800/60'
                 }[this.variant]
@@ -126,7 +132,7 @@ export default class SdTeaserMedia extends SolidElement {
                         part="toggle"
                         class=${cx(
                           'mt-2',
-                          ['primary', 'gradient-dark'].includes(this.variant)
+                          ['primary', 'primary-800', 'gradient-dark'].includes(this.variant)
                             ? 'text-white'
                             : 'sd-teaser-media-color-icon-fill'
                         )}
