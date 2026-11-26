@@ -1,5 +1,19 @@
 # @solid-design-system/components
 
+## 7.6.1
+
+### Patch Changes
+
+- Improved render performance on pages with many components: _[`#3437`](https://github.com/solid-design-system/solid/pull/3437) [`1f1b35b`](https://github.com/solid-design-system/solid/commit/1f1b35bb8361d480ac3b457b274ed75922b61dde) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Replaced the per-component `sd-theme-listener` with one shared `style-observer`.
+  - `sd-button` and `sd-dialog` check theme only before animations, not continuously.
+  - Fixed theme listeners not being removed when components disconnect.
+
+### 📈 Stats
+* Uncompressed: 639 KB (+1 KB / +0%)
+* Gzipped: 144 KB (unchanged)
+
 ## 7.6.0
 
 ### Minor Changes
