@@ -1,6 +1,6 @@
 ---
-'@solid-design-system/tokens': minor
 '@solid-design-system/docs': minor
+'@solid-design-system/mcp': minor
 ---
 
-Add PSD theme.
+Added the PSD theme.
