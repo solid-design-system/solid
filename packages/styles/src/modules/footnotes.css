@@ -6,6 +6,7 @@
  * @since 3.0.0
  * @boolean sd-footnotes--inverted Inverts the footnote text.
  *
+ * @cssproperty --sd-footnotes--inverted-color-text - Used as text color for the `inverted` variant.
  * @cssproperty --sd-footnotes--target--inverted-color-background - Used as background color for the `inverted` variant when the footnote is targeted.
  */
 
@@ -67,7 +68,7 @@
   }
 
   &--inverted {
-    @apply text-primary-400;
+    @apply sd-footnotes--inverted-color-text;
 
     :target {
       @apply sd-footnotes--target--inverted-color-background;
