@@ -185,8 +185,8 @@
         "VariableID:43927:5024",
         "VariableID:43927:5025",
         "VariableID:43927:5026",
-        "VariableID:43927:5038",
         "VariableID:43927:5027",
+        "VariableID:43927:5038",
         "VariableID:43979:190",
         "VariableID:44917:19938",
         "VariableID:44917:19939",
@@ -590,8 +590,8 @@
         "VariableID:43979:261",
         "VariableID:43979:262",
         "VariableID:43979:263",
-        "VariableID:43979:299",
         "VariableID:43979:264",
+        "VariableID:43979:299",
         "VariableID:43979:300",
         "VariableID:43979:265",
         "VariableID:43979:301",
@@ -640,8 +640,8 @@
         "VariableID:43979:252",
         "VariableID:56149:47181",
         "VariableID:44271:64020",
-        "VariableID:44625:20357",
         "VariableID:58990:4429",
+        "VariableID:44625:20357",
         "VariableID:44762:16901",
         "VariableID:44271:64197",
         "VariableID:58510:2611",
@@ -798,8 +798,8 @@
         "VariableID:44029:1676",
         "VariableID:44029:1677",
         "VariableID:44029:1678",
-        "VariableID:44029:1684",
         "VariableID:44029:1679",
+        "VariableID:44029:1684",
         "VariableID:44029:1681",
         "VariableID:44029:1682",
         "VariableID:44029:1683",
@@ -894,8 +894,8 @@
         "VariableID:44883:20780",
         "VariableID:44883:24906",
         "VariableID:44883:24608",
-        "VariableID:47783:193767",
         "VariableID:54634:38691",
+        "VariableID:47783:193767",
         "VariableID:47783:193768",
         "VariableID:47783:193769",
         "VariableID:46871:963",
@@ -26135,11 +26135,10 @@
           "type": "VARIABLE_ALIAS"
         },
         "72063:0": {
-          "color": {
-            "id": "VariableID:43979:293",
-            "type": "VARIABLE_ALIAS"
-          },
-          "opacity": 0
+          "a": 0,
+          "b": 1,
+          "g": 1,
+          "r": 1
         }
       },
       "variableCollectionId": "VariableCollectionId:43174:55999"

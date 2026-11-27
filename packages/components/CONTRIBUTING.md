@@ -54,7 +54,7 @@ This is needed so that all selected properties are displayed in the DOM. This is
 
 ### Icons inside components
 
-Maintain component icons in the [Figma Theming Icon Asset Library](https://www.figma.com/design/hXMcJwfG2u2K6jy7kjtrd2?node-id=0-1). UI internal icons and status assets are bundled; VB, BB and SP internal icons are published through CELUM.
+Maintain component icons in the [Figma Theming Icon Asset Library](https://www.figma.com/design/hXMcJwfG2u2K6jy7kjtrd2?node-id=0-1). UI internal icons and status assets are bundled; VB, BB, SP and PSD internal icons are published through CELUM.
 
 Choose the direction: **designers use the CELUM changelog PR's ZIP to update Figma**; **CELUM maintainers use the Figma export ZIP to update CELUM**. Neither ZIP applies updates automatically.
 
@@ -76,7 +76,7 @@ Repository setup: configure the `FIGMA_TOKEN` Actions secret and allow Actions t
 
 #### Add an Internal Icon
 
-1. Add an icon only when a component needs it, and provide UI, VB, BB and SP variants in Figma.
+1. Add an icon only when a component needs it, and provide UI, VB, BB, SP and PSD variants in Figma.
 2. Add its runtime name to `internalNames` in `scripts/figma/config.js`. If the Figma name differs, add an entry to `figmaInternalToCode` with the Figma name as key and runtime name as value. All config maps follow this direction. Request review for allowlist changes.
 3. Run **Icons: Figma to Bundled Icons (PR)** and **Icons: Figma Export for CELUM (ZIP)** to deliver the bundled and theme variants separately.
 
@@ -88,9 +88,9 @@ For CELUM maintainers publishing approved Figma icons, not for designers importi
 
 1. Run **Icons: Figma Export for CELUM (ZIP)** to get icons from Figma for CELUM upload. This action never changes component source or creates a PR.
 2. Use **Download Figma icons for CELUM (ZIP)** in the run summary, or download the `solid-celum-icons` artifact within 14 days.
-3. Review the icons and `report.json`, then upload the `vb`, `bbbank` and `sparda` folders to CELUM manually.
+3. Review the icons and `report.json`, then upload the `vb`, `bbbank`, `sparda` and `psd` folders to CELUM manually.
 
-The ZIP excludes the public UI catalog (`default`) and bundled UI/status icons. Public icon collections missing VB, BB or SP variants are skipped automatically; warnings and `report.json` list the missing themes. Complete those variants in Figma and rerun the download to include them. Missing required internal icons stop the export.
+The ZIP excludes the public UI catalog (`default`) and bundled UI/status icons. Public icon collections missing VB, BB, SP or PSD variants are skipped automatically; warnings and `report.json` list the missing themes. Complete those variants in Figma and rerun the download to include them. Missing required internal icons stop the export.
 
 Downloading the ZIP does not publish to the CDN. The external CELUM pipeline publishes once per week and is outside the Solid team's responsibility.
 

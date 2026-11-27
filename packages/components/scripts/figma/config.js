@@ -13,7 +13,7 @@ export const pageName = 'Theming Icons and Assets';
  * Keys: Figma's `set` variant values. Values: CELUM/CDN folder names, not CSS theme IDs.
  * Example: `set=BB` exports to `bbbank/`. UI bundled icons are handled separately.
  */
-export const figmaThemeToFolder = { VB: 'vb', BB: 'bbbank', SP: 'sparda' };
+export const figmaThemeToFolder = { VB: 'vb', BB: 'bbbank', SP: 'sparda', PSD: 'psd' };
 
 /**
  * Keys: exact Figma component-set name prefixes. Values: code categories.

@@ -3,6 +3,7 @@ import type { IconLibrary } from './library';
 const themeMap: Record<string, string> = {
   bb: 'bbbank',
   sp: 'sparda',
+  psd: 'psd',
   'ui-dark': 'union-investment',
   'ui-light': 'union-investment',
   vb: 'vb'

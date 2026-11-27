@@ -49,12 +49,12 @@ Read [the downloader](../../../packages/tokens/scripts/celum/download-changed-ic
    pnpm --dir packages/components fetch:figma --target=celum
    ```
 
-3. Inspect `packages/components/.figma-icons-celum/celum/` and its report. The output contains `vb`, `bbbank`, and `sparda`, not the UI catalog or bundled status assets. Public collections missing a brand variant are skipped and reported; missing required internal variants stop export. Resolve warnings rather than silently accepting missing icons.
+3. Inspect `packages/components/.figma-icons-celum/celum/` and its report. The output contains `vb`, `bbbank`, `sparda`, and `psd`, not the UI catalog or bundled status assets. Public collections missing a brand variant are skipped and reported; missing required internal variants stop export. Resolve warnings rather than silently accepting missing icons.
 4. CELUM maintainers review and upload manually. Exporting does not publish to CELUM or its CDN; the external CELUM publishing schedule is outside this repository's control. Verify that tracked source files remain unchanged.
 
 ## Figma to Bundled Icons
 
-1. Read [the configuration](../../../packages/components/scripts/figma/config.js) and [exporter](../../../packages/components/scripts/figma/fetch-icons.js). Use `internalNames` for approved runtime names and `figmaInternalToCode` for Figma-name-to-runtime-name mappings. Request review for allowlist changes; do not add internal icons without a component need and UI/VB/BB/SP Figma variants.
+1. Read [the configuration](../../../packages/components/scripts/figma/config.js) and [exporter](../../../packages/components/scripts/figma/fetch-icons.js). Use `internalNames` for approved runtime names and `figmaInternalToCode` for Figma-name-to-runtime-name mappings. Request review for allowlist changes; do not add internal icons without a component need and UI/VB/BB/SP/PSD Figma variants.
 2. Check the planned inventory before updating generated libraries:
 
    ```sh
