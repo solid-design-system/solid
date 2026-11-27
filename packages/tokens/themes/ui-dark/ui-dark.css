@@ -23,17 +23,17 @@
   --sd-aspect-golden-ratio: 1.6180339887498948482 / 1;
   --sd-aspect-square: 1 / 1;
   --sd-aspect-video: 16 / 9;
+  --sd-audio--play-button-border-radius: 624.9375rem;
   --sd-audio__slide-bar--inverted-color-background: var(--sd-color-primary-400);
   --sd-audio__track-bar--inverted-color-background: var(--sd-color-white);
+  --sd-audio__wave-color-background: var(--sd-color-white);
   --sd-badge--blue--inverted-color-background: var(--sd-color-primary-100);
   --sd-badge--blue--inverted-color-text: var(--sd-color-primary);
   --sd-badge--blue-color-background: var(--sd-color-primary-500);
-  --sd-badge--green-color--inverted-background: var(--sd-color-accent-550);
-  --sd-badge--green-color--inverted-text: var(--sd-color-white);
+  --sd-badge--green--inverted-color-background: var(--sd-color-accent-550);
+  --sd-badge--green--inverted-color-text: var(--sd-color-white);
   --sd-badge--green-color-background: var(--sd-color-accent-550);
-  --sd-badge--inverted-color-border: var(--sd-color-primary);
-  --sd-badge--red--inverted-background: var(--sd-color-error-300);
-  --sd-badge--red--inverted-text: var(--sd-color-white);
+  --sd-badge--inverted-color-border: var(--sd-color-white);
   --sd-badge--red-color-background: var(--sd-color-error-300);
   --sd-border-width-2: 0.125rem;
   --sd-border-width-4: 0.25rem;
@@ -314,6 +314,7 @@
   --sd-font-primary: 'Frutiger Neue';
   --sd-font-weight-bold: 600;
   --sd-font-weight-normal: 400;
+  --sd-footnotes--inverted-color-text: var(--sd-color-primary-400);
   --sd-footnotes--target--inverted-color-background: var(--sd-color-primary-800);
   --sd-form-control--disabled-color-text: var(--sd-color-neutral-600);
   --sd-form-control--filled__floating-label-color-text: var(--sd-color-primary-400);
@@ -338,7 +339,11 @@
   --sd-informational-gradient--white-color-background: var(--sd-color-primary-800);
   --sd-interactive--active-color-text: var(--sd-color-primary-400);
   --sd-interactive--default-color-text: var(--sd-color-white);
+  --sd-interactive--inverted--active-color-text: var(--sd-color-primary-400);
+  --sd-interactive--inverted--hover-color-text: var(--sd-color-primary-200);
   --sd-interactive--secondary-color-text: var(--sd-color-white);
+  --sd-link--inverted--active-color-text: var(--sd-color-primary-400);
+  --sd-link--inverted--hover-color-text: var(--sd-color-primary-200);
   --sd-map-marker--cluster--default-color-background: var(--sd-color-white);
   --sd-map-marker--cluster--hover-color-background: var(--sd-color-primary-100);
   --sd-map-marker--cluster-color-text: var(--sd-color-primary);
@@ -348,10 +353,12 @@
   --sd-map-marker--pin-color-text: var(--sd-color-primary);
   --sd-marker-font-size: 0.875rem;
   --sd-marker-font-weight: var(--sd-font-weight-normal);
+  --sd-media--description--inverted-color-text: var(--sd-color-primary-400);
   --sd-menu-item--disabled-color-icon-fill: var(--sd-color-neutral-600);
   --sd-menu-item--disabled-color-text: var(--sd-color-neutral-600);
   --sd-menu-item-color-icon-fill: var(--sd-color-white);
   --sd-menu-item-color-text: var(--sd-color-white);
+  --sd-meta--light--inverted-color-text: var(--sd-color-primary-400);
   --sd-navigable-border-radius: 0;
   --sd-navigable-font-size: var(--sd-spacing-4);
   --sd-navigable__current-indicator-border-radius: 0;
@@ -494,8 +501,10 @@
   --sd-teaser-border-radius: 0;
   --sd-teaser-media--neutral-100--hover-color-background: 10 32 74 / 0.9;
   --sd-teaser-media--neutral-100-color-background: 10 32 74 / 0.8;
+  --sd-teaser-media--primary--hover-color-background: 0 53 142 / 0.9;
   --sd-teaser-media--primary-100--hover-color-background: 10 32 74 / 0.9;
   --sd-teaser-media--primary-100-color-background: 10 32 74 / 0.8;
+  --sd-teaser-media--primary-color-background: 0 53 142 / 0.8;
   --sd-teaser-media--white--hover-color-background: 0 53 142 / 0.9;
   --sd-teaser-media--white-color-background: 0 53 142 / 0.8;
   --sd-teaser-media-color-icon-fill: var(--sd-color-white);
@@ -509,6 +518,8 @@
   --sd-text-xs: 0.75rem;
   --sd-tooltip-color-background: var(--sd-color-primary);
   --sd-tooltip-color-text: var(--sd-color-white);
+  --sd-video--description--inverted-color-text: var(--sd-color-primary-400);
+  --sd-video--play-button-border-radius: 624.9375rem;
   --sd-video--play-button-color-background: 0 53 142 / 0.8;
   --sd-video--play-button-color-icon-fill: var(--sd-color-white);
 }
