@@ -26,6 +26,8 @@ import SolidElement from '../../internal/solid-element';
  *
  * @cssproperty --sd-interactive--active-color-text - The link's text color when active.
  * @cssproperty --sd-interactive--default-color-text - The default link's text color.
+ * @cssproperty --sd-link--inverted--hover-color-text - The link's text color when inverted and hovered.
+ * @cssproperty --sd-link--inverted--active-color-text - The link's text color when inverted and active.
  */
 @customElement('sd-link')
 export default class SdLink extends SolidElement {
@@ -101,7 +103,7 @@ export default class SdLink extends SolidElement {
           disabled: !this.inverted ? 'text-neutral-500' : 'text-neutral-600',
           enabled: !this.inverted
             ? `interactive--default-color-text hover:text-primary-500 active:interactive--active-color-text focus-visible:focus-outline`
-            : `text-white hover:text-primary-200 active:text-primary-400 focus-visible:focus-outline-inverted`,
+            : `text-white hover:sd-link--inverted--hover-color-text active:sd-link--inverted--active-color-text focus-visible:focus-outline-inverted`,
           visuallyDisabled: !this.inverted ? 'text-neutral-500' : 'text-neutral-600'
         }[this.href && !this.visuallyDisabled ? 'enabled' : this.visuallyDisabled ? 'visuallyDisabled' : 'disabled']
       )}
