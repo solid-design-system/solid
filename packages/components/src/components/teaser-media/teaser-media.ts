@@ -32,6 +32,8 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-teaser-media--neutral-100-color-background - The default background color for neutral‑100 teaser media.
  * @cssproperty --sd-teaser-media--primary-100--hover-color-background - The background color for primary‑100 teaser media in hover state.
  * @cssproperty --sd-teaser-media--primary-100-color-background - The default background color for primary‑100 teaser media.
+ * @cssproperty --sd-teaser-media--primary-color-background - The default background color for primary teaser media.
+ * @cssproperty --sd-teaser-media--primary--hover-color-background - The background color for primary teaser media in hover state.
  * @cssproperty --sd-teaser-media-color-icon-fill - The default color for the icon in the toggle button.
  */
 
@@ -87,7 +89,8 @@ export default class SdTeaserMedia extends SolidElement {
                     'sd-teaser-media--white-color-background group-hover:sd-teaser-media--white--hover-color-background ',
                   'neutral-100':
                     'sd-teaser-media--neutral-100-color-background group-hover:sd-teaser-media--neutral-100--hover-color-background',
-                  primary: 'bg-primary/80 text-white group-hover:bg-primary/90',
+                  primary:
+                    'sd-teaser-media--primary-color-background text-white group-hover:sd-teaser-media--primary--hover-color-background',
                   'primary-100':
                     'sd-teaser-media--primary-100-color-background group-hover:sd-teaser-media--primary-100--hover-color-background',
                   'gradient-light': 'bg-gradient-to-t from-white/75 to-white/60',
