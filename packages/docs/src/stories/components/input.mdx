@@ -63,10 +63,9 @@ Use the “floating-label” variant to conserve vertical space and streamline s
 - Provide instructions within helper text for completing the field, such as password or character count (e.g., “maxlength” and ”minlength”...).
 - Offer additional guidance with tooltips or help text to guide users on the expected input format and prevent unclear or ambiguous interpretation.
 
-#### Validation and Formatting
+#### Formatting
 
 - Use dynamic formatting to automatically format user input as they type.
-- Validate user entries in real-time to provide immediate feedback whenever possible.
 - Avoid using fields for actions that require immediate feedback; use buttons instead.
 
 #### Input Types
@@ -74,8 +73,22 @@ Use the “floating-label” variant to conserve vertical space and streamline s
 - Use appropriate field types for the given purpose (e.g., “email”, “password”, “number”). For custom autocomplete functionalities (e.g., search fields) use [sd-combobox](./?path=/docs/components-sd-combobox--docs).
 - Use for brief text input only. For longer inputs, such as comments or user feedback, use [sd-textarea](./?path=/docs/components-sd-textarea--docs) instead.
 
+#### Validation and Error Messages
+
+- Validate on submit by default to avoid overwhelming users with premature feedback.
+- For errors that can easily be corrected before submitting (e.g., format errors), validate when the user leaves the field and only if the value has changed.
+- Write solution-oriented error messages that explain what is required and how to fix it, e.g., “Please enter your first name.” instead of “Fill this field.”
+- When an error occurs, the error text replaces the help text.
+- Use placeholder text only for brief hints or examples and help text for detailed guidance. Do not rely on placeholders alone, as they disappear while typing.
+- If more detailed information is needed, use a tooltip together with the help text.
+- Use the “style-on-valid” attribute to show valid inputs once the requirements are matched.
+- Set field-specific error messages with “setCustomValidity” instead of the generic browser messages. See [Form Controls](./?path=/docs/packages-components-form-controls--docs) for details.
+- If most fields of a form are required, mark only the optional fields with “(optional)” and hide the asterisk; the fields remain required. If most fields are optional, mark only the required fields with <code>\*</code> and add the hint “Fields marked with <code>\*</code> are required.” above the form.
+- See [Forms](./?path=/docs/templates-forms--docs) for examples.
+
 ### Accessibility Information
 
+- Describe errors in text, not by color alone, and avoid references based on sensory characteristics (e.g., “the red field”).
 - Ensure that focus moves in sequential order between input fields and other form elements. When an input field is focused, it should be clearly indicated.
 - Avoid disabled input fields. If needed, ensure that they remain in the regular tab order but cannot be activated, allowing screen readers to announce their state and purpose. Use the native disabled attribute or appropriate ARIA attributes (e.g., aria-disabled="true").
 - Ensure input fields are usable on all screen sizes. On smaller screens, consider using larger touch targets for input fields.

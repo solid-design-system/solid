@@ -54,10 +54,22 @@ Use the “floating-label” variant to conserve vertical space and streamline s
 
 #### Behavior and Interaction
 
-- Provide real-time validation to help users correct errors as they type.
 - Provide a visible scrollbar when text overflows.
 - Adapt the size of the field to the expected length of user input.
 - Avoid including a "clear" button to prevent unwanted loss of user input.
+
+#### Validation and Error Messages
+
+- Validate on submit by default to avoid overwhelming users with premature feedback.
+- For errors that can easily be corrected before submitting (e.g., format errors), validate when the user leaves the field and only if the value has changed.
+- Write solution-oriented error messages that explain what is required and how to fix it, e.g., “Please enter your message.” instead of “Fill this field.”
+- When an error occurs, the error text replaces the help text.
+- Use placeholder text only for brief hints or examples and help text for detailed guidance. Do not rely on placeholders alone, as they disappear while typing.
+- If more detailed information is needed, use a tooltip together with the help text.
+- Use the “style-on-valid” attribute to show valid inputs once the requirements are matched.
+- Set field-specific error messages with “setCustomValidity” instead of the generic browser messages. See [Form Controls](./?path=/docs/packages-components-form-controls--docs) for details.
+- If most fields of a form are required, mark only the optional fields with “(optional)” and hide the asterisk; the fields remain required. If most fields are optional, mark only the required fields with <code>\*</code> and add the hint “Fields marked with <code>\*</code> are required.” above the form.
+- See [Forms](./?path=/docs/templates-forms--docs) for examples.
 
 #### Background
 
@@ -65,6 +77,7 @@ Use the “floating-label” variant to conserve vertical space and streamline s
 
 ### Accessibility Information
 
+- Describe errors in text, not by color alone, and avoid references based on sensory characteristics (e.g., “the red field”).
 - Use the "visually disabled" attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
 
 Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=38262-58412&t=1qhfYXrbNhSCYCzZ-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;

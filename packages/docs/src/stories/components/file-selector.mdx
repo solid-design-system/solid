@@ -61,6 +61,8 @@ Use the \`drop-area\` variant when file selector is the primary action on the pa
 
 #### Error Handling
 
+- Validate on submit by default to avoid overwhelming users with premature feedback.
+- When an error occurs, the error text replaces the help text.
 - Use error-text to surface validation errors: below the component (default variant) or next to each individual file selector when the "show selected files" attribute is active (drop-area variant).
 - Write error text in plain language with a clear solution (e.g., "The file is too large. Maximum allowed size is 5 MB.").
 
