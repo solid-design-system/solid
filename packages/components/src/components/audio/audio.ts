@@ -44,6 +44,7 @@ import type SdRange from '../range/range';
  *
  * @cssproperty --sd-audio__slide-bar--inverted-color-background - The background color for the progress slider when the component is inverted.
  * @cssproperty --sd-audio__track-bar--inverted-color-background - The background color for the active part of the progress slider when the component is inverted.
+ * @cssproperty --sd-audio--play-button-border-radius - The play-button border-radius.
  */
 @customElement('sd-audio')
 export default class SdAudio extends SolidElement {
@@ -309,7 +310,6 @@ export default class SdAudio extends SolidElement {
 
       return hex;
     }
-
     return null;
   }
 
@@ -547,7 +547,7 @@ export default class SdAudio extends SolidElement {
     ...SolidElement.styles,
     css`
       sd-button::part(base) {
-        @apply rounded-full h-12 w-12 flex items-center justify-center;
+        @apply sd-audio--play-button-border-radius h-12 w-12 flex items-center justify-center;
       }
 
       sd-button::part(motion-wrapper) {
