@@ -1,7 +1,7 @@
 Use the `sd-meta--*` classes for alternative appearances:
 
 - Black is the default color
-- `sd-meta--light`: Neutral-700
+- `sd-meta--light`
 
 ```html
 <div class="flex flex-row gap-12">

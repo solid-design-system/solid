@@ -1,7 +1,7 @@
 Use the `sd-meta--inverted` class when displayed on primary background.
 
-- White is the default
-- `sd-meta--light`: Primary-400
+- White is the default color
+- `sd-meta--light`
 
 ```html
 <div class="p-4 bg-primary flex flex-row gap-12">

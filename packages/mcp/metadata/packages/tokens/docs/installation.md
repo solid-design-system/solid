@@ -131,7 +131,7 @@ sans-serif;
 
 </sd-accordion>
 
-<sd-accordion summary="Example CSS for Sparda (CDN)">
+<sd-accordion summary="Example CSS for Sparda and PSD (CDN)">
 ```css
 @font-face {
   font-family: 'GenosGFG';

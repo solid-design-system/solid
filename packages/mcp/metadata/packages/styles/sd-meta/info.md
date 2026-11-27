@@ -29,7 +29,7 @@ Use the styles tool (with `style` + `example` args) to retrieve the HTML for any
 ### Background and Emphasis
 
 - Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
-- Use Primary-400 to de-emphasize text content
+- Use the light variants to de-emphasize text content.
 
 ### Accessibility
 
