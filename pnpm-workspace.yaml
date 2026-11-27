@@ -6,3 +6,6 @@ packages:
   - '!**/test/**'
 
 minimumReleaseAge: 7200
+minimumReleaseAgeExclude:
+  # Renovate security update: zod@4.6.6
+  - zod@4.6.6
