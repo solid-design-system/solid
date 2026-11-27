@@ -27,6 +27,7 @@ import SolidElement from '../../internal/solid-element';
  *
  * @cssproperty --sd-video--play-button-color-background - The background color for the video play button.
  * @cssproperty --sd-video--play-button-color-icon-fill - The icon fill color for the video play button.
+ * @cssproperty --sd-video--play-button-border-radius - The border radius for the video play button.
  */
 
 @customElement('sd-video')
@@ -140,7 +141,7 @@ export default class SdVideo extends SolidElement {
             class=${cx(
               this.playing ? 'opacity-0' : 'opacity-100',
               this.isBelowBreakpoint ? 'w-[48px] h-[48px]' : 'w-[96px] h-[96px]',
-              'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white/75 rounded-full play-pause-transition group-focus-visible:outline-2 group-focus-visible:outline-offset-2'
+              'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white/75 sd-video--play-button-border-radius play-pause-transition group-focus-visible:outline-2 group-focus-visible:outline-offset-2'
             )}
           >
             <slot name="play-icon" part="play-icon" class=${cx(this.isBelowBreakpoint ? 'text-[2rem]' : 'text-[4rem]')}>
